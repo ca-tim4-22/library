@@ -1,0 +1,18 @@
+a {
+    text-decoration: none !important;
+}
+
+.background {
+    background-image: url('../img/login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.transition-custom {
+    transition: 0.25s ease-out;
+}

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,11 +14,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users_types', function (Blueprint $table) {
+        Schema::create('user_types', function (Blueprint $table) {
             $table->id();
             $table->string('name', 256);
-            $table->timestamps();
         });
+
+        DB::table('user_types')->insert([
+            ['name' => 'student'],
+            ['name' => 'librarian'],
+        ]);
+
     }
 
     /**

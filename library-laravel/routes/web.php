@@ -2,17 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+// Make sure path '/' goes to '/pocetna'
 Route::get('/', function () {
-    return view('welcome');
+    return to_route('redirect');
 });
+Route::get('/pocetna', function () {
+    return view('welcome');
+})->name('redirect');
+
+// Laravel Authentication route
+Route::auth(['verify' => 'true']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

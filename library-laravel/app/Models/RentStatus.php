@@ -9,4 +9,8 @@ class RentStatus extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function rent() {
+        return $this->belongsTo(Rent::class);
+    }
 }
