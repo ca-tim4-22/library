@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('custom-style/style.css') }}">
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -15,14 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="content-language" content="en" />
     <meta name="description" content="ICT Cortex Library - project for high school students..." />
-    <meta name="keywords" content="ict cortex, cortex, bild, bildstudio, highschool, students, coding" />
-    <meta name="author" content="bildstudio" />
+    <meta name="keywords" content="ict cortex, cortex, coinis, highschool, students, coding" />
+    <meta name="author" content="Coinis" />
     <!-- End Meta -->
-
-    <!-- Title -->
-    <title>Login | Library - ICT Cortex student project</title>
-    <link rel="shortcut icon" href="img/library-favicon.ico" type="image/vnd.microsoft.icon" />
-    <!-- End Title -->
 
     <!-- Styles -->
     <?php include('includes/layout/styles.php'); ?>
@@ -42,7 +38,11 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="email" class="block mb-2 text-sm font-normal text-gray-700">
+                        @error('email')
+                        <span style="color: #CD1A2B;font-size: 15px">{{$message}}</span>
+                        @enderror
+                    
+                        <label for="email" class="block mt-2 mb-2 text-sm font-normal text-gray-700">
                             Email adresa
                         </label>
                         <input
@@ -52,7 +52,8 @@
                             v-model="form.email" 
                             type="email" 
                             required 
-                            autofocus />
+                            autofocus 
+                            value="{{ old('email') }}"/>
                     </div> 
                     
                     <div class="mb-6">
