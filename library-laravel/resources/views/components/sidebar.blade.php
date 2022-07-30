@@ -26,10 +26,11 @@
                 </li>
                 <!-- Bibliotekari Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="bibliotekari.php" aria-label="Bibliotekari">
+                                <a href="{{ route('all-librarian') }}" aria-label="Bibliotekari">
                                     <i
                                         class="text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                     <div class="hidden sidebar-item">

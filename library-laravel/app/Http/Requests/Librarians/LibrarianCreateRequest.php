@@ -28,7 +28,7 @@ class LibrarianCreateRequest extends FormRequest
             'username' => 'required|min:2|max:255',
             'email' => 'required|min:2|max:255',
             'password' => 'required|min:8',   
-            'JMBG' => 'required|min:14|max:14',
+            'JMBG' => 'required|min:14',
             'photo' => 'required',
         ];
     }

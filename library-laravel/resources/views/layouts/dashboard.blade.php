@@ -5,9 +5,12 @@
     
     <!-- Title -->
     <title>Dashboard | Online biblioteka</title>
-    <link rel="stylesheet" href="resources/css/app.css">
+
+    <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
+
     <!-- Icon -->
     <link rel="shortcut icon" href="img/library-favicon.ico" type="image/vnd.microsoft.icon" />
+
     
     <!-- Meta -->
     <x-meta></x-meta>

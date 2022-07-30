@@ -16,7 +16,8 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        return view('pages.novi_bibliotekar');
+        $librarians = User::where('user_type_id', 2)->get();
+        return view('pages.librarians', compact('librarians'));
     }
 
     /**
@@ -26,7 +27,7 @@ class LibrarianController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.new_librarian');
     }
 
     /**
@@ -39,6 +40,8 @@ class LibrarianController extends Controller
     {
         $input = $request->all();
         $input['user_type_id'] = 2;
+        $input['password'] = Hash::make($request->password);
+
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/librarians', $name);
@@ -46,9 +49,10 @@ class LibrarianController extends Controller
         } else {
             $input['photo'] = 'profileImg-default.jpg';
         }
+        
         User::create($input);
 
-        return back()->with('success-librarian', 'You have successfully registered' . $request->username);
+        return to_route('all-librarian')->with('success-librarian', 'Uspješno ste registrovali bibliotekara ' . "'$request->username'");
     }
 
     /**
@@ -59,7 +63,8 @@ class LibrarianController extends Controller
      */
     public function show($id)
     {
-        //
+        $librarian = User::findOrFail($id);
+        return view('pages.stranica', compact('librarian'));
     }
 
     /**
@@ -93,6 +98,8 @@ class LibrarianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $librarian = User::findOrFail($id);
+        $librarian->delete();
+        return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
     }
 }

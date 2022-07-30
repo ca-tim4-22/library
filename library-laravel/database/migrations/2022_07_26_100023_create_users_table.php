@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('username', 64)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 256);
-            $table->string('photo', 256)->default('no-photo');
+            $table->string('photo', 256)->default('placeholder');
             $table->rememberToken();
             $table->timestamps();
 

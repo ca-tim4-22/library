@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+<title>Registracija novog bibliotekara | Online Biblioteka</title>
+
 @section('content')
 
  <!-- Content -->
@@ -9,16 +11,7 @@
         <div class="flex border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
-                    {{-- Session message for librarian create --}}
-@if (session()->has('success-librarian'))
-<div class="flex p-2 mt-2 mb-2 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-    <span class="sr-only">Info</span>
-    <div>
-      <span class="font-medium">Success!</span> {{session('success-librarian')}}
-    </div>
-  </div>
-@endif
+                    
                     <h1>
                         Novi bibliotekar
                     </h1>
@@ -53,7 +46,7 @@
                 <div class="w-[50%] mb-[100px]">
                 <div class="mt-[20px]">
                         <span>Ime i prezime <span class="text-red-500">*</span></span>
-                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" placeholder="@error('name'){{$message}} @enderror"/>
+                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" placeholder="@error('name'){{$message}} @enderror" value="{{ old('name') }}"/>
                         <div id="validateNameBibliotekar"></div>
                     </div>
 
@@ -68,19 +61,19 @@
 
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">*</span></span>
-                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" placeholder="@error('JMBG'){{$message}} @enderror"/>
+                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" placeholder="@error('JMBG'){{$message}} @enderror"  value="{{ old('JMBG') }}"/>
                         <div id="validateJmbgBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>E-mail <span class="text-red-500">*</span></span>
-                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"/>
+                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"  value="{{ old('email') }}"/>
                         <div id="validateEmailBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>Korisničko ime <span class="text-red-500">*</span></span>
-                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" placeholder="@error('username'){{$message}} @enderror"/>
+                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" placeholder="@error('username'){{$message}} @enderror"  value="{{ old('username') }}"/>
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
@@ -92,7 +85,7 @@
 
                     <div class="mt-[20px]">
                         <span>Ponovi šifru <span class="text-red-500">*</span></span>
-                        <input type="password" name="password_confirmation" id="password_confirmation   " class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
+                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
                         <div id="validatePw2Bibliotekar"></div>
                     </div>
                 </div>
