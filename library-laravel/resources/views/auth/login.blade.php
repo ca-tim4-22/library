@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+{{-- Title --}}
 <title>Uloguj se - Online Biblioteka</title>
+
+{{-- Icon --}}
+<link rel="icon" type="image/x-icon" href="{{ asset('img/library-favicon.ico') }}">
 
 {{-- Style --}}
 <link rel="stylesheet" href="{{ asset('custom-style/style.css') }}">
@@ -11,14 +15,7 @@
 
 <head>
     <!-- Meta -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="content-language" content="en" />
-    <meta name="description" content="ICT Cortex Library - project for high school students..." />
-    <meta name="keywords" content="ict cortex, cortex, coinis, highschool, students, coding" />
-    <meta name="author" content="Coinis" />
-    <!-- End Meta -->
+    <x-meta></x-meta>
 
     <!-- Styles -->
     <?php include('includes/layout/styles.php'); ?>

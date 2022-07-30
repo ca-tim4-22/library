@@ -4,13 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {{-- Title --}}
+        <!-- Title -->
         <title>Početna - Online Biblioteka</title>
 
-        {{-- Icon --}}
+        <!-- Icon -->
         <link rel="icon" type="image/x-icon" href="{{ asset('img/library-favicon.ico') }}">
 
-        {{-- Style --}}
+        <!-- Meta -->
+        <x-meta></x-meta>
+
+        <!-- Style -->
         <link rel="stylesheet" href="{{ asset('custom-style/style.css') }}">
 
         <!-- Fonts -->
