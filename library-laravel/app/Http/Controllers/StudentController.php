@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Librarians\LibrarianCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
-class LibrarianController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        $librarians = User::where('user_type_id', 2)->get();
-        return view('pages.librarians.librarians', compact('librarians'));
+        $students = User::where('user_type_id', 1)->get();
+        return view('pages.students.students', compact('students'));
     }
 
     /**
@@ -27,7 +25,7 @@ class LibrarianController extends Controller
      */
     public function create()
     {
-        return view('pages.librarians.new_librarian');
+        //
     }
 
     /**
@@ -36,23 +34,9 @@ class LibrarianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LibrarianCreateRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
-        $input['user_type_id'] = 2;
-        $input['password'] = Hash::make($request->password);
-
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians', $name);
-            $input['photo'] = $name; 
-        } else {
-            $input['photo'] = 'profileImg-default.jpg';
-        }
-        
-        User::create($input);
-
-        return to_route('all-librarian')->with('success-librarian', 'Uspješno ste registrovali bibliotekara ' . "'$request->username'");
+        //
     }
 
     /**
@@ -63,8 +47,7 @@ class LibrarianController extends Controller
      */
     public function show($id)
     {
-        $librarian = User::findOrFail($id);
-        return view('pages.librarians.show_librarian', compact('librarian'));
+        //
     }
 
     /**
@@ -98,8 +81,6 @@ class LibrarianController extends Controller
      */
     public function destroy($id)
     {
-        $librarian = User::findOrFail($id);
-        $librarian->delete();
-        return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
+        //
     }
 }

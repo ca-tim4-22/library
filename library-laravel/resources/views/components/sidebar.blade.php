@@ -14,8 +14,7 @@
                         <span class="flex justify-between w-full fill-current whitespace-nowrap">
                             <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
                                 <a href="{{ route('dashboard') }}" aria-label="Dashboard">
-                                    <i
-                                        class="text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]"></i>
+                                    <i class="text-white ml-1 bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]"></i>
                                     <div class="hidden sidebar-item">
                                         <p class="inline text-[15px] ml-[15px]">Dashboard</p>
                                     </div>
@@ -31,11 +30,11 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{ route('all-librarian') }}" aria-label="Bibliotekari">
-                                    <i
-                                        class="text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
+
+                                    <i class=" {{ (request()->is('bibliotekari')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+
                                     <div class="hidden sidebar-item">
-                                        <p
-                                            class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                        <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
                                             Bibliotekari
                                         </p>
                                     </div>
@@ -49,13 +48,13 @@
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="ucenik.php" aria-label="Ucenici">
-                                    <i
-                                        class="text-[18px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-users"></i>
+                                <a href="{{route('all-student')}}" aria-label="Ucenici">
+
+                                    <i class="text-[18px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-users"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Ucenici</p>
+                                            Učenici</p>
                                     </div>
                                 </a>
                             </div>
@@ -129,7 +128,7 @@
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Expand example</p>
+                                            Expand</p>
                                     </div>
                                 </a>
                             </div>
@@ -147,7 +146,7 @@
                         <div class="transition duration-300 ease-in hover:text-[#2d3b48]">
                             <a href="#" aria-label="Dashboard">
                                 <div class="hidden sidebar-item">
-                                    <p class="inline">Basic expand</p>
+                                    <p class="inline">Expand</p>
                                 </div>
                             </a>
                         </div>
@@ -182,7 +181,7 @@
                     class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                        Settings</p>
+                        Podešavanja</p>
                 </div>
             </span>
         </a>

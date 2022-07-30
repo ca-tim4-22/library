@@ -319,7 +319,7 @@
                 <div class="inline-block w-full mt-4">
                     <a href="dashboardAktivnost.php" 
                         class="btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                        Show
+                        Prikaži
                     </a>
                 </div>
             </div>
@@ -431,7 +431,7 @@
                     <div class="text-right mt-[5px]">
                         <a href="aktivneRezervacije.php" class="text-[#2196f3] hover:text-blue-600">
                             <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
-                            Prikazi sve
+                            Prikaži sve
                         </a>
                     </div>
                 </div>
@@ -464,7 +464,7 @@
                         </div>
                         <div class="flex pb-[30px]">
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="knjigePrekoracenje.php">
-                                Knjige u prekoracenju
+                                Knjige u prekoračenju
                             </a>
                             <div class="ml-[30px] bg-red-600 transition duration-200 ease-in hover:bg-red-900 stats-bar-red h-[26px]">
                             

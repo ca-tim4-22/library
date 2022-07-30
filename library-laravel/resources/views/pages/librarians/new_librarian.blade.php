@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+<!-- Title -->
 <title>Registracija novog bibliotekara | Online Biblioteka</title>
 
 @section('content')
