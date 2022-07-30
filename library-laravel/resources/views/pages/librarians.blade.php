@@ -93,7 +93,7 @@
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}"
                             alt="User Photo"
                             title="User Photo" />
-                            <a href="bibliotekarProfile.php">
+                            <a href="{{route('show-librarian', $librarian->id)}}">
                                 <span class="font-medium text-center">{{$librarian->name}}</span>
                             </a>
                         </td>
