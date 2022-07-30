@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class DashboardController extends Controller
+class LibrarianController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard_content');
+        return view('pages.novi_bibliotekar');
     }
 
     /**
@@ -34,7 +36,10 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        User::create($input);
+       
+        return back()->with('success-librarian', 'You have successfully registered' . $request->username);
     }
 
     /**

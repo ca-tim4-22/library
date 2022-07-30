@@ -49,7 +49,7 @@
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="noviBibliotekar.php" tabindex="0"
+                            <a href="{{ route('new-librarian') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[8px] ml-[5px] py-1"></i>
@@ -76,42 +76,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- Bild Studio Icon -->
-                <a href="https://coinis.com/">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-[20px] svg-icon svg-icon-bildstudio">
-                        <use xlink:href="#shape-bildstudio">
-                            <svg width="100" viewBox="0 0 100 18.9" id="shape-bildstudio">
-                                <g id="bildstudio-text_1_">
-                                    <path d="M13.6,4.5h3.2v14h-3.2V4.5z"></path>
-                                    <path d="M18.2,0h3.2l0,18.5h-3.2L18.2,0z"></path>
-                                    <path
-                                        d="M34.6,18.5h-3.2v-0.7c0,0-2,1-3.6,1c-3.7,0-5.3-2.1-5.3-7.4c0-5,1.8-7.2,5.8-7.2c1.1,0,3,0.3,3.1,0.4l0-4.6h3.2L34.6,18.5z    M31.4,15.2V7.4c-0.1,0-1.7-0.3-2.9-0.3c-1.9,0-2.8,1.3-2.8,4.3c0,3.4,0.9,4.3,2.6,4.4C29.6,15.8,31.4,15.2,31.4,15.2z">
-                                    </path>
-                                    <path
-                                        d="M46.6,7.6c0,0-3.4-0.4-5-0.4c-1.7,0-2.3,0.4-2.3,1.4c0,0.9,0.6,1.1,2.9,1.5c3.7,0.6,4.9,1.6,4.9,4.3c0,3.3-2.1,4.5-5.6,4.5   c-2,0-5.2-0.6-5.2-0.6l0.1-2.7c0,0,3.4,0.4,4.8,0.4c2,0,2.7-0.4,2.7-1.5c0-0.9-0.4-1.1-2.7-1.5c-3.6-0.6-5.2-1.4-5.2-4.3   c0-3.2,2.5-4.4,5.3-4.4c2,0,5.3,0.6,5.3,0.6L46.6,7.6z">
-                                    </path>
-                                    <path
-                                        d="M51.3,7.4v5.7c0,1.9,0.1,2.7,1.5,2.7c0.8,0,2.3-0.1,2.3-0.1l0.1,2.7c0,0-1.9,0.4-2.9,0.4c-3.2,0-4.2-1.2-4.2-5.3V7.4l0,0   V4.5l0,0l0-4.5l3.2,0l0,4.5H55v2.9H51.3z">
-                                    </path>
-                                    <path
-                                        d="M68.1,4.5v14h-3.2v-0.7c0,0-2.2,1-3.7,1c-4,0-4.8-2.1-4.8-7V4.5h3.2v7.3c0,3,0.2,4.1,2.3,4.1c1.2,0,3.1-0.6,3.1-0.6V4.5   H68.1z">
-                                    </path>
-                                    <path
-                                        d="M81.4,18.5h-3.2v-0.7c0,0-2,1-3.6,1c-3.7,0-5.3-2.1-5.3-7.4c0-5,1.8-7.2,5.8-7.2c1.1,0,3,0.3,3.1,0.4l0-4.6h3.2L81.4,18.5z    M78.2,15.2V7.4c-0.1,0-1.7-0.3-2.9-0.3c-1.9,0-2.8,1.3-2.8,4.3c0,3.4,0.9,4.3,2.6,4.4C76.4,15.8,78.2,15.2,78.2,15.2z">
-                                    </path>
-                                    <path d="M82.9,4.5h3.2v14h-3.2V4.5z"></path>
-                                    <path
-                                        d="M100,11.5c0,4.5-1.5,7.4-6.3,7.4c-4.8,0-6.3-2.8-6.3-7.4c0-4.5,1.6-7.3,6.3-7.3C98.4,4.2,100,7,100,11.5z M96.8,11.5   c0-2.9-0.8-4.3-3-4.3c-2.4,0-3.1,1.3-3.1,4.3c0,3,0.6,4.5,3.1,4.5C96.2,15.9,96.8,14.4,96.8,11.5z">
-                                    </path>
-                                    <circle cx="15.2" cy="1.8" r="1.8"></circle>
-                                    <circle cx="84.5" cy="1.8" r="1.8"></circle>
-                                    <path
-                                        d="M0,0.1h3.2l0,4.5c0.1,0,2-0.4,3.1-0.4c4,0,5.8,2.2,5.8,7.2c0,5.3-1.6,7.4-5.3,7.4c-1.7,0-3.6-1-3.6-1v0.7H0L0,0.1z    M6.4,15.9c1.7-0.1,2.6-1,2.6-4.4c0-3.1-0.9-4.3-2.8-4.3C5,7.1,3.4,7.4,3.2,7.4v7.9C3.2,15.2,5,15.8,6.4,15.9z">
-                                    </path>
-                                </g>
-                            </svg>
-                        </use>
-                    </svg>
+                <!-- Coinis Icon -->
+                <a href="https://coinis.com/" target="_blank">
+                    <img style="height: 2%" width="35px" src="https://scontent.ftgd2-1.fna.fbcdn.net/v/t39.30808-6/280769957_410712391060476_3397885849496021002_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hO8Xr-B0BecAX83-Jp9&_nc_ht=scontent.ftgd2-1.fna&oh=00_AT9mMiSOBp1UsFogFj0N5Wav2ck70whKBrUX7U4lUPc-ZA&oe=62E91698" alt="">
                 </a>
                 <!-- User Profile Icon -->
                 <div class="ml-[10px] relative block">
@@ -135,7 +102,7 @@
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profile</span>
                             </a>
-                            <a href="#" tabindex="0"
+                            <a href="{{ route('logout') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-sign-out-alt mr-[5px] ml-[5px] py-1"></i>

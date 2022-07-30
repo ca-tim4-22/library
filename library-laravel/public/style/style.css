@@ -12,7 +12,7 @@
 }
 
 .btn-animation:hover {
-  transform: scale(1.035);
+  transform: scale(1.05);
 }
 
 /*Login - background*/
@@ -1846,6 +1846,7 @@ h4 {
   --tw-bg-opacity: 1;
   background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
 }
+
 .bg-black{
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
