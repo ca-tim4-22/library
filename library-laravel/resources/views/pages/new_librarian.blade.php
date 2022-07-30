@@ -20,7 +20,7 @@
                     <nav class="w-full rounded">
                         <ol class="flex list-reset">
                             <li>
-                                <a href="bibliotekari.php" class="text-[#2196f3] hover:text-blue-600">
+                                <a href="{{route('all-librarian')}}" class="text-[#2196f3] hover:text-blue-600">
                                     Svi bibliotekari
                                 </a>
                             </li>
@@ -28,7 +28,7 @@
                                 <span class="mx-2">/</span>
                             </li>
                             <li>
-                                <a href="{{ route('new-librarian') }}" class="text-gray-400 hover:text-blue-600">
+                                <a href="{{route('new-librarian')}}" class="text-gray-400 hover:text-blue-600">
                                     Novi bibliotekar
                                 </a>
                             </li>
@@ -40,7 +40,7 @@
     </div>
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700 text-[14px]" method="POST" action="{{ route('store-librarian') }}" enctype="multipart/form-data">
+        <form class="text-gray-700 text-[14px]" method="POST" action="{{route('store-librarian')}}" enctype="multipart/form-data">
         @csrf
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">

@@ -35,11 +35,7 @@
     </div>
   </div>
 @endif
-
-        </h1>
-
-                    
-
+        </h1>     
     </div>
     <!-- Space for content -->
     <div class="scroll height-dashboard">
@@ -94,8 +90,9 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{Auth::user()->photo == 'placeholder' ? 'img/profileExample.jpg' : 'storage/librarians/' . Auth::user()->photo}}"
-                                alt="" />
+                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}"
+                            alt="User Photo"
+                            title="User Photo" />
                             <a href="bibliotekarProfile.php">
                                 <span class="font-medium text-center">{{$librarian->name}}</span>
                             </a>
@@ -114,7 +111,7 @@
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="bibliotekarProfile.php" tabindex="0"
+                                        <a href="{{route('show-librarian', $librarian->id)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
@@ -128,15 +125,15 @@
                                         </a>
                                         
                                         <form action="{{ route('destroy-librarian', $librarian->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                                <button type="submit" 
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" 
                                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                 role="menuitem">
                                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                                 <span class="px-4 py-0">Izbriši korisnika</span>
-                                            </button>
-                                            </form>
+                                        </button>
+                                        </form>
                                         
 
                                     </div>

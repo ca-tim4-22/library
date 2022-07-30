@@ -6,17 +6,16 @@
     <!-- Title -->
     <title>Dashboard | Online biblioteka</title>
 
-    <link href="{{asset('resources/css/app.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/app.css')}}" rel="stylesheet">
 
     <!-- Icon -->
-    <link rel="shortcut icon" href="img/library-favicon.ico" type="image/vnd.microsoft.icon" />
+    <link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
 
-    
     <!-- Meta -->
     <x-meta></x-meta>
 
     <!-- Styles -->
-    <?php include('includes/layout/styles.php'); ?>
+    <x-styles></x-styles>
     <!-- End Styles -->
 
 </head>
@@ -29,18 +28,18 @@
     <!-- Main content -->
     <main class="flex flex-row smal:hidden">
         
-        <x-sidebar></x-sidebar>
+    <x-sidebar></x-sidebar>
 
-        @yield('content')
+    @yield('content')
     
     </main>
     <!-- End Main content -->
 
     <!-- Notification for small devices -->
-    <?php include('includes/layout/inProgress.php'); ?>
+    <x-inProgress></x-inProgress>
 
     <!-- Scripts -->
-    <?php include('includes/layout/scripts.php'); ?>
+    <x-scripts></x-scripts>
     <!-- End Scripts -->
 
 </body>

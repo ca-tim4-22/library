@@ -18,7 +18,7 @@
     <x-meta></x-meta>
 
     <!-- Styles -->
-    <?php include('includes/layout/styles.php'); ?>
+    <x-styles></x-styles>
     <!-- End Styles -->
 </head>
 
@@ -98,10 +98,10 @@
     <!-- End Main content -->
 
     <!-- Notification for small devices -->
-    <?php include('includes/layout/inProgress.php'); ?>
+    <x-inProgress></x-inProgress>
 
     <!-- Scripts -->
-    <?php include('includes/layout/scripts.php'); ?>
+    <x-scripts></x-scripts>
     <!-- End Scripts -->
 
 </body>

@@ -40,7 +40,7 @@ return new class extends Migration
             'email_verified_at' => Carbon::now(),
             'username' => 'admin',
             'password' => bcrypt('password'),
-            'photo' => 'profileImg-default.jpg',
+            'photo' => 'placeholder',
             'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

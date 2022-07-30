@@ -6,7 +6,7 @@
             <div class="block">
                 <a href="{{route('dashboard')}}" class="text-[20px] font-medium">
                     <div class="flex">
-                        <img src='./img/logo.svg' alt="" width="35px" height="35px">
+                        <img src='/img/logo.svg' alt="" width="35px" height="35px">
                         <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online Biblioteka</p>
                     </div>
 
@@ -91,7 +91,7 @@
                                 src="{{'storage/librarians/' . Auth::user()->photo}}" 
                                 alt="User Photo"> --}}
 
-                                <img src="{{Auth::user()->photo == 'placeholder' ? 'img/profileExample.jpg' : 'storage/librarians/' . Auth::user()->photo}}" alt="">
+                                <img src="{{Auth::user()->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}" alt="">
                             </div>
                         </div>
                     </a>
@@ -101,11 +101,11 @@
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="bibliotekarProfile.php" tabindex="0"
+                            <a href="{{route('show-librarian', Auth::user()->id)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Profile</span>
+                                <span class="px-4 py-0">Profil</span>
                             </a>
                             <a href="{{ route('logout') }}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
