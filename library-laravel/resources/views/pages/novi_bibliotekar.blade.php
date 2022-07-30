@@ -53,13 +53,13 @@
                 <div class="w-[50%] mb-[100px]">
                 <div class="mt-[20px]">
                         <span>Ime i prezime <span class="text-red-500">*</span></span>
-                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()"/>
+                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" placeholder="@error('name'){{$message}} @enderror"/>
                         <div id="validateNameBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>Tip korisnika</span>
-                        <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="user_type_id" disabled>
+                        <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_type_id" for="user_type_id" name="user_type_id" disabled>
                             <option value="2">
                                 Bibliotekar
                             </option>
@@ -68,31 +68,31 @@
 
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">*</span></span>
-                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()"/>
+                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" placeholder="@error('JMBG'){{$message}} @enderror"/>
                         <div id="validateJmbgBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>E-mail <span class="text-red-500">*</span></span>
-                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()"/>
+                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"/>
                         <div id="validateEmailBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Korisnicko ime <span class="text-red-500">*</span></span>
-                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()"/>
+                        <span>Korisničko ime <span class="text-red-500">*</span></span>
+                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" placeholder="@error('username'){{$message}} @enderror"/>
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Sifra <span class="text-red-500">*</span></span>
-                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwBibliotekar()"/>
+                        <span>Šifra <span class="text-red-500">*</span></span>
+                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwBibliotekar()" placeholder="@error('password'){{$message}} @enderror"/>
                         <div id="validatePwBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Ponovi sifru <span class="text-red-500">*</span></span>
-                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
+                        <span>Ponovi šifru <span class="text-red-500">*</span></span>
+                        <input type="password" name="password_confirmation" id="password_confirmation   " class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
                         <div id="validatePw2Bibliotekar"></div>
                     </div>
                 </div>
@@ -106,8 +106,8 @@
                                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                     <polyline points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Add photo</span>
-                                <input type='file' class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
+                                <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
+                                <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
                             </div>
                             <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
                         </div>
@@ -120,11 +120,11 @@
                     <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
                         <button type="button"
                                 class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                    Ponisti <i class="fas fa-times ml-[4px]"></i> 
+                                    Poništi <i class="fas fa-times ml-[4px]"></i> 
                         </button>
                         <button id="sacuvajBibliotekara" type="submit"
                                 class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaBibliotekar()">
-                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i> 
+                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i> 
                         </button>
                     </div>
                 </div>        

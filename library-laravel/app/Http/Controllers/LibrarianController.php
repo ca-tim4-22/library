@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Librarians\LibrarianCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -34,11 +35,19 @@ class LibrarianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LibrarianCreateRequest $request)
     {
         $input = $request->all();
+        $input['user_type_id'] = 2;
+        if ($file = $request->file('photo')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('storage/librarians', $name);
+            $input['photo'] = $name; 
+        } else {
+            $input['photo'] = 'profileImg-default.jpg';
+        }
         User::create($input);
-       
+
         return back()->with('success-librarian', 'You have successfully registered' . $request->username);
     }
 
