@@ -45,7 +45,7 @@
                         <i class="fas fa-redo-alt mr-[3px]"></i>
                         Resetuj šifru
                     </a>
-                    <a href="editBibliotekar.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                    <a href="{{route('edit-librarian', $librarian->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
                         Izmjeni podatke
                     </a>
@@ -111,9 +111,10 @@
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
-                    <img class="p-2 border-2 border-gray-300"
+                    <img 
+                    class="p-2 border-2 border-gray-300" 
                     width="300px"
-                    src="{{Auth::user()->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}"
+                    src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
                     alt="User Photo"
                     title="User Photo" />
                 </div>

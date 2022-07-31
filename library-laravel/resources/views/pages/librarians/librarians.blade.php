@@ -14,7 +14,7 @@
         <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
             Bibliotekari
 
-            {{-- Session message for librarian create --}}
+{{-- Session message for librarian create --}}
 @if (session()->has('success-librarian'))
 <div class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
@@ -90,7 +90,7 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}"
+                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
                             alt="User Photo"
                             title="User Photo" />
                             <a href="{{route('show-librarian', $librarian->id)}}">
@@ -117,7 +117,7 @@
                                             <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                         </a>
-                                        <a href="editBibliotekar.php" tabindex="0"
+                                        <a href="{{route('edit-librarian', $librarian->id)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
@@ -156,3 +156,4 @@
 </section>
 <!-- End Content -->
 @endsection
+

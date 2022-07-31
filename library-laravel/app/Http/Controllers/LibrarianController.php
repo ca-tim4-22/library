@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Librarians\LibrarianCreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LibrarianController extends Controller
@@ -75,7 +76,8 @@ class LibrarianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $librarian = User::findOrFail($id);
+        return view('pages.librarians.edit_librarian', compact('librarian'));
     }
 
     /**
@@ -87,7 +89,25 @@ class LibrarianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $user = Auth::user();   
+
+        $photo_old = $request->photo;
+    
+        if ($file = $request->file('photo')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('storage/librarians', $name);
+            $input['photo'] = $name; 
+        } 
+
+        if ($request->password) {
+            $input['password'] = bcrypt($request->password);
+        } else {
+            $input['password'] = Auth::user()->password;
+        }
+
+        $user->whereId($id)->first()->update($input);
+        return back()->with('librarian-updated', 'Uspješno ste izmijenili profil bibliotekara.');
     }
 
     /**

@@ -17,7 +17,7 @@
     <!-- Styles -->
     <x-styles></x-styles>
     <!-- End Styles -->
-
+    
 </head>
 
 <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500">
