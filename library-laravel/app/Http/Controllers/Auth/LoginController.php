@@ -28,7 +28,6 @@ class LoginController extends Controller
 
     protected $maxAttempts = 3;
     protected $decayMinutes = 1;
-
     /**
      * Where to redirect users after login.
      *
@@ -48,8 +47,11 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    
+
     // Last Login At Listener
     public function authenticated(Request $request, $user) {
+        $user->login_count = $user->login_count + 1;
         $user->last_login_at = now();
         $user->save();
     }
