@@ -32,6 +32,13 @@ Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destro
 Route::controller(StudentController::class)->group(function() {
 // Students
 Route::get('/studenti', [StudentController::class, 'index'])->name('all-student');
+Route::get('/student/{id}', [StudentController::class, 'show'])->name('show-student');
+Route::get('/novi-student', [StudentController::class, 'create'])->name('new-student');
+Route::post('/novi-student', [StudentController::class, 'store'])->name('store-student');
+Route::get('/izmijeni-studenta/{id}', [StudentController::class, 'edit'])->name('edit-student');
+Route::put('/izmijeni-studenta/{id}', [StudentController::class, 'update'])->name('update-student');
+Route::delete('/izbrisi-studenta/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
+
 });
 });
 
