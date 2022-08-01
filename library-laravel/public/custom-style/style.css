@@ -17,5 +17,7 @@ a {
 }
 
 .transition-custom {
+  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

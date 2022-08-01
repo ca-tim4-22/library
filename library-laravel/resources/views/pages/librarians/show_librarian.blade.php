@@ -47,7 +47,7 @@
                     </a>
                     <a href="{{route('edit-librarian', $librarian->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
-                        Izmjeni podatke
+                        Izmijeni podatke
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsLibrarianProfile hover:text-[#606FC7]"
                         id="dropdownStudent">
@@ -102,11 +102,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">null</p>
+                        <p class="font-medium">{{$librarian->login_count}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$librarian->created_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$librarian->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>

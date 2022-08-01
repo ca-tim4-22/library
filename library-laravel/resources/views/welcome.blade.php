@@ -103,7 +103,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-sm text-white dark:text-white">
-                                    ICT Cortex namjerava da bude sinonim za mehanizam koji će podsticati povjerenje, sinergiju, razmjenu znanja i tehnologije među svojim članovima, što će dalje stvoriti prostor za bolje poslovanje IT sektora Crne Gore, stvarajući, prateći i postavljajuci svjetske profesionalne IT trendove.
+                                    ICT Cortex namjerava da bude sinonim za mehanizam koji će podsticati povjerenje, sinergiju, razmjenu znanja i tehnologije među svojim članovima, što će dalje stvoriti prostor za bolje poslovanje IT sektora Crne Gore, stvarajući, prateći i postavljajući svjetske profesionalne IT trendove.
                                 </div>
                             </div>
                         </div>
