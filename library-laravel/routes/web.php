@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ {
 
 use Illuminate\Support\Facades\ {
     Artisan,
+    Redirect,
     Route,
 };
 
@@ -54,5 +55,4 @@ Route::get('/shutdown', function(){
     Artisan::call('down', ['--render' => "maintenance"]);
     return back();
 });
-
 

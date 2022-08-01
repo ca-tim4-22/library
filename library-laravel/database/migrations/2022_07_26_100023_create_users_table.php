@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('password', 256);
             $table->string('photo', 256)->default('placeholder');
             $table->rememberToken();
+            $table->timestamp("last_login_at")->useCurrent();
+            $table->integer('login_count')->default(0);
             $table->timestamps();
 
             $table->foreign('user_type_id')->references('id')->on('user_types')->onDelete('cascade');
