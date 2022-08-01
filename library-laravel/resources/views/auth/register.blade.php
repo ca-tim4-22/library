@@ -133,10 +133,6 @@
                             required
                             id="password_confirmation"
                             autocomplete="current-password" />
-                             <label for="remember_me" class="inline-flex items-center">
-                                <input id="remember_me" type="checkbox" class="text-indigo-600 border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                                <span class="ml-2 text-sm text-gray-600 no-select">{{ __('Zapamti') }}</span>
-                            </label>
                     </div>
 
                     <div class="flex items-center justify-between">
