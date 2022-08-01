@@ -1546,7 +1546,7 @@ h4 {
   max-width: 600px;
 }
 .max-w-md{
-  max-width: 28rem;
+  max-width: 37rem;
 }
 .max-w-\[400px\]{
   max-width: 400px;
@@ -2156,7 +2156,7 @@ h4 {
   padding-top: 20px;
 }
 .pt-\[13\%\]{
-  padding-top: 13%;
+  padding-top:4%;
 }
 .pt-6{
   padding-top: 1.5rem;

@@ -47,7 +47,7 @@
                     </a>
                     <a href="{{route('edit-librarian', $librarian->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
-                        Izmjeni podatke
+                        Izmijeni podatke
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsLibrarianProfile hover:text-[#606FC7]"
                         id="dropdownStudent">

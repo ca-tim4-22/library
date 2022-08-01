@@ -25,7 +25,7 @@
 <body>
     <!-- Main content -->
     <main class="h-screen small:hidden bg-login">
-        <div class="flex items-center justify-center pt-[13%]">
+        <div class="flex items-center justify-center pt-[13%]">\
             <div class="w-full max-w-md">
                 <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{ route('login') }}">
                     @csrf
@@ -81,7 +81,7 @@
                     @if (Route::has('password.request'))
                     <a 
                     class="inline-block text-sm font-normal text-black align-baseline transition-custom hover:text-blue-800"
-                    href="{{ route('password.request') }}">
+                    href="{{route('password.request')}}">
                             Zaboravili ste lozinku?
                     </a>
                     @endif
