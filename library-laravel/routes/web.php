@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LibrarianController;
 use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 // Make sure path '/' goes to '/pocetna'
@@ -40,4 +41,11 @@ Route::auth(['verify' => 'true']);
 
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
+
+
+Route::get('/shutdown', function(){
+    Artisan::call('down', ['--render' => "maintenance"]);
+    return back();
+});
+
 

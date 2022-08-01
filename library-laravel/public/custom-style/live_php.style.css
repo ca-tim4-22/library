@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap");
+
+html {
+  background-image: url("../img/login.jpg");
+}
+
+p {
+  text-align: center;
+  margin: 2%;
+  color: #fff;
+  font-size: 2rem;
+  font-family: 'Mouse Memoirs', sans-serif;
+}
+/*# sourceMappingURL=live_php.style.css.map */
