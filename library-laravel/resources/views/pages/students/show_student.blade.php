@@ -77,7 +77,7 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
-                        <p class="font-medium">{{$student->user_type_id == 1 ? 'Bibliotekar' : 'Student'}}</p>
+                        <p class="font-medium">{{$student->user_type_id == 1 ? 'Student' : 'Bibliotekar'}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">JMBG</span>

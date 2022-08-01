@@ -52,7 +52,7 @@ class StudentController extends Controller
 
         User::create($input);
 
-        return to_route('all-student')->with('success-student', 'Uspješno ste registrovali studenta ' . "'$request->username'");
+        return to_route('all-student')->with('success-student', 'Uspješno ste registrovali učenika ' . "'$request->username'");
     }
 
     /**
@@ -119,6 +119,6 @@ class StudentController extends Controller
     {
         $student=User::findOrFail($id);
         $student->delete();
-        return redirect()->back()->with('student-deleted', 'Uspješno ste izbrisali studenta.');
+        return redirect()->back()->with('student-deleted', 'Uspješno ste izbrisali učenika.');
     }
 }
