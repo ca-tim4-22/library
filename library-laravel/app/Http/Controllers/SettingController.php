@@ -13,7 +13,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        return view('pages.settings.settings');
+
     }
 
     /**
@@ -80,5 +80,29 @@ class SettingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // Custom
+    
+    public function policy() {
+        return view('pages.settings.settings-policy');
+    }
+    public function category() {
+        return view('pages.settings.settings-category');
+    }
+    public function genre() {
+        return view('pages.settings.settings-genre');
+    }
+    public function publisher() {
+        return view('pages.settings.settings-publisher');
+    }
+    public function binding() {
+        return view('pages.settings.settings-binding');
+    }
+    public function format() {
+        return view('pages.settings.settings-format');
+    }
+    public function letter() {
+        return view('pages.settings.settings-letter');
     }
 }

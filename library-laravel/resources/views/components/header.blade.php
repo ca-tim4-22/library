@@ -55,7 +55,7 @@
                                 <i class="far fa-address-book mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Bibliotekar</span>
                             </a>
-                            <a href="noviUcenik.php" tabindex="0"
+                            <a href="{{route('store-student')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-users mr-[5px] ml-[3px] py-1"></i>

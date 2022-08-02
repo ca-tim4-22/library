@@ -31,7 +31,7 @@
                             <div>
                                 <a href="{{ route('all-librarian') }}" aria-label="Bibliotekari">
 
-                                    <i class=" {{ (request()->is('bibliotekari')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+                                    <i class="{{ (request()->is('bibliotekari')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
 
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
