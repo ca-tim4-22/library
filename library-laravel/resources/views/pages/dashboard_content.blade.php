@@ -317,7 +317,7 @@
                     </div>
                 </div>
                 <div class="inline-block w-full mt-4">
-                    <a href="dashboardAktivnost.php" 
+                    <a href="{{route('dashboard-activity')}}" 
                         class="btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
                         Prikaži
                     </a>

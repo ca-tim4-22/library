@@ -16,6 +16,10 @@ class DashboardController extends Controller
         return view('pages.dashboard_content');
     }
 
+    public function index_activity() {
+        return view('pages.dashboard.dashboard_activity');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
