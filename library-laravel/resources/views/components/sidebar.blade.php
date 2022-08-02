@@ -174,7 +174,7 @@
     </div>
     <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px]  group hover:bg-[#EFF3F6]">
         <!-- Settings Icon -->
-        <a href="settingsPolisa.php" aria-label="Settngs" class="ml-[30px]">
+        <a href="{{route('setting-policy')}}" aria-label="Settngs" class="ml-[30px]">
             <span class="whitespace-nowrap">
                 <i
                     class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>

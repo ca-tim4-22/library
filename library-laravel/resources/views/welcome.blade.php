@@ -8,7 +8,7 @@
         <title>Početna - Online Biblioteka</title>
 
         <!-- Icon -->
-        <link rel="icon" type="image/x-icon" href="{{ asset('img/library-favicon.ico') }}">
+        <link rel="icon" type="image/x-icon" href="{{asset('img/library-favicon.ico') }}">
 
         <!-- Meta -->
         <x-meta></x-meta>
@@ -18,7 +18,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="{{ asset('img/library-favicon.ico') }}">
+        <link rel="icon" type="image/x-icon" href="{{asset('img/library-favicon.ico')}}">
 
         <!-- Styles -->
         <style>
@@ -52,7 +52,7 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-3 sm:justify-start sm:pt-0 ">
                     <h3 class="dark:text-white">Online Biblioteka - ICT Cortex
-                        <img style="vertical-align:middle;margin-bottom: 3px" height="25" src="{{ asset('img/library-favicon.ico') }}" alt="">
+                        <img style="vertical-align:middle;margin-bottom: 3px" height="25" src="{{asset('img/library-favicon.ico')}}" alt="">
                     </h3>
                 </div>
 
@@ -60,7 +60,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" height="25" alt="">
+                                <img src="{{asset('img/welcome/github_logo.png')}}" height="25" alt="">
                                 <div class="ml-4 text-lg font-semibold leading-7"><a href="https://github.com/ca-tim4-22/library" target="_blank" class="text-gray-900 dark:text-white">Dokumentacija</a></div>
                             </div>
 
@@ -74,7 +74,7 @@
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
                             <div class="flex items-center">
-                                <div class="ml-4 text-lg font-semibold leading-7"><a href="https://laravel.com/" target="_blank" class="text-gray-900 dark:text-white"><img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Logo.min.svg/1200px-Logo.min.svg.png" alt=""></a></div>
+                                <div class="ml-4 text-lg font-semibold leading-7"><a href="https://laravel.com/" target="_blank" class="text-gray-900 dark:text-white"><img height="25" src="{{asset('img/welcome/laravel_logo.png')}}" alt=""></a></div>
                             </div>
 
                             <div class="ml-12">
@@ -86,7 +86,7 @@
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700">
                             <div class="flex items-center">
-                                <div class="ml-4 text-lg font-semibold leading-7"><a href="https://coinis.com/" target="_blank" class="text-white-900 dark:text-white"><img height="18" src="https://i.postimg.cc/MZtpFYR6/coinis-prev-ui.png" alt=""></a></div>
+                                <div class="ml-4 text-lg font-semibold leading-7"><a href="https://coinis.com/" target="_blank" class="text-white-900 dark:text-white"><img height="18" src="{{asset('img/welcome/coinis_logo_2.png')}}" alt=""></a></div>
                             </div>
 
                             <div class="ml-12">
@@ -98,7 +98,7 @@
 
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">
-                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-900 dark:text-white"><a href="https://ictcortex.me/" target="_blank"><img height="18" src="https://ictcortex.me/wp-content/uploads/2021/06/cortex-svg-jodzi.svg" alt=""></a></div>
+                                <div class="ml-4 text-lg font-semibold leading-7 text-gray-900 dark:text-white"><a href="https://ictcortex.me/" target="_blank"><img height="18" src="{{asset('img/welcome/cortex_logo.svg')}}" alt=""></a></div>
                             </div>
 
                             <div class="ml-12">

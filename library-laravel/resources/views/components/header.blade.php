@@ -6,7 +6,7 @@
             <div class="block">
                 <a href="{{route('dashboard')}}" class="text-[20px] font-medium">
                     <div class="flex">
-                        <img src='/img/logo.svg' alt="" width="35px" height="35px">
+                        <img src='{{asset('img/logo.svg')}}' alt="" width="35px" height="35px">
                         <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online Biblioteka</p>
                     </div>
 
@@ -77,8 +77,8 @@
                     </div>
                 </div>
                 <!-- Coinis Icon -->
-                <a href="https://coinis.com/" target="_blank">
-                    <img style="height: 2%" width="35px" src="https://scontent.ftgd2-1.fna.fbcdn.net/v/t39.30808-6/280769957_410712391060476_3397885849496021002_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hO8Xr-B0BecAX83-Jp9&_nc_ht=scontent.ftgd2-1.fna&oh=00_AT9mMiSOBp1UsFogFj0N5Wav2ck70whKBrUX7U4lUPc-ZA&oe=62E91698" alt="">
+                <a href="https://coinis.com" target="_blank">
+                    <img style="height: 2%" width="35px" src="{{asset('img/welcome/coinis_logo.jpg')}}" alt="">
                 </a>
                 <!-- User Profile Icon -->
                 <div class="ml-[10px] relative block">

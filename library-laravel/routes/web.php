@@ -14,6 +14,7 @@ use App\Http\Controllers\ {
     DashboardController,
     HomeController,
     LibrarianController,
+    SettingController,
     StudentController,
 };
 
@@ -49,7 +50,23 @@ Route::get('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'edit'])-
 Route::put('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'update'])->name('update-student');
 Route::delete('/izbrisi-ucenika/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
 });
+
+Route::controller(SettingController::class)->group(function() {
+// Settings
+Route::name('setting-')->prefix('podesavanja')->group(function() {
+    Route::get('/polisa', [SettingController::class, 'index'])->name('policy');
 });
+
+});
+});
+
+
+
+
+
+
+
+
 
 // Laravel Authentication route
 Route::auth(['verify' => 'true']);
