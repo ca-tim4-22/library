@@ -35,6 +35,7 @@ Route::get('/pocetna', function () {
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard-aktivnost', [DashboardController::class, 'index_activity'])->name('dashboard-activity');
 
 Route::controller(LibrarianController::class)->group(function() {
 // Librarians

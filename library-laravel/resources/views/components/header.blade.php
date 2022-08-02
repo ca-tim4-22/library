@@ -22,7 +22,7 @@
             <div class="flex items-center">
                 <!-- Notification Icon -->
                 <div class="relative block">
-                    <a href="dashboardAktivnost.php" class="relative inline-block px-3 py-2 focus:outline-none"
+                    <a href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
                         aria-label="Notification">
                         <div class="flex items-center h-5">
                             <div class="_xpkakx">
