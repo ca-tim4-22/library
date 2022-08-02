@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -40,6 +41,7 @@ class StudentController extends Controller
     {
         $input = $request->all();
         $input['user_type_id'] = 1;
+        $input['last_login_at'] = Carbon::now();
         $input['password'] = Hash::make($request->password);
 
         if ($file = $request->file('photo')) {
