@@ -51,10 +51,10 @@ return [
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
-        'array' => 'The :attribute must have more than :value items.',
-        'file' => 'The :attribute must be greater than :value kilobytes.',
-        'numeric' => 'The :attribute must be greater than :value.',
-        'string' => 'The :attribute must be greater than :value characters.',
+        'array' => 'Vrijednost polise mora biti veća od 0.',
+        'file' => 'Vrijednost polise mora biti veća od 0.',
+        'numeric' => 'Vrijednost polise mora biti veća od 0.',
+        'string' => 'Vrijednost polise mora biti veća od 0.',
     ],
     'gte' => [
         'array' => 'The :attribute must have :value items or more.',
@@ -100,7 +100,7 @@ return [
     'multiple_of' => 'The :attribute must be a multiple of :value.',
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
-    'numeric' => 'The :attribute must be a number.',
+    'numeric' => 'Vrijednost polise mora biti broj.',
     'password' => [
         'letters' => 'The :attribute must contain at least one letter.',
         'mixed' => 'The :attribute must contain at least one uppercase and one lowercase letter.',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarians\LibrarianCreateRequest;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -41,6 +42,7 @@ class LibrarianController extends Controller
     {
         $input = $request->all();
         $input['user_type_id'] = 2;
+        $input['last_login_at'] = Carbon::now();
         $input['password'] = Hash::make($request->password);
 
         if ($file = $request->file('photo')) {
@@ -108,7 +110,7 @@ class LibrarianController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return back()->with('x', 'Uspješno ste izmijenili profil bibliotekara.');
+        return back()->with('librarian-updated', 'Uspješno ste izmijenili profil bibliotekara.');
     }
 
     /**
