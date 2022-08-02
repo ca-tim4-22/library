@@ -6,19 +6,19 @@
     class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/kategorije')) ? 'active-book-nav' : ''}}">
     Kategorije
     </a>
-    <a href="{{route('setting-genre')}}" class="inline ml-[70px] hover:text-blue-800">
+    <a href="{{route('setting-genre')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/zanrovi')) ? 'active-book-nav' : ''}}"">
         Žanrovi
     </a>
-    <a href="{{route('setting-publisher')}}" class="inline ml-[70px] hover:text-blue-800">
+    <a href="{{route('setting-publisher')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/izdavac')) ? 'active-book-nav' : ''}}"">
         Izdavač
     </a>
-    <a href="{{route('setting-binding')}}" class="inline ml-[70px] hover:text-blue-800">
+    <a href="{{route('setting-binding')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/povez')) ? 'active-book-nav' : ''}}"">
         Povez
     </a>
-    <a href="{{route('setting-format')}}" class="inline ml-[70px] hover:text-blue-800">
+    <a href="{{route('setting-format')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/format')) ? 'active-book-nav' : ''}}"">
         Format
     </a>
-    <a href="{{route('setting-letter')}}" class="inline ml-[70px] hover:text-blue-800">
+    <a href="{{route('setting-letter')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/pismo')) ? 'active-book-nav' : ''}}"">
         Pismo
     </a>
 </div>

@@ -1,9 +1,12 @@
 @extends('layouts.dashboard')
 
+<!-- Title -->
+<title>Podešavanja | Izdavač - Online Biblioteka</title>
+
 @section('content')
 
- <!-- Content -->
- <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
+<!-- Content -->
+<section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
     <!-- Heading of content -->
     <div class="heading mt-[7px]">
         <div class="border-b-[1px] border-[#e4dfdf]">
@@ -20,9 +23,9 @@
 
     <div class="height-kategorije pb-[30px] scroll">
         <div class="flex items-center px-[50px] py-8 space-x-3 rounded-lg">
-            <a href="novaKategorija.php"
+            <a href="noviIzdavac.php"
                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
-                <i class="fas fa-plus mr-[15px]"></i> Nova kategorija
+                <i class="fas fa-plus mr-[15px]"></i> Novi izdavačs
             </a>
         </div>
 
@@ -36,10 +39,9 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv kategorije<a href="#"><i
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv izdavaca<a href="#"><i
                                     class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
                         </th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Opis</th>
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
@@ -51,31 +53,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="fas fa-utensils fa-lg text-[#707070]"></i>
-                            <p class="ml-4 text-center">Hrana i pice</p>
+                            <p>Izdavac 1</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>
@@ -89,31 +88,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] fas fa-child fa-lg"></i>
-                            <p class="ml-4 text-center">Djecije knjige</p>
+                            <p>Izdavac 2</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>
@@ -127,31 +123,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] far fa-clock fa-lg"></i>
-                            <p class="ml-3 text-center">Istorija</p>
+                            <p>Izdavac 3</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>
@@ -165,31 +158,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] fas fa-book fa-lg"></i>
-                            <p class="ml-4 text-center">Skolske knjige</p>
+                            <p>Izdavac 4</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>
@@ -203,31 +193,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] fas fa-sort-numeric-down fa-lg"></i>
-                            <p class="ml-4 text-center">Nauka, priroda i matematika</p>
+                            <p>Izdavac 5</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>
@@ -241,69 +228,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] fas fa-balance-scale fa-lg"></i>
-                            <p class="ml-2 text-center">Pravo</p>
+                            <p>Izdavac 6</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsPublisher hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-publisher">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
+                                        <a href="editIzdavac.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            <span class="px-4 py-0">Izmijeni izdavaca</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                            <i class="text-[#707070] fas fa-utensils fa-lg"></i>
-                            <span class="ml-4 text-center">Hrana i pice</span>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit,</td>
-                        <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </p>
-                            <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
-                                <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                                    aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
-                                    <div class="py-1">
-                                        <a href="editKategorija.php" tabindex="0"
-                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                            role="menuitem">
-                                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni kategoriju</span>
-                                        </a>
-                                        <a href="#" tabindex="0"
-                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                            role="menuitem">
-                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi kategoriju</span>
+                                            <span class="px-4 py-0">Izbrisi izdavaca</span>
                                         </a>
                                     </div>
                                 </div>

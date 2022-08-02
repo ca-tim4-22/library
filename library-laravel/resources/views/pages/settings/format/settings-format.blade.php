@@ -1,5 +1,8 @@
 @extends('layouts.dashboard')
 
+<!-- Title -->
+<title>Podešavanja | Format - Online Biblioteka</title>
+
 @section('content')
 
  <!-- Content -->
@@ -9,20 +12,20 @@
         <div class="border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] pb-[21px]">
                 <h1>
-                    Podešavanja
+                    Settings
                 </h1>
             </div>
         </div>
     </div>
-   
+    
     {{-- Component for menu --}}
     <x-settings.menu></x-settings.menu>
 
     <div class="height-kategorije pb-[30px] scroll">
         <div class="flex items-center px-[50px] py-8 space-x-3 rounded-lg">
-            <a href="novoPismo.php"
+            <a href="noviFormat.php"
                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
-                <i class="fas fa-plus mr-[15px]"></i> Novo pismo
+                <i class="fas fa-plus mr-[15px]"></i> Novi format
             </a>
         </div>
 
@@ -36,7 +39,7 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv pisma<a href="#"><i
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Naziv formata<a href="#"><i
                                     class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
                         </th>
                         <th class="px-4 py-4"> </th>
@@ -50,28 +53,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Cirilica</p>
+                            <p>A1</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
@@ -85,28 +88,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Latinica</p>
+                            <p>A3</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
@@ -120,28 +123,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Cirilica</p>
+                            <p>A4</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
@@ -155,28 +158,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Latinica</p>
+                            <p>A2</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
@@ -190,28 +193,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Cirilica</p>
+                            <p>A5</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
@@ -225,28 +228,28 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>Latinica</p>
+                            <p>A6</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsScript hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-script">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-format">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="editPismo.php" tabindex="0"
+                                        <a href="editFormat.php" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni pismo</span>
+                                            <span class="px-4 py-0">Izmijeni format</span>
                                         </a>
                                         <a href="#" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbrisi pismo</span>
+                                            <span class="px-4 py-0">Izbrisi format</span>
                                         </a>
                                     </div>
                                 </div>
