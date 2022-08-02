@@ -117,6 +117,7 @@
                                             <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                         </a>
+                                        
                                         <a href="{{route('edit-librarian', $librarian->id)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
@@ -124,7 +125,7 @@
                                             <span class="px-4 py-0">Izmijeni korisnika</span>
                                         </a>
 
-                                        <form action="{{ route('destroy-librarian', $librarian->id) }}" method="post">
+                                        <form action="{{route('destroy-librarian', $librarian->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"
@@ -135,19 +136,16 @@
                                         </button>
                                         </form>
 
-
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     @endforeach
-
                 </tbody>
             </table>
-
             <x-table_settings></x-table_settings>
-
+            {!! $librarians->links() !!}
             </div>
 
         </div>

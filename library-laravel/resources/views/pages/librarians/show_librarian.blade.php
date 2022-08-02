@@ -102,7 +102,7 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$librarian->login_count}}</p>
+                        <p class="font-medium">{{$librarian->login_count != 0 ? $librarian->login_count : "Korisnik se nije ulogovao na platformu"}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>

@@ -46,6 +46,8 @@ return new class extends Migration
             'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
+            'last_login_at' => Carbon::now(),
+            'login_count' => 0,
         ]);
     }
 

@@ -13,7 +13,7 @@
                     <div class="ml-[25px]">
                         <span class="flex justify-between w-full fill-current whitespace-nowrap">
                             <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                <a href="{{ route('dashboard') }}" aria-label="Dashboard">
+                                <a href="{{route('dashboard')}}" aria-label="Dashboard">
                                     <i class="text-white ml-1 bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]"></i>
                                     <div class="hidden sidebar-item">
                                         <p class="inline text-[15px] ml-[15px]">Dashboard</p>
@@ -123,8 +123,7 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="#" aria-label="Dashboard">
-                                    <i
-                                        class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
+                                    <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">

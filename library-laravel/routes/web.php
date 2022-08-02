@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\ {
 
 use App\Http\Controllers\ {
     DashboardController,
+    HomeController,
     LibrarianController,
     StudentController,
 };
@@ -33,21 +34,20 @@ Route::get('/bibliotekari', [LibrarianController::class, 'index'])->name('all-li
 Route::get('/bibliotekar/{id}', [LibrarianController::class, 'show'])->name('show-librarian');
 Route::get('/novi-bibliotekar', [LibrarianController::class, 'create'])->name('new-librarian');
 Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('store-librarian');
-Route::get('/izmijeni-profil/{id}', [LibrarianController::class, 'edit'])->name('edit-librarian');
-Route::put('/izmijeni-profil/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
+Route::get('/izmijeni/profil-bibliotekara/{id}', [LibrarianController::class, 'edit'])->name('edit-librarian');
+Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
 Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
 });
 
 Route::controller(StudentController::class)->group(function() {
 // Students
-Route::get('/studenti', [StudentController::class, 'index'])->name('all-student');
-Route::get('/student/{id}', [StudentController::class, 'show'])->name('show-student');
-Route::get('/novi-student', [StudentController::class, 'create'])->name('new-student');
-Route::post('/novi-student', [StudentController::class, 'store'])->name('store-student');
-Route::get('/izmijeni-studenta/{id}', [StudentController::class, 'edit'])->name('edit-student');
-Route::put('/izmijeni-studenta/{id}', [StudentController::class, 'update'])->name('update-student');
-Route::delete('/izbrisi-studenta/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
-
+Route::get('/ucenici', [StudentController::class, 'index'])->name('all-student');
+Route::get('/ucenik/{id}', [StudentController::class, 'show'])->name('show-student');
+Route::get('/novi-ucenik', [StudentController::class, 'create'])->name('new-student');
+Route::post('/novi-ucenik', [StudentController::class, 'store'])->name('store-student');
+Route::get('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'edit'])->name('edit-student');
+Route::put('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'update'])->name('update-student');
+Route::delete('/izbrisi-ucenika/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
 });
 });
 

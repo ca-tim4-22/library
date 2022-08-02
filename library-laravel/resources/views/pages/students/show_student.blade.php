@@ -1,6 +1,8 @@
 @extends('layouts.dashboard')
+
 @section('content')
-    <title>Studenti | Online Biblioteka</title>
+
+    <title>Učenici | Online Biblioteka</title>
     <x-sidebar></x-sidebar>
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
         <!-- Heading of content -->
@@ -17,7 +19,7 @@
                             <ol class="flex list-reset">
                                 <li>
                                     <a href="{{route('all-student')}}" class="text-[#2196f3] hover:text-blue-600">
-                                        Svi Studenti
+                                        Svi Učenici
                                     </a>
                                 </li>
                                 <li>
@@ -77,7 +79,7 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
-                        <p class="font-medium">{{$student->user_type_id == 1 ? 'Student' : 'Bibliotekar'}}</p>
+                        <p class="font-medium">{{$student->user_type_id == 1 ? 'Učenik' : 'Bibliotekar'}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">JMBG</span>
@@ -94,11 +96,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">null</p>
+                        <p class="font-medium">{{$student->login_count}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$student->created_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$student->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>
@@ -113,7 +115,5 @@
             </div>
         </div>
     </section>
-
-
 
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 <!-- Title -->
-<title>Registracija novog studenta | Online Biblioteka</title>
+<title>Registracija novog učenika | Online Biblioteka</title>
 
 @section('content')
 
@@ -14,7 +14,7 @@
                     <div>
 
                         <h1>
-                            Novi student
+                            Novi učenik
                         </h1>
                     </div>
                     <div>
@@ -22,7 +22,7 @@
                             <ol class="flex list-reset">
                                 <li>
                                     <a href="{{route('all-student')}}" class="text-[#2196f3] hover:text-blue-600">
-                                        Svi studenti
+                                        Svi učenici
                                     </a>
                                 </li>
                                 <li>
@@ -30,7 +30,7 @@
                                 </li>
                                 <li>
                                     <a href="{{route('new-student')}}" class="text-gray-400 hover:text-blue-600">
-                                        Novi student
+                                        Novi učenik
                                     </a>
                                 </li>
                             </ol>

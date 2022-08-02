@@ -3,6 +3,7 @@
         <p class="inline text-md">
             Broj redova po strani:
         </p>
+        
         <select
             class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
             name="ucenici">
@@ -57,3 +58,8 @@
             </div>
         </nav>
     </div>
+
+
+
+
+    

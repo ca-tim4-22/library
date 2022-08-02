@@ -22,6 +22,7 @@ return new class extends Migration
         DB::table('user_types')->insert([
             ['name' => 'student'],
             ['name' => 'librarian'],
+            ['name' => 'administrator'],
         ]);
 
     }

@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('user_type_id', 1)->get();
+        $students = User::where('user_type_id', 1)->paginate(5);
         return view('pages.students.students', compact('students'));
     }
 
@@ -44,10 +44,10 @@ class StudentController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians', $name);
-            $input['photo'] = $name;
+            $file->move('storage/students', $name);
+            $input['photo'] = $name; 
         } else {
-            $input['photo'] = 'placeholder';
+            $input['photo'] = 'profileImg-default.jpg';
         }
 
         User::create($input);
@@ -63,8 +63,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student=User::findOrFail($id);
-        return view('pages.students.show_student',['student'=>$student]);
+        $student = User::findOrFail($id);
+        return view('pages.students.show_student', compact('student'));
     }
 
     /**
@@ -75,8 +75,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student=User::findOrFail($id);
-        return view('pages.students.edit_student',['student'=>$student]);
+        $student = User::findOrFail($id);
+        return view('pages.students.edit_student', compact('student'));
     }
 
     /**
@@ -95,7 +95,7 @@ class StudentController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians', $name);
+            $file->move('storage/students', $name);
             $input['photo'] = $name;
         }
 
@@ -106,6 +106,7 @@ class StudentController extends Controller
         }
 
         $user->whereId($id)->first()->update($input);
+        
         return back()->with('student-updated', 'Uspješno ste izmijenili profil učenika.');
     }
 
@@ -117,8 +118,9 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $student=User::findOrFail($id);
+        $student = User::findOrFail($id);
         $student->delete();
-        return redirect()->back()->with('student-deleted', 'Uspješno ste izbrisali učenika.');
+        
+        return to_route('all-student')->with('student-deleted', 'Uspješno ste izbrisali bibliotekara.');
     }
 }

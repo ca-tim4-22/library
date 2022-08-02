@@ -17,7 +17,7 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        $librarians = User::where('user_type_id', 2)->get();
+        $librarians = User::where('user_type_id', 2)->paginate(5);
         return view('pages.librarians.librarians', compact('librarians'));
     }
 
@@ -107,7 +107,8 @@ class LibrarianController extends Controller
         }
 
         $user->whereId($id)->first()->update($input);
-        return back()->with('librarian-updated', 'Uspješno ste izmijenili profil bibliotekara.');
+        
+        return back()->with('x', 'Uspješno ste izmijenili profil bibliotekara.');
     }
 
     /**
@@ -120,6 +121,7 @@ class LibrarianController extends Controller
     {
         $librarian = User::findOrFail($id);
         $librarian->delete();
+        
         return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
     }
 }

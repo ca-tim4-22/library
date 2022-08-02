@@ -32,6 +32,8 @@ class UserFactory extends Factory
             'photo' => 'placeholder',
             'password' => Hash::make($password),
             'remember_token' => Str::random(10),
+            'login_count' => 1,
+            'last_login_at' => Carbon::now(),
         ];
     }
 
