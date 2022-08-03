@@ -84,7 +84,7 @@
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
                             <img 
-                            style="height:30px" src="{{'/storage/settings/category/' . $category->icon}}" alt="">
+                            style="height:30px" src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}" alt="">
                             <p class="ml-4 text-center">{{$category->name}}</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$category->description}}</td>
