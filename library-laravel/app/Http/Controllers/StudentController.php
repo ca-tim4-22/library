@@ -78,6 +78,7 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student = User::findOrFail($id);
+        
         return view('pages.students.edit_student', compact('student'));
     }
 
