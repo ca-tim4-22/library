@@ -6,7 +6,7 @@
             <div class="block">
                 <a href="{{route('dashboard')}}" class="text-[20px] font-medium">
                     <div class="flex">
-                        <img src='{{asset('img/logo.svg')}}' alt="" width="35px" height="35px">
+                        <img src='{{asset('img/logo.svg')}}' alt="Online Biblioteka" title="Online Biblioteka" width="35px" height="35px">
                         <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online Biblioteka</p>
                     </div>
 
@@ -78,7 +78,7 @@
                 </div>
                 <!-- Coinis Icon -->
                 <a href="https://coinis.com" target="_blank">
-                    <img style="height: 2%" width="35px" src="{{asset('img/welcome/coinis_logo.jpg')}}" alt="">
+                    <img style="height: 2%" width="35px" src="{{asset('img/welcome/coinis_logo.jpg')}}" alt="Coinis Logo" title="Coinis Logo">
                 </a>
                 <!-- User Profile Icon -->
                 <div class="ml-[10px] relative block">
@@ -86,7 +86,7 @@
                         aria-label="User profile">
                         <div class="flex items-center h-5">
                             <div class="w-[40px] h-[40px] mt-[15px]">
-                                <img class="rounded-full" src="{{Auth::user()->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}" alt="User Photo" title="User Photo">
+                            <img class="rounded-full" src="{{Auth::user()->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}" alt="{{Auth::user()->username}}" title="{{Auth::user()->username}}">
                             </div>
                         </div>
                     </a>
@@ -102,7 +102,7 @@
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profil</span>
                             </a>
-                            <a href="{{ route('logout') }}" tabindex="0"
+                            <a href="{{route('logout')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-sign-out-alt mr-[5px] ml-[5px] py-1"></i>

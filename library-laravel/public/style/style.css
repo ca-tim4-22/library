@@ -15,9 +15,36 @@
   transform: scale(1.05);
 }
 
-/*Login - background*/
+/* Login - background */
 .bg-login {
   background-image: url('../img/login.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+/* Register - background */
+.bg-register {
+  background-image: url('../img/login.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* Media Query for changing background on higher resolutions */
+@media screen and (min-width: 1921px) {
+  
+  .bg-login {
+    background-image: url('../img/media\ query/background_for_higher_resolutions.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+
+  .bg-register {
+    background-image: url('../img/media\ query/background_for_higher_resolutions.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+
 }
 
 /* Sidebar transition*/
@@ -1546,7 +1573,7 @@ h4 {
   max-width: 600px;
 }
 .max-w-md{
-  max-width: 37rem;
+  max-width: 37rem !important;
 }
 .max-w-\[400px\]{
   max-width: 400px;
@@ -2156,7 +2183,7 @@ h4 {
   padding-top: 20px;
 }
 .pt-\[13\%\]{
-  padding-top:4%;
+  padding-top:4% !important;
 }
 .pt-6{
   padding-top: 1.5rem;

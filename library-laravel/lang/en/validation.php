@@ -84,18 +84,18 @@ return [
     ],
     'mac_address' => 'The :attribute must be a valid MAC address.',
     'max' => [
-        'array' => 'Ovo polje ne smije da sadrži više od :max karaktera.',
-        'file' => 'Ovo polje ne smije da sadrži više od :max karaktera.',
-        'numeric' => 'Ovo polje ne smije da sadrži više od :max karaktera.',
-        'string' => 'Ovo polje ne smije da sadrži više od :max karaktera.',
+        'array' => 'Ovo polje ne može da sadrži više od :max karaktera.',
+        'file' => 'Ovo polje ne može da sadrži više od :max karaktera.',
+        'numeric' => 'Ovo polje ne može da sadrži više od :max karaktera.',
+        'string' => 'Ovo polje ne može da sadrži više od :max karaktera.',
     ],
     'mimes' => 'The :attribute must be a file of type: :values.',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
-        'array' => 'Ovo polje mora da sadrži barem :min karaktera.',
-        'file' => 'Ovo polje mora da sadrži barem :min karaktera.',
-        'numeric' => 'Ovo polje mora da sadrži barem :min karaktera.',
-        'string' => 'Ovo polje mora da sadrži barem :min karaktera.',
+        'array' => 'Polje za :attribute mora da sadrži barem :min karaktera.',
+        'file' => 'Polje za :attribute mora da sadrži barem :min karaktera.',
+        'numeric' => 'Polje za :attribute mora da sadrži barem :min karaktera.',
+        'string' => 'Polje za :attribute mora da sadrži barem :min karaktera.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
     'not_in' => 'The selected :attribute is invalid.',
@@ -132,7 +132,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -165,6 +165,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    // 'attributes' => [],
+
+    'attributes' => [
+        'name' => 'ime i prezime',
+        'JMBG' => 'JMBG',
+        'username' => 'Uneseno korisničko ime je već zauzeto.',
+        'email' => 'Unesena email adresa je već zauzeta.',
+     ],
 
 ];
