@@ -64,9 +64,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $student = User::findOrFail($id);
+        $student = $user;
         
         return view('pages.students.show_student', compact('student'));
     }
@@ -121,9 +121,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $student = User::findOrFail($id);
+        $student = $user;
 
         if (Auth::user()->id == $student->id) {
             $student->delete();

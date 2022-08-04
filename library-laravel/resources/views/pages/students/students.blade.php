@@ -107,7 +107,7 @@
                             alt="Profilna slika učenika: {{$student->name}}"
                             title="Profilna slika učenika: {{$student->name}}" />
 
-                            <a href="{{route('show-student', $student->id)}}">
+                            <a href="{{route('show-student', $student->username)}}">
                                 <span class="font-medium text-center">{{$student->name}}</span>
                             </a>
                         </td>
@@ -123,7 +123,7 @@
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="{{route('show-student', $student->id)}}" tabindex="0"
+                                        <a href="{{route('show-student', $student->username)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
@@ -135,7 +135,7 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Izmjeni korisnika</span>
                                         </a>
-                                        <form action="{{route('destroy-student', $student->id)}}" method="POST">
+                                        <form action="{{route('destroy-student', $student->username)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

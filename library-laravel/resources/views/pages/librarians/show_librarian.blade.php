@@ -59,7 +59,7 @@
                         <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
-                                <form action="{{ route('destroy-librarian', $librarian->id) }}" method="POST">
+                                <form action="{{ route('destroy-librarian', $librarian->username) }}" method="POST">
                                 @csrf
                                  @method('DELETE')
                                 <button type="submit" 

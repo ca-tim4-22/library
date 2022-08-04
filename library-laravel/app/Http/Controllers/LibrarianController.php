@@ -65,9 +65,9 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $librarian = User::findOrFail($id);
+        $librarian = $user;
 
         return view('pages.librarians.show_librarian', compact('librarian'));
     }
@@ -122,9 +122,9 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $librarian = User::findOrFail($id);
+        $librarian = $user;
 
         if (Auth::user()->id == $librarian->id) {
             $librarian->delete();
