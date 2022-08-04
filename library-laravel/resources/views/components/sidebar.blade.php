@@ -50,7 +50,10 @@
                             <div>
                                 <a href="{{route('all-student')}}" aria-label="Ucenici">
 
-                                    <i class="text-[18px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-users"></i>
+                                    {{-- <i class="text-[18px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-users"></i> --}}
+
+                                    <i class="{{ (request()->is('ucenici')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-users text-[15px] rounded-[3px]' : 'text-[18px] text-[#707070] fas fa-users transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -67,8 +70,11 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-books')}}" aria-label="Knjige">
-                                    <i
-                                        class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-copy"></i>
+                                    
+                                    {{-- <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-copy"></i> --}}
+
+                                    <i class="{{ (request()->is('knjige')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-copy text-[20px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -85,8 +91,10 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-author')}}" aria-label="Knjige">
-                                    <i
-                                        class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-address-book"></i>
+                                    {{-- <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-address-book"></i> --}}
+
+                                    <i class="{{ (request()->is('autori')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -176,8 +184,10 @@
         <!-- Settings Icon -->
         <a href="{{route('setting-policy')}}" aria-label="Settngs" class="ml-[30px]">
             <span class="whitespace-nowrap">
-                <i
-                    class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i>
+                {{-- <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i> --}}
+
+                <i class="{{ (request()->is('podesavanja/*')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-cog text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+                
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
                         Podešavanja</p>
