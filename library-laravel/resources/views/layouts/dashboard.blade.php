@@ -25,11 +25,11 @@
 
     <x-header></x-header>
 
+    <x-sidebar></x-sidebar>
+    
     <!-- Main content -->
     <main class="flex flex-row smal:hidden">
         
-    <x-sidebar></x-sidebar>
-
     @yield('content')
     
     </main>

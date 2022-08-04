@@ -1575,6 +1575,15 @@ h4 {
 .max-w-md{
   max-width: 37rem !important;
 }
+
+@media only screen and (max-width: 1830px) {
+
+  .max-w-md{
+    max-width: 32rem !important;
+  }
+
+}
+
 .max-w-\[400px\]{
   max-width: 400px;
 }

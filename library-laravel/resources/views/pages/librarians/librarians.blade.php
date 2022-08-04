@@ -5,8 +5,6 @@
 
 @section('content')
 
-<x-sidebar></x-sidebar>
-
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
