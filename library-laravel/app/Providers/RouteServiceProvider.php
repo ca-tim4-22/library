@@ -37,7 +37,43 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/books.php'));
+                ->group(base_path('routes/librarians-routes/librarians.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/students-routes/students.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/books-routes/books.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/bindings.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/categories.php'));
+                
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/formats.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/genres.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/letters.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/policies.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/publishers.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\books-routes/books.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\settings-routes/settings-index.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes\server-routes/server.php'));
         });
     }
 
