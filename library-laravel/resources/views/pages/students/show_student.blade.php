@@ -100,7 +100,7 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$student->last_login_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$student->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $student->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>

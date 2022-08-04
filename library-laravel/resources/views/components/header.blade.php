@@ -61,7 +61,7 @@
                                 <i class="fas fa-users mr-[5px] ml-[3px] py-1"></i>
                                 <span class="px-4 py-0">Učenik</span>
                             </a>
-                            <a href="novaKnjiga.php" tabindex="0"
+                            <a href="{{route('new-book')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-copy mr-[10px] ml-[5px] py-1"></i>

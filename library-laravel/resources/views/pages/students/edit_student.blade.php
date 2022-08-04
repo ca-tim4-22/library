@@ -118,7 +118,9 @@
                                     name="photo"
                                     class="absolute w-48 h-[188px] bottom-0"
                                     id="image-output-student"
-                                    src="{{$student->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $student->photo}}"/>
+                                    alt="Image"
+                                    title="Image"
+                                    src="{{$student->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/students/' . $student->photo}}"/>
                             </div>
                         </label>
                     </div>

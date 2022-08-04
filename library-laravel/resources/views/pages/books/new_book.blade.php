@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
+
+<!-- Title -->
+<title>Nova knjiga | Online Biblioteka</title>
+
 @section('content')
+
     <main class="flex flex-row small:hidden">
         <!-- Sidebar -->
         <x-sidebar></x-sidebar>
@@ -20,7 +25,7 @@
                             <nav class="w-full rounded">
                                 <ol class="flex list-reset">
                                     <li>
-                                        <a href="evidencijaKnjiga.php" class="text-[#2196f3] hover:text-blue-600">
+                                        <a href="{{route('all-books')}}" class="text-[#2196f3] hover:text-blue-600">
                                             Evidencija knjiga
                                         </a>
                                     </li>
@@ -28,7 +33,7 @@
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
-                                        <a href="#" class="text-[#2196f3] hover:text-blue-600">
+                                        <a href="{{route('new-book')}}" class="text-[#2196f3] hover:text-blue-600">
                                             Nova knjiga
                                         </a>
                                     </li>
@@ -64,7 +69,7 @@
                             </div>
 
                             <div class="mt-[20px]">
-                                <p class="inline-block mb-2">Kratki sadrzaj</p>
+                                <p class="inline-block mb-2">Kratki sadržaj</p>
                                 <textarea name="body"
                                           class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
 
@@ -77,7 +82,6 @@
 
                                     @foreach($models['categories'] as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
-
                                     @endforeach
 
                                 </select>
@@ -170,7 +174,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p>Izaberite zanrove <span class="text-red-500">*</span></p>
+                            <p>Izaberite žanrove <span class="text-red-500">*</span></p>
                             <select x-cloak id="zanr" name="genre_id">
                                 @foreach($models['genres'] as $genres)
                                 <option value="{{$genres->id}}">{{$genres->name}}</option>
@@ -359,7 +363,7 @@
             </div>
 
             <div class="mt-[20px]">
-                <p>Izdavac <span class="text-red-500">*</span></p>
+                <p>Izdavač <span class="text-red-500">*</span></p>
                 <select
                     class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                     name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">
@@ -388,7 +392,7 @@
             </div>
 
             <div class="mt-[20px]">
-                <p>Kolicina <span class="text-red-500">*</span></p>
+                <p>Količina <span class="text-red-500">*</span></p>
                 <input type="text" name="quantity_count" id="knjigaKolicina"
                        class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                        onkeydown="clearErrorsKnjigaKolicina()" />
@@ -402,12 +406,12 @@
                     <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
                         <button type="button"
                                 class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                            Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
                         <button id="sacuvajKnjigu" type="submit"
                                 class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                                 onclick="validacijaKnjiga()">
-                            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>
                 </div>

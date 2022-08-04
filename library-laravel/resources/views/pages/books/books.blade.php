@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
+
+<!-- Title -->
+<title>Knjige | Online Biblioteka</title>
+
 @section('content')
+
 <main class="flex flex-row small:hidden">
     <!-- Sidebar -->
     <x-sidebar></x-sidebar>
@@ -16,7 +21,7 @@
         <!-- Space for content -->
         <div class="scroll height-evidencija">
             <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
-                <a href="novaKnjiga.php"
+                <a href="{{route('new-book')}}"
                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                     <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                 </a>
@@ -32,7 +37,7 @@
                             </span>
                         <input type="search" name="q"
                                class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                               placeholder="Search..." autocomplete="off">
+                               placeholder="Traži..." autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -317,8 +322,8 @@
                             </th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervisano</th>
                             <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoracenju</th>
-                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna kolicina
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoračenju</th>
+                            <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna količina
                             </th>
                             <th class="px-4 py-4"> </th>
                         </tr>
@@ -407,7 +412,7 @@
                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                role="menuitem">
                                                 <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                <span class="px-4 py-0">Izbrisi knjigu</span>
+                                                <span class="px-4 py-0">Izbriši knjigu</span>
                                             </a>
                                         </div>
                                     </div>
@@ -415,34 +420,32 @@
                             </td>
                         </tr>
                         @endforeach
-
-
-
+                        
                         </tbody>
                     </table>
 
                     <div class="flex flex-row items-center justify-end my-3">
                         <div>
                             <p class="inline text-md">
-                                Rows per page:
+                                Broj redova po strani:
                             </p>
                             <select
                                 class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                                 name="ucenici">
                                 <option value="">
+                                    5
+                                </option>
+                                <option value="">
+                                    10
+                                </option>
+                                <option value="">
+                                    15
+                                </option>
+                                <option value="">
                                     20
                                 </option>
                                 <option value="">
-                                    Option1
-                                </option>
-                                <option value="">
-                                    Option2
-                                </option>
-                                <option value="">
-                                    Option3
-                                </option>
-                                <option value="">
-                                    Option4
+                                    50
                                 </option>
                             </select>
                         </div>
@@ -452,7 +455,7 @@
                                 <div>
                                     <a href="#"
                                        class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md focus:z-10 focus:outline-none">
-                                        1 of 1
+                                        1 od 1
                                     </a>
                                 </div>
                                 <div>
@@ -490,6 +493,5 @@
     <!-- End Content -->
 </main>
 <!-- End Main content -->
-
 
 @endsection
