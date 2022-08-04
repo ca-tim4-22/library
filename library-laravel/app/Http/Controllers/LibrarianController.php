@@ -125,6 +125,13 @@ class LibrarianController extends Controller
     public function destroy($id)
     {
         $librarian = User::findOrFail($id);
+
+        if (Auth::user()->id == $librarian->id) {
+            $librarian->delete();
+
+            return to_route('redirect');
+        }
+
         $librarian->delete();
         
         return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');

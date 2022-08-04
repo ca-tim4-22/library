@@ -124,6 +124,13 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = User::findOrFail($id);
+
+        if (Auth::user()->id == $student->id) {
+            $student->delete();
+
+            return to_route('redirect');
+        }
+
         $student->delete();
         
         return to_route('all-student')->with('student-deleted', 'Uspješno ste izbrisali bibliotekara.');
