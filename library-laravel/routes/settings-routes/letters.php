@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-pismo/{id}', [LetterController::class, 'update
 
 });
 
-; ?>
+?>

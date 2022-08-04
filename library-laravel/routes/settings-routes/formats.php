@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-format/{id}', [FormatController::class, 'updat
     
 });
 
-; ?>
+?>

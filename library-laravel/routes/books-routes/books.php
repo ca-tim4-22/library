@@ -20,4 +20,4 @@ Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name(
 
 });
 
-; ?>
+?>

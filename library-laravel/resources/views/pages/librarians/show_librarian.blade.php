@@ -59,7 +59,7 @@
                         <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
-                                <form action="{{ route('destroy-librarian', $librarian->id) }}" method="post">
+                                <form action="{{ route('destroy-librarian', $librarian->id) }}" method="POST">
                                 @csrf
                                  @method('DELETE')
                                 <button type="submit" 
@@ -126,11 +126,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$librarian->login_count != 0 ? $librarian->login_count : "Korisnik se nije ulogovao na platformu"}}</p>
+                        <p class="font-medium">{{$librarian->login_count != 0 ? $librarian->login_count : "Korisnik se nikada nije ulogovao na platformu."}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$librarian->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $librarian->last_login_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$librarian->login_count == 0 ? 'Korisnik se nikada nije ulogovao na platformu.' : $librarian->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>

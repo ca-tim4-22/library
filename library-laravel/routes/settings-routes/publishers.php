@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-izdavaca/{id}', [PublisherController::class, '
     
 });
 
-; ?>
+?>

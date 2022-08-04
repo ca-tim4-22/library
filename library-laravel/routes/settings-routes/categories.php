@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-kategoriju/{id}', [CategoryController::class, 
     
 });
 
-; ?>
+?>

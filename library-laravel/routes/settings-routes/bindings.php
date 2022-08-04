@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-povez/{id}', [BindingController::class, 'updat
 
 });
 
-; ?>
+?>

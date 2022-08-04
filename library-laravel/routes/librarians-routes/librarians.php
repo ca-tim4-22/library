@@ -22,4 +22,4 @@ Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])
 
 });
 
-; ?>
+?>

@@ -18,4 +18,4 @@ Route::put('/podesavanja/izmijeni-zanr/{id}', [GenreController::class, 'update']
 
 });
 
-; ?>
+?>

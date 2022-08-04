@@ -19,6 +19,7 @@ class LibrarianController extends Controller
     public function index()
     {
         $librarians = User::where('user_type_id', 2)->paginate(5);
+
         return view('pages.librarians.librarians', compact('librarians'));
     }
 
@@ -67,6 +68,7 @@ class LibrarianController extends Controller
     public function show($id)
     {
         $librarian = User::findOrFail($id);
+
         return view('pages.librarians.show_librarian', compact('librarian'));
     }
 
@@ -79,6 +81,7 @@ class LibrarianController extends Controller
     public function edit($id)
     {
         $librarian = User::findOrFail($id);
+        
         return view('pages.librarians.edit_librarian', compact('librarian'));
     }
 

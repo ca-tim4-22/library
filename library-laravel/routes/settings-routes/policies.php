@@ -14,4 +14,4 @@ Route::put('/podesavanja/izmijeni-polisu/{id}', [PolicyController::class, 'updat
     
 });
 
-; ?>
+?>

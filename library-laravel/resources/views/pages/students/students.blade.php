@@ -59,9 +59,7 @@
 
 
         <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
-            
-
-
+        
             @if (count($students) <= 0)
 
             <div class="mx-[50px]">

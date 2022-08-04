@@ -30,4 +30,4 @@ Route::get('/shutdown', function(){
     return back();
 });
 
-; ?>
+?>

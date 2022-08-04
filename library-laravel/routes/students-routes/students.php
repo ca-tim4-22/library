@@ -1,6 +1,5 @@
 <?php 
 
-
 use Illuminate\Support\Facades\ {
     Route,
 };
@@ -22,4 +21,4 @@ Route::delete('/izbrisi-ucenika/{id}', [StudentController::class, 'destroy'])->n
 
 });
 
-; ?>
+?>
