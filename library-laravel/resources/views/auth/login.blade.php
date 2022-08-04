@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
 {{-- Title --}}
 <title>Uloguj se - Online Biblioteka</title>
 
@@ -14,27 +12,31 @@
 <html lang="en">
 
 <head>
+
     <!-- Meta -->
     <x-meta></x-meta>
 
     <!-- Styles -->
     <x-styles></x-styles>
     <!-- End Styles -->
+
 </head>
 
 <body>
     <!-- Main content -->
+    {{-- Background photo customize /public/style.css --}}
     <main class="h-screen small:hidden bg-login">
-        <div class="flex items-center justify-center pt-[13%]">\
+        <div class="flex items-center justify-center pt-[13%]">
             <div class="w-full max-w-md">
-                <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{ route('login') }}">
+                <form class="px-12 pt-6 pb-4 mb-4 bg-white rounded shadow-lg" method="POST" action="{{route('login')}}">
                     @csrf
                     <div class="flex justify-center py-2 mb-4 text-2xl text-gray-800 border-b-2">
                         Online Biblioteka 
-                        <img height="5px" width="34px" class="ml-2" src="{{ asset('img/library-favicon.ico') }}" alt="">
+                        <img height="5px" width="34px" class="ml-2" src="{{asset('img/library-favicon.ico')}}" alt="Online Biblioteka" title="Online Biblioteka">
                     </div>
 
                     <div class="mb-4">
+
                         @error('email')
                         <span style="color: #CD1A2B;font-size: 15px">{{$message}}</span>
                         @enderror
@@ -50,7 +52,7 @@
                             type="email" 
                             required 
                             autofocus 
-                            value="{{ old('email') }}"/>
+                            value="{{old('email')}}"/>
                     </div> 
                     
                     <div class="mb-6">
@@ -79,16 +81,18 @@
                         type="submit">Uloguj se</button>
                             
                     @if (Route::has('password.request'))
+
                     <a 
                     class="inline-block text-sm font-normal text-black align-baseline transition-custom hover:text-blue-800"
                     href="{{route('password.request')}}">
-                            Zaboravili ste lozinku?
+                    Zaboravili ste lozinku?
                     </a>
+
                     @endif
                         
                     </div>
                     <p class="text-xs text-center mt-[30px] text-gray-500">
-                        &copy; @php echo date('Y') @endphp ICT Cortex. All rights reserved.
+                    &copy; @php echo date('Y') @endphp ICT Cortex. All rights reserved.
                     </p>
                 </form>
 

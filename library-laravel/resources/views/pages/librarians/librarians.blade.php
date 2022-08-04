@@ -92,8 +92,8 @@
                         <td class="flex flex-row items-center px-4 py-4">
                             
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
-                            alt="User Photo"
-                            title="User Photo" />
+                            alt="Profilna slika bibliotekara: {{$librarian->name}}"
+                            title="Profilna slika bibliotekara: {{$librarian->name}}" />
 
                             <a href="{{route('show-librarian', $librarian->id)}}">
                                 <span class="font-medium text-center">{{$librarian->name}}</span>

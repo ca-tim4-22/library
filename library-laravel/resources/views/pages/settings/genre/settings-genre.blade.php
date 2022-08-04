@@ -81,8 +81,10 @@
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
                             <img 
-                            style="height:50px" 
-                            src="{{$genre->icon == 'placeholder' ? '/img/no-image.jpg' : $genre->icon}}" alt="">
+                            style="height:30px" 
+                            src="{{$genre->default == 'false' ? '/storage/settings/genre/' . $genre->icon : '/img/default_images_while_migrations/genres/' . $genre->icon}}" 
+                            alt="{{$genre->name}}"
+                            title="{{$genre->name}}">
                             <p class="ml-4 text-center">{{$genre->name}}</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">

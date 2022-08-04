@@ -10,12 +10,21 @@ use Illuminate\Support\Facades\ {
     Route,
 };
 
-use App\Http\Controllers\{BookController,
+
+
+
+
+
+use App\Http\Controllers\ {
     DashboardController,
     HomeController,
     LibrarianController,
     SettingController,
-    StudentController};
+    StudentController,
+    UserController,
+    BookController,
+};
+
 use App\Http\Controllers\Settings\BindingController;
 use App\Http\Controllers\Settings\CategoryController;
 use App\Http\Controllers\Settings\FormatController;
@@ -45,6 +54,7 @@ Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('s
 Route::get('/izmijeni/profil-bibliotekara/{id}', [LibrarianController::class, 'edit'])->name('edit-librarian');
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
 Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
+Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 });
 
 Route::controller(StudentController::class)->group(function() {

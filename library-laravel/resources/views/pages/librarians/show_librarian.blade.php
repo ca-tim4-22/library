@@ -43,7 +43,7 @@
                 <div class="pt-[24px] pr-[30px]">
                     <a href="#" class="inline hover:text-blue-600 show-modal">
                         <i class="fas fa-redo-alt mr-[3px]"></i>
-                        Resetuj šifru
+                        Resetuj lozinku
                     </a>
                     <a href="{{route('edit-librarian', $librarian->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
@@ -76,7 +76,31 @@
             </div>
         </div>
         <!-- Space for content -->
+        
         <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
+
+@error('password')            
+    <div class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">{{$message}}
+    </div>
+    </div>
+@enderror
+
+
+{{-- Session message for librarian update password --}}
+@if (session()->has('password-updated'))
+<div class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Success!</span> {{session('password-updated')}}
+    </div>
+  </div>
+@endif
+
             <div class="flex flex-row">
                 <div class="mr-[30px]">
                     <div class="mt-[20px]">
@@ -132,32 +156,47 @@
     <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
         <!-- Modal Header -->
         <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-            <h3>Resetuj sifru: Valentina Kascelan</h3>
-            <button class="text-black close-modal">&cross;</button>
+            <h3>Resetuj lozinku: {{$librarian->name}}</h3>
+            
+        <style>
+        .button-hover:hover {
+            color: #4558BE;
+            transition: 0.25s;
+            }
+        </style>
+
+        <button 
+        style="outline: none;border: none;"
+        class="close-modal button-hover">
+        <i class="fas fa-times"></i>
+        </button>
+        
         </div>
         <!-- Modal Body -->
-        <form class="forma">
+        <form method="POST" action="{{route('resetPassword', $librarian->id)}}">
+            @csrf
+              
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
-                    <span>Unesi novu sifru <span class="text-red-500">*</span></span>
-                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pwResetBibliotekar" id="pwResetBibliotekar" onkeydown="clearErrorsPwResetBibliotekar()">
+                    <span>Unesi novu lozinku <span class="text-red-500">*</span></span>
+                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="password" id="password" onkeydown="clearErrorsPwResetBibliotekar()" required>
                     <div id="validatePwResetBibliotekar"></div>
                 </div>
                 <div class="flex flex-col pb-[30px]">
-                    <span>Ponovi sifru <span class="text-red-500">*</span></span>
-                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="pw2ResetBibliotekar" id="pw2ResetBibliotekar" onkeydown="clearErrorsPw2ResetBibliotekar()">
+                    <span>Ponovi lozinku <span class="text-red-500">*</span></span>
+                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetBibliotekar()">
                     <div id="validatePw2ResetBibliotekar"></div>
                 </div>
             </div>
             <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
                 <button type="button"
-                    class="shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                    class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                    Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>
                 <button id="resetujSifruBibliotekar" type="submit"
                     class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                     onclick="validacijaSifraBibliotekar()">
-                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                 </button>
             </div>
         </form>
