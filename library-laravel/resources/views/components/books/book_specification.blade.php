@@ -15,18 +15,13 @@
                         <p>Pismo <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="pismo" id="pismo" onclick="clearErrorsPismo()">
                             <option disabled selected></option>
-                            <option value="">
-                                Cirilica
-                            </option>
-                            <option value="">
-                                Latinica
-                            </option>
-                            <option value="">
-                                Arapsko
-                            </option>
-                            <option value="">
-                                Kinesko
-                            </option>
+                            
+                    @foreach ($models['letters'] as $letter)
+
+                    <option value="{{$letter->id}}">{{$letter->name}}</option>
+                                   
+                    @endforeach
+
                         </select>
                         <div id="validatePismo"></div>
                     </div>
@@ -35,12 +30,13 @@
                         <p>Povez <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="povez" id="povez" onclick="clearErrorsPovez()">
                             <option disabled selected></option>
-                            <option value="">
-                                Tvrdi
-                            </option>
-                            <option value="">
-                                Meki
-                            </option>
+                            
+                        @foreach ($models['bindings'] as $binding)
+
+                        <option value="{{$binding->id}}">{{$binding->name}}</option>
+                                   
+                        @endforeach
+
                         </select>
                         <div id="validatePovez"></div>
                     </div>
@@ -49,18 +45,19 @@
                         <p>Format <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format" id="format" onclick="clearErrorsFormat()">
                             <option disabled selected></option>
-                            <option value="">
-                                A1
-                            </option>
-                            <option value="">
-                                A2
-                            </option>
+                            
+                    @foreach ($models['formats'] as $format)
+
+                    <option value="{{$format->id}}">{{$format->name}}</option>
+                                   
+                    @endforeach
+
                         </select>
                         <div id="validateFormat"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Internacionalni s    tandardni broj knjige<span class="text-red-500">*</span></p>
+                        <p>Internacionalni standardni broj knjige<span class="text-red-500">*</span></p>
                         <input type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()"/>
                         <div id="validateIsbn"></div>
                     </div>

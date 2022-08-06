@@ -40,8 +40,6 @@ class BookController extends Controller
             'letters' =>DB::table('letters')->get()
         ];
 
-        $categories = Category::all();
-
         return view('pages.books.new_book', compact('models'));
     }
 

@@ -1,7 +1,6 @@
  <!-- Main content -->
  <main class="flex flex-row small:hidden">
 
-
     <!-- Content -->
     <section style="margin-top: 20px" class="w-screen h-screen pl-[0px] pb-2 text-gray-700">
 
@@ -30,11 +29,11 @@
                             <p>Izaberite kategorije <span class="text-red-500">*</span></p>
                             <select x-cloak id="kategorija">
                                
-                               {{-- @foreach ($categories as $category)
+                            @foreach ($models['categories'] as $category)
 
                                <option value="{{$category->id}}">{{$category->name}}</option>
                                    
-                               @endforeach --}}
+                            @endforeach
 
                             </select>
 
@@ -130,8 +129,13 @@
                     <div class="mt-[20px]">
                         <p>Izaberite žanrove <span class="text-red-500">*</span></p>
                         <select x-cloak id="zanr">
-                            <option value="1">Poezija</option>
-                            <option value="2">Strucna literatura</option>
+
+                            @foreach ($models['genres'] as $genre)
+
+                               <option value="{{$genre->id}}">{{$genre->name}}</option>
+                                   
+                            @endforeach
+                            
                         </select>
 
                         <div x-data="dropdown()" x-init="loadOptionsZanrovi()" class="flex flex-col w-[90%]">
@@ -225,8 +229,13 @@
             <div class="mt-[20px]">
                 <p>Izaberite autore <span class="text-red-500">*</span></p>
                 <select x-cloak id="autori">
-                    <option value="1">Mark Twain</option>
-                    <option value="2">Pero Peric</option>
+                    
+                    @foreach ($models['authors'] as $author)
+
+                    <option value="{{$author->id}}">{{$author->NameSurname}}</option>
+                                   
+                    @endforeach
+
                 </select>
 
                 <div x-data="dropdown()" x-init="loadOptionsAutori()" class="flex flex-col w-[90%]">
@@ -315,12 +324,17 @@
 
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
-            <select
-                class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
+            <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 name="izdavac" id="izdavac" onclick="clearErrorsIzdavac()">
                 <option disabled selected></option>
                 <option value="">
-                    Izdavac 1
+                    
+                    @foreach ($models['publishers'] as $publisher)
+
+                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                                   
+                    @endforeach
+                    
                 </option>
             </select>
             <div id="validateIzdavac"></div>
@@ -332,9 +346,9 @@
                 class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 name="godinaIzdavanja" id="godinaIzdavanja" onclick="clearErrorsGodinaIzdavanja()">
                 <option disabled selected></option>
-                <option value="">
-                    Godina izdavanja 1
-                </option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
             </select>
             <div id="validateGodinaIzdavanja"></div>
         </div>

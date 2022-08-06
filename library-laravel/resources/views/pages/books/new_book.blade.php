@@ -10,10 +10,7 @@
 @section('content')
 
     <main class="flex flex-row small:hidden">
-        <!-- Sidebar -->
-        <x-sidebar></x-sidebar>
-            <!-- End Sidebar -->
-
+        
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
             <!-- Heading of content -->
@@ -49,8 +46,7 @@
                 </div>
             </div>
 
-            <x-books.jquery></x-books.jquery>
-        
+            <x-books.jquery :models="$models"></x-books.jquery>        
     </main>
 
 @endsection

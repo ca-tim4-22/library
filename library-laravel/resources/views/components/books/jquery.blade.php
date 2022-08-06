@@ -1,3 +1,4 @@
+
 <style>
     .wrapper .active { 
         color: #2196f3;
@@ -27,10 +28,10 @@
         </div>
         <div class="tab_content">
             <div class="tab_item">
-                <x-books.book_info></x-books.book_info>
+                <x-books.book_info :models="$models"></x-books.book_info>
             </div>
             <div class="tab_item">
-                <x-books.book_specification></x-books.book_specification>
+                <x-books.book_specification :models="$models"></x-books.book_specification>
             </div>
             <div class="tab_item">
                 <x-books.book_multimedia></x-books.book_multimedia>
