@@ -1,8 +1,14 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
+<!-- Title -->
+<title>Profil | Online Biblioteka</title>
+    
+@endsection
+
 @section('content')
 
-    <title>Učenici | Online Biblioteka</title>
     <x-sidebar></x-sidebar>
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
         <!-- Heading of content -->

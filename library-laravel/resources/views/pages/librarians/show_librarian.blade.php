@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Profil | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 

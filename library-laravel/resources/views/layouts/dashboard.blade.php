@@ -4,7 +4,7 @@
 <head>
     
     <!-- Title -->
-    <title>Dashboard | Online biblioteka</title>
+    @yield('title')
 
     <!-- Icon -->
     <link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
@@ -25,7 +25,7 @@
     <x-sidebar></x-sidebar>
     
     <!-- Main content -->
-    <main class="flex flex-row smal:hidden">
+    <main class="flex flex-row small:hidden">
         
     @yield('content')
     

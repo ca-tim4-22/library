@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Nova knjiga | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 
@@ -20,6 +24,7 @@
                             <h1>
                                 Nova knjiga
                             </h1>
+                           
                         </div>
                         <div>
                             <nav class="w-full rounded">
@@ -44,12 +49,8 @@
                 </div>
             </div>
 
-            <x-jquery></x-jquery>
-            
-         
+            <x-books.jquery></x-books.jquery>
+        
     </main>
-
-
-
 
 @endsection

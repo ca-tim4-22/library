@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Izmijeni Profil | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">

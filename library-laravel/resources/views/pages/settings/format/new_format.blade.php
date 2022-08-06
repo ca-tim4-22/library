@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Novi format | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 

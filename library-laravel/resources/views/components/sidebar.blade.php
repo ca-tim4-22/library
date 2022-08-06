@@ -9,12 +9,14 @@
         <div class="mt-[30px]">
             <ul class="text-[#2D3B48] sidebar-nav">
                 <!-- Dashboard Icon -->
-                <li class="bg-[#EAEAEA] pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">
+                <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">
                     <div class="ml-[25px]">
                         <span class="flex justify-between w-full fill-current whitespace-nowrap">
                             <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
                                 <a href="{{route('dashboard')}}" aria-label="Dashboard">
-                                    <i class="text-white ml-1 bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]"></i>
+                                    
+            <i class="{{ (request()->is('dashboard')) ? 'text-white ml-1 bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]' : 'text-[#707070] ml-1 px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px] group-hover:text-[#576cdf] transition duration-300 ease-in' }}"></i>
+
                                     <div class="hidden sidebar-item">
                                         <p class="inline text-[15px] ml-[15px]">Dashboard</p>
                                     </div>
@@ -31,7 +33,7 @@
                             <div>
                                 <a href="{{ route('all-librarian') }}" aria-label="Bibliotekari">
 
-                                    <i class="{{ (request()->is('bibliotekari')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
+                                    <i class="{{ (request()->is('bibliotekari')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-address-book text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
 
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">

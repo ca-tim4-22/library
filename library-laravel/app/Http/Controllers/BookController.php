@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class BookController extends Controller
 {
@@ -36,7 +38,9 @@ class BookController extends Controller
             'formats' => DB::table('formats')->get(),
             'languages' => DB::table('languages')->get(),
             'letters' =>DB::table('letters')->get()
-            ];
+        ];
+
+        $categories = Category::all();
 
         return view('pages.books.new_book', compact('models'));
     }

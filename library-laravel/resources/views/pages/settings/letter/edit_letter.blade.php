@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Izmijeni pismo | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 

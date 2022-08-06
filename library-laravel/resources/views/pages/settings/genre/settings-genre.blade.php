@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
 <title>Podešavanja | Žanrovi - Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 

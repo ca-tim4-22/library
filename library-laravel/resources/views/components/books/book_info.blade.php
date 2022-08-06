@@ -19,7 +19,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p class="inline-block mb-2">Kratki sadrzaj</p>
+                            <p class="inline-block mb-2">Kratki sadržaj</p>
                             <textarea name="kratki_sadrzaj"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
 
@@ -29,9 +29,16 @@
                         <div class="mt-[20px]">
                             <p>Izaberite kategorije <span class="text-red-500">*</span></p>
                             <select x-cloak id="kategorija">
-                                <option value="1">Udzbenici</option>
-                                <option value="2">Romani</option>
+                               
+                               {{-- @foreach ($categories as $category)
+
+                               <option value="{{$category->id}}">{{$category->name}}</option>
+                                   
+                               @endforeach --}}
+
                             </select>
+
+                          
 
                             <div x-data="dropdown()" x-init="loadOptions()" class="flex flex-col w-[90%]">
                                 <input name="values" id="kategorijaInput" type="hidden"
@@ -121,7 +128,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Izaberite zanrove <span class="text-red-500">*</span></p>
+                        <p>Izaberite žanrove <span class="text-red-500">*</span></p>
                         <select x-cloak id="zanr">
                             <option value="1">Poezija</option>
                             <option value="2">Strucna literatura</option>
@@ -307,7 +314,7 @@
         </div>
 
         <div class="mt-[20px]">
-            <p>Izdavac <span class="text-red-500">*</span></p>
+            <p>Izdavač <span class="text-red-500">*</span></p>
             <select
                 class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 name="izdavac" id="izdavac" onclick="clearErrorsIzdavac()">
@@ -333,7 +340,7 @@
         </div>
 
         <div class="mt-[20px]">
-            <p>Kolicina <span class="text-red-500">*</span></p>
+            <p>Količina <span class="text-red-500">*</span></p>
             <input type="text" name="knjigaKolicina" id="knjigaKolicina"
                 class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 onkeydown="clearErrorsKnjigaKolicina()" />
@@ -347,11 +354,11 @@
                 <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
                     <button type="button"
                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                        Ponisti <i class="fas fa-times ml-[4px]"></i>
+                        Poništi <i class="fas fa-times ml-[4px]"></i>
                     </button>
                     <button style="margin-right: 30px" id="sacuvajSpecifikaciju" type="submit"
                     class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
-                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                 </button>
                 </div>
             </div>
