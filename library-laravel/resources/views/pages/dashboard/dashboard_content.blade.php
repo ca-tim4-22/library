@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
+<!-- Title -->
+<title>Dashboard | Online Biblioteka</title>
+
+@endsection
+
 @section('content')
 
  <!-- Content -->

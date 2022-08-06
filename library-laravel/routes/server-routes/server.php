@@ -6,7 +6,6 @@ use App\Http\Controllers\Auth\ {
 
 use Illuminate\Support\Facades\ {
     Artisan,
-    Redirect,
     Route,
 };
 
@@ -15,7 +14,7 @@ Route::get('/', function () {
     return to_route('redirect');
 });
 Route::get('/pocetna', function () {
-    return view('welcome');
+    return view('welcome.welcome');
 })->name('redirect');
 
 // Laravel Authentication route
@@ -26,7 +25,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 // Server down route
 Route::get('/shutdown', function(){
-    Artisan::call('down', ['--render' => "maintenance"]);
+    Artisan::call('down', ['--render' => "maintenance.maintenance"]);
     return back();
 });
 

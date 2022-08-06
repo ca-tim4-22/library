@@ -327,7 +327,6 @@
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 name="izdavac" id="izdavac" onclick="clearErrorsIzdavac()">
                 <option disabled selected></option>
-                <option value="">
                     
                     @foreach ($models['publishers'] as $publisher)
 
@@ -335,7 +334,6 @@
                                    
                     @endforeach
                     
-                </option>
             </select>
             <div id="validateIzdavac"></div>
         </div>

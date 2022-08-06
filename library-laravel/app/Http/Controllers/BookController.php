@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
-use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\View;
 
 class BookController extends Controller
 {
@@ -30,7 +28,7 @@ class BookController extends Controller
     public function create()
     {
         $models=[
-        'categories'=> DB::table('categories')->get(),
+            'categories'=> DB::table('categories')->get(),
             'genres' => DB::table('genres')->get(),
             'authors' => DB::table('authors')->get(),
             'publishers' => DB::table('publishers')->get(),

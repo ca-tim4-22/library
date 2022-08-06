@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -14,7 +15,6 @@
 
     <!-- Styles -->
     <x-styles></x-styles>
-    <!-- End Styles -->
         
 </head>
 
@@ -37,7 +37,6 @@
 
     <!-- Scripts -->
     <x-scripts></x-scripts>
-    <!-- End Scripts -->
 
 </body>
 

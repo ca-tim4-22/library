@@ -13,7 +13,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard_content');
+        return view('pages.dashboard.dashboard_content');
     }
 
     public function index_activity() {
