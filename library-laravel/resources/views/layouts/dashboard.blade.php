@@ -17,7 +17,6 @@
     <!-- Styles -->
     <x-styles></x-styles>
     <!-- End Styles -->
-
         
 </head>
 

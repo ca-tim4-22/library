@@ -118,7 +118,9 @@
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Email</span>
                         <a
-                            class="cursor-pointer block font-medium text-[#2196f3] hover:text-blue-600">{{$librarian->email}}</a>
+                        href="mailto:{{$librarian->email}}"
+                        class="cursor-pointer block font-medium text-[#2196f3] hover:text-blue-600">{{$librarian->email}}</a>
+
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Korisničko ime</span>
