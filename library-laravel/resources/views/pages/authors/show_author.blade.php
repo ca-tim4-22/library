@@ -28,7 +28,7 @@
                                 <span class="mx-2">/</span>
                             </li>
                             <li>
-                                <a href="{{route('show-author', $author->id)}}" class="text-gray-400 hover:text-blue-600">
+                                <a href="{{route('show-author', $author)}}" class="text-gray-400 hover:text-blue-600">
                                     AUTOR-{{$author->id}}
                                 </a>
                             </li>
@@ -74,12 +74,12 @@
         <div class="mr-[30px]">
             <div class="mt-[20px]">
                 <span class="text-gray-500">Ime i prezime</span>
-                <p class="font-medium">Mark Twain</p>
+                <p class="font-medium">{{$author->NameSurname}}</p>
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500">Biografija</span>
                 <p class="font-medium max-w-[550px]">
-                    {{$author->biography}}
+                    {!! $author->biography !!}
                 </p>
             </div>
         </div>

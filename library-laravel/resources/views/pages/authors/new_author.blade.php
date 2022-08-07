@@ -39,6 +39,7 @@
         </div>
     </div>
     
+
     <!-- Space for content -->
     <div class="scroll height-content section-content">
         <form class="text-gray-700" method="POST" action="{{route('new-author')}}">
@@ -46,17 +47,17 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Ime i prezime <span class="text-red-500">*</span></p>
-                        <input type="text" name="NameSurname" id="NameSurname" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutor()"/>
+                        <p>Ime i prezime <span class="text-red-500">* @error('NameSurname') {{$message}} @enderror</span></p>
+                        <input type="text" name="NameSurname" id="NameSurname" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutor()" placeholder="Unesite podatke.."/>
                         <div id="validateImePrezimeAutor"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <p class="inline-block mb-2">Biografija</p>
-                        <textarea name="biography"
-                            class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
+                        <p class="inline-block mb-2">Biografija <span class="text-red-500">* @error('biography') {{$message}} @enderror</span></p>
 
+                        <textarea name="biography" id="biography" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
                         </textarea>
+
                     </div>
                 </div>
             </div>
@@ -79,11 +80,13 @@
 </section>
 <!-- End Content -->
 
+<x-scripts></x-scripts>
+
 <script>
     CKEDITOR.replace('biography', {
         width: "90%",
         height: "150px"
     });
-    </script>
+</script>
     
 @endsection

@@ -12,7 +12,7 @@ Route::controller(AuthorController::class)->group(function() {
     
 // Authors
 Route::get('/autori', [AuthorController::class, 'index'])->name('all-author');
-Route::get('/autor/{id}', [AuthorController::class, 'show'])->name('show-author');
+Route::get('/autor/{author:NameSurname}', [AuthorController::class, 'show'])->name('show-author');
 Route::get('/novi-autor', [AuthorController::class, 'create'])->name('new-author');
 Route::post('/novi-autor', [AuthorController::class, 'store'])->name('store-author');
 Route::get('/izmijeni/profil-autora/{id}', [AuthorController::class, 'edit'])->name('edit-author');

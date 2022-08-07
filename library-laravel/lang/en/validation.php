@@ -172,6 +172,8 @@ return [
         'JMBG' => 'JMBG',
         'username' => 'Uneseno korisničko ime je već zauzeto.',
         'email' => 'Unesena email adresa je već zauzeta.',
+        'NameSurname' => 'ime i prezime',
+        'biography' => 'biografiju',
      ],
 
 ];

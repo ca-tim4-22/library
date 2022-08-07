@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Settings\AuthorRequest;
 use App\Models\Author;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
+        $authors = Author::all()->sortByDesc("id");;
 
         return view('pages.authors.authors', compact('authors'));
     }
@@ -36,13 +37,15 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AuthorRequest $request)
     {
         $input = $request->all();
-    
+
+        $authors_name = $request->input('NameSurname');
+        
         Author::create($input);
 
-        return to_route('all-author')->with('success-author', 'Uspješno ste registrovali autora ' . "'$request->name'");
+        return to_route('all-author')->with('success-author', 'Uspješno ste registrovali autora ' . "'$authors_name'");
     }
 
     /**
@@ -51,9 +54,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Author $author)
     {
-        $author = Author::findOrFail($id);
+        $author = $author;
 
         return view('pages.authors.show_author', compact('author'));
     }
@@ -78,7 +81,7 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AuthorRequest $request, $id)
     {
         $input = $request->all();
         $author = Author::findOrFail($id);  
