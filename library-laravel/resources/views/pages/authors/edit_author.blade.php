@@ -1,7 +1,11 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
 <!-- Title -->
-<title>Izmijeni profil | Online Biblioteka</title>
+<title>Izmijeni autora | Online Biblioteka</title>
+    
+@endsection
 
 @section('content')
 

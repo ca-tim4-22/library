@@ -133,6 +133,6 @@ class StudentController extends Controller
 
         $student->delete();
         
-        return to_route('all-student')->with('student-deleted', 'Uspješno ste izbrisali bibliotekara.');
+        return to_route('all-student')->with('student-deleted', 'Uspješno ste izbrisali učenika.');
     }
 }

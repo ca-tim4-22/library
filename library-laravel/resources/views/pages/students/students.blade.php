@@ -142,7 +142,9 @@
                                         <form action="{{route('destroy-student', $student->username)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
+                                            <button 
+                                                    style="outline: none;border: none;"
+                                                    type="submit"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
