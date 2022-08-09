@@ -85,7 +85,7 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <p>{{$format->name}}</p>
+                            <p class="no-select">{{$format->name}}</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsFormat hover:text-[#606FC7]">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,7 +36,7 @@ class GenreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenreRequest $request)
     {
         $input = $request->all();
         $genre = $request->name;
@@ -44,9 +45,10 @@ class GenreController extends Controller
         if ($file = $request->file('icon')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $input['icon'] = $name; 
+            $input['icon'] = $name;  
+            $input['default'] = 'false';  
         } else {
-            $input['icon'] = 'placeholder';
+            $input['icon'] = 'placeholder.jpg';
         }
         
         Genre::create($input);
@@ -84,7 +86,7 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(GenreRequest $request, $id)
     {
         $input = $request->all();
         $genre = Genre::findOrFail($id);  

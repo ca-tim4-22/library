@@ -45,13 +45,15 @@ class CategoryController extends Controller
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
             $input['icon'] = $name; 
-        } 
+            $input['default'] = 'false'; 
+        } else {
+            $input['icon'] = 'placeholder.jpg';
+        }
 
         Category::create($input);
 
         return to_route('setting-category')->with('success-category', "Uspješno ste dodali kategoriju " . "\"$category_lower\"");
     }
-
     /**
      * Display the specified resource.
      *

@@ -36,7 +36,7 @@
                             <ol class="flex list-reset">
                                 <li>
                                     <a href="{{route('all-student')}}" class="text-[#2196f3] hover:text-blue-600">
-                                        Svi studenti
+                                        Svi učenici
                                     </a>
                                 </li>
                                 <li>
@@ -70,7 +70,7 @@
                             <span>Tip korisnika</span>
                             <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="user_type_id" disabled>
                                 <option value="1">
-                                    Ucenik
+                                    Učenik
                                 </option>
                             </select>
                         </div>
@@ -94,13 +94,13 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Šifra <span class="text-red-500">*</span></span>
+                            <span>Lozinka <span class="text-red-500">*</span></span>
                             <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwUcenikEdit()"/>
                             <div id="validatePwUcenikEdit"></div>
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Ponovi šifru <span class="text-red-500">*</span></span>
+                            <span>Ponovi lozinku <span class="text-red-500">*</span></span>
                             <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2UcenikEdit()"/>
                             <div id="validatePw2UcenikEdit"></div>
                         </div>

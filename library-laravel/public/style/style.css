@@ -15,6 +15,10 @@
   transform: scale(1.05);
 }
 
+ /* ----------------------------------------------------------- */
+/* Custom */
+ /* ----------------------------------------------------------- */
+
 /* Login - background */
 .bg-login {
   background-image: url('../img/login.jpg');
@@ -29,6 +33,13 @@
   background-size: cover;
 }
 
+/* No select */
+
+.no-select {
+  user-select: none !important;
+}
+
+/* ----------------------------------------------------------- */
 
 /* Media Query for changing background on higher resolutions */
 @media screen and (min-width: 1921px) {

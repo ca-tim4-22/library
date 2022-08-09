@@ -23,10 +23,13 @@ Route::auth(['verify' => 'true']);
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
 
+// Middleware protection
+Route::middleware('auth')->group(function(){
 // Server down route
 Route::get('/shutdown', function(){
     Artisan::call('down', ['--render' => "maintenance.maintenance"]);
     return back();
+});
 });
 
 ?>

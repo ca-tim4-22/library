@@ -71,7 +71,7 @@
                 <div class="w-[50%] mb-[100px]">
                     <div class="mt-[20px]">
                         <p>Naziv kategorije <span class="text-red-500">*</span></p>
-                        <input type="text" name="name" id="description" value="{{$category->name}}"
+                        <input type="text" name="name" id="name" value="{{$category->name}}"
                             class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                             onkeydown="clearErrorsNazivKategorijeEdit()" />
                         <div id="validateNazivKategorijeEdit"></div>
@@ -95,22 +95,9 @@
                     <div class="mt-[20px]">
                         <p class="inline-block">Opis</p>  
                         
-                        <textarea
-                        class=" form-control flex w-[90%] bg-white border border-gray-300 shadow-sm appearance-none focus:outline-focus:ring-2 focus:ring-[#576cdf] mt-2 px-2 py-2 
-                        text-base
-                        font-normal
-                        text-gray-700
-                        bg-clip-padding
-                        border-solid
-                        rounded
-                        transition
-                        ease-in-out
-                        m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 
-                        "
-                        rows="10"
-                        name="description"
-                      >{{$category->description}}</textarea>
+                        <textarea name="description" id="description" rows="10"
+                        class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">{{$category->description}}
+                    </textarea>
 
                     </div>
                 </div>
@@ -134,5 +121,14 @@
     </div>
 </section>
 <!-- End Content -->
-    
+
+<x-scripts></x-scripts>
+
+<script>
+    CKEDITOR.replace('description', {
+        width: "90%",
+        height: "150px"
+    });
+</script>
+
 @endsection

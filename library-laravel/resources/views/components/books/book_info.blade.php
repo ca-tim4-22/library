@@ -19,9 +19,8 @@
 
                         <div class="mt-[20px]">
                             <p class="inline-block mb-2">Kratki sadržaj</p>
-                            <textarea name="description"
+                            <textarea name="body"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
-
                             </textarea>
                         </div>
 
@@ -382,3 +381,12 @@
 </main>
 <!-- End Main content -->
 
+
+<x-scripts></x-scripts>
+
+<script>
+    CKEDITOR.replace('body', {
+        width: "90%",
+        height: "150px"
+    });
+</script>

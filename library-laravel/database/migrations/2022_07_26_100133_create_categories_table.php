@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 256);
             $table->string('icon', 256);
-            $table->string('default', 256)->default('false');
+            $table->string('default', 256)->default('true');
             $table->string('description', 2048);
         });
 

@@ -25,14 +25,14 @@
                             <ol class="flex list-reset">
                                 <li>
                                     <a href="{{route('all-student')}}" class="text-[#2196f3] hover:text-blue-600">
-                                        Svi Učenici
+                                        Svi učenici
                                     </a>
                                 </li>
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('show-student', $student->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    <a href="{{route('show-student', $student->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                         ID-{{$student->id}}
                                     </a>
                                 </li>
@@ -43,7 +43,7 @@
                 <div class="pt-[24px] pr-[30px]">
                     <a href="#" class="inline hover:text-blue-600 show-modal">
                         <i class="fas fa-redo-alt mr-[3px]"></i>
-                        Resetuj šifru
+                        Resetuj lozinku
                     </a>
                     <a href="{{route('edit-student', $student->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
@@ -59,10 +59,12 @@
                         <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                              aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
-                                <form action="{{ route('destroy-student', $student->username) }}" method="post">
+                                <form action="{{route('destroy-student', $student->username)}}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
+                                    <button 
+                                            style="outline: none;border: none;"
+                                            type="submit"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
@@ -103,11 +105,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$student->login_count}}</p>
+                        <p class="font-medium">{{$student->login_count != 0 ? $student->login_count : "Korisnik se nikada nije ulogovao na platformu."}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$student->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $student->last_login_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$student->login_count == 0 ? 'Korisnik se nikada nije ulogovao na platformu.' : $student->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>

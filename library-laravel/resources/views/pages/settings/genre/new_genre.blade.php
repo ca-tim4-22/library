@@ -53,16 +53,35 @@
     
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700" method="POST" action="{{route('store-genre')}}">
+        <form class="text-gray-700" method="POST" action="{{route('store-genre')}}" enctype="multipart/form-data">
             @csrf        
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Naziv žanra <span class="text-red-500">*</span></p>
+                        <p>Naziv žanra <span class="text-red-500">*@error('name') {{$message}} @enderror</span></p>
                         <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivZanra()"/>
                         <div id="validateNazivZanra"></div>
                     </div>
+                    
+                    <div class="mt-[20px]">
+                        <p>Uploaduj ikonicu </p>
+                        <div id="empty-cover-art-ikonica"
+                            class="flex w-[90%] mt-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
+                            <div class="bg-gray-300 h-[40px] w-[102px] px-[20px] pt-[10px]">
+                                <label class="cursor-pointer">
+                                    <p class="leading-normal">Priloži...</p>
+                                    <input name="icon" id="icon-upload" type='file' class="hidden" :multiple="multiple"
+                                        :accept="accept" />
+                                </label>
+                            </div>
+                            <div id="icon-output" class="h-[40px] px-[20px] pt-[7px]"></div>
+                        </div>
+                    </div>
+
                 </div>
+
+                
+
             </div>
             <div class="absolute bottom-0 w-full">
                 <div class="flex flex-row">

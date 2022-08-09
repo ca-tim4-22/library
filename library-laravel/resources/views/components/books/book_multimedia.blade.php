@@ -97,7 +97,22 @@
                     </div>
                 </template>
             </div>
+            <div class="absolute bottom-0 w-full">
+            <div class="flex flex-row">
+                <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
+                    <button type="button"
+                        class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                    </button>
+                    <button style="margin-right: 30px" id="sacuvajSpecifikaciju" type="submit"
+                            class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
+                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                        </button>
+                </div>
+            </div>
         </div>
+        </div>
+        cao
         <div class="absolute bottom-0 w-full">
             <div class="flex flex-row">
                 <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">

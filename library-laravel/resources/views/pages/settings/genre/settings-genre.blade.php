@@ -89,7 +89,7 @@
                             src="{{$genre->default == 'false' ? '/storage/settings/genre/' . $genre->icon : '/img/default_images_while_migrations/genres/' . $genre->icon}}" 
                             alt="{{$genre->name}}"
                             title="{{$genre->name}}">
-                            <p class="ml-4 text-center">{{$genre->name}}</p>
+                            <p class="ml-4 text-center no-select">{{$genre->name}}</p>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsGenre hover:text-[#606FC7]">

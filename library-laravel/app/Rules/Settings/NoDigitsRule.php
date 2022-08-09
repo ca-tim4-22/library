@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Rules\PasswordReset;
+namespace App\Rules\Settings;
 
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Str;
 
-class MinimumPasswordLengthRule implements Rule
+class NoDigitsRule implements Rule
 {
     /**
      * Create a new rule instance.
@@ -26,9 +25,7 @@ class MinimumPasswordLengthRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        $passwordLength = Str::length($value);
-
-        if($passwordLength >= 8) {
+        if (!preg_match('~[0-9]+~', $value)) {
             return true;
         } else {
             return false;
@@ -43,6 +40,6 @@ class MinimumPasswordLengthRule implements Rule
     public function message()
     {
         // return 'The validation error message.';
-        return 'Polje za lozinku mora sadržati minimum 8 karaktera.';
+        return 'Ovo polje ne smije sadržati cifre.';
     }
 }

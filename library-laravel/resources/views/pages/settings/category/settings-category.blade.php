@@ -92,9 +92,9 @@
                             src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}" 
                             alt="{{$category->name}}"
                             title="{{$category->name}}">
-                            <p class="ml-4 text-center">{{$category->name}}</p>
+                            <p class="ml-4 text-center no-select">{{$category->name}}</p>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$category->description}}</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{!! $category->description !!}</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>

@@ -36,7 +36,7 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('show-librarian', $librarian->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    <a href="{{route('show-librarian', $librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                         ID-{{$librarian->id}}
                                     </a>
                                 </li>
@@ -63,10 +63,11 @@
                         <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
-                                <form action="{{ route('destroy-librarian', $librarian->username) }}" method="POST">
+                                <form action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
                                 @csrf
-                                 @method('DELETE')
+                                @method('DELETE')
                                 <button type="submit" 
+                                            style="outline: none;border: none;"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
