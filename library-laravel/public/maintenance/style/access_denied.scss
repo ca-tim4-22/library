@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+body {
+  background-image: url('/img/login.jpg');
+  background-position: center;
+  background-size: cover;
+  font-family: sans-serif;
+}
+.container {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  padding: 10px;
+  min-width: 300px;
+  div {
+    display: inline-block;
+  }
+  .lock {
+    opacity: 1;
+  }
+  h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 100px;
+    text-align: center;
+    color: #eee;
+    font-weight: 100;
+    margin: 0;
+  }
+  p {
+    color: #fff;
+  }
+}
+.lock {
+  transition: 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  &.generated {
+    transform: scale(0.5);
+    position: absolute;
+    animation: 2s move linear;
+    animation-fill-mode: forwards;
+  }
+  ::after {
+    content: '';
+    background: darken(#F76B1C, 20%);
+    opacity: 0.3;
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    top: 0;
+    left: 0;
+  }
+  .bottom {
+    background: #D68910;
+    height: 40px;
+    width: 60px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+  }
+  .top {
+    height: 60px;
+    width: 50px;
+    border-radius: 50%;
+    border: 10px solid #fff;
+    display: block;
+    position: relative;
+    top: 30px;
+    margin: 0 auto;
+    &::after {
+      padding: 10px;
+      border-radius: 50%;
+    }
+  }
+}
+@keyframes move {
+  to {
+    top: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .container {
+    transform: translate(-50%,-50%) scale(0.8)
+  }
+  .lock.generated {
+    transform: scale(0.3);
+  }
+}

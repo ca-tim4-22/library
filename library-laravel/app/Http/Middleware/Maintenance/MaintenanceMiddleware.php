@@ -17,6 +17,10 @@ class MaintenanceMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        if (Auth::check() && Auth::user()->type->name == 'administrator') {
+            return $next($request);
+        }
         
+        return response()->view('maintenance.access_denied');
     }
 }

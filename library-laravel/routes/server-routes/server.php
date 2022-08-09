@@ -24,7 +24,7 @@ Route::auth(['verify' => 'true']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // Middleware protection
-Route::middleware('auth')->group(function(){
+Route::middleware('maintenance-protection')->group(function(){
 // Server down route
 Route::get('/shutdown', function(){
     Artisan::call('down', ['--render' => "maintenance.maintenance"]);
