@@ -17,9 +17,12 @@ Route::get('/pocetna', function () {
     return view('welcome.welcome');
 })->name('redirect');
 
+// Middleware protection
+Route::middleware('see-you-later-protection')->group(function(){
 Route::get('good-bye', function () {
     return view('good-bye.good-bye');
 })->name('good-bye');
+});
 
 // Laravel Authentication route
 Route::auth(['verify' => 'true']);

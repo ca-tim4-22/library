@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Middleware\Maintenance;
+namespace App\Http\Middleware\SeeYouLater;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MaintenanceMiddleware
+class SeeYouLaterMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class MaintenanceMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->type->name == 'administrator') {
+        if (!Auth::check()) {
             return $next($request);
         }
         
