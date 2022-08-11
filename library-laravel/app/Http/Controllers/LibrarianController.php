@@ -150,7 +150,8 @@ class LibrarianController extends Controller
         if (Auth::user()->id == $librarian->id) {
             $librarian->delete();
 
-            return to_route('redirect');
+            // return to_route('redirect');
+            return to_route('good-bye');
         }
 
         $librarian->delete();
