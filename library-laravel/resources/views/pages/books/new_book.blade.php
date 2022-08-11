@@ -4,13 +4,13 @@
 
 <!-- Title -->
 <title>Nova knjiga | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
 
     <main class="flex flex-row small:hidden">
-        
+
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
             <!-- Heading of content -->
@@ -21,7 +21,7 @@
                             <h1>
                                 Nova knjiga
                             </h1>
-                           
+
                         </div>
                         <div>
                             <nav class="w-full rounded">
@@ -46,7 +46,8 @@
                 </div>
             </div>
 
-            <x-books.jquery :models="$models"></x-books.jquery>        
+            <x-books.jquery :models="$models"></x-books.jquery>
     </main>
+
 
 @endsection

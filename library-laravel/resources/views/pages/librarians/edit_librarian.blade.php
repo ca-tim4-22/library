@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Izmijeni bibliotekara | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -120,33 +120,33 @@
                                  <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
                                  <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
                              </div>
-                             <img 
+                             <img
                              name="photo"
-                             class="absolute w-48 h-[188px] bottom-0" 
+                             class="absolute w-48 h-[188px] bottom-0 profile-user-img"
                              id="image-output-librarian"
-                             src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"/> 	
+                             src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"/>
                          </div>
-                     </label>  
+                     </label>
                  </div>
              </div>
 
              <div class="absolute bottom-0 w-full">
                  <div class="flex flex-row">
                      <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                        <button 
+                        <button
                         type="button"
                         onclick="history.back()"
                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                        Poništi <i class="fas fa-times ml-[4px]"></i> 
+                        Poništi <i class="fas fa-times ml-[4px]"></i>
                          </button>
                          <button type="submit"
                                  class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaBibliotekarEdit()">
-                                 Sačuvaj <i class="fas fa-check ml-[4px]"></i> 
+                                 Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                          </button>
                      </div>
-                 </div>        
+                 </div>
              </div>
-             
+
          </form>
      </div>
  </section>

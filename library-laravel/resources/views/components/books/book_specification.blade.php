@@ -2,7 +2,9 @@
  <section style="margin-top: 20px" class="w-screen h-screen pl-[0px] pb-2 text-gray-700">
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700 forma">
+        <form class="text-gray-700 forma" method="post" action="{{route('store-book')}}">
+            @csrf
+
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
@@ -15,11 +17,11 @@
                         <p>Pismo <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="pismo" id="pismo" onclick="clearErrorsPismo()">
                             <option disabled selected></option>
-                            
+
                     @foreach ($models['letters'] as $letter)
 
                     <option value="{{$letter->id}}">{{$letter->name}}</option>
-                                   
+
                     @endforeach
 
                         </select>
@@ -30,11 +32,11 @@
                         <p>Povez <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="povez" id="povez" onclick="clearErrorsPovez()">
                             <option disabled selected></option>
-                            
+
                         @foreach ($models['bindings'] as $binding)
 
                         <option value="{{$binding->id}}">{{$binding->name}}</option>
-                                   
+
                         @endforeach
 
                         </select>
@@ -45,11 +47,11 @@
                         <p>Format <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format" id="format" onclick="clearErrorsFormat()">
                             <option disabled selected></option>
-                            
+
                     @foreach ($models['formats'] as $format)
 
                     <option value="{{$format->id}}">{{$format->name}}</option>
-                                   
+
                     @endforeach
 
                         </select>
