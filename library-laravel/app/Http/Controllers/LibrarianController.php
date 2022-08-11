@@ -59,6 +59,27 @@ class LibrarianController extends Controller
         return to_route('all-librarian')->with('success-librarian', 'Uspješno ste registrovali bibliotekara ' . "'$request->username'");
     }
 
+    public function crop(Request $request) {
+        $dest = 'storage/librarians';
+        $file = $request->file('photo');
+        $new_image_name = 'UIMG'.date('YmdHis').uniqid().'.jpg';
+
+        $move = $file->move(public_path($dest), $new_image_name);
+
+        if (!$move)  {
+            return response()->json(['status' => 0, 'msg' => 'Greška!']);
+        } else {
+            // $user = auth()->user();
+            // $userPhoto = $user->photo;
+
+            // if ($userPhoto != '') {
+            //     unlink($dest.$userPhoto);
+            // }
+            $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
+            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+        }
+    }
+
     /**
      * Display the specified resource.
      *

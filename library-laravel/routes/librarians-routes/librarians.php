@@ -21,6 +21,8 @@ Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'u
 Route::delete('/izbrisi-bibliotekara/{user:username}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 
+Route::post('/crop', [LibrarianController::class, 'crop'])->name('user.crop');
+
 });
 
 ?>

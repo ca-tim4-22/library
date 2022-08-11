@@ -4,6 +4,7 @@
 
 <!-- Title -->
 <title>Profil bibliotekara | Online Biblioteka</title>
+<link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">
     
 @endsection
 
@@ -11,7 +12,6 @@
 
 <!-- Main content -->
 <main class="flex flex-row small:hidden">
-
 
     <!-- Content -->
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
@@ -142,6 +142,28 @@
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
+
+                    @if (Auth::user()->id == $librarian->id)
+                    <div class="mb-3 w-96">
+                        <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Izmijeni fotografiju</label>
+                        <input class="form-control
+                        block
+                        w-full
+                        px-2
+                        py-1
+                        text-sm
+                        font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="photo" id="photo" type="file">
+                      </div>
+                    @endif
+
                     <img 
                     class="p-2 border-2 border-gray-300" 
                     width="300px"
@@ -209,7 +231,27 @@
         </form>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="{{asset('ijaboCropTool/ijaboCropTool.min.js')}}"></script>
 
+<script>
+    // $('#photo').ijavoCropTool({});
 
+    $('#photo').ijaboCropTool({
+          preview : '.image-previewer',
+          setRatio:1,
+          allowedExtensions: ['jpg', 'jpeg','png'],
+          buttonsText:['Sačuvaj','Otkaži'],
+          buttonsColor:['#4558BE','#ee5155', -15],
+          processUrl:'{{route('user.crop')}}',
+          withCSRF:['_token', '{{csrf_token()}}'],
+          onSuccess:function(message, element, status){
+             alert(message);
+          },
+          onError:function(message, element, status){
+            alert(message);
+          }
+       });
+</script>
     
 @endsection
