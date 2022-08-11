@@ -132,23 +132,36 @@
                     <div class="mx-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="#" aria-label="Dashboard">
+                                <a href="#" id="btnFullscreen" aria-label="Fullscreen">
                                     <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
                                     <div class="hidden sidebar-item">
-                                        <p
+                                        {{-- <button
+                                        style="outline: none;border: none;" 
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Expand</p>
-                                    </div>
-                                </a>
+                                            Expands
+                                        </button> --}}
+                               
+                                <button 
+                                  id="btnFullscreen" 
+                                  type="button" 
+                                  style="outline: none;border: none;" 
+                                  class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">Fullscreen
+                                </button>
+
+                            {{-- Script for fullscren - Jquery --}}
+                            <script src="{{asset('js/fullscreen-jquery.js')}}"></script>
+
                             </div>
-                            <div id="item-collapse_1"
+                            </a>
+                            </div>
+                            {{-- <div id="item-collapse_1"
                                 class="asideArrow hidden sidebar-item transition duration-300 ease-in hover:text-[#576cdf] cursor-pointer">
                                 <i id="arrow-collapse_1" class="inline arrow fas fa-angle-right"></i>
-                            </div>
+                            </div> --}}
                         </span>
                     </div>
                 </li>
-                <!-- Expand menu - items -->
+                {{-- <!-- Expand menu - items -->
                 <ul id="aside-item_1"
                     class="aside-item hidden pl-[70px] mt-[5px] pt-[8px] pb-[10px] text-[#778089] text-[14px]">
                     <li class="mb-[4px] py-[6px]">
@@ -178,7 +191,7 @@
                             </a>
                         </div>
                     </li>
-                </ul>
+                </ul> --}}
             </ul>
         </div>
     </div>
