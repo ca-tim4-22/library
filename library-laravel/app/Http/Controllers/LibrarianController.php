@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LibrarianController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -150,7 +155,6 @@ class LibrarianController extends Controller
         if (Auth::user()->id == $librarian->id) {
             $librarian->delete();
 
-            // return to_route('redirect');
             return to_route('good-bye');
         }
 

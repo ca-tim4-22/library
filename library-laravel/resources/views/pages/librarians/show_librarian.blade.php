@@ -4,27 +4,26 @@
 
 <!-- Title -->
 <title>Profil bibliotekara | Online Biblioteka</title>
+
+<!-- ijaboCropTool Style -->
 <link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">
     
 @endsection
 
 @section('content')
 
-<!-- Main content -->
-<main class="flex flex-row small:hidden">
-
-    <!-- Content -->
+    <x-sidebar></x-sidebar>
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
-        <!-- Heading of content -->
-        <div class="heading">
-            <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
-                <div class="pl-[30px] py-[10px] flex flex-col">
-                    <div>
-                        <h1>
-                            {{$librarian->name}}
-                        </h1>
-                    </div>
-                    <div>
+       <!-- Heading of content -->
+       <div class="heading">
+        <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
+            <div class="pl-[30px] py-[10px] flex flex-col">
+                <div>
+                    <h1>
+                        {{$librarian->name}}
+                    </h1>
+                </div>
+                <div>
                         <nav class="w-full rounded">
                             <ol class="flex list-reset">
                                 <li>
@@ -54,7 +53,7 @@
                         Izmijeni podatke
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsLibrarianProfile hover:text-[#606FC7]"
-                        id="dropdownStudent">
+                        id="dropdownLibrarian">
                         <i
                             class="fas fa-ellipsis-v"></i>
                     </p>
@@ -80,9 +79,9 @@
                 </div>
             </div>
         </div>
-        <!-- Space for content -->
         
-        <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
+<!-- Space for content -->     
+<div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
 
 @error('password')            
     <div class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
@@ -144,9 +143,11 @@
                 <div class="ml-[100px]  mt-[20px]">
 
                     @if (Auth::user()->id == $librarian->id)
-                    <div class="mb-3 w-96">
+                     <div class="mb-3 w-96">
                         <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Izmijeni fotografiju</label>
-                        <input class="form-control
+                        <input 
+                        type="file"
+                        class="form-control
                         block
                         w-full
                         px-2
@@ -160,16 +161,18 @@
                         transition
                         ease-in-out
                         m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" name="photo" id="photo" type="file">
-                      </div>
+                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+                        name="photo" 
+                        id="photo" >
+                     </div>
                     @endif
 
                     <img 
                     class="p-2 border-2 border-gray-300" 
                     width="300px"
                     src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
-                    alt="User Photo"
-                    title="User Photo" />
+                    alt="Profilna slika bibliotekara"
+                    title="Profilna slika bibliotekara" />
                 </div>
             </div>
         </div>
@@ -231,19 +234,19 @@
         </form>
     </div>
 </div>
+
+{{-- Scripts --}}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('ijaboCropTool/ijaboCropTool.min.js')}}"></script>
 
 <script>
-    // $('#photo').ijavoCropTool({});
-
     $('#photo').ijaboCropTool({
           preview : '.image-previewer',
           setRatio:1,
           allowedExtensions: ['jpg', 'jpeg','png'],
           buttonsText:['Sačuvaj','Otkaži'],
           buttonsColor:['#4558BE','#ee5155', -15],
-          processUrl:'{{route('user.crop')}}',
+          processUrl:'{{route('librarian.crop')}}',
           withCSRF:['_token', '{{csrf_token()}}'],
           onSuccess:function(message, element, status){
              alert(message);

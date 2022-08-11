@@ -9,7 +9,6 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(AuthorController::class)->group(function() {
-    
 // Authors
 Route::get('/autori', [AuthorController::class, 'index'])->name('all-author');
 Route::get('/autor/{author:NameSurname}', [AuthorController::class, 'show'])->name('show-author');
@@ -18,7 +17,6 @@ Route::post('/novi-autor', [AuthorController::class, 'store'])->name('store-auth
 Route::get('/izmijeni/profil-autora/{id}', [AuthorController::class, 'edit'])->name('edit-author');
 Route::put('/izmijeni-profil-autora/{id}', [AuthorController::class, 'update'])->name('update-author');
 Route::delete('/izbrisi-autora/{id}', [AuthorController::class, 'destroy'])->name('destroy-author');
-
 });
 
 ?>

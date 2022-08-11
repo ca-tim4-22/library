@@ -9,7 +9,6 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(SettingController::class)->group(function() {
-
 // Settings - index pages
 Route::name('setting-')->prefix('podesavanja')->group(function() {
 
@@ -21,8 +20,7 @@ Route::get('/zanrovi', [SettingController::class, 'genre'])->name('genre');
 Route::get('/izdavac', [SettingController::class, 'publisher'])->name('publisher');
 Route::get('/povez', [SettingController::class, 'binding'])->name('binding');
 Route::get('/format', [SettingController::class, 'format'])->name('format');
-Route::get('/pismo', [SettingController::class, 'letter'])->name('letter');
-    
+Route::get('/pismo', [SettingController::class, 'letter'])->name('letter'); 
 });
 
 });

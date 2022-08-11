@@ -47,7 +47,7 @@
                     </a>
                     <a href="{{route('edit-student', $student->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
-                        Izmjeni podatke
+                        Izmijeni podatke
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsLibrarianProfile hover:text-[#606FC7]"
                        id="dropdownStudent">
@@ -77,8 +77,9 @@
                 </div>
             </div>
         </div>
-        <!-- Space for content -->
-        <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
+
+<!-- Space for content -->
+<div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
             <div class="flex flex-row">
                 <div class="mr-[30px]">
                     <div class="mt-[20px]">
@@ -118,8 +119,8 @@
                         class="p-2 border-2 border-gray-300"
                         width="300px"
                         src="{{$student->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/students/' . $student->photo}}"
-                        alt="User Photo"
-                        title="User Photo" />
+                        alt="Profilna slika učenika"
+                        title="Profilna slika učenika" />
                 </div>
             </div>
         </div>

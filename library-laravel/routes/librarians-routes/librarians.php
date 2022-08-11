@@ -10,7 +10,6 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(LibrarianController::class)->group(function() {
-    
 // Librarians
 Route::get('/bibliotekari', [LibrarianController::class, 'index'])->name('all-librarian');
 Route::get('/bibliotekar/{user:username}', [LibrarianController::class, 'show'])->name('show-librarian');
@@ -20,9 +19,7 @@ Route::get('/izmijeni/profil-bibliotekara/{id}', [LibrarianController::class, 'e
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
 Route::delete('/izbrisi-bibliotekara/{user:username}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
-
-Route::post('/crop', [LibrarianController::class, 'crop'])->name('user.crop');
-
+Route::post('/crop', [LibrarianController::class, 'crop'])->name('librarian.crop');
 });
 
 ?>

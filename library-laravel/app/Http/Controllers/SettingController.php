@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller
 {
-    // Custom
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
+    // Custom methods
     public function policy() {
         $policies = GlobalVariable::all();
         return view('pages.settings.policy.settings-policy', compact('policies'));
