@@ -132,24 +132,24 @@
             <div class="flex flex-row items-center justify-end mt-2">
                 <div>
                     <p class="inline text-md">
-                        Rows per page:
+                        Broj redova po strani:
                     </p>
                     <select
                         class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
                         name="ucenici">
-                        <option value="">
+                        <option value="5">
                             5
                         </option>
-                        <option value="">
+                        <option value="10">
                             10
                         </option>
-                        <option value="">
+                        <option value="15">
                             15
                         </option>
-                        <option value="">
+                        <option value="20">
                             20
                         </option>
-                        <option value="">
+                        <option value="50">
                             50
                         </option>
                     </select>
