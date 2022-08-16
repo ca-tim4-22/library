@@ -2,21 +2,33 @@
  <section style="margin-top: 20px" class="w-screen h-screen pl-[0px] pb-2 text-gray-700">
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700 forma" method="post" action="{{route('store-book')}}">
-            @csrf
-
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
                         <p>Broj strana <span class="text-red-500">*</span></p>
-                        <input type="text" name="brStrana" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()"/>
+                        <input type="text" name="page_count" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()"/>
                         <div id="validateBrStrana"></div>
                     </div>
 
                     <div class="mt-[20px]">
+                        <p>Jezik <span class="text-red-500">*</span></p>
+                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="language_id" id="jezik" onclick="clearErrorsJezik()">
+                    <option disabled selected></option>
+
+                    @foreach ($models['languages'] as $language)
+
+                    <option value="{{$language->id}}">{{$language->name}}</option>
+
+                    @endforeach
+
+                        </select>
+                        <div id="validatePismo"></div>
+                    </div>
+
+                    <div class="mt-[20px]">
                         <p>Pismo <span class="text-red-500">*</span></p>
-                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="pismo" id="pismo" onclick="clearErrorsPismo()">
-                            <option disabled selected></option>
+                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="letter_id" id="pismo" onclick="clearErrorsPismo()">
+                    <option disabled selected></option>
 
                     @foreach ($models['letters'] as $letter)
 
@@ -30,7 +42,7 @@
 
                     <div class="mt-[20px]">
                         <p>Povez <span class="text-red-500">*</span></p>
-                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="povez" id="povez" onclick="clearErrorsPovez()">
+                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="binding_id" id="povez" onclick="clearErrorsPovez()">
                             <option disabled selected></option>
 
                         @foreach ($models['bindings'] as $binding)
@@ -45,7 +57,7 @@
 
                     <div class="mt-[20px]">
                         <p>Format <span class="text-red-500">*</span></p>
-                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format" id="format" onclick="clearErrorsFormat()">
+                        <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format_id" id="format" onclick="clearErrorsFormat()">
                             <option disabled selected></option>
 
                     @foreach ($models['formats'] as $format)
@@ -59,8 +71,8 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Internacionalni standardni broj knjige<span class="text-red-500">*</span></p>
-                        <input type="text" name="isbn" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()"/>
+                        <p>Međunarodni standardni broj knjige<span class="text-red-500">*</span></p>
+                        <input type="text" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0"/>
                         <div id="validateIsbn"></div>
                     </div>
                 </div>
@@ -75,11 +87,10 @@
                         <button style="margin-right: 30px" id="sacuvajSpecifikaciju" type="submit"
                             class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
                             Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-                        </button>
+                        </button> 
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </section>
 <!-- End Content -->

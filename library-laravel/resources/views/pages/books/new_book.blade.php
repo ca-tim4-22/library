@@ -46,7 +46,11 @@
                 </div>
             </div>
 
+            {{-- Form for creating a new book --}}
+            <form action="{{route('store-book')}}" method="POST">
+            @csrf
             <x-books.jquery :models="$models"></x-books.jquery>
+            </form>
     </main>
 
 

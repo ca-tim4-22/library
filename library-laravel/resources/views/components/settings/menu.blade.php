@@ -10,15 +10,15 @@
         Žanrovi
     </a>
     <a href="{{route('setting-publisher')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/izdavac')) ? 'active-book-nav' : ''}}"">
-        Izdavač
+        Izdavači
     </a>
     <a href="{{route('setting-binding')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/povez')) ? 'active-book-nav' : ''}}"">
-        Povez
+        Povezi
     </a>
     <a href="{{route('setting-format')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/format')) ? 'active-book-nav' : ''}}"">
-        Format
+        Formati
     </a>
     <a href="{{route('setting-letter')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/pismo')) ? 'active-book-nav' : ''}}"">
-        Pismo
+        Pisma
     </a>
 </div>

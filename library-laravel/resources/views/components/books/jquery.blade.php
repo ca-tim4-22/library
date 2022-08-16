@@ -1,4 +1,3 @@
-
 <style>
     .wrapper .active { 
         color: #2196f3;
@@ -26,17 +25,29 @@
                 Multimedija
             </a>      
         </div>
+
+        <form action="{{route('store-book')}}" method="POST">
+        @csrf
+        
         <div class="tab_content">
-            <div class="tab_item">
-                <x-books.book_info :models="$models"></x-books.book_info>
-            </div>
-            <div class="tab_item">
-                <x-books.book_specification :models="$models"></x-books.book_specification>
-            </div>
-            <div class="tab_item">
-                <x-books.book_multimedia></x-books.book_multimedia>
-            </div>
+        
+        <div class="tab_item">
+            <x-books.book_info :models="$models"></x-books.book_info>
         </div>
+
+        <div class="tab_item">
+            <x-books.book_specification :models="$models"></x-books.book_specification>
+        </form>
+        </div>
+        
+        <div class="tab_item">
+            <x-books.book_multimedia></x-books.book_multimedia>
+        </div>
+        
+        </div>
+        
+    </form>
+        
     </div>
     </div>
     

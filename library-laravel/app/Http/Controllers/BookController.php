@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
+use App\Models\BookAuthor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-
+        
         return view('pages.books.books', compact('books'));
     }
 
@@ -34,7 +35,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $models=[
+        $models = [
             'categories'=> DB::table('categories')->get(),
             'genres' => DB::table('genres')->get(),
             'authors' => DB::table('authors')->get(),
@@ -56,11 +57,35 @@ class BookController extends Controller
      */
     public function store(BookCreateRequest $request)
     {
-        $input=$request->all();
-        //return $input;
-        Book::create($input);
-        return redirect('all-books')->with('created-book','Uspjesno ste napravili knjigu');
+        $input = $request->all();
+        
+        $book = new Book();
+        $book->title = $request->input('title');
+        $book->body = $request->input('body');
+        $book->publisher_id = $request->input('publisher_id');
+        $book->quantity_count = $request->input('quantity_count');
+        $book->page_count = $request->input('page_count');
+        // $book->genre_id = $request->input('genre_id');
+        $book->binding_id = $request->input('binding_id');
+        $book->letter_id = $request->input('letter_id');
+        $book->format_id = $request->input('format_id');
+        $book->language_id = $request->input('language_id');
+        $book->ISBN = $request->input('ISBN');
+        $book->rented_count = '0';
+        $book->reserved_count = '0';
+        $book->save();
 
+        DB::table('book_categories')->insert(
+            ['book_id' => '1','category_id' => '1'],
+        );
+        DB::table('book_authors')->insert(
+            ['book_id' => '1','author_id' => '1'],
+        );
+        DB::table('book_genres')->insert(
+            ['book_id' => '1','genre_id' => '1'],
+        );
+
+        return to_route('all-books')->with('success-book','Uspješno ste dodali knjigu.');
     }
 
     /**
@@ -71,8 +96,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book=Book::where('id',$id);
-        return view('pages.books.show_book',compact('book'));
+        $book = Book::findOrFail($id);
+
+        return view('pages.books.show_book', compact('book'));
     }
 
     /**
@@ -83,8 +109,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $book=Book::where('id',$id);
-        return view('pages.books.edit_book',compact('book'));
+        $book = Book::findOrFail($id);
+
+        return view('pages.books.edit_book', compact('book'));
     }
 
     /**
@@ -107,8 +134,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $book=Book::where('id',$id);
+        $book = Book::findOrFail($id);
         $book->delete();
-        return redirect('all-books')->with('deleted-book','Uspjesno ste obrisali knjigu');
+
+        return to_route('all-books')->with('book-deleted', 'Uspješno ste izbrisali knjigu.');
     }
 }

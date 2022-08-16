@@ -36,10 +36,8 @@
 
                             </select>
 
-
-
                             <div x-data="dropdown()" x-init="loadOptions()" class="flex flex-col w-[90%]">
-                                <input name="values" id="kategorijaInput" type="hidden"
+                                <input name="category_id" id="kategorijaInput" type="hidden"
                                     x-bind:value="selectedValues()">
                                 <div class="relative inline-block w-[100%]">
                                     <div class="relative flex flex-col items-center">
@@ -68,7 +66,7 @@
                                                         </div>
                                                 </div>
                                                 </template>
-                                                <div x-show="selected.length    == 0" class="flex-1">
+                                                <div x-show="selected.length == 0" class="flex-1">
                                                     <input
                                                         class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                                                         x-bind:value="selectedValues()">
@@ -127,7 +125,7 @@
 
                     <div class="mt-[20px]">
                         <p>Izaberite žanrove <span class="text-red-500">*</span></p>
-                        <select x-cloak id="zanr">
+                        <select x-cloak id="zanr" name="genre_id">
 
                             @foreach ($models['genres'] as $genre)
 
@@ -138,7 +136,7 @@
                         </select>
 
                         <div x-data="dropdown()" x-init="loadOptionsZanrovi()" class="flex flex-col w-[90%]">
-                            <input name="values" id="zanroviInput" type="hidden" x-bind:value="selectedValues()">
+                            <input name="genre_id   " id="zanroviInput" type="hidden" x-bind:value="selectedValues()">
                             <div class="relative inline-block w-[100%]">
                                 <div class="relative flex flex-col items-center">
                                     <div x-on:click="open" class="w-full svelte-1l8159u">
@@ -227,7 +225,7 @@
         <div class="w-[50%]">
             <div class="mt-[20px]">
                 <p>Izaberite autore <span class="text-red-500">*</span></p>
-                <select x-cloak id="autori">
+                <select x-cloak id="autori" name="author_id">
 
                     @foreach ($models['authors'] as $author)
 
@@ -238,7 +236,7 @@
                 </select>
 
                 <div x-data="dropdown()" x-init="loadOptionsAutori()" class="flex flex-col w-[90%]">
-                    <input name="values" id="autoriInput" type="hidden" x-bind:value="selectedValues()">
+                    <input name="author_id" id="autoriInput" type="hidden" x-bind:value="selectedValues()">
                     <div class="relative inline-block w-[100%]">
                         <div class="relative flex flex-col items-center">
                             <div x-on:click="open" class="w-full svelte-1l8159u">
@@ -323,8 +321,7 @@
 
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
-            <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                name="izdavac" id="izdavac" onclick="clearErrorsIzdavac()">
+            <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">
                 <option disabled selected></option>
 
                     @foreach ($models['publishers'] as $publisher)
@@ -352,7 +349,7 @@
 
         <div class="mt-[20px]">
             <p>Količina <span class="text-red-500">*</span></p>
-            <input type="text" name="knjigaKolicina" id="knjigaKolicina"
+            <input type="text" name="quantity_count" id="knjigaKolicina"
                 class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 onkeydown="clearErrorsKnjigaKolicina()" />
             <div id="validateKnjigaKolicina"></div>
@@ -367,10 +364,12 @@
                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                         Poništi <i class="fas fa-times ml-[4px]"></i>
                     </button>
-                    <button style="margin-right: 30px" id="sacuvajKnjigu" type="submit"
-                    class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
-                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-                </button>
+
+                <button type="submit" style="margin-right: 30px" id="sacuvajKnjigu" type="submit"
+                class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
+                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                </button>         
+                
                 </div>
             </div>
         </div>

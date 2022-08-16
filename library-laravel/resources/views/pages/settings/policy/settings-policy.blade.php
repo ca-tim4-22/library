@@ -17,7 +17,6 @@
             <div class="pl-[30px] pb-[21px]">
                 <h1>
                     Podešavanja
-
                 {{-- Policy update flash message --}}
                 @if (session()->has('policy-updated'))
                 <div class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">

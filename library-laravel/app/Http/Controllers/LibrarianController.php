@@ -123,13 +123,13 @@ class LibrarianController extends Controller
         $input = $request->all();
         $user = Auth::user();   
 
-        $photo_old = $request->photo;
+        // $photo_old = $request->photo;
     
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians', $name);
-            $input['photo'] = $name; 
-        } 
+        // if ($file = $request->file('photo')) {
+        //     $name = time() . $file->getClientOriginalName();
+        //     $file->move('storage/librarians', $name);
+        //     $input['photo'] = $name; 
+        // } 
 
         if ($request->password) {
             $input['password'] = bcrypt($request->password);
