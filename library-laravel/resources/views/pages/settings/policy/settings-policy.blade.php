@@ -1,3 +1,5 @@
+<x-jquery.jquery></x-jquery.jquery>
+
 @extends('layouts.dashboard')
 
 @section('title')
@@ -27,13 +29,7 @@
                     </div>
                 </div>
                 @endif
-                {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-                <script>
-                    $(function() {
-setTimeout(function() { $("#hideDiv").fadeOut(1500); }, 700)
-
-})
-                </script> --}}
+                
 
                 </h1>
                 
