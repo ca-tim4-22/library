@@ -16,7 +16,6 @@
             <div class="flex border-b-[1px] border-[#e4dfdf]">
                 <div class="pl-[30px] py-[10px] flex flex-col">
                     <div>
-
                         <h1>
                             Novi učenik
                         </h1>

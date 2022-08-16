@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+<x-jquery.jquery></x-jquery.jquery>
 
     <x-sidebar></x-sidebar>
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
@@ -96,7 +97,7 @@
 
 {{-- Session message for librarian update password --}}
 @if (session()->has('password-updated'))
-<div class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
@@ -144,24 +145,10 @@
 
                     @if (Auth::user()->id == $librarian->id)
                      <div class="mb-3 w-96">
-                        <label for="formFileSm" class="form-label inline-block mb-2 text-gray-700">Izmijeni fotografiju</label>
+                        <label for="formFileSm" class="inline-block mb-2 text-gray-700 form-label">Izmijeni fotografiju</label>
                         <input 
                         type="file"
-                        class="form-control
-                        block
-                        w-full
-                        px-2
-                        py-1
-                        text-sm
-                        font-normal
-                        text-gray-700
-                        bg-white bg-clip-padding
-                        border border-solid border-gray-300
-                        rounded
-                        transition
-                        ease-in-out
-                        m-0
-                        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+                        class="block w-full px-2 py-1 m-0 text-sm font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
                         name="photo" 
                         id="photo" >
                      </div>

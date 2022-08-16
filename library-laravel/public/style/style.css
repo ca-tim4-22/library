@@ -39,6 +39,13 @@
   user-select: none !important;
 }
 
+/* Placeholder property */
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #333 !important;
+  opacity: 0.75 !important; /* Firefox */
+}
+
 /* ----------------------------------------------------------- */
 
 /* Media Query for changing background on higher resolutions */
@@ -2742,3 +2749,4 @@ h4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+

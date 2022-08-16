@@ -81,6 +81,7 @@ class LibrarianController extends Controller
             //     unlink($dest.$userPhoto);
             // }
             $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
+
             return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
         }
     }

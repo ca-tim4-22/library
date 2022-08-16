@@ -24,8 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('publisher_id');
             $table->string('ISBN', 20)->unique();
             $table->integer('quantity_count');
-            $table->integer('rented_count');
-            $table->integer('reserved_count');
+            $table->integer('rented_count')->default(0);
+            $table->integer('reserved_count')->default(0);
             $table->string('body', 4128);
             $table->timestamps();
             

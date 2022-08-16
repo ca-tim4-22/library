@@ -71,18 +71,16 @@ class BookController extends Controller
         $book->format_id = $request->input('format_id');
         $book->language_id = $request->input('language_id');
         $book->ISBN = $request->input('ISBN');
-        $book->rented_count = '0';
-        $book->reserved_count = '0';
         $book->save();
 
         DB::table('book_categories')->insert(
-            ['book_id' => '1','category_id' => '1'],
-        );
+            ['book_id' => $book->id, 'category_id' => $input['category_id']],
+        );  
         DB::table('book_authors')->insert(
-            ['book_id' => '1','author_id' => '1'],
+            ['book_id' => $book->id, 'author_id' => $input['author_id']],
         );
         DB::table('book_genres')->insert(
-            ['book_id' => '1','genre_id' => '1'],
+            ['book_id' => $book->id, 'genre_id' => $input['genre_id']],
         );
 
         return to_route('all-books')->with('success-book','Uspješno ste dodali knjigu.');

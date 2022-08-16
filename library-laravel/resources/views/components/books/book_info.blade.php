@@ -67,7 +67,7 @@
                                                 </div>
                                                 </template>
                                                 <div x-show="selected.length == 0" class="flex-1">
-                                                    <input
+                                                    <input name="category_id"
                                                         class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                                                         x-bind:value="selectedValues()">
                                                 </div>
@@ -164,8 +164,8 @@
                                                     </div>
                                             </div>
                                             </template>
-                                            <div x-show="selected.length    == 0" class="flex-1">
-                                                <input
+                                            <div x-show="selected.length == 0" class="flex-1">
+                                                <input name="genre_id"
                                                     class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                                                     x-bind:value="selectedValues()">
                                             </div>
@@ -264,7 +264,7 @@
                                     </div>
                                     </template>
                                     <div x-show="selected.length    == 0" class="flex-1">
-                                        <input
+                                        <input name="author_id"
                                             class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                                             x-bind:value="selectedValues()">
                                     </div>

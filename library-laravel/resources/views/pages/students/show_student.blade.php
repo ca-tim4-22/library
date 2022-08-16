@@ -8,6 +8,8 @@
 @endsection
 
 @section('content')
+<x-jquery.jquery></x-jquery.jquery>
+
 
     <x-sidebar></x-sidebar>
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
