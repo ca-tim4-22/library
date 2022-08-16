@@ -18,6 +18,18 @@ return new class extends Migration
             $table->id();
             $table->string('name', 256);
         });
+
+        DB::table('languages')->insert([
+            ['name' => 'Crnogorski'],
+            ['name' => 'Srpski'],
+            ['name' => 'Bosanski'],
+            ['name' => 'Hrvatski'],
+            ['name' => 'Slovenski'],
+            ['name' => 'Mađarski'],
+            ['name' => 'Engleski'],
+            ['name' => 'Francuski'],
+            ['name' => 'Italijanski'],
+        ]);
     }
 
     /**
