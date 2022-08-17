@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Knjige | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
 <x-jquery.search></x-jquery.search>
 
 <main class="flex flex-row small:hidden">
-    
+
     <!-- Content -->
     <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
         <!-- Heading of content -->
@@ -357,7 +357,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white" id="tablex">
-                  
+
                             @if (count($books) > 0)
 
                             @foreach ($books as $book)
@@ -439,7 +439,7 @@
                                                 <form action="{{route('destroy-book', $book->id)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button 
+                                                    <button
                                                             style="outline: none;border: none;"
                                                             type="submit"
                                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
@@ -453,11 +453,11 @@
                                     </div>
                                 </td>
                             </tr>
-                                
+
                             @endforeach
-                                
+
                             @endif
-         
+
                         </tbody>
                     </table>
 
