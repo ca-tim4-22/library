@@ -24,7 +24,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-        
+
         return view('pages.books.books', compact('books'));
     }
 
@@ -58,7 +58,7 @@ class BookController extends Controller
     public function store(BookCreateRequest $request)
     {
         $input = $request->all();
-        
+
         $book = new Book();
         $book->title = $request->input('title');
         $book->body = $request->input('body');
@@ -75,7 +75,7 @@ class BookController extends Controller
 
         DB::table('book_categories')->insert(
             ['book_id' => $book->id, 'category_id' => $input['category_id']],
-        );  
+        );
         DB::table('book_authors')->insert(
             ['book_id' => $book->id, 'author_id' => $input['author_id']],
         );
@@ -107,9 +107,20 @@ class BookController extends Controller
      */
     public function edit($id)
     {
+        $models = [
+            'categories'=> DB::table('categories')->get(),
+            'genres' => DB::table('genres')->get(),
+            'authors' => DB::table('authors')->get(),
+            'publishers' => DB::table('publishers')->get(),
+            'bindings' => DB::table('bindings')->get(),
+            'formats' => DB::table('formats')->get(),
+            'languages' => DB::table('languages')->get(),
+            'letters' =>DB::table('letters')->get()
+        ];
+
         $book = Book::findOrFail($id);
 
-        return view('pages.books.edit_book', compact('book'));
+        return view('pages.books.edit_book', ['book'=>$book,'models'=>$models]);
     }
 
     /**
