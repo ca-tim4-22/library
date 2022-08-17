@@ -8,6 +8,10 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Searching functionality --}}
+<x-jquery.search></x-jquery.search>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -60,7 +64,7 @@
                             </svg>
                         </button>
                     </span>
-                    <input type="search" name="q"
+                    <input id="myInput" type="search" name="q"
                         class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                         placeholder="Traži..." autocomplete="off">
                 </div>
@@ -86,7 +90,7 @@
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody class="bg-white" id="tablex">
 
                     @foreach ($authors as $author)
 
