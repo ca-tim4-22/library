@@ -8,7 +8,10 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
+{{-- Searching functionality --}}
+<x-jquery.search></x-jquery.search>
 
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
@@ -40,6 +43,7 @@
 @endif
         </h1>
     </div>
+
     <!-- Space for content -->
     <div class="scroll height-dashboard">
         <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
@@ -56,13 +60,13 @@
                             </svg>
                         </button>
                     </span>
-                    <input type="search" name="q"
+                    <input id="myInput" type="search" name="q"
                         class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                         placeholder="Traži..." autocomplete="off">
                 </div>
             </div>
         </div>
-
+        
         <div class="inline-block min-w-full px-[30px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 
             @if (count($librarians) <= 0)
@@ -100,7 +104,7 @@
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody class="bg-white" id="tablex">
 
                     @foreach ($librarians as $librarian)
                     <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">

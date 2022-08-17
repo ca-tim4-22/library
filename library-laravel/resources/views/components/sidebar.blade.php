@@ -118,8 +118,7 @@
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Izdavanje
-                                            knjiga
+                                            Izdavanje knjiga
                                         </p>
                                     </div>
                                 </a>
@@ -127,6 +126,7 @@
                         </span>
                     </div>
                 </li>
+                
                 <!-- Expand menu example -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">
                     <div class="mx-[30px]">

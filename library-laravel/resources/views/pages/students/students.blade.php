@@ -8,7 +8,10 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
+{{-- Searching functionality --}}
+<x-jquery.search></x-jquery.search>
 
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[60px] text-[#212121]">
@@ -55,7 +58,7 @@
                             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </button>
                     </span>
-                    <input type="search" name="q" class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Traži..." autocomplete="off">
+                    <input id="myInput" type="search" name="q" class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Traži..." autocomplete="off">
                 </div>
             </div>            
         </div>
@@ -96,7 +99,7 @@
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
-                <tbody class="bg-white">
+                <tbody class="bg-white" id="tablex">
 
                     @foreach ($students as $student)
 
@@ -138,7 +141,7 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmjeni korisnika</span>
+                                            <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmjeni svoj nalog" : 'Izmjeni učenika'}}</span>
                                         </a>
                                         <form action="{{route('destroy-student', $student->username)}}" method="POST">
                                             @csrf
@@ -149,7 +152,7 @@
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                <span class="px-4 py-0">Izbriši korisnika</span>
+                                                <span class="px-4 py-0">{{Auth::id() == $student->id ? 'Izbriši svoj nalog' : 'Izbriši učenika'}}</span>
                                             </button>
                                         </form>
                                     </div>
