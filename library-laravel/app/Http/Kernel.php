@@ -66,6 +66,5 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'maintenance-protection' => \App\Http\Middleware\Maintenance\MaintenanceMiddleware::class,
         'see-you-later-protection' => \App\Http\Middleware\SeeYouLater\SeeYouLaterMiddleware::class,
-        'test' => \App\Http\Middleware\Testt::class,
     ];
 }

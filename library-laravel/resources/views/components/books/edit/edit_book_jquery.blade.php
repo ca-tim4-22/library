@@ -28,7 +28,6 @@
 
         <form action="{{route('update-book',1)}}" method="PUT">
             @csrf
-
             <div class="tab_content">
 
                 <div class="tab_item">

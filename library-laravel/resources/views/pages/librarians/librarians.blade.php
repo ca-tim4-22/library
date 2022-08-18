@@ -86,7 +86,67 @@
 
             @if (count($librarians) > 0)
 
-            <table class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
+<style>
+           
+th {
+    cursor: default;
+    user-select: none;
+}
+
+#arrow:after {
+  content: '↑';
+  font-weight: bold !important;
+  cursor: pointer;
+}
+
+#sort th.asc:after {
+  content: '↓';
+}
+
+#sort th.desc:after {
+  content: '↑';
+}
+
+</style>
+
+            <script>
+                $(function () {
+  $('table')
+    .on('click', 'th', function () {
+      var index = $(this).index(),
+          rows = [],
+          thClass = $(this).hasClass('asc') ? 'desc' : 'asc';
+
+      $('#sort th').removeClass('asc desc');
+      $(this).addClass(thClass);
+
+      $('#sort tbody tr').each(function (index, row) {
+        rows.push($(row).detach());
+      });
+
+      rows.sort(function (a, b) {
+        var aValue = $(a).find('td').eq(index).text(),
+            bValue = $(b).find('td').eq(index).text();
+
+        return aValue > bValue
+             ? 1
+             : aValue < bValue
+             ? -1
+             : 0;
+      });
+
+      if ($(this).hasClass('desc')) {
+        rows.reverse();
+      }
+
+      $.each(rows, function (index, row) {
+        $('#sort tbody').append(row);
+      });
+    });
+});
+            </script>
+
+            <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-[1px] border-[#e4dfdf]">
                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
@@ -94,12 +154,11 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left">Ime i prezime<a href="#"><i
-                                    class="ml-3 fa-lg fas fa-long-arrow-alt-down" onclick="sortTable()"></i></a>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">Ime i prezime</a>
                         </th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Email</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Tip korisnika</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Zadnji pristup sistemu
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Email</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Tip korisnika</th>
+                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Zadnji pristup sistemu
                         </th>
                         <th class="px-4 py-4"> </th>
                     </tr>

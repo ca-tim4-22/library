@@ -3,7 +3,7 @@
 @section('title')
 
     <!-- Title -->
-    <title>Nova knjiga | Online Biblioteka</title>
+    <title>Izmijeni knjigu | Online Biblioteka</title>
 
 @endsection
 
@@ -19,7 +19,7 @@
                     <div class="pl-[30px] py-[10px] flex flex-col">
                         <div>
                             <h1>
-                                Nova knjiga
+                                Izmijeni knjigu
                             </h1>
 
                         </div>
@@ -35,8 +35,8 @@
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
-                                        <a href="{{route('new-book')}}" class="text-[#2196f3] hover:text-blue-600">
-                                            Nova knjiga
+                                        <a href="{{route('edit-book', $book->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                            Izmijeni knjigu
                                         </a>
                                     </li>
                                 </ol>
@@ -46,7 +46,7 @@
                 </div>
             </div>
 
-            {{-- Form for creating a new book --}}
+            {{-- Form for update a book --}}
             <form action="{{route('update-book',$book->id)}}" method="PUT">
                 @csrf
                 <x-books.edit.edit_book_jquery :models="$models" :book="$book"></x-books.edit.edit_book_jquery>
