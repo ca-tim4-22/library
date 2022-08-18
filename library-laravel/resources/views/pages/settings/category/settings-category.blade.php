@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Podešavanja | Kategorije - Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -45,19 +45,35 @@
             </div>
         </div>
     </div>
-   
+
     {{-- Component for menu --}}
     <x-settings.menu></x-settings.menu>
 
     <div class="height-kategorije pb-[30px] scroll">
-        <div class="flex items-center px-[50px] py-8 space-x-3 rounded-lg">
-            <a href="{{route('new-category')}}"
-                class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
+        <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
+            <a href="{{ route('new-category') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                 <i class="fas fa-plus mr-[15px]"></i> Nova kategorija
             </a>
+            <div class="flex items-center">
+                <div class="relative text-gray-600 focus-within:text-gray-400">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <input id="categorySearch" type="search" name="q"
+                           class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                           placeholder="Traži..." autocomplete="off">
+                </div>
+            </div>
         </div>
 
-        
+
+
+
         <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 
             @if (count($categories) > 0)
@@ -77,9 +93,9 @@
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
-                
+
                 <tbody class="bg-white">
-                    
+
                     @foreach ($categories as $category)
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
@@ -88,9 +104,9 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img 
-                            style="height:30px" 
-                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}" 
+                            <img
+                            style="height:30px"
+                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
                             alt="{{$category->name}}"
                             title="{{$category->name}}">
                             <p class="ml-4 text-center no-select">{{$category->name}}</p>
@@ -114,9 +130,9 @@
                                         <form action="{{route('destroy-category', $category->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button 
+                                            <button
                                             style="outline: none;border: none"
-                                            type="submit" 
+                                            type="submit"
                                             tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
@@ -131,10 +147,10 @@
                     </tr>
                     @endforeach
 
-                    @else 
+                    @else
 
                     <div class="mx-[50px]">
-                        <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                        <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
                             <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                                 <path fill="currentColor"
                                         d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
@@ -142,12 +158,12 @@
                             </svg>
                             <p class="font-medium text-white">Trenutno nema kategorija u bazi podataka! </p>
                         </div>
-                    </div>  
-                        
+                    </div>
+
                     @endif
 
                 </tbody>
-            </table> 
+            </table>
 
             @if(count($categories) > 0)
 

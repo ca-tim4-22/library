@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Podešavanja | Polise - Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -28,21 +28,21 @@
                     </div>
                 </div>
                 @endif
-                
+
 
                 </h1>
-                
+
             </div>
         </div>
     </div>
-    
+
     {{-- Component for menu --}}
     <x-settings.menu></x-settings.menu>
-    
+
     <div class="height-ucenikProfile pb-[30px] scroll">
         <!-- Space for content -->
         <div class="section-">
-            
+
             <div class="flex flex-col">
 
 
@@ -63,7 +63,7 @@
                         <form class="flex" method="POST" action="{{route('update-policy', $policy->id)}}">
                             @csrf
                             @method('PUT')
-                            <button 
+                            <button
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
@@ -74,14 +74,14 @@
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
                             <p class="ml-[10px] mt-[15px]">dana</p>
-                            
+
                         </form>
-                        
-                       
+
+
                     </div>
                 </div>
-                
-                @endforeach 
+
+                @endforeach
                 @error('value')
                 <div>
                     <p style="margin-left: 2%;margin-top: 1%" class="text-sm text-red-500">{{ $message }}</p>
@@ -94,5 +94,5 @@
 <!-- End Content -->
 </main>
 <!-- End Main content -->
-    
+
 @endsection
