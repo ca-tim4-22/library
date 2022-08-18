@@ -106,36 +106,38 @@ class BookController extends Controller
         return view('pages.books.show_book', compact('book'));
     }
 
-    public function publishedBooks(){
-        $book=new Book();
-        return view('pages.books.published.published',compact('book'));
+    public function publishedBooks()
+    {
+        $book = new Book();
+
+        return view('pages.books.published.published', compact('book'));
     }
 
+    public function activeReservations()
+    {
+        $book = new Book();
 
+        return view('pages.books.published.active_reservations', compact('book'));
+    }
 
-    public function activeReservations(){
-        $book=new Book();
-        return view('pages.books.published.active_reservations',compact('book'));
+    public function archivedReservations()
+    {
+        $book = new Book();
+
+        return view('pages.books.published.archived_reservations', compact('book'));
     }
-    public function archivedReservations(){
-        $book=new Book();
-        return view('pages.books.published.archived_reservations',compact('book'));
+
+    public function overdueBooks()
+    {
+        $book = new Book();
+
+        return view('pages.books.published.overdue_books', compact('book'));
     }
-    public function overdueBooks(){
-        $book=new Book();
-        return view('pages.books.published.overdue_books',compact('book'));
-    }
+
     public function returnedBooks(){
-        $book=new Book();
-        return view('pages.books.published.returned_books',compact('book'));
+        $book = new Book();
+        return view('pages.books.published.returned_books', compact('book'));
     }
-
-
-
-
-
-
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -181,12 +183,12 @@ class BookController extends Controller
         $book->quantity_count=request('quantity_count');
         $book->rented_count=0;
         $book->reserved_count=0;
+
         if(request('category_id')){
             DB::table('book_categories')->insert(
                 ['book_id' => $book->id, 'category_id' => request('category_id')],
             );
         }
-
 
         if(request('book_authors')){
             DB::table('book_authors')->insert(
@@ -201,9 +203,6 @@ class BookController extends Controller
         }
 
         return to_route('all-books')->with('success-edited-book','Uspješno ste izmijenili knjigu.');
-
-
-
     }
 
     /**
