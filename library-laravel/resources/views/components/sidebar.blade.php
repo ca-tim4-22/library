@@ -14,7 +14,7 @@
                         <span class="flex justify-between w-full fill-current whitespace-nowrap">
                             <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
                                 <a href="{{route('dashboard')}}" aria-label="Dashboard">
-                                    
+
             <i class="{{ (request()->is('dashboard')) ? 'text-white ml-1 bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px]' : 'text-[#707070] ml-1 px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px] group-hover:text-[#576cdf] transition duration-300 ease-in' }}"></i>
 
                                     <div class="hidden sidebar-item">
@@ -72,7 +72,7 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-books')}}" aria-label="Knjige">
-                                    
+
                                     {{-- <i class="text-[25px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] far fa-copy"></i> --}}
 
                                     <i class="{{ (request()->is('knjige')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] far fa-copy text-[20px] rounded-[3px]' : 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
@@ -112,7 +112,7 @@
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="izdateKnjige.php" aria-label="Knjige">
+                                <a href="{{route('published-books')}}" aria-label="Knjige">
                                     <i
                                         class="text-[22px] transition duration-300 ease-in group-hover:text-[#576cdf] text-[#707070] fas fa-exchange-alt"></i>
                                     <div class="hidden sidebar-item">
@@ -126,7 +126,7 @@
                         </span>
                     </div>
                 </li>
-                
+
                 <!-- Expand menu example -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">
                     <div class="mx-[30px]">
@@ -136,15 +136,15 @@
                                     <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
                                     <div class="hidden sidebar-item">
                                         {{-- <button
-                                        style="outline: none;border: none;" 
+                                        style="outline: none;border: none;"
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
                                             Expands
                                         </button> --}}
-                               
-                                <button 
-                                  id="btnFullscreen" 
-                                  type="button" 
-                                  style="outline: none;border: none;" 
+
+                                <button
+                                  id="btnFullscreen"
+                                  type="button"
+                                  style="outline: none;border: none;"
                                   class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">Fullscreen
                                 </button>
 
@@ -202,7 +202,7 @@
                 {{-- <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[22px] text-[#707070] fas fa-cog"></i> --}}
 
                 <i class="{{ (request()->is('podesavanja/*')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-cog text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
-                
+
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
                         Podešavanja</p>

@@ -106,6 +106,36 @@ class BookController extends Controller
         return view('pages.books.show_book', compact('book'));
     }
 
+    public function publishedBooks(){
+        $book=new Book();
+        return view('pages.books.published.published',compact('book'));
+    }
+
+
+
+    public function activeReservations(){
+        $book=new Book();
+        return view('pages.books.published.active_reservations',compact('book'));
+    }
+    public function archivedReservations(){
+        $book=new Book();
+        return view('pages.books.published.archived_reservations',compact('book'));
+    }
+    public function overdueBooks(){
+        $book=new Book();
+        return view('pages.books.published.overdue_books',compact('book'));
+    }
+    public function returnedBooks(){
+        $book=new Book();
+        return view('pages.books.published.returned_books',compact('book'));
+    }
+
+
+
+
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
