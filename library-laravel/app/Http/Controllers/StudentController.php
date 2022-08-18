@@ -63,6 +63,28 @@ class StudentController extends Controller
         return to_route('all-student')->with('success-student', 'Uspješno ste registrovali učenika ' . "'$request->username'");
     }
 
+    public function crop(Request $request) {
+        $dest = 'storage/students';
+        $file = $request->file('photo');
+        $new_image_name = date('YmdHis').uniqid().'.jpg';
+
+        $move = $file->move(public_path($dest), $new_image_name);
+
+        if (!$move)  {
+            return response()->json(['status' => 0, 'msg' => 'Greška!']);
+        } else {
+            // $user = auth()->user();
+            // $userPhoto = $user->photo;
+
+            // if ($userPhoto != '') {
+            //     unlink($dest.$userPhoto);
+            // }
+            $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
+
+            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
