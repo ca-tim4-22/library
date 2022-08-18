@@ -18,7 +18,7 @@
         
 </head>
 
-<body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500">
+<body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
 
     <x-header></x-header>
 

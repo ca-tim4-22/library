@@ -13,6 +13,10 @@
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
 
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv">
+
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
@@ -238,7 +242,7 @@ th {
 
         </div>
     </div>
-
+</div>
 </section>
 <!-- End Content -->
 @endsection
