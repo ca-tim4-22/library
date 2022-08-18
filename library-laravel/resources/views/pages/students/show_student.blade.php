@@ -53,7 +53,7 @@
                         <i class="fas fa-edit mr-[3px] "></i>
                         Izmijeni podatke
                     </a>
-                    <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsstudentProfile hover:text-[#606FC7]"
+                    <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsStudentProfile hover:text-[#606FC7]"
                         id="dropdownstudent">
                         <i
                             class="fas fa-ellipsis-v"></i>
@@ -71,7 +71,7 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">{{Auth::user()->id == $student->id ? "Izbriši nalog" : "Izbriši korisnika"}}</span>
+                                            <span class="px-4 py-0">{{Auth::user()->id == $student->id ? "Izbriši svoj nalog" : "Izbriši učenika"}}</span>
                                 </button>
                                 </form>
                             </div>

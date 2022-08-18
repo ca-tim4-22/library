@@ -94,7 +94,11 @@ class LibrarianController extends Controller
      */
     public function show(User $user)
     {
-        $librarian = $user;
+        if ($user->type->name == 'librarian') {
+            $librarian = $user;
+        } else {
+            abort(404);
+        }
 
         return view('pages.librarians.show_librarian', compact('librarian'));
     }

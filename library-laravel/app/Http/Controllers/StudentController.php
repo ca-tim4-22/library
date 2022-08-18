@@ -93,7 +93,11 @@ class StudentController extends Controller
      */
     public function show(User $user)
     {
-        $student = $user;
+        if ($user->type->name == 'student') {
+            $student = $user;
+        } else {
+            abort(404);
+        }
         
         return view('pages.students.show_student', compact('student'));
     }
