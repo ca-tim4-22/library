@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Profil bibliotekara | Online Biblioteka</title>
+<title>Profil učenika | Online Biblioteka</title>
 
 <!-- ijaboCropTool Style -->
 <link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">
@@ -158,8 +158,8 @@
                     class="p-2 border-2 border-gray-300" 
                     width="300px"
                     src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"
-                    alt="Profilna slika bibliotekara"
-                    title="Profilna slika bibliotekara" />
+                    alt="Profilna slika učenika"
+                    title="Profilna slika učenika" />
                 </div>
             </div>
         </div>
