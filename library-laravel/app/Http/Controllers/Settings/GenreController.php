@@ -53,7 +53,7 @@ class GenreController extends Controller
             $input['icon'] = $name;  
             $input['default'] = 'false';  
         } else {
-            $input['icon'] = 'placeholder.jpg';
+            $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
         
         Genre::create($input);

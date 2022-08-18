@@ -25,6 +25,13 @@ class BookController extends Controller
     {
         $books = Book::all();
 
+        // foreach ($user->projects as $project) {
+        //     foreach($project->users as $coworker) {
+        //         $coworkers[] = $coworker;
+        //         $projects[] = $project;
+        //     }
+        // }
+
         return view('pages.books.books', compact('books'));
     }
 

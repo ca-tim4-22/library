@@ -114,7 +114,7 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
-                        <p class="font-medium">{{$librarian->user_type_id == 2 ? 'Bibliotekar' : 'Student'}}</p>
+                        <p class="font-medium">{{$librarian->user_type_id == 2 ? 'Bibliotekar' : 'Učenik'}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">JMBG</span>
@@ -157,7 +157,7 @@
                     <img 
                     class="p-2 border-2 border-gray-300" 
                     width="300px"
-                    src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
+                    src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
                     alt="Profilna slika bibliotekara"
                     title="Profilna slika bibliotekara" />
                 </div>

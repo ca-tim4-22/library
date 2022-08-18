@@ -87,7 +87,7 @@
                         <td class="flex flex-row items-center px-4 py-4">
                             <img 
                             style="height:30px" 
-                            src="{{$genre->default == 'false' ? '/storage/settings/genre/' . $genre->icon : '/img/default_images_while_migrations/genres/' . $genre->icon}}" 
+                            src="{{$genre->default == 'false' ? '/storage/settings/genre/' . $genre->icon : $genre->icon}}" 
                             alt="{{$genre->name}}"
                             title="{{$genre->name}}">
                             <p class="ml-4 text-center no-select">{{$genre->name}}</p>

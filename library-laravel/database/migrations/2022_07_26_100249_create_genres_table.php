@@ -23,12 +23,12 @@ return new class extends Migration
         });
 
         DB::table('genres')->insert([
-            ['name' => 'Roman', 'icon' => 'roman.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Pripovjetka', 'icon' => 'fairytale.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Dramska poezija', 'icon' => 'poetry.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Lirska poezija', 'icon' => 'lyrics.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Stručna literatura', 'icon' => 'literature.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Epska poezija', 'icon' => 'epic.png', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Roman', 'icon' => '/img/default_images_while_migrations/genres/roman.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Pripovjetka', 'icon' => '/img/default_images_while_migrations/genres/fairytale.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Dramska poezija', 'icon' => '/img/default_images_while_migrations/genres/poetry.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Lirska poezija', 'icon' => '/img/default_images_while_migrations/genres/lyrics.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Stručna literatura', 'icon' => '/img/default_images_while_migrations/genres/literature.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Epska poezija', 'icon' => '/img/default_images_while_migrations/genres/epic.png', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
         ]);
     }
 

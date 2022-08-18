@@ -82,3 +82,7 @@
         opacity: 1;
     }
 }
+
+.no-select {
+    user-select: none !important;
+}

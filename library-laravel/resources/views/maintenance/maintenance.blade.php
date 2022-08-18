@@ -14,7 +14,7 @@
             <a href="http://127.0.0.1:8000">
             <img 
             src="/img/library-favicon.ico" 
-            class="logo">
+            class="logo no-select">
             </a>
             <div class="content">
                 <p>Library Is Under Maintenance</p>

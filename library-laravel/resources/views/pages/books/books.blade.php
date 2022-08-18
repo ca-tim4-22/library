@@ -374,8 +374,8 @@
                                         <span class="font-medium text-center">{{$book->title}}</span>
                                     </a>
                                 </td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">X</td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">X</td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->authors[0]->author->NameSurname}}</td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->categories[0]->category->name}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">X</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="aktivneRezervacije.php">{{$book->reserved_count}}</td>

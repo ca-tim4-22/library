@@ -115,7 +115,7 @@
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
                             
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . $librarian->photo}}"
+                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
                             alt="Profilna slika bibliotekara: {{$librarian->name}}"
                             title="Profilna slika bibliotekara: {{$librarian->name}}" />
 

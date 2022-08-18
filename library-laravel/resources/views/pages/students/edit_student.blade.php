@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-[50px]">
+                    {{-- <div class="mt-[50px]">
                         <label class="mt-6 cursor-pointer">
                             <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
                                 <div class="py-4">
@@ -124,10 +124,10 @@
                                     id="image-output-student"
                                     alt="Image"
                                     title="Image"
-                                    src="{{$student->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/students/' . $student->photo}}"/>
+                                    src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"/>
                             </div>
                         </label>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="absolute bottom-0 w-full">

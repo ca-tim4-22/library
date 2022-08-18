@@ -120,7 +120,7 @@
                     <img
                         class="p-2 border-2 border-gray-300"
                         width="300px"
-                        src="{{$student->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/students/' . $student->photo}}"
+                        src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"
                         alt="Profilna slika učenika"
                         title="Profilna slika učenika" />
                 </div>

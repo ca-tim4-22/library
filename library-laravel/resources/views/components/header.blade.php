@@ -86,7 +86,11 @@
                         aria-label="User profile">
                         <div class="flex items-center h-5">
                             <div class="w-[40px] h-[40px] mt-[15px]">
-                            <img class="rounded-full" src="{{Auth::user()->photo == 'placeholder' ? '/img/profileExample.jpg' : '/storage/librarians/' . Auth::user()->photo}}" alt="{{Auth::user()->username}}" title="{{Auth::user()->username}}">
+                            <img 
+class="rounded-full" 
+src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
+alt="{{Auth::user()->username}}" 
+title="{{Auth::user()->username}}">
                             </div>
                         </div>
                     </a>
