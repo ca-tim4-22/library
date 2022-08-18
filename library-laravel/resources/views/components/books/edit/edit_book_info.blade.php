@@ -11,7 +11,7 @@
                     <div class="w-[50%]">
                         <div class="mt-[20px]">
                             <p>Naziv knjige <span class="text-red-500">*</span></p>
-                            <input type="text" name="title" id="nazivKnjiga" value=""
+                            <input type="text" name="title" id="nazivKnjiga" value="{{$book->title}}"
                                    class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                    onkeydown="clearErrorsNazivKnjiga()" />
                             <div id="validateNazivKnjiga"></div>
@@ -20,13 +20,14 @@
                         <div class="mt-[20px]">
                             <p class="inline-block mb-2">Kratki sadržaj</p>
                             <textarea name="body"
-                                      class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
+                                      class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">{{$book->body}}
                             </textarea>
                         </div>
 
                         <div class="mt-[20px]">
                             <p>Izaberite kategorije <span class="text-red-500">*</span></p>
                             <select x-cloak id="kategorija" name="category_id">
+                                <option value="aa" disabled selected>{{$book->categories[0]->category->name}}</option>
 
                                 @foreach ($models['categories'] as $category)
 
@@ -126,6 +127,7 @@
                     <div class="mt-[20px]">
                         <p>Izaberite žanrove <span class="text-red-500">*</span></p>
                         <select x-cloak id="zanr" name="genre_id">
+                            <option value="{{$book->genres[0]->genre_id}}" disabled selected>{{$book->genres[0]->genre->name}}</option>
 
                             @foreach ($models['genres'] as $genre)
 
@@ -226,6 +228,7 @@
             <div class="mt-[20px]">
                 <p>Izaberite autore <span class="text-red-500">*</span></p>
                 <select x-cloak id="autori" name="author_id">
+                    <option value="{{$book->authors[0]->author->id}}" disabled selected>{{$book->authors[0]->author->NameSurname}}</option>
 
                     @foreach ($models['authors'] as $author)
 
@@ -322,7 +325,8 @@
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">
-                <option disabled selected></option>
+                <option value="{{$book->publisher->id}}" disabled selected>{{$book->publisher->name}}</option>
+
 
                 @foreach ($models['publishers'] as $publisher)
 
@@ -349,7 +353,7 @@
 
         <div class="mt-[20px]">
             <p>Količina <span class="text-red-500">*</span></p>
-            <input type="text" name="quantity_count" id="knjigaKolicina"
+            <input type="text" name="quantity_count" id="knjigaKolicina" value="{{$book->quantity_count}}"
                    class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                    onkeydown="clearErrorsKnjigaKolicina()" />
             <div id="validateKnjigaKolicina"></div>
