@@ -23,7 +23,7 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        $librarians = User::where('user_type_id', 2)->paginate(5);
+        $librarians = User::latest('id')->where('user_type_id', 2)->paginate(5);
 
         return view('pages.librarians.librarians', compact('librarians'));
     }

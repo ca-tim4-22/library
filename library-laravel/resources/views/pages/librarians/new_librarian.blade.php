@@ -16,7 +16,6 @@
         <div class="flex border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
-                    
                     <h1>
                         Novi bibliotekar
                     </h1>
@@ -72,7 +71,7 @@
 
                     <div class="mt-[20px]">
                         <span>E-mail <span class="text-red-500">*</span></span>
-                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"  value="{{ old('email') }}"/>
+                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"/>
                         <div id="validateEmailBibliotekar"></div>
                     </div>
 

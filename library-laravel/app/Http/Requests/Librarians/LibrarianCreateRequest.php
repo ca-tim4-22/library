@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Librarians;
 
+use App\Rules\EmailVerification\EmailVerificationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LibrarianCreateRequest extends FormRequest
@@ -26,7 +27,9 @@ class LibrarianCreateRequest extends FormRequest
         return [
             'name' => 'required|min:2|max:255',
             'username' => 'required|min:2|max:255',
-            'email' => 'required|min:2|max:255',
+            'email' => [
+                new EmailVerificationRule()
+            ],
             'password' => 'required|min:8',   
             'JMBG' => 'required|min:14',
             'photo' => 'required',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\EmailVerification\EmailVerificationRule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,7 +56,14 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max: 255', 'unique:users'],
             'JMBG' => ['required', 'min:14', 'max:14'],
-            'email' => ['required', 'string', 'email', 'min:2', 'max:255', 'unique:users'],
+            'email' => [
+                'required', 
+                'string', 
+                'email', 
+                'min:2', 
+                'max:255', 
+                'unique:users',
+                new EmailVerificationRule(),],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }

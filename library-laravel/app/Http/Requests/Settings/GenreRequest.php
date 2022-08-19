@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Settings;
 
+use App\Rules\Settings\AtSignRule;
 use App\Rules\Settings\MaximumLengthRule;
 use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
@@ -33,6 +34,7 @@ class GenreRequest extends FormRequest
                 new MinimumLengthRule(),
                 new MaximumLengthRule(),
                 new NoDigitsRule(),
+                new AtSignRule(),
             ]
         ];
     }
