@@ -22,6 +22,8 @@ Route::get('/aktivne-knjige', [BookController::class, 'activeReservations'])->na
 Route::get('/arhivirane-knjige', [BookController::class, 'archivedReservations'])->name('archived-books');
 Route::get('/knjige-u-prekoracenju', [BookController::class, 'overdueBooks'])->name('overdue-books');
 Route::get('/vracene-knjige', [BookController::class, 'returnedBooks'])->name('returned-books');
+Route::get('izdaj-knjigu/{id}',[BookController::class, 'rentedBooks'])->name('rent-book');
+Route::post('izdaj-knjigu',[BookController::class, 'storeRentedBooks'])->name('store-rent-book');
 });
 
 ?>

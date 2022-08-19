@@ -7,7 +7,7 @@ $(function () {
     if (sidebar.hasClass('sidebar-active')) { // if menu is opened
       //close menu by removing active class
       sidebar.removeClass('sidebar-active');
-      //make hamburger shape change 
+      //make hamburger shape change
       hamburger.removeClass('fa-times');
       hamburger.addClass('fa-bars');
       //hide text and arrow
@@ -15,7 +15,7 @@ $(function () {
       $(".sidebar-item").removeClass("inline");
       //hide/close all opened submenues
       $('.aside-item').hide();
-      //change all arrows which are up to down 
+      //change all arrows which are up to down
       $('.arrow').removeClass('fa-angle-up');
       $('.arrow').addClass('fa-angle-down');
     } else {
@@ -24,7 +24,7 @@ $(function () {
       //make hamburger shape change
       hamburger.addClass('fa-times');
       hamburger.removeClass('fa-bars');
-      //show text and arrow 
+      //show text and arrow
       $(".sidebar-item").removeClass("hidden");
       $(".sidebar-item").addClass("inline");
     }
@@ -948,7 +948,7 @@ function validacijaIzdavanje() {
     $('#validateUcenikIzdavanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
   }
 
-  if (datumIzdavanja.length == 0) {
+  if (datumIzdavanja.length === 0) {
     $('#validateDatumIzdavanja').append('<p style="color:red;font-size:13px;">Morate selektovati datum izdavanja!</p>');
   }
 }

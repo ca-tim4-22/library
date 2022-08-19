@@ -6,6 +6,9 @@ use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\BookAuthor;
+use App\Models\GlobalVariable;
+use App\Models\Rent;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -138,6 +141,30 @@ class BookController extends Controller
         $book = new Book();
         return view('pages.books.published.returned_books', compact('book'));
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function rentedBooks($id){
+        $users=User::all();
+        $book=Book::findOrFail($id);
+
+        return view('pages.books.published.rent_book',compact('users','book'));
+
+}
+public function storeRentedBooks(Request $request){
+        $inputs=$request->validate([
+            'rent_user_id'=>'required',
+            'issue_date'=>'required|date'
+        ]);
+        $inputs['return_date']=GlobalVariable::findOrFail(2);
+        Rent::create($inputs);
+
+        return to_route('published-books')->with('rented-book','Uspješno ste iznajmili knjigu!');
+
+}
+
     /**
      * Show the form for editing the specified resource.
      *
