@@ -22,7 +22,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = User::where('user_type_id', 1)->paginate(5);
+        $students = User::latest('id')->where('user_type_id', 1)->paginate(5);
 
         return view('pages.students.students', compact('students'));
     }

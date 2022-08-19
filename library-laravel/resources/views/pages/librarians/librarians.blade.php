@@ -12,9 +12,9 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
-
+{{-- Preloader --}}
 <div id="loader"></div>
-
+    
 <div style="display:none;" id="myDiv">
 
 <!-- Content -->
@@ -218,6 +218,7 @@ th {
                                         @csrf
                                         @method('DELETE')
                                         <button 
+                                        onclick="clickMe()"
                                                 style="outline: none;border: none;"
                                                 type="submit"
                                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
@@ -231,6 +232,33 @@ th {
                             </div>
                         </td>
                     </tr>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                    <script>
+                        
+
+function clickMe()
+    {
+        Swal.fire({
+  title: 'Da li ste sigurni?',
+  text: "Ovu radnju ne možete povratiti!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Da, izbriši!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Izbrisano!',
+      'Uspješno ste izbrisali bibliotekara.',
+      'success'
+    )
+  }
+})
+}
+                    </script>
+                    
                     @endforeach
                 </tbody>
             </table>
@@ -246,4 +274,5 @@ th {
 </section>
 <!-- End Content -->
 @endsection
+
 

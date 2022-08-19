@@ -71,7 +71,7 @@
 
                         <div class="mt-[20px]">
                             <span>E-mail <span class="text-red-500">*</span></span>
-                            <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailUcenik()" placeholder="@error('email'){{$message}} @enderror"  value="{{ old('email') }}"/>
+                            <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailUcenik()" placeholder="@error('email'){{$message}} @enderror"  value="{{ old('email') }}"/>
                             <div id="validateEmailUcenik"></div>
                         </div>
 

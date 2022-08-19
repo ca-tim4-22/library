@@ -39,6 +39,12 @@
   user-select: none !important;
 }
 
+/* Error border input color */
+
+.error-border {
+  border-color: red !important;
+}
+
 /* Placeholder property */
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
