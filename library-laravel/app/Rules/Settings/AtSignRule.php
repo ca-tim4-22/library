@@ -25,7 +25,7 @@ class AtSignRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (!strpos($value, '@')) {
+        if (!str_contains($value, '@')) {
             return true;
         } else {
             return false;
