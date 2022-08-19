@@ -40,6 +40,6 @@ class EmailVerificationRule implements Rule
     public function message()
     {
         // return 'The validation error message.';
-        return 'Unijeta email adresa nije registrovana kao školski email.';
+        return 'Unijeta email adresa nije registrovana kao školski email';
     }
 }

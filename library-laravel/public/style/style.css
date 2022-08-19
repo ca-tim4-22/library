@@ -15,9 +15,9 @@
   transform: scale(1.05);
 }
 
- /* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
 /* Custom */
- /* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
 
 /* Login - background */
 .bg-login {
@@ -43,6 +43,36 @@
 
 .error-border {
   border-color: red !important;
+}
+
+/* Custom tooltip */
+
+.with-tooltip {
+  position: relative;
+}
+
+.with-tooltip::after {
+  content: attr(data-tooltip-content);
+  padding: 8px;
+  border-radius: 8px;
+  position: absolute;
+  color: white;
+  bottom: 115%;
+  right: 50%;
+  left: 60%;
+  width: max-content;
+  background-color: #4558BE;
+  opacity: 0;
+  font-size: 0.8rem;
+  visibility: hidden;
+  transform: translate(-50%, 18px) scale(0.8);
+  transition: visibility, opacity, transform 0.35s;
+}
+
+.with-tooltip:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* Placeholder property */

@@ -49,8 +49,8 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
                 <div class="mt-[20px]">
-                        <span>Ime i prezime <span class="text-red-500">*</span></span>
-                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" placeholder="@error('name'){{$message}} @enderror" value="{{ old('name') }}"/>
+                        <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
+                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{ old('name') }}"/>
                         <div id="validateNameBibliotekar"></div>
                     </div>
 
@@ -64,17 +64,25 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>JMBG <span class="text-red-500">*</span></span>
-                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" placeholder="@error('JMBG'){{$message}} @enderror"  value="{{ old('JMBG') }}"/>
+                        <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
+                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{ old('JMBG') }}"/>
                         <div id="validateJmbgBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>E-mail <span class="text-red-500">*</span></span>
-                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" placeholder="@error('email'){{$message}} @enderror"/>
+
+                        <span>
+                            E-mail 
+                            <span 
+                            data-tooltip-content="Školski email je email koji u sebi sadrži domen škole. Primjer: @ets-pg.edu.me" 
+                            class="with-tooltip text-red-500">* @error('email'){{$message}} <i class="fa-solid fa-exclamation fa-lg"></i> @enderror
+                        </span>
+                        </span>
+
+                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" />
                         <div id="validateEmailBibliotekar"></div>
                     </div>
-
+            
                     <div class="mt-[20px]">
                         <span>Korisničko ime <span class="text-red-500">*</span></span>
                         <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" placeholder="@error('username'){{$message}} @enderror"  value="{{ old('username') }}"/>
@@ -133,5 +141,8 @@
     </div>
 </section>
 <!-- End Content -->
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 @endsection
