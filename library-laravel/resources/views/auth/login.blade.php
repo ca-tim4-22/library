@@ -92,7 +92,7 @@
                         
                     </div>
                     <p class="text-xs text-center mt-[30px] text-gray-500">
-                    &copy; @php echo date('Y') @endphp ICT Cortex. All rights reserved.
+                    &copy; @php echo date('Y') @endphp ICT Cortex. Sva prava zadržana.
                     </p>
                 </form>
 

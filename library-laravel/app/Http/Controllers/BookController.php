@@ -78,6 +78,7 @@ class BookController extends Controller
         $book->format_id = $request->input('format_id');
         $book->language_id = $request->input('language_id');
         $book->ISBN = $request->input('ISBN');
+        $book->year = $request->input('year');
         $book->save();
 
         DB::table('book_categories')->insert(

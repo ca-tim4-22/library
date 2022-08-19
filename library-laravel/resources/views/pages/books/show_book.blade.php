@@ -1,10 +1,17 @@
 @extends('layouts.dashboard')
-@section('content')
-    <x-sidebar></x-sidebar>
-    <main class="flex flex-row small:hidden">
-        <!-- Sidebar -->
 
-            <!-- End Sidebar -->
+@section('title')
+
+<!-- Title -->
+<title>Knjiga | Online Biblioteka</title>
+
+@endsection
+
+@section('content')
+
+    <x-sidebar></x-sidebar>
+
+    <main class="flex flex-row small:hidden">
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
@@ -18,7 +25,7 @@
                         <div class="pl-[15px]  flex flex-col">
                             <div>
                                 <h1>
-                                    Tom Sojer
+                                    {{$book->title}}
                                 </h1>
                             </div>
                             <div>
@@ -35,7 +42,7 @@
                                         <li>
                                             <a href="{{route('show-book',$book->id)}}"
                                                class="text-[#2196f3] hover:text-blue-600">
-                                                {{$book->title}}
+                                                ID-{{$book->id}}
                                             </a>
                                         </li>
                                     </ol>
@@ -83,7 +90,7 @@
                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                        role="menuitem">
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                        <span class="px-4 py-0">Izbrisi knjigu</span>
+                                        <span class="px-4 py-0">Izbriši knjigu</span>
                                     </button>
                                     </form>
                                 </div>
@@ -124,26 +131,26 @@
 
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Zanr</span>
+                                        <span class="text-gray-500 text-[14px]">Žanr</span>
                                         <p class="font-medium">{{$book->genres[0]->genre->name}}</p>
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Autor/ri</span>
+                                        <span class="text-gray-500 text-[14px]">Autor/i</span>
                                         <p class="font-medium">{{$book->authors[0]->author->NameSurname}}</p>
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Izdavac</span>
+                                        <span class="text-gray-500 text-[14px]">Izdavač</span>
                                         <p class="font-medium">{{$book->publisher->name}}</p>
                                     </div>
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Godina izdavanja</span>
-                                        <p class="font-medium">{{$book->created_at->todatestring()}}</p>
+                                        <p class="font-medium">{{$book->year}}</p>
                                     </div>
                                 </div>
                                 <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
                                     <div>
                                         <h4 class="text-gray-500 ">
-                                            Storyline (Kratki sadrzaj)
+                                            Kratki sadržaj
                                         </h4>
                                         <p class="addReadMore showlesscontent my-[10px]">
                                             {!! $book->body !!}
