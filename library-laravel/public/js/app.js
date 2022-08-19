@@ -1697,20 +1697,20 @@ function dropdown() {
   }
 }
 
-function funkcijaDatumVracanja() {
-  var selectedDate = new Date($('#datumIzdavanja').val());
-  var numberOfDaysToAdd = 20;
+// function funkcijaDatumVracanja() {
+//   var selectedDate = new Date($('#datumIzdavanja').val());
+//   var numberOfDaysToAdd = 5;
 
-  selectedDate.setDate(selectedDate.getDate() + numberOfDaysToAdd);
+//   selectedDate.setDate(selectedDate.getDate() + numberOfDaysToAdd);
 
-  var day = selectedDate.getDate();
-  var month = selectedDate.getMonth() + 1;
-  var year = selectedDate.getFullYear();
+//   var day = selectedDate.getDate();
+//   var month = selectedDate.getMonth() + 1;
+//   var year = selectedDate.getFullYear();
 
-  var newDate = [day, month, year].join('/');
+//   var newDate = [day, month, year].join('/');
 
-  document.getElementById('datumVracanja').value = newDate;
-}
+//   document.getElementById('datumVracanja').value = newDate;
+// }
 
 //click on one and check all checkboxes (vratiKnjigu.php)
 $('.select-all').click(function () {

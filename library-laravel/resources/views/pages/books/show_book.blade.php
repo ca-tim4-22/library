@@ -20,7 +20,7 @@
                 <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
                     <div class="py-[10px] flex flex-row">
                         <div class="w-[77px] pl-[30px]">
-                            <img src="img/tomsojer.jpg" alt="">
+                            <img src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="Naslovna" title="Naslovna">
                         </div>
                         <div class="pl-[15px]  flex flex-col">
                             <div>

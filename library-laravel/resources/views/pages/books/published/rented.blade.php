@@ -1,10 +1,15 @@
 @extends('layouts.dashboard')
-@section('content')
-    <x-sidebar></x-sidebar>
-    <main class="flex flex-row small:hidden">
-        <!-- Sidebar -->
 
-            <!-- End Sidebar -->
+@section('title')
+
+<!-- Title -->
+<title>Vraćene knjige | Online Biblioteka</title>
+
+@endsection
+
+@section('content')
+
+    <main class="flex flex-row small:hidden">
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">

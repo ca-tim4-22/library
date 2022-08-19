@@ -26,7 +26,7 @@
             </a>      
         </div>
 
-        <form action="{{route('store-book')}}" method="POST">
+        <form action="{{route('store-book')}}" method="POST" enctype="multipart/form-data">
         @csrf
         
         <div class="tab_content">

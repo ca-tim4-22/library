@@ -10,6 +10,7 @@ use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
@@ -27,13 +28,6 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::all();
-
-        // foreach ($user->projects as $project) {
-        //     foreach($project->users as $coworker) {
-        //         $coworkers[] = $coworker;
-        //         $projects[] = $project;
-        //     }
-        // }
 
         return view('pages.books.books', compact('books'));
     }
@@ -74,8 +68,7 @@ class BookController extends Controller
         $book->body = $request->input('body');
         $book->publisher_id = $request->input('publisher_id');
         $book->quantity_count = $request->input('quantity_count');
-        $book->page_count = $request->input('page_count');
-        // $book->genre_id = $request->input('genre_id');
+        $book->page_count = $request->input('page_count');;
         $book->binding_id = $request->input('binding_id');
         $book->letter_id = $request->input('letter_id');
         $book->format_id = $request->input('format_id');
@@ -93,6 +86,16 @@ class BookController extends Controller
         DB::table('book_genres')->insert(
             ['book_id' => $book->id, 'genre_id' => $input['genre_id']],
         );
+
+        if ($file = $request->file('photo')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('storage/book-covers', $name);
+            DB::table('galleries')->insert(
+                ['book_id' => $book->id, 'photo' => $name, 'cover' => 1],
+            );
+        } else {
+            return redirect('/errror');
+        }
 
         return to_route('all-books')->with('success-book','Uspješno ste dodali knjigu.');
     }
@@ -140,31 +143,9 @@ class BookController extends Controller
 
     public function returnedBooks(){
         $book = new Book();
-        return view('pages.books.published.returned_books', compact('book'));
+        
+        return view('pages.books.published.rented', compact('book'));
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function rentedBooks($id){
-        $users=User::all();
-        $book=Book::findOrFail($id);
-
-        return view('pages.books.published.rent_book',compact('users','book'));
-
-}
-public function storeRentedBooks(Request $request){
-        $inputs=$request->validate([
-            'rent_user_id'=>'required',
-            'issue_date'=>'required|date'
-        ]);
-        $inputs['return_date']=GlobalVariable::findOrFail(2);
-        Rent::create($inputs);
-
-        return to_route('published-books')->with('rented-book','Uspješno ste iznajmili knjigu!');
-
-}
 
     /**
      * Show the form for editing the specified resource.

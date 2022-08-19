@@ -45,7 +45,12 @@ class Book extends Model
     public function publisher() {
         return $this->belongsTo(Publisher::class);
     }
+    
     public function rent(){
         return $this->hasMany(Rent::class);
+    }
+
+    public function gallery(){
+        return $this->hasOne(Gallery::class);
     }
 }

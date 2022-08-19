@@ -47,7 +47,7 @@
             </div>
 
             {{-- Form for creating a new book --}}
-            <form action="{{route('store-book')}}" method="POST">
+            <form action="{{route('store-book')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <x-books.jquery :models="$models"></x-books.jquery>
             </form>

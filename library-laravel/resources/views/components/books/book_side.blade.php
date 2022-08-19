@@ -23,7 +23,7 @@
                                 class=" whitespace-nowrap w-full text-[25px]  flex justify-between fill-current">
                                 <div
                                     class="py-[15px] px-[20px] w-[268px] cursor-pointer bg-[#EFF3F6] rounded-[10px]">
-                                    <a href="{{route('published-books')}}" aria-label="Sve knjige"
+                                    <a href="{{route('rented-books')}}" aria-label="Sve knjige"
                                        class="flex items-center">
                                         <i
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[#576cdf] far fa-copy text-[20px]"></i>

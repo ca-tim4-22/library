@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
 
+@section('title')
+
+<!-- Title -->
+<title>Izdate knjige | Online Biblioteka</title>
+
+@endsection
+
 @section('content')
 
     <x-sidebar></x-sidebar>

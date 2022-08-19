@@ -1,8 +1,16 @@
 @extends('layouts.dashboard')
+
+@section('title')
+
+<!-- Title -->
+<title>Knjige u prekoračenju | Online Biblioteka</title>
+
+@endsection
+
 @section('content')
+
     <x-sidebar></x-sidebar>
     <main class="flex flex-row small:hidden">
-
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">

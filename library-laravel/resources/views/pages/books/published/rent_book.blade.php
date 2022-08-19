@@ -1,5 +1,14 @@
 @extends('layouts.dashboard')
+
+@section('title')
+
+<!-- Title -->
+<title>Izdaj knjigu | Online Biblioteka</title>
+
+@endsection
+
 @section('content')
+
     <x-sidebar></x-sidebar>
     <main class="flex flex-row small:hidden">
 
@@ -96,21 +105,21 @@
 
             <!-- Space for content -->
             <div class="scroll height-content section-content">
-                <form class="text-gray-700 forma" action="{{route('store-rent-book')}}" method="POST">
+                <form class="text-gray-700" action="{{route('store-rent-book', $book->id)}}" method="POST">
                     {{ csrf_field() }}
                     @method('POST')
                     <div class="flex flex-row ml-[30px]">
                         <div class="w-[50%] mb-[100px] mr-[100px]">
                             <h3 class="mt-[20px] mb-[10px]">Izdaj knjigu</h3>
                             <div class="mt-[20px]">
-                                <p>Izaberi ucenika koji zaduzuje knjigu <span class="text-red-500">*</span></p>
+                                <p>Izaberi učenika koji zadužuje knjigu <span class="text-red-500">*</span></p>
                                 <select
                                     class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                    name="rent_user_id" id="ucenikIzdavanje" onclick="clearErrorsUcenikIzdavanje()">
+                                    name="borrow_user_id" id="ucenikIzdavanje" onclick="clearErrorsUcenikIzdavanje()">
                                     <option disabled selected></option>
-                                    @foreach($users as $user)
-                                    <option value="">
-                                        {{$user->name}}
+                                    @foreach($students as $student)
+                                    <option value="{{$student->id}}">
+                                        {{$student->name}}
                                     </option>
                                     @endforeach
                                 </select>
@@ -128,14 +137,33 @@
                                     <div id="validateDatumIzdavanja"></div>
                                 </div>
                                 <div class="w-[50%]">
-                                    <p>Datum vracanja</p>
+                                    <p>Datum vraćanja</p>
                                     <label class="text-gray-700" for="date">
-                                        <input type="text" id="datumVracanja"
-                                               class="flex w-[90%] mt-2 px-2 py-2 text-base text-gray-400 bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                               disabled />
+                                        <input type="text" name="return_date" id="datumVracanja"
+                                               class="flex w-[90%] mt-2 px-2 py-2 text-base text-gray-400 bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="mm/dd/yyyy" readonly="readonly" 
+                                              />
                                     </label>
+                                    
+                                    {{-- Script for return date --}}
+                                    <script>
+                                        function funkcijaDatumVracanja() {
+                                        var selectedDate = new Date($('#datumIzdavanja').val());
+                                        var numberOfDaysToAdd = {{$variable->value}};
+                                      
+                                        selectedDate.setDate(selectedDate.getDate() + numberOfDaysToAdd);
+                                      
+                                        var day = selectedDate.getDate();
+                                        var month = selectedDate.getMonth() + 1;
+                                        var year = selectedDate.getFullYear();
+                                      
+                                        var newDate = [day, month, year].join('/');
+                                      
+                                        document.getElementById('datumVracanja').value = newDate;
+                                     }
+                                    </script>
+                                    
                                     <div>
-                                        <p>Rok vracanja: 20 dana</p>
+                                        <p>Rok vraćanja: {{$variable->value}} dana</p>
                                     </div>
                                 </div>
                             </div>
@@ -143,38 +171,32 @@
 
                         <div class="w-[50%] mb-[100px]">
                             <div class="border-[1px] border-[#e4dfdf] w-[360px] mt-[75px]">
-                                <h2 class="mt-[20px] ml-[30px]">KOLICINE</h2>
+                                <h2 class="mt-[20px] ml-[30px]">KOLIČINE</h2>
                                 <div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between">
                                     <div class="text-gray-500 ">
                                         <p>Na raspolaganju:</p>
                                         <p class="mt-[20px]">Rezervisano:</p>
                                         <p class="mt-[20px]">Izdato:</p>
-                                        <p class="mt-[20px]">U prekoracenju:</p>
-                                        <p class="mt-[20px]">Ukupna kolicina:</p>
+                                        <p class="mt-[20px]">U prekoračenju:</p>
+                                        <p class="mt-[20px]">Ukupna količina:</p>
                                     </div>
                                     <div class="text-center pb-[30px]">
-                                        <p
-                                            class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->quantity_count}}
-                                            primjeraka</p>
+                                        <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                            X</p>
                                         <a href="aktivneRezervacije.php">
-                                            <p
-                                                class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                                2 primjerka</p>
+                                            <p class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                            {{$book->reserved_count}} primjeraka</p>
                                         </a>
                                         <a href="{{route('rent-book',$book->id)}}">
-                                            <p
-                                                class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                            <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                                 {{count($book->rent)}} primjeraka</p>
                                         </a>
                                         <a href="knjigePrekoracenje.php">
-                                            <p
-                                                class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                                2 primjerka</p>
+                                            <p class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                               X</p>
                                         </a>
-                                        <p
-                                            class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            15 primjeraka</p>
+                                        <p class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                            {{$book->quantity_count}} primjeraka</p>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +208,7 @@
                             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
                                 <button type="reset"
                                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                 </button>
                                 <button id="izdajKnjigu" type="submit"
                                         class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
