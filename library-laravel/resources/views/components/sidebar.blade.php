@@ -112,10 +112,10 @@
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="{{route('rented-books')}}" aria-label="Knjige">
-
-                                        <i class="{{ (request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) ? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-exchange-alt text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
-
+<a href="{{route('rented-books')}}" aria-label="Knjige">
+<i class="{{ 
+(request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) || (request()->is('knjige-u-prekoracenju')) || (request()->is('aktivne-rezervacije')) || (request()->is('arhivirane-rezervacije')) 
+? 'text-white bg-[#3F51B5] px-[5px] pt-[4px] pb-[5px] fas fa-exchange-alt text-[19px] rounded-[3px]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]' }}"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">

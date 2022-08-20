@@ -50,7 +50,7 @@
                 <div class="w-[50%] mb-[100px]">
                 <div class="mt-[20px]">
                         <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
-                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{ old('name') }}"/>
+                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{old('name')}}"/>
                         <div id="validateNameBibliotekar"></div>
                     </div>
 
@@ -65,28 +65,28 @@
 
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
-                        <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{ old('JMBG') }}"/>
+                        <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{old('JMBG')}}"/>
                         <div id="validateJmbgBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
 
                         <span>
-                            E-mail 
+                            E-mail <span style="color: red">*</span>
                             <span 
+                            style="cursor: help"
                             data-tooltip-content="Školski email je email koji u sebi sadrži domen škole. Primjer: @ets-pg.edu.me" 
-                            class="with-tooltip text-red-500">* @error('email'){{$message}} <span style="font-size: 20px">!</span> @enderror
-                            
+                            class="with-tooltip text-red-500">@error('email'){{$message}} <span style="font-size: 20px">!</span> @enderror
                         </span>
                         </span>
 
-                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" />
+                        <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" value="{{old('email')}}" />
                         <div id="validateEmailBibliotekar"></div>
                     </div>
             
                     <div class="mt-[20px]">
                         <span>Korisničko ime <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
-                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" value="{{ old('username') }}"/>
+                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" value="{{old('username')}}"/>
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
@@ -98,7 +98,7 @@
 
                     <div class="mt-[20px]">
                         <span>Ponovi lozinku <span class="text-red-500">*</span></span>
-                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
                         <div id="validatePw2Bibliotekar"></div>
                     </div>
                 </div>
