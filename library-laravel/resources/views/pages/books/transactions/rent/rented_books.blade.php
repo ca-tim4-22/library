@@ -458,7 +458,7 @@
                                             <span>2 nedelje i 3 dana</span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->student->name}}
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p

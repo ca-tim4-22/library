@@ -297,40 +297,19 @@ input:checked+svg {
 
 .stats-bar-green {
   width: 0px;
-  -webkit-animation: green-bar 1s ease forwards;
-          animation: green-bar 1s ease forwards;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  -webkit-animation: green-bar 0.45s ease forwards;
+          animation: green-bar 0.45s ease forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
-@-webkit-keyframes green-bar {
-
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 250px;
-  }
-}
-
-@keyframes green-bar {
-
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 250px;
-  }
-}
 
 .number-green {
   opacity: 0;
-  -webkit-animation: number-yellow 0.5s ease-in forwards;
-          animation: number-yellow 0.5s ease-in forwards;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation: number-yellow 0.45s ease-in forwards;
+          animation: number-yellow 0.45s ease-in forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
 @-webkit-keyframes number-green {
@@ -356,39 +335,19 @@ input:checked+svg {
 .stats-bar-yellow {
   width: 0px;
 
-  -webkit-animation: yellow-bar 1s ease forwards;
+  -webkit-animation: yellow-bar 0.45s ease forwards;
 
-          animation: yellow-bar 1s ease forwards;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-
-@-webkit-keyframes yellow-bar {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 150px;
-  }
-}
-
-@keyframes yellow-bar {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 150px;
-  }
+          animation: yellow-bar 0.45s ease forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
 .number-yellow {
   opacity: 0;
-  -webkit-animation: number-yellow 0.5s ease-in forwards;
-          animation: number-yellow 0.5s ease-in forwards;
-  -webkit-animation-delay: 2.2s;
-          animation-delay: 2.2s;
+  -webkit-animation: number-yellow 0.45s ease-in forwards;
+          animation: number-yellow 0.45s ease-in forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
 @-webkit-keyframes number-yellow {
@@ -400,6 +359,8 @@ input:checked+svg {
     opacity: 1;
   }
 }
+
+
 
 @keyframes number-yellow {
   0% {
@@ -414,39 +375,20 @@ input:checked+svg {
 .stats-bar-red {
   width: 0px;
 
-  -webkit-animation: red-bar 1s ease forwards;
+  -webkit-animation: red-bar 0.45s ease forwards;
 
-          animation: red-bar 1s ease forwards;
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+          animation: red-bar 0.45s ease forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
-@-webkit-keyframes red-bar {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 80px;
-  }
-}
-
-@keyframes red-bar {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 80px;
-  }
-}
 
 .number-red {
   opacity: 0;
-  -webkit-animation: number-red 0.5s ease-in forwards;
-          animation: number-red 0.5s ease-in forwards;
-  -webkit-animation-delay: 2.4s;
-          animation-delay: 2.4s;
+  -webkit-animation: number-red 0.45s ease-in forwards;
+          animation: number-red 0.45s ease-in forwards;
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
 }
 
 @-webkit-keyframes number-red {
@@ -1218,8 +1160,11 @@ h4 {
 .ml-\[18px\]{
   margin-left: 18px;
 }
-.ml-\[21px\]{
-  margin-left: 21px;
+.ml-\[20px\]{
+  margin-left: 20px;
+}
+.ml-\[30px\]{
+  margin-left: 30px;
 }
 .ml-\[17px\]{
   margin-left: 17px;

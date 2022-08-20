@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Book;
+use App\Models\Rent;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,11 +23,29 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('pages.dashboard.dashboard_content');
+        $books = Book::all();
+        $returned_books = Rent::count();
+        $reserved_books = User::count();
+        $overdue_books = Author::count();
+
+        foreach ($books as $book) {
+            // $data = $book->rent()->paginate(5);
+            $data = $book->rent()->whereDay('created_at', date('d'))->orderBy('id', 'desc')->get();
+        }
+        
+        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'returned_books', 'reserved_books', 'overdue_books'));
     }
 
-    public function index_activity() {
-        return view('pages.dashboard.dashboard_activity');
+    public function index_activity() 
+    {
+        $books = Book::all();
+
+        foreach ($books as $book) {
+            // $data = $book->rent()->paginate(5);
+            $data = $book->rent()->orderBy('id', 'desc')->get();
+        }
+
+        return view('pages.dashboard.dashboard_activity', compact('books', 'data'));
     }
 
     /**

@@ -11,7 +11,7 @@ class Rent extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function student() {
+    public function librarian() {
         return $this->belongsTo(User::class, 'rent_user_id');
     }
 

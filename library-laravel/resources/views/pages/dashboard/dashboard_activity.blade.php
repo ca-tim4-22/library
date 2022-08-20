@@ -599,322 +599,63 @@
                                     <div class="flex pt-[10px] text-white ">
                                         <a href="#"
                                             class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
-                                            Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                         </a>
                                         <a href="#"
                                             class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                            Poništi <i class="fas fa-times ml-[4px]"></i>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                     <div class="ml-[35px] cursor-pointer hover:text-blue-600">
-                        <i class="fas fa-sync-alt"></i>
+                        <button style="outline: none;" onclick="location.reload();"><i class="fas fa-sync-alt"></i></button>
                     </div>
+
+
                 </div>
                 <!-- Activity Cards -->
+                @foreach ($data as $rent)
+
                 <div class="activity-card flex flex-row mb-[30px]">
                     <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileStudent.jpg" alt="">
+                        <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
+                        alt="Profilna slika učenika: {{$rent->borrow->name}}"
+                        title="Profilna slika učenika: {{$rent->borrow->name}}" />
                     </div>
                     <div class="ml-[15px] mt-[5px] flex flex-col">
                         <div class="text-gray-500 mb-[5px]">
                             <p class="uppercase">
                                 Izdavanje knjige
                                 <span class="inline lowercase">
-                                    - 4 days ago
+                                    - {{$rent->issue_date}}
                                 </span>
                             </p>
                         </div>
                         <div class="">
                             <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
+                                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    {{$rent->librarian->name}}
                                 </a>
-                                je izdala knjigu <span class="font-medium">Tom Sojer </span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Peru Perovicu
+                                je izdao/la knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                                <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    {{$rent->borrow->name}}
                                 </a>
                                 dana <span class="font-medium">21.02.2021.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
+                                <a href="{{route('rented-books')}}" class="text-[#2196f3] hover:text-blue-600">
                                     pogledaj detaljnije >>
                                 </a>
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileExample.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 mounths ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Robinson Kruso</span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Petru Njegosu
-                                </a>
-                                dana <span class="font-medium">12.03.2020.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileStudent.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 days ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Tom Sojer </span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Peru Perovicu
-                                </a>
-                                dana <span class="font-medium">21.02.2021.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileExample.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 mounths ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Robinson Kruso</span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Petru Njegosu
-                                </a>
-                                dana <span class="font-medium">12.03.2020.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileStudent.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 days ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Tom Sojer </span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Peru Perovicu
-                                </a>
-                                dana <span class="font-medium">21.02.2021.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileExample.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 mounths ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Robinson Kruso</span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Petru Njegosu
-                                </a>
-                                dana <span class="font-medium">12.03.2020.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileStudent.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 days ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Tom Sojer </span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Peru Perovicu
-                                </a>
-                                dana <span class="font-medium">21.02.2021.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileExample.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 mounths ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Robinson Kruso</span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Petru Njegosu
-                                </a>
-                                dana <span class="font-medium">12.03.2020.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileStudent.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 days ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Tom Sojer </span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Peru Perovicu
-                                </a>
-                                dana <span class="font-medium">21.02.2021.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="img/profileExample.jpg" alt="">
-                    </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - 4 mounths ago
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="bibliotekarProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Valentina K.
-                                </a>
-                                je izdala knjigu <span class="font-medium">Robinson Kruso</span>
-                                <a href="ucenikProfile.php" class="text-[#2196f3] hover:text-blue-600">
-                                    Petru Njegosu
-                                </a>
-                                dana <span class="font-medium">12.03.2020.</span>
-                                <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                   </div>
+
+                @endforeach
+       
                 <div class="inline-block w-full mt-4">
                     <button type="button"
                         class="btn-animation w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded activity-showMore hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
