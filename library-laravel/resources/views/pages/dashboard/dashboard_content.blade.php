@@ -26,43 +26,60 @@
                     <!-- Activity Cards -->
 
 
-                @foreach ($data as $rent)
+                @if (!$data == [])
+                 
+                 @foreach ($data as $rent)
+                   
+                 <div class="activity-card flex flex-row mb-[30px]">
+                  <div class="w-[60px] h-[60px]">
+                      <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
+                      alt="Profilna slika učenika: {{$rent->borrow->name}}"
+                      title="Profilna slika učenika: {{$rent->borrow->name}}" />
+                  </div>
+                  <div class="ml-[15px] mt-[5px] flex flex-col">
+                      <div class="text-gray-500 mb-[5px]">
+                          <p class="uppercase">
+                              Izdavanje knjige
+                              <span class="inline lowercase">
+                                  - {{$rent->issue_date}}
+                              </span>
+                          </p>
+                      </div>
+                      <div class="">
+                          <p>
+                              <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                  {{$rent->librarian->name}}
+                              </a>
+                              je izdao/la knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                              <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                  {{$rent->borrow->name}}
+                              </a>
+                              dana <span class="font-medium">21.02.2021.</span>
+                              <a href="{{route('rented-books')}}" class="text-[#2196f3] hover:text-blue-600">
+                                  pogledaj detaljnije >>
+                              </a>
+                          </p>
+                      </div>
+                  </div>
+                 </div>
 
-                <div class="activity-card flex flex-row mb-[30px]">
-                    <div class="w-[60px] h-[60px]">
-                        <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
-                        alt="Profilna slika učenika: {{$rent->borrow->name}}"
-                        title="Profilna slika učenika: {{$rent->borrow->name}}" />
+
+                 @endforeach
+
+                 @else 
+
+                 <div class="mx-[50px]">
+                    <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                        <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
+                            <path fill="currentColor"
+                                    d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
+                            </path>
+                        </svg>
+                        <p class="font-medium text-white">Trenutno nema aktivnosti za prikazivanje! </p>
                     </div>
-                    <div class="ml-[15px] mt-[5px] flex flex-col">
-                        <div class="text-gray-500 mb-[5px]">
-                            <p class="uppercase">
-                                Izdavanje knjige
-                                <span class="inline lowercase">
-                                    - {{$rent->issue_date}}
-                                </span>
-                            </p>
-                        </div>
-                        <div class="">
-                            <p>
-                                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                                    {{$rent->librarian->name}}
-                                </a>
-                                je izdao/la knjigu <span class="font-medium">{{$rent->book->title}} </span>
-                                <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                                    {{$rent->borrow->name}}
-                                </a>
-                                dana <span class="font-medium">21.02.2021.</span>
-                                <a href="{{route('rented-books')}}" class="text-[#2196f3] hover:text-blue-600">
-                                    pogledaj detaljnije >>
-                                </a>
-                            </p>
-                        </div>
-                    </div>
-                   </div>
+                </div>
 
-                @endforeach
-
+                @endif
 
                     <div class="inline-block w-full mt-4">
                         <a href="{{route('dashboard-activity')}}" 

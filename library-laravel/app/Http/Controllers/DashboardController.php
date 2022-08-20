@@ -27,25 +27,38 @@ class DashboardController extends Controller
         $returned_books = Rent::count();
         $reserved_books = User::count();
         $overdue_books = Author::count();
+        $rents = Rent::all();
 
-        foreach ($books as $book) {
-            // $data = $book->rent()->paginate(5);
-            $data = $book->rent()->whereDay('created_at', date('d'))->orderBy('id', 'desc')->get();
+        if (count($rents)) {
+            foreach ($books as $book) {
+                foreach ($book->rent as $collection) {
+                    $data = $collection->whereDay('created_at', date('d'))->orderBy('id', 'desc')->get();
+                }
+            }
+        } else {
+            $data = [];
         }
-        
-        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'returned_books', 'reserved_books', 'overdue_books'));
+
+        return view('pages.dashboard.dashboard_content', compact('books', 'data',  'returned_books', 'reserved_books', 'overdue_books'));
     }
 
     public function index_activity() 
     {
         $books = Book::all();
+        $librarians = User::latest('id')->where('user_type_id', 2)->get();
+        $rents = Rent::all();
 
-        foreach ($books as $book) {
-            // $data = $book->rent()->paginate(5);
-            $data = $book->rent()->orderBy('id', 'desc')->get();
+        if (count($rents)) {
+            foreach ($books as $book) {
+                foreach ($book->rent as $collection) {
+                    $data = $collection->orderBy('id', 'desc')->get();
+                }
+            }
+        } else {
+            $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'data'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'data'));
     }
 
     /**

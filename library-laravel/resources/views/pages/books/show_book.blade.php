@@ -55,7 +55,7 @@
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpisi knjigu
                         </a>
-                        <a href="izdajKnjigu.php" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                        <a href="{{route('rent-book', $book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                             <i class="far fa-hand-scissors mr-[3px]"></i>
                             Izdaj knjigu
                         </a>
