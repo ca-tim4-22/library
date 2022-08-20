@@ -141,7 +141,7 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmjeni svoj nalog" : 'Izmjeni učenika'}}</span>
+                                            <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmijeni svoj nalog" : 'Izmijeni učenika'}}</span>
                                         </a>
                                         <form action="{{route('destroy-student', $student->username)}}" method="POST">
                                             @csrf

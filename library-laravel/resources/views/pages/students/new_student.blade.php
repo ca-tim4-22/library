@@ -65,7 +65,7 @@
 
                         <div class="mt-[20px]">
                             <span>JMBG <span class="text-red-500">*</span></span>
-                            <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()" placeholder="@error('JMBG'){{$message}} @enderror"  value="{{ old('JMBG') }}"/>
+                            <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()" placeholder="@error('JMBG'){{$message}} @enderror"  value="{{ old('JMBG') }}"/>
                             <div id="validateJmbgUcenik"></div>
                         </div>
 
@@ -76,19 +76,19 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Korisničko ime <span class="text-red-500">*</span></span>
-                            <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameUcenik()" placeholder="@error('username'){{$message}} @enderror"  value="{{ old('username') }}"/>
+                            <span>Korisničko ime <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
+                            <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameUcenik()" value="{{ old('username') }}"/>
                             <div id="validateUsernameUcenik"></div>
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Šifra <span class="text-red-500">*</span></span>
-                            <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwUcenik()" placeholder="@error('password'){{$message}} @enderror"/>
+                            <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
+                            <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwUcenik()" />
                             <div id="validatePwUcenik"></div>
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Ponovi šifru <span class="text-red-500">*</span></span>
+                            <span>Ponovi lozinku <span class="text-red-500">*</span></span>
                             <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Ucenik()"/>
                             <div id="validatePw2Ucenik"></div>
                         </div>

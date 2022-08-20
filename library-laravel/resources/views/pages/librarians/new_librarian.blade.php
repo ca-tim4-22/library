@@ -65,7 +65,7 @@
 
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
-                        <input type="text" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{ old('JMBG') }}"/>
+                        <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{ old('JMBG') }}"/>
                         <div id="validateJmbgBibliotekar"></div>
                     </div>
 
@@ -75,7 +75,8 @@
                             E-mail 
                             <span 
                             data-tooltip-content="Školski email je email koji u sebi sadrži domen škole. Primjer: @ets-pg.edu.me" 
-                            class="with-tooltip text-red-500">* @error('email'){{$message}} <i class="fa-solid fa-exclamation fa-lg"></i> @enderror
+                            class="with-tooltip text-red-500">* @error('email'){{$message}} <span style="font-size: 20px">!</span> @enderror
+                            
                         </span>
                         </span>
 
@@ -84,19 +85,19 @@
                     </div>
             
                     <div class="mt-[20px]">
-                        <span>Korisničko ime <span class="text-red-500">*</span></span>
-                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" placeholder="@error('username'){{$message}} @enderror"  value="{{ old('username') }}"/>
+                        <span>Korisničko ime <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
+                        <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" value="{{ old('username') }}"/>
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Šifra <span class="text-red-500">*</span></span>
-                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwBibliotekar()" placeholder="@error('password'){{$message}} @enderror"/>
+                        <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
+                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwBibliotekar()" />
                         <div id="validatePwBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Ponovi šifru <span class="text-red-500">*</span></span>
+                        <span>Ponovi lozinku <span class="text-red-500">*</span></span>
                         <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Bibliotekar()"/>
                         <div id="validatePw2Bibliotekar"></div>
                     </div>
@@ -142,7 +143,4 @@
 </section>
 <!-- End Content -->
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
 @endsection

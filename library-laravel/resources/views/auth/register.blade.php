@@ -58,7 +58,7 @@
                         <label for="email" class="block mt-2 mb-2 text-sm font-normal text-gray-700">
                             Email adresa &nbsp;
                             @error('email')
-                            <span style="color: #CD1A2B;font-size: 15px">/ {{$message}}</span>
+                            <span style="color: #CD1A2B;font-size: 15px">/ {{$message}} <i class="fa-solid fa-exclamation fa-lg"></i> </span>
                             @enderror
                         </label>
                         <input
@@ -169,6 +169,9 @@
     <!-- Scripts -->
     <x-scripts></x-scripts>
     <!-- End Scripts -->
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </body>
 

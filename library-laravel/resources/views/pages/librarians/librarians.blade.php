@@ -20,8 +20,8 @@
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
-    <div class="heading mt-[7px]">
-        <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
+    <div class="heading mt-[7px]" style="margin-top: 11px">
+        <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
             Bibliotekari
 
 {{-- Session message for librarian create --}}
@@ -211,7 +211,7 @@ th {
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">{{Auth::id() == $librarian->id ? "Izmjeni svoj nalog" : 'Izmjeni bibliotekara'}}</span>
+                                            <span class="px-4 py-0">{{Auth::id() == $librarian->id ? "Izmjeni svoj nalog" : 'Izmijeni bibliotekara'}}</span>
                                         </a>
 
                                         <form action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
@@ -260,14 +260,17 @@ function clickMe()
                     </script>
                     
                     @endforeach
+
                 </tbody>
+
             </table>
-            <x-table_settings></x-table_settings>
-            {!! $librarians->links() !!}
+
+            <script src="https://cdn.tailwindcss.com"></script>
+            <div class="m-3">{!! $librarians->links() !!}</div>
+
             </div>
 
             @endif
-
         </div>
     </div>
 </div>
