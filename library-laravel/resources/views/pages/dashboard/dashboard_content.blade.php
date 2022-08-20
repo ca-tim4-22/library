@@ -270,6 +270,9 @@ from {
                             <p class="ml-[30px]">
                             200
                             </p>
+                            <p class="ml-[30px]">
+                            250
+                            </p>
                         </div>
                     </div>
                 </div>

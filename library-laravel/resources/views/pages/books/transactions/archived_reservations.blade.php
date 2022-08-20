@@ -9,7 +9,6 @@
 
 @section('content')
 
-    <x-sidebar></x-sidebar>
     <!-- Main content -->
     <main class="flex flex-row small:hidden">
 

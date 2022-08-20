@@ -10,7 +10,6 @@
 @section('content')
 
     <main class="flex flex-row small:hidden">
-
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
