@@ -6,7 +6,7 @@
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
                         <p>Broj strana <span class="text-red-500">*</span></p>
-                        <input type="text" name="page_count" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()"/>
+                        <input type="number" name="page_count" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()"/>
                         <div id="validateBrStrana"></div>
                     </div>
 
@@ -71,8 +71,8 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Međunarodni standardni broj knjige<span class="text-red-500">*</span></p>
-                        <input type="text" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0"/>
+                        <p>Međunarodni standardni broj knjige <span class="text-red-500">*</span></p>
+                        <input type="number" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0"/>
                         <div id="validateIsbn"></div>
                     </div>
                 </div>

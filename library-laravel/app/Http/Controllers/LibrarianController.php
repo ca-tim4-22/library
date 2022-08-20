@@ -7,6 +7,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class LibrarianController extends Controller
@@ -167,4 +168,11 @@ class LibrarianController extends Controller
         
         return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
     }
+
+    public function deleteAll(Request $request) {
+        $ids = $request->get('ids');
+        $dbs = User::whereIn('id', explode(',', $ids))->delete();
+        return redirect('/success');
+    }
+  
 }

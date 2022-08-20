@@ -19,12 +19,12 @@
                 <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
                     <div class="py-[10px] flex flex-row">
                         <div class="w-[77px] pl-[30px]">
-
+                            <img src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="Naslovna" title="Naslovna">
                         </div>
                         <div class="pl-[15px]  flex flex-col">
                             <div>
                                 <h1>
-                                    Tom Sojer
+                                    {{$book->title}}
                                 </h1>
                             </div>
                             <div>
@@ -191,6 +191,9 @@
                                             <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                                 {{count($book->rent)}} primjeraka</p>
                                         </a>
+                                        
+                                        {{-- {{Str::plural('primjerak', $book->rent->count())}} --}}
+
                                         <a href="knjigePrekoracenje.php">
                                             <p class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                                X</p>

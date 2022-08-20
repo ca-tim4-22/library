@@ -10,8 +10,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RentBook extends Controller
+class RentBookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +24,13 @@ class RentBook extends Controller
      */
     public function index()
     {
-        return view('pages.books.published.rented_books');
+        $books = Book::all();
+
+        foreach ($books as $book) {
+            $data = $book->rent()->paginate(5);
+        }
+
+        return view('pages.books.transactions.rent.rented_books', compact('books', 'data'));
     }
 
     /**
@@ -33,7 +44,7 @@ class RentBook extends Controller
         $book = Book::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
 
-        return view('pages.books.published.rent_book', compact('students', 'book', 'variable'));
+        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable'));
     }
 
     /**
@@ -44,7 +55,7 @@ class RentBook extends Controller
      */
     public function store(Request $request, $id)
     {
-    $input = $request->all();
+       $input = $request->all();
        $book = Book::findOrFail($id);
        $user = Auth::user();
 
@@ -55,6 +66,12 @@ class RentBook extends Controller
        $book_rent->issue_date = $request->input('issue_date');;
        $book_rent->return_date = $request->input('return_date');;
        $book_rent->save();
+
+    //    $rent_status = new RentStatus();
+    //    $rent_status->rent_id = '1';
+    //    $rent_status->book_status_id = '1';
+    //    $rent_status->date = '1';
+    //    $rent_status->save();
 
        return to_route('rented-books')->with('rented-book', 'Uspješno ste iznajmili knjigu!');
     }

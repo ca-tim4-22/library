@@ -26,16 +26,17 @@
             </a>
         </div>
 
-        <form action="{{route('update-book',1)}}" method="PUT">
+        <form action="{{route('update-book', $book->id)}}" method="POST">
             @csrf
+            @method('PUT')
+            
             <div class="tab_content">
-
                 <div class="tab_item">
                     <x-books.edit.edit_book_info :models="$models" :book="$book"></x-books.edit.edit_book_info>
                 </div>
 
                 <div class="tab_item">
-                    <x-books.edit.edit_book_specification :models="$models" :book="$book"></x-books.edit.edit_book_specification>
+                <x-books.edit.edit_book_specification :models="$models" :book="$book"></x-books.edit.edit_book_specification>
         </form>
 
     </div>

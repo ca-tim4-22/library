@@ -117,34 +117,34 @@ class BookController extends Controller
     {
         $book = new Book();
 
-        return view('pages.books.published.published', compact('book'));
+        return view('pages.books.transactions.published', compact('book'));
     }
 
     public function activeReservations()
     {
         $book = new Book();
 
-        return view('pages.books.published.active_reservations', compact('book'));
+        return view('pages.books.transactions.active_reservations', compact('book'));
     }
 
     public function archivedReservations()
     {
         $book = new Book();
 
-        return view('pages.books.published.archived_reservations', compact('book'));
+        return view('pages.books.transactions.archived_reservations', compact('book'));
     }
 
     public function overdueBooks()
     {
         $book = new Book();
 
-        return view('pages.books.published.overdue_books', compact('book'));
+        return view('pages.books.transactions.overdue_books', compact('book'));
     }
 
     public function returnedBooks(){
         $book = new Book();
         
-        return view('pages.books.published.rented', compact('book'));
+        return view('pages.books.transactions.returned_books', compact('book'));
     }
 
     /**
@@ -180,38 +180,29 @@ class BookController extends Controller
      */
     public function update(Request $request,Book $book, $id)
     {
-        $book->title=request('title');
-        $book->page_count=request('page_count');
-        $book->letter_id=request('letter_id');
-        $book->language_id=request('language_id');
-        $book->format_id=request('format_id');
-        $book->publisher_id=request('publisher_id');
-        $book->ISBN=request('ISBN');
-        $book->binding_id=request('binding_id');
-        $book->body=request('binding_id');
-        $book->quantity_count=request('quantity_count');
-        $book->rented_count=0;
-        $book->reserved_count=0;
+
+        $input = $request->all();
+        $book->update($input);
 
         if(request('category_id')){
-            DB::table('book_categories')->insert(
+            DB::table('book_categories')->update(
                 ['book_id' => $book->id, 'category_id' => request('category_id')],
             );
         }
 
         if(request('book_authors')){
-            DB::table('book_authors')->insert(
+            DB::table('book_authors')->update(
                 ['book_id' => $book->id, 'author_id' => request('author_id')],
             );
         }
+
         if(request('book_genres')){
-            DB::table('book_genres')->insert(
+            DB::table('book_genres')->update(
                 ['book_id' => $book->id, 'genre_id' => request('genre_id')],
             );
-
         }
 
-        return to_route('all-books')->with('success-edited-book','Uspješno ste izmijenili knjigu.');
+        return to_route('all-books')->with('success-edited-book', 'Uspješno ste izmijenili knjigu.');
     }
 
     /**

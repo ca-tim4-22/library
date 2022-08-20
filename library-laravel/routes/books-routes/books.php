@@ -5,7 +5,7 @@ use App\Http\Controllers\ {
 };
 
 use App\Http\Controllers\Books\ {
-    RentBook,
+    RentBookController,
 };
 
 use Illuminate\Support\Facades\ {
@@ -29,11 +29,11 @@ Route::get('/vracene-knjige', [BookController::class, 'returnedBooks'])->name('r
 
 });
 
-Route::controller(RentBook::class)->group(function(){
+Route::controller(RentBookController::class)->group(function(){
 // Rented books
-Route::get('/izdate-knjige', [RentBook::class, 'index'])->name('rented-books');
-Route::get('izdaj-knjigu/{id}',[RentBook::class, 'create'])->name('rent-book');
-Route::post('izdaj-knjigu/{id}',[RentBook::class, 'store'])->name('store-rent-book');
+Route::get('/izdate-knjige', [RentBookController::class, 'index'])->name('rented-books');
+Route::get('izdaj-knjigu/{id}',[RentBookController::class, 'create'])->name('rent-book');
+Route::post('izdaj-knjigu/{id}',[RentBookController::class, 'store'])->name('store-rent-book');
 });
 
 ?>

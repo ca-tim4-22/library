@@ -46,8 +46,8 @@
                 </div>
             </div>
 
-            {{-- Form for update a book --}}
-            <form action="{{route('update-book',$book->id)}}" method="PUT">
+            {{-- Form for updating a book --}}
+            <form action="{{route('update-book', $book->id)}}" method="PUT">
                 @csrf
                 <x-books.edit.edit_book_jquery :models="$models" :book="$book"></x-books.edit.edit_book_jquery>
             </form>

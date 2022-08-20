@@ -97,6 +97,11 @@ th {
     user-select: none;
 }
 
+.no-arrow:before, 
+.no-arrow:after {
+    content: '' !important;
+}
+
 #arrow:after {
   content: '↑';
   font-weight: bold !important;
@@ -147,15 +152,16 @@ th {
         $('#sort tbody').append(row);
       });
     });
+    
 });
             </script>
 
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-[1px] border-[#e4dfdf]">
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                        <th class="no-arrow px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
+                                <input type="checkbox" id="select-all" class="form-checkbox">
                             </label>
                         </th>
                         <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">Ime i prezime</a>
