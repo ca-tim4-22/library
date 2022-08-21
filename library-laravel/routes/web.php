@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\ {
 
 use App\Http\Controllers\ {
     DashboardController,
+    HomeController,
 };
 
 // Dashboard routes
