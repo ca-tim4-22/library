@@ -77,6 +77,9 @@ class RentBookController extends Controller
        $book_rent->return_date = $request->input('return_date');;
        $book_rent->save();
 
+       $book->rented_count = $book->rented_count + 1;
+       $book->save();
+
     //    $rent_status = new RentStatus();
     //    $rent_status->rent_id = '1';
     //    $rent_status->book_status_id = '1';

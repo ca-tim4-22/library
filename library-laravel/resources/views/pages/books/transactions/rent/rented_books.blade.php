@@ -29,7 +29,6 @@
     </div>
   </div>
 @endif
-
                 </h1>
             </div>
         
@@ -37,7 +36,9 @@
              <x-books.book_side></x-books.book_side>
 
                         <div class="w-full mt-[10px] ml-2 px-2">
-                            
+
+                            @if (!$data == [])
+
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 
                                 <thead class="bg-[#EFF3F6]">
@@ -444,8 +445,6 @@
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                                 </thead>
-                                
-                                @if (!$data == [])
                  
                                  @foreach ($data as $rent)
 
