@@ -38,7 +38,7 @@
                                             <span class="mx-2">/</span>
                                         </li>
                                         <li>
-                                            <a href="{{route('show-book',$book->id)}}"
+                                            <a href="{{route('show-book', $book->id)}}"
                                                class="text-[#2196f3] hover:text-blue-600">
                                                 {{$book->title}}
                                             </a>
@@ -47,7 +47,7 @@
                                             <span class="mx-2">/</span>
                                         </li>
                                         <li>
-                                            <a href="{{route('rent-book',$book->id)}}"
+                                            <a href="{{route('rent-book', $book->id)}}"
                                                class="text-[#2196f3] hover:text-blue-600">
                                                 Izdaj knjigu
                                             </a>
@@ -60,11 +60,7 @@
                     <div class="pt-[24px] mr-[30px]">
                         <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
-                            Otpisi knjigu
-                        </a>
-                        <a href="izdajKnjigu.php" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
-                            <i class="far fa-hand-scissors mr-[3px]"></i>
-                            Izdaj knjigu
+                            Otpiši knjigu
                         </a>
                         <a href="vratiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
@@ -72,7 +68,7 @@
                         </a>
                         <a href="rezervisiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="far fa-calendar-check mr-[3px] "></i>
-                            Rezervisi knjigu
+                            Rezerviši knjigu
                         </a>
                         <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsIzdajKnjigu hover:text-[#606FC7]">
                             <i
@@ -83,17 +79,17 @@
                             <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                  aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                 <div class="py-1">
-                                    <a href="{{route('edit-book',$book->id)}}" tabindex="0"
+                                    <a href="{{route('edit-book', $book->id)}}" tabindex="0"
                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                        role="menuitem">
                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                         <span class="px-4 py-0">Izmijeni knjigu</span>
                                     </a>
-                                    <a href="{{route('destroy-book',$book->id)}}" tabindex="0"
+                                    <a href="{{route('destroy-book', $book->id)}}" tabindex="0"
                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                        role="menuitem">
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                        <span class="px-4 py-0">Izbrisi knjigu</span>
+                                        <span class="px-4 py-0">Izbriši knjigu</span>
                                     </a>
                                 </div>
                             </div>
@@ -162,7 +158,7 @@
                                     </script>
                                     
                                     <div>
-                                        <p>Rok vraćanja: {{$variable->value}} dana</p>
+                                        <p>Rok vraćanja: <span class="color">{{$variable->value}} dana</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -181,14 +177,14 @@
                                     </div>
                                     <div class="text-center pb-[30px]">
                                         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            X</p>
+                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count)}} primjerka</p>
                                         <a href="aktivneRezervacije.php">
                                             <p class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->reserved_count}} primjeraka</p>
+                                            {{$book->reserved_count}} primjerka</p>
                                         </a>
                                         <a href="{{route('rent-book',$book->id)}}">
                                             <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                                {{count($book->rent)}} primjeraka</p>
+                                                {{count($book->rent)}} primjerka</p>
                                         </a>
                                         
                                         {{-- {{Str::plural('primjerak', $book->rent->count())}} --}}

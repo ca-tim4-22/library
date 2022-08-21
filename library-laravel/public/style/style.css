@@ -82,6 +82,12 @@
   opacity: 0.75 !important; /* Firefox */
 }
 
+/* Color */
+
+.color {
+  color: #4558BE;
+}
+
 /* ----------------------------------------------------------- */
 
 /* Media Query for changing background on higher resolutions */
