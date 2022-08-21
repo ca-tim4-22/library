@@ -194,7 +194,7 @@
                             </tbody>
                         </table>
                         <div class="text-right mt-[5px]">
-                            <a href="aktivneRezervacije.php" class="text-[#2196f3] hover:text-blue-600">
+                            <a href="{{route('active-books')}}" class="text-[#2196f3] hover:text-blue-600">
                                 <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
                                 Prikaži sve
                             </a>
@@ -206,7 +206,7 @@
                         </h3>
                         <div class="text-right">
                             <div class="flex pb-[30px]">
-                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="izdateKnjige.php">
+                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('rented-books')}}">
                                     Izdate knjige
                                 </a>
                                 <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 stats-bar-green h-[26px]">
@@ -217,7 +217,7 @@
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
-                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="aktivneRezervacije.php">
+                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('active-books')}}">
                                     Rezervisane knjige
                                 </a>
                                 <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900 stats-bar-yellow  h-[26px]">
@@ -228,7 +228,7 @@
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
-                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="knjigePrekoracenje.php">
+                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('overdue-books')}}">
                                     Knjige u prekoračenju
                                 </a>
 

@@ -467,7 +467,19 @@
 
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
-                                            <span>2 nedelje i 3 dana</span>
+                                            <span>
+                                            
+                                            <?php 
+                                            $datetime1 = new DateTime(($rent->issue_date));
+                                            $datetime2 = new DateTime(($rent->return_date));
+                                            $interval = $datetime1->diff($datetime2);
+                                            echo '<span style="color: #2A4AB3">' .  $interval->format('%a dan')  .'</span>';
+                                            ?>
+ 
+
+                                            {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
+               
+                                            </span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}

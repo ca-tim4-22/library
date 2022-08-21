@@ -7,6 +7,7 @@ use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,9 +73,10 @@ class RentBookController extends Controller
        $book_rent = new Rent();
        $book_rent->book_id = $book->id;
        $book_rent->rent_user_id = $user->id;
-       $book_rent->borrow_user_id = $request->input('borrow_user_id');;
-       $book_rent->issue_date = $request->input('issue_date');;
-       $book_rent->return_date = $request->input('return_date');;
+       $book_rent->borrow_user_id = $request->input('borrow_user_id');
+       $book_rent->issue_date = $request->input('issue_date');
+       $myDate = $request->input('return_date');
+       $book_rent->return_date = Carbon::createFromFormat('m/d/Y', $myDate)->format('Y/m/d');
        $book_rent->save();
 
        $book->rented_count = $book->rented_count + 1;

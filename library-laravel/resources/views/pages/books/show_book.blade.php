@@ -57,7 +57,7 @@
                             <i class="far fa-hand-scissors mr-[3px]"></i>
                             Izdaj knjigu
                         </a>
-                        <a href="vratiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                        <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
                             Vrati knjigu
                         </a>
@@ -125,7 +125,17 @@
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Kategorija</span>
 
-                                        <p class="font-medium">{{$book->categories[0]->category->name}}</p>
+                                        <p class="font-medium">
+                                            
+                                            {{-- {{$book->categories[0]->category->name}} --}}
+
+                                            @foreach ($book->categories as $category)
+
+                                            {{$category->category->name}}
+                                                
+                                            @endforeach
+                                        
+                                        </p>
 
                                     </div>
                                     <div class="mt-[40px]">
