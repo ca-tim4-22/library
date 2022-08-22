@@ -27,20 +27,13 @@ class RentBookController extends Controller
     public function index()
     {
         $books = Book::all();
-        $rents = Rent::all();
 
-        if (count($rents)) {
-            foreach ($books as $book) {
-                if ($book->rent[0]->rent_status[0]->book_status->status == 'true') {
-                    foreach ($book->rent as $collection) {
-                        $data = $collection->orderBy('id', 'desc')->paginate(5);
-                    }
-                } else {
-                    $data = [];
+        foreach ($books as $book) {
+            foreach ($book->rent as $rent) {
+                foreach ($rent->rent_status as $collection) {
+                        $data = $collection;
                 }
             }
-        } else {
-            $data = [];
         }
 
         return view('pages.books.transactions.rent.rented_books', compact('books', 'data'));

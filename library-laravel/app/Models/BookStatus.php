@@ -10,5 +10,9 @@ class BookStatus extends Model
     use HasFactory;
     protected $guarded = [];
     public $timestamps = false;
+
+    public function rent_status() {
+        return $this->hasOne(RentStatus::class, 'book_status_id');
+    }
 }
 

@@ -152,42 +152,46 @@
                 <tbody class="bg-white">
                     
 
-                    @foreach ($data as $rent)
-                    
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                                <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
-                                alt="Profilna slika učenika: {{$rent->borrow->name}}"
-                                title="Profilna slika učenika: {{$rent->borrow->name}}" />
-                            <a href="{{route('show-student', $rent->borrow->username)}}">
-                                <span class="font-medium text-center">{{$rent->borrow->name}}</span>
-                            </a>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            <span>
-                                            
-                                <?php 
-                                $datetime1 = new DateTime(($rent->issue_date));
-                                $datetime2 = new DateTime(($rent->return_date));
-                                $interval = $datetime1->diff($datetime2);
-                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
-                                ?>
+                   @if (!$data == [])
 
-                                {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
-   
-                                </span>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoračenja</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
-                    </tr>
+                   @foreach ($data as $rent)
                     
-                    @endforeach
+                   <tr class="border-b-[1px] border-[#e4dfdf]">
+                       <td class="px-4 py-4 whitespace-no-wrap">
+                           <label class="inline-flex items-center">
+                               <input type="checkbox" class="form-checkbox">
+                           </label>
+                       </td>
+                       <td class="flex flex-row items-center px-4 py-4">
+                               <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
+                               alt="Profilna slika učenika: {{$rent->borrow->name}}"
+                               title="Profilna slika učenika: {{$rent->borrow->name}}" />
+                           <a href="{{route('show-student', $rent->borrow->username)}}">
+                               <span class="font-medium text-center">{{$rent->borrow->name}}</span>
+                           </a>
+                       </td>
+                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
+                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                           <span>
+                                           
+                               <?php 
+                               $datetime1 = new DateTime(($rent->issue_date));
+                               $datetime2 = new DateTime(($rent->return_date));
+                               $interval = $datetime1->diff($datetime2);
+                               echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                               ?>
+
+                               {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
+  
+                               </span>
+                       </td>
+                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoračenja</td>
+                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
+                   </tr>
+                   
+                   @endforeach
+                       
+                   @endif
                         
                     
                 </tbody>
@@ -199,7 +203,7 @@
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
                 <form action="{{route('store-return-book', $rent->id)}}" method="POST">
-                    @csrf
+                @csrf   
                 <button type="button"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>

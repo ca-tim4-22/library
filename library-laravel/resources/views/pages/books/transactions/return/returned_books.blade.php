@@ -399,9 +399,9 @@
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white">
+                                    
+                                @foreach ($data->book_status->where('status', 'false')->get() as $book)
 
-                                @foreach ($data as $return)
-                                
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
@@ -409,26 +409,26 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $return->book->gallery->photo}}" alt="Naslovna" />
-                                        <a href="{{route('show-book', $return->book->id)}}">
-                                            <span class="font-medium text-center">{{$return->book->title}}</span>
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book->rent_status->rent->book->gallery->photo}}" alt="Naslovna" />
+                                        <a href="{{route('show-book', $book->rent_status->rent->book->id)}}">
+                                            <span class="font-medium text-center">{{$book->rent_status->rent->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->borrow->name}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->return_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->borrow->name}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->return_date}}</td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
                                             <span>
                                                 <?php 
-                                                $datetime1 = new DateTime(($return->issue_date));
-                                                $datetime2 = new DateTime(($return->return_date));
+                                                $datetime1 = new DateTime(($book->rent_status->rent->issue_date));
+                                                $datetime2 = new DateTime(($book->rent_status->rent->return_date));
                                                 $interval = $datetime1->diff($datetime2);
                                                 echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
                                                 ?>
                                                 </span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->librarian->name}}
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->librarian->name}}
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsIzdateKnjige hover:text-[#606FC7]">
@@ -441,7 +441,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{route('returned-info', $return->id)}}" tabindex="0"
+                                                    <a href="{{route('returned-info', $book->rent_status->rent->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>

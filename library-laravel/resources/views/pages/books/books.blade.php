@@ -375,15 +375,23 @@
                                         <span class="font-medium text-center">{{$book->title}}</span>
                                     </a>
                                 </td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->authors[0]->author->NameSurname}}</td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->categories[0]->category->name}}</td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @foreach ($book->authors as $author)
+                                    {{$author->author->NameSurname}}
+                                    @endforeach
+                                    </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @foreach ($book->categories as $item)
+                                    {{$item->category->name}}
+                                    @endforeach
+                                </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                        href="aktivneRezervacije.php">{{$book->reserved_count}}</td>
+                                        href="{{route('active-books')}}">{{$book->reserved_count}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                        href="izdateKnjige.php">{{$book->rented_count}}</td>
+                                        href="{{route('rented-books')}}">{{$book->rented_count}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                        href="knjigePrekoracenje.php">X</td>
+                                        href="{{route('overdue-books')}}">X</td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count}}</td>
                                 <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">

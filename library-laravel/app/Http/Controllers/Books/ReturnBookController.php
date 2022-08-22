@@ -12,7 +12,12 @@ class ReturnBookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        if (Rent::count() <= 0) {
+            $this->middleware('auth');
+            abort(404);
+        } else {
+            $this->middleware('auth');
+        }
     }
     /**
      * Display a listing of the resource.
@@ -22,20 +27,13 @@ class ReturnBookController extends Controller
     public function index()
     {
         $books = Book::all();
-        $rents = Rent::all();
 
-        if (count($rents)) {
-            foreach ($books as $book) {
-                if ($book->rent[0]->rent_status[0]->book_status->status == 'true') {
-                    foreach ($book->rent as $collection) {
-                        $data = $collection->orderBy('id', 'desc')->paginate(5);
-                    }
-                } else {
-                    $data = [];
+        foreach ($books as $book) {
+            foreach ($book->rent as $rent) {
+                foreach ($rent->rent_status as $collection) {
+                        $data = $collection;
                 }
             }
-        } else {
-            $data = [];
         }
 
         return view('pages.books.transactions.return.returned_books', compact('data'));

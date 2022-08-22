@@ -37,8 +37,6 @@
 
                         <div class="w-full mt-[10px] ml-2 px-2">
 
-                            @if (!$data == [])
-
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 
                                 <thead class="bg-[#EFF3F6]">
@@ -446,7 +444,9 @@
                                 </tr>
                                 </thead>
                  
-                                 @foreach ($data as $rent)
+
+
+                                @foreach ($data->book_status->where('status', 'true')->get() as $book)
 
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
@@ -455,23 +455,22 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $rent->book->gallery->photo}}" alt="Naslovna" />
-                                        <a href="{{route('show-book', $rent->book->id)}}">
-                                            <span class="font-medium text-center">{{$rent->book->title}}</span>
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book->rent_status->rent->book->gallery->photo}}" alt="Naslovna" />
+                                        <a href="{{route('show-book', $book->rent_status->rent->book->id)}}">
+                                            <span class="font-medium text-center">{{$book->rent_status->rent->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->borrow->name}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->return_date}}</td>
-
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->borrow->name}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->issue_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->return_date}}</td>
 
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
                                             <span>
                                             
                                             <?php 
-                                            $datetime1 = new DateTime(($rent->issue_date));
-                                            $datetime2 = new DateTime(($rent->return_date));
+                                            $datetime1 = new DateTime(($book->rent_status->rent->issue_date));
+                                            $datetime2 = new DateTime(($book->rent_status->rent->return_date));
                                             $interval = $datetime1->diff($datetime2);
                                             echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
                                             ?>
@@ -481,7 +480,7 @@
                                             </span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent_status->rent->librarian->name}}
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p
@@ -494,14 +493,14 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{route('show-book', $rent->id)}}" tabindex="0"
+                                                    <a href="{{route('show-book', $book->rent_status->rent->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
 
-                                                    <a href="{{route('return-book', $rent->book->id)}}" tabindex="0"
+                                                    <a href="{{route('return-book', $book->rent_status->rent->book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
@@ -522,31 +521,17 @@
                                 </tr>
 
                                 @endforeach
-
-                                @else
-
-                                <div class="mx-[50px]">
-                                    <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
-                                        <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
-                                            <path fill="currentColor"
-                                                    d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
-                                            </path>
-                                        </svg>
-                                        <p class="font-medium text-white">Trenutno nema izdatih knjiga! </p>
-                                    </div>
-                                </div>
-
-                                @endif
+                               
 
                                 </tbody>
                             </table>
 
-                            @if (!$data == [])
+                            {{-- @if (!$data == [])
              
                             <script src="https://cdn.tailwindcss.com"></script>
                             <div class="m-4">{!! $data->links() !!}</div>
 
-                            @endif
+                            @endif --}}
                             
                         </div>
                     </div>

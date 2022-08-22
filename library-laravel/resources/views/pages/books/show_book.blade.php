@@ -57,10 +57,16 @@
                             <i class="far fa-hand-scissors mr-[3px]"></i>
                             Izdaj knjigu
                         </a>
+                        
+                        @if ($book->rent->contains('id', 1))
+                            
                         <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
                             Vrati knjigu
                         </a>
+
+                        @endif
+                        
                         <a href="rezervisiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="far fa-calendar-check mr-[3px] "></i>
                             Rezerviši knjigu
@@ -124,27 +130,27 @@
                                     </div>
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Kategorija</span>
-
                                         <p class="font-medium">
-                                            
-                                            {{-- {{$book->categories[0]->category->name}} --}}
-
                                             @foreach ($book->categories as $category)
-
                                             {{$category->category->name}}
-                                                
                                             @endforeach
-                                        
                                         </p>
-
                                     </div>
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Žanr</span>
-                                        <p class="font-medium">{{$book->genres[0]->genre->name}}</p>
+                                        <p class="font-medium">
+                                        @foreach ($book->genres as $genre)
+                                        {{$genre->genre->name}}
+                                        @endforeach
+                                        </p>
                                     </div>
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Autor/i</span>
-                                        <p class="font-medium">{{$book->authors[0]->author->NameSurname}}</p>
+                                        <p class="font-medium">
+                                        @foreach ($book->authors as $author)
+                                        {{$author->author->NameSurname}}
+                                        @endforeach
+                                        </p>
                                     </div>
                                     <div class="mt-[40px]">
                                         <span class="text-gray-500 text-[14px]">Izdavač</span>

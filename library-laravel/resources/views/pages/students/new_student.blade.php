@@ -58,7 +58,7 @@
                             <span>Tip korisnika</span>
                             <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_type_id" for="user_type_id" name="user_type_id" disabled>
                                 <option value="1">
-                                    Ucenik
+                                    Učenik
                                 </option>
                             </select>
                         </div>
