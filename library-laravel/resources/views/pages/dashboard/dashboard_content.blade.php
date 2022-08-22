@@ -54,7 +54,7 @@
                               <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$rent->borrow->name}}
                               </a>
-                              dana <span class="font-medium">21.02.2021.</span>
+                              dana <span class="font-medium">{{$rent->issue_date}}</span>
                               <a href="{{route('rented-books')}}" class="text-[#2196f3] hover:text-blue-600">
                                   pogledaj detaljnije >>
                               </a>

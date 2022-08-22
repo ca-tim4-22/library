@@ -6,7 +6,6 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Models\Rent;
 use App\Models\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -32,7 +31,7 @@ class DashboardController extends Controller
         if (count($rents)) {
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
-                    $data = $collection->whereDay('created_at', date('d'))->orderBy('id', 'desc')->get();
+                    $data = $collection->whereDay('issue_date', date('d'))->orderBy('id', 'desc')->get();
                 }
             }
         } else {

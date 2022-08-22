@@ -1,5 +1,6 @@
 <script src="{{asset('js/jquery.min.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/sorting-jquery.js')}}"></script>
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
 {{-- File Upload --}}

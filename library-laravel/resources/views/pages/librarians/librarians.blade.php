@@ -20,7 +20,7 @@
 <!-- Content -->
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
-    <div class="heading mt-[7px]" style="margin-top: 11px">
+    <div class="heading mt-[7px]" style="margin-top: 10px">
         <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
             Bibliotekari
 
@@ -90,78 +90,12 @@
 
             @if (count($librarians) > 0)
 
-<style>
-           
-th {
-    cursor: default;
-    user-select: none;
-}
-
-.no-arrow:before, 
-.no-arrow:after {
-    content: '' !important;
-}
-
-#arrow:after {
-  content: '↑';
-  font-weight: bold !important;
-  cursor: pointer;
-}
-
-#sort th.asc:after {
-  content: '↓';
-}
-
-#sort th.desc:after {
-  content: '↑';
-}
-
-</style>
-
-            <script>
-                $(function () {
-  $('table')
-    .on('click', 'th', function () {
-      var index = $(this).index(),
-          rows = [],
-          thClass = $(this).hasClass('asc') ? 'desc' : 'asc';
-
-      $('#sort th').removeClass('asc desc');
-      $(this).addClass(thClass);
-
-      $('#sort tbody tr').each(function (index, row) {
-        rows.push($(row).detach());
-      });
-
-      rows.sort(function (a, b) {
-        var aValue = $(a).find('td').eq(index).text(),
-            bValue = $(b).find('td').eq(index).text();
-
-        return aValue > bValue
-             ? 1
-             : aValue < bValue
-             ? -1
-             : 0;
-      });
-
-      if ($(this).hasClass('desc')) {
-        rows.reverse();
-      }
-
-      $.each(rows, function (index, row) {
-        $('#sort tbody').append(row);
-      });
-    });
-    
-});
-            </script>
-
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-[1px] border-[#e4dfdf]">
                         <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500 no-arrow">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" id="select-all" class="form-checkbox">
+                                <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
                         <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">Ime i prezime</a>
@@ -241,7 +175,6 @@ th {
                     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
                     <script>
-                        
 
 function clickMe()
     {
