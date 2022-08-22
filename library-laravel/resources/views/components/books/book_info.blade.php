@@ -359,7 +359,7 @@
 
         <div class="mt-[20px]">
             <p>Količina <span class="text-red-500">*</span></p>
-            <input type="text" name="quantity_count" id="knjigaKolicina"
+            <input type="number" name="quantity_count" id="knjigaKolicina"
                 class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 onkeydown="clearErrorsKnjigaKolicina()" />
             <div id="validateKnjigaKolicina"></div>

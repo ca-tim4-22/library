@@ -24,7 +24,11 @@ class BookCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'
+            'ISBN' => [
+                'required',
+                'min:13',
+                'max:13',
+            ],
         ];
     }
 }

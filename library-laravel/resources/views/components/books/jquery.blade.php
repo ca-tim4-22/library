@@ -9,6 +9,14 @@
     .tab {
         cursor: pointer
     }
+    .error-border {
+        color: red !important;
+        border-bottom: 2px solid red;
+        padding-bottom: 18px;
+    }
+    .error-border:hover {
+        color: red;
+    }
     </style>
 
     <div class="py-5 mt-4 text-gray-500 border-b-[1px] border-[#e4dfdf] pl-[30px]">
@@ -18,8 +26,14 @@
             <a class="inline tab hover:text-blue-800">
                 Osnovni detalji
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800 ">
-                Specifikacija
+            <a class="tab inline ml-[70px] hover:text-blue-800 
+            @error('ISBN')
+            error-border  
+            @enderror
+            
+            ">
+                Specifikacija 
+                
             </a>
             <a class="tab inline ml-[70px] hover:text-blue-800">
                 Multimedija

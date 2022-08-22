@@ -141,6 +141,7 @@
                     <div class="flex items-center justify-between">
 
                         <button
+                        style="outline: none"
                         type="submit"
                         class="inline-block px-4 py-2 text-white bg-blue-500 rounded shadow-lg btn-animation hover:bg-blue-600 focus:bg-blue-700">Registruj se</button>
                             

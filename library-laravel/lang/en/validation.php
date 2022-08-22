@@ -175,6 +175,7 @@ return [
         'NameSurname' => 'ime i prezime',
         'biography' => 'biografiju',
         'password' => 'lozinku',
+        'ISBN' => 'ISBN',
      ],
 
 ];
