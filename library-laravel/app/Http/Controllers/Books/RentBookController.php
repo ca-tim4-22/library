@@ -36,7 +36,9 @@ class RentBookController extends Controller
             }
         }
 
-        return view('pages.books.transactions.rent.rented_books', compact('books', 'data'));
+        $paginate = $data->book_status->where('status', 'true')->paginate(5);
+
+        return view('pages.books.transactions.rent.rented_books', compact('data', 'paginate'));
     }
 
     /**

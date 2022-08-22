@@ -36,7 +36,9 @@ class ReturnBookController extends Controller
             }
         }
 
-        return view('pages.books.transactions.return.returned_books', compact('data'));
+        $paginate = $data->book_status->where('status', 'false')->paginate(5);
+
+        return view('pages.books.transactions.return.returned_books', compact('data', 'paginate'));
     }
 
     /**
