@@ -455,7 +455,7 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $rent->book->gallery->photo}}" alt="" />
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $rent->book->gallery->photo}}" alt="Naslovna" />
                                         <a href="{{route('show-book', $rent->book->id)}}">
                                             <span class="font-medium text-center">{{$rent->book->title}}</span>
                                         </a>
@@ -473,10 +473,9 @@
                                             $datetime1 = new DateTime(($rent->issue_date));
                                             $datetime2 = new DateTime(($rent->return_date));
                                             $interval = $datetime1->diff($datetime2);
-                                            echo '<span style="color: #2A4AB3">' .  $interval->format('%a dan')  .'</span>';
+                                            echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
                                             ?>
  
-
                                             {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
                
                                             </span>
@@ -495,14 +494,14 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{route('show-book', $rent->book->id)}}" tabindex="0"
+                                                    <a href="{{route('show-book', $rent->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
 
-                                                    <a href="vratiKnjigu.php" tabindex="0"
+                                                    <a href="{{route('return-book', $rent->book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>

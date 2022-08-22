@@ -150,6 +150,10 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white">
+                    
+
+                    @foreach ($data as $rent)
+                    
                     <tr class="border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
@@ -157,175 +161,56 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
-                                alt="" />
-                            <a href="ucenikProfile.php">
-                                <span class="font-medium text-center">Pero Perovic</span>
+                                <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
+                                alt="Profilna slika učenika: {{$rent->borrow->name}}"
+                                title="Profilna slika učenika: {{$rent->borrow->name}}" />
+                            <a href="{{route('show-student', $rent->borrow->username)}}">
+                                <span class="font-medium text-center">{{$rent->borrow->name}}</span>
                             </a>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">2 nedelje i 3 dana</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoracenja</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
-                    </tr>
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
-                                alt="" />
-                            <a href="ucenikProfile.php">
-                                <span class="font-medium text-center">Pero Perovic</span>
-                            </a>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">15.05.2020</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">5 dana</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoracenja</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
-                    </tr>
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
-                                alt="" />
-                            <a href="ucenikProfile.php">
-                                <span class="font-medium text-center">Pero Perovic</span>
-                            </a>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">09.04.2020</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">3 mjeseca i 2 nedelje</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            <span class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]">
-                                75 dana
-                            </span>
+                            <span>
+                                            
+                                <?php 
+                                $datetime1 = new DateTime(($rent->issue_date));
+                                $datetime2 = new DateTime(($rent->return_date));
+                                $interval = $datetime1->diff($datetime2);
+                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                                ?>
+
+                                {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
+   
+                                </span>
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoračenja</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
                     </tr>
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
-                                alt="" />
-                            <a href="ucenikProfile.php">
-                                <span class="font-medium text-center">Pero Perovic</span>
-                            </a>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">1 mjesec i 3 dana</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            <span class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]">
-                                13 dana
-                            </span>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
-                    </tr>
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 whitespace-no-wrap">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
-                            </label>
-                        </td>
-                        <td class="flex flex-row items-center px-4 py-4">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="img/profileStudent.jpg"
-                                alt="" />
-                            <a href="ucenikProfile.php">
-                                <span class="font-medium text-center">Pero Perovic</span>
-                            </a>
-                        </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">12.05.2020</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">1 nedelje i 4 dana</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoracenja</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan</td>
-                    </tr>
+                    
+                    @endforeach
+                        
+                    
                 </tbody>
             </table>
-
-            <div class="flex flex-row items-center justify-end my-2">
-                <div>
-                    <p class="inline text-md">
-                        Rows per page:
-                    </p>
-                    <select
-                        class=" text-gray-700 bg-white rounded-md w-[46px] focus:outline-none focus:ring-primary-500 focus:border-primary-500 text-md"
-                        name="ucenici">
-                        <option value="">
-                            20
-                        </option>
-                        <option value="">
-                            Option1
-                        </option>
-                        <option value="">
-                            Option2
-                        </option>
-                        <option value="">
-                            Option3
-                        </option>
-                        <option value="">
-                            Option4
-                        </option>
-                    </select>
-                </div>
-
-                <div>
-                    <nav class="relative z-0 inline-flex">
-                        <div>
-                            <a href="#"
-                                class="relative inline-flex items-center px-4 py-2 -ml-px font-medium leading-5 transition duration-150 ease-in-out bg-white text-md focus:z-10 focus:outline-none">
-                                1 of 1
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#"
-                                class="relative inline-flex items-center px-2 py-2 font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-l-md hover:text-gray-400 focus:z-10 focus:outline-none"
-                                aria-label="Previous"
-                                v-on:click.prevent="changePage(pagination.current_page - 1)">
-                                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                        <div v-if="pagination.current_page < pagination.last_page">
-                            <a href="#"
-                                class="relative inline-flex items-center px-2 py-2 -ml-px font-medium leading-5 text-gray-500 transition duration-150 ease-in-out bg-white text-md rounded-r-md hover:text-gray-400 focus:z-10 focus:outline-none"
-                                aria-label="Next">
-                                <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd"
-                                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </nav>
-                </div>
-            </div>
 
         </div>
     </div>
     <div class="absolute bottom-0 w-full">
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
+                <form action="{{route('store-return-book', $rent->id)}}" method="POST">
+                    @csrf
                 <button type="button"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                    Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>
+              
                 <button type="submit"
-                    class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-                    disabled>
-                    Vrati knjigu <i class="fas fa-check ml-[4px]"></i>
-                </button>
+                class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+                disabled>
+                Vrati knjigu <i class="fas fa-check ml-[4px]"></i>
+               </button>
+               </form>
             </div>
         </div>
     </div>

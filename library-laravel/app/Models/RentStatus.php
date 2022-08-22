@@ -17,4 +17,5 @@ class RentStatus extends Model
     public function book_status() {
         return $this->belongsTo(BookStatus::class, 'book_status_id');
     }
+
 }

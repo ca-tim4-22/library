@@ -29,14 +29,14 @@ class RentBookController extends Controller
         $books = Book::all();
         $rents = Rent::all();
 
-        // foreach ($books as $book) {
-        //     $data = $book->rent()->paginate(5);
-        // }
-
         if (count($rents)) {
             foreach ($books as $book) {
-                foreach ($book->rent as $collection) {
-                    $data = $collection->orderBy('id', 'desc')->paginate(5);
+                if ($book->rent[0]->rent_status[0]->book_status->status == 'true') {
+                    foreach ($book->rent as $collection) {
+                        $data = $collection->orderBy('id', 'desc')->paginate(5);
+                    }
+                } else {
+                    $data = [];
                 }
             }
         } else {

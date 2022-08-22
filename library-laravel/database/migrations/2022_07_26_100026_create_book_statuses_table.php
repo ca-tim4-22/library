@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('book_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('status', 256);
+            $table->timestamp('return_time')->useCurrent();
         });
     }
 

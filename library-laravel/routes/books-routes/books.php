@@ -31,6 +31,7 @@ Route::get('/vracene-knjige', [BookController::class, 'returnedBooks'])->name('r
 
 Route::controller(RentBookController::class)->group(function(){
 // Rented books
+Route::get('/detalji-izdavanja-knjige/{id}', [ReturnBookController::class, 'show'])->name('rented-info');
 Route::get('/izdate-knjige', [RentBookController::class, 'index'])->name('rented-books');
 Route::get('izdaj-knjigu/{id}',[RentBookController::class, 'create'])->name('rent-book');
 Route::post('izdaj-knjigu/{id}',[RentBookController::class, 'store'])->name('store-rent-book');
@@ -38,8 +39,10 @@ Route::post('izdaj-knjigu/{id}',[RentBookController::class, 'store'])->name('sto
 
 Route::controller(ReturnBookController::class)->group(function(){
 // Return book
+Route::get('/detalji-vracanja-knjige/{id}', [ReturnBookController::class, 'show'])->name('returned-info');
 Route::get('/vracene-knjige', [ReturnBookController::class, 'index'])->name('returned-books');
 Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name('return-book');
+Route::post('/vrati-knjigu/{id}', [ReturnBookController::class, 'store'])->name('store-return-book');
 });
 
 ?>

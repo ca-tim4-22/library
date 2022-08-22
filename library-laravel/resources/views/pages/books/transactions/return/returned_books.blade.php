@@ -40,7 +40,7 @@
                                     <!-- Izdato uceniku + dropdown filter for ucenik -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato uceniku <i class="ml-2 fas fa-filter"></i>
+                                        Izdato učeniku <i class="ml-2 fas fa-filter"></i>
                                         <div id="uceniciDropdown"
                                              class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -185,10 +185,10 @@
                                         </div>
                                     </th>
 
-                                    <!-- Datum izdavanja + dropdown filter for datum -->
+                                    <!-- Datum vraćanja + dropdown filter for datum -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja <i class="fas fa-filter"></i>
+                                        Datum vraćanja <i class="fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                             <div
@@ -248,10 +248,10 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <!-- Knjigu izdao + dropdown filter for bibliotekar -->
+                                    <!-- Knjigu primio + dropdown filter for bibliotekar -->
                                     <th
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu izdao <i class="fas fa-filter"></i>
+                                        Knjigu primio <i class="fas fa-filter"></i>
                                         <div id="bibliotekariDropdown"
                                              class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -400,6 +400,8 @@
                                 </thead>
                                 <tbody class="bg-white">
 
+                                @foreach ($data as $return)
+                                
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
@@ -407,19 +409,26 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            <span class="font-medium text-center">Geografija Crne Gore</span>
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $return->book->gallery->photo}}" alt="Naslovna" />
+                                        <a href="{{route('show-book', $return->book->id)}}">
+                                            <span class="font-medium text-center">{{$return->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Pero Perovic</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">21.02.2021</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->borrow->name}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->return_date}}</td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
-                                            <span>2 nedelje i 3 dana</span>
+                                            <span>
+                                                <?php 
+                                                $datetime1 = new DateTime(($return->issue_date));
+                                                $datetime2 = new DateTime(($return->return_date));
+                                                $interval = $datetime1->diff($datetime2);
+                                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                                                ?>
+                                                </span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">Valentina Kascelan
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$return->librarian->name}}
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsIzdateKnjige hover:text-[#606FC7]">
@@ -432,7 +441,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="izdavanjeDetalji.php" tabindex="0"
+                                                    <a href="{{route('returned-info', $return->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
@@ -446,7 +455,7 @@
                                                         <span class="px-4 py-0">Otpiši knjigu</span>
                                                     </a>
 
-                                                    <a href="vratiKnjigu.php" tabindex="0"
+                                                    <a href="#" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
@@ -457,6 +466,8 @@
                                         </div>
                                     </td>
                                 </tr>
+                                
+                                @endforeach
                            
                                 </tbody>
                             </table>

@@ -22,8 +22,8 @@ class Rent extends Model
     public function book() {
         return $this->belongsTo(Book::class);
     }
-    
-    public function rentStatus(){
-        return $this->hasMany(RentStatus::class);
+
+    public function rent_status() {
+        return $this->hasMany(RentStatus::class, 'rent_id');
     }
 }

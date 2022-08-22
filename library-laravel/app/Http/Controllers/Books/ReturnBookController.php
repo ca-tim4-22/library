@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\BookStatus;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
 class ReturnBookController extends Controller
@@ -19,7 +21,24 @@ class ReturnBookController extends Controller
      */
     public function index()
     {
-        return view('pages.books.transactions.return.returned_books');
+        $books = Book::all();
+        $rents = Rent::all();
+
+        if (count($rents)) {
+            foreach ($books as $book) {
+                if ($book->rent[0]->rent_status[0]->book_status->status == 'true') {
+                    foreach ($book->rent as $collection) {
+                        $data = $collection->orderBy('id', 'desc')->paginate(5);
+                    }
+                } else {
+                    $data = [];
+                }
+            }
+        } else {
+            $data = [];
+        }
+
+        return view('pages.books.transactions.return.returned_books', compact('data'));
     }
 
     /**
@@ -31,7 +50,20 @@ class ReturnBookController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('pages.books.transactions.return.return_book', compact('book'));
+        $books = Book::all();
+        $rents = Rent::all();
+
+        if (count($rents)) {
+            foreach ($books as $book) {
+                foreach ($book->rent as $collection) {
+                    $data = $collection->orderBy('id', 'desc')->paginate(5);
+                }
+            }
+        } else {
+            $data = [];
+        }
+
+        return view('pages.books.transactions.return.return_book', compact('book', 'data'));
     }
 
     /**
@@ -40,9 +72,12 @@ class ReturnBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        
+        $book_status = BookStatus::findOrFail($id);
+        $book_status->whereId($id)->update(['status' => 'false', 'return_time' => now()]);
+
+        return back()->with('return-success', 'Uspješno ste vratili knjigu.');
     }
 
     /**
@@ -53,7 +88,9 @@ class ReturnBookController extends Controller
      */
     public function show($id)
     {
-        //
+        $rent = Rent::findOrFail($id);
+
+        return view('pages.books.transactions.return.return_info', compact('rent'));
     }
 
     /**
