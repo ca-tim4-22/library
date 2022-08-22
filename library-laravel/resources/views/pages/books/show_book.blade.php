@@ -198,7 +198,7 @@
                     </div>
                     <div class="mt-[40px] mx-[30px]">
 
-                @if ($book->rent == [])
+                @if ($book->rent->contains('id', 1))
 
                 @foreach ($book->rent as $rent)
 

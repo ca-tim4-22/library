@@ -18,4 +18,10 @@ class RentStatus extends Model
         return $this->belongsTo(BookStatus::class, 'book_status_id');
     }
 
+    public function condition_1() {
+        return $this->book_status()->where('status','=','true');
+    }
+
 }
+
+

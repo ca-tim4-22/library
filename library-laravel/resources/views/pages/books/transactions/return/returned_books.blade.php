@@ -471,14 +471,10 @@
                            
                                 </tbody>
                             </table>
-
-                            
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
         <!-- End Content -->
 @endsection
