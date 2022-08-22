@@ -9,4 +9,6 @@ class BookStatus extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = false;
 }
+

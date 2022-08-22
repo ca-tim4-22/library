@@ -11,6 +11,10 @@ class RentStatus extends Model
     protected $guarded = [];
 
     public function rent() {
-        return $this->belongsTo(Rent::class);
+        return $this->belongsTo(Rent::class, 'rent_id');
+    }
+
+    public function book_status() {
+        return $this->belongsTo(BookStatus::class, 'book_status_id');
     }
 }

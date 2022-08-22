@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\BookStatus;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
+use App\Models\RentStatus;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -82,11 +84,14 @@ class RentBookController extends Controller
        $book->rented_count = $book->rented_count + 1;
        $book->save();
 
-    //    $rent_status = new RentStatus();
-    //    $rent_status->rent_id = '1';
-    //    $rent_status->book_status_id = '1';
-    //    $rent_status->date = '1';
-    //    $rent_status->save();
+       $book_status = new BookStatus();
+       $book_status->status = 'true';
+       $book_status->save();
+
+       $rent_status = new RentStatus();
+       $rent_status->rent_id = $book_rent->id;
+       $rent_status->book_status_id = $book_rent->id;
+       $rent_status->save();
 
        return to_route('rented-books')->with('rented-book', 'Uspješno ste iznajmili knjigu!');
     }
