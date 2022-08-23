@@ -14,12 +14,16 @@ class Reservation extends Model
         return $this->belongsTo(Book::class);
     }
 
-    public function student() {
-        return $this->belongsTo(User::class);
+    public function made_for() {
+        return $this->belongsTo(User::class, 'reservationMadeFor_user_id');
     }
 
-    public function librarian() {
-        return $this->belongsTo(User::class);
+    public function made_by() {
+        return $this->belongsTo(User::class, 'reservationMadeBy_user_id');
+    }
+
+    public function closed_by() {
+        return $this->belongsTo(User::class, 'closeReservation_user_id');
     }
 
     public function reservationStatus() {

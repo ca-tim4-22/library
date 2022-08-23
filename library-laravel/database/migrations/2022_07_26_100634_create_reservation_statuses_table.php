@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('reservation_statuses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('reservation_id');
-            $table->unsignedBigInteger('reservation_status_id');
+            $table->unsignedBigInteger('status_rezervations_id');
             $table->timestamps();
 
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');
-            $table->foreign('reservation_status_id')->references('id')->on('status_reservations')->onDelete('cascade');
+            $table->foreign('status_rezervations_id')->references('id')->on('reservation_statuses')->onDelete('cascade');
         });
     }
 
