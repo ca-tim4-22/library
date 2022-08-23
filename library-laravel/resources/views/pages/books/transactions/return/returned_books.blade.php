@@ -13,9 +13,22 @@
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
-            <div class="heading mt-[7px]">
-                <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
+            <div class="heading mt-[7px]"  style="margin-top: 11px">
+                <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
                     Izdavanje knjiga
+
+{{-- Session message for returned book --}}
+@if (session()->has('return-success'))
+<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Success!</span> {{session('return-success')}}
+    </div>
+  </div>
+@endif
+
+
                 </h1>
             </div>
             
@@ -458,11 +471,11 @@
                                                         <span class="px-4 py-0">Otpiši knjigu</span>
                                                     </a>
 
-                                                    <a href="#" tabindex="0"
+                                                    <a href="{{route('rent-book', $book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
-                                                        <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Vrati knjigu</span>
+                                                        <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Izdaj knjigu</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -500,4 +513,7 @@
             </div>
         </section>
         <!-- End Content -->
+
+        <x-jquery.jquery></x-jquery.jquery>
+
 @endsection

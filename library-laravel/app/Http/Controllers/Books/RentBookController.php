@@ -88,7 +88,7 @@ class RentBookController extends Controller
        $rent_status->book_status_id = $book_rent->id;
        $rent_status->save();
 
-       return to_route('rented-books')->with('rented-book', 'Uspješno ste iznajmili knjigu!');
+       return to_route('rented-books')->with('rent-success', 'Uspješno ste izdali knjigu!');
     }
 
     /**

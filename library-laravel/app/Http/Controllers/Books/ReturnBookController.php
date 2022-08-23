@@ -77,7 +77,11 @@ class ReturnBookController extends Controller
         $book_status = BookStatus::findOrFail($id);
         $book_status->whereId($id)->update(['status' => 'false', 'return_time' => now()]);
 
-        return back()->with('return-success', 'Uspješno ste vratili knjigu.');
+        $book = Book::findOrFail($id);
+        $book->rented_count = $book->rented_count - 1;
+        $book->save();
+
+        return to_route('returned-books')->with('return-success', 'Uspješno ste vratili knjigu.');
     }
 
     /**
