@@ -42,7 +42,7 @@ Route::controller(ReturnBookController::class)->group(function(){
 Route::get('/detalji-vracanja-knjige/{id}', [ReturnBookController::class, 'show'])->name('returned-info');
 Route::get('/vracene-knjige', [ReturnBookController::class, 'index'])->name('returned-books');
 Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name('return-book');
-Route::post('/vrati-knjigu/{id}', [ReturnBookController::class, 'store'])->name('store-return-book');
+Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('store-return-book');
 });
 
 ?>

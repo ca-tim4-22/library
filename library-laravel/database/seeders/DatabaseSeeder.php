@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
         \App\Models\Genre::factory(5)->create();
         \App\Models\Author::factory(50)->create();
         // Book factories
-        // \App\Models\Book::factory(5)->create();
-        // \App\Models\BookAuthor::factory(5)->create();
-        // \App\Models\BookCategory::factory(5)->create();
-        // \App\Models\BookGenre::factory(5)->create();
-        // \App\Models\Gallery::factory(5)->create();
+        \App\Models\Book::factory(5)->create();
+        \App\Models\BookAuthor::factory(5)->create();
+        \App\Models\BookCategory::factory(5)->create();
+        \App\Models\BookGenre::factory(5)->create();
+        \App\Models\Gallery::factory(5)->create();
         
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -28,23 +28,18 @@ class RentBookController extends Controller
     {
         $books = Book::all();
 
-        if (count($books) > 0) {
+        if (Rent::count() > 0) {
             foreach ($books as $book) {
-                if ($book->rent->contains('id', 1)) {
-                    foreach ($book->rent as $rent) {
-                        foreach ($rent->rent_status as $collection) {
-                            $data = $collection->book_status->where('status', 'true')->get();
-                        }
+                foreach ($book->rent as $rent) {
+                    foreach ($rent->rent_status as $collection) {
+                        $data = $collection;
                     }
-                    $paginate = $collection->book_status->where('status', 'true')->paginate(1);
-                } else {
-                    $data = null;
-                    $paginate = null;
                 }
             }
+            $paginate = $data->book_status->where('status', 'true')->paginate(5);
         } else {
-            $data = null;
-            $paginate = null;
+            $data = 'no-values';
+            $paginate = 'no-values';
         }
 
         return view('pages.books.transactions.rent.rented_books', compact('data', 'paginate'));

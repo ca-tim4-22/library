@@ -12,12 +12,7 @@ class ReturnBookController extends Controller
 {
     public function __construct()
     {
-        if (Rent::count() <= 0) {
             $this->middleware('auth');
-            abort(404);
-        } else {
-            $this->middleware('auth');
-        }
     }
     /**
      * Display a listing of the resource.
@@ -28,15 +23,19 @@ class ReturnBookController extends Controller
     {
         $books = Book::all();
 
-        foreach ($books as $book) {
-            foreach ($book->rent as $rent) {
-                foreach ($rent->rent_status as $collection) {
+        if (Rent::count() > 0) {
+            foreach ($books as $book) {
+                foreach ($book->rent as $rent) {
+                    foreach ($rent->rent_status as $collection) {
                         $data = $collection;
+                    }
                 }
             }
+            $paginate = $data->book_status->where('status', 'false')->paginate(5);
+        } else {
+            $data = 'no-values';
+            $paginate = 'no-values';
         }
-
-        $paginate = $data->book_status->where('status', 'false')->paginate(5);
 
         return view('pages.books.transactions.return.returned_books', compact('data', 'paginate'));
     }
@@ -48,7 +47,7 @@ class ReturnBookController extends Controller
      */
     public function create($id)
     {
-        $book = Book::findOrFail($id);
+        $get_book = Book::findOrFail($id);
 
         $books = Book::all();
         $rents = Rent::all();
@@ -56,29 +55,31 @@ class ReturnBookController extends Controller
         if (count($rents)) {
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
-                    $data = $collection->orderBy('id', 'desc')->paginate(5);
+                    $data = $collection->orderBy('id', 'asc')->paginate(5);
                 }
             }
         } else {
             $data = [];
         }
 
-        return view('pages.books.transactions.return.return_book', compact('book', 'data'));
+        return view('pages.books.transactions.return.return_book', compact('data', 'get_book'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http \Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
-        $book_status = BookStatus::findOrFail($id);
-        $book_status->whereId($id)->update(['status' => 'false', 'return_time' => now()]);
+       
+        $id2 = $request->input('id2');
+        $book_status = BookStatus::findOrFail($id2);
+        $book_status->whereId($id2)->update(['status' => 'false', 'return_time' => now()]);
 
-        $book = Book::findOrFail($id);
-        $book->rented_count = $book->rented_count - 1;
+        $book = Book::findOrFail($book_status->rent_status->rent->book->id);  
+        $book->rented_count = $book->rented_count - 1;  
         $book->save();
 
         return to_route('returned-books')->with('return-success', 'Uspješno ste vratili knjigu.');

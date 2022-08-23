@@ -18,9 +18,11 @@ class BookCategoryFactory extends Factory
      */
     public function definition()
     {
+        static $num1 = 1;
+        static $num2 = 1;
         return [
-            'book_id' => Book::all()->random(),
-            'category_id' => Category::all()->random(),
+            'book_id' => $num1++,
+            'category_id' => $num2++    ,
         ];
     }
 }

@@ -22,10 +22,14 @@
             {{-- Books side --}}
             <x-books.book_side></x-books.book_side>
 
-                        <div class="w-full mt-[10px] ml-2 px-2">
-                            
-                            @if (!$data->book_status->where('status', 'false')->count() == 0)
-
+<div class="w-full mt-[10px] ml-2 px-2">
+   
+    @if ($data != 'no-values' &&  $data->book_status->get()->contains('status', 'false'))
+         
+        @if ($data->book_status->where('status', 'false')->count())
+    
+    @endif
+  
 {{-- Session message for returned book --}}
 @if (session()->has('return-success'))
 <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -406,7 +410,7 @@
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                                     Ponisti <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
-                                            </div>
+                                         </div>
                                         </div>
                                     </th>
                                     <th class="px-4 py-4"> </th>
@@ -414,7 +418,7 @@
                                 </thead>
                                 <tbody class="bg-white">
                                     
-                                @foreach ($data->book_status->where('status', 'false')->get() as $book)
+                                @foreach ($data->book_status->where('status', 'false')->orderBy('id', 'desc')->get() as $book)
 
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
@@ -503,9 +507,11 @@
                                 <p class="font-medium text-white">Trenutno nema vraćenih knjiga! </p>
                             </div>
                         </div>  
+
                         
                         @endif
                         
+
                     </div>
                 </div>
             </div>

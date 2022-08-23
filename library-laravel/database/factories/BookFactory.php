@@ -29,12 +29,12 @@ class BookFactory extends Factory
             'binding_id' => Binding::all()->random(),
             'format_id' => Format::all()->random(),
             'publisher_id' => Publisher::all()->random(),
-            'ISBN' => $this->faker->numberBetween(1, 999),
-            'quantity_count' => $this->faker->numberBetween(1, 20),
+            'ISBN' => $this->faker->numberBetween(1111111111111, 9999999999999),
+            'quantity_count' => $this->faker->numberBetween(1, 10),
             'rented_count' => '0',
             'reserved_count' => '0',
             'body' => $this->faker->sentence(30),
-            'year' => '2014',
+            'year' => $this->faker->numberBetween(2000, 2022),
         ];
     }
 }

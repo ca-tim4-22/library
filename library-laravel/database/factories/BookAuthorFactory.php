@@ -18,9 +18,11 @@ class BookAuthorFactory extends Factory
      */
     public function definition()
     {
+        static $num1 = 1;
+        static $num2 = 1;
         return [
-            'book_id' => Book::all()->random(),
-            'author_id' => Author::all()->random(),
+            'book_id' => $num1++,
+            'author_id' => $num2++,
         ];
     }
 }

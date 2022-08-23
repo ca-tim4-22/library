@@ -16,12 +16,12 @@
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
-                    <img src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="Naslovna" title="Naslovna">
+                    <img src="{{'/storage/book-covers/' . $get_book->gallery->photo}}" alt="Naslovna" title="Naslovna">
                 </div>
                 <div class="pl-[15px]  flex flex-col">
                     <div>
                         <h1>
-                            {{$book->title}}
+                            {{$get_book->title}}
                         </h1>
                     </div>
                     <div>
@@ -36,16 +36,16 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('show-book', $book->id)}}"
+                                    <a href="{{route('show-book', $get_book->id)}}"
                                         class="text-[#2196f3] hover:text-blue-600">
-                                        KNJIGA-{{$book->id}}
+                                        KNJIGA-{{$get_book->id}}
                                     </a>
                                 </li>
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('return-book', $book->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    <a href="{{route('return-book', $get_book->id)}}" class="text-[#2196f3] hover:text-blue-600">
                                         Vrati knjigu
                                     </a>
                                 </li>
@@ -59,7 +59,7 @@
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="{{route('rent-book', $book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $get_book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
@@ -75,14 +75,14 @@
                     <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="{{route('edit-book', $book->id)}}" tabindex="0"
+                            <a href="{{route('edit-book', $get_book->id)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
                             
-                            <form action="{{route('destroy-book', $book->id)}}" method="POST">
+                            <form action="{{route('destroy-book', $get_book->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button
@@ -124,6 +124,10 @@
 
         <div
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
+          
+            <form action="{{route('store-return-book')}}" method="POST">
+            @csrf
+               
             <table class="min-w-full border-[1px] border-[#e4dfdf]" id="vratiKnjiguTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-b-[1px] border-[#e4dfdf]">
@@ -159,7 +163,7 @@
                    <tr class="border-b-[1px] border-[#e4dfdf]">
                        <td class="px-4 py-4 whitespace-no-wrap">
                            <label class="inline-flex items-center">
-                               <input type="checkbox" class="form-checkbox">
+                               <input type="checkbox" name="id2" value="{{$rent->id}}" class="form-checkbox">
                            </label>
                        </td>
                        <td class="flex flex-row items-center px-4 py-4">
@@ -202,8 +206,7 @@
     <div class="absolute bottom-0 w-full">
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                <form action="{{route('store-return-book', $rent->id)}}" method="POST">
-                @csrf   
+               
                 <button type="button"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>
