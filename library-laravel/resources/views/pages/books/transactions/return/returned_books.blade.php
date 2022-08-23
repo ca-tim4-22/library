@@ -16,6 +16,15 @@
             <div class="heading mt-[7px]"  style="margin-top: 11px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
                     Izdavanje knjiga
+                </h1>
+            </div>
+            
+            {{-- Books side --}}
+            <x-books.book_side></x-books.book_side>
+
+                        <div class="w-full mt-[10px] ml-2 px-2">
+                            
+                            @if (!$data->book_status->where('status', 'false')->count() == 0)
 
 {{-- Session message for returned book --}}
 @if (session()->has('return-success'))
@@ -27,18 +36,7 @@
     </div>
   </div>
 @endif
-
-
-                </h1>
-            </div>
-            
-            {{-- Books side --}}
-            <x-books.book_side></x-books.book_side>
-
-                        <div class="w-full mt-[10px] ml-2 px-2">
                             
-                            @if (!$data->book_status->where('status', 'false')->count() == 0)
-
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
