@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\BookStatus;
 use App\Models\Rent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReturnBookController extends Controller
@@ -76,7 +77,7 @@ class ReturnBookController extends Controller
        
         $id2 = $request->input('id2');
         $book_status = BookStatus::findOrFail($id2);
-        $book_status->whereId($id2)->update(['status' => 'false', 'return_time' => now()]);
+        $book_status->whereId($id2)->update(['status' => 'false', 'return_time' => Carbon::now()->toDateString()]);
 
         $book = Book::findOrFail($book_status->rent_status->rent->book->id);  
         $book->rented_count = $book->rented_count - 1;  

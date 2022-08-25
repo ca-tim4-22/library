@@ -27,7 +27,7 @@
                             
                             @if ($data != 'no-values')
 
-                            @if ($data->book_status->where('return_time', '<', now())->count())
+                            @if ($data->book_status->whereDate('return_time', '<', date('Y-m-d'))->count())
 
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
@@ -259,8 +259,8 @@
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                                 </thead>
-                          
-                                @foreach ($data->book_status->whereDate('return_time', '<', now())->get() as $book_status)
+                                
+@foreach ($data->book_status->whereDate('return_time', '<', date('Y-m-d'))->get() as $book_status)
                                     
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
@@ -270,7 +270,7 @@
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
                                         <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book_status->rent_status->rent->book->gallery->photo}}" alt="Naslovna" />
-                                        <a href="knjigaOsnovniDetalji.php">
+                                        <a href="{{route('show-book', $book_status->rent_status->rent->book->id)}}">
                                             <span class="font-medium text-center">{{$book_status->rent_status->rent->book->title}}</span>
                                         </a>
                                     </td>
@@ -283,18 +283,19 @@
 
 $date1 = new DateTime("now");
 $date2 = new DateTime($book_status->rent_status->book_status->return_time);
-$interval = $date2->diff($date1);
+$interval = $date1->diff($date2);
 
-if ($date1 > $date2) {
-    if ($interval->days == 1) {
-       echo "1 dan";
-    } elseif ($interval->days == 0) {
-        $interval = 1;
-        echo $interval . ' dan'; 
-    } else {
-        echo $interval->format('%a dana');
-    }
-}
+echo $interval->days;
+// if ($date1 > $date2) {
+//     if ($interval->days == 1) {
+//        echo "1 dan";
+//     } elseif ($interval->days == 0) {
+//         $interval = 1;
+//         echo $interval . ' dan'; 
+//     } else {
+//         echo $interval->format('%a dana');
+//     }
+// }
 
 @endphp
                                             </span>
@@ -310,8 +311,6 @@ if ($date1 > $date2) {
                                                 $interval = $datetime1->diff($datetime2);
                                                 echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
                                                 @endphp
-     
-                                                {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
                    
                                                 </span>
                                         </div>
@@ -334,14 +333,14 @@ if ($date1 > $date2) {
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
 
-                                                    <a href="izdajKnjigu.php" tabindex="0"
+                                                    <a href="{{route('rent-book', $book_status->rent_status->rent->book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Izdaj knjigu</span>
                                                     </a>
 
-                                                    <a href="vratiKnjigu.php" tabindex="0"
+                                                    <a href="{{route('return-book', $book_status->rent_status->rent->book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
@@ -353,22 +352,28 @@ if ($date1 > $date2) {
                                                        role="menuitem">
                                                         <i
                                                             class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Rezervisi knjigu</span>
+                                                        <span class="px-4 py-0">Rezerviši knjigu</span>
                                                     </a>
 
                                                     <a href="otpisiKnjigu.php" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otpisi knjigu</span>
+                                                        <span class="px-4 py-0">Otpiši knjigu</span>
                                                     </a>
 
-                                                    <a href="#" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
-                                                        <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izbrisi knjigu</span>
-                                                    </a>
+                                                    <form action="{{route('destroy-book', $book_status->rent_status->rent->book->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button
+                                                                style="outline: none;border: none;"
+                                                                type="submit"
+                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                                role="menuitem">
+                                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                                            <span class="px-4 py-0">Izbriši knjigu</span>
+                                                        </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -395,22 +400,11 @@ if ($date1 > $date2) {
 
                             @endif
 
+                            @endif
                             
-                            @else 
-                            
-                            <div class="mx-[50px]">
-                                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
-                                    <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
-                                        <path fill="currentColor"
-                                                d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
-                                        </path>
-                                    </svg>
-                                    <p class="font-medium text-white">Trenutno nema knjiga u prekoračenju! </p>
-                                </div>
                             </div>  
-                        </div>
-                    </div>
-                    @endif 
+
+                   
                 </div>
             </div>
         </section>
