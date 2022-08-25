@@ -5,6 +5,7 @@ use App\Http\Controllers\ {
 };
 
 use App\Http\Controllers\Books\ {
+    OverdueBookController,
     RentBookController,
     ReturnBookController
 };
@@ -24,7 +25,6 @@ Route::put('/izmijeni-knjigu/{id}', [BookController::class, 'update'])->name('up
 Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name('destroy-book');
 Route::get('/aktivne-rezervacije', [BookController::class, 'activeReservations'])->name('active-books');
 Route::get('/arhivirane-rezervacije', [BookController::class, 'archivedReservations'])->name('archived-books');
-Route::get('/knjige-u-prekoracenju', [BookController::class, 'overdueBooks'])->name('overdue-books');
 Route::get('/vracene-knjige', [BookController::class, 'returnedBooks'])->name('returned-books');
 
 });
@@ -43,6 +43,11 @@ Route::get('/detalji-vracanja-knjige/{id}', [ReturnBookController::class, 'show'
 Route::get('/vracene-knjige', [ReturnBookController::class, 'index'])->name('returned-books');
 Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name('return-book');
 Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('store-return-book');
+});
+
+Route::controller(OverdueBookController::class)->group(function(){
+// Overdue book
+Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->name('overdue-books');
 });
 
 ?>

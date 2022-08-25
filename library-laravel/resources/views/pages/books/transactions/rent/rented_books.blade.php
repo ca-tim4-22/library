@@ -26,7 +26,7 @@
 
                         <div class="w-full mt-[10px] ml-2 px-2">
 
-                            @if ($data != 'no-values' &&  $data->book_status->get()->contains('status', 'false'))
+                            @if ($data != 'no-values' &&  $data->book_status->get()->contains('status', 'true'))
          
                             @if ($data->book_status->where('status', 'true')->count())
                         
@@ -35,8 +35,8 @@
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 
 {{-- Session message for rented book --}}
-@if (session()->has('rented-book'))
-<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+@if (session()->has('rent-success'))
+<div id="hideDiv" class="flex p-4 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
@@ -472,12 +472,12 @@
                                         <div>
                                             <span>
                                             
-                                            <?php 
+                                            @php
                                             $datetime1 = new DateTime(($book->rent_status->rent->issue_date));
                                             $datetime2 = new DateTime(($book->rent_status->rent->return_date));
                                             $interval = $datetime1->diff($datetime2);
                                             echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
-                                            ?>
+                                            @endphp
  
                                             {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
                
@@ -497,7 +497,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{route('show-book', $book->rent_status->rent->id)}}" tabindex="0"
+                                                    <a href="{{route('rented-info', $book->rent_status->rent->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
@@ -544,23 +544,16 @@
                                     <p class="font-medium text-white">Trenutno nema izdatih knjiga! </p>
                                 </div>
                             </div>  
-                            
                             @endif
-                            
                         </div>
                     </div>
-
                 </div>
             </div>            
-
         </section>
-        
         <!-- End Content -->
     </main>
-
     <!-- End Main content -->
 
     <x-jquery.jquery></x-jquery.jquery>
-
-@endsection
+    @endsection
 

@@ -134,13 +134,6 @@ class BookController extends Controller
         return view('pages.books.transactions.archived_reservations', compact('book'));
     }
 
-    public function overdueBooks()
-    {
-        $book = new Book();
-
-        return view('pages.books.transactions.overdue_books', compact('book'));
-    }
-
     public function returnedBooks(){
         $book = new Book();
         

@@ -218,5 +218,7 @@
             </div>
         </section>
         <!-- End Content -->
+
+        <x-jquery.jquery></x-jquery.jquery>
         
 @endsection

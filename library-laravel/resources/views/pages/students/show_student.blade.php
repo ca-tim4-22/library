@@ -132,11 +132,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$student->login_count != 0 ? $student->login_count : "Korisnik se nikada nije ulogovao na platformu."}}</p>
+                        <p class="font-medium">{{$student->login_count != 0 ? $student->login_count : "Učenik se nikada nije ulogovao na platformu."}}</p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$student->login_count == 0 ? 'Korisnik se nikada nije ulogovao na platformu.' : $student->last_login_at->diffForHumans()}}</p>
+                        <p class="font-medium">{{$student->login_count <= 0 ? 'Učenik se nikada nije ulogovao na platformu.' : $student->last_login_at->diffForHumans()}}</p>
                     </div>
 
                 </div>

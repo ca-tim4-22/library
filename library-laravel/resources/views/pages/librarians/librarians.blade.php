@@ -88,6 +88,7 @@
                 
             @endif
 
+
             @if (count($librarians) > 0)
 
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
@@ -98,7 +99,7 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">Ime i prezime</a>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">Ime i prezime</a>
                         </th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Email</th>
                         <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Tip korisnika</th>
@@ -113,7 +114,7 @@
                     <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
+                                <input type="checkbox" id="test" class="form-checkbox">
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
@@ -215,6 +216,24 @@ function clickMe()
 </div>
 </section>
 <!-- End Content -->
+<style>
+    .red {
+        color: red !important
+    }
+</style>
+<script>
+$('#test').change(function(){
+    if($(this).is(":checked")) {
+        // $('.changeme').addClass('red');
+        $(this).parents(':checked').toggleClass("red");
+    } else {
+        $('.changeme').removeClass('red');
+    }
+});
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 @endsection
 
 

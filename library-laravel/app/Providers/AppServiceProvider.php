@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
          // Localization Carbon
-         Carbon::setLocale('hr');
+         Carbon::setLocale('sr');
 
           /**
          * Paginate a standard Laravel Collection.

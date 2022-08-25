@@ -16,7 +16,7 @@
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
-                    <img src="img/tomsojer.jpg" alt="">
+                    <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $rent->book->gallery->photo}}" alt="Naslovna" />
                 </div>
                 <div class="pl-[15px]  flex flex-col">
                     <div>
