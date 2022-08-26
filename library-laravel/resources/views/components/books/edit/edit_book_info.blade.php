@@ -27,7 +27,7 @@
                         <div class="mt-[20px]">
                             <p>Izaberite kategorije <span class="text-red-500">*</span></p>
                             <select x-cloak id="kategorija" name="category_id">
-                                <option value="aa" disabled selected>{{$book->categories[0]->category->name}}</option>
+                                <option selected></option>
 
                                 @foreach ($models['categories'] as $category)
 
@@ -127,7 +127,7 @@
                     <div class="mt-[20px]">
                         <p>Izaberite žanrove <span class="text-red-500">*</span></p>
                         <select x-cloak id="zanr" name="genre_id">
-                            <option value="{{$book->genres[0]->genre_id}}" disabled selected>{{$book->genres[0]->genre->name}}</option>
+                            <option value="{{$book->genres[0]->genre_id}}"  selected>{{$book->genres[0]->genre->name}}</option>
 
                             @foreach ($models['genres'] as $genre)
 
@@ -228,7 +228,7 @@
             <div class="mt-[20px]">
                 <p>Izaberite autore <span class="text-red-500">*</span></p>
                 <select x-cloak id="autori" name="author_id">
-                    <option value="{{$book->authors[0]->author->id}}" disabled selected>{{$book->authors[0]->author->NameSurname}}</option>
+                    <option value="{{$book->authors[0]->author->id}}"  selected>{{$book->authors[0]->author->NameSurname}}</option>
 
                     @foreach ($models['authors'] as $author)
 
@@ -325,7 +325,7 @@
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">
-                <option value="{{$book->publisher->id}}" disabled selected>{{$book->publisher->name}}</option>
+                <option value="{{$book->publisher->id}}" selected>{{$book->publisher->name}}</option>
 
 
                 @foreach ($models['publishers'] as $publisher)
@@ -343,10 +343,23 @@
             <select
                 class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 name="godinaIzdavanja" id="godinaIzdavanja" onclick="clearErrorsGodinaIzdavanja()">
-                <option disabled selected></option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
+                <option  selected value="{{$book->year}}">{{$book->year}}</option>
                 <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+
+
+
             </select>
             <div id="validateGodinaIzdavanja"></div>
         </div>
