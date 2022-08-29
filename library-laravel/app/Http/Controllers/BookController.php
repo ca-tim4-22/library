@@ -6,6 +6,8 @@ use App\Http\Requests\BookCreateRequest;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\BookAuthor;
+use App\Models\BookCategory;
+use App\Models\BookGenre;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\User;
@@ -61,8 +63,6 @@ class BookController extends Controller
      */
     public function store(BookCreateRequest $request)
     {
-        $input = $request->all();
-
         $book = new Book();
         $book->title = $request->input('title');
         $book->body = $request->input('body');
@@ -76,16 +76,14 @@ class BookController extends Controller
         $book->ISBN = $request->input('ISBN');
         $book->year = $request->input('year');
         $book->save();
+        $categories=$request->input('category_id');
+        $this->saveCategories($categories,$book->id);
+        $authors=$request->input('author_id');
+        $this->saveAuthors($authors,$book->id);
+        $genres=$request->input('genre_id');
+        $this->saveGenres($genres,$book->id);
 
-        DB::table('book_categories')->insert(
-            ['book_id' => $book->id, 'category_id' => $input['category_id']],
-        );
-        DB::table('book_authors')->insert(
-            ['book_id' => $book->id, 'author_id' => $input['author_id']],
-        );
-        DB::table('book_genres')->insert(
-            ['book_id' => $book->id, 'genre_id' => $input['genre_id']],
-        );
+
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
@@ -136,7 +134,7 @@ class BookController extends Controller
 
     public function returnedBooks(){
         $book = new Book();
-        
+
         return view('pages.books.transactions.returned_books', compact('book'));
     }
 
@@ -171,31 +169,42 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request,Book $book, $id)
+    public function update(Request $request, $id)
     {
 
-        $input = $request->all();
-        $book->update($input);
-
-        if(request('category_id')){
-            DB::table('book_categories')->update(
-                ['book_id' => $book->id, 'category_id' => request('category_id')],
-            );
+        $book = Book::findOrFail($id);
+        $book->title = $request->input('title');
+        $book->body = $request->input('body');
+        $book->publisher_id = $request->input('publisher_id');
+        $book->quantity_count = $request->input('quantity_count');
+        $book->page_count = $request->input('page_count');;
+        $book->binding_id = $request->input('binding_id');
+        $book->letter_id = $request->input('letter_id');
+        $book->format_id = $request->input('format_id');
+        $book->language_id = $request->input('language_id');
+        if(request('ISBN')) {
+            $book->ISBN = $request->input('ISBN');
         }
-
-        if(request('book_authors')){
-            DB::table('book_authors')->update(
-                ['book_id' => $book->id, 'author_id' => request('author_id')],
-            );
+        if ($file = $request->file('photo')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('storage/students', $name);
+            DB::table('galleries')->where('book_id',$book->id)->update(['photo'=>$name]);
         }
+        $book->year = $request->input('year');
+        $book->save();
 
-        if(request('book_genres')){
-            DB::table('book_genres')->update(
-                ['book_id' => $book->id, 'genre_id' => request('genre_id')],
-            );
-        }
+        $categories = $request->input('category_id');
+        $this->saveCategoriesEdit($categories,$book);
 
-        return to_route('all-books')->with('success-edited-book', 'Uspješno ste izmijenili knjigu.');
+        $genres = $request->input('genre_id');
+        $this->saveGenresEdit($genres,$book);
+
+        $authors = $request->input('author_id');
+        $this->saveAuthorsEdit($authors,$book);
+
+
+
+        //return to_route('all-books')->with('success-edited-book', 'Uspješno ste izmijenili knjigu.');
     }
 
     /**
@@ -211,4 +220,64 @@ class BookController extends Controller
 
         return to_route('all-books')->with('book-deleted', 'Uspješno ste izbrisali knjigu.');
     }
+    public function saveCategories($categories,$book){
+        $categories=explode(',',$categories);
+        foreach ($categories as $category){
+            $table=new BookCategory();
+            $table->book_id=$book;
+            $table->category_id=$category;
+            $table->save();
+        }
+    }
+    public function saveGenres($genres,$book){
+        $genres=explode(',',$genres);
+        foreach ($genres as $genre){
+            $table=new BookGenre();
+            $table->book_id=$book;
+            $table->genre_id=$genre;
+            $table->save();
+        }
+    }
+    public function saveAuthors($authors,$book){
+        $authors=explode(',',$authors);
+        foreach ($authors as $author){
+            $table=new BookAuthor();
+            $table->book_id=$book;
+            $table->author_id=$author;
+            $table->save();
+        }
+    }
+    public function saveCategoriesEdit($categories,$book){
+
+        $categories = explode(',', $categories);
+        dd($categories);
+
+        /*foreach($categories as $category) {
+            $table = BookCategory::find($category);
+            $table->book_id = $book->id;
+            $table->category_id = $category;
+            $table->save();
+        }*/
+    }
+    public function saveGenresEdit($genres,$book){
+        $genres = explode(',', $genres);
+
+        /*foreach($genres as $genre) {
+            $table = BookGenre::find($genre);
+            $table->book_id = $book->id;
+            $table->genre_id = $genre;
+            $table->save();
+        }*/
+    }
+    public function saveAuthorsEdit($authors,$book){
+        $authors = explode(',', $authors);
+
+        /*foreach($authors as $author) {
+            $table = BookAuthor::find($author);
+            $table->book_id = $book->id;
+            $table->author_id = $author;
+            $table->save();
+        }*/
+    }
+
 }

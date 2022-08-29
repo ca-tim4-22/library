@@ -10,6 +10,7 @@ class Book extends Model
     use HasFactory;
     protected $guarded = [];
 
+
     public function reservations() {
         return $this->hasMany(Reservation::class);
     }
@@ -45,7 +46,7 @@ class Book extends Model
     public function publisher() {
         return $this->belongsTo(Publisher::class);
     }
-    
+
     public function rent(){
         return $this->hasMany(Rent::class);
     }
