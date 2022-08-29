@@ -38,7 +38,7 @@ Route::post('izdaj-knjigu/{id}',[RentBookController::class, 'store'])->name('sto
 });
 
 Route::controller(ReturnBookController::class)->group(function(){
-// Return book
+// Returned books
 Route::get('/detalji-vracanja-knjige/{id}', [ReturnBookController::class, 'show'])->name('returned-info');
 Route::get('/vracene-knjige', [ReturnBookController::class, 'index'])->name('returned-books');
 Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name('return-book');
@@ -46,7 +46,7 @@ Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('stor
 });
 
 Route::controller(OverdueBookController::class)->group(function(){
-// Overdue book
+// Overdue books
 Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->name('overdue-books');
 });
 

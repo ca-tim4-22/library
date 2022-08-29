@@ -14,27 +14,29 @@ use Illuminate\Support\Facades\ {
 Route::get('/', function () {
     return to_route('redirect');
 });
-Route::get('/pocetna', function () {
-    return view('welcome.welcome');
-})->name('redirect');
+
+// Welcome view
+Route::view('/pocetna', 'welcome.welcome')->name('redirect');
 
 // Middleware protection
 Route::middleware('see-you-later-protection')->group(function(){
-Route::get('good-bye', function () {
-    return view('good-bye.good-bye');
-})->name('good-bye');
+Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
 Auth::routes(['register' => false]);
 
+Route::get('/register', function() {
+    return response('Not found', 404);
+});
+
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // Middleware protection
-Route::middleware('maintenance-protection')->group(function(){
+Route::middleware('maintenance-protection')->group(function() {
 // Server down route
-Route::get('/shutdown', function(){
+Route::get('/shutdown', function() {
     Artisan::call('down', ['--render' => "maintenance.maintenance"]);
     return back();
 });
