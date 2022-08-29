@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\ {
 
 use Illuminate\Support\Facades\ {
     Artisan,
+    Auth,
     Route,
 };
 
@@ -25,7 +26,7 @@ Route::get('good-bye', function () {
 });
 
 // Laravel Authentication route
-Route::auth(['verify' => 'true']);
+Auth::routes(['register' => false]);
 
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -37,6 +38,14 @@ Route::get('/shutdown', function(){
     Artisan::call('down', ['--render' => "maintenance.maintenance"]);
     return back();
 });
+});
+
+Route::get('/symlink', function () {
+    Artisan::call('storage:link');
+});
+
+Route::get('/optimize', function () {
+    Artisan::call('optimize');
 });
 
 ?>

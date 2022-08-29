@@ -23,9 +23,22 @@ class DashboardController extends Controller
     public function index()
     {
         $books = Book::all();
-        $returned_books = Rent::count();
+        $rented_books = Rent::count();
         $reserved_books = User::count();
-        $overdue_books = Author::count();
+
+         if (Rent::count() > 0) {
+            foreach ($books as $book) {
+                foreach ($book->rent as $rent) {
+                    foreach ($rent->rent_status as $collection) {
+                       $data2 = $collection;
+                    }
+                }
+            }
+            $overdue_books = $data2->book_status->whereDate('return_time', '<', date('Y-m-d'))->count();
+        } else {
+            $overdue_books = 0;
+        }
+
         $rents = Rent::all();
 
         if (count($rents)) {
@@ -38,7 +51,7 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_content', compact('books', 'data',  'returned_books', 'reserved_books', 'overdue_books'));
+        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books'));
     }
 
     public function index_activity() 

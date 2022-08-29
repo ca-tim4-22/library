@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('rent_statuses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('rent_id');
             $table->unsignedBigInteger('book_status_id');
+            $table->unsignedBigInteger('rent_id');
             // $table->date('date');
             // $table->timestamps();
 
-            $table->foreign('rent_id')->references('id')->on('rents')->onDelete('cascade');
             $table->foreign('book_status_id')->references('id')->on('book_statuses')->onDelete('cascade');
+            $table->foreign('rent_id')->references('id')->on('rents')->onDelete('cascade');
         });
     }
 

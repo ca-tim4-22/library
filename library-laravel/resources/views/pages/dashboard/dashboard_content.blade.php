@@ -212,7 +212,7 @@
                                 
                                 </div>
                                 <p class="ml-[10px] number-green text-[#2196f3] hover:text-blue-600">
-                                    {{$returned_books}}
+                                    {{$rented_books}}
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
@@ -249,7 +249,7 @@ from {
   width: 0%;
 }
 to {
-  width: {{$returned_books}}px;
+  width: {{$rented_books}}px;
 }
 }
 

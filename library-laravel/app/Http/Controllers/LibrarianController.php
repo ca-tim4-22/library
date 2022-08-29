@@ -54,7 +54,7 @@ class LibrarianController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians', $name);
+            $file->move('/storage/librarians', $name);
             $input['photo'] = $name; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';
@@ -66,7 +66,7 @@ class LibrarianController extends Controller
     }
 
     public function crop(Request $request) {
-        $dest = 'storage/librarians';
+        $dest = '/storage/librarians';
         $file = $request->file('photo');
         $new_image_name = date('YmdHis').uniqid().'.jpg';
 

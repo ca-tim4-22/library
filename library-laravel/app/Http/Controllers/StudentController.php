@@ -52,7 +52,7 @@ class StudentController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('storage/students', $name);
+            $file->move('/storage/students', $name);
             $input['photo'] = $name; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';

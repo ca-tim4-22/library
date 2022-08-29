@@ -41,7 +41,7 @@ return new class extends Migration
             'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'username' => 'admin',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('m$W01RM8KZ0g'),
             'photo' => 'placeholder',
             'remember_token' => Str::random(10),
             'created_at' => Carbon::now(),

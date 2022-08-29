@@ -30,8 +30,8 @@ class LibrarianCreateRequest extends FormRequest
             'email' => [
                 new EmailVerificationRule()
             ],
-            'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:14',
+            'password' => 'required|min:8',   
+            'JMBG' => 'required|min:14|max:14',
             'photo' => 'required',
         ];
     }
