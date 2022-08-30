@@ -5,7 +5,7 @@
 <link rel="icon" href="https://i.pinimg.com/originals/a0/26/1b/a0261b885cfba5a65c675c33327acf5a.png">
 
 <!-- Style -->
-<link rel="stylesheet" href="{{asset('/custom-style/404_page/404_style/404_style.css')}}">
+<link rel="stylesheet" href="{{asset('/css/custom-style/404_page/404_style/404_style.css')}}">
 
 <div class="moon"></div>
 <div class="moon__crater moon__crater1"></div>
