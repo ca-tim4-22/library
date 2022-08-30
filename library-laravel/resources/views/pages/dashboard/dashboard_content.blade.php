@@ -193,7 +193,7 @@
                             </tbody>
                         </table>
                         <div class="text-right mt-[5px]">
-                            <a href="{{route('active-books')}}" class="text-[#2196f3] hover:text-blue-600">
+                            <a href="{{route('active-reservations')}}" class="text-[#2196f3] hover:text-blue-600">
                                 <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
                                 Prikaži sve
                             </a>
@@ -216,7 +216,7 @@
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
-                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('active-books')}}">
+                                <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('active-reservations')}}">
                                     Rezervisane knjige
                                 </a>
                                 <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900 stats-bar-yellow  h-[26px]">

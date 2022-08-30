@@ -78,7 +78,7 @@
                             <span
                                 class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                 <div class="{{(request()->is('aktivne-rezervacije')) ? 'bg-[#EFF3F6] group-hover:text-[#576cdf] text-[#576cdf] text-[15px]' : ''}} group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                    <a href="{{route('active-books')}}" aria-label="Izdate knjige"
+                                    <a href="{{route('active-reservations')}}" aria-label="Izdate knjige"
                                        class="flex items-center">
                                     <i class="{{(request()->is('aktivne-rezervacije')) ? 'text-[#576cdf]' : ''}} text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div>

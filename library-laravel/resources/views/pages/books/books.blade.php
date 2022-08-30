@@ -387,11 +387,15 @@
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                        href="{{route('active-books')}}">{{$book->reserved_count}}</td>
+                                        href="{{route('active-reservations')}}">{{$book->reserved_count}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('rented-books')}}">{{$book->rented_count}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
-                                        href="{{route('overdue-books')}}">X</td>
+                                        href="{{route('overdue-books')}}">
+                                    
+                                      {{$count}}
+
+                                    </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count}}</td>
                                 <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
@@ -445,18 +449,8 @@
                                                     <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Rezerviši knjigu</span>
                                                 </a>
-                                                <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button
-                                                            style="outline: none;border: none;"
-                                                            type="submit"
-                                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                            role="menuitem">
-                                                        <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izbriši knjigu</span>
-                                                    </button>
-                                                </form>
+                                               
+                                                
                                             </div>
                                         </div>
                                     </div>

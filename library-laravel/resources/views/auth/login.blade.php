@@ -8,7 +8,7 @@
 <head>
     <x-meta></x-meta>
     <link rel="stylesheet" href="{{asset('css/default/style.css')}}">
-    <style>a{text-decoration:none!important}.background{background-image:url("../../img/login.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}.no-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.transition-custom{transition:.25s ease-out}</style>
+    <style>a{text-decoration:none!important}.background{background-image:url("/login.jpg");background-size:cover;background-position:center;background-repeat:no-repeat}.no-select{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.transition-custom{transition:.25s ease-out}</style>
 </head>
 
 <body>{{-- Background photo customize /public/style.css --}}

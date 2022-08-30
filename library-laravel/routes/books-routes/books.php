@@ -7,7 +7,8 @@ use App\Http\Controllers\ {
 use App\Http\Controllers\Books\ {
     OverdueBookController,
     RentBookController,
-    ReturnBookController
+    ReturnBookController,
+    ActiveReservationController,
 };
 
 use Illuminate\Support\Facades\ {
@@ -23,7 +24,6 @@ Route::post('/nova-knjiga', [BookController::class, 'store'])->name('store-book'
 Route::get('/izmijeni-knjigu/{id}', [BookController::class, 'edit'])->name('edit-book');
 Route::put('/izmijeni-knjigu/{id}', [BookController::class, 'update'])->name('update-book');
 Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name('destroy-book');
-Route::get('/aktivne-rezervacije', [BookController::class, 'activeReservations'])->name('active-books');
 Route::get('/arhivirane-rezervacije', [BookController::class, 'archivedReservations'])->name('archived-books');
 Route::get('/vracene-knjige', [BookController::class, 'returnedBooks'])->name('returned-books');
 
@@ -48,6 +48,11 @@ Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('stor
 Route::controller(OverdueBookController::class)->group(function(){
 // Overdue books
 Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->name('overdue-books');
+});
+
+Route::controller(ActiveReservationController::class)->group(function(){
+// Active reservations
+Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
 });
 
 ?>

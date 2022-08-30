@@ -55,8 +55,40 @@ class RentBookController extends Controller
         $students = User::where('user_type_id', 1)->get();
         $book = Book::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
+        $books = Book::all();
 
-        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable'));
+        if (Rent::count() > 0) {
+            foreach ($books as $book) {
+            foreach ($book->rent as $rent) {
+            foreach ($rent->rent_status as $collection) {
+            $count = null;
+            $null = null;
+            $text = '0 primjeraka';
+            foreach ($collection->book_status->get() as $counte) {
+                $count = $counte->whereDate('return_time', '<', date('Y-m-d'))->count();
+                if ($count > 0 && $count % 10 == 1) {
+                    $count = $count;
+                    $text = 'primjerak';
+                    $null = null;
+                } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
+                    $count = $count;
+                    $text = 'primjerka';
+                    $null = null;
+                } elseif ($count <= 0) {
+                    $count = null;
+                    $text = '0 primjeraka';
+                    $null = null;
+                } else {
+                    $count = $count;
+                    $text = 'primjeraka';
+                    $null = null;
+                }}}}}
+        } else {
+            $count = null;
+            $text = '0 primjeraka';
+        }
+
+        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable', 'count', 'text'));
     }
 
     /**

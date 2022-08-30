@@ -184,12 +184,13 @@
                                             <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                                 {{count($book->rent)}} primjerka</p>
                                         </a>
-                                        
-                                        {{-- {{Str::plural('primjerak', $book->rent->count())}} --}}
 
                                         <a href="knjigePrekoracenje.php">
                                             <p class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                               X</p>
+                                               
+                                                {{$count}} {{$text}}
+
+                                            </p>
                                         </a>
                                         <p class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                             {{$book->quantity_count}} primjeraka</p>

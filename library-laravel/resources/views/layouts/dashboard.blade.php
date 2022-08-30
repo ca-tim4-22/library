@@ -8,7 +8,7 @@
     @yield('title')
 
     <!-- Icon -->
-    <link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
+    <link rel="shortcut icon" href="{{asset('library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
 
     <!-- Meta -->
     <x-meta></x-meta>

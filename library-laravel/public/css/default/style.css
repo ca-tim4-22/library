@@ -1,3 +1,7 @@
+/*Font Rubik - import*/
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+
 .logo-font {
   font-family: 'Rubik';
 }
@@ -18,14 +22,14 @@
 
 /* Login - background */
 .bg-login {
-  background-image: url('../../img/login.jpg');
+  background-image: url('/login.jpg');
   background-position: center;
   background-size: cover;
 }
 
 /* Register - background */
 .bg-register {
-  background-image: url('../../img/login.jpg');
+  background-image: url('/login.jpg');
   background-position: center;
   background-size: cover;
 }
