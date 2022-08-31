@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    
     <!-- Title -->
     @yield('title')
 
     <!-- Icon -->
-    <link rel="shortcut icon" href="{{asset('library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
+    <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
 
     <!-- Meta -->
     <x-meta></x-meta>
 
     <!-- Styles -->
     <x-styles></x-styles>
-        
 </head>
 
 <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">

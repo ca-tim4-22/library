@@ -54,7 +54,7 @@ class LibrarianController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('/storage/librarians', $name);
+            $file->move('storage/librarians/', $name);
             $input['photo'] = $name; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';

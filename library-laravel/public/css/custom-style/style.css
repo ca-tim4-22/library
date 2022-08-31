@@ -3,7 +3,7 @@ a {
 }
 
 .background {
-  background-image: url("../../img/login.jpg");
+  background-image: url("../img/login.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -17,5 +17,7 @@ a {
 }
 
 .transition-custom {
+  -webkit-transition: 0.25s ease-out;
   transition: 0.25s ease-out;
-}/*# sourceMappingURL=style.css.map */
+}
+/*# sourceMappingURL=style.css.map */

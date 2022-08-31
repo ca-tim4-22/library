@@ -1,3 +1,1 @@
-$(function() {
-setTimeout(function() { $("#hideDiv").fadeOut(600); }, 1000)
-})
+$(function(){setTimeout(function(){$("#hideDiv").fadeOut(600)},1e3)})
