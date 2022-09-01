@@ -52,7 +52,7 @@ class RentBookController extends Controller
      */
     public function create($id)
     {
-        $students = User::where('user_type_id', 1)->get();
+        $students = User::where('user_type_id', 2)->get();
         $book = Book::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
         $books = Book::all();

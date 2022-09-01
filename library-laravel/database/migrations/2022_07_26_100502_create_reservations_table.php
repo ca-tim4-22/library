@@ -18,11 +18,11 @@ return new class extends Migration
             $table->unsignedBigInteger('book_id');
             $table->unsignedBigInteger('reservationMadeFor_user_id');
             $table->unsignedBigInteger('reservationMadeBy_user_id');
-            $table->unsignedBigInteger('closeReservation_user_id');
-            $table->unsignedBigInteger('closure_reason');
-            $table->date('request_date');
+            $table->unsignedBigInteger('closeReservation_user_id')->nullable();
+            $table->unsignedBigInteger('closure_reason')->nullable();
+            $table->date('request_date')->nullable();
             $table->date('reservation_date');
-            $table->date('close_date');
+            $table->date('close_date')->nullable();
             $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');

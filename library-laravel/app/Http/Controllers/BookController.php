@@ -100,7 +100,7 @@ class BookController extends Controller
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
-            $file->move('/storage/book-covers', $name);
+            $file->move('storage/book-covers', $name);
             DB::table('galleries')->insert(
                 ['book_id' => $book->id, 'photo' => $name, 'cover' => 1],
             );

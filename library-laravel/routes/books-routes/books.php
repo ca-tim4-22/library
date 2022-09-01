@@ -9,6 +9,7 @@ use App\Http\Controllers\Books\ {
     RentBookController,
     ReturnBookController,
     ActiveReservationController,
+    ReserveBookController,
 };
 
 use Illuminate\Support\Facades\ {
@@ -45,6 +46,12 @@ Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name(
 Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('store-return-book');
 });
 
+Route::controller(ReserveBookController::class)->group(function(){
+// Reserve a book
+Route::get('/rezervisi-knjigu/{book:title}', [ReserveBookController::class, 'create'])->name('reserve-book');
+Route::post('/rezervisi-knjigu/{id}', [ReserveBookController::class, 'store'])->name('store-reserve-book');
+});
+
 Route::controller(OverdueBookController::class)->group(function(){
 // Overdue books
 Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->name('overdue-books');
@@ -54,5 +61,10 @@ Route::controller(ActiveReservationController::class)->group(function(){
 // Active reservations
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
 });
+
+
+
+
+
 
 ?>

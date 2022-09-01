@@ -445,7 +445,7 @@
                                                     <span class="px-4 py-0">Vrati knjigu</span>
                                                 </a>
 
-                                                <a href="rezervisiKnjigu.php" tabindex="0"
+                                                <a href="{{route('reserve-book', $book->title)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>

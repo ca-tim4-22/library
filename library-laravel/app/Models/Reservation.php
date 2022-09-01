@@ -26,7 +26,7 @@ class Reservation extends Model
         return $this->belongsTo(User::class, 'closeReservation_user_id');
     }
 
-    public function reservationStatus() {
-        return $this->hasMany(ReservationStatus::class);
+    public function reservations() {
+        return $this->hasMany(ReservationStatuses::class, 'reservation_id');
     }
 }

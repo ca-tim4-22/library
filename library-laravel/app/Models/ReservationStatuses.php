@@ -14,7 +14,7 @@ class ReservationStatuses extends Model
         return $this->belongsTo(Reservation::class);
     }
     
-    public function reservation_status() {
-        return $this->belongsTo(StatusReservation::class);
+    public function status() {
+        return $this->belongsTo(StatusReservation::class, 'status_reservations_id');
     }
 }
