@@ -154,7 +154,7 @@ class BookController extends Controller
 
     public function archivedReservations()
     {
-        return view('pages.books.transactions.archived_reservations', compact('book'));
+        return view('pages.books.transactions.archived_reservations');
     }
 
     /**

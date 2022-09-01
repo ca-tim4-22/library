@@ -26,7 +26,7 @@ class DashboardController extends Controller
         $rented_books = Rent::count();
         $reserved_books = User::count();
 
-         if (Rent::count() > 0) {
+        if (Rent::count() > 0) {
             foreach ($books as $book) {
                 foreach ($book->rent as $rent) {
                     foreach ($rent->rent_status as $collection) {
@@ -39,7 +39,7 @@ class DashboardController extends Controller
             $overdue_books = 0;
         }
 
-        $rents = Rent::all();
+        $rents = Rent::whereDate('issue_date', today())->get();
 
         if (count($rents)) {
             foreach ($books as $book) {
