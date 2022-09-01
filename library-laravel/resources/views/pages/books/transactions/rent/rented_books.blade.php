@@ -9,9 +9,6 @@
 
 @section('content')
 
-    <!-- Main content -->
-    <main class="flex flex-row small:hidden">
-
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
             <!-- Heading of content -->
@@ -548,12 +545,17 @@
                         </div>
                     </div>
                 </div>
+                
             </div>            
         </section>
+        
         <!-- End Content -->
     </main>
     <!-- End Main content -->
 
     <x-jquery.jquery></x-jquery.jquery>
-    @endsection
+
+
+
+@endsection
 

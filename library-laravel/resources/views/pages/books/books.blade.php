@@ -12,8 +12,10 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+{{-- Preloader --}}
+<div id="loader"></div>
 
-<main class="flex flex-row small:hidden">
+<div style="display:none;" id="myDiv">
 
     <!-- Content -->
     <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -370,7 +372,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-                                    <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="" />
+                                    <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
                                     <a href="{{route('show-book', $book->id)}}">
                                         <span class="font-medium text-center">{{$book->title}}</span>
                                     </a>
@@ -484,5 +486,7 @@
 
     </section>
     <!-- End Content -->
+
+</div>
 
 @endsection

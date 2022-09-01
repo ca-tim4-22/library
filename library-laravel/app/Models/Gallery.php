@@ -9,8 +9,5 @@ class Gallery extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
-    // public function book() {
-    //     return $this->hasOne(Book::class);
-    // }
+    public $timestamps = false;
 }

@@ -81,7 +81,7 @@ class LibrarianController extends Controller
             // if ($userPhoto != '') {
             //     unlink($dest.$userPhoto);
             // }
-            $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
+            $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
 
             return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
         }
@@ -163,16 +163,9 @@ class LibrarianController extends Controller
 
             return to_route('good-bye');
         }
-
+        
         $librarian->delete();
         
         return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
     }
-
-    public function deleteAll(Request $request) {
-        $ids = $request->get('ids');
-        $dbs = User::whereIn('id', explode(',', $ids))->delete();
-        return redirect('/success');
-    }
-  
 }

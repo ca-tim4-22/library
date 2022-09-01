@@ -56,4 +56,4 @@
   </div>
 </div>
 
-<script src="{{asset('/custom-style/404_page/404_script/404_script.js')}}"></script>
+<script src="{{asset('/css/custom-style/404_page/404_script/404_script.js')}}"></script>

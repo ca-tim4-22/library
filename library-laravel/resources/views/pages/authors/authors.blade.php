@@ -12,6 +12,10 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+{{-- Preloader --}}
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv">
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -177,5 +181,7 @@
 
 </section>
 <!-- End Content -->
+
+</div>
     
 @endsection
