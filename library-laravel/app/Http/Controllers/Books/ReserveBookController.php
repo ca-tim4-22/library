@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\GlobalVariable;
 use App\Models\Reservation;
 use App\Models\ReservationStatuses;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -45,12 +47,15 @@ class ReserveBookController extends Controller
     {
         $input = $request->all();
         $librarian = Auth::user();
+        $variable = GlobalVariable::findOrFail(1);
 
         $reservation = new Reservation();
         $reservation->book_id = 1;
         $reservation->reservationMadeFor_user_id = $request->input('reservationMadeFor_user_id');
         $reservation->reservationMadeBy_user_id = $librarian->id;
         $reservation->reservation_date = $request->input('reservation_date');
+        $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);;
+       
         $reservation->save();
 
         DB::table('reservation_statuses')->insert([

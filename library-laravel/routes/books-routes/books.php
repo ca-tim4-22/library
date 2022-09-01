@@ -60,6 +60,8 @@ Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->n
 Route::controller(ActiveReservationController::class)->group(function(){
 // Active reservations
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
+Route::put('/approve/{id}', [ActiveReservationController::class, 'approve'])->name('approve');
+Route::put('/deny/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
 });
 
 

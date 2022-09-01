@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Rent;
+use App\Models\ReservationStatuses;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -51,7 +52,9 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books'));
+        $data_await = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 3)->get();
+
+        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books', 'data_await'));
     }
 
     public function index_activity() 

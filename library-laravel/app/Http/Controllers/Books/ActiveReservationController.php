@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
+use App\Models\Reservation;
+use App\Models\ReservationStatuses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ActiveReservationController extends Controller
 {
@@ -14,7 +17,11 @@ class ActiveReservationController extends Controller
      */
     public function index()
     {
-        return view('pages.books.transactions.reservation.active_reservations');
+        $data_true = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 1)->get();
+        $data_false = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 2)->get();
+        $data_await = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 3)->get();
+        
+        return view('pages.books.transactions.reservation.active_reservations', compact('data_true', 'data_false', 'data_await'));
     }
 
     /**
@@ -81,5 +88,27 @@ class ActiveReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function approve(Request $request, $id) {
+        $input = $request->all();
+
+        DB::table('reservation_statuses')->where('id', $id)->update([
+            'status_reservations_id' => 1,
+            'updated_at' => now(),
+        ]);
+
+        return back();
+    }
+
+    public function deny(Request $request, $id) {
+        $input = $request->all();
+
+        DB::table('reservation_statuses')->where('id', $id)->update([
+            'status_reservations_id' => 2,
+            'updated_at' => now(),
+        ]);
+
+        return back();
     }
 }

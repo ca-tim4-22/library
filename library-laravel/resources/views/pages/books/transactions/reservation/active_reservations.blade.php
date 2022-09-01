@@ -324,6 +324,8 @@
 
                                 <tbody class="bg-white">
 
+                                @foreach ($data_await as $await_reservation)
+
                                 <tr class="hover:bg-gray-200 hover:shadow-md bg-gray-200 border-b-[1px] border-[#e4dfdf] changeBg">
 
                                     <td class="px-4 py-3 whitespace-no-wrap">
@@ -332,27 +334,47 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            <span class="font-medium text-center">Ep o Gilgamesu</span>
+                                        
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $await_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
+
+                                        <a href="{{route('show-book', $await_reservation->reservation->book->id)}}">
+                                            <span class="font-medium text-center">{{$await_reservation->reservation->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">31.04.2019</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">10.05.2019</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$await_reservation->reservation->reservation_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$await_reservation->reservation->request_date}}
+                                    </td>
+
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="img/profileStudent.jpg"
-                                             alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero
-                                            Perovic</a>
+                                       
+                                        <img 
+                                        class="object-cover w-8 h-8 rounded-full" 
+                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->reservation->made_for->gallery->photo}}" />
+
+                                        <a href="{{route('show-student', $await_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$await_reservation->reservation->made_for->name}}</a>
+                                       
                                     </td>
+
                                     <td class="px-4 py-3 changeStatus">
-                                        <a href="#" class="hover:text-green-500 mr-[5px]">
+
+                                    <form style="display: inline" action="{{route('approve', ['id' => $await_reservation->id])}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                        <button style="outline: none;" href="#" class="hover:text-green-500 mr-[5px]">
                                             <i class="fas fa-check reservedStatus"></i>
-                                        </a>
-                                        <a href="#" class="hover:text-red-500 ">
+                                        </button>
+                                    </form>
+
+                                    <form style="display: inline" action="{{route('deny', ['id' => $await_reservation->id])}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                        <button style="outline: none;" href="#" class="hover:text-red-500 ">
                                             <i class="fas fa-times deniedStatus"></i>
-                                        </a>
+                                        </button>
+                                    </form>
+
                                     </td>
+                                
                                     <td class="hidden px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
                                         <div
                                             class="inline-block px-[6px] py-[2px] font-medium bg-yellow-200 rounded-[10px]">
@@ -365,6 +387,7 @@
                                             <span class="text-xs text-red-800">Odbijeno</span>
                                         </div>
                                     </td>
+
                                     <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p
                                             class="hidden inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsAktivneRezervacije hover:text-[#606FC7]">
@@ -392,9 +415,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </td>
-               
+                                </td>
+                                       
+                                </tr>
+                                
+                                @endforeach
 
+                                @foreach ($data_true as $true_reservation)
+                                
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
@@ -402,18 +430,23 @@
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="img/tomsojer.jpg" alt="" />
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            <span class="font-medium text-center">Robinson Kruso</span>
+
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $true_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
+
+                                        <a href="{{route('show-book', $true_reservation->reservation->book->id)}}">
+                                            <span class="font-medium text-center">{{$true_reservation->reservation->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">31.04.2019</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">10.05.2019</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$true_reservation->reservation->reservation_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$true_reservation->reservation->request_date}}</td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 h-8 rounded-full" src="img/profileStudent.jpg"
-                                             alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero
-                                            Perovic</a>
+                                       
+                                        <img 
+                                        class="object-cover w-8 h-8 rounded-full" 
+                                        src="{{$true_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $true_reservation->reservation->made_for->gallery->photo}}" />
+
+                                        <a href="{{route('show-student', $true_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$true_reservation->reservation->made_for->name}}</a>
+
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
                                         <div
@@ -450,7 +483,76 @@
                                         </div>
                                     </td>
                                 </tr>
-              
+
+                                @endforeach
+
+                                @foreach ($data_false as $false_reservation)
+                                
+                                <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+                                    <td class="px-4 py-3 whitespace-no-wrap">
+                                        <label class="inline-flex items-center">
+                                            <input type="checkbox" class="form-checkbox">
+                                        </label>
+                                    </td>
+                                    <td class="flex flex-row items-center px-4 py-3">
+
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $false_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
+
+                                        <a href="{{route('show-book', $false_reservation->reservation->book->id)}}">
+                                            <span class="font-medium text-center">{{$false_reservation->reservation->book->title}}</span>
+                                        </a>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$false_reservation->reservation->reservation_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$false_reservation->reservation->request_date}}</td>
+                                    <td class="flex flex-row items-center px-4 py-3">
+                                       
+                                        <img 
+                                        class="object-cover w-8 h-8 rounded-full" 
+                                        src="{{$false_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $false_reservation->reservation->made_for->gallery->photo}}" />
+
+                                        <a href="{{route('show-student', $false_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$false_reservation->reservation->made_for->name}}</a>
+
+                                    </td>
+                                    <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">
+                                        <div
+                                            class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                            <span class="text-xs text-red-800">Odbijeno</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
+                                        <p
+                                            class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsAktivneRezervacije hover:text-[#606FC7]">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </p>
+                                        <div
+                                            class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 aktivne-rezervacije">
+                                            <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                                                 aria-labelledby="headlessui-menu-button-1"
+                                                 id="headlessui-menu-items-117" role="menu">
+                                                <div class="py-1">
+                                                    <a href="izdajKnjigu.php" tabindex="0"
+                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                       role="menuitem">
+                                                        <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Izdaj knjigu</span>
+                                                    </a>
+
+                                                    <a href="#" tabindex="0"
+                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                       role="menuitem">
+                                                        <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+
+
+
                                 </tbody>
                             </table>
 

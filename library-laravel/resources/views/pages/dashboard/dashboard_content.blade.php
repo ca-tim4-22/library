@@ -94,102 +94,51 @@
                     <div>
                         <table class="w-[560px] table-auto">
                             <tbody class="bg-gray-200">
+
+                                @foreach ($data_await as $await_reservation)
+
                                 <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
                                     <td class="flex flex-row items-center px-2 py-4">
-                                        <img class="object-cover w-8 h-8 rounded-full "
-                                            src="img/profileStudent.jpg" alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
+
+                                        <img 
+                                        class="object-cover w-8 h-8 rounded-full" 
+                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->reservation->made_for->gallery->photo}}" />
+
+                                        <a href="{{route('show-student', $await_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$await_reservation->reservation->made_for->name}}</a>
                                     <td>
                                     </td>
                                     <td class="px-2 py-2">
-                                        <a href="knjigaOsnovniDetalji.php">
-                                        Ep o Gilgamesu
+                                        <a href="{{route('show-book', $await_reservation->reservation->book->id)}}">
+                                        {{$await_reservation->reservation->book->title}}
                                         </a>
                                     </td>
                                     <td class="px-2 py-2">
-                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">05.11.2020</span>
+                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">{{$await_reservation->reservation->reservation_date}}</span>
                                     </td>
+
                                     <td class="px-2 py-2">
-                                        <a href="#" class="hover:text-green-500 mr-[5px]">
-                                            <i class="fas fa-check"></i>
-                                        </a>
-                                        <a href="#" class="hover:text-red-500 ">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
+                                       
+                                        <form style="display: inline" action="{{route('approve', ['id' => $await_reservation->id])}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                                <button style="outline: none;" href="#" class="hover:text-green-500 mr-[5px]">
+                                                    <i class="fas fa-check reservedStatus"></i>
+                                                </button>
+                                            </form>
+
+                                            <form style="display: inline" action="{{route('deny', ['id' => $await_reservation->id])}}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                                    <button style="outline: none;" href="#" class="hover:text-red-500 ">
+                                                        <i class="fas fa-times deniedStatus"></i>
+                                                    </button>
+                                            </form>
+
+                                        </td>
                                 </tr>
-                                <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                    <td class="flex flex-row items-center px-2 py-4">
-                                        <img class="object-cover w-8 h-8 rounded-full "
-                                        src="img/profileStudent.jpg" alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                    <td>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            Tom Sojer
-                                        </a>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">31.04.2019</span>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="#" class="hover:text-green-500 mr-[5px]">
-                                            <i class="fas fa-check"></i>
-                                        </a>
-                                        <a href="#" class="hover:text-red-500 ">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                    <td class="flex flex-row items-center px-2 py-4">
-                                        <img class="object-cover w-8 h-8 rounded-full "
-                                        src="img/profileStudent.jpg" alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                    <td>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            Ilijada
-                                        </a>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">05.11.2020</span>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="#" class="hover:text-green-500 mr-[5px]">
-                                            <i class="fas fa-check"></i>
-                                        </a>
-                                        <a href="#" class="hover:text-red-500 ">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
-                                    <td class="flex flex-row items-center px-2 py-4">
-                                        <img class="object-cover w-8 h-8 rounded-full "
-                                        src="img/profileStudent.jpg" alt="" />
-                                        <a href="ucenikProfile.php" class="ml-2 font-medium text-center">Pero Perovic</a>
-                                    <td>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="knjigaOsnovniDetalji.php">
-                                            Tom Sojer
-                                        </a>          
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">31.02.2021</span>
-                                    </td>
-                                    <td class="px-2 py-2">
-                                        <a href="#" class="hover:text-green-500 mr-[5px]">
-                                            <i class="fas fa-check"></i>
-                                        </a>
-                                        <a href="#" class="hover:text-red-500 ">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+      
+                                @endforeach
+                              
                             </tbody>
                         </table>
                         <div class="text-right mt-[5px]">
