@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +22,19 @@ class CategoryController extends Controller
     public function index()
     {
         return view('pages.settings.category.new_category');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request){
+        $data=$request->input('search_category');
+        $query=Category::where('name','like',"%$data%")->get();
+
+        return redirect()->back()->with(['query'=>$query]);
+
     }
 
     /**
@@ -45,12 +58,12 @@ class CategoryController extends Controller
         $input = $request->all();
         $category = $request->name;
         $category_lower = Str::title($category);
-    
+
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $input['icon'] = $name; 
-            $input['default'] = 'false'; 
+            $input['icon'] = $name;
+            $input['default'] = 'false';
         } else {
             $input['icon'] = 'placeholder.jpg';
         }
@@ -92,20 +105,20 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $category = Category::findOrFail($id);  
+        $category = Category::findOrFail($id);
 
         $icon_old = $category->icon;
-    
+
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $input['icon'] = $name; 
+            $input['icon'] = $name;
         } else {
             $input['icon'] = $icon_old;
         }
 
         $category->update($input);
-        
+
         return back()->with('category-updated', 'Uspješno ste izmijenili kategoriju.');
     }
 

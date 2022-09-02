@@ -64,9 +64,13 @@
                             </svg>
                         </button>
                     </span>
-                    <input id="categorySearch" type="search" name="q"
+                    <form action="{{route('search-category')}}" method="post">
+                        @csrf
+                        @method('POST')
+                    <input id="categorySearch" type="search" name="search_category"
                            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                            placeholder="Traži..." autocomplete="off">
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,9 +97,62 @@
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
+                <?php $query=Session::get('query'); ?>
 
                 <tbody class="bg-white">
 
+                @if(isset($query))
+                    @foreach($query as $query)
+                        <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+                            <td class="px-4 py-4 whitespace-no-wrap">
+                                <label class="inline-flex items-center">
+                                    <input type="checkbox" class="form-checkbox">
+                                </label>
+                            </td>
+                            <td class="flex flex-row items-center px-4 py-4">
+                                <img
+                                    style="height:30px"
+                                    src="{{$query->default == 'false' ? '/storage/settings/category/' . $query->icon : '/img/default_images_while_migrations/categories/' . $query->icon}}"
+                                    alt="{{$query->name}}"
+                                    title="{{$query->name}}">
+                                <p class="ml-4 text-center no-select">{{$query->name}}</p>
+                            </td>
+                            <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{!! $query->description !!}</td>
+                            <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+                                <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </p>
+                                <div
+                                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
+                                    <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                                        <div class="py-1">
+                                            <a href="{{route('edit-category', $query->id)}}" tabindex="0"
+                                               class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                               role="menuitem">
+                                                <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
+                                                <span class="px-4 py-0">Izmijeni kategoriju</span>
+                                            </a>
+                                            <form action="{{route('destroy-category', $query->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button
+                                                    style="outline: none;border: none"
+                                                    type="submit"
+                                                    tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Izbriši kategoriju</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                        @else
                     @foreach ($categories as $category)
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
@@ -146,6 +203,8 @@
                         </td>
                     </tr>
                     @endforeach
+                    @endif
+
 
                     @else
 
@@ -235,5 +294,27 @@
 
 </section>
 <!-- End Content -->
+    <script>
+        $("#categorySearch").on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '{{ route("search-category") }}',
+                method: "POST",
+                data: $(this).serialize(),
+                dataType: 'json',
+                beforeSend:function() {
+                    $("#save").attr('disabled', 'disabled');
+                },
+                success:function (data) {
+                    console.log(data);
+                    alert('Data successfull saved');
+                },
+                error:function (error) {
+                    console.log(error)
+                    alert('Data not saved');
+                }
+            })
+        })
+    </script>
 
 @endsection

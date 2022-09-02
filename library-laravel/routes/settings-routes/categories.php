@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -14,6 +14,7 @@ Route::post('/podesavanja/kreiranje-nove-kategorije', [CategoryController::class
 Route::delete('/podesavanja/brisanje-kategorije/{id}', [CategoryController::class, 'destroy'])->name('destroy-category');
 Route::get('/podesavanja/izmijeni-kategoriju/{id}', [CategoryController::class, 'edit'])->name('edit-category');
 Route::put('/podesavanja/izmijeni-kategoriju/{id}', [CategoryController::class, 'update'])->name('update-category');
+Route::post('/podesavanja/kategorije', [CategoryController::class, 'search'])->name('search-category');
 });
 
 ?>
