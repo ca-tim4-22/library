@@ -478,7 +478,7 @@
                                     {{$rent->borrow->name}}
                                 </a>
                                 dana <span class="font-medium">{{$rent->issue_date}}</span>
-                                <a href="{{route('rented-books')}}" class="text-[#2196f3] hover:text-blue-600">
+                                <a href="{{route('rented-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
                                     pogledaj detaljnije >>
                                 </a>
                             </p>

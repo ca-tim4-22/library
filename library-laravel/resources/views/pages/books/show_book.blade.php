@@ -236,7 +236,7 @@
                           </p>
                       </div>
                       <div>
-                          <a href="izdavanjeDetalji.php" class="text-[#2196f3] hover:text-blue-600">
+                          <a href="{{route('returned-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
                               pogledaj detaljnije >>
                           </a>
                       </div>

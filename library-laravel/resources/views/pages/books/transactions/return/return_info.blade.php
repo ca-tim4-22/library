@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title> Detalji izdavanja knjige | Online Biblioteka</title>
+<title> Detalji vraćanja knjige | Online Biblioteka</title>
 
 @endsection
 
@@ -113,7 +113,7 @@
                             <span class="text-gray-500">Tip transakcije</span><br>
                             <p
                                 class="inline-block bg-blue-200 text-blue-800 rounded-[10px] text-center px-[6px] py-[2px]">
-                                Izdavanje knjige
+                                Vraćanje knjige
                             </p>
                         </div>
                         <div class="mt-[40px]">

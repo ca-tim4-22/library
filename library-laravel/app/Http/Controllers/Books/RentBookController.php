@@ -139,7 +139,9 @@ class RentBookController extends Controller
      */
     public function show($id)
     {
-        //
+        $rent = Rent::findOrFail($id);
+
+        return view('pages.books.transactions.rent.rent_info', compact('rent'));
     }
 
     /**

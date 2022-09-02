@@ -95,7 +95,7 @@ class ReturnBookController extends Controller
     {
         $rent = Rent::findOrFail($id);
 
-        return view('pages.books.transactions.rent.rent_info', compact('rent'));
+        return view('pages.books.transactions.return.return_info', compact('rent'));
     }
 
     /**
