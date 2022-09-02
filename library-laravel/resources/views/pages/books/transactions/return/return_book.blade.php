@@ -63,7 +63,7 @@
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
-                <a href="rezervisiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('reserve-book', $get_book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="far fa-calendar-check mr-[3px] "></i>
                     Rezerviši knjigu
                 </a>

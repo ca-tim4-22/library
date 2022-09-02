@@ -9,6 +9,7 @@ use App\Models\Reservation;
 use App\Models\ReservationStatuses;
 use App\Models\User;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -33,8 +34,12 @@ class ReserveBookController extends Controller
     public function create(Book $book)
     {
         $students = User::where('user_type_id', 1)->get();
+        $variable = GlobalVariable::findOrFail(1);
 
-        return view('pages.books.transactions.reservation.reserve_book', compact('book', 'students'));
+        $datee = Carbon::now()->addDays($variable->value)->format('Y-m-d');
+
+
+        return view('pages.books.transactions.reservation.reserve_book', compact('book', 'students', 'variable', 'datee'));
     }
 
     /**

@@ -978,7 +978,7 @@ $(function () {
     let datumRezervisanja = $("#datumRezervisanja").val();
   
     if (ucenikRezervisanje == null) {
-      $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati ucenika!</p>');
+      $('#validateUcenikRezervisanje').append('<p style="color:red;font-size:13px;">Morate selektovati učenika!</p>');
     }
   
     if (datumRezervisanja.length == 0) {

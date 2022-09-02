@@ -49,8 +49,10 @@
                                                 class="flex justify-between flex-row p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                 <div>
                                                     <label class="font-medium text-gray-500">Period od:</label>
-                                                    <input type="date"
-                                                           class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
+                                                    <input 
+                                                    type="date"
+                                                    min="2019-06-02" max="2019-06-08"
+                                                    class="border-[1px] border-[#e4dfdf]  cursor-pointer focus:outline-none">
                                                 </div>
                                                 <div class="ml-[50px]">
                                                     <label class="font-medium text-gray-500">Period do:</label>
@@ -349,7 +351,7 @@
                                        
                                         <img 
                                         class="object-cover w-8 h-8 rounded-full" 
-                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->reservation->made_for->gallery->photo}}" />
+                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->reservation->made_for->photo}}" />
 
                                         <a href="{{route('show-student', $await_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$await_reservation->reservation->made_for->name}}</a>
                                        
@@ -410,7 +412,7 @@
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                        <span class="px-4 py-0">Otkaži rezervaciju</span>
                                                     </a>
                                                 </div>
                                             </div>

@@ -60,15 +60,15 @@
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="izdajKnjigu.php" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
-                <a href="vratiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="fas fa-redo-alt mr-[3px] "></i>
                     Vrati knjigu
                 </a>
-                <a href="rezervisiKnjigu.php" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('reserve-book', $book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="far fa-calendar-check mr-[3px] "></i>
                     Rezerviši knjigu
                 </a>
@@ -81,7 +81,7 @@
                     <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="editKnjiga.php" tabindex="0"
+                            <a href="{{route('edit-book', $book->id)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
@@ -134,7 +134,10 @@
                         <label class="text-gray-700" for="date">
                             <input type="date" name="reservation_date" id="datumRezervisanja"
                                 class="flex w-[50%] mt-2 px-4 py-2 text-base placeholder-gray-400 bg-white border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                onclick="clearErrorsDatumRezervisanja()" />
+                                onclick="clearErrorsDatumRezervisanja()" 
+                                max="{{$datee}}"
+                                />
+                                
                         </label>
                         <div id="validateDatumRezervisanja"></div>
                     </div>
