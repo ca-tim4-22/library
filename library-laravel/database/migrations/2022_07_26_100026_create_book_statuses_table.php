@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,8 +17,12 @@ return new class extends Migration
         Schema::create('book_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('status', 256);
-            $table->timestamp('return_time')->useCurrent();
         });
+
+        DB::table('book_statuses')->insert([
+            ['status' => 'true'],
+            ['status' => 'false'],
+        ]);
     }
 
     /**

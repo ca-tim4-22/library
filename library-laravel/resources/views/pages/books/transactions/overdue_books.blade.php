@@ -27,7 +27,7 @@
                             
                             @if ($data != 'no-values')
 
-                            @if ($data->book_status->whereDate('return_time', '<', date('Y-m-d'))->count())
+                            @if ($data->whereDate('return_date', '<', date('Y-m-d'))->count())
 
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
                                 <thead class="bg-[#EFF3F6]">
@@ -260,115 +260,110 @@
                                 </tr>
                                 </thead>
                                 
-@foreach ($data->book_status->whereDate('return_time', '<', date('Y-m-d'))->get() as $book_status)
-                                    
-                                <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+                                @foreach ($data->whereDate('return_date', '<', date('Y-m-d'))->get() as $overdue_book)
+                                   
+                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
                                             <input type="checkbox" class="form-checkbox">
                                         </label>
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
-                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book_status->rent_status->rent->book->gallery->photo}}" alt="Naslovna" />
-                                        <a href="{{route('show-book', $book_status->rent_status->rent->book->id)}}">
-                                            <span class="font-medium text-center">{{$book_status->rent_status->rent->book->title}}</span>
+                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $overdue_book->book->gallery->photo}}" alt="Naslovna" />
+                                        <a href="{{route('show-book', $overdue_book->book->id)}}">
+                                            <span class="font-medium text-center">{{$overdue_book->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book_status->rent_status->rent->issue_date}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book_status->rent_status->rent->borrow->name}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$overdue_book->issue_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$overdue_book->borrow->name}}</td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
-                                        <div class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
+                                        <div
+                                            class="inline-block px-[6px] py-[2px] font-medium bg-red-200 rounded-[10px]">
                                             <span class="text-xs text-red-800">
-@php
-
-$date1 = new DateTime("now");
-$date2 = new DateTime($book_status->rent_status->book_status->return_time);
-$interval = $date1->diff($date2);
-
-if ($date1 > $date2) {
-    if ($interval->days == 1) {
-       echo "1 dan";
-    } elseif ($interval->days == 0) {
-        $interval = 1;
-        echo $interval . ' dan'; 
-    } else {
-        echo $interval->format('%a dana');
-    }
-}
-
-@endphp
+                                            @php
+                                            $date1 = new DateTime("now");
+                                            $date2 = new DateTime($overdue_book->return_date);
+                                            $interval = $date1->diff($date2);
+                                            
+                                            if ($date1 > $date2) {
+                                                if ($interval->days == 1) {
+                                                   echo "1 dan";
+                                                } elseif ($interval->days == 0) {
+                                                    $interval = 1;
+                                                    echo $interval . ' dan'; 
+                                                } else {
+                                                    echo $interval->format('%a dana');
+                                                }
+                                            }
+                                            @endphp
                                             </span>
                                         </div>
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
                                             <span>
-                                            
-                                                @php
-                                                $datetime1 = new DateTime(($book_status->rent_status->rent->issue_date));
-                                                $datetime2 = new DateTime(($book_status->rent_status->rent->return_date));
-                                                $interval = $datetime1->diff($datetime2);
-                                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
-                                                @endphp
-                   
-                                                </span>
+                                            @php
+                                            $datetime1 = new DateTime(($overdue_book->issue_date));
+                                            $datetime2 = new DateTime(($overdue_book->return_date));
+                                            $interval = $datetime1->diff($datetime2);
+                                            echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                                            @endphp
+                                            </span>
                                         </div>
                                     </td>
                                     <td class="px-6 py-3 text-sm leading-5 text-right whitespace-no-wrap">
                                         <p
                                             class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjigePrekoracenje hover:text-[#606FC7]">
-                                            <i class="fas fa-ellipsis-v"></i>
+                                            <i class="fas fa-ellipsis-v "></i>
                                         </p>
                                         <div
                                             class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 knjige-prekoracenje">
                                             <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                                                 aria-labelledby="headlessui-menu-button-1"
-                                                 id="headlessui-menu-items-117" role="menu">
+                                                aria-labelledby="headlessui-menu-button-1"
+                                                id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="izdavanjeDetalji.php" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
+                                                    <a href="{{route('rented-info', $overdue_book->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
 
-                                                    <a href="{{route('rent-book', $book_status->rent_status->rent->book->id)}}" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
+                                                    <a href="{{route('rent-book', $overdue_book->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Izdaj knjigu</span>
                                                     </a>
 
-                                                    <a href="{{route('return-book', $book_status->rent_status->rent->book->id)}}" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
+                                                    <a href="{{route('return-book', $overdue_book->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
                                                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Vrati knjigu</span>
                                                     </a>
 
-                                                    <a href="rezervisiKnjigu.php" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
+                                                    <a href="{{route('reserve-book', $overdue_book->book->title)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
                                                         <i
                                                             class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Rezerviši knjigu</span>
                                                     </a>
 
-                                                    <a href="otpisiKnjigu.php" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
+                                                    <a href="{{route('write-off', $overdue_book->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
                                                         <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
                                                         <span class="px-4 py-0">Otpiši knjigu</span>
                                                     </a>
 
-                                                    <form action="{{route('destroy-book', $book_status->rent_status->rent->book->id)}}" method="POST">
+                                                    <form action="{{route('destroy-book', $overdue_book->book->id)}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button
-                                                                style="outline: none;border: none;"
-                                                                type="submit"
-                                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                                role="menuitem">
+                                                        <button style="outline: none" type="submit"  tabindex="0"
+                                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                           role="menuitem">
                                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                                             <span class="px-4 py-0">Izbriši knjigu</span>
                                                         </button>
@@ -377,8 +372,8 @@ if ($date1 > $date2) {
                                             </div>
                                         </div>
                                     </td>
-                                </tr>    
-                                    
+                                 </tr>
+                             
                                 @endforeach
                                 
                                 </tbody>

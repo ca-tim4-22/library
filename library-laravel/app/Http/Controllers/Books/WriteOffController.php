@@ -5,31 +5,20 @@ namespace App\Http\Controllers\Books;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Rent;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class OverdueBookController extends Controller
+class WriteOffController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $books = Book::all();
-        
-        if (Rent::count() > 0) {
-            foreach ($books as $book) {
-                foreach ($book->rent as $rent) {
-                    $data = $rent;
-                }
-            }
-        } else {
-            $data = 'no-values';
-        }
+        $book = Book::findOrFail($id);
 
-        return view('pages.books.transactions.overdue_books', compact('data'));
+        return view('pages.books.write_off.write_off', compact('book'));
     }
 
     /**
@@ -50,7 +39,7 @@ class OverdueBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -84,7 +73,15 @@ class OverdueBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $book = Book::findOrFail($id);
+        $value = $request->input('checkbox');
+        Rent::where('borrow_user_id', $value)->delete();
+        $book->quantity_count = $book->quantity_count - 1;
+        $book->rented_count = $book->rented_count - 1;
+        $book->update();
+
+        return back();
     }
 
     /**

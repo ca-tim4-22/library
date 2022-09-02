@@ -15,7 +15,5 @@ class BookStatus extends Model
     public function rent_status() {
         return $this->hasOne(RentStatus::class, 'book_status_id');
     }
-    
-    
 }
 

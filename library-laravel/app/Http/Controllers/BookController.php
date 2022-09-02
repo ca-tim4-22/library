@@ -20,24 +20,21 @@ class BookController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * 
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
         $books = Book::latest('id')->paginate(5);
+        $count = 0;
 
         if (Rent::count() > 0) {
-            foreach ($books as $book) {
+        foreach ($books as $book) {
             foreach ($book->rent as $rent) {
-            foreach ($rent->rent_status as $collection) {
+                $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            }
+        }} else {
             $count = 0;
-            foreach ($collection->book_status->get() as $counte) {
-                $count = $counte->whereDate('return_time', '<', date('Y-m-d'))->count();
-               
-            }}}}
-        } else {
-            $count = null;
         }
 
         return view('pages.books.books', compact('books', 'count'));
@@ -106,7 +103,7 @@ class BookController extends Controller
             );
         } 
 
-        return to_route('all-books')->with('success-book','Uspješno ste dodali knjigu.');
+        return to_route('all-books')->with('success-book', 'Uspješno ste dodali knjigu.');
     }
 
     /**
@@ -121,31 +118,21 @@ class BookController extends Controller
         $books = Book::all();
         
         if (Rent::count() > 0) {
-            foreach ($books as $book) {
-            foreach ($book->rent as $rent) {
-            foreach ($rent->rent_status as $collection) {
-            $count = null;
-            $null = null;
-            $text = '0 primjeraka';
-            foreach ($collection->book_status->get() as $counte) {
-                $count = $counte->whereDate('return_time', '<', date('Y-m-d'))->count();
-                if ($count > 0 && $count % 10 == 1) {
-                    $count = $count;
-                    $text = 'primjerak';
-                    $null = null;
-                } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
-                    $count = $count;
-                    $text = 'primjerka';
-                    $null = null;
-                } elseif ($count <= 0) {
-                    $count = null;
-                    $text = '0 primjeraka';
-                    $null = null;
-                } else {
-                    $count = $count;
-                    $text = 'primjeraka';
-                    $null = null;
-                }}}}}
+        // '$booke' because '$book' already has value
+        foreach ($books as $booke) {
+            foreach ($booke->rent as $rent) {
+                $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            }
+            if ($count > 0 && $count % 10 == 1) {
+                $count = $count;
+                $text = 'primjerak';
+            } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
+                $count = $count;
+                $text = 'primjerka';
+            } else {
+                $count = $count;
+                $text = 'primjeraka';
+            }}
         } else {
             $count = null;
             $text = '0 primjeraka';

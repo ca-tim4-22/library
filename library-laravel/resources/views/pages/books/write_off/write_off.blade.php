@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Vrati knjigu | Online Biblioteka</title>
+<title>Otpiši knjigu | Online Biblioteka</title>
 
 @endsection
 
@@ -16,12 +16,12 @@
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
-                    <img src="{{'/storage/book-covers/' . $get_book->gallery->photo}}" alt="Naslovna" title="Naslovna">
+                    <img src="{{'/storage/book-covers/' . $book->gallery->photo}}" alt="Naslovna" title="Naslovna">
                 </div>
                 <div class="pl-[15px]  flex flex-col">
                     <div>
                         <h1>
-                            {{$get_book->title}}
+                            {{$book->title}}
                         </h1>
                     </div>
                     <div>
@@ -36,17 +36,17 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('show-book', $get_book->id)}}"
+                                    <a href="{{route('show-book', $book->id)}}"
                                         class="text-[#2196f3] hover:text-blue-600">
-                                        KNJIGA-{{$get_book->id}}
+                                        KNJIGA-{{$book->id}}
                                     </a>
                                 </li>
                                 <li>
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('return-book', $get_book->id)}}" class="text-[#2196f3] hover:text-blue-600">
-                                        Vrati knjigu
+                                    <a href="{{route('write-off', $book->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                        Otpiši knjigu
                                     </a>
                                 </li>
                             </ol>
@@ -55,46 +55,47 @@
                 </div>
             </div>
             <div class="pt-[24px] mr-[30px]">
-                <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+                <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="{{route('rent-book', $get_book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
-                <a href="{{route('reserve-book', $get_book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                    <i class="fas fa-redo-alt mr-[3px] "></i>
+                    Vrati knjigu
+                </a>
+                <a href="{{route('reserve-book', $book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="far fa-calendar-check mr-[3px] "></i>
                     Rezerviši knjigu
                 </a>
-                <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsVratiKnjigu hover:text-[#606FC7]">
-                    <i class="fas fa-ellipsis-v"></i>
+                <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsOtpisiKnjigu hover:text-[#606FC7]">
+                    <i
+                        class="fas fa-ellipsis-v"></i>
                 </p>
                 <div
-                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-vrati-knjigu">
+                    class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-otpisi-knjigu">
                     <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                         aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <div class="py-1">
-                            <a href="{{route('edit-book', $get_book->id)}}" tabindex="0"
+                            <a href="{{route('edit-book', $book->id)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
-                            
-                            <form action="{{route('destroy-book', $get_book->id)}}" method="POST">
+                            <form action="{{route('destroy-book', $book->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button
-                                        style="outline: none;border: none;"
-                                        type="submit"
-                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                        role="menuitem">
+                                <button style="outline: none" type="submit"  tabindex="0"
+                                   class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                   role="menuitem">
                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                     <span class="px-4 py-0">Izbriši knjigu</span>
                                 </button>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -105,7 +106,7 @@
     <div class="scroll height-dashboard px-[30px]">
         <div class="flex items-center justify-between py-4 pt-[20px] space-x-3 rounded-lg">
             <h3>
-                Vrati knjigu
+                Otpiši knjigu
             </h3>
             <div class="relative text-gray-600 focus-within:text-gray-400">
                 <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -118,16 +119,16 @@
                 </span>
                 <input type="search" name="q"
                     class="py-2 pl-10 border-[#e4dfdf] text-sm text-white border-[1px] bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                    placeholder="Traži..." autocomplete="off">
+                    placeholder="Search..." autocomplete="off">
             </div>
         </div>
 
         <div
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
-          
-            <form action="{{route('store-return-book')}}" method="POST">
+
+            <form action="{{route('update-write-off', $book->id)}}" method="POST">
             @csrf
-               
+
             <table class="min-w-full border-[1px] border-[#e4dfdf]" id="vratiKnjiguTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-b-[1px] border-[#e4dfdf]">
@@ -154,47 +155,47 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white">
-                    
 
-                   @if (!$data == [])
+                  @foreach ($book->rent as $rent)
 
-                   @foreach ($data as $rent)
-                    
-                   <tr class="border-b-[1px] border-[#e4dfdf]">
-                       <td class="px-4 py-4 whitespace-no-wrap">
-                           <label class="inline-flex items-center">
-                               <input type="checkbox" name="id2" value="{{$rent->id}}" class="form-checkbox">
-                           </label>
-                       </td>
-                       <td class="flex flex-row items-center px-4 py-4">
-                               <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
-                               alt="Profilna slika učenika: {{$rent->borrow->name}}"
-                               title="Profilna slika učenika: {{$rent->borrow->name}}" />
-                           <a href="{{route('show-student', $rent->borrow->username)}}">
-                               <span class="font-medium text-center">{{$rent->borrow->name}}</span>
-                           </a>
-                       </td>
-                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
-                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                           <span>
-                                           
-                               <?php 
-                               $datetime1 = new DateTime(($rent->issue_date));
-                               $datetime2 = new DateTime(($rent->return_date));
-                               $interval = $datetime1->diff($datetime2);
-                               echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
-                               ?>
-                               </span>
-                       </td>
-                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoračenja</td>
-                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
-                   </tr>
-                   
-                   @endforeach
-                       
-                   @endif
-                        
-                    
+                  <tr class="border-b-[1px] border-[#e4dfdf]">
+                    <td class="px-4 py-4 whitespace-no-wrap">
+                        <label class="inline-flex items-center">
+                            <input type="checkbox" class="form-checkbox" value="{{$rent->borrow->id}}" name="checkbox">
+                        </label>
+                    </td>
+                    <td class="flex flex-row items-center px-4 py-4">
+                        <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
+                        alt="Profilna slika učenika: {{$rent->borrow->name}}"
+                        title="Profilna slika učenika: {{$rent->borrow->name}}" />
+                        <a href="{{route('show-student', $rent->borrow->username)}}">
+                            <span class="font-medium text-center">{{$rent->borrow->name}}</span>
+                        </a>
+                    </td>
+                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
+                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                    @php
+                        $datetime1 = new DateTime(($rent->issue_date));
+                        $datetime2 = new DateTime(($rent->return_date));
+                        $interval = $datetime1->diff($datetime2);
+                        echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                    @endphp
+                    </td>
+                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                        <span class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]">
+                        @php 
+                            $datetime1 = new DateTime(($rent->issue_date));
+                            $datetime2 = new DateTime(($rent->return_date));
+                            $interval = $datetime1->diff($datetime2);
+                            echo $interval->format('%a dana');
+                        @endphp
+                        </span>
+                    </td>
+                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
+                  </tr>
+                      
+                  @endforeach
+                  
                 </tbody>
             </table>
 
@@ -203,22 +204,20 @@
     <div class="absolute bottom-0 w-full">
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-               
                 <button type="button"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>
-              
                 <button type="submit"
-                class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-                disabled>
-                Vrati knjigu <i class="fas fa-check ml-[4px]"></i>
-               </button>
-               </form>
+                    class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+                    disabled onclick="validacijaUcenik()">
+                    Otpiši knjigu <i class="fas fa-check ml-[4px]"></i>
+                </button>
+            </form>
             </div>
         </div>
     </div>
 </section>
 <!-- End Content -->
-    
+
 @endsection

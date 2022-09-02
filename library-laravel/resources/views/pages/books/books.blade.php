@@ -390,14 +390,14 @@
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('active-reservations')}}">{{$book->reserved_count}}</td>
+                                        
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('rented-books')}}">{{$book->rented_count}}</td>
+
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('overdue-books')}}">
-                                    
                                       {{$count}}
-
-                                    </td>
+                                </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count}}</td>
                                 <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
@@ -424,7 +424,7 @@
                                                     <span class="px-4 py-0">Izmijeni knjigu</span>
                                                 </a>
 
-                                                <a href="otpisiKnjigu.php" tabindex="0"
+                                                <a href="{{route('write-off', $book->id)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>

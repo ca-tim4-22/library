@@ -10,6 +10,7 @@ use App\Http\Controllers\Books\ {
     ReturnBookController,
     ActiveReservationController,
     ReserveBookController,
+    WriteOffController
 };
 
 use Illuminate\Support\Facades\ {
@@ -55,12 +56,19 @@ Route::controller(OverdueBookController::class)->group(function(){
 Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->name('overdue-books');
 });
 
+Route::controller(WriteOffController::class)->group(function(){
+// Write off a book
+Route::get('/otpisi-knjigu/{id}', [WriteOffController::class, 'index'])->name('write-off');
+Route::post('/otpisi-knjigu/{id}', [WriteOffController::class, 'update'])->name('update-write-off');
+});
+
 Route::controller(ActiveReservationController::class)->group(function(){
 // Active reservations
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
 Route::put('/approve/{id}', [ActiveReservationController::class, 'approve'])->name('approve');
 Route::put('/deny/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
 });
+
 
 
 

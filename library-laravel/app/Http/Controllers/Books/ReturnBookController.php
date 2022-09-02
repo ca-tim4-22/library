@@ -4,16 +4,15 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use App\Models\BookStatus;
 use App\Models\Rent;
-use Carbon\Carbon;
+use App\Models\RentStatus;
 use Illuminate\Http\Request;
 
 class ReturnBookController extends Controller
 {
     public function __construct()
     {
-            $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -24,21 +23,19 @@ class ReturnBookController extends Controller
     {
         $books = Book::all();
 
-        if (Rent::count() > 0) {
-            foreach ($books as $book) {
-                foreach ($book->rent as $rent) {
-                    foreach ($rent->rent_status as $collection) {
-                        $data = $collection;
-                    }
+       if (RentStatus::where('book_status_id', 2)->count() > 0) {
+       foreach ($books as $book) {
+            foreach ($book->rent as $rent) {
+                foreach ($rent->rent_status as $key) {
+                    $data = $key->where('book_status_id', 2)->orderBy('id', 'desc');
                 }
             }
-            $paginate = $data->book_status->where('status', 'false')->paginate(5);
-        } else {
-            $data = 'no-values';
-            $paginate = 'no-values';
-        }
+           }
+       } else {
+        $data = 'no-values';
+       }
 
-        return view('pages.books.transactions.return.returned_books', compact('data', 'paginate'));
+        return view('pages.books.transactions.return.returned_books', compact('data'));
     }
 
     /**
@@ -75,10 +72,10 @@ class ReturnBookController extends Controller
     public function store(Request $request)
     {
         $id2 = $request->input('id2');
-        $book_status = BookStatus::findOrFail($id2);
-        $book_status->whereId($id2)->update(['status' => 'false', 'return_time' => Carbon::now()->toDateString()]);
+        $book_status = RentStatus::findOrFail($id2);
+        $book_status->whereId($id2)->update(['book_status_id' => '2']);
 
-        $book = Book::findOrFail($book_status->rent_status->rent->book->id);  
+        $book = Book::findOrFail($book_status->rent->book->id);  
         $book->rented_count = $book->rented_count - 1;  
         $book->save();
 
