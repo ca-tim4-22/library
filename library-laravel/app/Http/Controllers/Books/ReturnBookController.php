@@ -74,7 +74,6 @@ class ReturnBookController extends Controller
      */
     public function store(Request $request)
     {
-       
         $id2 = $request->input('id2');
         $book_status = BookStatus::findOrFail($id2);
         $book_status->whereId($id2)->update(['status' => 'false', 'return_time' => Carbon::now()->toDateString()]);
@@ -96,7 +95,7 @@ class ReturnBookController extends Controller
     {
         $rent = Rent::findOrFail($id);
 
-        return view('pages.books.transactions.return.return_info', compact('rent'));
+        return view('pages.books.transactions.rent.rent_info', compact('rent'));
     }
 
     /**

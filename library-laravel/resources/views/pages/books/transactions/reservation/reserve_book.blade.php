@@ -91,14 +91,13 @@
                             <form action="{{route('destroy-book', $book->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-
                                 <button style="outline: none" type="submit"  tabindex="0"
                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                    role="menuitem">
                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                     <span class="px-4 py-0">Izbriši knjigu</span>
                                 </button>
-                                </form>
+                            </form>
                         </div>
 
                     </div>
@@ -135,7 +134,8 @@
                             <input type="date" name="reservation_date" id="datumRezervisanja"
                                 class="flex w-[50%] mt-2 px-4 py-2 text-base placeholder-gray-400 bg-white border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                 onclick="clearErrorsDatumRezervisanja()" 
-                                max="{{$datee}}"
+                                max="{{$max_date}}"
+                                value="{{$today}}"
                                 />
                                 
                         </label>

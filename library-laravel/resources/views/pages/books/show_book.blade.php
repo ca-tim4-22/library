@@ -188,21 +188,16 @@
                             <div class="text-center pb-[30px]">
                                 <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}} primjeraka
                                 
-                                  
-                                
-                                
                                 </p>
-                                <a href="iznajmljivanjeAktivne.php"><p
+                                <a href="{{route('active-reservations')}}"><p
                                         class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                         {{$book->reserved_count}} primjeraka</p></a>
-                                <a href="iznajmljivanjeIzdate.php"><p
+                                <a href="{{route('rented-books')}}"><p
                                         class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                         {{$book->rented_count}} primjeraka</p></a>
-                                <a href="iznajmljivanjePrekoracenje.php">  <p
+                                <a href="{{route('overdue-books')}}">  <p
                                         class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-       
                                         {{$count}} {{$text}}
-
                                     </p></a>
                                 <p
                                     class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">

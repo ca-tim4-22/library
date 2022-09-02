@@ -351,7 +351,7 @@
                                        
                                         <img 
                                         class="object-cover w-8 h-8 rounded-full" 
-                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->reservation->made_for->photo}}" />
+                                        src="{{$await_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $await_reservation->made_for->photo}}" />
 
                                         <a href="{{route('show-student', $await_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$await_reservation->reservation->made_for->name}}</a>
                                        
@@ -401,18 +401,18 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="izdajKnjigu.php" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
-                                                        <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izdaj knjigu</span>
-                                                    </a>
+                                                    <a href="{{route('rent-book', $await_reservation->reservation->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
+                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                         <span class="px-4 py-0">Izdaj knjigu</span>
+                                                     </a>
 
                                                     <a href="#" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otkaži rezervaciju</span>
+                                                        <span class="px-4 py-0">Arhiviraj rezervaciju</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -445,7 +445,7 @@
                                        
                                         <img 
                                         class="object-cover w-8 h-8 rounded-full" 
-                                        src="{{$true_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $true_reservation->reservation->made_for->gallery->photo}}" />
+                                        src="{{$true_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $true_reservation->reservation->made_for->photo}}" />
 
                                         <a href="{{route('show-student', $true_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$true_reservation->reservation->made_for->name}}</a>
 
@@ -467,18 +467,18 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="izdajKnjigu.php" tabindex="0"
-                                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                       role="menuitem">
-                                                        <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izdaj knjigu</span>
-                                                    </a>
+                                                    <a href="{{route('rent-book', $true_reservation->reservation->book->id)}}" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
+                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                         <span class="px-4 py-0">Izdaj knjigu</span>
+                                                     </a>
 
                                                     <a href="#" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                        <span class="px-4 py-0">Arhiviraj</span>
                                                     </a>
                                                 </div>
                                             </div>
@@ -510,7 +510,7 @@
                                        
                                         <img 
                                         class="object-cover w-8 h-8 rounded-full" 
-                                        src="{{$false_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $false_reservation->reservation->made_for->gallery->photo}}" />
+                                        src="{{$false_reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $false_reservation->reservation->made_for->photo}}" />
 
                                         <a href="{{route('show-student', $false_reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$false_reservation->reservation->made_for->name}}</a>
 
@@ -532,7 +532,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="izdajKnjigu.php" tabindex="0"
+                                                    <a href="{{route('rent-book', $false_reservation->reservation->book->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
@@ -543,7 +543,7 @@
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="fas fa-undo mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Otkazi rezervaciju</span>
+                                                        <span class="px-4 py-0">Arhiviraj</span>
                                                     </a>
                                                 </div>
                                             </div>

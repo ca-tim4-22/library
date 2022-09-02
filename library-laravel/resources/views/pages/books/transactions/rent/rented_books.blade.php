@@ -446,9 +446,8 @@
                                     <th class="px-4 py-4"> </th>
                                 </tr>
                                 </thead>
-                                
+                             
                                 @foreach ($data->book_status->where('status', 'true')->orderBy('id', 'desc')->get() as $book)
-
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
@@ -468,16 +467,12 @@
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>
                                             <span>
-                                            
                                             @php
                                             $datetime1 = new DateTime(($book->rent_status->rent->issue_date));
                                             $datetime2 = new DateTime(($book->rent_status->rent->return_date));
                                             $interval = $datetime1->diff($datetime2);
                                             echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
                                             @endphp
- 
-                                            {{-- {{$rent->return_date->diffInDays($rent->issue_date)}} --}}
-               
                                             </span>
                                         </div>
                                     </td>

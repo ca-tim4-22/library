@@ -56,7 +56,10 @@ class RentBookController extends Controller
         $book = Book::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
         $books = Book::all();
-
+        $current_one = Carbon::now()->format('Y-m-d');
+        $date = Carbon::now()->addDays($variable->value)->format('m-d-Y');
+        $current_two = str_replace('-', '/', $date);
+        
         if (Rent::count() > 0) {
             foreach ($books as $book) {
             foreach ($book->rent as $rent) {
@@ -88,7 +91,7 @@ class RentBookController extends Controller
             $text = '0 primjeraka';
         }
 
-        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable', 'count', 'text'));
+        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable', 'count', 'text', 'current_one', 'current_two'));
     }
 
     /**
