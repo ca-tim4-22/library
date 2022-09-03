@@ -58,23 +58,25 @@ class RentBookController extends Controller
         $current_two = str_replace('-', '/', $date);
 
         if (Rent::count() > 0) {
-        foreach ($books as $book) {
-            foreach ($book->rent as $rent) {
-                $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            foreach ($books as $booke) {
+                foreach ($booke->rent as $rent) {
+                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+                }
             }
-            if ($count > 0 && $count % 10 == 1) {
-                $count = $count;
-                $text = 'primjerak';
-            } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
-                $count = $count;
-                $text = 'primjerka';
-            } else {
-                $count = $count;
-                $text = 'primjeraka';
-            }}
         } else {
-            $count = null;
-            $text = '0 primjeraka';
+        $count = null;
+        $text = '0 primjeraka';
+        }
+
+        if ($count > 0 && $count % 10 == 1) {
+        $count = $count;
+        $text = 'primjerak';
+        } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
+        $count = $count;
+        $text = 'primjerka';
+        } else {
+        $count = $count;
+        $text = 'primjeraka';
         }
 
         return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable', 'count', 'text', 'current_one', 'current_two'));

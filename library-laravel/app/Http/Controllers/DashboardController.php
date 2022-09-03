@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
 use App\Models\Book;
 use App\Models\Rent;
+use App\Models\RentStatus;
 use App\Models\ReservationStatuses;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,8 +24,8 @@ class DashboardController extends Controller
     public function index()
     {
         $books = Book::all();
-        $rented_books = Rent::count();
-        $reserved_books = User::count();
+        $rented_books = RentStatus::where('book_status_id', 1)->count();
+        $reserved_books = ReservationStatuses::where('status_reservations_id', 1)->count();
 
         if (Rent::count() > 0) {
             foreach ($books as $book) {
@@ -35,7 +35,7 @@ class DashboardController extends Controller
                     }
                 }
             }
-            $overdue_books = $data2->book_status->whereDate('return_time', '<', date('Y-m-d'))->count();
+            $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
         } else {
             $overdue_books = 0;
         }

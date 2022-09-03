@@ -116,26 +116,27 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $books = Book::all();
-        
+
         if (Rent::count() > 0) {
-        // '$booke' because '$book' already has value
-        foreach ($books as $booke) {
-            foreach ($booke->rent as $rent) {
-                $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            foreach ($books as $booke) {
+                foreach ($booke->rent as $rent) {
+                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+                }
             }
-            if ($count > 0 && $count % 10 == 1) {
-                $count = $count;
-                $text = 'primjerak';
-            } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
-                $count = $count;
-                $text = 'primjerka';
-            } else {
-                $count = $count;
-                $text = 'primjeraka';
-            }}
         } else {
-            $count = null;
-            $text = '0 primjeraka';
+        $count = null;
+        $text = '0 primjeraka';
+        }
+
+        if ($count > 0 && $count % 10 == 1) {
+        $count = $count;
+        $text = 'primjerak';
+        } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
+        $count = $count;
+        $text = 'primjerka';
+        } else {
+        $count = $count;
+        $text = 'primjeraka';
         }
 
         return view('pages.books.show_book', compact('book', 'count', 'text'));

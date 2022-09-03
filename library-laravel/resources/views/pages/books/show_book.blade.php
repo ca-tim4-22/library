@@ -258,7 +258,6 @@
                 </div>
                        
                 @endif
-           
 
                         <div class="mt-[40px]">
                             <a href="{{route('dashboard-activity')}}" class="text-[#2196f3] hover:text-blue-600">

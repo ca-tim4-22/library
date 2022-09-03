@@ -97,7 +97,7 @@
 
                                 @foreach ($data_await as $await_reservation)
 
-                                <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
+                                 <tr class="bg-white border-b-[1px] border-[#e4dfdf]">
                                     <td class="flex flex-row items-center px-2 py-4">
 
                                         <img 
@@ -135,7 +135,7 @@
                                             </form>
 
                                         </td>
-                                </tr>
+                                 </tr>
       
                                 @endforeach
                               
