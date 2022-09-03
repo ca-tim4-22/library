@@ -24,8 +24,19 @@ class DashboardController extends Controller
     public function index()
     {
         $books = Book::all();
+
         $rented_books = RentStatus::where('book_status_id', 1)->count();
+        $rented_real = $rented_books;
         $reserved_books = ReservationStatuses::where('status_reservations_id', 1)->count();
+        $reserved_real = $reserved_books;
+
+        // Conditions for analytics - fit width
+        if ($rented_books >= 300) {
+            $rented_books = 320;
+        }
+        if ($reserved_books >= 300) {
+            $reserved_books = 320;
+        }
 
         if (Rent::count() > 0) {
             foreach ($books as $book) {
@@ -36,8 +47,15 @@ class DashboardController extends Controller
                 }
             }
             $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            $overdue_real = $overdue_books;
         } else {
             $overdue_books = 0;
+            $overdue_real = 0;
+        }
+
+        // Condition for analytics - fit width
+        if ($overdue_books >= 300) {
+            $overdue_books = 320;
         }
 
         $rents = Rent::whereDate('issue_date', today())->get();
@@ -54,7 +72,11 @@ class DashboardController extends Controller
 
         $data_await = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 3)->get();
 
-        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books', 'data_await'));
+        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books', 'data_await', 
+        'rented_real',
+        'reserved_real',
+        'overdue_real',
+    ));
     }
 
     public function index_activity() 

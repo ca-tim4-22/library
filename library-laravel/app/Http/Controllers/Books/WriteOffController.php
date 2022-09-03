@@ -78,10 +78,12 @@ class WriteOffController extends Controller
         $value = $request->input('checkbox');
         Rent::where('borrow_user_id', $value)->delete();
         $book->quantity_count = $book->quantity_count - 1;
+        if ($book->rented_count != 0) {
         $book->rented_count = $book->rented_count - 1;
+        }
         $book->update();
 
-        return back();
+        return to_route('overdue-books')->with('write-off', 'Uspješno ste otpisali primjerak knjige.');
     }
 
     /**

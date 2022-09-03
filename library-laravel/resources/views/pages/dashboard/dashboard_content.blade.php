@@ -160,8 +160,11 @@
                                 <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 stats-bar-green h-[26px]">
                                 
                                 </div>
-                                <p class="ml-[10px] number-green text-[#2196f3] hover:text-blue-600">
-                                    {{$rented_books}}
+                                <p  
+                                style="cursor: help"
+                                data-tooltip-content="{{$rented_real}}" 
+                                class="with-tooltip2 ml-[10px] number-green text-[#2196f3] hover:text-blue-600">
+                                    {{$rented_real > 300 ? '300+' : $rented_real}}
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
@@ -171,8 +174,11 @@
                                 <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900 stats-bar-yellow  h-[26px]">
                                 
                                 </div>
-                                <p class="ml-[10px] text-[#2196f3] hover:text-blue-600 number-yellow">
-                                    {{$reserved_books}}
+                                <p
+                                style="cursor: help"
+                                data-tooltip-content="{{$reserved_real}}"  
+                                class="with-tooltip2 ml-[10px] text-[#2196f3] hover:text-blue-600 number-yellow">
+                                    {{$reserved_real >= 300 ? '300+' : $reserved_real}}
                                 </p>
                             </div>
                             <div class="flex pb-[30px]">
@@ -212,8 +218,11 @@ from {
 }
 </style>
 
-                                <p class="ml-[10px] text-[#2196f3] hover:text-blue-600 number-red">
-                               {{$overdue_books}}
+                                <p
+                                style="cursor: help"
+                                data-tooltip-content="{{$overdue_real}}"  
+                                class="with-tooltip2 ml-[10px] text-[#2196f3] hover:text-blue-600 number-red">
+                                    {{$overdue_real >= 300 ? '300+' : $overdue_real}}
                                 </p>
                             </div>
                         </div>
@@ -238,6 +247,9 @@ from {
                             <p class="ml-[30px]">
                             250
                             </p>
+                            </p>
+                            <p class="ml-[30px]">
+                            300
                         </div>
                     </div>
                 </div>

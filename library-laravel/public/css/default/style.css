@@ -56,7 +56,7 @@
   padding: 8px;
   border-radius: 8px;
   position: absolute;
-  color: white;
+  color: #fff;
   bottom: 115%;
   right: 50%;
   left: 60%;
@@ -70,6 +70,36 @@
 }
 
 .with-tooltip:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Custom tooltip 2 */
+
+.with-tooltip2 {
+  position: relative;
+}
+
+.with-tooltip2::after {
+  content: attr(data-tooltip-content);
+  padding: 8px;
+  border-radius: 8px;
+  position: absolute;
+  color: #fff;
+  bottom: 105%;
+  letter-spacing: 1px;
+  left: 60%;
+  width: max-content;
+  background-color: #4558BE;
+  opacity: 0;
+  font-size: 0.7rem;
+  visibility: hidden;
+  transform: translate(-50%, 18px) scale(0.8);
+  transition: visibility, opacity, transform 0.35s;
+}
+
+.with-tooltip2:hover::after {
   visibility: visible;
   opacity: 1;
   transform: translate(-50%, 0);
@@ -382,7 +412,6 @@ input:checked+svg {
   width: 0px;
 
   -webkit-animation: red-bar 0.45s ease forwards;
-
           animation: red-bar 0.45s ease forwards;
   -webkit-animation-delay: 0.45s;
           animation-delay: 0.45s;
@@ -2173,7 +2202,7 @@ h4 {
   padding-right: 10px;
 }
 .pr-\[87px\]{
-  padding-right: 87px;
+  padding-right: 20px;
 }
 .pt-\[7px\]{
   padding-top: 7px;
