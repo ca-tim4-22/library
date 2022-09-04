@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\DB;
 
 class ReserveBookController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,19 +52,18 @@ class ReserveBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $input = $request->all();
         $librarian = Auth::user();
         $variable = GlobalVariable::findOrFail(1);
 
         $reservation = new Reservation();
-        $reservation->book_id = 1;
+        $reservation->book_id = $id;
         $reservation->reservationMadeFor_user_id = $request->input('reservationMadeFor_user_id');
         $reservation->reservationMadeBy_user_id = $librarian->id;
         $reservation->reservation_date = $request->input('reservation_date');
-        $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);;
-       
+        $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);
         $reservation->save();
 
         DB::table('reservation_statuses')->insert([
@@ -67,7 +71,7 @@ class ReserveBookController extends Controller
             'status_reservations_id' => 3,
         ]);
 
-        return to_route('all-books');
+        return to_route('active-reservations');
     }
 
     /**

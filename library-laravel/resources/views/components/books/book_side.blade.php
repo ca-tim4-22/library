@@ -96,7 +96,7 @@
                             <span
                                 class=" whitespace-nowrap w-full text-[25px] flex justify-between fill-current">
                                 <div class="{{(request()->is('arhivirane-rezervacije')) ? 'bg-[#EFF3F6] group-hover:text-[#576cdf] text-[#576cdf] text-[15px]' : ''}} group hover:bg-[#EFF3F6] py-[15px] px-[20px] w-[268px] rounded-[10px] cursor-pointer">
-                                    <a href="{{route('archived-books')}}" aria-label="Izdate knjige"
+                                    <a href="{{route('archived-reservations')}}" aria-label="Izdate knjige"
                                        class="flex items-center">
                                     <i class="{{(request()->is('arhivirane-rezervacije')) ? 'text-[#576cdf]' : ''}} text-[#707070] text-[20px] fas fa-calendar-alt transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div>

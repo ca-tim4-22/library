@@ -21,7 +21,7 @@
                 <div class="pl-[15px]  flex flex-col">
                     <div>
                         <h1>
-                            Tom Sojer
+                            {{$book->title}}
                         </h1>
                     </div>
                     <div>
@@ -109,7 +109,7 @@
     <div class="scroll height-content section-content">
 
         <form class="text-gray-700" action="{{route('store-reserve-book', $book->id)}}" method="POST">
-            {{ csrf_field() }}
+            @csrf
             @method('POST')
 
             <div class="flex flex-row ml-[30px]">

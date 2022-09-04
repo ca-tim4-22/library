@@ -23,6 +23,8 @@ return new class extends Migration
             ['status' => 'true'],
             ['status' => 'false'],
             ['status' => 'await'],
+            ['status' => 'archived'],
+            ['status' => 'expired'],
         ]);
     }
 

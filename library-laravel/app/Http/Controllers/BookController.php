@@ -142,11 +142,6 @@ class BookController extends Controller
         return view('pages.books.show_book', compact('book', 'count', 'text'));
     }
 
-    public function archivedReservations()
-    {
-        return view('pages.books.transactions.archived_reservations');
-    }
-
     /**
      * Show the form for editing the specified resource.
      *

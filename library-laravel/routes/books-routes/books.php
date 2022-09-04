@@ -9,8 +9,10 @@ use App\Http\Controllers\Books\ {
     RentBookController,
     ReturnBookController,
     ActiveReservationController,
+    ArchivedReservationController,
     ReserveBookController,
-    WriteOffController
+    WriteOffController,
+    ArchiveBookController,
 };
 
 use Illuminate\Support\Facades\ {
@@ -26,7 +28,6 @@ Route::post('/nova-knjiga', [BookController::class, 'store'])->name('store-book'
 Route::get('/izmijeni-knjigu/{id}', [BookController::class, 'edit'])->name('edit-book');
 Route::put('/izmijeni-knjigu/{id}', [BookController::class, 'update'])->name('update-book');
 Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name('destroy-book');
-Route::get('/arhivirane-rezervacije', [BookController::class, 'archivedReservations'])->name('archived-books');
 });
 
 Route::controller(RentBookController::class)->group(function(){
@@ -60,6 +61,17 @@ Route::controller(WriteOffController::class)->group(function(){
 // Write off a book
 Route::get('/otpisi-knjigu/{id}', [WriteOffController::class, 'index'])->name('write-off');
 Route::post('/otpisi-knjigu/{id}', [WriteOffController::class, 'update'])->name('update-write-off');
+});
+
+Route::controller(ArchivedReservationController::class)->group(function(){
+// Archived books
+Route::get('/arhivirane-rezervacije', [ArchivedReservationController::class, 'index'])->name('archived-reservations');
+});
+
+Route::controller(ArchiveBookController::class)->group(function(){
+// Archive a book
+Route::get('/arhiviraj-rezervaciju/{id}', [ArchiveBookController::class, 'index'])->name('archive-reservation');
+Route::put('/arhiviraj-rezervaciju/{id}', [ArchiveBookController::class, 'update'])->name('update-archive-reservation');
 });
 
 Route::controller(ActiveReservationController::class)->group(function(){

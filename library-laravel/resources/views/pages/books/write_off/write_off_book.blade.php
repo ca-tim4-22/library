@@ -183,11 +183,21 @@
                     </td>
                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                         <span class="px-[6px] py-[2px] bg-red-200 text-red-800 rounded-[10px]">
-                        @php 
-                            $datetime1 = new DateTime(($rent->issue_date));
-                            $datetime2 = new DateTime(($rent->return_date));
-                            $interval = $datetime1->diff($datetime2);
-                            echo $interval->format('%a dana');
+                        @php
+                        $date1 = new DateTime("now");
+                        $date2 = new DateTime($rent->return_date);
+                        $interval = $date1->diff($date2);
+                        
+                        if ($date1 > $date2) {
+                            if ($interval->days == 1) {
+                               echo "1 dan";
+                            } elseif ($interval->days == 0) {
+                                $interval = 1;
+                                echo $interval . ' dan'; 
+                            } else {
+                                echo $interval->format('%a dana');
+                            }
+                        }
                         @endphp
                         </span>
                     </td>

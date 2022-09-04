@@ -17,11 +17,14 @@ class ActiveReservationController extends Controller
      */
     public function index()
     {
+        $is_null = ReservationStatuses::where('status_reservations_id', 1)
+        ->orWhere('status_reservations_id', 3)
+        ->count();
+
         $data_true = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 1)->get();
-        $data_false = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 2)->get();
         $data_await = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 3)->get();
         
-        return view('pages.books.transactions.reservation.active_reservations', compact('data_true', 'data_false', 'data_await'));
+        return view('pages.books.transactions.reservation.active_reservations', compact('data_true', 'data_await', 'is_null'));
     }
 
     /**
@@ -96,6 +99,13 @@ class ActiveReservationController extends Controller
         DB::table('reservation_statuses')->where('id', $id)->update([
             'status_reservations_id' => 1,
             'updated_at' => now(),
+        ]);
+
+        // Add reserved count to a reserved book
+        $status = ReservationStatuses::find($id);
+        
+        $save = $status->reservation->book->update([
+            'reserved_count' => $status->reservation->book->reserved_count + 1,
         ]);
 
         return back();

@@ -13,7 +13,7 @@ class ReservationStatuses extends Model
     public function reservation() {
         return $this->belongsTo(Reservation::class);
     }
-    
+
     public function status() {
         return $this->belongsTo(StatusReservation::class, 'status_reservations_id');
     }

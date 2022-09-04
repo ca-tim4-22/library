@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use App\Models\Rent;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
-class WriteOffController extends Controller
+class ArchiveBookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class WriteOffController extends Controller
     {
         $book = Book::findOrFail($id);
 
-        return view('pages.books.write_off.write_off_book', compact('book'));
+        return view('pages.books.archive.archive_book', compact('book'));
     }
 
     /**
@@ -39,7 +39,7 @@ class WriteOffController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -73,17 +73,13 @@ class WriteOffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $book = Book::findOrFail($id);
-        $value = $request->input('checkbox');
-        Rent::where('borrow_user_id', $value)->delete();
-        $book->quantity_count = $book->quantity_count - 1;
-        if ($book->rented_count != 0) {
-        $book->rented_count = $book->rented_count - 1;
-        }
-        $book->update();
+        $reservation = Reservation::findOrFail($id);
 
-        return to_route('overdue-books')->with('write-off', 'Uspješno ste otpisali primjerak knjige.');
+        $reservation->reservations()->where('reservation_id', $id)->update([
+            'status_reservations_id' => 4,
+        ]);
+
+        return back()->with('archive-reservation', 'Uspješno ste arhivirali rezervaciju ID-' . $reservation->id);
     }
 
     /**
