@@ -107,7 +107,7 @@
 
                     @foreach ($students as $student)
 
-                    <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
+                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox">
@@ -163,15 +163,15 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                     </tr>
 
                     @endforeach
 
                 </tbody>
             </table>
           
-            <script src="https://cdn.tailwindcss.com"></script>
-            <div class="m-3">{!! $students->links() !!}</div>
+            <script src="https://cdn.tailwindcss.com"></script> 
+            <div class="m-3">{!! $students->links() !!}</div> 
                 
             @endif
            
@@ -183,6 +183,6 @@
 </section>
 <!-- End Content -->
 
-
+</div>
 
 @endsection

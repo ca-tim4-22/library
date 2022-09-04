@@ -74,6 +74,9 @@ class RentBookController extends Controller
         } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
         $count = $count;
         $text = 'primjerka';
+        } elseif ($count <= 0) {
+        $count = null;
+        $text = "0 primjeraka";
         } else {
         $count = $count;
         $text = 'primjeraka';

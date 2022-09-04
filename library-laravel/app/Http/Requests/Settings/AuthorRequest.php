@@ -31,7 +31,7 @@ class AuthorRequest extends FormRequest
                 'max:255',
                 new NoDigitsRule(),
             ],
-            'biography' => 'required|max:255',
+            'biography' => 'required|max:350',
         ];
     }
 }

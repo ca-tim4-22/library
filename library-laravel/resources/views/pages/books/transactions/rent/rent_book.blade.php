@@ -175,14 +175,43 @@
                                     </div>
                                     <div class="text-center pb-[30px]">
                                         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count)}} primjerka</p>
+                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}} 
+                                            @php
+                                            if ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 1 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 11 || $book->quantity_count - ($book->rented_count + $book->reserved_count) == 1) {
+                                            echo "primjerak";
+                                            } elseif ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 2 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 3 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 4) {
+                                             echo "primjerka";
+                                            } else {
+                                            echo "primjeraka";
+                                            }  
+                                            @endphp   
+                                        </p>
                                         <a href="{{route('active-reservations')}}">
                                             <p class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->reserved_count}} primjerka</p>
+                                            {{$book->reserved_count >= 0 ? $book->reserved_count : "0"}} 
+                                            @php
+                                            if ($book->reserved_count % 10 == 1 || $book->reserved_count % 10 == 11 || $book->reserved_count == 1) {
+                                            echo "primjerak";
+                                            } elseif ($book->reserved_count % 10 == 2 || $book->reserved_count % 10 == 3 || $book->reserved_count % 10 == 4) {
+                                            echo "primjerka";
+                                            } else {
+                                            echo "primjeraka";
+                                            }  
+                                            @endphp
+                                        </p>
                                         </a>
                                         <a href="{{route('rented-books')}}">
                                             <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                                {{count($book->rent)}} primjerka</p>
+                                            {{$book->rented_count >= 0 ? $book->rented_count : "0"}} 
+                                            @php
+                                            if ($book->rented_count % 10 == 1 || $book->rented_count % 10 == 11) {
+                                            echo "primjerak";
+                                            } elseif ($book->rented_count % 10 == 2 || $book->rented_count % 10 == 3 || $book->rented_count % 10 == 4) {
+                                            echo "primjerka";
+                                            } else {
+                                            echo "primjeraka";
+                                            }  
+                                            @endphp
                                         </a>
 
                                         <a href="{{route('overdue-books')}}">
@@ -191,7 +220,17 @@
                                             </p>
                                         </a>
                                         <p class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->quantity_count}} primjeraka</p>
+                                    {{$book->quantity_count >= 0 ? $book->quantity_count : "0"}} 
+                                    @php
+                                    if ($book->quantity_count % 10 == 1 && $book->quantity_count != 11) {
+                                    echo "primjerak";
+                                    } elseif ($book->quantity_count % 10 == 2 || $book->quantity_count % 10 == 3 || $book->quantity_count % 10 == 4) {
+                                    echo "primjerka";
+                                    } else {
+                                    echo "primjeraka";
+                                    }  
+                                    @endphp    
+                                            </p>
                                     </div>
                                 </div>
                             </div>

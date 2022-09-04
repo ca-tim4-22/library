@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="pt-[24px] mr-[30px]">
-                        <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+                        <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
                         </a>
@@ -186,28 +186,67 @@
                                 <p class="mt-[20px]">Ukupna količina:</p>
                             </div>
                             <div class="text-center pb-[30px]">
-                                <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}} primjeraka
-                                
+                                <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
+                                    {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}} 
+                                    @php
+                                    if ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 1 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 11 || $book->quantity_count - ($book->rented_count + $book->reserved_count) == 1) {
+                                    echo "primjerak";
+                                    } elseif ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 2 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 3 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 4) {
+                                     echo "primjerka";
+                                    } else {
+                                    echo "primjeraka";
+                                    }  
+                                    @endphp
                                 </p>
                                 <a href="{{route('active-reservations')}}"><p
                                         class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                        {{$book->reserved_count}} primjeraka</p></a>
+                                        {{$book->reserved_count >= 0 ? $book->reserved_count : "0"}} 
+                                        @php
+                                        if ($book->reserved_count % 10 == 1 || $book->reserved_count % 10 == 11 || $book->reserved_count == 1) {
+                                        echo "primjerak";
+                                        } elseif ($book->reserved_count % 10 == 2 || $book->reserved_count % 10 == 3 || $book->reserved_count % 10 == 4) {
+                                        echo "primjerka";
+                                        } else {
+                                        echo "primjeraka";
+                                        }  
+                                        @endphp
+                                    </p></a>
                                 <a href="{{route('rented-books')}}"><p
                                         class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                        {{$book->rented_count}} primjeraka</p></a>
+                                        {{$book->rented_count >= 0 ? $book->rented_count : "0"}} 
+                                        @php
+                                        if ($book->rented_count % 10 == 1 || $book->rented_count % 10 == 11) {
+                                        echo "primjerak";
+                                        } elseif ($book->rented_count % 10 == 2 || $book->rented_count % 10 == 3 || $book->rented_count % 10 == 4) {
+                                        echo "primjerka";
+                                        } else {
+                                        echo "primjeraka";
+                                        }  
+                                        @endphp
+                                    </p></a>
                                 <a href="{{route('overdue-books')}}">  <p
                                         class=" mt-[16px] bg-red-200 text-red-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
                                         {{$count}} {{$text}}
                                     </p></a>
                                 <p
                                     class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    {{$book->quantity_count}} primjeraka</p>
+                                    {{$book->quantity_count >= 0 ? $book->quantity_count : "0"}} 
+                                    @php
+                                    if ($book->quantity_count % 10 == 1 && $book->quantity_count != 11) {
+                                    echo "primjerak";
+                                    } elseif ($book->quantity_count % 10 == 2 || $book->quantity_count % 10 == 3 || $book->quantity_count % 10 == 4) {
+                                    echo "primjerka";
+                                    } else {
+                                    echo "primjeraka";
+                                    }  
+                                    @endphp    
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="mt-[40px] mx-[30px]">
 
-                @if ($book->rent->contains('id', 1))
+                @if ($book->rent->count() > 0)
 
                 @foreach ($book->rent as $rent)
 
@@ -236,7 +275,7 @@
                           </p>
                       </div>
                       <div>
-                          <a href="{{route('returned-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                          <a href="{{route('rented-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
                               pogledaj detaljnije >>
                           </a>
                       </div>

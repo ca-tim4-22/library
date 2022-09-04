@@ -45,22 +45,18 @@
 
             <div class="flex flex-col">
 
-
-                @foreach ($policies as $policy)
-
+                {{-- Rent global variable --}}
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
                         <h3>
-                            {{$policy->variable}}
+                            {{$policy1->variable}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eligendi nihil, vel
-                            necessitatibus saepe laboriosam! Perspiciatis laboriosam culpa veritatis ea
-                            voluptatum commodi tempora unde, dolorum debitis quia id dicta vitae.
+                            Ovdje se definiše rok za rezervaciju u danima. Po isteku tog roka, rezervacija ističe i dobija status zatvaranja 'Rezervacija istekla'.
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
-                        <form class="flex" method="POST" action="{{route('update-policy', $policy->id)}}">
+                        <form class="flex" method="POST" action="{{route('update-policy', $policy1->id)}}">
                             @csrf
                             @method('PUT')
                             <button
@@ -69,8 +65,8 @@
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
                             </button>
-                            <input type="text" name="variable" value="{{$policy->variable}}" class="hidden" />
-                            <input type="text" name="value" value="{{$policy->value}}"
+                            <input type="text" name="variable" value="{{$policy1->variable}}" class="hidden" />
+                            <input type="text" name="value" value="{{$policy1->value}}"
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
                             <p class="ml-[10px] mt-[15px]">dana</p>
@@ -81,12 +77,76 @@
                     </div>
                 </div>
 
-                @endforeach
+                {{-- Return global variable --}}
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div>
+                        <h3>
+                            {{$policy2->variable}}
+                        </h3>
+                        <p class="pt-[15px] max-w-[400px]">
+                            Ovdje se definiše rok za vraćanje u danima. Po isteku tog roka + rok prekoračenja, izdata knjiga ulazi u prekoračenje i moguće je otpisati primjerak.
+                        </p>
+                    </div>
+                    <div class="relative ml-[60px] mt-[20px]">
+                        <form class="flex" method="POST" action="{{route('update-policy', $policy2->id)}}">
+                            @csrf
+                            @method('PUT')
+                            <button
+                            type="submit"
+                            style="border: none;outline: none"
+                            class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            </button>
+                            <input type="text" name="variable" value="{{$policy2->variable}}" class="hidden" />
+                            <input type="text" name="value" value="{{$policy2->value}}"
+                                class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
+                                placeholder="..." />
+                            <p class="ml-[10px] mt-[15px]">dana</p>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+                {{-- Overdue global variable --}}
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div>
+                        <h3>
+                            {{$policy3->variable}}
+                        </h3>
+                        <p class="pt-[15px] max-w-[400px]">
+                            Ovdje se definiše rok za prekoračenje u danima. Nakon isteka roka za vraćanje učenik može vratiti knjigu u roku prekoračenja, nakon čega izdati primjerak ulazi u knjige u prekoračenju.
+                        </p>
+                    </div>
+                    <div class="relative ml-[60px] mt-[20px]">
+                        <form class="flex" method="POST" action="{{route('update-policy', $policy3->id)}}">
+                            @csrf
+                            @method('PUT')
+                            <button
+                            type="submit"
+                            style="border: none;outline: none"
+                            class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            </button>
+                            <input type="text" name="variable" value="{{$policy3->variable}}" class="hidden" />
+                            <input type="text" name="value" value="{{$policy3->value}}"
+                                class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
+                                placeholder="..." />
+                            <p class="ml-[10px] mt-[15px]">dana</p>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
                 @error('value')
                 <div>
                     <p style="margin-left: 2%;margin-top: 1%" class="text-sm text-red-500">{{ $message }}</p>
                 </div>
                 @enderror
+
             </div>
         </div>
     </div>
