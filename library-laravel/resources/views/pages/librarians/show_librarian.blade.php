@@ -154,11 +154,25 @@
                     @endif
 
                     <img 
-                    class="p-2 border-2 border-gray-300" 
+                    class="p-2 border-2 border-gray-300"
                     width="300px"
-                    src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
+                    id="loading1" 
+                    src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                    <img 
+                    class="p-2 border-2 border-gray-300"
+                    width="300px"
+                    id="loaded1" 
                     alt="Profilna slika bibliotekara"
-                    title="Profilna slika bibliotekara" />
+                    title="Profilna slika bibliotekara"
+                    src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
+                    onload="showImage1();" 
+                    style="display:none;"/>
+                    <script>
+                        function showImage1() {
+                            $("#loading1").hide();
+                            $("#loaded1").show();
+                        }
+                    </script>
                 </div>
             </div>
         </div>

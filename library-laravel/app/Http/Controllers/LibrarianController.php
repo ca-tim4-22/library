@@ -66,11 +66,11 @@ class LibrarianController extends Controller
     }
 
     public function crop(Request $request) {
-        $dest = '/storage/librarians';
+        $dest = 'storage/librarians';
         $file = $request->file('photo');
         $new_image_name = date('YmdHis').uniqid().'.jpg';
 
-        $move = $file->move(public_path($dest), $new_image_name);
+        $move = $file->move($dest, $new_image_name);
 
         if (!$move)  {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);

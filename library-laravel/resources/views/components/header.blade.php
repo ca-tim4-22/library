@@ -91,22 +91,48 @@
                             <div class="w-[40px] h-[40px] mt-[15px]">
 
                                 @if (Auth::user()->type->name == 'librarian')
+
                                 <img 
                                 class="rounded-full" 
+                                id="loading2" 
+                                src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                                <img 
+                                class="rounded-full" 
+                                id="loaded2" 
+                                alt="Profilna slika bibliotekara"
+                                title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
+                                onload="showImage2();" 
+                                style="display:none;"
                                 alt="{{Auth::user()->username}}" 
-                                title="{{Auth::user()->username}}">
+                                title="{{Auth::user()->username}}" />
 
                                 @else
 
                                 <img 
                                 class="rounded-full" 
+                                id="loading2" 
+                                src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                                <img 
+                                class="rounded-full" 
+                                id="loaded2" 
+                                alt="Profilna slika bibliotekara"
+                                title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
+                                onload="showImage2();" 
+                                style="display:none;"
                                 alt="{{Auth::user()->username}}" 
-                                title="{{Auth::user()->username}}">
+                                title="{{Auth::user()->username}}" />
+
                                 @endif
 
                             </div>
+                            <script>
+                                function showImage2() {
+                                    $("#loading2").hide();
+                                    $("#loaded2").show();
+                                }
+                            </script>
                         </div>
                     </a>
                 </div>
