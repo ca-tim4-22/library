@@ -16,7 +16,7 @@ jobs:
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
-      run: composer update --ignore-platform-reqs
+      run: composer update
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
@@ -27,4 +27,4 @@ jobs:
         server: ${{ secrets.server }}
         username: ${{ secrets.username}}
         password: ${{ secrets.password}}
-        server_dir: /home/tim4/github/
+        server_dir: /home/tim4/github
