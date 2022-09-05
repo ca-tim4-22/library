@@ -34,3 +34,4 @@ jobs:
         username: ${{ secrets.username}}
         password: ${{ secrets.password}}
         server_dir: /home/tim4/tim4.ictcortex.me/nikola/
+
