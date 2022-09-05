@@ -14,7 +14,7 @@ jobs:
         php-version: '8.0'
     - uses: actions/checkout@v2.3.2
     - name: Enter root
-      run: cd library/laravel
+      run: cd library-laravel
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Install Dependencies
