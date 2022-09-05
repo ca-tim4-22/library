@@ -21,10 +21,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        
+        // Schedule for expired reservations
         $schedule->call(function () {
-        $reservations = Reservation::where('request_date', '<', Carbon::now()->subDays(1))->pluck('id')->toArray();
+        $reservations = Reservation::where('request_date', '<', Carbon::now()->subDays(365))->pluck('id')->toArray();
         ReservationStatuses::whereIn('id', $reservations)->update(['status_reservations_id' => '5']);
-        })->everyMinute();;
+        })->everyMinute();
+
+        // Schedule for user delete
+        $schedule->call(function () {
+        $users = User::where('last_login_at', '<', Carbon::now()->subDays(1))->delete();
+        })->everyMinute();
     }
 
     /**

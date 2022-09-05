@@ -10,7 +10,7 @@ class Rent extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $timestamps = false;
+    public $timestamps = false;
 
     public function librarian() {
         return $this->belongsTo(User::class, 'rent_user_id');

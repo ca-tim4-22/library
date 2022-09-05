@@ -9,7 +9,7 @@ class BookGenre extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $timestamps = false;
+    public $timestamps = false;
 
     public function genre() {
         return $this->belongsTo(Genre::class);
