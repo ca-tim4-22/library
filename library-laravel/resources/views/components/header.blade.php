@@ -95,7 +95,7 @@
                                 <img 
                                 class="rounded-full" 
                                 id="loading2" 
-                                src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                                src="https://i.postimg.cc/d1wKhBSS/loading-without.png" />
                                 <img 
                                 class="rounded-full" 
                                 id="loaded2" 
@@ -112,7 +112,7 @@
                                 <img 
                                 class="rounded-full" 
                                 id="loading2" 
-                                src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                                src="https://i.postimg.cc/d1wKhBSS/loading-without.png" />
                                 <img 
                                 class="rounded-full" 
                                 id="loaded2" 

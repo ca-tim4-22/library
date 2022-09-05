@@ -2,9 +2,11 @@
 
 namespace App\Console;
 
+use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use Illuminate\Support\Carbon;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -16,6 +18,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        // $schedule->call(function () {
+        //     Reservation::where('request_date', '<', Carbon::now()->subDays(7))->delete();
+        // })->everyMinute();
+        $schedule->call(function () {
+            User::where('id', 1)->delete();
+        })->everyMinute();
     }
 
     /**

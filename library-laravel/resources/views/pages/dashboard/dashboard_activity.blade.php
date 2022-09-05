@@ -30,10 +30,13 @@
             Prikaz aktivnosti
         </h1>
     </div>
+    
     <!-- Space for content -->
+    
     <div class="pl-[30px] overflow-auto scroll height-dashboard pb-[30px] mt-[20px]">
         <div class="flex flex-row justify-between">
             <div class="mr-[30px]">
+                @if (!$data == [])
                 <div class="text-[14px] flex flex-row mb-[30px]">
                     <div class="">
                         <div class="rounded">
@@ -449,7 +452,7 @@
                 <!-- Activity Cards -->
            
 
-                @if (!$data == [])
+         
                  
                  @foreach ($data as $rent)
 

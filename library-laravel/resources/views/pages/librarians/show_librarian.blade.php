@@ -157,7 +157,7 @@
                     class="p-2 border-2 border-gray-300"
                     width="300px"
                     id="loading1" 
-                    src="https://yt3.ggpht.com/UgLHVJF0BRvC0-UGYHipHjxEmTs5GIKT2y16niUWe78S7JjGx1YZvxNYMUqPiIUKbRE3u3BaUQ=s900-c-k-c0x00ffffff-no-rj" />
+                    src="https://i.postimg.cc/RVy579Dt/loading-official.png" />
                     <img 
                     class="p-2 border-2 border-gray-300"
                     width="300px"
