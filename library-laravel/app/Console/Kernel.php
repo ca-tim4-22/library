@@ -2,7 +2,10 @@
 
 namespace App\Console;
 
+use App\Models\GlobalVariable;
+use App\Models\RentStatus;
 use App\Models\Reservation;
+use App\Models\ReservationStatuses;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -18,12 +21,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        // $schedule->call(function () {
-        //     Reservation::where('request_date', '<', Carbon::now()->subDays(7))->delete();
-        // })->everyMinute();
         $schedule->call(function () {
-            User::where('id', 1)->delete();
-        })->everyMinute();
+        $reservations = Reservation::where('request_date', '<', Carbon::now()->subDays(1))->pluck('id')->toArray();
+        ReservationStatuses::whereIn('id', $reservations)->update(['status_reservations_id' => '5']);
+        })->everyMinute();;
     }
 
     /**

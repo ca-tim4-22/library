@@ -10,6 +10,7 @@ class BookAuthor extends Model
     use HasFactory;
     protected $guarded = [];
     protected $table = 'book_authors';  
+    protected $timestamps = false;
 
     public function author() {
         return $this->belongsTo(Author::class);

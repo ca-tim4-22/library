@@ -28,7 +28,6 @@ return new class extends Migration
             $table->integer('reserved_count')->default(0);
             $table->string('body', 4128);
             $table->string('year');
-            $table->timestamps();
             
             $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');

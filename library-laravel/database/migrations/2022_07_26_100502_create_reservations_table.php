@@ -23,7 +23,6 @@ return new class extends Migration
             $table->date('request_date')->nullable();
             $table->date('reservation_date');
             $table->date('close_date')->nullable();
-            $table->timestamps();
 
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('reservationMadeFor_user_id')->references('id')->on('users')->onDelete('cascade');

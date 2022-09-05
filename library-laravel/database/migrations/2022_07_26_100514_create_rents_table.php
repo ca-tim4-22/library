@@ -20,7 +20,6 @@ return new class extends Migration
             $table->unsignedBigInteger('borrow_user_id');
             $table->date('issue_date');
             $table->date('return_date');
-            $table->timestamps();
             
             $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->foreign('rent_user_id')->references('id')->on('users')->onDelete('cascade');
