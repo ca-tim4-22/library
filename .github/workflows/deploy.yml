@@ -14,6 +14,10 @@ jobs:
         php-version: '8.0'
     - uses: actions/checkout@v2.3.2
     - name: Enter root
+      run: cd ..
+    - name: Enter root2
+      run: cd ..
+      - name: Enter root3
       run: cd library-laravel
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
@@ -29,4 +33,4 @@ jobs:
         server: ${{ secrets.server }}
         username: ${{ secrets.username}}
         password: ${{ secrets.password}}
-        server_dir: /home/tim4/tim4.ictcortex.me/nikola
+        server_dir: /home/tim4/tim4.ictcortex.me/nikola/
