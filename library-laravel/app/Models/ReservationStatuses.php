@@ -9,7 +9,6 @@ class ReservationStatuses extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public $timestamps = false;
 
     public function reservation() {
         return $this->belongsTo(Reservation::class);

@@ -158,6 +158,7 @@
                     width="300px"
                     id="loading1" 
                     src="https://i.postimg.cc/RVy579Dt/loading-official.png" />
+
                     <img 
                     class="p-2 border-2 border-gray-300"
                     width="300px"
@@ -167,6 +168,7 @@
                     src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
                     onload="showImage1();" 
                     style="display:none;"/>
+                    
                     <script>
                         function showImage1() {
                             $("#loading1").hide();

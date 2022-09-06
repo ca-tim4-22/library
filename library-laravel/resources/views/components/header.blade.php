@@ -1,3 +1,5 @@
+@props(['count'])
+
 <header
     class="z-20 small:hidden flex items-center text-white justify-between w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
     <!-- logo -->
@@ -33,11 +35,13 @@
                             </div>
                         </div>
                     </a>
-
+                    
+                    @if ($count != 0)
                     <span class="absolute bg-[#EF4F4C] text-[11px] font-medium text-white right-[10px] top-[-10px] pl-[4px] pr-[5px] pt-[1px] text-center rounded">
-                        12 
+                            {{$count}}
                     </span>
-
+                    @endif
+                    
                 </div>
                 <!-- Add Icon -->
                 <a class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">
@@ -96,14 +100,15 @@
                                 class="rounded-full" 
                                 id="loading2" 
                                 src="https://i.postimg.cc/d1wKhBSS/loading-without.png" />
+
                                 <img 
                                 class="rounded-full" 
-                                id="loaded2" 
+                                id="loaded2"
                                 alt="Profilna slika bibliotekara"
                                 title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
-                                onload="showImage2();" 
-                                style="display:none;"
+                                onload="showImage2()" 
+                                style="display: none;"
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
 
@@ -119,8 +124,8 @@
                                 alt="Profilna slika bibliotekara"
                                 title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
-                                onload="showImage2();" 
-                                style="display:none;"
+                                onload="showImage2()"
+                                style="display: none;"
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
 

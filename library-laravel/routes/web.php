@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\ {
 
 use App\Http\Controllers\ {
     DashboardController,
-    HomeController,
 };
 
 // Dashboard routes
@@ -14,6 +13,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard-aktivnost', [DashboardController::class, 'index_activity'])->name('dashboard-activity');
 });
+
 
 
 

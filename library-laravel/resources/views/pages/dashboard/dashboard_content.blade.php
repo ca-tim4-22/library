@@ -1,5 +1,5 @@
     @extends('layouts.dashboard')
-
+    
     @section('title')
 
     <!-- Title -->

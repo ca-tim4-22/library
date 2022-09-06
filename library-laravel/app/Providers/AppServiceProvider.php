@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Rent;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -28,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
     {
          // Localization Carbon
          Carbon::setLocale('sr');
+         $rents2 = Rent::whereDate('issue_date', today())->get();
+         $notifications = $rents2->count();
+         view()->share('notifications', $notifications);
 
           /**
          * Paginate a standard Laravel Collection.

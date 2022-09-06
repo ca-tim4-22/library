@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Librarians\LibrarianCreateRequest;
 use App\Models\User;
+use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class LibrarianController extends Controller
 {
@@ -45,13 +48,25 @@ class LibrarianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LibrarianCreateRequest $request)
+    public function store(Request $request)
     {
-        $input = $request->all();
+        $input = Validator::make($request->all(), [
+            'name' => 'required|min:2|max:255',
+            'username' => 'required|min:2|max:255',
+            'email' => [new EmailVerificationRule()],
+            'password' => 'required|min:8|confirmed',   
+            'JMBG' => 'required|min:14|max:14',
+            'photo' => 'required',
+        ])->safe()->all();
+
         $input['user_type_id'] = 2;
         $input['last_login_at'] = Carbon::now();
         $input['password'] = Hash::make($request->password);
 
+        //Hash password
+        $user['password'] = Hash::make(request()->password);
+      
+        // Store photo
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/librarians/', $name);
@@ -59,7 +74,7 @@ class LibrarianController extends Controller
         } else {
             $input['photo'] = 'profileImg-default.jpg';
         }
-        
+
         User::create($input);
 
         return to_route('all-librarian')->with('success-librarian', 'Uspješno ste registrovali bibliotekara ' . "'$request->username'");
