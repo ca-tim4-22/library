@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class StudentController extends Controller
 {
@@ -45,11 +47,23 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = Validator::make($request->all(), [
+            'name' => 'required|min:2|max:255',
+            'username' => 'required|min:2|max:255',
+            'email' => [new EmailVerificationRule()],
+            'password' => 'required|min:8|confirmed',   
+            'JMBG' => 'required|min:14|max:14',
+            'photo' => 'required',
+        ])->safe()->all();
+
         $input['user_type_id'] = 1;
         $input['last_login_at'] = Carbon::now();
         $input['password'] = Hash::make($request->password);
 
+        //Hash password
+        $user['password'] = Hash::make(request()->password);
+      
+        // Store photo
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/students/', $name);
