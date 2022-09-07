@@ -24,11 +24,12 @@ Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
+Auth::routes();
 
-Route::get('/register', function() {
-    return response('Not found', 404);
-});
+// Route::get('/register', function() {
+//     return response('Not found', 404);
+// });
 
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
