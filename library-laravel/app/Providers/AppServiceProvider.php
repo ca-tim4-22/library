@@ -6,6 +6,7 @@ use App\Models\Rent;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,11 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         // Localization Carbon
-         Carbon::setLocale('sr');
-         $rents2 = Rent::whereDate('issue_date', today())->get();
-         $notifications = $rents2->count();
-         view()->share('notifications', $notifications);
+        // Localization Carbon
+        Carbon::setLocale('sr');
+        if (Schema::hasTable('rents')) {
+        $rents2 = Rent::whereDate('issue_date', today())->get();
+        }
+        $notifications = $rents2->count();
+        view()->share('notifications', $notifications);
 
           /**
          * Paginate a standard Laravel Collection.

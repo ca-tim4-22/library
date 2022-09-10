@@ -58,7 +58,11 @@ class DashboardController extends Controller
             $overdue_books = 320;
         }
 
-        $rents = Rent::whereDate('issue_date', today())->get();
+        if (Rent::count() > 0) {
+            $rents = Rent::whereDate('issue_date', today())->get();
+        } else {
+            $rents = [];
+        }
 
         if (count($rents)) {
             foreach ($books as $book) {

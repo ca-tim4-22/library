@@ -48,7 +48,7 @@ class AuthorController extends Controller
         
         $author = Author::create($input);
 
-        return to_route('all-author')->with('success-author', 'Uspješno ste registrovali autora ' . "'$author->NameSurname'.");
+        return to_route('all-author')->with('success-author', 'Uspješno ste dodali autora ' . "'$author->NameSurname'.");
     }
 
     /**
