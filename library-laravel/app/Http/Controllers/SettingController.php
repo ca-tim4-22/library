@@ -19,8 +19,9 @@ class SettingController extends Controller
         // $policies = GlobalVariable::all();
         $policy1 = GlobalVariable::findOrFail(1);
         $policy2 = GlobalVariable::findOrFail(2);
-        $policy3 = GlobalVariable::findOrFail(3);
-        return view('pages.settings.policy.settings-policy', compact('policy1', 'policy2', 'policy3'));
+        $policy3 = GlobalVariable::findOrFail(3); 
+        $policy4 = GlobalVariable::findOrFail(4); 
+        return view('pages.settings.policy.settings-policy', compact('policy1', 'policy2', 'policy3', 'policy4'));
     }
     public function category() {
         $categories = DB::table('categories')

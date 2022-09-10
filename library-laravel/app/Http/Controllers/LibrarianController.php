@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GlobalVariable;
 use App\Models\User;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
@@ -24,9 +25,16 @@ class LibrarianController extends Controller
      */
     public function index()
     {
-        $librarians = User::latest('id')->where('user_type_id', 2)->paginate(5);
+        if ($request->items) {
+            $items = $request->items;
+            $variable = GlobalVariable::findOrFail(4);
+        } else {
+            $variable = GlobalVariable::findOrFail(4);
+            $items = $variable->value;
+        }
+        $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
 
-        return view('pages.librarians.librarians', compact('librarians'));
+        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable'));
     }
 
     /**

@@ -118,6 +118,18 @@
   color: #4558BE;
 }
 
+/* Selection */
+
+ ::-moz-selection { /* Code for Firefox */
+  color: #000;
+  background: hsl(231, 48%, 70%);
+}
+
+::selection {
+  color: #000;
+  background: hsl(231, 48%, 70%);
+}
+
 /* ----------------------------------------------------------- */
 
 /* Media Query for changing background on higher resolutions */
