@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -14,6 +14,7 @@ Route::post('/podesavanja/kreiranje-novog-poveza', [BindingController::class, 's
 Route::delete('/podesavanja/brisanje-poveza/{id}', [BindingController::class, 'destroy'])->name('destroy-binding');
 Route::get('/podesavanja/izmijeni-povez/{id}', [BindingController::class, 'edit'])->name('edit-binding');
 Route::put('/podesavanja/izmijeni-povez/{id}', [BindingController::class, 'update'])->name('update-binding');
+Route::post('/podesavanja/povez',[BindingController::class,'search'])->name('search-binding');
 });
 
 ?>

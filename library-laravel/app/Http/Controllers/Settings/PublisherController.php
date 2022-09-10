@@ -13,7 +13,7 @@ class PublisherController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,8 +46,20 @@ class PublisherController extends Controller
         $publisher = $request->name;
         $publisher_lower = Str::title($publisher);
         Publisher::create($input);
-        
+
         return to_route('setting-publisher')->with('success-publisher', "Uspješno ste dodali " . "\"$publisher_lower\"" . "izdavača.");
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+        $data=$request->input('search_publisher');
+        $query=Publisher::where('name','like',"%$data%")->get();
+
+        return redirect()->back()->with(['query'=>$query]);
     }
 
     /**
@@ -83,10 +95,10 @@ class PublisherController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $publisher = Publisher::findOrFail($id);  
+        $publisher = Publisher::findOrFail($id);
 
         $publisher->update($input);
-        
+
         return back()->with('publisher-updated', 'Uspješno ste izmijenili izdavača.');
     }
 

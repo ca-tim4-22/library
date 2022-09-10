@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -13,7 +13,8 @@ Route::get('/podesavanja/novi-izdavac', [PublisherController::class, 'index'])->
 Route::post('/podesavanja/kreiranje-novog-izdavaca', [PublisherController::class, 'store'])->name('store-publisher');
 Route::delete('/podesavanja/brisanje-izdavaca/{id}', [PublisherController::class, 'destroy'])->name('destroy-publisher');
 Route::get('/podesavanja/izmijeni-izdavaca/{id}', [PublisherController::class, 'edit'])->name('edit-publisher');
-Route::put('/podesavanja/izmijeni-izdavaca/{id}', [PublisherController::class, 'update'])->name('update-publisher'); 
+Route::put('/podesavanja/izmijeni-izdavaca/{id}', [PublisherController::class, 'update'])->name('update-publisher');
+Route::post('/podesavanja/izdavac',[PublisherController::class,'search'])->name('search-publisher');
 });
 
 ?>

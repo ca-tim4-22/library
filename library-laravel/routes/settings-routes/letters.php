@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -14,6 +14,7 @@ Route::post('/podesavanja/kreiranje-novog-pisma', [LetterController::class, 'sto
 Route::delete('/podesavanja/brisanje-pisma/{id}', [LetterController::class, 'destroy'])->name('destroy-letter');
 Route::get('/podesavanja/izmijeni-pismo/{id}', [LetterController::class, 'edit'])->name('edit-letter');
 Route::put('/podesavanja/izmijeni-pismo/{id}', [LetterController::class, 'update'])->name('update-letter');
+Route::post('/podesavanja/pismo',[LetterController::class, 'search'])->name('search-letter');
 });
 
 ?>

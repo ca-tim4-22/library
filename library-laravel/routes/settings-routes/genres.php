@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -14,6 +14,7 @@ Route::post('/podesavanja/kreiranje-novog-zanra', [GenreController::class, 'stor
 Route::delete('/podesavanja/brisanje-zanra/{id}', [GenreController::class, 'destroy'])->name('destroy-genre');
 Route::get('/podesavanja/izmijeni-zanr/{id}', [GenreController::class, 'edit'])->name('edit-genre');
 Route::put('/podesavanja/izmijeni-zanr/{id}', [GenreController::class, 'update'])->name('update-genre');
+Route::post("/podesavanja/zanrovi",[GenreController::class, 'search'])->name('search-genre');
 });
 
 ?>

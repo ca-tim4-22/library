@@ -14,7 +14,7 @@ class GenreController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -50,15 +50,28 @@ class GenreController extends Controller
         if ($file = $request->file('icon')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $input['icon'] = $name;  
-            $input['default'] = 'false';  
+            $input['icon'] = $name;
+            $input['default'] = 'false';
         } else {
             $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
-        
+
         Genre::create($input);
 
         return to_route('setting-genre')->with('success-genre', "Uspješno ste dodali žanr " . "\"$genre_lower\"");
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+        $data=$request->input('search_genre');
+        $query=Genre::where('name','like',"%$data%")->get();
+
+        return redirect()->back()->with(['query'=>$query]);
     }
 
     /**
@@ -69,7 +82,7 @@ class GenreController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -94,10 +107,10 @@ class GenreController extends Controller
     public function update(GenreRequest $request, $id)
     {
         $input = $request->all();
-        $genre = Genre::findOrFail($id);  
+        $genre = Genre::findOrFail($id);
 
         $genre->update($input);
-        
+
         return back()->with('genre-updated', 'Uspješno ste izmijenili žanr.');
     }
 
@@ -111,7 +124,7 @@ class GenreController extends Controller
     {
         $genre = Genre::findOrFail($id);
         $genre->delete();
-        
+
         return to_route('setting-genre')->with('genre-deleted', 'Uspješno ste izbrisali žanr.');
     }
 }

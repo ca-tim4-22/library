@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\ {
     Route,
@@ -14,6 +14,7 @@ Route::post('/podesavanja/kreiranje-novog-formata', [FormatController::class, 's
 Route::delete('/podesavanja/brisanje-formata/{id}', [FormatController::class, 'destroy'])->name('destroy-format');
 Route::get('/podesavanja/izmijeni-format/{id}', [FormatController::class, 'edit'])->name('edit-format');
 Route::put('/podesavanja/izmijeni-format/{id}', [FormatController::class, 'update'])->name('update-format');
+Route::post('/podesavanja/format',[FormatController::class, 'search'])->name('search-format');
 });
 
 ?>

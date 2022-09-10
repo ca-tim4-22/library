@@ -13,7 +13,7 @@ class BindingController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +46,7 @@ class BindingController extends Controller
         $binding = $request->name;
         $binding_lower = Str::title($binding);
         Binding::create($input);
-        
+
         return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
     }
 
@@ -54,6 +54,18 @@ class BindingController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+        $data=$request->input('search_binding');
+        $query=Binding::where('name','like',"%$data%")->get();
+
+        return redirect()->back()->with(['query'=>$query]);
+    }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +82,7 @@ class BindingController extends Controller
     public function edit($id)
     {
         $binding = Binding::findOrFail($id);
-        
+
         return view('pages.settings.binding.edit_binding', compact('binding'));
     }
 
@@ -84,10 +96,10 @@ class BindingController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $binding = Binding::findOrFail($id);  
+        $binding = Binding::findOrFail($id);
 
         $binding->update($input);
-        
+
         return back()->with('binding-updated', 'Uspješno ste izmijenili povez.');
     }
 

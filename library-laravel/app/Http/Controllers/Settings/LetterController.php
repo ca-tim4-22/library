@@ -13,7 +13,7 @@ class LetterController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +46,7 @@ class LetterController extends Controller
         $letter = $request->name;
         $letter_lower = Str::title($letter);
         Letter::create($input);
-        
+
         return to_route('setting-letter')->with('success-letter', "Uspješno ste dodali " . "\"$letter_lower\"" . "pismo.");
     }
 
@@ -60,6 +60,18 @@ class LetterController extends Controller
     {
         //
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+        $data=$request->input('search_letter');
+        $query=Letter::where('name','like',"%$data%")->get();
+
+        return redirect()->back()->with(['query'=>$query]);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -70,7 +82,7 @@ class LetterController extends Controller
     public function edit($id)
     {
         $letter = Letter::findOrFail($id);
-        
+
         return view('pages.settings.letter.edit_letter', compact('letter'));
     }
 
@@ -84,10 +96,10 @@ class LetterController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $letter = Letter::findOrFail($id);  
+        $letter = Letter::findOrFail($id);
 
         $letter->update($input);
-        
+
         return back()->with('letter-updated', 'Uspješno ste izmijenili pismo.');
     }
 

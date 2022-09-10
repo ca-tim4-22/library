@@ -13,7 +13,7 @@ class FormatController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -46,10 +46,22 @@ class FormatController extends Controller
         $format = $request->name;
         $format_lower = Str::title($format);
         Format::create($input);
-        
+
         return to_route('setting-format')->with('success-format', "Uspješno ste dodali " . "\"$format_lower\"" . "format.");
     }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function search(Request $request){
+        $data=$request->input('search_format');
+        $query=Format::where('name','like',"%$data%")->get();
 
+        return redirect()->back()->with(['query'=>$query]);
+
+    }
     /**
      * Display the specified resource.
      *
@@ -83,10 +95,10 @@ class FormatController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $format = Format::findOrFail($id);  
+        $format = Format::findOrFail($id);
 
         $format->update($input);
-        
+
         return back()->with('format-updated', 'Uspješno ste izmijenili format.');
     }
 
