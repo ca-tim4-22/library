@@ -55,14 +55,7 @@ class User extends Authenticatable
         return $this->belongsTo(UserType::class, 'user_type_id');
     }
 
-    public function checkRole() {
-
-        $user = Auth::user();
-
-        if ($user->type->name == 'student') {
-            return true;
-        } else {
-            return false;
-        }
+    public function gender() {
+        return $this->belongsTo(UserGender::class, 'user_gender_id');
     }
 }

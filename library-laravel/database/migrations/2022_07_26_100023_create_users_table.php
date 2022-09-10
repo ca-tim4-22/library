@@ -19,6 +19,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_type_id')->default(1);
+            $table->unsignedBigInteger('user_gender_id')->nullable();
             $table->string('name', 128);
             $table->string('JMBG', 14)->unique()->nullable();
             $table->string('email')->unique();
@@ -32,10 +33,12 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('user_type_id')->references('id')->on('user_types')->onDelete('cascade');
+            $table->foreign('user_gender_id')->references('id')->on('user_genders')->onDelete('cascade');
         });
 
         DB::table('users')->insert([
             'user_type_id' => 2,
+            'user_gender_id' => 1,
             'name' => 'Admin',
             'JMBG' => 98763285743269,
             'email' => 'admin@gmail.com',

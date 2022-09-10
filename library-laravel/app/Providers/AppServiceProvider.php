@@ -32,8 +32,11 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale('sr');
         if (Schema::hasTable('rents')) {
         $rents2 = Rent::whereDate('issue_date', today())->get();
-        }
         $notifications = $rents2->count();
+        } else {
+            $notifications = 0;
+        }
+       
         view()->share('notifications', $notifications);
 
           /**
@@ -45,20 +48,5 @@ class AppServiceProvider extends ServiceProvider
          * @param string $pageName
          * @return array
          */
-        // Collection::macro('paginate', function($perPage, $total = null, $page = null, $pageName = 'page') {
-        //     $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
-
-        //     return new LengthAwarePaginator(
-        //         $this->forPage($page, $perPage),
-        //         $total ?: $this->count(),
-        //         $perPage,
-        //         $page,
-        //         [
-        //             'path' => LengthAwarePaginator::resolveCurrentPath(),
-        //             'pageName' => $pageName,
-        //         ]
-        //     );
-        // });
-    
     }
 }

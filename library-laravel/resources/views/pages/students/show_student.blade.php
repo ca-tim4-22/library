@@ -131,6 +131,10 @@
                         <p class="font-medium">{{$student->username}}</p>
                     </div>
                     <div class="mt-[40px]">
+                        <span class="text-gray-500">Pol</span>
+                        <p class="font-medium">{{$student->gender->name}}</p>
+                    </div>
+                    <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
                         <p class="font-medium">{{$student->login_count != 0 ? $student->login_count : "Učenik se nikada nije ulogovao na platformu."}}</p>
                     </div>

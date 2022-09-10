@@ -131,6 +131,10 @@
                         <p class="font-medium">{{$librarian->username}}</p>
                     </div>
                     <div class="mt-[40px]">
+                        <span class="text-gray-500">Pol</span>
+                        <p class="font-medium">{{$librarian->gender->name}}</p>
+                    </div>
+                    <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
                         <p class="font-medium">{{$librarian->login_count != 0 ? $librarian->login_count : "Bibliotekar se nikada nije ulogovao na platformu."}}</p>
                     </div>

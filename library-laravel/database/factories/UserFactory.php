@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\UserGender;
 use App\Models\UserType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -26,6 +27,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'username' => fake()->name(),
             'user_type_id' => UserType::all()->random(),
+            'user_gender_id' => UserGender::all()->random(),
             'JMBG' => $this->faker->numberBetween(11111111111111, 99999999999999),
             'email' => fake()->safeEmail(),
             'email_verified_at' => Carbon::now(),
