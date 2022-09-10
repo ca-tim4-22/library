@@ -108,7 +108,7 @@ class ActiveReservationController extends Controller
             'reserved_count' => $status->reservation->book->reserved_count + 1,
         ]);
 
-        return back();
+        return back()->with('approve', 'Rezervacija je prihvaćena.');
     }
 
     public function deny(Request $request, $id) {
@@ -119,6 +119,6 @@ class ActiveReservationController extends Controller
             'updated_at' => now(),
         ]);
 
-        return back();
+        return back()->with('deny', 'Rezervacija je odbijena.');
     }
 }

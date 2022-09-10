@@ -43,7 +43,7 @@
     <div>
       <span class="font-medium">Success!</span> {{session('librarian-deleted')}}
     </div>
-  </div>
+</div>
 @endif
         </h1>
     </div>

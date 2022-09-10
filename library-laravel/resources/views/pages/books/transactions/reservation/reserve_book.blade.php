@@ -118,7 +118,7 @@
                     <div class="mt-[20px]">
                         <p>Izaberi učenika za koga se knjiga rezerviše <span class="text-red-500">*</span></p>
                        <select class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                    name="reservationMadeFor_user_id" id="ucenikIzdavanje" onclick="clearErrorsUcenikIzdavanje()">
+                                    name="reservationMadeFor_user_id">
                                     <option disabled selected></option>
                                     @foreach($students as $student)
                                     <option value="{{$student->id}}">
@@ -126,7 +126,6 @@
                                     </option>
                                     @endforeach
                                 </select>
-                        <div id="validateUcenikRezervisanje"></div>
                     </div>
                     <div class="mt-[20px]">
                         <p>Datum rezervisanja <span class="text-red-500">*</span></p>

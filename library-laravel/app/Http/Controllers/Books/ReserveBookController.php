@@ -71,7 +71,7 @@ class ReserveBookController extends Controller
             'status_reservations_id' => 3,
         ]);
 
-        return to_route('active-reservations');
+        return to_route('active-reservations')->with('reserve-success', 'Rezervacija je na čekanju!');
     }
 
     /**
