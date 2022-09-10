@@ -22,11 +22,12 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = User::latest('id')->where('user_type_id', 1)->paginate(5);
+        $items = $request->items ?? 5;
+        $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
 
-        return view('pages.students.students', compact('students'));
+        return view('pages.students.students', compact('students', 'items'));
     }
 
     /**
