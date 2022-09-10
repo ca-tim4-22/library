@@ -136,11 +136,23 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$librarian->login_count != 0 ? $librarian->login_count : "Bibliotekar se nikada nije ulogovao na platformu."}}</p>
+                        <p class="font-medium">
+                            @if ($librarian->login_count != 0)
+                            {{$librarian->login_count}} 
+                            @else
+                            {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}} se nikada nije {{$librarian->gender->id == 1 ? 'ulogovao' : 'ulogovala'}} na platformu.
+                            @endif
+                        </p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Poslednji put logovan/a</span>
-                        <p class="font-medium">{{$librarian->login_count <= 0 ? 'Bibliotekar se nikada nije ulogovao na platformu.' : $librarian->last_login_at->diffForHumans()}}</p>
+                        <span class="text-gray-500">Poslednji put {{$librarian->gender->id == 1 ? 'ulogovan' : 'ulogovana'}}</span>
+                        <p class="font-medium">
+                            @if ($librarian->login_count <= 0)
+                            {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}} se nikada nije {{$librarian->gender->id == 1 ? 'ulogovao' : 'ulogovala'}} na platformu.
+                            @else 
+                            {{$librarian->last_login_at->diffForHumans()}}
+                            @endif
+                        </p>
                     </div>
 
                 </div>

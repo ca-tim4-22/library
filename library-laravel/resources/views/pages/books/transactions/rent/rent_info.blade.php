@@ -155,12 +155,12 @@
                             </p>
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Bibliotekar</span>
+                            <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}</span>
                             <a href="{{route('show-librarian', $rent->librarian->username)}}"
                                 class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->librarian->name}}</a>
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Učenik</span>
+                            <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
                             <a href="{{route('show-student', $rent->borrow->username)}}"
                                 class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->borrow->name}}</a>
                         </div>
