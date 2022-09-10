@@ -83,6 +83,7 @@ class DashboardController extends Controller
     {
         $books = Book::all();
         $librarians = User::latest('id')->where('user_type_id', 2)->get();
+        $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
 
         if (count($rents)) {
@@ -95,7 +96,7 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'data'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data'));
     }
 
     /**

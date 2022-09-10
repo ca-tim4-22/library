@@ -59,7 +59,10 @@
                                             </button>
                                         </li>
                                         <div class="h-[200px] scroll">
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
+                                      
+                                            @foreach ($students as $student)
+
+                                             <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
                                                 <label class="flex items-center justify-start">
                                                     <div
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
@@ -74,109 +77,22 @@
                                                     src="img/profileStudent.jpg">
                                                 <p
                                                     class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Ucenik Ucenikovic
+                                                    {{$student->name}}
                                                 </p>
-                                            </li>
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileStudent.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Pero Perovic
-                                                </p>
-                                            </li>
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileStudent.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Marko Markovic
-                                                </p>
-                                            </li>
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileStudent.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Nikola Nikolic
-                                                </p>
-                                            </li>
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileStudent.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Zivko Zivkovic
-                                                </p>
-                                            </li>
-                                            <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-izdato">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileStudent.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Petar Petrovic
-                                                </p>
-                                            </li>
+                                             </li>
+                                                
+                                            @endforeach
+                            
                                         </div>
                                     </ul>
                                     <div class="flex pt-[10px] text-white ">
                                         <a href="#"
                                             class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                            Filter <i class="fas fa-check ml-[4px]"></i>
                                         </a>
                                         <a href="#"
                                             class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                            Cancel <i class="fas fa-times ml-[4px]"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -206,38 +122,54 @@
                                         <div class="h-[200px] scroll">
 
                                             
+                                           @foreach ($librarians as $librarian)
+                                           
                                             <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-bibliotekar">
-                                                <label class="flex items-center justify-start">
-                                                    <div
-                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
-                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                            viewBox="0 0 20 20">
-                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <img width="40px" height="30px" class="ml-[15px] rounded-full"
-                                                    src="img/profileExample.jpg">
-                                                <p
-                                                    class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    Bibliotekar Bulatovic
-                                                </p>
-                                            </li>
+                                            <label class="flex items-center justify-start">
+                                                <div
+                                                    class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
+                                                    <input type="checkbox" class="absolute opacity-0">
+                                                    <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
+                                                        viewBox="0 0 20 20">
+                                                        <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                                                    </svg>
+                                                </div>
+                                            </label>
+                                            <img width="40px" height="30px" class="ml-[15px] rounded-full"
+                                                src="img/profileExample.jpg">
+                                            <p
+                                                class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
+                                                {{$librarian->name}}
+                                            </p>
+                                         </li>
+
+                                           @endforeach
                              
                                         </div>
                                     </ul>
                                     <div class="flex pt-[10px] text-white ">
                                         <a href="#"
+                                        id="hide"
                                             class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                             Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                         </a>
                                         <a href="#"
+                                        id="show"
                                             class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                            Poništi <i class="fas fa-times ml-[4px]"></i>
                                         </a>
                                     </div>
                                 </div>
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+                                <script>
+                                $("#hide").click(function() {
+                                $("#box").hide()})
+                                $("#show").click(function() {
+                                $("#box").show()})
+
+                                var condition = true;
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -450,13 +382,10 @@
 
                 </div>
                 <!-- Activity Cards -->
-           
-
-         
                  
                  @foreach ($data as $rent)
 
-                <div class="activity-card flex flex-row mb-[30px]">
+                <div id="box" class="activity-card flex flex-row mb-[30px]">
                     <div class="w-[60px] h-[60px]">
                         <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
                         alt="Profilna slika učenika: {{$rent->borrow->name}}"

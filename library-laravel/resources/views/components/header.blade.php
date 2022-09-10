@@ -98,29 +98,16 @@
 
                                 <img 
                                 class="rounded-full" 
-                                id="loading2" 
-                                src="https://i.postimg.cc/d1wKhBSS/loading-without.png" />
-
-                                <img 
-                                class="rounded-full" 
-                                id="loaded2"
                                 alt="Profilna slika bibliotekara"
                                 title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
-                                onload="showImage2()" 
-                                style="display: none;"
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
 
                                 @else
-
+                                
                                 <img 
                                 class="rounded-full" 
-                                id="loading2" 
-                                src="https://i.postimg.cc/d1wKhBSS/loading-without.png" />
-                                <img 
-                                class="rounded-full" 
-                                id="loaded2" 
                                 alt="Profilna slika bibliotekara"
                                 title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
@@ -132,12 +119,7 @@
                                 @endif
 
                             </div>
-                            <script>
-                                function showImage2() {
-                                    $("#loading2").hide();
-                                    $("#loaded2").show();
-                                }
-                            </script>
+                   
                         </div>
                     </a>
                 </div>

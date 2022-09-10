@@ -160,7 +160,6 @@
                                         @csrf
                                         @method('DELETE')
                                         <button 
-                                        onclick="clickMe()"
                                                 style="outline: none;border: none;"
                                                 type="submit"
                                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
@@ -168,38 +167,14 @@
                                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                                 <span class="px-4 py-0">{{Auth::id() == $librarian->id ? 'Izbriši svoj nalog' : 'Izbriši bibliotekara'}}</span>
                                         </button>
-                                        </form>
+                                        </form> 
+
                                     </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-                    <script>
-
-function clickMe()
-    {
-        Swal.fire({
-  title: 'Da li ste sigurni?',
-  text: "Ovu radnju ne možete povratiti!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Da, izbriši!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire(
-      'Izbrisano!',
-      'Uspješno ste izbrisali bibliotekara.',
-      'success'
-    )
-  }
-})
-}
-                    </script>
-                    
                     @endforeach
 
                 </tbody>

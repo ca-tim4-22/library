@@ -1,6 +1,7 @@
 <?php 
 
 use App\Http\Controllers\Auth\ {
+    ForgotPasswordController,
     LoginController,
 };
 
@@ -24,12 +25,11 @@ Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
-// Auth::routes(['register' => false]);
-Auth::routes();
+Auth::routes(['register' => false]);
 
-// Route::get('/register', function() {
-//     return response('Not found', 404);
-// });
+Route::get('/register', function() {
+    return response('Not found', 404);
+});
 
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -50,5 +50,10 @@ Route::get('/symlink', function () {
 Route::get('/optimize', function () {
     Artisan::call('optimize');
 });
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 ?>

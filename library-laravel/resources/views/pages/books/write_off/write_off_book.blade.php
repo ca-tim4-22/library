@@ -119,7 +119,7 @@
                 </span>
                 <input type="search" name="q"
                     class="py-2 pl-10 border-[#e4dfdf] text-sm text-white border-[1px] bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                    placeholder="Search..." autocomplete="off">
+                    placeholder="Traži..." autocomplete="off">
             </div>
         </div>
 
@@ -197,6 +197,8 @@
                             } else {
                                 echo $interval->format('%a dana');
                             }
+                        } else {
+                            echo "0 dana";
                         }
                         @endphp
                         </span>
