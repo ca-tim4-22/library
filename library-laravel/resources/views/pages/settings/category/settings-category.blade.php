@@ -64,10 +64,10 @@
                             </svg>
                         </button>
                     </span>
-                    <form action="{{route('search-category')}}" method="post">
+                    <form action="{{route('search-category')}}" method="post" id="categorySearch">
                         @csrf
                         @method('POST')
-                    <input id="categorySearch" type="search" name="search_category"
+                    <input type="search" name="search_category"
                            class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                            placeholder="Traži..." autocomplete="off">
                     </form>
@@ -295,7 +295,7 @@
 </section>
 <!-- End Content -->
     <script>
-        $("#categorySearch").on('submit', function(e) {
+        $("#categorySearc").on('submit', function(e) {
             e.preventDefault();
             $.ajax({
                 url: '{{ route("search-category") }}',

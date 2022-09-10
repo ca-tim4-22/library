@@ -34,7 +34,6 @@ class CategoryController extends Controller
         $query=Category::where('name','like',"%$data%")->get();
 
         return redirect()->back()->with(['query'=>$query]);
-
     }
 
     /**
