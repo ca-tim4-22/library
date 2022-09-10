@@ -87,7 +87,7 @@ class FormatController extends Controller
 
         $format->update($input);
         
-        return back()->with('format-updated', 'Uspješno ste izmijenili format.');
+        return back()->with('format-updated', 'Uspješno ste izmijenili format: ' . "\"$format->name\".");
     }
 
     /**
@@ -101,6 +101,6 @@ class FormatController extends Controller
         $format = Format::findOrFail($id);
         $format->delete();
 
-        return to_route('setting-format')->with('format-deleted', 'Uspješno ste izbrisali format.');
+        return to_route('setting-format')->with('format-deleted', "Uspješno ste izbrisali format \"$format->name\".");
     }
 }

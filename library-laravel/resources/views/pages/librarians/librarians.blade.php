@@ -21,7 +21,7 @@
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
     <div class="heading mt-[7px]" style="margin-top: 10px">
-        <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
+        <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
             Bibliotekari
 
 {{-- Session message for librarian create --}}
@@ -55,6 +55,31 @@
                 <i class="fas fa-plus mr-[15px]"></i> Novi bibliotekar
             </a>
             <div class="flex items-center">
+                
+                <style>
+                    #pagination {
+                        border-left: 1px solid #4558BE;
+                        border-bottom: 0.4px solid #000;
+                        cursor: pointer;
+                    }
+                </style>
+                <form> 
+                    Broj redova po strani:
+                    <select id="pagination">
+                        <option value="5" @if($items == 5) selected @endif >5</option>
+                        <option value="10" @if($items == 10) selected @endif >10</option>
+                        <option value="25" @if($items == 25) selected @endif >25</option>
+                        <option value="50" @if($items == 50) selected @endif >50</option>
+                        <option value="100" @if($items == 100) selected @endif >100</option>
+                    </select>
+                </form>
+
+                <script>
+                    document.getElementById('pagination').onchange = function() {
+                        window.location = "{{ $librarians->url(1) }}&items=" + this.value;
+                    };
+                </script>
+
                 <div class="relative text-gray-600 focus-within:text-gray-400">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
                         <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
@@ -88,7 +113,6 @@
                 
             @endif
 
-
             @if (count($librarians) > 0)
 
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
@@ -102,10 +126,19 @@
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Ime i prezime
                         </th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Email</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Tip korisnika</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Zadnji pristup sistemu
+                        
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Email
                         </th>
+
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Tip korisnika
+                        </th>
+                      
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Zadnji pristup sistemu
+                        </th>
+
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
@@ -155,20 +188,18 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">{{Auth::id() == $librarian->id ? "Izmijeni svoj nalog" : 'Izmijeni bibliotekara'}}</span>
                                         </a>
-
-                                        <form action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button 
-                                                style="outline: none;border: none;"
-                                                type="submit"
-                                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                role="menuitem">
-                                                <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                <span class="px-4 py-0">{{Auth::id() == $librarian->id ? 'Izbriši svoj nalog' : 'Izbriši bibliotekara'}}</span>
-                                        </button>
-                                        </form> 
-
+                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button 
+                                                    style="outline: none;border: none;"
+                                                    type="submit"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">{{Auth::id() == $librarian->id ? 'Izbriši svoj nalog' : 'Izbriši bibliotekara'}}</span>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -192,23 +223,6 @@
 </div>
 </section>
 <!-- End Content -->
-<style>
-    .red {
-        color: red !important
-    }
-</style>
-<script>
-$('#test').change(function(){
-    if($(this).is(":checked")) {
-        // $('.changeme').addClass('red');
-        $(this).parents(':checked').toggleClass("red");
-    } else {
-        $('.changeme').removeClass('red');
-    }
-});
-
-
-</script>
 
 @endsection
 

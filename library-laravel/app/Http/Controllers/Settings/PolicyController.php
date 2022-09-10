@@ -78,11 +78,10 @@ class PolicyController extends Controller
     {
         $input = $request->all();
         $policy = GlobalVariable::findOrFail($id);
-        $policy_name = $input['variable'];
 
         $policy->update($input);
 
-        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy_name\"");
+        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->name\".");
     }
 
     /**

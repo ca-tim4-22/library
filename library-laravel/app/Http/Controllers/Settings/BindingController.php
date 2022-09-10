@@ -88,7 +88,7 @@ class BindingController extends Controller
 
         $binding->update($input);
         
-        return back()->with('binding-updated', 'Uspješno ste izmijenili povez.');
+        return back()->with('binding-updated', 'Uspješno ste izmijenili povez: ' . "\"$binding->name\".");
     }
 
     /**
@@ -102,6 +102,6 @@ class BindingController extends Controller
         $binding = Binding::findOrFail($id);
         $binding->delete();
 
-        return to_route('setting-binding')->with('binding-deleted', 'Uspješno ste izbrisali povez.');
+        return to_route('setting-binding')->with('binding-deleted', "Uspješno ste izbrisali povez \"$binding->name\".");
     }
 }

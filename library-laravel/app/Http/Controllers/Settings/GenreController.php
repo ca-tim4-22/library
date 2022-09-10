@@ -98,7 +98,7 @@ class GenreController extends Controller
 
         $genre->update($input);
         
-        return back()->with('genre-updated', 'Uspješno ste izmijenili žanr.');
+        return back()->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
     }
 
     /**
@@ -112,6 +112,6 @@ class GenreController extends Controller
         $genre = Genre::findOrFail($id);
         $genre->delete();
         
-        return to_route('setting-genre')->with('genre-deleted', 'Uspješno ste izbrisali žanr.');
+        return to_route('setting-genre')->with('genre-deleted', "Uspješno ste izbrisali žanr \"$genre->name\".");
     }
 }

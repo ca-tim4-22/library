@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GlobalVariable;
 use App\Models\User;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
@@ -22,11 +23,18 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = User::latest('id')->where('user_type_id', 1)->paginate(5);
+        if ($request->items) {
+            $items = $request->items;
+            $variable = GlobalVariable::findOrFail(4);
+        } else {
+            $variable = GlobalVariable::findOrFail(4);
+            $items = $variable->value;
+        }
+        $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
 
-        return view('pages.students.students', compact('students'));
+        return view('pages.students.students', compact('students', 'items', 'variable'));
     }
 
     /**
@@ -178,6 +186,6 @@ class StudentController extends Controller
 
         $student->delete();
         
-        return to_route('all-student')->with('student-deleted', 'Uspješno ste izbrisali učenika.');
+        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali učenika \"$student->name\".");
     }
 }

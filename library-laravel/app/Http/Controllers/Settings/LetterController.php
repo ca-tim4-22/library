@@ -88,7 +88,7 @@ class LetterController extends Controller
 
         $letter->update($input);
         
-        return back()->with('letter-updated', 'Uspješno ste izmijenili pismo.');
+        return back()->with('letter-updated', 'Uspješno ste izmijenili pismo: ' . "\"$letter->name\".");
     }
 
     /**
@@ -102,6 +102,6 @@ class LetterController extends Controller
         $letter = Letter::findOrFail($id);
         $letter->delete();
 
-        return to_route('setting-letter')->with('letter-deleted', 'Uspješno ste izbrisali pismo.');
+        return to_route('setting-letter')->with('letter-deleted', "Uspješno ste izbrisali pismo \"$letter->name\".");
     }
 }

@@ -30,7 +30,6 @@
             @error('ISBN')
             error-border  
             @enderror
-            
             ">
                 Specifikacija 
                 

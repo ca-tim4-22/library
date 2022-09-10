@@ -23,7 +23,7 @@ class LibrarianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if ($request->items) {
             $items = $request->items;
@@ -186,6 +186,6 @@ class LibrarianController extends Controller
         
         $librarian->delete();
         
-        return to_route('all-librarian')->with('librarian-deleted', 'Uspješno ste izbrisali bibliotekara.');
+        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali bibliotekara \"$librarian->name\".");
     }
 }

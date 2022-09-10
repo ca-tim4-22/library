@@ -45,12 +45,10 @@ class AuthorController extends Controller
     public function store(AuthorRequest $request)
     {
         $input = $request->all();
-
-        $authors_name = $request->input('NameSurname');
         
-        Author::create($input);
+        $author = Author::create($input);
 
-        return to_route('all-author')->with('success-author', 'Uspješno ste registrovali autora ' . "'$authors_name'");
+        return to_route('all-author')->with('success-author', 'Uspješno ste registrovali autora ' . "'$author->NameSurname'.");
     }
 
     /**
@@ -92,8 +90,8 @@ class AuthorController extends Controller
         $author = Author::findOrFail($id);  
 
         $author->update($input);
-        
-        return back()->with('author-updated', 'Uspješno ste izmijenili autora.');
+
+        return back()->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
     }
 
     /**
@@ -107,6 +105,6 @@ class AuthorController extends Controller
         $author = Author::findOrFail($id);
         $author->delete();
         
-        return to_route('all-author')->with('author-deleted', 'Uspješno ste izbrisali autora.');
+        return to_route('all-author')->with('author-deleted', "Uspješno ste izbrisali autora \"$author->NameSurname\".");
     }
 }

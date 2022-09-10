@@ -87,7 +87,7 @@ class PublisherController extends Controller
 
         $publisher->update($input);
         
-        return back()->with('publisher-updated', 'Uspješno ste izmijenili izdavača.');
+        return back()->with('publisher-updated', 'Uspješno ste izmijenili izdavača: ' . "\"$publisher->name\".");
     }
 
     /**
@@ -101,6 +101,6 @@ class PublisherController extends Controller
         $publisher = Publisher::findOrFail($id);
         $publisher->delete();
 
-        return to_route('setting-publisher')->with('publisher-deleted', 'Uspješno ste izbrisali izdavača.');
+        return to_route('setting-publisher')->with('publisher-deleted', "Uspješno ste izbrisali izdavača \"$publisher->name\".");
     }
 }

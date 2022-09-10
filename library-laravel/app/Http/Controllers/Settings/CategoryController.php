@@ -106,7 +106,7 @@ class CategoryController extends Controller
 
         $category->update($input);
         
-        return back()->with('category-updated', 'Uspješno ste izmijenili kategoriju.');
+        return back()->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
     }
 
     /**
@@ -119,6 +119,7 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return to_route('setting-category')->with('category-deleted', 'Uspješno ste izbrisali kategoriju.');
+
+        return to_route('setting-category')->with('category-deleted', "Uspješno ste izbrisali kategoriju \"$category->name\".");
     }
 }

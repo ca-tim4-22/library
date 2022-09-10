@@ -192,6 +192,6 @@ class BookController extends Controller
         $book = Book::findOrFail($id);
         $book->delete();
 
-        return to_route('all-books')->with('book-deleted', 'Uspješno ste izbrisali knjigu.');
+        return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
     }
 }
