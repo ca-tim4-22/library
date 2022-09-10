@@ -55,29 +55,6 @@
                 <i class="fas fa-plus mr-[15px]"></i> Novi bibliotekar
             </a>
             <div class="flex items-center">
-                <style>
-                    #pagination {
-                        border-left: 1px solid #4558BE;
-                        border-bottom: 0.4px solid #000;
-                        cursor: pointer;
-                    }
-                </style>
-                <form> 
-                    Broj redova po strani:
-                    <select id="pagination">
-                        <option value="5" @if($items == 5) selected @endif >5</option>
-                        <option value="10" @if($items == 10) selected @endif >10</option>
-                        <option value="25" @if($items == 25) selected @endif >25</option>
-                        <option value="50" @if($items == 50) selected @endif >50</option>
-                        <option value="100" @if($items == 100) selected @endif >100</option>
-                    </select>
-                </form>
-            
-                <script>
-                    document.getElementById('pagination').onchange = function() {
-                        window.location = "{{ $librarians->url(1) }}&items=" + this.value;
-                    };
-                </script>
                 <div class="relative text-gray-600 focus-within:text-gray-400">
                     <span class="absolute inset-y-0 left-0 flex items-center pl-2">
                         <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
@@ -93,7 +70,6 @@
                 </div>
             </div>
         </div>
-        
         
         <div class="inline-block min-w-full px-[30px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 

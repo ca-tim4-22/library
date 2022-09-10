@@ -22,12 +22,11 @@ class LibrarianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $items = $request->items ?? 5;
-        $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+        $librarians = User::latest('id')->where('user_type_id', 2)->paginate(5);
 
-        return view('pages.librarians.librarians', compact('librarians', 'items'));
+        return view('pages.librarians.librarians', compact('librarians'));
     }
 
     /**
