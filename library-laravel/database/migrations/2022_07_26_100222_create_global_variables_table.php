@@ -24,6 +24,7 @@ return new class extends Migration
             ['variable' => 'Rok za rezervaciju', 'value' => 30],
             ['variable' => 'Rok vraćanja', 'value' => 30],
             ['variable' => 'Rok konflikta', 'value' => 30],
+            ['variable' => 'Paginacija', 'value' => 5],
         ]);
     }
 
