@@ -120,10 +120,18 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">Ime i prezime<a href="#"></a></th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Email</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Tip korisnika</th>
-                        <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left" id="arrow">Zadnji pristup sistemu</th>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Ime i prezime
+                        </th>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Email
+                        </th>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Tip korisnika
+                        </th>
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                            Zadnji pristup sistemu
+                        </th>
                         <th class="px-4 py-4"> </th>
                     </tr>
                 </thead>
