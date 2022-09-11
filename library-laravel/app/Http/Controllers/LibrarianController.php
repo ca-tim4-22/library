@@ -153,7 +153,6 @@ class LibrarianController extends Controller
     {
         $input = $request->all();
         $user = Auth::user();   
-        $username = $request->username;
         $find_user = User::findOrFail($id);
         if ($find_user->gender->id == 1) {
             $word = 'bibliotekara';
@@ -177,7 +176,7 @@ class LibrarianController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return redirect('izmijeni-profil-bibliotekara/' . $username)->with('librarian-updated', "Uspješno ste izmijenili profil $word.");
+        return to_route('edit-librarian', $request->username)->with('librarian-updated', "Uspješno ste izmijenili profil $word.");
     }
 
     /**
@@ -189,6 +188,11 @@ class LibrarianController extends Controller
     public function destroy(User $user)
     {
         $librarian = $user;
+        if ($librarian->gender->id == 1) {
+            $word = 'bibliotekara';
+        } else {
+            $word = 'bibliotekarku';
+        }
 
         if (Auth::user()->id == $librarian->id) {
             $librarian->delete();
@@ -198,6 +202,6 @@ class LibrarianController extends Controller
         
         $librarian->delete();
         
-        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali bibliotekara \"$librarian->name\".");
+        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
     }
 }

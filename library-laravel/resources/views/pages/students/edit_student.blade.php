@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
 
     <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
@@ -16,8 +17,7 @@
             <div class="flex border-b-[1px] border-[#e4dfdf]">
                 <div class="pl-[30px] py-[10px] flex flex-col">
                     <div>
-                        <h1 class="">
-
+                        <h1>
                             {{-- Student update flash message --}}
                             @if (session()->has('student-updated'))
                                 <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">

@@ -152,6 +152,12 @@ class StudentController extends Controller
     {
         $input = $request->all();
         $user = Auth::user();
+        $find_user = User::findOrFail($id);
+        if ($find_user->gender->id == 1) {
+            $word = 'učenika';
+        } else {
+            $word = 'učenice';
+        }
 
         $photo_old = $request->photo;
 
@@ -169,7 +175,7 @@ class StudentController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return back()->with('student-updated', 'Uspješno ste izmijenili profil učenika.');
+        return to_route('edit-student', $request->username)->with('student-updated', "Uspješno ste izmijenili profil $word.");
     }
 
     /**
@@ -181,6 +187,11 @@ class StudentController extends Controller
     public function destroy(User $user)
     {
         $student = $user;
+        if ($student->gender->id == 1) {
+            $word = 'učenika';
+        } else {
+            $word = 'učenicu';
+        }
 
         if (Auth::user()->id == $student->id) {
             $student->delete();
@@ -190,6 +201,6 @@ class StudentController extends Controller
 
         $student->delete();
         
-        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali učenika \"$student->name\".");
+        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\".");
     }
 }

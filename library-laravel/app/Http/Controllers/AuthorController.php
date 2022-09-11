@@ -70,9 +70,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Author $author)
     {
-        $author = Author::findOrFail($id);
+        $author = $author;
         
         return view('pages.authors.edit_author', compact('author'));
     }
@@ -91,7 +91,7 @@ class AuthorController extends Controller
 
         $author->update($input);
 
-        return back()->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
+        return to_route('edit-author', $author->NameSurname)->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
     }
 
     /**

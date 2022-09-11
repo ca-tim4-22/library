@@ -186,8 +186,17 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">{{Auth::id() == $librarian->id ? "Izmijeni svoj nalog" : 'Izmijeni bibliotekara'}}</span>
+                                            <span class="px-3 py-0">
+                                                @if (Auth::id() == $librarian->id)
+                                                Izmijeni svoj nalog 
+                                                @elseif ($librarian->gender->id == 1)
+                                                Izmijeni bibliotekara
+                                                @else 
+                                                Izmijeni bibliotekarku
+                                                @endif
+                                            </span>
                                         </a>
+
                                         <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
@@ -197,7 +206,15 @@
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                    <span class="px-4 py-0">{{Auth::id() == $librarian->id ? 'Izbriši svoj nalog' : 'Izbriši bibliotekara'}}</span>
+                                                    <span class="px-4 py-0">
+                                                        @if (Auth::id() == $librarian->id)
+                                                        Izbriši svoj nalog 
+                                                        @elseif ($librarian->gender->id == 1)
+                                                        Izbriši bibliotekara
+                                                        @else 
+                                                        Izbriši bibliotekarku
+                                                        @endif
+                                                    </span>
                                             </button>
                                         </form>
                                     </div>

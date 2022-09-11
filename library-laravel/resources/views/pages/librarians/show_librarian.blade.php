@@ -178,16 +178,16 @@
                     width="300px"
                     id="loading1" 
                     src="https://i.postimg.cc/RVy579Dt/loading-official.png" />
-
-                    <img 
-                    class="p-2 border-2 border-gray-300"
-                    width="300px"
-                    id="loaded1" 
-                    alt="Profilna slika bibliotekara"
-                    title="Profilna slika bibliotekara"
-                    src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
-                    onload="showImage1();" 
-                    style="display:none;"/>
+               
+                <img 
+                class="p-2 border-2 border-gray-300"
+                width="300px"
+                id="loaded1" 
+                alt="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
+                title="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
+                src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
+                onload="showImage1();" 
+                style="display:none;"/>
                     
                     <script>
                         function showImage1() {

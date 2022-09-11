@@ -98,8 +98,8 @@
 
                                 <img 
                                 class="rounded-full" 
-                                alt="Profilna slika bibliotekara"
-                                title="Profilna slika bibliotekara"
+                                alt="Profilna slika {{Auth::user()->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
+                                title="Profilna slika {{Auth::user()->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
