@@ -1,6 +1,6 @@
 @props(['count'])
 
-<header
+<header 
     class="z-20 small:hidden flex items-center text-white justify-between w-full h-[71px] pr-[30px] mx-auto bg-[#4558BE]">
     <!-- logo -->
     <div class="logo-font inline-flex bg-[#3F51B5] py-[18px] px-[30px]">

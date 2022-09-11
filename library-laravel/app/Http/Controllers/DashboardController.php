@@ -21,7 +21,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $books = Book::all();
 
@@ -134,7 +134,9 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data', 'selected', 'from', 'to', 'error'));
+        $userss = User::all();
+
+        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data', 'selected', 'from', 'to', 'error', 'userss'));
     }
 
     /**
