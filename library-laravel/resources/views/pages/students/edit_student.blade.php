@@ -43,7 +43,7 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('edit-student', $student->id)}}" class="text-gray-400 hover:text-blue-600">
+                                    <a href="{{route('edit-student', $student->username)}}" class="text-gray-400 hover:text-blue-600">
                                         Izmijeni podatke
                                     </a>
                                 </li>

@@ -182,7 +182,7 @@
                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                         </a>
                                         
-                                        <a href="{{route('edit-librarian', $librarian->id)}}" tabindex="0"
+                                        <a href="{{route('edit-librarian', $librarian->username)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>

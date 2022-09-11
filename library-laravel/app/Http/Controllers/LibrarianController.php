@@ -130,12 +130,17 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $librarian = User::findOrFail($id);
+        if ($user->type->name == 'librarian') {
+            $librarian = $user;
+        } else {
+            abort(404);
+        }
         
         return view('pages.librarians.edit_librarian', compact('librarian'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -148,6 +153,13 @@ class LibrarianController extends Controller
     {
         $input = $request->all();
         $user = Auth::user();   
+        $username = $request->username;
+        $find_user = User::findOrFail($id);
+        if ($find_user->gender->id == 1) {
+            $word = 'bibliotekara';
+        } else {
+            $word = 'bibliotekarke';
+        }
 
         // $photo_old = $request->photo;
     
@@ -165,7 +177,7 @@ class LibrarianController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return back()->with('librarian-updated', 'Uspješno ste izmijenili profil bibliotekara.');
+        return redirect('izmijeni-profil-bibliotekara/' . $username)->with('librarian-updated', "Uspješno ste izmijenili profil $word.");
     }
 
     /**

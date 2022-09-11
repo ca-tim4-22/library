@@ -130,9 +130,13 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $student = User::findOrFail($id);
+        if ($user->type->name == 'student') {
+            $student = $user;
+        } else {
+            abort(404);
+        }
         
         return view('pages.students.edit_student', compact('student'));
     }

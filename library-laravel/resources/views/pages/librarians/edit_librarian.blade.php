@@ -8,6 +8,8 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
@@ -16,7 +18,7 @@
          <div class="flex border-b-[1px] border-[#e4dfdf]">
              <div class="pl-[30px] py-[10px] flex flex-col">
                  <div>
-                     <h1 class="">
+                     <h1>
 
                         {{-- Librarian update flash message --}}
                         @if (session()->has('librarian-updated'))

@@ -11,7 +11,7 @@ use App\Http\Controllers\ {
 // Dashboard routes
 Route::group(['middleware' => 'auth'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard-aktivnost', [DashboardController::class, 'index_activity'])->name('dashboard-activity');
+Route::get('/dashboard/prikaz-aktivnosti', [DashboardController::class, 'index_activity'])->name('dashboard-activity');
 });
 
 
