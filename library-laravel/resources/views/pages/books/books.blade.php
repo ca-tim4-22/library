@@ -12,6 +12,7 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+
 {{-- Preloader --}}
 <div id="loader"></div>
 
@@ -78,24 +79,22 @@
                     <!-- Table -->
                     @if (count($books) > 0)
 
-                    <table class="w-full shadow-lg rounded-xl" id="myTable">
+                    <table id="sort" class="w-full shadow-lg rounded-xl" id="myTable">
                         <!-- Table head-->
                         <thead class="bg-[#EFF3F6]">
                             <tr class="border-b-[1px] border-[#e4dfdf]">
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                                <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox checkAll">
+                                        <input type="checkbox" class="form-checkbox">
                                     </label>
-                                </th>
-                                <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">
+                                </td>
+
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Naziv knjige
-                                    <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                            onclick="sortTable()"></i>
-                                    </a>
                                 </th>
 
                                 <!-- Autor + dropdown filter for autor -->
-                                <th id="autoriMenu"
+                                <td style="cursor: pointer;font-weight: bold;" id="autoriMenu"
                                     class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer ">
                                     Autor<i class="ml-2 fas fa-filter"></i>
 
@@ -222,10 +221,10 @@
                                             </a>
                                         </div>
                                     </div>
-                                </th>
+                                </td>
 
                                 <!-- Kategorija + dropdown filter for kategorija -->
-                                <th id="kategorijeMenu" class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">Kategorija<i
+                                <td style="cursor: pointer;font-weight: bold;" id="kategorijeMenu" class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">Kategorija<i
                                         class="ml-2 fas fa-filter"></i>
                                     <div id="kategorijeDropdown"
                                         class="kategorijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
@@ -350,13 +349,21 @@
                                             </a>
                                         </div>
                                     </div>
+                                </td>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    Na raspolaganju
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Na raspolaganju
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    Rezervisano
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Rezervisano</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Izdato</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">U prekoračenju</th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">Ukupna količina
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    Izdato
+                                </th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    U prekoračenju
+                                </th>
+                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    Ukupna količina
                                 </th>
                                 <th class="px-4 py-4"> </th>
                             </tr>
@@ -368,7 +375,7 @@
                             <tr class="hover:bg-gray-200 hover:shadow-md  border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox checkOthers">
+                                        <input type="checkbox" class="form-checkbox">
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
