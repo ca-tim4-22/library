@@ -457,8 +457,16 @@
                                         </a>
                                     </td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent->borrow->name}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent->issue_date}}</td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$book->rent->return_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                        @php
+                                        echo date("d-m-Y", strtotime($book->rent->issue_date));
+                                        @endphp
+                                    </td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                        @php
+                                        echo date("d-m-Y", strtotime($book->rent->return_date));
+                                        @endphp
+                                    </td>
 
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div>

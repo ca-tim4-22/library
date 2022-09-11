@@ -373,8 +373,16 @@
                                         </span>
                                     </a>
                                 </td>
-                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$reservation->reservation->reservation_date}}</td>
-                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$reservation->reservation->request_date}}</td>
+                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                    @php
+                                    echo date("d-m-Y", strtotime($reservation->reservation->reservation_date));
+                                    @endphp
+                                </td>
+                                <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                    @php
+                                    echo date("d-m-Y", strtotime($reservation->reservation->request_date));
+                                    @endphp
+                                </td>
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img 
                                     class="object-cover w-8 h-8 rounded-full" 

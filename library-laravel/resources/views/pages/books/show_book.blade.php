@@ -256,7 +256,10 @@
                               Izdavanja knjige
                           </p>
                           <span>
-                              - {{$rent->issue_date}}
+                              - 
+                              @php
+                              echo date("d-m-Y", strtotime($rent->issue_date));
+                              @endphp
                           </span>
                       </div>
                       <div>
@@ -270,7 +273,9 @@
                               </a>
                               dana
                               <span class="font-medium">
-                                  {{$rent->issue_date}}
+                                  @php
+                                  echo date("d-m-Y", strtotime($rent->issue_date));
+                                  @endphp
                               </span>
                           </p>
                       </div>

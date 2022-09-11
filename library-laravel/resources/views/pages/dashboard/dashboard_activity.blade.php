@@ -448,7 +448,11 @@
                           <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                               {{$rent->borrow->name}}
                           </a>
-                          dana <span class="font-medium">{{$rent->issue_date}}</span>
+                          dana <span class="font-medium">
+                            @php
+                            echo date("d-m-Y", strtotime($rent->issue_date));
+                            @endphp
+                        </span>
                           <a href="{{route('rented-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
                               pogledaj detaljnije >>
                           </a>

@@ -286,7 +286,11 @@
                                             <span class="font-medium text-center">{{$overdue_book->book->title}}</span>
                                         </a>
                                     </td>
-                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$overdue_book->issue_date}}</td>
+                                    <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                        @php
+                                        echo date("d-m-Y", strtotime($overdue_book->issue_date));
+                                        @endphp
+                                    </td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$overdue_book->borrow->name}}</td>
                                     <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
                                         <div

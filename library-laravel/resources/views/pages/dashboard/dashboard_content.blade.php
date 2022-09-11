@@ -40,7 +40,10 @@
                           <p class="uppercase">
                               Izdavanje knjige
                               <span class="inline lowercase">
-                                  - {{$rent->issue_date}}
+                                -
+                                  @php
+                                      echo date("d-m-Y", strtotime($rent->issue_date));
+                                  @endphp
                               </span>
                           </p>
                       </div>
@@ -53,7 +56,11 @@
                               <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$rent->borrow->name}}
                               </a>
-                              dana <span class="font-medium">{{$rent->issue_date}}</span>
+                              dana <span class="font-medium">
+                                @php
+                                echo date("d-m-Y", strtotime($rent->issue_date));
+                                @endphp
+                            </span>
                               <a href="{{route('rented-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
                                   pogledaj detaljnije >>
                               </a>
@@ -114,7 +121,11 @@
                                         </a>
                                     </td>
                                     <td class="px-2 py-2">
-                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">{{$await_reservation->reservation->reservation_date}}</span>
+                                        <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">
+                                            @php
+                                            echo date("d-m-Y", strtotime($await_reservation->reservation->reservation_date));
+                                            @endphp
+                                        </span>
                                     </td>
 
                                     <td class="px-2 py-2">

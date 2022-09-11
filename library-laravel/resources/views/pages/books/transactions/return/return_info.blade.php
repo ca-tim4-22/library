@@ -118,7 +118,11 @@
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Datum akcije</span>
-                            <p class="font-medium">{{$rent->issue_date}}</p>
+                            <p class="font-medium">
+                            @php
+                            echo date("d-m-Y", strtotime($rent->issue_date));
+                            @endphp
+                            </p>
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Trenutno zadržavanje knjige</span>

@@ -172,7 +172,11 @@
                             <span class="font-medium text-center">{{$rent->borrow->name}}</span>
                         </a>
                     </td>
-                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
+                    <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                        @php
+                        echo date("d-m-Y", strtotime($rent->issue_date));
+                        @endphp
+                    </td>
                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                     @php
                         $datetime1 = new DateTime(($rent->issue_date));

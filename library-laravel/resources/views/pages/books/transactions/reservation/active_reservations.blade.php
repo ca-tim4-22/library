@@ -395,8 +395,15 @@
                                            <span class="font-medium text-center">{{$await_reservation->reservation->book->title}}</span>
                                        </a>
                                    </td>
-                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$await_reservation->reservation->reservation_date}}</td>
-                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$await_reservation->reservation->request_date}}
+                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                    @php
+                                    echo date("d-m-Y", strtotime($await_reservation->reservation->reservation_date));
+                                    @endphp
+                                </td>
+                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                    @php
+                                    echo date("d-m-Y", strtotime($await_reservation->reservation->request_date));
+                                    @endphp
                                    </td>
 
                                    <td class="flex flex-row items-center px-4 py-3">
@@ -489,8 +496,16 @@
                                            <span class="font-medium text-center">{{$true_reservation->reservation->book->title}}</span>
                                        </a>
                                    </td>
-                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$true_reservation->reservation->reservation_date}}</td>
-                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{{$true_reservation->reservation->request_date}}</td>
+                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                        @php
+                                        echo date("d-m-Y", strtotime($true_reservation->reservation->reservation_date));
+                                        @endphp
+                                </td>
+                                   <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">
+                                    @php
+                                    echo date("d-m-Y", strtotime($true_reservation->reservation->request_date));
+                                    @endphp
+                                </td>
                                    <td class="flex flex-row items-center px-4 py-3">
                                       
                                        <img 

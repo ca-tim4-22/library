@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="pt-[24px] mr-[30px]">
-                <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+                <a href="{{route('write-off', $get_book->id)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
@@ -174,7 +174,11 @@
                                <span class="font-medium text-center">{{$rent->borrow->name}}</span>
                            </a>
                        </td>
-                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->issue_date}}</td>
+                       <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                        @php
+                        echo date("d-m-Y", strtotime($rent->issue_date));
+                        @endphp
+                    </td>
                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                            <span>
                                            
