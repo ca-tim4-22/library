@@ -171,7 +171,7 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmijeni svoj nalog" : 'Izmijeni učenika'}}</span>
                                         </a>
-                                        <form action="{{route('destroy-student', $student->username)}}" method="POST">
+                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-student', $student->username)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button 
