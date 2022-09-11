@@ -113,7 +113,11 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
-                        <p class="font-medium">{{$librarian->user_type_id == 2 ? 'Bibliotekar' : 'Učenik'}}</p>
+                        <p class="font-medium">
+                            @if ($librarian->user_type_id == 2)
+                            {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}
+                            @endif
+                        </p>
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">JMBG</span>

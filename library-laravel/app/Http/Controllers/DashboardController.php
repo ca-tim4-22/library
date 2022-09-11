@@ -83,24 +83,58 @@ class DashboardController extends Controller
     ));
     }
 
-    public function index_activity() 
+    public function index_activity(Request $request) 
     {
         $books = Book::all();
         $librarians = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
-
+        $error = 'false';
+       
         if (count($rents)) {
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
-                    $data = $collection->orderBy('id', 'desc')->get();
+                    if ($request->id_student) {
+                        $data = $collection->orderBy('id', 'desc')->where('borrow_user_id', $request->id_student)->get();
+                        $selected = $request->id_student;
+                        if($data->count() <= 0) {
+                        $error = 'true';
+                        } 
+                    } elseif ($request->id_librarian) {
+                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_librarian)->get();
+                        $selected = $request->id_librarian;
+                        if($data->count() <= 0) {
+                        $error = 'true';
+                        }
+                    } elseif ($request->id_book) {
+                        $data = $collection->orderBy('id', 'desc')->where('book_id', $request->id_book)->get();
+                        $selected = $request->id_book;
+                        if($data->count() <= 0) {
+                        $error = 'true';
+                        }
+                    } elseif ($request->from && $request->to) {
+                        $from = $request->from;
+                        $to = $request->to;
+                        $data = $collection->orderBy('id', 'desc')->whereBetween('issue_date', [$from, $to])->get();
+                        $selected = null;
+                        $from = date("d-m-Y", strtotime($from));
+                        $to = date("d-m-Y", strtotime($to));
+                        if($data->count() <= 0) {
+                        $error = 'true';
+                        }
+                    } else {
+                        $data = $collection->orderBy('id', 'desc')->get();
+                        $selected = null;
+                        $to = null;
+                        $from = null;
+                    }
                 }
             }
         } else {
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data', 'selected', 'from', 'to', 'error'));
     }
 
     /**
@@ -168,5 +202,4 @@ class DashboardController extends Controller
     {
         //
     }
-
 }
