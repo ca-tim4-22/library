@@ -12,6 +12,9 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 {{-- Preloader --}}
 <div id="loader"></div>
     
@@ -118,15 +121,27 @@
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-[1px] border-[#e4dfdf]">
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                        <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox">
                             </label>
-                        </th>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                        </td>
+
+                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            onclick="showProfile()"
+                            style="outline: none;border: none;font-weight: bold;"
+                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                role="menuitem">
+                                <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Pogledaj detalje</span>
+                            </button>
+                        </td>
+
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Ime i prezime
                         </th>
-                        
+                       
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Email
                         </th>
@@ -139,7 +154,7 @@
                             Zadnji pristup sistemu
                         </th>
 
-                        <th class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"> </td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">
@@ -148,7 +163,7 @@
                     <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" id="test" class="form-checkbox">
+                                <input type="checkbox" name="fruit" id="check" value="{{$librarian->username}}" class="form-checkbox">
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
@@ -182,7 +197,8 @@
                                             <span class="px-4 py-0">Pogledaj detalje</span>
                                         </a>
                                         
-                                        <a href="{{route('edit-librarian', $librarian->username)}}" tabindex="0"
+                                        <a 
+                                        href="{{route('edit-librarian', $librarian->username)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
@@ -196,27 +212,22 @@
                                                 @endif
                                             </span>
                                         </a>
-
-                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
                                             <button 
-                                                    style="outline: none;border: none;"
-                                                    type="submit"
-                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                    role="menuitem">
-                                                    <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                    <span class="px-4 py-0">
-                                                        @if (Auth::id() == $librarian->id)
-                                                        Izbriši svoj nalog 
-                                                        @elseif ($librarian->gender->id == 1)
-                                                        Izbriši bibliotekara
-                                                        @else 
-                                                        Izbriši bibliotekarku
-                                                        @endif
-                                                    </span>
-                                            </button>
-                                        </form>
+                                            data-id="{{ $librarian->id }}" 
+                                            data-action="{{ route('users.destroy', $librarian->id) }}" onclick="deleteConfirmation({{$librarian->id}})"
+                                            style="outline: none;border: none;"
+                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
+                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                            <span class="px-4 py-0">
+                                            @if (Auth::id() == $librarian->id)
+                                            Izbriši svoj nalog 
+                                            @elseif ($librarian->gender->id == 1)
+                                            Izbriši bibliotekara
+                                            @else 
+                                            Izbriši bibliotekarku
+                                            @endif
+                                            </span>
+                                            </button> 
                                     </div>
                                 </div>
                             </div>
@@ -240,6 +251,94 @@
 </div>
 </section>
 <!-- End Content -->
+</main>
+<!-- End Main content -->
+
+<style>
+  .swal2-popup .swal2-styled:focus {
+   box-shadow: none !important;
+}
+ </style>
+
+<script type="text/javascript">
+   function deleteConfirmation(id) {
+       swal({
+           title: "Izbriši?",
+           text: "Da li ste sigurni da želite da izbrišete bibliotekara?",
+           type: "warning",
+           showCancelButton: !0,
+           timer: '5000',
+           animation: true,
+           allowEscapeKey: true,
+           allowOutsideClick: false,
+           confirmButtonText: "Da, siguran sam!",
+           cancelButtonText: "Ne, odustani",
+           reverseButtons: !0,
+           confirmButtonColor: '#14de5e',
+           cancelButtonColor: '#f73302',
+       }).then(function (e) {
+           if (e.value === true) {
+               var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+               swal(
+                   'Uspješno!',
+                   'Bibliotekar je uspješno izbrisan.',
+                   'success'
+                   ).then(function() {
+                    window.location.href = "/bibliotekari";
+                   });
+               $.ajax({
+                   type: 'POST',
+                   url: "{{url('/users')}}/" + id,
+                   data: {_token: CSRF_TOKEN},
+                   dataType: 'JSON',
+                   success: function (results) {
+                   }
+               });
+           } else {
+               e.dismiss;
+           }
+       }, function (dismiss) {
+           return false;
+       })
+   }
+   $(document).ajaxStop(function(){
+// window.location.reload();
+// window.location.href = "/bibliotekari";
+});
+
+// Script for show profile top header
+function showProfile() {
+var username = $('#check:checked').val();
+window.location.href = "/bibliotekar/" + username;
+}
+
+</script>
+
+<style>
+    .show {
+        display: inline-block !important;
+    }
+    .hidden_header {
+        display: none !important;
+    }
+    .sakriveno {display: none !important}
+    .sakriveno_email {display: none !important}
+</style>
+<script>
+
+$('input#check').on('change', function() {     
+    if($(this).is(":checked")) {
+        $('.checkme').addClass('hidden_header');    
+        $('.checkme2').addClass('show');    
+        $('.checkme2').removeClass('sakriveno');   
+    } else {
+        $('.checkme').removeClass('hidden_header');    
+        $('.checkme2').removeClass('show');    
+        $('.checkme2').addClass('sakriveno');    
+        
+    }
+});
+</script>
 
 @endsection
 

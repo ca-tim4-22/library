@@ -350,21 +350,27 @@
                                         </div>
                                     </div>
                                 </td>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Na raspolaganju
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Rezervisano
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Izdato
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     U prekoračenju
                                 </th>
-                                <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Ukupna količina
                                 </th>
+                                
                                 <th class="px-4 py-4"> </th>
                             </tr>
                         </thead>

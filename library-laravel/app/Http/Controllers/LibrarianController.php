@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GlobalVariable;
+use App\Models\Rent;
 use App\Models\User;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
@@ -33,8 +34,9 @@ class LibrarianController extends Controller
             $items = $variable->value;
         }
         $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+        $users = User::latest('id')->where('user_type_id', 2)->get();
 
-        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable'));
+        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'users'));
     }
 
     /**
@@ -185,23 +187,31 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    // public function destroy(User $user, Request $request)
+    // {
+    //     $librarian = $user;
+    //     if ($librarian->gender->id == 1) {
+    //         $word = 'bibliotekara';
+    //     } else {
+    //         $word = 'bibliotekarku';
+    //     }
+
+    //     if (Auth::user()->id == $librarian->id) {
+    //         $librarian->delete();
+
+    //         return to_route('good-bye');
+    //     }
+        
+    //     $librarian->delete();
+        
+    //     return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
+    // }
+
+
+    public function destroy(Request $request, $id)
     {
-        $librarian = $user;
-        if ($librarian->gender->id == 1) {
-            $word = 'bibliotekara';
-        } else {
-            $word = 'bibliotekarku';
-        }
+      $user = User::where('id', $id)->delete();
 
-        if (Auth::user()->id == $librarian->id) {
-            $librarian->delete();
-
-            return to_route('good-bye');
-        }
-        
-        $librarian->delete();
-        
-        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
+      return back()->with('librarian-deleted', 'cao');
     }
 }
