@@ -141,12 +141,6 @@
                     </div>
                 </div>
 
-                @error('value')
-                <div>
-                    <p style="margin-left: 2%;margin-top: 1%" class="text-sm text-red-500">{{ $message }}</p>
-                </div>
-                @enderror
-
                   {{-- Pagination global variable --}}
                   <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
@@ -161,7 +155,7 @@
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
-                        <form class="flex" method="POST" action="{{route('update-policy', $policy4->id)}}">
+                        <form class="flex" method="POST" action="{{route('update-pagination', $policy4->id)}}">
                             @csrf
                             @method('PUT')
                             <button

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\PolicyPaginationUpdateRequest;
 use App\Http\Requests\Settings\PolicyUpdateRequest;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
@@ -81,7 +82,17 @@ class PolicyController extends Controller
 
         $policy->update($input);
 
-        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->name\".");
+        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->variable\".");
+    }
+
+    public function paginationUpdate(PolicyPaginationUpdateRequest $request) 
+    {
+        $input = $request->all();
+        $policy = GlobalVariable::findOrFail(4);
+
+        $policy->update($input);
+
+        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->variable\".");
     }
 
     /**
