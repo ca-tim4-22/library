@@ -17,8 +17,7 @@ Route::get('/novi-bibliotekar', [LibrarianController::class, 'create'])->name('n
 Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('store-librarian');
 Route::get('/izmijeni-profil-bibliotekara/{user:username}', [LibrarianController::class, 'edit'])->name('edit-librarian');
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
-Route::delete('/izbrisi-bibliotekara/{user:username}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
-
+Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
 
 Route::post('/users/{id}', [LibrarianController::class, 'destroy'])->name('users.destroy');
 

@@ -188,30 +188,24 @@ class LibrarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy(User $user, Request $request)
-    // {
-    //     $librarian = $user;
-    //     if ($librarian->gender->id == 1) {
-    //         $word = 'bibliotekara';
-    //     } else {
-    //         $word = 'bibliotekarku';
-    //     }
-
-    //     if (Auth::user()->id == $librarian->id) {
-    //         $librarian->delete();
-
-    //         return to_route('good-bye');
-    //     }
-        
-    //     $librarian->delete();
-        
-    //     return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
-    // }
-
-
     public function destroy(Request $request, $id)
     {
-      $user = User::where('id', $id)->delete();
+        $librarian = User::findOrFail($id);
+        if ($librarian->gender->id == 1) {
+            $word = 'bibliotekara';
+        } else {
+            $word = 'bibliotekarku';
+        }
+
+        if (Auth::user()->id == $librarian->id) {
+            $librarian->delete();
+
+            return to_route('good-bye');
+        }
+        
+        $librarian->delete();
+        
+        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
     }
 
     public function deleteMultiple(Request $request)
@@ -219,6 +213,4 @@ class LibrarianController extends Controller
         $ids = $request->ids;
         User::whereIn('id',explode(",",$ids))->delete();
     }
-
-   
 }

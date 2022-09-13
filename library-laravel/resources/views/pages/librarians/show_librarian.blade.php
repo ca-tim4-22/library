@@ -15,6 +15,7 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
        <!-- Heading of content -->
@@ -65,17 +66,115 @@
                         <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
-                                <form action="{{route('destroy-librarian', $librarian->username)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
+                                {{-- Delete own account --}}
                                 <button type="submit" 
-                                            style="outline: none;border: none;"
-                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                            role="menuitem">
-                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">{{Auth::user()->id == $librarian->id ? "Izbriši svoj nalog" : "Izbriši bibliotekara"}}</span>
+                                @if (Auth::id() == $librarian->id)
+                                data-id="{{$librarian->id}}" 
+                                data-action="{{ route('destroy-librarian', $librarian->id) }}" 
+                                onclick="deleteAccountLibrarian({{$librarian->id}})" 
+                                @else
+                                data-id="{{$librarian->id}}" 
+                                data-action="{{ route('destroy-yourself', $librarian->id) }}" 
+                                onclick="deleteYourself({{$librarian->id}})" 
+                                @endif
+                                style="outline: none;border: none;"
+                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                role="menuitem">
+                                <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                <span class="px-4 py-0">
+                                @if (Auth::id() == $librarian->id)
+                                Izbriši svoj nalog
+                                @elseif ($librarian->gender->id == 1)
+                                Izbriši učenika
+                                @else
+                                Izbriši učenicu
+                                @endif
+                                </span>
                                 </button>
-                                </form>
+                                {{-- Ajax --}}
+                                <script type="text/javascript">
+                                    function deleteAccountLibrarian(id) {
+                                        var token = $("meta[name='csrf-token']").attr("content");
+                                        swal({
+                                            text: "Da li ste sigurni da želite da izbrišete nalog?",
+                                            showCancelButton: !0,
+                                            timer: '5000',
+                                            animation: true,
+                                            allowEscapeKey: true,
+                                            allowOutsideClick: false,
+                                            confirmButtonText: "Da, siguran sam!",
+                                            cancelButtonText: "Ne, odustani",
+                                            reverseButtons: !0,
+                                            confirmButtonColor: '#14de5e',
+                                            cancelButtonColor: '#f73302',
+                                        }).then(function (e) {
+                                            if (e.value === true) {
+                                                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                                                swal(
+                                                    'Uspješno!',
+                                                    'Uspješno ste izbrisali nalog.',
+                                                    'success'
+                                                    ).then(function() {
+                                                    window.location.href = "/good-bye";
+                                                 });
+                                                $.ajax({
+                                                    type: 'DELETE',
+                                                    url: "{{url('izbrisi-bibliotekara')}}/" + id,
+                                                    // data: {_token: CSRF_TOKEN},
+                                                    data: {
+                                                    "_token": token,
+                                                    },
+                                                    success: function (results) {
+                                                    }
+                                                });
+                                            } else {
+                                                e.dismiss;
+                                            }
+                                        }, function (dismiss) {
+                                            return false;
+                                        })
+                                    }
+                                    function deleteYourself(id) {
+                                        var token = $("meta[name='csrf-token']").attr("content");
+                                        swal({
+                                            text: "Da li ste sigurni da želite da izbrišete nalog?",
+                                            showCancelButton: !0,
+                                            timer: '5000',
+                                            animation: true,
+                                            allowEscapeKey: true,
+                                            allowOutsideClick: false,
+                                            confirmButtonText: "Da, siguran sam!",
+                                            cancelButtonText: "Ne, odustani",
+                                            reverseButtons: !0,
+                                            confirmButtonColor: '#14de5e',
+                                            cancelButtonColor: '#f73302',
+                                        }).then(function (e) {
+                                            if (e.value === true) {
+                                                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                                                swal(
+                                                    'Uspješno!',
+                                                    'Uspješno ste izbrisali nalog.',
+                                                    'success'
+                                                    ).then(function() {
+                                                    window.location.href = "/bibliotekari";
+                                                 });
+                                                $.ajax({
+                                                    type: 'DELETE',
+                                                    url: "{{url('izbrisi-svoj-nalog')}}/" + id,
+                                                    data: {
+                                                    "_token": token,
+                                                    },
+                                                    success: function (results) {
+                                                    }
+                                                });
+                                            } else {
+                                                e.dismiss;
+                                            }
+                                        }, function (dismiss) {
+                                            return false;
+                                        })
+                                    }
+                                 </script>
                             </div>
                         </div>
                     </div>
@@ -165,7 +264,7 @@
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
 
-                    @if (Auth::user()->id == $librarian->id)
+                    @if (Auth::user()->id == $librarian->id || Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                      <div class="mb-3 w-96">
                         <label for="formFileSm" class="inline-block mb-2 text-gray-700 form-label">Izmijeni fotografiju</label>
                         <input 
@@ -186,14 +285,14 @@
                 class="p-2 border-2 border-gray-300"
                 width="300px"
                 id="loaded1" 
-                alt="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
-                title="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
+                alt="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                title="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
                 src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
-                onload="showImage1();" 
+                onload="showImageLibrarian();" 
                 style="display:none;"/>
                     
                     <script>
-                        function showImage1() {
+                        function showImageLibrarian() {
                             $("#loading1").hide();
                             $("#loaded1").show();
                         }

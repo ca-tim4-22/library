@@ -185,21 +185,21 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, $id)
     {
-        $student = $user;
+        $student = User::findOrFail($id);
         if ($student->gender->id == 1) {
-            $word = 'učenika';
+            $word = 'bibliotekara';
         } else {
-            $word = 'učenicu';
+            $word = 'bibliotekarku';
         }
 
         if (Auth::user()->id == $student->id) {
             $student->delete();
 
-            return to_route('redirect');
+            return to_route('good-bye');
         }
-
+        
         $student->delete();
         
         return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\".");

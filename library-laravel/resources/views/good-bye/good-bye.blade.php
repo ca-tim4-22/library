@@ -6,7 +6,7 @@
     <!-- Title -->
     <title>Good Bye | Online Biblioteka</title>
     <!-- Icon -->
-    <link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
+    <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
     <!-- Meta -->
     <x-meta></x-meta>
     <!-- Style -->

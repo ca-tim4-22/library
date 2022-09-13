@@ -156,7 +156,9 @@
                             </a>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->email}}</td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Učenik</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                        {{$student->gender->id == 1 ? 'Učenik' : 'Učenica'}}
+                        </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$student->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $student->last_login_at->diffForHumans()}}</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsStudent hover:text-[#606FC7]">

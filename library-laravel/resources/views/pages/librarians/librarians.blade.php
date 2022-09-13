@@ -12,7 +12,6 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 {{-- Preloader --}}
@@ -120,13 +119,8 @@
             @endif
 
             @if (count($librarians) > 0)
-            {{-- <button 
-            type="submit" 
-            style="outline: none;cursor: pointer;"
-            class="delete-all" 
-            data-url="">Izbriši</button> --}}
 
-            <button type="submit"  class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE] button delete-all"  data-url="">
+            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE] button delete-all"  data-url="">
                 <div class="icon">
                     <svg class="top">
                         <use xlink:href="#top">
@@ -417,7 +411,9 @@
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                             {{$librarian->email}}
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Bibliotekar</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                        {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}
+                        </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$librarian->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $librarian->last_login_at->diffForHumans()}}</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsLibrarian hover:text-[#606FC7]">
