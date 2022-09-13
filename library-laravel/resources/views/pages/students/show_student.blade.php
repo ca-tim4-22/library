@@ -177,6 +177,7 @@
 
 <!-- This code will show up when we press reset password -->
 <div
+style="z-index: 11"
     class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 modal">
     <!-- Modal -->
     <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
