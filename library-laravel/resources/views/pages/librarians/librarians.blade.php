@@ -614,10 +614,7 @@ $('input#check').on('change', function() {
      });
 
     }  else {  
-
-        
     if(confirm("Da li ste sigurni?")){  
-
     var strIds = idsArr.join(","); 
     $.ajax({
     url: "{{ route('delete-all') }}",
@@ -631,7 +628,6 @@ $('input#check').on('change', function() {
     });
     alert(data['message']);
     } 
-    
     else {
     swal({
      title: "Uspješno!",

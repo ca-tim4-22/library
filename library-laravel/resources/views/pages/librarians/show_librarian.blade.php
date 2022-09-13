@@ -13,6 +13,7 @@
 @section('content')
 {{-- CDN JQuery --}}
 <x-jquery.jquery></x-jquery.jquery>
+{{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">

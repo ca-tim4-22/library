@@ -64,6 +64,19 @@
                     </div>
 
                     <div class="mt-[20px]">
+                        <span>Pol</span>
+                        <select
+                        style="cursor: pointer" class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
+                            <option value="1">
+                                Muški
+                            </option>
+                            <option value="2">
+                                Ženski
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
                         <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{old('JMBG')}}"/>
                         <div id="validateJmbgBibliotekar"></div>

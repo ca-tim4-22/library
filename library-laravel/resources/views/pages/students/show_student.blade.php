@@ -11,7 +11,10 @@
 @endsection
 
 @section('content')
+{{-- CDN JQuery --}}
 <x-jquery.jquery></x-jquery.jquery>
+{{-- Sweet Alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
        <!-- Heading of content -->
@@ -244,10 +247,28 @@ style="z-index: 11"
           processUrl:'{{route('student.crop')}}',
           withCSRF:['_token', '{{csrf_token()}}'],
           onSuccess:function(message, element, status){
-             alert(message);
+            swal({
+           title: "Uspješno!",
+           text: "Uspješno ste izmijenili profilnu fotografiju!",
+           type: "success",
+           timer: 1000,
+           confirmButtonText: 'U redu',
+           allowEscapeKey: false,
+           allowOutsideClick: false,
+           }).then(function() {
+            window.location.reload();
+           });
           },
           onError:function(message, element, status){
-            alert(message);
+            swal({
+          title: "Greška!",
+          text: "Zahtijevana ekstenzija nije podržana!",
+          type: "error",
+          timer: 1500,
+          confirmButtonText: 'U redu',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          });
           }
        });
 </script>

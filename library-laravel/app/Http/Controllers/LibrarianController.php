@@ -67,6 +67,7 @@ class LibrarianController extends Controller
         ])->safe()->all();
 
         $input['user_type_id'] = 2;
+        $input['user_gender_id'] = $request->user_gender_id;
         $input['last_login_at'] = Carbon::now();
         $input['password'] = Hash::make($request->password);
 

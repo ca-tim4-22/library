@@ -111,8 +111,6 @@
                                 alt="Profilna slika bibliotekara"
                                 title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
-                                onload="showImage2()"
-                                style="display: none;"
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
 
