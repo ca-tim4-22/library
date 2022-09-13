@@ -11,8 +11,9 @@
 @endsection
 
 @section('content')
-{{-- CDN JQuery --}}
+{{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
+<script src="{{asset('js/session_message_jquery.js')}}"></script>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -186,7 +187,7 @@
 <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
 
 @error('password')            
-    <div class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+    <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
@@ -336,12 +337,17 @@ style="z-index: 11"
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
                     <span>Unesi novu lozinku <span class="text-red-500">*</span></span>
-                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="password" id="password" onkeydown="clearErrorsPwResetBibliotekar()" required>
+                    <input 
+                    oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                    style="border: 0.4px solid #223394 !important"
+                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password" id="password" onkeydown="clearErrorsPwResetBibliotekar()" required>
                     <div id="validatePwResetBibliotekar"></div>
                 </div>
                 <div class="flex flex-col pb-[30px]">
                     <span>Ponovi lozinku <span class="text-red-500">*</span></span>
-                    <input class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetBibliotekar()">
+                    <input 
+                    style="border: 0.4px solid #223394 !important"
+                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetBibliotekar()">
                     <div id="validatePw2ResetBibliotekar"></div>
                 </div>
             </div>
@@ -361,7 +367,6 @@ style="z-index: 11"
 </div>
 
 {{-- Scripts --}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{asset('ijaboCropTool/ijaboCropTool.min.js')}}"></script>
 
 <script>
