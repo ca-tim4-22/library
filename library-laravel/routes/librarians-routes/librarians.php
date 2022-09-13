@@ -25,7 +25,9 @@ Route::post('/users/{id}', [LibrarianController::class, 'destroy'])->name('users
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/crop/bibliotekar', [LibrarianController::class, 'crop'])->name('librarian.crop');
 
-Route::delete('/deleteall', [LibrarianController::class, 'deleteAll']);
+Route::delete('delete-multiple-category', [LibrarianController::class, 'deleteMultiple'])->name('delete-all');
+
+
 });
 
 

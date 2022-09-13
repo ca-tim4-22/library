@@ -371,7 +371,7 @@
                                     Ukupna količina
                                 </th>
                                 
-                                <th class="px-4 py-4"> </th>
+                                <td class="px-4 py-4"> </td>
                             </tr>
                         </thead>
                         <tbody class="bg-white" id="tablex">

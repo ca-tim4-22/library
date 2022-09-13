@@ -34,9 +34,9 @@ class LibrarianController extends Controller
             $items = $variable->value;
         }
         $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
-        $users = User::latest('id')->where('user_type_id', 2)->get();
+        $show_all = User::latest('id')->where('user_type_id', 2)->count();
 
-        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'users'));
+        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all'));
     }
 
     /**
@@ -211,7 +211,13 @@ class LibrarianController extends Controller
     public function destroy(Request $request, $id)
     {
       $user = User::where('id', $id)->delete();
-
-      return back()->with('librarian-deleted', 'cao');
     }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        User::whereIn('id',explode(",",$ids))->delete();
+    }
+
+   
 }
