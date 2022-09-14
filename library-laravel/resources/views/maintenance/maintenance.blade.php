@@ -1,9 +1,9 @@
 <html>
     <head>
         <!-- Title -->
-        <title>Maintenance - Online Biblioteka</title>
+        <title>Nije dostupno - Online Biblioteka</title>
         <!-- Icon -->
-        <link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
+        <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
         <!-- Meta -->
         <x-meta></x-meta>
         <!-- Style -->
@@ -13,31 +13,31 @@
         <div class="container">
             <a href="http://127.0.0.1:8000">
             <img 
-            src="/img/library-favicon.ico" 
+            src="{{asset('library-favicon.ico')}}" 
             class="logo no-select">
             </a>
             <div class="content">
-                <p>Library Is Under Maintenance</p>
+                <p>Online biblioteka još uvijek nije dostupna</p>
                 <h1>We're <span>Launching</span> Soon</h1>
                 <div class="launch-time">
                     <div>
                         <p id="days">00</p>
-                        <span>Days</span>
+                        <span>Dana</span>
                     </div>
                     <div>
                         <p id="hours">00</p>
-                        <span>Hours</span>
+                        <span>Sati</span>
                     </div>
                     <div>
                         <p id="minutes">00</p>
-                        <span>Minutes</span>
+                        <span>Minuta</span>
                     </div>
                     <div>
                         <p id="seconds">00</p>
-                        <span>Seconds</span>
+                        <span>Sekundi</span>
                     </div>
                 </div>
-                <button type="button" onClick="showAlert()">Learn More</button>
+                <button type="button" onClick="showAlert()">Saznajte još</button>
             </div>
             <img src="https://i.postimg.cc/PfwZ6bDk/rocket.png" class="rocket">
         </div>
@@ -65,9 +65,8 @@ Swal.fire({
     clearInterval(timerInterval)
   }
 }).then((result) => {
-  /* Read more about handling dismissals below */
   if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('I was closed by the timer')
+    console.log('Zatvoren sam uz pomoć tajmera!')
   }
 })
 }

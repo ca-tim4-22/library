@@ -64,8 +64,14 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Pol</span>
-                            <select class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
+                            <span>Pol <span class="text-red-500">*</span></span>
+                            <select 
+                            required
+                            oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                            class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
+                                <option value="">
+                                    Odaberite
+                                    </option>
                                 <option value="1">
                                     Muški
                                 </option>
@@ -100,7 +106,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Ponovi lozinku <span class="text-red-500">*</span></span>
+                            <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                             <input type="password" name="password_confirmation" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2Ucenik()"/>
                             <div id="validatePw2Ucenik"></div>
                         </div>

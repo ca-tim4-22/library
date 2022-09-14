@@ -1,7 +1,7 @@
 <!-- Title -->
-<title>Access Denied - Online Biblioteka</title>
+<title>Pristup odbijen - Online Biblioteka</title>
 <!-- Icon -->
-<link rel="shortcut icon" href="{{asset('img/library-favicon.ico')}}" type="image/vnd.microsoft.icon" />
+<link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
 <!-- Meta -->
 <x-meta></x-meta>
 <!-- Style -->
@@ -9,7 +9,7 @@
 
 <div class="container">
     <h1>4<div class="lock"><div class="top"></div><div class="bottom"></div>
-      </div>3</h1><p>Access denied</p>
+      </div>3</h1><p>Pristup odbijen</p>
   </div>
 
   

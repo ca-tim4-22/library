@@ -3,19 +3,19 @@ unlink(dirname(__FILE__) . "/../storage/framework/down");
 ?>
 
 <!-- Title -->
-<title>Redirect - Online Library</title>
+<title>Redirekcija - Online Biblioteka</title>
 
 <!-- Icon -->
-<link rel="shortcut icon" href="img/library-favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" type="image/x-icon" href="library-favicon.ico">
 
 <!-- Meta -->
 <x-meta></x-meta>
 
-<link rel="stylesheet" href="custom-style/live_php.style.css">
+<link rel="stylesheet" href="css/custom-style/live_php.style.css">
 
-<p>You will be redirected in <time><strong id="seconds">3</strong> seconds</time>...</p>
+<p>Bićete redirektovani za <time><strong id="seconds">3</strong></time>...</p>
 
-<link rel="stylesheet" href="custom-style/style.css">
+<link rel="stylesheet" href="css/custom-style/style.css">
 
 <script type="text/javascript">
     var count = 5;
@@ -35,7 +35,7 @@ unlink(dirname(__FILE__) . "/../storage/framework/down");
      
     <span id="timer">
     <script type="text/javascript">countDown();</script>
-    </span>
+</span>
 
 <?php 
 die()

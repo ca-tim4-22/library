@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap");
 html {
-  background-image: url("../img/login.jpg");
+  background-image: url("/login.jpg");
 }
 
 p {

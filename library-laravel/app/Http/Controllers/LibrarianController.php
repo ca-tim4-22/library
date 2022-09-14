@@ -179,7 +179,7 @@ class LibrarianController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return to_route('edit-librarian', $request->username)->with('librarian-updated', "Uspješno ste izmijenili profil $word.");
+        return to_route('edit-librarian', $request->username)->with('librarian-updated', "Uspješno ste izmijenili profil $word");
     }
 
     /**
@@ -205,7 +205,7 @@ class LibrarianController extends Controller
         
         $librarian->delete();
         
-        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\".");
+        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\"");
     }
 
     public function deleteMultiple(Request $request)

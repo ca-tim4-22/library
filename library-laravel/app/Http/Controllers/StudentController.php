@@ -176,7 +176,7 @@ class StudentController extends Controller
 
         $user->whereId($id)->first()->update($input);
         
-        return to_route('edit-student', $request->username)->with('student-updated', "Uspješno ste izmijenili profil $word.");
+        return to_route('edit-student', $request->username)->with('student-updated', "Uspješno ste izmijenili profil $word");
     }
 
     /**
@@ -202,6 +202,6 @@ class StudentController extends Controller
         
         $student->delete();
         
-        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\".");
+        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
     }
 }
