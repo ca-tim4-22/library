@@ -132,11 +132,11 @@
                         <label class="text-gray-700" for="date">
                             <input type="date" name="reservation_date" id="datumRezervisanja"
                                 class="flex w-[50%] mt-2 px-4 py-2 text-base placeholder-gray-400 bg-white border border-gray-300 appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                onclick="clearErrorsDatumRezervisanja()" 
+                                onclick="clearErrorsDatumRezervisanja()"
                                 max="{{$max_date}}"
                                 value="{{$today}}"
                                 />
-                                
+
                         </label>
                         <div id="validateDatumRezervisanja"></div>
                     </div>
@@ -146,7 +146,7 @@
             <div class="absolute bottom-0 w-full bg-white">
                 <div class="flex flex-row">
                     <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                        <button type="button"
+                        <button type="button" onclick="history.back()"
                             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                             Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
@@ -162,5 +162,5 @@
     </div>
 </section>
 <!-- End Content -->
-    
+
 @endsection

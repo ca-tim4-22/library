@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Izmijeni izdavača | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        
+
                          {{-- Publisher update flash message --}}
                          @if (session()->has('publisher-updated'))
                          <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -30,7 +30,7 @@
                           </div>
                           @endif
 
-                        
+
                         Izmijeni podatke
                     </h1>
                 </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Space for content -->
     <div class="scroll height-content section-content">
         <form class="text-gray-700" method="POST" action="{{route('update-publisher', $publisher->id)}}">
@@ -82,7 +82,7 @@
             <div class="absolute bottom-0 w-full">
                 <div class="flex flex-row">
                     <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                        <button type="button"
+                        <button type="button" onclick="history.back()"
                             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                             Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
@@ -97,5 +97,5 @@
     </div>
 </section>
 <!-- End Content -->
-    
+
 @endsection

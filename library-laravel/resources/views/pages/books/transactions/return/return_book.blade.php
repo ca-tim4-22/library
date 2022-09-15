@@ -81,7 +81,7 @@
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
-                            
+
                             <form action="{{route('destroy-book', $get_book->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -124,10 +124,10 @@
 
         <div
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
-          
+
             <form action="{{route('store-return-book')}}" method="POST">
             @csrf
-               
+
             <table class="min-w-full border-[1px] border-[#e4dfdf]" id="vratiKnjiguTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-b-[1px] border-[#e4dfdf]">
@@ -154,12 +154,12 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white">
-                    
+
 
                    @if (!$data == [])
 
                    @foreach ($data as $rent)
-                    
+
                    <tr class="border-b-[1px] border-[#e4dfdf]">
                        <td class="px-4 py-4 whitespace-no-wrap">
                            <label class="inline-flex items-center">
@@ -181,8 +181,8 @@
                     </td>
                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                            <span>
-                                           
-                               <?php 
+
+                               <?php
                                $datetime1 = new DateTime(($rent->issue_date));
                                $datetime2 = new DateTime(($rent->return_date));
                                $interval = $datetime1->diff($datetime2);
@@ -193,12 +193,12 @@
                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">Nema prekoračenja</td>
                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
                    </tr>
-                   
+
                    @endforeach
-                       
+
                    @endif
-                        
-                    
+
+
                 </tbody>
             </table>
 
@@ -207,12 +207,12 @@
     <div class="absolute bottom-0 w-full">
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-               
-                <button type="button"
+
+                <button type="button" onclick="history.back()"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>
-              
+
                 <button type="submit"
                 class="btn-animation disabled-btn shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                 disabled>
@@ -224,5 +224,5 @@
     </div>
 </section>
 <!-- End Content -->
-    
+
 @endsection
