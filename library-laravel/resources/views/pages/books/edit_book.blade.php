@@ -46,11 +46,11 @@
                 </div>
             </div>
 
-            {{-- Form for updating a book --}}
-            <form action="{{route('update-book', $book->id)}}" method="post">
-                @csrf
-                @method('PUT')
-                <x-books.edit.edit_book_jquery :models="$models" :book="$book"></x-books.edit.edit_book_jquery>
+            {{-- Form for update a book --}}
+            <form action="{{route('update-book', $book->id)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <x-books.jquery_edit :models="$models" :book="$book"></x-books.jquery_edit>
             </form>
     </main>
 

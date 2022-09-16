@@ -370,8 +370,7 @@
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Ukupna količina
                                 </th>
-                                
-                                <td class="px-4 py-4"> </td>
+                                <td class="px-4 py-4"></td>
                             </tr>
                         </thead>
                         <tbody class="bg-white" id="tablex">

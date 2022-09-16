@@ -129,25 +129,46 @@
                                         <p class="font-medium">{{$book->title}}</p>
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Kategorija</span>
+                                        <span class="text-gray-500 text-[14px]">
+                                            @if (!$book->categories->count() == 1)
+                                            Kategorija
+                                            @else
+                                            Kategorije
+                                            @endif
+                                        </span>
                                         <p class="font-medium">
                                             @foreach ($book->categories as $category)
-                                            {{$category->category->name}}
+                                            {{$loop->first ? '' : '|'}}
+                                            {{$category->category->name}} 
                                             @endforeach
                                         </p>
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Žanr</span>
+                                        <span class="text-gray-500 text-[14px]">
+                                        @if (!$book->genres->count() == 1)
+                                        Žanr
+                                        @else
+                                        Žanrovi
+                                        @endif
+                                        </span>
                                         <p class="font-medium">
                                         @foreach ($book->genres as $genre)
+                                        {{$loop->first ? '' : '|'}}
                                         {{$genre->genre->name}}
                                         @endforeach
                                         </p>
                                     </div>
                                     <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Autor/i</span>
+                                        <span class="text-gray-500 text-[14px]">
+                                        @if ($book->authors->count() == 1)
+                                        Autor
+                                        @else
+                                        Autori
+                                        @endif
+                                        </span>
                                         <p class="font-medium">
                                         @foreach ($book->authors as $author)
+                                        {{$loop->first ? '' : '|'}}
                                         {{$author->author->NameSurname}}
                                         @endforeach
                                         </p>
@@ -187,11 +208,11 @@
                             </div>
                             <div class="text-center pb-[30px]">
                                 <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}} 
+                                    {{($book->quantity_count - ($book->rented_count + $book->reserved_count)) >= 0 ? ($book->quantity_count - ($book->rented_count + $book->reserved_count)) : "0"}} 
                                     @php
                                     if ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 1 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 11 || $book->quantity_count - ($book->rented_count + $book->reserved_count) == 1) {
                                     echo "primjerak";
-                                    } elseif ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 2 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 3 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 4) {
+                                    } elseif (($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 2 || ($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 3 || ($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 4) {
                                      echo "primjerka";
                                     } else {
                                     echo "primjeraka";

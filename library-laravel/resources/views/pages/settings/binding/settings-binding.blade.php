@@ -115,8 +115,7 @@
                         <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                             Naziv poveza
                         </th>
-
-                        <th class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"> </td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">

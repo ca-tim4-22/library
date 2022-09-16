@@ -183,7 +183,6 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmijeni svoj nalog" : 'Izmijeni učenika'}}</span>
                                         </a>
-<<<<<<< HEAD
                                       
                                       <button 
                                       data-id="{{ $student->id }}" 
@@ -202,20 +201,6 @@
                                       </span>
                                       </button> 
 
-=======
-                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-student', $student->username)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button
-                                                    style="outline: none;border: none;"
-                                                    type="submit"
-                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                    role="menuitem">
-                                                <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                <span class="px-4 py-0">{{Auth::id() == $student->id ? 'Izbriši svoj nalog' : 'Izbriši učenika'}}</span>
-                                            </button>
-                                        </form>
->>>>>>> 470b2b88d2ef03c5b03b4841e84314fc83407a92
                                     </div>
                                 </div>
                             </div>

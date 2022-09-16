@@ -121,7 +121,7 @@
                             Opis kategorije
                         </th>
                         
-                        <th class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"> </th>
                     </tr>
                 </thead>
 

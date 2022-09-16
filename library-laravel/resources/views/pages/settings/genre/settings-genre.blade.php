@@ -42,7 +42,6 @@
     </div>
   </div>
 @endif
-
                 </h1>
             </div>
         </div>
@@ -116,8 +115,7 @@
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Naziv žanra
                         </th>
-
-                        <th class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"> </th>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">

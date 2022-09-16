@@ -4,17 +4,19 @@ namespace App\View\Components\books;
 
 use Illuminate\View\Component;
 
-class jquery extends Component
+class jquery_edit extends Component
 {
     public $models;
+    public $book;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($models)
+    public function __construct($models, $book)
     {
         $this->models = $models;
+        $this->book = $book;
     }
 
     /**
@@ -24,6 +26,6 @@ class jquery extends Component
      */
     public function render()
     {
-        return view('components.books.jquery');
+        return view('components.books.jquery_edit');
     }
 }

@@ -1,7 +1,7 @@
 <!-- Space for content -->
+<form class="text-gray-700">
 <div class="scroll height-content section-content">
  
-
     <div class="w-9/12 mx-auto bg-white rounded p7 mt-[40px] mb-[150px]">
         <div x-data="dataFileDnD()"
             class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
@@ -100,6 +100,24 @@
         
     </div>
    
+</div>
+<div class="absolute bottom-0 w-full">
+    <div class="flex flex-row">
+        <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
+            <button type="button"
+            onclick="history.back()"
+             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+            Poništi <i class="fas fa-times ml-[4px]"></i>
+            </button>
+
+        <button style="margin-right: 30px" id="sacuvajKnjigu" type="submit"
+        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
+        Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+        </button>
+        </div>
+    </div>
+</div>
+</form>
 </div>
 </section>
 <!-- End Content -->

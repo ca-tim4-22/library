@@ -45,16 +45,16 @@
         <div class="tab_content">
         
         <div class="tab_item">
-            <x-books.book_info :models="$models"></x-books.book_info>
+            <x-books.book_info_create :models="$models"></x-books.book_info_create>
         </div>
 
         <div class="tab_item">
-            <x-books.book_specification :models="$models"></x-books.book_specification>
-        </form>
+            <x-books.book_specification_create :models="$models"></x-books.book_specification_create>
         </div>
         
         <div class="tab_item">
-            <x-books.book_multimedia></x-books.book_multimedia>
+            <x-books.book_multimedia_create></x-books.book_multimedia_create>
+        </form>
         </div>
         
         </div>

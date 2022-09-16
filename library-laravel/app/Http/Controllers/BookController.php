@@ -8,6 +8,7 @@ use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
 use App\Models\Rent;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,10 +68,23 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(BookCreateRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
-        
+
+        $category = $request->input('category_id');
+        $category = str_replace(['[', ']'], null, $category);
+        $categoryIds= explode( ',', $category);
+
+        $genre = $request->input('genre_id');
+        $genre = str_replace(['[', ']'], null, $genre);
+        $genreIds= explode( ',', $genre);
+
+
+        $author = $request->input('author_id');
+        $author = str_replace(['[', ']'], null, $author);
+        $authorIds= explode( ',', $author);
+
         $book = new Book();
         $book->title = $request->input('title');
         $book->body = $request->input('body');
@@ -85,15 +99,26 @@ class BookController extends Controller
         $book->year = $request->input('year');
         $book->save();
 
-        DB::table('book_categories')->insert(
-            ['book_id' => $book->id, 'category_id' => $input['category_id']],
-        );
-        DB::table('book_authors')->insert(
-            ['book_id' => $book->id, 'author_id' => $input['author_id']],
-        );
-        DB::table('book_genres')->insert(
-            ['book_id' => $book->id, 'genre_id' => $input['genre_id']],
-        );
+        foreach($categoryIds as $id) {
+            BookCategory::create([
+                'book_id' => $book->id,
+                'category_id' => $id,
+            ]);
+        }
+
+        foreach($genreIds as $id) {
+            BookGenre::create([
+                'book_id' => $book->id,
+                'genre_id' => $id,
+            ]);
+        }
+
+        foreach($authorIds as $id) {
+            BookAuthor::create([
+                'book_id' => $book->id,
+                'author_id' => $id,
+            ]);
+        }
 
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
@@ -166,7 +191,7 @@ class BookController extends Controller
             'letters' =>DB::table('letters')->get()
         ];
 
-        return view('pages.books.edit_book', compact('book','models'));
+        return view('pages.books.edit_book', compact('book', 'models'));
     }
 
     /**
@@ -178,7 +203,22 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return to_route('all-books')->with('success-edited-book', 'Uspješno ste izmijenili knjigu.');
+        $input = Validator::make($request->all(), [
+            'title' => 'required|min:2|max:255',
+            'page_count' => 'required|min:1|max:1000',
+            'ISBN' => 'required|min:13|max:13',
+            'quantity_count' => 'required|min:0',
+            'rented_count' => 'required|min:0',
+            'reserved_count' => 'required|min:0',
+            'body' => 'required|min:0|max:255',
+            'year' => 'required|min:0',
+        ])->safe()->all();
+
+        $book = Book::findOrFail($id);  
+
+        $book->update($input);
+
+        return back();
     }
 
     /**
