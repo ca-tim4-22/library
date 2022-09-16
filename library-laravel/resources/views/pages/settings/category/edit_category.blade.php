@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Izmijeni kategoriju | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -64,7 +64,7 @@
     </div>
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700" method="POST" enctype="multipart/form-data" action="{{route('update-category', $category->id)}}"> 
+        <form class="text-gray-700" method="POST" enctype="multipart/form-data" action="{{route('update-category', $category->id)}}">
             @csrf
             @method('PUT')
             <div class="flex flex-row ml-[30px]">
@@ -93,8 +93,8 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p class="inline-block">Opis</p>  
-                        
+                        <p class="inline-block">Opis</p>
+
                         <textarea name="description" id="description" rows="10"
                         class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">{{$category->description}}
                     </textarea>
@@ -105,7 +105,7 @@
             <div class="absolute bottom-0 w-full">
                 <div class="flex flex-row">
                     <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                        <button type="button"
+                        <button type="button" onclick="history.back()"
                             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                             Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>

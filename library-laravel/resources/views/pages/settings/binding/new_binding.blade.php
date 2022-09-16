@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Novi povez | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Space for content -->
         <div class="scroll height-content section-content">
             <form class="text-gray-700" method="POST" action="{{route('store-binding')}}">
@@ -67,7 +67,7 @@
                 <div class="absolute bottom-0 w-full">
                     <div class="flex flex-row">
                         <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                            <button type="button"
+                            <button type="button" onclick="history.back()"
                                 class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
@@ -82,5 +82,5 @@
         </div>
     </section>
     <!-- End Content -->
-    
+
 @endsection

@@ -19,12 +19,12 @@
                     Izdavanje knjiga
                 </h1>
             </div>
-           
+
              {{-- Books side --}}
              <x-books.book_side></x-books.book_side>
 
                         <div class="w-full mt-[10px] ml-2 px-2">
-                            
+
                             @if ($data != 'no-values')
 
                             @if ($data->whereDate('return_date', '<', date('Y-m-d'))->count())
@@ -268,12 +268,12 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="px-4 py-4"> </th>
+                                    <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
-                                
+
                                 @foreach ($data->whereDate('return_date', '<', date('Y-m-d'))->get() as $overdue_book)
-                                   
+
                                  <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
                                         <label class="inline-flex items-center">
@@ -300,13 +300,13 @@
                                             $date1 = new DateTime("now");
                                             $date2 = new DateTime($overdue_book->return_date);
                                             $interval = $date1->diff($date2);
-                                            
+
                                             if ($date1 > $date2) {
                                                 if ($interval->days == 1) {
                                                    echo "1 dan";
                                                 } elseif ($interval->days == 0) {
                                                     $interval = 1;
-                                                    echo $interval . ' dan'; 
+                                                    echo $interval . ' dan';
                                                 } else {
                                                     echo $interval->format('%a dana');
                                                 }
@@ -389,16 +389,16 @@
                                         </div>
                                     </td>
                                  </tr>
-                             
+
                                 @endforeach
-                                
+
                                 </tbody>
                             </table>
-                            
-                            @else 
+
+                            @else
 
                             <div class="mx-[50px]">
-                                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
                                     <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                                         <path fill="currentColor"
                                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
@@ -406,14 +406,14 @@
                                     </svg>
                                     <p class="font-medium text-white">Trenutno nema knjiga u prekoračenju! </p>
                                 </div>
-                            </div>  
+                            </div>
 
                             @endif
 
-                            @else 
+                            @else
 
                             <div class="mx-[50px]">
-                                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
                                     <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                                         <path fill="currentColor"
                                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
@@ -423,10 +423,10 @@
                                 </div>
 
                             @endif
-                            
-                            </div>  
 
-                   
+                            </div>
+
+
                 </div>
             </div>
         </section>

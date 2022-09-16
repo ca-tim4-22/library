@@ -4,7 +4,7 @@
 
 <!-- Title -->
 <title>Učenici | Online Biblioteka</title>
-    
+
 @endsection
 
 @section('content')
@@ -55,7 +55,7 @@
             <a href="{{route('new-student')}}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                 <i class="fas fa-plus mr-[15px]"></i> Novi učenik
             </a>
-            
+
             <div class="flex items-center">
 
                 <style>
@@ -65,7 +65,7 @@
                         cursor: pointer;
                     }
                 </style>
-                <form> 
+                <form>
                     Broj redova po strani:
                     <select id="pagination">
                         <option value="5" @if($items == 5) selected @endif >5</option>
@@ -90,16 +90,16 @@
                     </span>
                     <input id="myInput" type="search" name="q" class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900" placeholder="Traži..." autocomplete="off">
                 </div>
-            </div>            
+            </div>
         </div>
 
 
         <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
-        
+
             @if (count($students) <= 0)
 
             <div class="mx-[50px]">
-                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
                     <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                         <path fill="currentColor"
                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
@@ -107,8 +107,8 @@
                     </svg>
                     <p class="font-medium text-white">Trenutno nema registrovanih učenika! </p>
                 </div>
-            </div>  
-                
+            </div>
+
             @endif
 
 
@@ -134,7 +134,7 @@
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Zadnji pristup sistemu
                         </th>
-                        <th class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"> </td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">
@@ -148,7 +148,7 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                                                    
+
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"
                             alt="Profilna slika učenika: {{$student->name}}"
                             title="Profilna slika učenika: {{$student->name}}" />
@@ -183,6 +183,7 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmijeni svoj nalog" : 'Izmijeni učenika'}}</span>
                                         </a>
+<<<<<<< HEAD
                                       
                                       <button 
                                       data-id="{{ $student->id }}" 
@@ -201,6 +202,20 @@
                                       </span>
                                       </button> 
 
+=======
+                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-student', $student->username)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button
+                                                    style="outline: none;border: none;"
+                                                    type="submit"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                                <span class="px-4 py-0">{{Auth::id() == $student->id ? 'Izbriši svoj nalog' : 'Izbriši učenika'}}</span>
+                                            </button>
+                                        </form>
+>>>>>>> 470b2b88d2ef03c5b03b4841e84314fc83407a92
                                     </div>
                                 </div>
                             </div>
@@ -211,12 +226,12 @@
 
                 </tbody>
             </table>
-          
-            <script src="https://cdn.tailwindcss.com"></script> 
-            <div class="m-3">{!! $students->links() !!}</div> 
-                
+
+            <script src="https://cdn.tailwindcss.com"></script>
+            <div class="m-3">{!! $students->links() !!}</div>
+
             @endif
-           
+
             </div>
 
         </div>

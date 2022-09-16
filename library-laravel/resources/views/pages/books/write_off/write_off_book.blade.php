@@ -191,13 +191,13 @@
                         $date1 = new DateTime("now");
                         $date2 = new DateTime($rent->return_date);
                         $interval = $date1->diff($date2);
-                        
+
                         if ($date1 > $date2) {
                             if ($interval->days == 1) {
                                echo "1 dan";
                             } elseif ($interval->days == 0) {
                                 $interval = 1;
-                                echo $interval . ' dan'; 
+                                echo $interval . ' dan';
                             } else {
                                 echo $interval->format('%a dana');
                             }
@@ -209,9 +209,9 @@
                     </td>
                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$rent->librarian->name}}</td>
                   </tr>
-                      
+
                   @endforeach
-                  
+
                 </tbody>
             </table>
 
@@ -220,7 +220,7 @@
     <div class="absolute bottom-0 w-full">
         <div class="flex flex-row">
             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                <button type="button"
+                <button type="button" onclick="history.back()"
                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>

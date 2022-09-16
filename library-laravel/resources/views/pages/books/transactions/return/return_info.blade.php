@@ -57,7 +57,7 @@
             </div>
             <div class="pt-[24px] mr-[30px]">
                 <a href="{{route('write-off', $rent->book->id)}}" class="inline hover:text-blue-600">
-                    <i class="fas fa-level-up-alt mr-[3px]"></i> 
+                    <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
                 <a href="{{route('rent-book', $rent->book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
@@ -142,13 +142,13 @@
                                 $date1 = new DateTime("now");
                                 $date2 = new DateTime($rent->return_date);
                                 $interval = $date1->diff($date2);
-                                
+
                                 if ($date1 > $date2) {
                                     if ($interval->days == 1) {
                                        echo "1 dan";
                                     } elseif ($interval->days == 0) {
                                         $interval = 1;
-                                        echo $interval . ' dan'; 
+                                        echo $interval . ' dan';
                                     } else {
                                         echo $interval->format('%a dana');
                                     }
@@ -207,7 +207,7 @@ class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-scree
     </div>
     <!-- Modal Body -->
     <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button"
+        <button type="button" onclick="history.back()"
             class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
             Ponisti <i class="fas fa-times ml-[4px]"></i>
         </button>
@@ -230,7 +230,7 @@ class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-scree
     </div>
     <!-- Modal Body -->
     <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button"
+        <button type="button" onclick="history.back()"
             class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
             Ponisti <i class="fas fa-times ml-[4px]"></i>
         </button>
@@ -253,7 +253,7 @@ class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-scree
     </div>
     <!-- Modal Body -->
     <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button"
+        <button type="button" onclick="history.back()"
             class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
             Ponisti <i class="fas fa-times ml-[4px]"></i>
         </button>

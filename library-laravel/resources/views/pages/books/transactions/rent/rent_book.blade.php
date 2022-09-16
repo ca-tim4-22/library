@@ -133,28 +133,28 @@
                                     <p>Datum vraćanja</p>
                                     <label class="text-gray-700" for="date">
                                         <input type="text" name="return_date" id="datumVracanja"
-                                               class="flex w-[90%] mt-2 px-2 py-2 text-base text-gray-400 bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="{{$current_two}}" readonly="readonly" 
+                                               class="flex w-[90%] mt-2 px-2 py-2 text-base text-gray-400 bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" value="{{$current_two}}" readonly="readonly"
                                               />
                                     </label>
-                                    
+
                                     {{-- Script for return date --}}
                                     <script>
                                         function funkcijaDatumVracanja() {
                                         var selectedDate = new Date($('#datumIzdavanja').val());
                                         var numberOfDaysToAdd = {{$variable->value}};
-                                      
+
                                         selectedDate.setDate(selectedDate.getDate() + numberOfDaysToAdd);
-                                      
+
                                         var day = selectedDate.getDate();
                                         var month = selectedDate.getMonth() + 1;
                                         var year = selectedDate.getFullYear();
-                                      
+
                                         var newDate = [month, day, year].join('/');
-                                      
+
                                         document.getElementById('datumVracanja').value = newDate;
                                      }
                                     </script>
-                                    
+
                                     <div>
                                         <p>Rok vraćanja: <span class="color">{{$variable->value}} dana</span></p>
                                     </div>
@@ -175,7 +175,7 @@
                                     </div>
                                     <div class="text-center pb-[30px]">
                                         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}} 
+                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}}
                                             @php
                                             if ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 1 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 11 || $book->quantity_count - ($book->rented_count + $book->reserved_count) == 1) {
                                             echo "primjerak";
@@ -183,12 +183,12 @@
                                              echo "primjerka";
                                             } else {
                                             echo "primjeraka";
-                                            }  
-                                            @endphp   
+                                            }
+                                            @endphp
                                         </p>
                                         <a href="{{route('active-reservations')}}">
                                             <p class=" mt-[16px] bg-yellow-200 text-yellow-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->reserved_count >= 0 ? $book->reserved_count : "0"}} 
+                                            {{$book->reserved_count >= 0 ? $book->reserved_count : "0"}}
                                             @php
                                             if ($book->reserved_count % 10 == 1 || $book->reserved_count % 10 == 11 || $book->reserved_count == 1) {
                                             echo "primjerak";
@@ -196,13 +196,13 @@
                                             echo "primjerka";
                                             } else {
                                             echo "primjeraka";
-                                            }  
+                                            }
                                             @endphp
                                         </p>
                                         </a>
                                         <a href="{{route('rented-books')}}">
                                             <p class=" mt-[16px] bg-blue-200 text-blue-800 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->rented_count >= 0 ? $book->rented_count : "0"}} 
+                                            {{$book->rented_count >= 0 ? $book->rented_count : "0"}}
                                             @php
                                             if ($book->rented_count % 10 == 1 || $book->rented_count % 10 == 11) {
                                             echo "primjerak";
@@ -210,7 +210,7 @@
                                             echo "primjerka";
                                             } else {
                                             echo "primjeraka";
-                                            }  
+                                            }
                                             @endphp
                                         </a>
 
@@ -220,7 +220,7 @@
                                             </p>
                                         </a>
                                         <p class=" mt-[16px] border-[1px] border-green-700 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                    {{$book->quantity_count >= 0 ? $book->quantity_count : "0"}} 
+                                    {{$book->quantity_count >= 0 ? $book->quantity_count : "0"}}
                                     @php
                                     if ($book->quantity_count % 10 == 1 && $book->quantity_count != 11) {
                                     echo "primjerak";
@@ -228,8 +228,8 @@
                                     echo "primjerka";
                                     } else {
                                     echo "primjeraka";
-                                    }  
-                                    @endphp    
+                                    }
+                                    @endphp
                                             </p>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
                     <div class="absolute bottom-0 w-full">
                         <div class="flex flex-row">
                             <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                                <button type="reset"
+                                <button type="reset" onclick="history.back()"
                                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                     Poništi <i class="fas fa-times ml-[4px]"></i>
                                 </button>
@@ -258,5 +258,5 @@
         <!-- End Content -->
 
         <x-jquery.jquery></x-jquery.jquery>
-        
+
 @endsection
