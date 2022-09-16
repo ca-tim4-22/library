@@ -17,9 +17,16 @@ Route::get('/novi-bibliotekar', [LibrarianController::class, 'create'])->name('n
 Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('store-librarian');
 Route::get('/izmijeni-profil-bibliotekara/{user:username}', [LibrarianController::class, 'edit'])->name('edit-librarian');
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
+
+// Delete ownself
 Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
 
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain student through URI
+Route::get('/users/{id}', function ($id) {});
 Route::post('/users/{id}', [LibrarianController::class, 'destroy'])->name('users.destroy');
+});
 
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/crop/bibliotekar', [LibrarianController::class, 'crop'])->name('librarian.crop');

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Middleware\Maintenance;
+namespace App\Http\Middleware\Delete;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MaintenanceMiddleware
+class UserDeleteMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,10 +18,11 @@ class MaintenanceMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->type->name == 3) {
+        if (Auth::check() && Auth::user()->type->id == 3) {
             return $next($request);
+            return response()->view('success.success')->setStatusCode(200);
+        } else {
+            return response()->view('maintenance.access_denied')->setStatusCode(403);
         }
-        
-        return response()->view('maintenance.access_denied')->setStatusCode(403);
     }
 }

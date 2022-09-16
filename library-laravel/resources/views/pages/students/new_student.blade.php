@@ -49,8 +49,8 @@
                 <div class="flex flex-row ml-[30px]">
                     <div class="w-[50%] mb-[100px]">
                         <div class="mt-[20px]">
-                            <span>Ime i prezime <span class="text-red-500">*</span></span>
-                            <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()" placeholder="@error('name'){{$message}} @enderror" value="{{ old('name') }}"/>
+                            <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
+                            <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameUcenik()" value="{{ old('name') }}"/>
                             <div id="validateNameUcenik"></div>
                         </div>
 
@@ -67,7 +67,7 @@
                             <span>Pol <span class="text-red-500">*</span></span>
                             <select 
                             required
-                            oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                            oninvalid="this.setCustomValidity('Morate odabrati pol')" oninput="setCustomValidity('')"
                             class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
                                 <option value="">
                                     Odaberite
@@ -82,14 +82,23 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>JMBG <span class="text-red-500">*</span></span>
-                            <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()" placeholder="@error('JMBG'){{$message}} @enderror"  value="{{ old('JMBG') }}"/>
+                            <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
+                            <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()" value="{{ old('JMBG') }}"/>
                             <div id="validateJmbgUcenik"></div>
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>E-mail <span class="text-red-500">*</span></span>
-                            <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailUcenik()" placeholder="@error('email'){{$message}} @enderror"  value="{{ old('email') }}"/>
+                            
+                            <span>
+                                E-mail <span style="color: red">*</span>
+                                <span 
+                                style="cursor: help"
+                                data-tooltip-content="Školski email je email koji u sebi sadrži domen škole. Primjer: @ets-pg.edu.me" 
+                                class="text-red-500 with-tooltip">@error('email'){{$message}} <span style="font-size: 20px">!</span> @enderror
+                            </span>
+                            </span>
+
+                            <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailUcenik()" value="{{ old('email') }}"/>
                             <div id="validateEmailUcenik"></div>
                         </div>
 

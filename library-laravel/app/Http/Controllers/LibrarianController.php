@@ -98,12 +98,6 @@ class LibrarianController extends Controller
         if (!$move)  {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            // $user = auth()->user();
-            // $userPhoto = $user->photo;
-
-            // if ($userPhoto != '') {
-            //     unlink($dest.$userPhoto);
-            // }
             $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
 
             return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);

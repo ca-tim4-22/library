@@ -55,13 +55,13 @@ class ReserveBookController extends Controller
     public function store(Request $request, $id)
     {
         $input = $request->all();
-        $librarian = Auth::user();
+        $admin = Auth::user();
         $variable = GlobalVariable::findOrFail(1);
 
         $reservation = new Reservation();
         $reservation->book_id = $id;
         $reservation->reservationMadeFor_user_id = $request->input('reservationMadeFor_user_id');
-        $reservation->reservationMadeBy_user_id = $librarian->id;
+        $reservation->reservationMadeBy_user_id = $admin->id;
         $reservation->reservation_date = $request->input('reservation_date');
         $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);
         $reservation->save();

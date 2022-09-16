@@ -287,7 +287,8 @@
                         }
                     </script>
                 </div>
-                @if (Auth::user()->id == $librarian->id || Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+
+                @if (Auth::id() == $librarian->id)
                 <div class="mt-[50px] ml-[30px]">
                     <label class="mt-6 cursor-pointer">
                         <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
@@ -412,6 +413,5 @@ style="z-index: 11"
           }
        });
 </script>
-    
 
 @endsection

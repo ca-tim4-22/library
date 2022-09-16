@@ -189,9 +189,9 @@ class StudentController extends Controller
     {
         $student = User::findOrFail($id);
         if ($student->gender->id == 1) {
-            $word = 'bibliotekara';
+            $word = 'učenika';
         } else {
-            $word = 'bibliotekarku';
+            $word = 'učenicu';
         }
 
         if (Auth::user()->id == $student->id) {
@@ -204,4 +204,23 @@ class StudentController extends Controller
         
         return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
     }
+    // public function destroy(Request $request, $id)
+    // {
+    //     $student = User::findOrFail($id);
+    //     if ($student->gender->id == 1) {
+    //         $word = 'bibliotekara';
+    //     } else {
+    //         $word = 'bibliotekarku';
+    //     }
+
+    //     if (Auth::user()->id == $student->id) {
+    //         $student->delete();
+
+    //         return to_route('good-bye');
+    //     }
+        
+    //     $student->delete();
+        
+    //     return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
+    // }
 }

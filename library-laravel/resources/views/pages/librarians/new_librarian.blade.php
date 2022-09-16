@@ -50,7 +50,8 @@
                 <div class="w-[50%] mb-[100px]">
                 <div class="mt-[20px]">
                         <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
-                        <input type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{old('name')}}"/>
+                        <input 
+                        type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{old('name')}}"/>
                         <div id="validateNameBibliotekar"></div>
                     </div>
 
@@ -67,7 +68,7 @@
                         <span>Pol <span class="text-red-500">*</span></span>
                         <select
                         required
-                        oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                        oninvalid="this.setCustomValidity('Morate odabrati pol')" oninput="setCustomValidity('')"
                         style="cursor: pointer" class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
                             <option value="">
                             Odaberite

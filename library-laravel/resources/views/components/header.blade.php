@@ -98,8 +98,6 @@
 
                                 <img 
                                 class="rounded-full" 
-                                alt="Profilna slika {{Auth::user()->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
-                                title="Profilna slika {{Auth::user()->gender->id == 1 ? 'bibliotekara.' : 'bibliotekarke'}}"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . Auth::user()->photo}}" 
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
@@ -108,8 +106,6 @@
                                 
                                 <img 
                                 class="rounded-full" 
-                                alt="Profilna slika bibliotekara"
-                                title="Profilna slika bibliotekara"
                                 src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
@@ -130,11 +126,14 @@
                             <a href="{{route('show-librarian', Auth::user()->username)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
-                            @else
+                            @elseif (Auth::user()->type->name == 'librarian')
                             <a href="{{route('show-student', Auth::user()->username)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
-                    
+                            @else 
+                            <a href="{{route('show-admin', Auth::user()->username)}}" tabindex="0"
+                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                role="menuitem">
                             @endif
                                 <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profil</span>

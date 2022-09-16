@@ -12,6 +12,8 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 {{-- Preloader --}}
 <div id="loader"></div>
 
@@ -181,18 +183,24 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">{{Auth::id() == $student->id ? "Izmijeni svoj nalog" : 'Izmijeni učenika'}}</span>
                                         </a>
-                                        <form onsubmit="return confirm('Da li ste sigurni?');" action="{{route('destroy-student', $student->username)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button 
-                                                    style="outline: none;border: none;"
-                                                    type="submit"
-                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                    role="menuitem">
-                                                <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                                <span class="px-4 py-0">{{Auth::id() == $student->id ? 'Izbriši svoj nalog' : 'Izbriši učenika'}}</span>
-                                            </button>
-                                        </form>
+                                      
+                                      <button 
+                                      data-id="{{ $student->id }}" 
+                                      data-action="{{ route('students.destroy', $student->id) }}" onclick="deleteConfirmation({{$student->id}})"
+                                      style="outline: none;border: none;"
+                                      class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
+                                      <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                      <span class="px-4 py-0">
+                                      @if (Auth::id() == $student->id)
+                                      Izbriši svoj nalog 
+                                      @elseif ($student->gender->id == 1)
+                                      Izbriši učenika
+                                      @else 
+                                      Izbriši učenicu
+                                      @endif
+                                      </span>
+                                      </button> 
+
                                     </div>
                                 </div>
                             </div>
@@ -217,6 +225,59 @@
 </section>
 <!-- End Content -->
 
-</div>
+
+<style>
+    .swal2-popup .swal2-styled:focus {
+     box-shadow: none !important;
+  }
+   </style>
+  
+  <script type="text/javascript">
+     function deleteConfirmation(id) {
+         swal({
+             title: "Izbriši?",
+             text: "Da li ste sigurni da želite da izbrišete učenika?",
+             type: "warning",
+             showCancelButton: !0,
+             timer: '5000',
+             animation: true,
+             allowEscapeKey: true,
+             allowOutsideClick: false,
+             confirmButtonText: "Da, siguran sam!",
+             cancelButtonText: "Ne, odustani",
+             reverseButtons: !0,
+             confirmButtonColor: '#14de5e',
+             cancelButtonColor: '#f73302',
+         }).then(function (e) {
+             if (e.value === true) {
+                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                 swal(
+                     'Uspješno!',
+                     'Učenik je uspješno izbrisan.',
+                     'success'
+                     ).then(function() {
+                      window.location.href = "/ucenici";
+                     });
+                 $.ajax({
+                     type: 'POST',
+                     url: "{{url('/students')}}/" + id,
+                     data: {_token: CSRF_TOKEN},
+                     dataType: 'JSON',
+                     success: function (results) {
+                     }
+                 });
+             } else {
+                 e.dismiss;
+             }
+         }, function (dismiss) {
+             return false;
+         })
+     }
+     $(document).ajaxStop(function(){
+  // window.location.reload();
+  // window.location.href = "/bibliotekari";
+  });
+  
+  </script>
 
 @endsection

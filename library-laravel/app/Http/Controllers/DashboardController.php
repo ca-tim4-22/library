@@ -86,7 +86,7 @@ class DashboardController extends Controller
     public function index_activity(Request $request) 
     {
         $books = Book::all();
-        $librarians = User::latest('id')->where('user_type_id', 2)->get();
+        $admins = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
         $error = 'false';
@@ -103,9 +103,9 @@ class DashboardController extends Controller
                         if($data->count() <= 0) {
                         $error = 'true';
                         } 
-                    } elseif ($request->id_librarian) {
-                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_librarian)->get();
-                        $selected = $request->id_librarian;
+                    } elseif ($request->id_admin) {
+                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_admin)->get();
+                        $selected = $request->id_admin;
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
@@ -137,7 +137,7 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data', 'selected', 'from', 'to', 'error'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'admins', 'students', 'data', 'selected', 'from', 'to', 'error'));
     }
 
     /**
