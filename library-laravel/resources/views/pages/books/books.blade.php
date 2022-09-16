@@ -96,7 +96,7 @@
                                 <!-- Autor + dropdown filter for autor -->
                                 <td style="cursor: pointer;font-weight: bold;" id="autoriMenu"
                                     class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer ">
-                                    Autor<i class="ml-2 fas fa-filter"></i>
+                                    Autor/i<i class="ml-2 fas fa-filter"></i>
 
                                     <div id="autoriDropdown"
                                         class="autoriMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
@@ -224,7 +224,9 @@
                                 </td>
 
                                 <!-- Kategorija + dropdown filter for kategorija -->
-                                <td style="cursor: pointer;font-weight: bold;" id="kategorijeMenu" class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">Kategorija<i
+                                <td style="cursor: pointer;font-weight: bold;" id="kategorijeMenu" class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    Kategorija/e
+                                    <i
                                         class="ml-2 fas fa-filter"></i>
                                     <div id="kategorijeDropdown"
                                         class="kategorijeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
@@ -391,12 +393,14 @@
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                                     @foreach ($book->authors as $author)
+                                    {{$loop->first ? '' : '|'}}
                                     {{$author->author->NameSurname}}
                                     @endforeach
                                     </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                                    @foreach ($book->categories as $item)
-                                    {{$item->category->name}}
+                                    @foreach ($book->categories as $category)
+                                    {{$loop->first ? '' : '|'}}
+                                    {{$category->category->name}} 
                                     @endforeach
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
