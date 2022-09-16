@@ -205,6 +205,6 @@ class LibrarianController extends Controller
     public function deleteMultiple(Request $request)
     {
         $ids = $request->ids;
-        User::whereIn('id',explode(",",$ids))->delete();
+        User::whereIn('id', explode(",", $ids))->delete();
     }
 }

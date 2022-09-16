@@ -20,6 +20,11 @@ Route::put('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'update']
 // Delete ownself
 Route::delete('/izbrisi-ucenika/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
 
+// For multiple student delete
+Route::delete('izbrisi-sve', [StudentController::class, 'deleteMultiple'])->name('delete-all');
+
+
+
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain student through URI

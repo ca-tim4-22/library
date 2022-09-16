@@ -142,7 +142,7 @@
             </svg>
 
             <style>
-                .button {
+  .button {
   --background: #3F51B5;
   --text: #fff;
   --icon: #fff;
@@ -343,12 +343,11 @@
 );
 </script>
             
-            <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
+            <table id="sort" class="shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             <label class="inline-flex items-center">
-                                {{-- <input type="checkbox" class="form-checkbox"> --}}
                                 <input type="checkbox" id="check_all">
                             </label>
                         </td>

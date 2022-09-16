@@ -18,8 +18,15 @@ Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('s
 Route::get('/izmijeni-profil-bibliotekara/{user:username}', [LibrarianController::class, 'edit'])->name('edit-librarian');
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
 
+
 // Delete ownself
 Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destroy'])->name('destroy-librarian');
+
+// For multiple librarian delete
+Route::delete('izbrisi-sve', [LibrarianController::class, 'deleteMultiple'])->name('delete-all');
+
+
+
 
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
@@ -30,8 +37,6 @@ Route::post('/users/{id}', [LibrarianController::class, 'destroy'])->name('users
 
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/crop/bibliotekar', [LibrarianController::class, 'crop'])->name('librarian.crop');
-
-Route::delete('delete-multiple-category', [LibrarianController::class, 'deleteMultiple'])->name('delete-all');
 
 
 });

@@ -33,8 +33,9 @@ class StudentController extends Controller
             $items = $variable->value;
         }
         $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
+        $show_all = User::latest('id')->where('user_type_id', 2)->count();
 
-        return view('pages.students.students', compact('students', 'items', 'variable'));
+        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all'));
     }
 
     /**
@@ -204,23 +205,10 @@ class StudentController extends Controller
         
         return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
     }
-    // public function destroy(Request $request, $id)
-    // {
-    //     $student = User::findOrFail($id);
-    //     if ($student->gender->id == 1) {
-    //         $word = 'bibliotekara';
-    //     } else {
-    //         $word = 'bibliotekarku';
-    //     }
 
-    //     if (Auth::user()->id == $student->id) {
-    //         $student->delete();
-
-    //         return to_route('good-bye');
-    //     }
-        
-    //     $student->delete();
-        
-    //     return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
-    // }
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        User::whereIn('id', explode(",", $ids))->delete();
+    }
 }
