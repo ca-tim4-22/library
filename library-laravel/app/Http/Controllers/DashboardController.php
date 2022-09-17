@@ -30,6 +30,16 @@ class DashboardController extends Controller
         $reserved_books = ReservationStatuses::where('status_reservations_id', 1)->count();
         $reserved_real = $reserved_books;
 
+
+        if ($rented_books <= 0) {
+            $width = 0;
+        } else {
+            $width = 300;
+        }
+
+        $prefix_yellow = null;
+        $prefix_green = null;
+
         // Conditions for analytics - fit width
         if ($rented_books >= 300) {
             $rented_books = 320;
@@ -105,7 +115,8 @@ class DashboardController extends Controller
         'reserved_real',
         'overdue_real',
         'prefix_yellow',
-        'prefix_green'
+        'prefix_green',
+        'width',
     ));
     }
 

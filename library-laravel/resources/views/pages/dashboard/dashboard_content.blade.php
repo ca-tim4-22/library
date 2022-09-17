@@ -360,7 +360,7 @@ from {
 width: 0%;
 }
 to {
-width: 300px;
+width: {{$width}}px;
 }
 }
 

@@ -82,6 +82,10 @@ class ArchiveBookController extends Controller
         $reservation->reservations()->where('reservation_id', $id)->update([
             'status_reservations_id' => 4,
         ]);
+        
+        $save = $reservation->book->update([
+            'reserved_count' => $reservation->book->reserved_count - 1,
+        ]);
 
         return back()->with('archive-reservation', 'Uspješno ste arhivirali rezervaciju ID-' . $reservation->id);
     }

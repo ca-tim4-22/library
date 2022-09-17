@@ -406,7 +406,6 @@
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('active-reservations')}}">{{$book->reserved_count}}</td>
-                                        
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('rented-books')}}">{{$book->rented_count}}</td>
 
