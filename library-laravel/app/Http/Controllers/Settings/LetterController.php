@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\LetterRequest;
 use App\Models\Letter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -40,7 +41,7 @@ class LetterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LetterRequest $request)
     {
         $input = $request->all();
         $letter = $request->name;
