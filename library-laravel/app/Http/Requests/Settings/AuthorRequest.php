@@ -28,10 +28,10 @@ class AuthorRequest extends FormRequest
             'NameSurname' => [
                 'required',
                 'min:2',
-                'max:255',
+                'max:500',
                 new NoDigitsRule(),
             ],
-            'biography' => 'required|max:350',
+            'biography' => 'required|max:500',
         ];
     }
 }

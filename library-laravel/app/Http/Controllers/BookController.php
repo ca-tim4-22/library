@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BookCreateRequest;
 use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\BookCategory;
@@ -137,9 +136,9 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(Book $book)
     {
-        $book = Book::findOrFail($id);
+        $book = $book;
         $books = Book::all();
 
         if (Rent::count() > 0) {

@@ -27,12 +27,11 @@ Route::delete('izbrisi-sve', [LibrarianController::class, 'deleteMultiple'])->na
 
 
 
-
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain student through URI
-Route::get('/users/{id}', function ($id) {});
-Route::post('/users/{id}', [LibrarianController::class, 'destroy'])->name('users.destroy');
+Route::get('/librarians/{id}', function ($id) {});
+Route::post('/librarians/{id}', [LibrarianController::class, 'destroy'])->name('librarians.destroy');
 });
 
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');

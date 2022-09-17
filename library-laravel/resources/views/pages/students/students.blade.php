@@ -447,7 +447,7 @@
                                         </a>
                                             <button 
                                             data-id="{{ $student->id }}" 
-                                            data-action="{{ route('users.destroy', $student->id) }}" onclick="deleteConfirmation({{$student->id}})"
+                                            data-action="{{ route('students.destroy', $student->id) }}" onclick="deleteConfirmation({{$student->id}})"
                                             style="outline: none;border: none;"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
@@ -521,7 +521,7 @@
                    });
                $.ajax({
                    type: 'POST',
-                   url: "{{url('/users')}}/" + id,
+                   url: "{{url('/students')}}/" + id,
                    data: {_token: CSRF_TOKEN},
                    dataType: 'JSON',
                    success: function (results) {

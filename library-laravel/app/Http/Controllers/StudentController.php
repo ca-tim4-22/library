@@ -201,6 +201,11 @@ class StudentController extends Controller
             return to_route('good-bye');
         }
         
+        if ($student->photo != 'placeholder') {
+            $path = '\\storage\\students\\' . $student->photo;
+            unlink(public_path() . $path);
+        }
+
         $student->delete();
         
         return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");

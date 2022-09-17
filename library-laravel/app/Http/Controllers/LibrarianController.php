@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\GlobalVariable;
-use App\Models\Rent;
 use App\Models\User;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
@@ -157,13 +156,14 @@ class LibrarianController extends Controller
             $word = 'bibliotekarke';
         }
 
-        // $photo_old = $request->photo;
+        $photo_old = $request->photo;
     
-        // if ($file = $request->file('photo')) {
-        //     $name = time() . $file->getClientOriginalName();
-        //     $file->move('storage/librarians', $name);
-        //     $input['photo'] = $name; 
-        // } 
+        if ($file = $request->file('photo')) {
+            // $name = time() . $file->getClientOriginalName();
+            $name = $file->getClientOriginalName();
+            $file->move('storage/librarians', $name);
+            $input['photo'] = $name; 
+        } 
 
         if ($request->password) {
             $input['password'] = bcrypt($request->password);
@@ -196,7 +196,12 @@ class LibrarianController extends Controller
 
             return to_route('good-bye');
         }
-        
+
+        if ($librarian->photo != 'placeholder') {
+            $path = '\\storage\\librarians\\' . $librarian->photo;
+            unlink(public_path() . $path);
+        }
+
         $librarian->delete();
         
         return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\"");
