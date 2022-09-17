@@ -233,7 +233,30 @@ if($(".holder:hidden").length == 0){
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('rented-books')}}">
                                 Izdate knjige
                             </a>
-                            <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 stats-bar-green h-[26px]">
+                            <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 
+                            {{-- @if ($rented_books > $overdue_books && $rented_books > $reserved_books)
+                            stats-bar-red
+                            @elseif ($rented_books > $overdue_books && $rented_books < $reserved_books || $rented_books < $overdue_books && $rented_books > $reserved_books)
+                            stats-bar-green
+                            @elseif ($rented_books == $reserved_books || $rented_books == $overdue_books || $rented_books == $reserved_books && $rented_books == $reserved_books)
+                            stats-bar-yellow
+                            @else
+                            stats-bar-green
+                            @endif --}}
+                            @if($rented_books > $reserved_books && $rented_books > $overdue_books)
+                            stats-bar-red
+                            @elseif($rented_books < $reserved_books)
+                            stats-bar-green
+                            @elseif($rented_books > $reserved_books && $rented_books < $overdue_books)
+                            stats-bar-green
+                            @elseif($rented_books == $reserved_books && $rented_books > $overdue_books)
+                            stats-bar-red
+                            @elseif($rented_books < $overdue_books && $rented_books == $reserved_books)
+                            stats-bar-yellow
+                            @elseif($rented_books == $overdue_books)
+                            stats-bar-red
+                            @endif
+                            h-[26px]">
                             
                             </div>
                             <p  
@@ -247,7 +270,38 @@ if($(".holder:hidden").length == 0){
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('active-reservations')}}">
                                 Rezervisane knjige
                             </a>
-                            <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900 stats-bar-yellow  h-[26px]">
+                            <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900
+                            {{-- @if ($reserved_books > $overdue_books && $reserved_books > $rented_books)
+                            stats-bar-red
+                            @elseif ($reserved_books < $overdue_books && $reserved_books < $rented_books && $rented_books != $overdue_books)
+                            stats-bar-green
+                            @elseif ($reserved_books < $overdue_books && $reserved_books < $rented_books)
+                            stats-bar-green
+                            @elseif ($reserved_books == $rented_books || $reserved_books == $overdue_books || $reserved_books == $rented_books && $reserved_books == $rented_books)
+                            stats-bar-yellow
+                            @else
+                            stats-bar-yellow
+                            @endif --}}
+                            @if($reserved_books > $rented_books && $reserved_books > $overdue_books || $reserved_books > $overdue_books && $reserved_books == $rented_books)
+                            stats-bar-red
+                            @elseif($overdue_books == $rented_books)
+                            stats-bar-green
+                            @elseif($reserved_books < $rented_books && $reserved_books < $overdue_books && $rented_books < $overdue_books)
+                            stats-bar-yellow
+                            @elseif($reserved_books < $rented_books && $reserved_books < $overdue_books && $rented_books > $overdue_books)
+                            stats-bar-green
+                            @elseif($reserved_books < $rented_books && $reserved_books < $overdue_books)
+                            stats-bar-green
+                            @elseif($reserved_books < $rented_books && $reserved_books > $overdue_books)
+                            stats-bar-yellow
+                            @elseif($reserved_books < $rented_books && $reserved_books < $overdue_books)
+                            stats-bar-green
+                            @elseif($reserved_books < $rented_books || $reserved_books < $overdue_books)
+                            stats-bar-yellow
+                            @elseif($reserved_books == $rented_books || $reserved_books == $overdue_books)
+                            stats-bar-red
+                            @endif
+                            h-[26px]">
                             
                             </div>
                             <p
@@ -262,7 +316,42 @@ if($(".holder:hidden").length == 0){
                                 Knjige u prekoračenju
                             </a>
 
-                <div class="ml-[30px] bg-red-600 transition duration-200 ease-in hover:bg-red-900 stats-bar-red h-[26px]">
+                <div class="ml-[30px] bg-red-600 transition duration-200 ease-in hover:bg-red-900 
+                {{-- @if ($overdue_books > $rented_books && $overdue_books > $reserved_books)
+                stats-bar-red
+                @elseif ($overdue_books > $rented_books && $overdue_books < $reserved_books)
+                stats-bar-yellow
+                @elseif ($overdue_books == $reserved_books || $overdue_books == $rented_books || $overdue_books == $reserved_books && $overdue_books == $reserved_books)
+                stats-bar-yellow
+                @elseif ($overdue_books < $rented_books && $overdue_books > $reserved_books)
+                stats-bar-yellow
+                @elseif ($overdue_books < $rented_books && $overdue_books < $reserved_books && $rented_books != $overdue_books)
+                stats-bar-yellow
+                @else
+                stats-bar-green
+                @endif --}}
+                @if($overdue_books > $rented_books && $overdue_books > $reserved_books)
+                stats-bar-red
+                @elseif($overdue_books == $reserved_books && $overdue_books == $rented_books)
+                stats-bar-red
+                @elseif($overdue_books > $reserved_books && $overdue_books < $rented_books)
+                stats-bar-yellow
+                @elseif($overdue_books != $rented_books && $overdue_books == $reserved_books)
+                stats-bar-green
+                @elseif($overdue_books == $rented_books && $overdue_books != $reserved_books)
+                stats-bar-yellow
+                @elseif($overdue_books == $reserved_books || $overdue_books == $rented_books)
+                stats-bar-red
+                @elseif($rented_books < $reserved_books && $overdue_books < $rented_books && $overdue_books < $reserved_books)
+                stats-bar-yellow
+                @elseif($rented_books < $reserved_books && $rented_books < $overdue_books && $rented_books != $overdue_books)
+                stats-bar-yellow
+                @elseif($rented_books > $reserved_books && $rented_books > $overdue_books || $rented_books == $reserved_books || $rented_books != $reserved_books && $rented_books < $reserved_books)
+                stats-bar-green
+                @elseif($rented_books > $reserved_books && $rented_books > $overdue_books || $rented_books == $reserved_books || $rented_books != $reserved_books && $rented_books > $reserved_books)
+                stats-bar-yellow
+                @endif
+                h-[26px]">
                 </div>
 
 <style>
@@ -271,7 +360,7 @@ from {
 width: 0%;
 }
 to {
-width: {{$overdue_books}}px;
+width: 300px;
 }
 }
 
@@ -279,8 +368,9 @@ width: {{$overdue_books}}px;
 from {
 width: 0%;
 }
+
 to {
-width: {{$rented_books}}px;
+width: {{$prefix_green}}px;
 }
 }
 
@@ -289,7 +379,7 @@ from {
 width: 0%;
 }
 to {
-  width: {{$reserved_books}}px;
+  width: {{$prefix_yellow}}px;
 }
 }
 </style>
@@ -305,27 +395,8 @@ to {
                     <div class="absolute h-[220px] w-[1px] bg-black top-[78px] left-[174px]">
                     </div>
                     <div class="absolute flex conte left-[175px] border-t-[1px] border-[#e4dfdf] top-[248px] pr-[87px]">
-                        <p class="">
-                        0
-                        </p>
-                        <p class="ml-[30px]">
-                        50
-                        </p>
-                        <p class="ml-[30px]">
-                        100
-                        </p>
-                        <p class="ml-[30px]">
-                        150
-                        </p>
-                        <p class="ml-[30px]">
-                        200
-                        </p>
-                        <p class="ml-[30px]">
-                        250
-                        </p>
-                        </p>
-                        <p class="ml-[30px]">
-                        300
+                 
+                 
                     </div>
                 </div>
             </div>

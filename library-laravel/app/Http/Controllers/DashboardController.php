@@ -48,6 +48,30 @@ class DashboardController extends Controller
             }
             $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
             $overdue_real = $overdue_books;
+            
+            if ($overdue_books > $rented_books && $overdue_books > $reserved_books) {
+                $max = 300 / $overdue_books;
+                $prefix_yellow = $max * $reserved_books;
+                $prefix_green = $max * $rented_books;
+            } elseif ($reserved_books > $overdue_books && $reserved_books > $rented_books) {
+                $max = 300 / $reserved_books;
+                $prefix_yellow = $max * $overdue_books;
+                $prefix_green = $max * $rented_books;
+            } elseif ($rented_books < $reserved_books && $rented_books < $overdue_books && $reserved_books == $overdue_books) {
+                $max = 300 / $overdue_books;
+                $prefix_yellow = $max * $reserved_books;
+                $prefix_green = $max * $rented_books;
+            } else {
+                $max = 300 / $rented_books;
+                if ($reserved_books > $overdue_books) {
+                    $prefix_yellow = $max * $reserved_books;
+                    $prefix_green = $max * $overdue_books;
+                } else {
+                    $prefix_yellow = $max * $overdue_books;
+                    $prefix_green = $max * $reserved_books;
+                }
+            }
+
         } else {
             $overdue_books = 0;
             $overdue_real = 0;
@@ -80,6 +104,8 @@ class DashboardController extends Controller
         'rented_real',
         'reserved_real',
         'overdue_real',
+        'prefix_yellow',
+        'prefix_green'
     ));
     }
 
@@ -87,6 +113,7 @@ class DashboardController extends Controller
     {
         $books = Book::all();
         $admins = User::latest('id')->where('user_type_id', 2)->get();
+        $librarians = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
         $error = 'false';
@@ -137,7 +164,7 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'admins', 'students', 'data', 'selected', 'from', 'to', 'error'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'admins', 'students', 'data', 'selected', 'from', 'to', 'error', 'librarians'));
     }
 
     /**

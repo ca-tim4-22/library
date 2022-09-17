@@ -178,7 +178,7 @@
 
                 @error('value')
                 <div>
-                    <p style="margin-left: 2%;margin-top: 1%" class="text-sm text-red-500">{{ $message }}</p>
+                    <p style="margin-left: 1%;margin-top: 1%" class="text-sm text-red-500">{{ $message }}</p>
                 </div>
                 @enderror
 
