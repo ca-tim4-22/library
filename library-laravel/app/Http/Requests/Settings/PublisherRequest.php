@@ -6,7 +6,7 @@ use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthorRequest extends FormRequest
+class PublisherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,17 +26,11 @@ class AuthorRequest extends FormRequest
     public function rules()
     {
         return [
-            'NameSurname' => [
+            'name' => [
                 'required',
-                'min:2',
-                'max:50',
+                'max:500',
                 new NoDigitsRule(),
                 new MinimumLengthRule(),
-            ],
-            'biography' => [
-                'required',
-                new MinimumLengthRule(),
-                'max:500',
             ],
         ];
     }
