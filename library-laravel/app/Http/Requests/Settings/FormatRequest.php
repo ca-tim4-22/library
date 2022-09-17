@@ -7,7 +7,7 @@ use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BindingRequest extends FormRequest
+class FormatRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
