@@ -50,7 +50,7 @@ class BookController extends Controller
         $models = [
             'categories'=> DB::table('categories')->get(),
             'genres' => DB::table('genres')->get(),
-            'authors' => DB::table('authors')->get(),
+            'authors' => DB::table('authors')->latest()->get(),
             'publishers' => DB::table('publishers')->get(),
             'bindings' => DB::table('bindings')->get(),
             'formats' => DB::table('formats')->get(),
@@ -214,6 +214,67 @@ class BookController extends Controller
         ])->safe()->all();
 
         $book = Book::findOrFail($id);  
+
+        // Categories update
+        if ($request->category_id) {
+        $category = $request->input('category_id');
+        $category = str_replace(['[', ']'], null, $category);
+        $categoryIds= explode( ',', $category);
+    
+        $count = BookCategory::where('category_id', $request->category_id)->count();
+        if ($count >= 1) {
+            BookCategory::where('category_id', $request->category_id)->delete();
+        } else {
+            foreach($categoryIds as $id) {
+                BookCategory::create
+                ([
+                    'book_id' => $book->id,
+                    'category_id' => $id,
+                ]);
+        };}}
+
+        // Genres update
+        if ($request->genre_id) {
+        $genre = $request->input('genre_id');
+        $genre = str_replace(['[', ']'], null, $genre);
+        $genreIds= explode( ',', $genre);
+
+        $count = BookGenre::where('genre_id', $request->genre_id)->count();
+        if ($count >= 1) {
+            BookGenre::where('genre_id', $request->genre_id)->delete();
+        } else {
+            foreach($genreIds as $id) {
+                BookGenre::create
+                ([
+                    'book_id' => $book->id,
+                    'genre_id' => $id,
+                ]);
+        };}}
+
+        // Authors update
+        if ($request->author_id) {
+        $category = $request->input('author_id');
+        $category = str_replace(['[', ']'], null, $category);
+        $categoryIds= explode( ',', $category);
+        
+        $count = BookAuthor::where('author_id', $request->author_id)->count();
+        if ($count >= 1) {
+            BookAuthor::where('author_id', $request->author_id)->delete();
+            foreach($categoryIds as $id) {
+                BookAuthor::create
+                ([
+                    'book_id' => $book->id,
+                    'author_id' => $id,
+                ]);}
+
+        } else {
+            foreach($categoryIds as $id) {
+                BookAuthor::create
+                ([
+                    'book_id' => $book->id,
+                    'author_id' => $id,
+                ]);
+        };}}
 
         $book->update($input);
 

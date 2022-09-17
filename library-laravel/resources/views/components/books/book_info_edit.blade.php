@@ -27,18 +27,24 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p>Izaberite kategorije <span class="text-red-500">*</span></p>
+                            <p>Izaberite kategorije <span class="text-red-500">*</span>
+                            @if ($book->categories->count() > 1)
+                            <b>Trenutne kategorije</b>:
+                            @elseif ($book->categories->count() == 1)
+                            <b>Trenutna kategorija</b>:
+                            @endif
+                            @foreach ($book->categories as $category)
+                            {{$loop->first ? '' : '|'}}
+                            <span style="color: #4558BE;font-weight: bold"> {{$category->category->name}} </span>
+                            @endforeach
+                            </p>
                             <select x-cloak id="kategorija" name="category_id">
-
-                                <option selected="selected" value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
                            
-                            {{-- @foreach ($models['categories'] as $category)
+                            @foreach ($models['categories'] as $category)
                             
                               <option value="{{$category->id}}">{{$category->name}}</option> 
 
-                            @endforeach --}}
+                            @endforeach
 
                             </select>
 
@@ -79,9 +85,6 @@
                                                         x-bind:value="selectedValues()">
                                                 </div>
                                             </div>
-
-
-
 
                                             <div
                                                 class="flex items-center w-8 py-1 pl-2 pr-1 text-gray-300 svelte-1l8159u">
@@ -144,7 +147,17 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Izaberite žanrove <span class="text-red-500">*</span></p>
+                        <p>Izaberite žanrove <span class="text-red-500">*</span>
+                            @if ($book->genres->count() > 1)
+                            Trenutni žanrovi:
+                            @else
+                            Trenutni žanr:
+                            @endif
+                            @foreach ($book->genres as $genre)
+                            {{$loop->first ? '' : '|'}}
+                            {{$genre->genre->name}}
+                            @endforeach
+                        </p>
                         <select x-cloak id="zanr" name="genre_id">
 
                             @foreach ($models['genres'] as $genre)
@@ -156,7 +169,7 @@
                         </select>
 
                         <div x-data="dropdown()" x-init="loadOptionsZanrovi()" class="flex flex-col w-[90%]">
-                            <input name="genre_id   " id="zanroviInput" type="hidden" x-bind:value="selectedValues()">
+                            <input name="genre_id" id="zanroviInput" type="hidden" x-bind:value="selectedValues()">
                             <div class="relative inline-block w-[100%]">
                                 <div class="relative flex flex-col items-center">
                                     <div x-on:click="open" class="w-full svelte-1l8159u">
@@ -244,7 +257,17 @@
 
         <div class="w-[50%]">
             <div class="mt-[20px]">
-                <p>Izaberite autore <span class="text-red-500">*</span></p>
+                <p>Izaberite autore <span class="text-red-500">*</span>
+                @if ($book->authors->count() > 1)
+                <b>Trenutni</b> autori:
+                @elseif ($book->authors->count() == 1)
+                <b>Trenutni autor</b>:
+                @endif
+                @foreach ($book->authors as $author)
+                {{$loop->first ? '' : '|'}}
+                <span style="color: #4558BE;font-weight: bold"> {{$author->author->NameSurname}} </span>
+                @endforeach
+                </p>
                 <select x-cloak id="autori" name="author_id">
 
                     @foreach ($models['authors'] as $author)

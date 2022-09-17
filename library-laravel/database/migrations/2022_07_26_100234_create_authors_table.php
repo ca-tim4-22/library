@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('NameSurname', 128);
             $table->string('biography', 4128);
+            $table->timestamps();
         });
     }
 

@@ -1628,7 +1628,6 @@ $(function () {
         }
       },
       loadOptionsEdit() {
-        const options = document.getElementById('kategorijaEdit').options;
         for (let i = 0; i < options.length; i++) {
           this.options.push({
             value: options[i].value,
