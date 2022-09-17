@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Settings;
 
+use App\Rules\Settings\AtSignRule;
 use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -28,15 +29,17 @@ class AuthorRequest extends FormRequest
         return [
             'NameSurname' => [
                 'required',
-                'min:2',
+                new MinimumLengthRule(),
                 'max:50',
                 new NoDigitsRule(),
                 new MinimumLengthRule(),
+                new AtSignRule(),
             ],
             'biography' => [
                 'required',
                 new MinimumLengthRule(),
                 'max:500',
+                new AtSignRule(),
             ],
         ];
     }

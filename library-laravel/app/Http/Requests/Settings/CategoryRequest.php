@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Settings;
 
+use App\Rules\Settings\AtSignRule;
+use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -27,10 +29,17 @@ class CategoryRequest extends FormRequest
         return [
                 'name' => [
                     'required',
+                    new MinimumLengthRule(),
                     'max:50',
                     new NoDigitsRule(),
+                    new AtSignRule(),
                 ],
-                'description' => 'required|max:500',
+                'description' => [
+                    'required',
+                    new MinimumLengthRule(),
+                    'max:255',
+                    new AtSignRule(),
+                ],
         ];
     }
 }

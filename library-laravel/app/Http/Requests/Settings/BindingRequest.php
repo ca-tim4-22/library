@@ -2,11 +2,12 @@
 
 namespace App\Http\Requests\Settings;
 
+use App\Rules\Settings\AtSignRule;
 use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PublisherRequest extends FormRequest
+class BindingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,7 +32,8 @@ class PublisherRequest extends FormRequest
                 new MinimumLengthRule(),
                 'max:50',
                 new NoDigitsRule(),
+                new AtSignRule(),
             ],
-        ];
+    ];
     }
 }
