@@ -90,23 +90,19 @@ class UserController extends Controller
         User::findOrFail($id)->delete();
     }
 
-    // Custom
-
+    // Custom password reset with modal
     public function resetPassword(User $user, Request $request) {
-
         $request->validate([            
                 'password' => [
-                    'required',
-                    'confirmed',
-                    new MinimumPasswordLengthRule(),
-                ]
+                'required',
+                'confirmed',
+                new MinimumPasswordLengthRule(),
+            ]
         ]);
-
         $user->name = $user->name;
         $user->username = $user->username;
         $user->email = $user->email;
         $user->JMBG = $user->JMBG;
-
         $user->password = bcrypt($request['password']);
         $user->save();
 

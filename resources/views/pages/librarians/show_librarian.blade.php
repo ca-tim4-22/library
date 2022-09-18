@@ -264,12 +264,6 @@
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
-
-                    <img 
-                    class="p-2 border-2 border-gray-300"
-                    width="300px"
-                    id="loading1" 
-                    src="https://i.postimg.cc/RVy579Dt/loading-official.png" />
                
                 <img 
                 class="p-2 border-2 border-gray-300"
@@ -277,15 +271,7 @@
                 id="loaded1" 
                 alt="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
                 title="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
-                src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" 
-                onload="showImageLibrarian();" 
-                style="display:none;"/>
-                    <script>
-                        function showImageLibrarian() {
-                            $("#loading1").hide();
-                            $("#loaded1").show();
-                        }
-                    </script>
+                src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" />
                 </div>
 
                 @if (Auth::id() == $librarian->id)
