@@ -7,6 +7,8 @@ use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
+use App\Models\Gallery;
+use App\Models\Publisher;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -68,7 +70,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(BookCreateRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
 
@@ -79,7 +81,6 @@ class BookController extends Controller
         $genre = $request->input('genre_id');
         $genre = str_replace(['[', ']'], null, $genre);
         $genreIds= explode( ',', $genre);
-
 
         $author = $request->input('author_id');
         $author = str_replace(['[', ']'], null, $author);
@@ -120,13 +121,34 @@ class BookController extends Controller
             ]);
         }
 
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/book-covers', $name);
-            DB::table('galleries')->insert(
-                ['book_id' => $book->id, 'photo' => $name, 'cover' => 1],
-            );
-        } 
+        // if ($file = $request->file('photo')) {
+        //     $name = time() . $file->getClientOriginalName();
+        //     $file->move('storage/book-covers', $name);
+        //     DB::table('galleries')->insert(
+        //         ['book_id' => $book->id, 'photo' => $name, 'cover' => 1],
+        //     );
+        // } 
+        $photos = $request->file('photo');
+
+        $cover_photo = $photos[0];
+        $cover_name = $cover_photo->getClientOriginalName();
+        $cover_photo->move('storage/book-covers', $cover_name);
+        Gallery::create([
+            'book_id' => $book->id,
+            'photo' => $cover_name,
+            'cover' => 1,
+        ]);
+
+        unset($photos[0]);
+        foreach ($photos as $photo) {
+        $file = $photo;
+        $name = $file->getClientOriginalName();
+        $file->move('storage/book-covers', $name);
+        Gallery::create([
+            'book_id' => $book->id,
+            'photo' => $name,
+            'cover' => 0,
+        ]);}
 
         return to_route('all-books')->with('success-book', 'Uspješno ste dodali knjigu.');
     }

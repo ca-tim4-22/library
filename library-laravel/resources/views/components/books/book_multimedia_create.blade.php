@@ -7,7 +7,7 @@
             class="relative flex flex-col p-4 text-gray-400 border border-gray-200 rounded">
             <div x-ref="dnd"
                 class="relative flex flex-col text-gray-400 border border-gray-200 border-dashed rounded cursor-pointer">
-                <input accept="*" type="file" name="photo" multiple
+                <input accept="*" type="file" name="photo[]" multiple
                     class="absolute inset-0 z-50 w-full h-full p-0 m-0 outline-none opacity-0 cursor-pointer"
                     @change="addFiles($event)"
                     @dragover="$refs.dnd.classList.add('border-blue-400'); $refs.dnd.classList.add('ring-4'); $refs.dnd.classList.add('ring-inset');"
@@ -37,8 +37,9 @@
                             <!-- Checkbox -->
                             <input
                                 class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
-                                type="radio" name="chosen_image" />
+                                type="radio" name="chosen_image"/>
                             <!-- End checkbox -->
+                            </script>
                             <button
                                 class="absolute bottom-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
                                 type="button" @click="remove(index)">
