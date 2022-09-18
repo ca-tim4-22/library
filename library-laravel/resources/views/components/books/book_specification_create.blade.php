@@ -5,13 +5,13 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Broj strana <span class="text-red-500">*</span></p>
-                        <input type="number" name="page_count" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()"/>
+                        <p>Broj strana <span class="text-red-500">* @error('page_count') {{$message}} @enderror</span></p>
+                        <input type="number" name="page_count" id="brStrana" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsBrStrana()" value="{{old('page_count')}}"/>
                         <div id="validateBrStrana"></div>
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Jezik <span class="text-red-500">*</span></p>
+                        <p>Jezik <span class="text-red-500">* @error('language_id') {{$message}} @enderror</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="language_id" id="jezik" onclick="clearErrorsJezik()">
                     <option disabled selected></option>
 
@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Pismo <span class="text-red-500">*</span></p>
+                        <p>Pismo <span class="text-red-500">* @error('letter_id') {{$message}} @enderror</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="letter_id" id="pismo" onclick="clearErrorsPismo()">
                     <option disabled selected></option>
 
@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Povez <span class="text-red-500">*</span></p>
+                        <p>Povez <span class="text-red-500">* @error('binding_id') {{$message}} @enderror</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="binding_id" id="povez" onclick="clearErrorsPovez()">
                             <option disabled selected></option>
 
@@ -56,9 +56,9 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Format <span class="text-red-500">*</span></p>
+                        <p>Format <span class="text-red-500">* @error('format_id') {{$message}} @enderror</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format_id" id="format" onclick="clearErrorsFormat()">
-                            <option disabled selected></option>
+                        <option disabled selected></option>
 
                     @foreach ($models['formats'] as $format)
 
@@ -72,7 +72,7 @@
 
                     <div class="mt-[20px]">
                         <p>Međunarodni standardni broj knjige <span class="text-red-500">* @error('ISBN') {{$message}} @enderror</span></p>
-                        <input type="number" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0"/>
+                        <input type="number" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0" value="{{old('ISBN')}}"/>
                         <div id="validateIsbn"></div>
                     </div>
                 </div>

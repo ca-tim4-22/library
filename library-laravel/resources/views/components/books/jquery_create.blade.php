@@ -23,18 +23,32 @@
     <div class="wrapper">
   
         <div class="tabs">
-            <a class="inline tab hover:text-blue-800">
+            <a class="inline tab hover:text-blue-800
+            @error('title')error-border @enderror
+            @error('body')error-border @enderror
+            @error('category_id')error-border @enderror
+            @error('genre_id')error-border @enderror
+            @error('author_id')error-border @enderror
+            @error('publisher_id')error-border @enderror
+            @error('year')error-border @enderror
+            @error('quantity_count')error-border @enderror
+            ">
                 Osnovni detalji
             </a>
             <a class="tab inline ml-[70px] hover:text-blue-800 
-            @error('ISBN')
-            error-border  
-            @enderror
+            @error('page_count')error-border @enderror
+            @error('language_id')error-border @enderror
+            @error('letter_id')error-border @enderror
+            @error('binding_id')error-border @enderror
+            @error('format_id')error-border @enderror
+            @error('ISBN')error-border @enderror
             ">
                 Specifikacija 
                 
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800">
+            <a class="tab inline ml-[70px] hover:text-blue-800
+            @error('photo')error-border @enderror
+            ">
                 Multimedija
             </a>      
         </div>

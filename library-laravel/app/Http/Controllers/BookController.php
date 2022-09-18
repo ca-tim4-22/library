@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Book\BookCreateRequest;
 use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\BookCategory;
@@ -67,7 +68,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(BookCreateRequest $request)
     {
         $input = $request->all();
 
