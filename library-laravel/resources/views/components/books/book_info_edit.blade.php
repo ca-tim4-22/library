@@ -149,15 +149,15 @@
                     <div class="mt-[20px]">
                         <p>Izaberite žanrove <span class="text-red-500">*</span>
                             @if ($book->genres->count() > 1)
-                            Trenutni žanrovi:
-                            @else
-                            Trenutni žanr:
+                            <b>Trenutni</b> žanrovi:
+                            @elseif ($book->genres->count() == 1)
+                            <b>Trenutni žanr</b>:
                             @endif
                             @foreach ($book->genres as $genre)
                             {{$loop->first ? '' : '|'}}
-                            {{$genre->genre->name}}
+                            <span style="color: #4558BE;font-weight: bold"> {{$genre->genre->name}} </span>
                             @endforeach
-                        </p>
+                            </p>
                         <select x-cloak id="zanr" name="genre_id">
 
                             @foreach ($models['genres'] as $genre)

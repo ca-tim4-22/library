@@ -14,12 +14,15 @@
                         <p>Jezik <span class="text-red-500">*</span></p>
                         <select id="select_box" class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="language_id" id="jezik" onclick="clearErrorsJezik()">
 
-                    <option selected>{{$book->language->name}}</option>
-
+                    <option disabled selected></option>
                     @foreach ($models['languages'] as $language)
 
+                    @if ($language->id == $book->language->id)
+                    <option selected value="{{$language->id}}">{{$language->name}}</option>
+                    @else
                     <option value="{{$language->id}}">{{$language->name}}</option>
-
+                    @endif
+                
                     @endforeach
 
                         </select>
@@ -29,13 +32,15 @@
                     <div class="mt-[20px]">
                         <p>Pismo <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="letter_id" id="pismo" onclick="clearErrorsPismo()">
+                    
                     <option disabled selected></option>
-
-                    <option selected>{{$book->letter->name}}</option>
-
                     @foreach ($models['letters'] as $letter)
 
+                    @if ($letter->id == $book->letter->id)
+                    <option selected value="{{$letter->id}}">{{$letter->name}}</option>
+                    @else
                     <option value="{{$letter->id}}">{{$letter->name}}</option>
+                    @endif
 
                     @endforeach
 
@@ -46,11 +51,15 @@
                     <div class="mt-[20px]">
                         <p>Povez <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="binding_id" id="povez" onclick="clearErrorsPovez()">
-                        <option selected>{{$book->binding->name}}</option>
 
+                        <option disabled selected></option>
                         @foreach ($models['bindings'] as $binding)
 
+                        @if ($binding->id == $book->binding->id)
+                        <option selected value="{{$binding->id}}">{{$binding->name}}</option>
+                        @else
                         <option value="{{$binding->id}}">{{$binding->name}}</option>
+                        @endif
 
                         @endforeach
 
@@ -62,11 +71,14 @@
                         <p>Format <span class="text-red-500">*</span></p>
                         <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="format_id" id="format" onclick="clearErrorsFormat()">
 
-                    <option selected>{{$book->format->name}}</option>
-
+                    <option disabled selected></option>
                     @foreach ($models['formats'] as $format)
 
+                    @if ($format->id == $book->format->id)
+                    <option selected value="{{$format->id}}">{{$format->name}}</option>
+                    @else
                     <option value="{{$format->id}}">{{$format->name}}</option>
+                    @endif
 
                     @endforeach
 

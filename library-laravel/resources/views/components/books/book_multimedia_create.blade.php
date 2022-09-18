@@ -34,11 +34,11 @@
                             @dragend="fileDragging = null"
                             :class="{'border-blue-600': fileDragging == index}" draggable="true"
                             :data-index="index">
-                            <!-- Checkbox -->
+                            {{-- <!-- Checkbox -->
                             <input
                                 class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
                                 type="radio" name="chosen_image"/>
-                            <!-- End checkbox -->
+                            <!-- End checkbox --> --}}
                             </script>
                             <button
                                 class="absolute bottom-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
