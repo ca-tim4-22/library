@@ -17,7 +17,7 @@
             <!-- Heading of content -->
             <div class="heading mt-[7px]">
                 <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                    Izdavanje knjiga
+                    Arhivirane rezervacije
                 </h1>
             </div>
 

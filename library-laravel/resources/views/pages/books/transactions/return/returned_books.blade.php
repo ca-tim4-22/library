@@ -14,7 +14,7 @@
             <!-- Heading of content -->
             <div class="heading mt-[7px]" style="margin-top: 11px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                    Izdavanje knjiga
+                    Vraćene knjige
                 </h1>
             </div>
 

@@ -87,6 +87,12 @@
                     {!! $author->biography !!}
                 </p>
             </div>
+            <div class="mt-[40px]">
+                <span class="text-gray-500">Vikipedija</span>
+                <p class="font-medium max-w-[550px]">
+                    <a href="{{$author->wikipedia}}" target="_blank">Klikni ovdje</a>
+                </p>
+            </div>
         </div>
     </div>
 </section>
