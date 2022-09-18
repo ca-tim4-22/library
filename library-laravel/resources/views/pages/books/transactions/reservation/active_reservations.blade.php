@@ -388,9 +388,11 @@
                                        </label>
                                    </td>
                                    <td class="flex flex-row items-center px-4 py-3">
-
-                                       <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $await_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
-
+                                       <img 
+                                       class="object-cover w-8 mr-2 h-11" 
+                                       src="{{'/storage/book-covers/' . $await_reservation->reservation->book->cover->photo}}" 
+                                       alt="Naslovna fotografija" 
+                                       title="Naslovna fotografija" />
                                        <a href="{{route('show-book', $await_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$await_reservation->reservation->book->title}}</span>
                                        </a>
@@ -489,9 +491,11 @@
                                        </label>
                                    </td>
                                    <td class="flex flex-row items-center px-4 py-3">
-
-                                       <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $true_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
-
+                                       <img 
+                                       class="object-cover w-8 mr-2 h-11" 
+                                       src="{{'/storage/book-covers/' . $true_reservation->reservation->book->cover->photo}}" 
+                                       alt="Naslovna fotografija" 
+                                       title="Naslovna fotografija" />
                                        <a href="{{route('show-book', $true_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$true_reservation->reservation->book->title}}</span>
                                        </a>

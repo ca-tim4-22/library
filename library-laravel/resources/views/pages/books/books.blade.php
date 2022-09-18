@@ -386,17 +386,11 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-                                
-                                    @foreach ($books as $book)
-                                    @foreach ($book->gallery->where('cover', 1)->get() as $cover_photo)
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{'/storage/book-covers/' . $cover_photo->photo}}" 
+                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
-                                    @endforeach
-                                    @endforeach
-
                                     <a href="{{route('show-book', $book->title)}}">
                                         <span class="font-medium text-center">{{$book->title}}</span>
                                     </a>

@@ -94,9 +94,6 @@
                         <div class="flex items-center h-5">
                             <div class="w-[40px] h-[40px] mt-[15px]">
 
-                              
-                               
-
                                 @if (Auth::user()->type->name == 'librarian')
                                 <img 
                                 class="rounded-full" 
@@ -116,8 +113,6 @@
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
                                 @endif
-                           
-                            
 
                             </div>
                    

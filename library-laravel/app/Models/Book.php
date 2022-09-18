@@ -54,4 +54,8 @@ class Book extends Model
     public function gallery(){
         return $this->hasOne(Gallery::class);
     }
+    
+    public function cover() {
+        return $this->hasOne(Gallery::class)->where('cover', 1);
+    }
 }

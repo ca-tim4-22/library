@@ -366,7 +366,11 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-3">
-                                    <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
+                                    <img 
+                                    class="object-cover w-8 mr-2 h-11" 
+                                    src="{{'/storage/book-covers/' . $reservation->reservation->book->cover->photo}}" 
+                                    alt="Naslovna fotografija" 
+                                    title="Naslovna fotografija" />
                                     <a href="{{route('show-book', $reservation->reservation->book->title)}}">
                                         <span class="font-medium text-center">
                                             {{$reservation->reservation->book->title}}
