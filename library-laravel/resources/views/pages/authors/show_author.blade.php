@@ -87,15 +87,26 @@
                     {!! $author->biography !!}
                 </p>
             </div>
-            <div class="mt-[40px]">
-                <span class="text-gray-500">Vikipedija</span>
+            <hr>
                 <p class="font-medium max-w-[550px]">
-                    <a href="{{$author->wikipedia}}" target="_blank">Klikni ovdje</a>
-                </p>
+                    <i class="fas fa-share"></i>
+                    <a 
+                    class="wikipedia-link"
+                    href="{{$author->wikipedia}}" 
+                    target="_blank">Pročitaj više</a>
             </div>
         </div>
     </div>
 </section>
+<style>
+    hr {
+       margin: 20px 0 20px 0;
+    }
+    .wikipedia-link:hover {
+        color: #4558BE;
+        transition: 0.25s ease-out;
+    }
+</style>
 <!-- End Content -->
     
 @endsection

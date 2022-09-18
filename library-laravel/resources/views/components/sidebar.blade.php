@@ -25,7 +25,8 @@
                         </span>
                     </div>
                 </li>
-                <!-- Bibliotekari Icon -->
+                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                <!-- Librarians Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
 
                     <div class="ml-[30px]">
@@ -43,7 +44,10 @@
                         </span>
                     </div>
                 </li>
-                <!-- Ucenici Icon -->
+                @endif
+
+                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                <!-- Students Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
@@ -60,13 +64,15 @@
                         </span>
                     </div>
                 </li>
+                @endif
+
                 <!-- Knjige Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-books')}}" aria-label="Knjige">
-<i class="{{(request()->is('knjige')) ? 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                   <i class="{{(request()->is('knjige')) ? 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -77,13 +83,15 @@
                         </span>
                     </div>
                 </li>
+
+                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Autori Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-author')}}" aria-label="Knjige">
-<i class="{{(request()->is('autori')) ? 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                          <i class="{{(request()->is('autori')) ? 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                      <p class="inline text-[15px] ml-[15px]">Autori</p>
                                     </div>
@@ -92,14 +100,15 @@
                         </span>
                     </div>
                 </li>
+                @endif
+
                 <!-- Izdavanje Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-<a href="{{route('rented-books')}}" aria-label="Knjige">
-<i class="{{(request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) || (request()->is('knjige-u-prekoracenju')) || (request()->is('aktivne-rezervacije')) || (request()->is('arhivirane-rezervacije')) 
-? 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                           <a href="{{route('rented-books')}}" aria-label="Knjige">
+                              <i class="{{(request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) || (request()->is('knjige-u-prekoracenju')) || (request()->is('aktivne-rezervacije')) || (request()->is('arhivirane-rezervacije')) ? 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -137,7 +146,8 @@
             </ul>
         </div>
     </div>
-    <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px]  group hover:bg-[#EFF3F6]">
+    @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+    <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px] group hover:bg-[#EFF3F6]">
         <!-- Settings Icon -->
         <a href="{{route('setting-policy')}}" aria-label="Settngs" class="ml-[30px]">
             <span class="whitespace-nowrap">
@@ -150,4 +160,5 @@
             </span>
         </a>
     </div>
+    @endif
 </nav>

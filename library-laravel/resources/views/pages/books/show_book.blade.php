@@ -52,6 +52,7 @@
                         </div>
                     </div>
                     <div class="pt-[24px] mr-[30px]">
+                        @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                         <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
@@ -60,6 +61,7 @@
                             <i class="far fa-hand-scissors mr-[3px]"></i>
                             Izdaj knjigu
                         </a>
+                        @endif
                         
                         @if ($book->rent->contains('id', 1))
                             
@@ -74,6 +76,8 @@
                             <i class="far fa-calendar-check mr-[3px] "></i>
                             Rezerviši knjigu
                         </a>
+                        
+                        @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                         <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-[#e4dfdf] dotsKnjigaOsnovniDetalji hover:text-[#606FC7]">
                             <i
                                 class="fas fa-ellipsis-v"></i>
@@ -90,113 +94,32 @@
                                         <span class="px-4 py-0">Izmijeni knjigu</span>
                                     </a>
                                     <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button style="outline: none" type="submit"  tabindex="0"
-                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                       role="menuitem">
-                                        <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                        <span class="px-4 py-0">Izbriši knjigu</span>
-                                    </button>
-                                    </form>
+                                        @csrf
+                                        @method('DELETE')
+    
+                                        <button style="outline: none" type="submit"  tabindex="0"
+                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                           role="menuitem">
+                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                            <span class="px-4 py-0">Izbriši knjigu</span>
+                                        </button>
+                                        </form>
+                                  
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <p class="inline cursor-pointer text-[25px]">
+                        </p>
+                        @endif
+                        
                     </div>
                 </div>
             </div>
             <div class="flex flex-row overflow-auto height-osnovniDetalji">
                 <div class="w-[80%]">
-                    <div class="border-b-[1px] py-4 text-gray-500 border-[#e4dfdf] pl-[30px]">
-                        <a href="knjigaOsnovniDetalji.php" class="inline active-book-nav hover:text-blue-800">
-                            Osnovni detalji
-                        </a>
-                        <a href="knjigaSpecifikacija.php" class="inline ml-[70px] hover:text-blue-800 ">
-                            Specifikacija
-                        </a>
-                        <a href="iznajmljivanjeIzdate.php" class="inline ml-[70px] hover:text-blue-800">
-                            Evidencija iznajmljivanja
-                        </a>
-                        <a href="evidencijaKnjigaMultimedija.php" class="inline ml-[70px] hover:text-blue-800">
-                            Multimedija
-                        </a>
-                    </div>
                     <div class="">
-                        <!-- Space for content -->
-                        <div class="pl-[30px] section- mt-[20px]">
-                            <div class="flex flex-row justify-between">
-                                <div class="mr-[30px]">
-                                    <div class="mt-[20px]">
-                                        <span class="text-gray-500 text-[14px]">Naziv knjige</span>
-                                        <p class="font-medium">{{$book->title}}</p>
-                                    </div>
-                                    <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">
-                                            @if (!$book->categories->count() == 1)
-                                            Kategorija
-                                            @else
-                                            Kategorije
-                                            @endif
-                                        </span>
-                                        <p class="font-medium">
-                                            @foreach ($book->categories as $category)
-                                            {{$loop->first ? '' : '|'}}
-                                            {{$category->category->name}} 
-                                            @endforeach
-                                        </p>
-                                    </div>
-                                    <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">
-                                        @if (!$book->genres->count() == 1)
-                                        Žanr
-                                        @else
-                                        Žanrovi
-                                        @endif
-                                        </span>
-                                        <p class="font-medium">
-                                        @foreach ($book->genres as $genre)
-                                        {{$loop->first ? '' : '|'}}
-                                        {{$genre->genre->name}}
-                                        @endforeach
-                                        </p>
-                                    </div>
-                                    <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">
-                                        @if ($book->authors->count() == 1)
-                                        Autor
-                                        @else
-                                        Autori
-                                        @endif
-                                        </span>
-                                        <p class="font-medium">
-                                        @foreach ($book->authors as $author)
-                                        {{$loop->first ? '' : '|'}}
-                                        {{$author->author->NameSurname}}
-                                        @endforeach
-                                        </p>
-                                    </div>
-                                    <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Izdavač</span>
-                                        <p class="font-medium">{{$book->publisher->name}}</p>
-                                    </div>
-                                    <div class="mt-[40px]">
-                                        <span class="text-gray-500 text-[14px]">Godina izdavanja</span>
-                                        <p class="font-medium">{{$book->year}}</p>
-                                    </div>
-                                </div>
-                                <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
-                                    <div>
-                                        <h4 class="text-gray-500 ">
-                                            Kratki sadržaj
-                                        </h4>
-                                        <p class="addReadMore showlesscontent my-[10px]">
-                                            {!! $book->body !!}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <x-books.show_components.holder :book="$book"></x-books.show_components.holder>
                     </div>
                 </div>
                 <div class="min-w-[20%] border-l-[1px] border-[#e4dfdf] ">

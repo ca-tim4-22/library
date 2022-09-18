@@ -22,6 +22,7 @@
     <div class="flex-initial">
         <div class="relative flex items-center justify-end">
             <div class="flex items-center">
+                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Notification Icon -->
                 <div class="relative block">
                     <a href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
@@ -50,7 +51,6 @@
                         <i class="fas fa-plus"></i>
                     </span>
                 </a>
-
                 <div
                     class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-create">
                     <div class="absolute right-[12px] w-56 mt-[35px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
@@ -83,6 +83,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+
                 <!-- Coinis Icon -->
                 <a href="https://coinis.com" target="_blank">
                     <img style="height: 2%" width="35px" src="{{asset('img/welcome/coinis_logo.jpg')}}" alt="Coinis Logo" title="Coinis Logo">
@@ -128,7 +130,7 @@
                             <a href="{{route('show-librarian', Auth::user()->username)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
-                            @elseif (Auth::user()->type->name == 'librarian')
+                            @elseif (Auth::user()->type->name == 'student')
                             <a href="{{route('show-student', Auth::user()->username)}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">

@@ -52,10 +52,14 @@
         <!-- Space for content -->
         <div class="scroll height-evidencija">
             <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
+                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <a href="{{route('new-book')}}"
                     class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
                     <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                 </a>
+                @else
+                <div  class="inline-flex items-center"></div>
+                @endif
                 <div class="flex items-center">
                     <div class="relative text-gray-600 focus-within:text-gray-400">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -436,6 +440,7 @@
                                                     <span class="px-4 py-0">Pogledaj detalje</span>
                                                 </a>
 
+                                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                                                 <a href="{{route('edit-book', $book->id)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
@@ -463,6 +468,7 @@
                                                     <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Vrati knjigu</span>
                                                 </a>
+                                                @endif
 
                                                 <a href="{{route('reserve-book', $book->title)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"

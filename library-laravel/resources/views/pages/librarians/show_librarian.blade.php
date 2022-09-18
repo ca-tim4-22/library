@@ -323,6 +323,7 @@ style="z-index: 11"
     <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
         <!-- Modal Header -->
         <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
+
             <h3>Resetuj lozinku: {{$librarian->name}}</h3>
             
         <style>

@@ -67,7 +67,12 @@
                         <p>Ime i prezime <span class="text-red-500">* @error('NameSurname') {{$message}}
                         @enderror</span></p>
                         <input type="text" name="NameSurname" id="NameSurname" value="{{$author->NameSurname}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutorEdit()"/>
-                        <div id="validateImePrezimeAutorEdit"></div>
+                    </div>
+
+                    <div class="mt-[20px]">
+                        <p>Vikipedija <span class="text-red-500">* @error('wikipedia') {{$message}}
+                        @enderror</span></p>
+                        <input type="text" name="wikipedia" id="wikipedia" value="{{$author->wikipedia}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutorEdit()"/>
                     </div>
 
                     <div class="mt-[20px]">

@@ -53,7 +53,11 @@
                     <div class="mt-[20px]">
                         <p>Ime i prezime <span class="text-red-500">* @error('NameSurname') {{$message}} @enderror</span></p>
                         <input type="text" name="NameSurname" id="NameSurname" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutor()"/>
-                        <div id="validateImePrezimeAutor"></div>
+                    </div>
+
+                    <div class="mt-[20px]">
+                        <p>Vikipedija <span class="text-red-500">* @error('wikipedia') {{$message}} @enderror</span></p>
+                        <input type="text" name="wikipedia" id="wikipedia" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsImePrezimeAutor()"/>
                     </div>
 
                     <div class="mt-[20px]">
@@ -61,8 +65,8 @@
 
                         <textarea name="biography" id="biography" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
                         </textarea>
-
                     </div>
+                    
                 </div>
             </div>
             <div class="absolute bottom-0 w-full">

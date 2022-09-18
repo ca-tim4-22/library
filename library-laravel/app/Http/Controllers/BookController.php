@@ -72,7 +72,24 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
+        $input = Validator::make($request->all(), [
+            'title' => 'required',
+            'page_count' => 'required',
+            'ISBN' => 'required',   
+            'quantity_count' => 'required',
+            'rented_count' => 'required',
+            'reserved_count' => 'required',
+            'body' => 'required',
+            'year' => 'required',
+            'category_id' => 'required',
+            'genre_id' => 'required',
+            'author_id' => 'required',
+            'publisher_id' => 'required',
+            'language_id' => 'required',
+            'letter_id' => 'required',
+            'binding_id' => 'required',
+            'format_id' => 'required',
+        ])->safe()->all();
 
         $category = $request->input('category_id');
         $category = str_replace(['[', ']'], null, $category);
@@ -120,24 +137,22 @@ class BookController extends Controller
                 'author_id' => $id,
             ]);
         }
-       
-        $photos = $request->file('photo');
-
-        $cover_photo = $photos[0];
-        $cover_name = $cover_photo->getClientOriginalName();
-        $cover_photo->move('storage/book-covers', $cover_name);
-        Gallery::create([
+     
+        $cover = $request->file('cover');
+        $name = $cover->getClientOriginalName();
+        $cover->move('storage/book-covers', $name);
+        DB::table('galleries')->insert([
             'book_id' => $book->id,
-            'photo' => $cover_name,
+            'photo' => $name,
             'cover' => 1,
         ]);
 
-        unset($photos[0]);
+        $photos = $request->file('photos');
         foreach ($photos as $photo) {
         $file = $photo;
         $name = $file->getClientOriginalName();
         $file->move('storage/book-covers', $name);
-        Gallery::create([
+        DB::table('galleries')->insert([
             'book_id' => $book->id,
             'photo' => $name,
             'cover' => 0,

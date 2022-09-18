@@ -7,6 +7,8 @@ use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
+use function PHPSTORM_META\map;
+
 class AuthorRequest extends FormRequest
 {
     /**
@@ -30,7 +32,7 @@ class AuthorRequest extends FormRequest
             'NameSurname' => [
                 'required',
                 new MinimumLengthRule(),
-                'max:50',
+                'max:128',
                 new NoDigitsRule(),
                 new MinimumLengthRule(),
                 new AtSignRule(),
@@ -38,8 +40,12 @@ class AuthorRequest extends FormRequest
             'biography' => [
                 'required',
                 new MinimumLengthRule(),
-                'max:500',
+                'max:1000',
                 new AtSignRule(),
+            ],
+            'wikipedia' => [
+                'required',
+                new MinimumLengthRule(),
             ],
         ];
     }
