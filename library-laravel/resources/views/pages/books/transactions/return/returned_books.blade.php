@@ -453,7 +453,7 @@
                                     </td>
                                     <td class="flex flex-row items-center px-4 py-3">
                                         <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $book->rent->book->gallery->photo}}" alt="Naslovna" />
-                                        <a href="{{route('show-book', $book->rent->book->id)}}">
+                                        <a href="{{route('show-book', $book->rent->book->title)}}">
                                             <span class="font-medium text-center">{{$book->rent->book->title}}</span>
                                         </a>
                                     </td>

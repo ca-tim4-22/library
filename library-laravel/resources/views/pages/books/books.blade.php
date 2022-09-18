@@ -389,7 +389,11 @@
                                 
                                     @foreach ($books as $book)
                                     @foreach ($book->gallery->where('cover', 1)->get() as $cover_photo)
-                                    <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $cover_photo->photo}}" alt="Naslovna" title="Naslovna" />
+                                    <img 
+                                    class="object-cover w-8 mr-2 h-11" 
+                                    src="{{'/storage/book-covers/' . $cover_photo->photo}}" 
+                                    alt="Naslovna fotografija" 
+                                    title="Naslovna fotografija" />
                                     @endforeach
                                     @endforeach
 

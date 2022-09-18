@@ -16,7 +16,14 @@
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
-                    <img src="{{'/storage/book-covers/' . $rent->book->gallery->photo}}" alt="Naslovna" title="Naslovna">
+
+                    @foreach ($rent->book->gallery->where('cover', 1)->get() as $cover_photo)
+                    <img 
+                    src="{{'/storage/book-covers/' . $cover_photo->photo}}" 
+                    alt="Naslovna fotografija" 
+                    title="Naslovna fotografija" />
+                    @endforeach
+
                 </div>
                 <div class="pl-[15px]  flex flex-col">
                     <div>
@@ -36,7 +43,7 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('show-book', $rent->book->id)}}"
+                                    <a href="{{route('show-book', $rent->book->title)}}"
                                         class="text-[#2196f3] hover:text-blue-600">
                                         KNJIGA-{{$rent->book->id}}
                                     </a>

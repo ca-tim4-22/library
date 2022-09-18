@@ -391,7 +391,7 @@
 
                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $await_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
 
-                                       <a href="{{route('show-book', $await_reservation->reservation->book->id)}}">
+                                       <a href="{{route('show-book', $await_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$await_reservation->reservation->book->title}}</span>
                                        </a>
                                    </td>
@@ -492,7 +492,7 @@
 
                                        <img class="object-cover w-8 mr-2 h-11" src="{{'/storage/book-covers/' . $true_reservation->reservation->book->gallery->photo}}" alt="Naslovna" title="Naslovna" />
 
-                                       <a href="{{route('show-book', $true_reservation->reservation->book->id)}}">
+                                       <a href="{{route('show-book', $true_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$true_reservation->reservation->book->title}}</span>
                                        </a>
                                    </td>

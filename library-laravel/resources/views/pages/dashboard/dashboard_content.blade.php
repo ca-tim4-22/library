@@ -165,7 +165,7 @@ if($(".holder:hidden").length == 0){
                                 <td>
                                 </td>
                                 <td class="px-2 py-2">
-                                    <a href="{{route('show-book', $await_reservation->reservation->book->id)}}">
+                                    <a href="{{route('show-book', $await_reservation->reservation->book->title)}}">
                                     {{$await_reservation->reservation->book->title}}
                                     </a>
                                 </td>
