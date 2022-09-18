@@ -77,6 +77,7 @@ Route::put('/arhiviraj-rezervaciju/{id}', [ArchiveBookController::class, 'update
 Route::controller(ActiveReservationController::class)->group(function(){
 // Active reservations
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
+Route::get('/detalji-rezervacije-knjige/{id}', [ActiveReservationController::class, 'show'])->name('reserved-info');
 Route::put('/approve/{id}', [ActiveReservationController::class, 'approve'])->name('approve');
 Route::put('/deny/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
 });

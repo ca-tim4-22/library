@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Rent;
 use App\Models\RentStatus;
+use App\Models\Reservation;
 use App\Models\ReservationStatuses;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,7 +30,6 @@ class DashboardController extends Controller
         $rented_real = $rented_books;
         $reserved_books = ReservationStatuses::where('status_reservations_id', 1)->count();
         $reserved_real = $reserved_books;
-
 
         if ($rented_books <= 0) {
             $width = 0;
@@ -81,7 +81,6 @@ class DashboardController extends Controller
                     $prefix_green = $max * $reserved_books;
                 }
             }
-
         } else {
             $overdue_books = 0;
             $overdue_real = 0;
@@ -108,9 +107,34 @@ class DashboardController extends Controller
             $data = [];
         }
 
+
+        if (Reservation::count() > 0) {
+            $reservations = Reservation::whereDate('reservation_date', today())->get();
+        } else {
+            $reservations = [];
+        }
+        if (count($reservations)) {
+            foreach ($books as $book) {
+                foreach ($book->reservations as $collection) {
+                   foreach ($collection->reservations as $collection2) {
+                    $data2 = $collection2->where('status_reservations_id', 1)->get();
+                   }
+                }
+            }
+        } else {
+            $data2 = [];
+        }
+
         $data_await = ReservationStatuses::latest('updated_at')->where('status_reservations_id', 3)->get();
 
-        return view('pages.dashboard.dashboard_content', compact('books', 'data', 'rented_books', 'reserved_books', 'overdue_books', 'data_await', 
+        return view('pages.dashboard.dashboard_content', compact(
+        'books', 
+        'data', 
+        'data2',
+        'rented_books', 
+        'reserved_books', 
+        'overdue_books', 
+        'data_await', 
         'rented_real',
         'reserved_real',
         'overdue_real',

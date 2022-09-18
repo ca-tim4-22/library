@@ -27,10 +27,10 @@
 
             @if (!$data == [])
              
-             @foreach ($data as $rent)
+            @foreach ($data as $rent)
                
-           <div class="holder">
-            <div class="activity-card flex flex-row mb-[30px]">
+             <div class="holder">
+              <div class="activity-card flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
                     <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
                     alt="Profilna slika učenika: {{$rent->borrow->name}}"
@@ -69,9 +69,57 @@
                     </div>
                 </div>
                </div>
-           </div>
+              </div>
 
              @endforeach
+
+             @foreach ($data2 as $reservation)
+             <div class="holder">
+                <div class="activity-card flex flex-row mb-[30px]">
+                  <div class="w-[60px] h-[60px]">
+                      <img 
+                      class="rounded-full" 
+                      src="{{$reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->reservation->made_for->photo}}"
+                      alt="Profilna slika učenika: {{$reservation->reservation->made_for->name}}"
+                      title="Profilna slika učenika: {{$reservation->reservation->made_for->name}}" />
+                  </div>
+                  <div class="ml-[15px] mt-[5px] flex flex-col">
+                      <div class="text-gray-500 mb-[5px]">
+                          <p class="uppercase">
+                              Rezervacija knjige
+                              <span class="inline lowercase">
+                                -
+                                  @php
+                                      echo date("d-m-Y", strtotime($reservation->reservation->reservation_date));
+                                  @endphp
+                              </span>
+                          </p>
+                      </div>
+                      <div class="">
+                          <p>
+                              <a href="{{route('show-librarian', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                  {{$reservation->reservation->made_by->name}}
+                              </a>
+                              je {{$reservation->reservation->made_by->gender->id == 1 ? 'rezervisao' : 'rezervisala'}} knjigu <span class="font-medium">{{$reservation->reservation->book->title}} </span>
+                              <a href="{{route('show-student', $reservation->reservation->made_for->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                  {{$reservation->reservation->made_for->name}}
+                              </a>
+                              dana <span class="font-medium">
+                                @php
+                                echo date("d-m-Y", strtotime($reservation->reservation->reservation_date));
+                                @endphp
+                            </span>
+                              <a href="{{route('reserved-info', $reservation->reservation->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                  pogledaj detaljnije >>
+                              </a>
+                          </p>
+                      </div>
+                  </div>
+                 </div>
+                </div>
+             @endforeach
+
+
 
              <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 

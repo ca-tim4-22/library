@@ -60,7 +60,9 @@ class ActiveReservationController extends Controller
      */
     public function show($id)
     {
-        //
+        $reservation = Reservation::findOrFail($id);
+
+        return view('pages.books.transactions.reservation.reservation_info', compact('reservation'));
     }
 
     /**
