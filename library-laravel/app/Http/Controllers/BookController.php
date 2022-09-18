@@ -70,7 +70,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(BookCreateRequest $request)
+    public function store(Request $request)
     {
         $input = $request->all();
 
@@ -120,14 +120,7 @@ class BookController extends Controller
                 'author_id' => $id,
             ]);
         }
-
-        // if ($file = $request->file('photo')) {
-        //     $name = time() . $file->getClientOriginalName();
-        //     $file->move('storage/book-covers', $name);
-        //     DB::table('galleries')->insert(
-        //         ['book_id' => $book->id, 'photo' => $name, 'cover' => 1],
-        //     );
-        // } 
+       
         $photos = $request->file('photo');
 
         $cover_photo = $photos[0];
@@ -313,7 +306,14 @@ class BookController extends Controller
     public function destroy($id)
     {
         $book = Book::findOrFail($id);
-        $book->delete();
+       
+            foreach ($book->gallery as $photos) {
+                foreach ($photos->get() as $photo) {
+                    $path = '\\storage\\book-covers\\' . $photo->photo;
+                    unlink(public_path() . $path); 
+                    $book->delete();
+                }
+            }
 
         return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
     }
