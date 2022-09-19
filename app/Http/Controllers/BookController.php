@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
+use App\Models\Category;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -37,7 +39,14 @@ class BookController extends Controller
             $count = 0;
         }
 
-        return view('pages.books.books', compact('books', 'count'));
+
+
+        $authors = Author::latest('id')->get();
+        $categories = Category::latest('id')->get();
+
+
+
+        return view('pages.books.books', compact('books', 'count', 'authors', 'categories'));
     }
 
     /**

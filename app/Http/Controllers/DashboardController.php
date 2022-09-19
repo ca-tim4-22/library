@@ -152,12 +152,16 @@ class DashboardController extends Controller
     public function index_activity(Request $request) 
     {
         $books = Book::all();
-        $admins = User::latest('id')->where('user_type_id', 2)->get();
         $librarians = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
         $error = 'false';
-        $selected = null;
+        $selected_s = [];
+        $selected_l = [];
+        $selected_b = [];
+        $id_s = 0;
+        $id_l = 0;
+        $id_b = 0;
         $to = null;
         $from = null;
        
@@ -166,19 +170,22 @@ class DashboardController extends Controller
                 foreach ($book->rent as $collection) {
                     if ($request->id_student) {
                         $data = $collection->orderBy('id', 'desc')->where('borrow_user_id', $request->id_student)->get();
-                        $selected = $request->id_student;
+                        $selected_s = User::where('id', $request->id_student)->first();
+                        $id_s = $selected_s->id;
                         if($data->count() <= 0) {
                         $error = 'true';
                         } 
-                    } elseif ($request->id_admin) {
-                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_admin)->get();
-                        $selected = $request->id_admin;
+                    } elseif ($request->id_librarian) {
+                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_librarian)->get();
+                        $selected_l = User::where('id', $request->id_librarian)->first();
+                        $id_l = $selected_l->id;
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
                     } elseif ($request->id_book) {
                         $data = $collection->orderBy('id', 'desc')->where('book_id', $request->id_book)->get();
-                        $selected = $request->id_book;
+                        $selected_b = Book::where('id', $request->id_book)->first();
+                        $id_b = $selected_b->id;
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
@@ -186,7 +193,6 @@ class DashboardController extends Controller
                         $from = $request->from;
                         $to = $request->to;
                         $data = $collection->orderBy('id', 'desc')->whereBetween('issue_date', [$from, $to])->get();
-                        $selected = null;
                         $from = date("d-m-Y", strtotime($from));
                         $to = date("d-m-Y", strtotime($to));
                         if($data->count() <= 0) {
@@ -194,7 +200,6 @@ class DashboardController extends Controller
                         }
                     } else {
                         $data = $collection->orderBy('id', 'desc')->get();
-                        $selected = null;
                         $to = null;
                         $from = null;
                     }
@@ -204,7 +209,14 @@ class DashboardController extends Controller
             $data = [];
         }
 
-        return view('pages.dashboard.dashboard_activity', compact('books', 'admins', 'students', 'data', 'selected', 'from', 'to', 'error', 'librarians'));
+        return view('pages.dashboard.dashboard_activity', compact('books', 'librarians', 'students', 'data', 'from', 'to', 'error', 
+        'selected_s',
+        'selected_l',
+        'selected_b',
+        'id_s',
+        'id_l',
+        'id_b',
+    ));
     }
 
     /**

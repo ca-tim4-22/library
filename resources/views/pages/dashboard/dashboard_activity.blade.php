@@ -43,16 +43,19 @@
                             <div class="relative">
                                 <button class="w-auto rounded focus:outline-none uceniciDrop-toggle">
                                     <span class="float-left">
-                                        {{$selected <= 0 ? "Učenici: Svi" : "Učenik: $selected"}}
-                                        <i
-                                            class="px-[7px] fas fa-angle-down"></i></span>
+                                        @if ($selected_s != [])
+                                        Učenik: {{$selected_s->name}}
+                                        @else
+                                        Učenici: Svi
+                                        @endif
+                                        <i class="px-[7px] fas fa-angle-down"></i></span>
                                 </button>
                                 <div id="uceniciDropdown"
                                     class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži"
+                                                placeholder="Traži.."
                                                 onkeyup="filterFunction('searchUcenici', 'uceniciDropdown', 'dropdown-item-izdato')"
                                                 id="searchUcenici"><br>
                                             <button
@@ -72,7 +75,7 @@
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
                                                         <input
                                                         style="position: absolute;"
-                                                        @if($selected == $student->id) checked @endif
+                                                        @if($id_s == $student->id) checked @endif
                                                         class="opacity-0"
                                                         type="checkbox" name="id_student" value="{{$student->id}}">
                                                         <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
@@ -117,7 +120,11 @@
                             <div class="relative">
                                 <button class="w-auto rounded focus:outline-none bibliotekariDrop-toggle">
                                     <span class="float-left">
-                                        {{$selected <= 0 ? "Bibliotekari: Svi" : "Bibliotekar: $selected"}}
+                                        @if ($selected_l != [])
+                                        Bibliotekar: {{$selected_l->name}}
+                                        @else
+                                        Bibliotekari: Svi
+                                        @endif
                                         <i
                                             class="px-[7px] fas fa-angle-down"></i></span>
                                 </button>
@@ -126,7 +133,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži"
+                                                placeholder="Traži.."
                                                 onkeyup="filterFunction('searchBibliotekari', 'bibliotekariDropdown', 'dropdown-item-bibliotekar')"
                                                 id="searchBibliotekari"><br>
                                             <button
@@ -136,7 +143,6 @@
                                         </li>
                                         <div class="h-[200px] scroll">
 
-                                            
                                         @foreach ($librarians as $librarian)
                                            
                                          <form action="{{route('dashboard-activity')}}">
@@ -147,7 +153,7 @@
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
                                                         <input
                                                         style="position: absolute;"
-                                                        @if($selected == $librarian->id) checked @endif
+                                                        @if($id_l == $librarian->id) checked @endif
                                                         class="opacity-0"
                                                         type="checkbox" name="id_librarian" value="{{$librarian->id}}">
                                                         <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
@@ -165,7 +171,7 @@
                                             </p>
                                          </li>
 
-                                           @endforeach
+                                        @endforeach
                              
                                         </div>
                                     </ul>
@@ -191,7 +197,11 @@
                         <div class="rounded">
                             <div class="relative">
                                 <button class="w-auto rounded focus:outline-none" id="knjigeMenu">
-                                    {{$selected <= 0 ? "Knjige: Sve" : "Knjiga: $selected"}}
+                                    @if ($selected_b != [])
+                                    Knjiga: {{$selected_b->title}}
+                                    @else
+                                    Knjige: Sve
+                                    @endif
                                     <i class="px-[7px] fas fa-angle-down"></i></span>
                                 </button>
                                 <div id="knjigeDropdown"
@@ -199,7 +209,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži"
+                                                placeholder="Traži.."
                                                 onkeyup="filterFunction('searchKnjige', 'knjigeDropdown', 'dropdown-item-knjiga')"
                                                 id="searchKnjige"><br>
                                             <button
@@ -219,7 +229,7 @@
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
                                                         <input
                                                         style="position: absolute;"
-                                                        @if($selected == $book->id) checked @endif
+                                                        @if($id_b == $book->id) checked @endif
                                                         class="opacity-0"
                                                         type="checkbox" name="id_book" value="{{$book->id}}">
                                                         <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
@@ -228,15 +238,14 @@
                                                         </svg>
                                                     </div>
                                                 </label>
-                                                    <img 
-                                                    width="30px"
-                                                    height="30px"
-                                                    class="ml-[15px]" 
-                                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
-                                                    alt="Naslovna fotografija" 
-                                                    title="Naslovna fotografija" />
-                                                <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                                    {{$book->title}}
+                                                <img 
+                                                width="30px"
+                                                height="30px"
+                                                class="ml-[15px]" 
+                                                src="{{$book->placeholder == 1 ? $book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
+                                                alt="Naslovna fotografija" 
+                                                title="Naslovna fotografija" />
+                                                {{$book->title}}
                                                 </p>
                                             </li>
                                                 
@@ -273,7 +282,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži"
+                                                placeholder="Traži.."
                                                 onkeyup="filterFunction('searchTransakcije', 'transakcijeDropdown', 'dropdown-item-transakcije')"
                                                 id="searchTransakcije"><br>
                                             <button
@@ -367,13 +376,11 @@
                             <div class="relative">
                                 <button class="w-auto rounded focus:outline-none datumDrop-toggle">
                                     <span class="float-left">
-
                                         @if ($from <= 0 && $to <= 00)
                                         Datum: Svi
                                         @else 
                                         Datum: od <span style="color: #4558BE">{{$from}}</span> do <span style="color: #4558BE">{{$to}}</span>
                                         @endif
-
                                         <i
                                         class="px-[7px] fas fa-angle-down"></i></span>
                                     </button>
@@ -415,7 +422,7 @@
 
 
                     <div class="ml-[35px] cursor-pointer hover:text-blue-600">
-                        <button style="outline: none;" onclick="location.reload();"><i class="fas fa-sync-alt"></i></button>
+                        <a style="outline: none;" href="{{route('dashboard-activity')}}"><i class="fas fa-sync-alt"></i></a>
                     </div>
 
 
@@ -469,10 +476,6 @@
                  </div>
 
               @endforeach 
-
-            
-
-
 
             @else
               
