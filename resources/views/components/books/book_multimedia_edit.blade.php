@@ -1,5 +1,5 @@
 <!-- Space for content -->
-<form class="text-gray-700">
+<form class="text-gray-700" method="POST" enctype="multipart/form-data">
 <div class="scroll height-content section-content">
  
     <div class="w-9/12 mx-auto bg-white rounded p7 mt-[40px] mb-[150px]">
@@ -14,7 +14,6 @@
                     @dragleave="$refs.dnd.classList.remove('border-blue-400'); $refs.dnd.classList.remove('ring-4'); $refs.dnd.classList.remove('ring-inset');"
                     @drop="$refs.dnd.classList.remove('border-blue-400'); $refs.dnd.classList.remove('ring-4'); $refs.dnd.classList.remove('ring-inset');"
                     title="" />
-
                 <div class="flex flex-col items-center justify-center py-10 text-center">
                     <svg class="w-6 h-6 mr-1 text-current-50" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -34,11 +33,6 @@
                             @dragend="fileDragging = null"
                             :class="{'border-blue-600': fileDragging == index}" draggable="true"
                             :data-index="index">
-                            {{-- <!-- Checkbox -->
-                            <input
-                                class="absolute top-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
-                                type="radio" name="chosen_image" />
-                            <!-- End checkbox --> --}}
                             <button
                                 class="absolute bottom-0 right-0 z-50 p-1 bg-white rounded-bl focus:outline-none"
                                 type="button" @click="remove(index)">
@@ -101,6 +95,7 @@
     </div>
    
 </div>
+
 <div class="absolute bottom-0 w-full">
     <div class="flex flex-row">
         <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">

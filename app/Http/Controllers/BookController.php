@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Book\BookCreateRequest;
 use App\Models\Book;
 use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
-use App\Models\Gallery;
-use App\Models\Publisher;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -309,7 +306,7 @@ class BookController extends Controller
 
         $book->update($input);
 
-        return back();
+        return back()->with('update-book', 'Uspješno ste izmijenili knjigu.');
     }
 
     /**

@@ -1,8 +1,24 @@
+{{-- JQuery CDN --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+{{-- Session message fade out js file --}}
+<script src="{{asset('js/session_message_jquery.js')}}"></script>
+
  <!-- Main content -->
  <main class="flex flex-row small:hidden">
 
     <!-- Content -->
     <section style="margin-top: 20px" class="w-screen h-screen pl-[0px] pb-2 text-gray-700">
+
+{{-- Session message for book update --}}
+@if (session()->has('update-book'))
+    <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+        <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+        <span class="sr-only">Info</span>
+        <div>
+            <span class="font-medium">Success!</span> {{session('update-book')}}
+        </div>
+    </div>
+@endif
 
         <!-- Space for content -->
         <div class="scroll height-content section-content">
@@ -14,7 +30,6 @@
                             <input type="text" name="title" id="nazivKnjiga"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                 onkeydown="clearErrorsNazivKnjiga()" value="{{$book->title}}"/>
-                            <div id="validateNazivKnjiga"></div>
                         </div>
 
                         <div class="mt-[20px]">
@@ -143,7 +158,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="validateKategorija"></div>
                     </div>
 
                     <div class="mt-[20px]">
@@ -251,7 +265,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="validateZanr"></div>
                 </div>
         </div>
 
@@ -359,7 +372,6 @@
                     </div>
                 </div>
             </div>
-            <div id="validateAutori"></div>
         </div>
 
         <div class="mt-[20px]">
@@ -378,7 +390,6 @@
                     @endforeach
 
             </select>
-            <div id="validateIzdavac"></div>
         </div>
 
           <div class="mt-[20px]">
@@ -394,7 +405,6 @@
                 <option value="{{$counter}}">{{$counter}}</option>
                 @endfor
             </select>
-            <div id="validateGodinaIzdavanja"></div>
         </div>
 
         <div class="mt-[20px]">
@@ -402,7 +412,6 @@
             <input type="number" name="quantity_count" id="knjigaKolicina"
                 class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 onkeydown="clearErrorsKnjigaKolicina()" value="{{$book->quantity_count}}"/>
-            <div id="validateKnjigaKolicina"></div>
         </div>
         </div>
         </div>

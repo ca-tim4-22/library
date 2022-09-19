@@ -39,8 +39,9 @@
             </a>      
         </div>
 
-        <form action="{{route('store-book')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('update-book', $book->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         
         <div class="tab_content">
         
@@ -53,7 +54,7 @@
         </div>
         
         <div class="tab_item">
-            <x-books.book_multimedia_edit></x-books.book_multimedia_edit>
+            <x-books.book_multimedia_edit :book="$book"></x-books.book_multimedia_edit>
         </form>
         </div>
         
