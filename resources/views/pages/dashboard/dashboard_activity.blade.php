@@ -228,8 +228,13 @@
                                                         </svg>
                                                     </div>
                                                 </label>
-                                                <img width="30px" height="30px" class="ml-[15px]"
-                                                    src="{{'/storage/book-covers/' . $book->gallery->photo}}">
+                                                    <img 
+                                                    width="30px"
+                                                    height="30px"
+                                                    class="ml-[15px]" 
+                                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
+                                                    alt="Naslovna fotografija" 
+                                                    title="Naslovna fotografija" />
                                                 <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
                                                     {{$book->title}}
                                                 </p>
@@ -444,7 +449,9 @@
                           <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
                               {{$rent->librarian->name}}
                           </a>
-                          je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                          <a href="{{route('show-book', $rent->book->title)}}">
+                            je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                          </a>
                           <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                               {{$rent->borrow->name}}
                           </a>

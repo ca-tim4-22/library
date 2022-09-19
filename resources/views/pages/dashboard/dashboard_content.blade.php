@@ -53,7 +53,9 @@
                             <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                 {{$rent->librarian->name}}
                             </a>
-                            je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                            <a href="{{route('show-book', $rent->book->title)}}">
+                                je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                            </a>
                             <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                 {{$rent->borrow->name}}
                             </a>
@@ -179,13 +181,15 @@ if($(".holder:hidden").length == 0){
                     class="btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
                     Prikaži još
                     </a>
-                    @if ($data_await->count() > 0 )
+                    @if ($data_await != [] && $data != [])
+                    @if ($data_await->count() > 0 || $data->count() > 0)
                     <a 
                     href="{{route('dashboard-activity')}}"
                     style="cursor: pointer"
                     class="mt-4 btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
                     Prikaži sve
                     </a>
+                    @endif
                     @endif
                 </div>
                 

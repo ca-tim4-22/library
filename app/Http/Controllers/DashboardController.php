@@ -72,7 +72,12 @@ class DashboardController extends Controller
                 $prefix_yellow = $max * $reserved_books;
                 $prefix_green = $max * $rented_books;
             } else {
-                $max = 300 / $rented_books;
+                // If there are no active rents - archived only
+                if ($rented_books > 0) {
+                    $max = 300 / $rented_books;
+                } else {
+                    $max = 300 / 1;
+                }
                 if ($reserved_books > $overdue_books) {
                     $prefix_yellow = $max * $reserved_books;
                     $prefix_green = $max * $overdue_books;

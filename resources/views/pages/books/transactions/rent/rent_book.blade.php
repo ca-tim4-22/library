@@ -108,10 +108,10 @@
                         <div class="w-[50%] mb-[100px] mr-[100px]">
                             <h3 class="mt-[20px] mb-[10px]">Izdaj knjigu</h3>
                             <div class="mt-[20px]">
-                                <p>Izaberi učenika koji zadužuje knjigu <span class="text-red-500">*</span></p>
+                                <span>Izaberi učenika koji zadužuje knjigu <span class="text-red-500">* @error('borrow_user_id'){{$message}} @enderror</span></span>
                                 <select
                                     class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                    name="borrow_user_id" id="ucenikIzdavanje" onclick="clearErrorsUcenikIzdavanje()">
+                                    name="borrow_user_id" id="borrow_user_id" onclick="clearErrorsUcenikIzdavanje()">
                                     <option disabled selected></option>
                                     @foreach($students as $student)
                                     <option value="{{$student->id}}">
@@ -119,7 +119,6 @@
                                     </option>
                                     @endforeach
                                 </select>
-                                <div id="validateUcenikIzdavanje"></div>
                             </div>
                             <div class="mt-[20px] flex justify-between w-[90%]">
                                 <div class="w-[50%]">

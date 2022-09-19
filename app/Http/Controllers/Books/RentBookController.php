@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Book\RentBookRequest;
 use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
@@ -91,9 +92,8 @@ class RentBookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(RentBookRequest $request, $id)
     {
-       $input = $request->all();
        $book = Book::findOrFail($id);
        $user = Auth::user();
        // Grabbing return date and formatting it to Y/m/d

@@ -119,7 +119,7 @@
                 <div class="w-[50%] mb-[100px]">
                     <h3 class="mt-[20px] mb-[10px]">Rezerviši knjigu</h3>
                     <div class="mt-[20px]">
-                        <p>Izaberi učenika za koga se knjiga rezerviše <span class="text-red-500">*</span></p>
+                        <span>Izaberi učenika za koga se knjiga rezerviše <span class="text-red-500">* @error('reservationMadeFor_user_id'){{$message}} @enderror</span></span>
                        <select class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                     name="reservationMadeFor_user_id">
                                     <option disabled selected></option>

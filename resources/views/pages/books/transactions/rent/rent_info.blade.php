@@ -16,12 +16,10 @@
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
-                    @foreach ($rent->book->gallery->where('cover', 1)->get() as $cover_photo)
                     <img 
-                    src="{{'/storage/book-covers/' . $cover_photo->photo}}" 
+                    src="{{'/storage/book-covers/' . $rent->book->cover->photo}}" 
                     alt="Naslovna fotografija" 
                     title="Naslovna fotografija" />
-                    @endforeach
                 </div>
                 <div class="pl-[15px]  flex flex-col">
                     <div>
