@@ -109,12 +109,39 @@
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+// Auto input
+$('#name').keyup(function (){
+    $('#username').val($(this).val().toLowerCase().replace(/\s+/g, '')); 
+});
+$('#name').keyup(function (){
+    $('#email').val($(this).val().toLowerCase().replace(/\s+/g, '')+'@ets-pg.edu.me'); 
+});
+</script>
                     <div class="mt-[20px]">
                         <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
+                        
                         <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        
+                    <span toggle="#password" class="password-eye fa fa-fw fa-eye field-icon toggle-password">
+                    </span> 
                     </div>
 
-                    <div class="mt-[20px]">
+<script>
+// Show password
+$(".toggle-password").click(function() {
+$(this).toggleClass("fa-eye fa-eye-slash");
+var input = $($(this).attr("toggle"));
+if (input.attr("type") == "password") {
+  input.attr("type", "text");
+} else {
+  input.attr("type", "password");
+}
+});
+</script>
+
+                    <div>
                         <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                         <input type="password" name="password_confirmation" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                     </div>

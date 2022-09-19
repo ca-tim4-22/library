@@ -130,6 +130,18 @@
   background: hsl(231, 48%, 70%);
 }
 
+/* Password eye */
+
+.password-eye {
+  color: #4558BE;
+  font-size: 17px;
+  cursor: pointer;
+  position: relative;
+  left: 85%;
+  z-index: 11 !important;
+  bottom: 30px !important;
+}
+
 /* ----------------------------------------------------------- */
 
 /* Media Query for changing background on higher resolutions */
