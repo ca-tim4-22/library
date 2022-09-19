@@ -29,15 +29,23 @@
                     </h1>
                 </div>
                 <div>
-                        <nav class="w-full rounded">
-                            <ol class="flex list-reset">
-                                <li>
-                                    <a href="{{route('show-admin', $admin->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                                        ID-{{$admin->id}}
-                                    </a>
-                                </li>
-                            </ol>
-                        </nav>
+                    <nav class="w-full rounded">
+                        <ol class="flex list-reset">
+                            <li>
+                                <a href="{{route('all-admin')}}" class="text-[#2196f3] hover:text-blue-600">
+                                    Svi administratori
+                                </a>
+                            </li>
+                            <li>
+                                <span class="mx-2">/</span>
+                            </li>
+                            <li>
+                                <a href="{{route('show-admin', $admin->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    ID-{{$admin->id}}
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
                     </div>
                 </div>
              
@@ -130,8 +138,6 @@
                 <img 
                 class="p-2 border-2 border-gray-300"
                 width="300px"
-                alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
-                title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
                 src="https://i.pinimg.com/originals/42/36/d0/4236d00b6df31c5c1dab3566fa61ff3c.gif" />
 
                 @else 

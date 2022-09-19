@@ -19,7 +19,7 @@
                     <div class="py-[10px] flex flex-row">
                         <div class="w-[77px] pl-[30px]">
                                     <img 
-                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
+                                    src="{{$book->placeholder == 1 ? $book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
                         </div>

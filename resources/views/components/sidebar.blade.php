@@ -9,22 +9,53 @@
         <div class="mt-[30px]">
             <ul class="text-[#2D3B48] sidebar-nav">
                 <!-- Dashboard Icon -->
-                <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">
-                    <div class="ml-[25px]">
-                        <span class="flex justify-between w-full fill-current whitespace-nowrap">
-                            <div class="transition duration-300 ease-in group-hover:text-[#576cdf]">
+
+                <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+
+                    <div class="ml-[30px]">
+                        <span class="flex justify-between w-full whitespace-nowrap">
+                            <div>
                                 <a href="{{route('dashboard')}}" aria-label="Dashboard">
-
-            <i class="{{(request()->is('dashboard')) ? 'text-[#707070] ml-1 px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px] text-[#576cdf] transition duration-300 ease-in' : 'text-[#707070] ml-1 px-[5px] pt-[4px] pb-[5px] fas fa-tachometer-alt text-[19px] rounded-[3px] group-hover:text-[#576cdf] transition duration-300 ease-in'}}"></i>
-
+                                    <i 
+                                    style="font-size: 21px"
+                                    class="{{ (request()->is('dashboard')) ? 'text-[25px] text-[#707070] 
+                                    fas fa-tachometer-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-tachometer-alt  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
-                                        <p class="inline text-[15px] ml-[15px]">Dashboard</p>
+                                        <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                            Dashboard
+                                        </p>
                                     </div>
                                 </a>
                             </div>
                         </span>
                     </div>
                 </li>
+
+                @if (Auth::user()->type->id == 3)
+                <!-- Administrator Icon -->
+                <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
+
+                    <div class="ml-[30px]">
+                        <span class="flex justify-between w-full whitespace-nowrap">
+                            <div>
+                                <a href="{{route('all-admin')}}" aria-label="Administratori">
+                                    <i 
+                                    style="font-size: 20px"
+                                    class="{{ (request()->is('administratori')) ? 'text-[25px] text-[#707070] 
+                                    fas fa-user-shield transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-shield  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    <div class="hidden sidebar-item">
+                                        <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                            Administratori
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </span>
+                    </div>
+                </li>
+                @endif
+
+
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Librarians Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
@@ -45,6 +76,8 @@
                     </div>
                 </li>
                 @endif
+
+
 
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Students Icon -->

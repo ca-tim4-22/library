@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

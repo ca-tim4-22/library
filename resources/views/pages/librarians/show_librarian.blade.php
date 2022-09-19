@@ -16,7 +16,6 @@
 <script src="{{asset('js/session_message_jquery.js')}}"></script>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
        <!-- Heading of content -->
@@ -86,9 +85,9 @@
                                 @if (Auth::id() == $librarian->id)
                                 Izbriši svoj nalog
                                 @elseif ($librarian->gender->id == 1)
-                                Izbriši učenika
+                                Izbriši bibliotekara
                                 @else
-                                Izbriši učenicu
+                                Izbriši bibliotekarku
                                 @endif
                                 </span>
                                 </button>

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('reserved_count')->default(0);
             $table->string('body', 4128);
             $table->string('year');
+            $table->integer('placeholder')->default(0)->nullable();
             
             $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
             $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');

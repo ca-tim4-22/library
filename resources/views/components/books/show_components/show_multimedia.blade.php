@@ -7,7 +7,7 @@
         class="object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
         height="auto"
         width="auto"
-        src="{{'/storage/book-covers/' . $photo->photo}}" 
+        src="{{$book->placeholder == 1 ? $book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
         alt="{{$photo->cover == 1 ? 'Naslovna' : 'Fotografija'}}" 
         title="{{$photo->cover == 1 ? 'Naslovna' : 'Fotografija'}}" />
         @endforeach

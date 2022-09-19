@@ -390,11 +390,13 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
+
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
+                                    src="{{$book->placeholder == 1 ? $book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
+
                                     <a href="{{route('show-book', $book->title)}}">
                                         <span class="font-medium text-center">{{$book->title}}</span>
                                     </a>

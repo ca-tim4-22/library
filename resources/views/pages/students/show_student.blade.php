@@ -13,6 +13,7 @@
 @section('content')
 {{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
+{{-- Flash session message --}}
 <script src="{{asset('js/session_message_jquery.js')}}"></script>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>

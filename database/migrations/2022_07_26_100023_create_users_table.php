@@ -37,7 +37,7 @@ return new class extends Migration
         });
 
         DB::table('users')->insert([
-            'user_type_id' => 2,
+            'user_type_id' => 3,
             'user_gender_id' => 1,
             'name' => 'Admin',
             'JMBG' => 98763285743269,

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Author;
 use App\Models\Book;
+use App\Models\BookAuthor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

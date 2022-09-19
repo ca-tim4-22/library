@@ -368,7 +368,7 @@
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{'/storage/book-covers/' . $reservation->reservation->book->cover->photo}}" 
+                                    src="{{$reservation->reservation->book->placeholder == 1 ? $reservation->reservation->book->cover->photo : '/storage/book-covers/' . $reservation->reservation->book->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
                                     <a href="{{route('show-book', $reservation->reservation->book->title)}}">

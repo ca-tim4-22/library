@@ -17,7 +17,7 @@
             <div class="py-[10px] flex flex-row">
                 <div class="w-[77px] pl-[30px]">
                     <img 
-                    src="{{'/storage/book-covers/' . $get_book->cover->photo}}" 
+                    src="{{$get_book->placeholder == 1 ? $get_book->cover->photo : '/storage/book-covers/' . $get_book->cover->photo}}" 
                     alt="Naslovna fotografija" 
                     title="Naslovna fotografija" />
                 </div>
@@ -157,7 +157,6 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white">
-
 
                    @if (!$data == [])
 

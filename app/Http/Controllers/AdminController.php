@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\GlobalVariable;
 use App\Models\User;
+use App\Rules\EmailVerification\EmailVerificationRule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class AdminController extends Controller
 {
@@ -15,7 +20,17 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-    
+        if ($request->items) {
+            $items = $request->items;
+            $variable = GlobalVariable::findOrFail(4);
+        } else {
+            $variable = GlobalVariable::findOrFail(4);
+            $items = $variable->value;
+        }
+        $administrators = User::latest('id')->where('user_type_id', 3)->paginate($items);
+        $show_all = User::latest('id')->where('user_type_id', 3)->count();
+
+        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all'));
     }
 
     /**
@@ -25,7 +40,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admins.new_admin');
     }
 
     /**
@@ -36,7 +51,35 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = Validator::make($request->all(), [
+            'name' => 'required|min:2|max:255',
+            'username' => 'required|min:2|max:255',
+            'email' => [new EmailVerificationRule()],
+            'password' => 'required|min:8|confirmed',   
+            'JMBG' => 'required|min:14|max:14',
+            'photo' => 'required',
+        ])->safe()->all();
+
+        $input['user_type_id'] = 3;
+        $input['user_gender_id'] = $request->user_gender_id;
+        $input['last_login_at'] = Carbon::now();
+        $input['password'] = Hash::make($request->password);
+
+        //Hash password
+        $user['password'] = Hash::make(request()->password);
+      
+        // Store photo
+        if ($file = $request->file('photo')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('storage/administrators/', $name);
+            $input['photo'] = $name; 
+        } else {
+            $input['photo'] = 'profileImg-default.jpg';
+        }
+
+        User::create($input);
+
+        return to_route('all-admin')->with('success-admin', 'Uspješno ste registrovali administratora ' . "'$request->username'");
     }
 
     /**

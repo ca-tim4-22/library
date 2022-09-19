@@ -1524,6 +1524,9 @@ h4 {
 .w-8{
   width: 2rem;
 }
+.w-16{
+  width: 16rem !important;
+}
 .w-56{
   width: 14rem;
 }

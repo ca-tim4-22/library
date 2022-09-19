@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Book;
+use App\Models\Gallery;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,9 +21,8 @@ class GalleryFactory extends Factory
         static $number = 1;
         return [
             'book_id' => $number++,
-            // 'photo' => 'https://source.unsplash.com/random',
-            'photo' => '1661246210robinzon_kruso.jpg',
-            'cover' => 'n',
+            'photo' => 'https://source.unsplash.com/random',
+            'cover' => '1',
         ];
     }
 }

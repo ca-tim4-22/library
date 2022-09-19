@@ -8,6 +8,12 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Sweet Alert --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script> --}}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Content -->
 <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -229,27 +235,59 @@ if($(".holder:hidden").length == 0){
                                     </span>
                                 </td>
 
-                                <td class="px-2 py-2">
-                                   
+                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                                   <td class="px-2 py-2">
                                     <form style="display: inline" action="{{route('approve', ['id' => $await_reservation->id])}}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                            <button style="outline: none;" href="#" class="hover:text-green-500 mr-[5px]">
-                                                <i class="fas fa-check reservedStatus"></i>
-                                            </button>
-                                        </form>
-
-                                        <form style="display: inline" action="{{route('deny', ['id' => $await_reservation->id])}}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                                <button style="outline: none;" href="#" class="hover:text-red-500 ">
-                                                    <i class="fas fa-times deniedStatus"></i>
-                                                </button>
-                                        </form>
-
+                                    <button style="outline: none;" href="#" class="hover:text-green-500 mr-[5px]">
+                                            <i class="fas fa-check reservedStatus"></i>
+                                    </button>
+                                    </form>
+                                    <form style="display: inline" action="{{route('deny', ['id' => $await_reservation->id])}}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button style="outline: none;" href="#" class="hover:text-red-500 ">
+                                            <i class="fas fa-times deniedStatus"></i>
+                                    </button>
+                                    </form>
                                     </td>
+                                @else
+                                <td class="px-2 py-2">
+                                    <button 
+                                    style="outline: none;"
+                                    onclick="permission()" 
+                                    class="hover:text-green-500 mr-[5px]">
+                                            <i class="fas fa-check"></i>
+                                    </button>
+                                    <button 
+                                    style="outline: none;"
+                                    onclick="permission()"   
+                                    class="hover:text-red-500">
+                                            <i class="fas fa-times deniedStatus"></i>
+                                    </button>
+                                </td>
+                                @endif
+
                              </tr>
-  
+
+                            <style>
+                            .swal2-modal .swal2-styled:focus {
+	                        -webkit-box-shadow: none !important;
+	                        box-shadow: none !important;
+                            }
+                            </style>
+
+                             <script>
+                                function permission() {
+                                    swal.fire({
+                                    icon: 'error',
+                                    confirmButtonColor: '#4558BE',
+                                    title: 'Oops...',
+                                    text: 'Nemate ovlašćenje za ovu operaciju!',
+                                  })}
+                             </script>
+
                             @endforeach
 
                             @else 
@@ -286,15 +324,6 @@ if($(".holder:hidden").length == 0){
                                 Izdate knjige
                             </a>
                             <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 
-                            {{-- @if ($rented_books > $overdue_books && $rented_books > $reserved_books)
-                            stats-bar-red
-                            @elseif ($rented_books > $overdue_books && $rented_books < $reserved_books || $rented_books < $overdue_books && $rented_books > $reserved_books)
-                            stats-bar-green
-                            @elseif ($rented_books == $reserved_books || $rented_books == $overdue_books || $rented_books == $reserved_books && $rented_books == $reserved_books)
-                            stats-bar-yellow
-                            @else
-                            stats-bar-green
-                            @endif --}}
                             @if($rented_books > $reserved_books && $rented_books > $overdue_books)
                             stats-bar-red
                             @elseif($rented_books < $reserved_books)
@@ -323,17 +352,6 @@ if($(".holder:hidden").length == 0){
                                 Rezervisane knjige
                             </a>
                             <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900
-                            {{-- @if ($reserved_books > $overdue_books && $reserved_books > $rented_books)
-                            stats-bar-red
-                            @elseif ($reserved_books < $overdue_books && $reserved_books < $rented_books && $rented_books != $overdue_books)
-                            stats-bar-green
-                            @elseif ($reserved_books < $overdue_books && $reserved_books < $rented_books)
-                            stats-bar-green
-                            @elseif ($reserved_books == $rented_books || $reserved_books == $overdue_books || $reserved_books == $rented_books && $reserved_books == $rented_books)
-                            stats-bar-yellow
-                            @else
-                            stats-bar-yellow
-                            @endif --}}
                             @if($reserved_books > $rented_books && $reserved_books > $overdue_books || $reserved_books > $overdue_books && $reserved_books == $rented_books)
                             stats-bar-red
                             @elseif($overdue_books == $rented_books)
@@ -369,19 +387,6 @@ if($(".holder:hidden").length == 0){
                             </a>
 
                 <div class="ml-[30px] bg-red-600 transition duration-200 ease-in hover:bg-red-900 
-                {{-- @if ($overdue_books > $rented_books && $overdue_books > $reserved_books)
-                stats-bar-red
-                @elseif ($overdue_books > $rented_books && $overdue_books < $reserved_books)
-                stats-bar-yellow
-                @elseif ($overdue_books == $reserved_books || $overdue_books == $rented_books || $overdue_books == $reserved_books && $overdue_books == $reserved_books)
-                stats-bar-yellow
-                @elseif ($overdue_books < $rented_books && $overdue_books > $reserved_books)
-                stats-bar-yellow
-                @elseif ($overdue_books < $rented_books && $overdue_books < $reserved_books && $rented_books != $overdue_books)
-                stats-bar-yellow
-                @else
-                stats-bar-green
-                @endif --}}
                 @if($overdue_books > $rented_books && $overdue_books > $reserved_books)
                 stats-bar-red
                 @elseif($overdue_books == $reserved_books && $overdue_books == $rented_books)
