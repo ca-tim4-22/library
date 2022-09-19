@@ -557,21 +557,27 @@ window.location.href = "/ucenik/" + username;
     .sakriveno {display: none !important}
     .sakriveno_email {display: none !important}
 </style>
-<script>
 
-$('input#check').on('change', function() {     
-    if($(this).is(":checked")) {
-        $('.checkme').addClass('hidden_header');    
-        $('.checkme2').addClass('show');    
-        $('.checkme2').removeClass('sakriveno');   
-    } else {
-        $('.checkme').removeClass('hidden_header');    
-        $('.checkme2').removeClass('show');    
-        $('.checkme2').addClass('sakriveno');    
-        
-    }
-});
-</script>
+<script>
+  $('input#check').on('change', function() {  
+      if($(this).is(":checked")) {
+        var length = $('input#check:checked').length;
+        if (length == 1) {
+          $('.checkme').addClass('hidden_header');    
+          $('.checkme2').addClass('show');    
+          $('.checkme2').removeClass('sakriveno');   
+         } else {
+          $('.checkme').removeClass('hidden_header');    
+          $('.checkme2').removeClass('show');    
+          $('.checkme2').addClass('sakriveno');  
+         }
+      } else {
+          $('.checkme').removeClass('hidden_header');    
+          $('.checkme2').removeClass('show');    
+          $('.checkme2').addClass('sakriveno');    
+      }
+  });
+  </script>
 
 <script type="text/javascript">
     $(document).ready(function () {
