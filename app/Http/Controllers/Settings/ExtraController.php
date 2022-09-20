@@ -119,7 +119,8 @@ class ExtraController extends Controller
         {
             Author::firstOrCreate($customerArr[$i]);
         }
-        // unlink('csv\\' . $name);
+        unlink('csv\\' . $name);
+        
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
 
