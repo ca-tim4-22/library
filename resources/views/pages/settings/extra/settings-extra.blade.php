@@ -41,131 +41,214 @@
     <div class="height-ucenikProfile pb-[30px] scroll">
         <!-- Space for content -->
         <div class="section-">
-
             <div class="flex flex-col">
+              <a href="upustvo.html" target="_blank" class="ml-[30px] mt-[10px] " style="font-size: 20px">
+                Pročitajte uputstvo <i style="cursor: default" class="fas fa-book-reader"></i>
+              </a>
+              <hr class="mt-[10px]">
+              <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-
-                    <div class="file-drop-area">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
                     <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv">
+                    <input class="file-input" type="file" multiple name="csv_author">
                     </div>
-                
-
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu
                     </button>
-                    
                     </form>
-                
-                    <style>
-                        
-
-section {
-  flex-grow: 1;
-}
-
-.file-drop-area {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 450px;
-  max-width: 100%;
-  padding: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.2s;
-  &.is-active {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-}
-
-.fake-btn {
-  flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
-  padding: 8px 15px;
-  margin-right: 10px;
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.file-msg {
-  font-size: small;
-  font-weight: 300;
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.file-input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  opacity: 0;
-  &:focus {
-    outline: none;
-  }
-}
-
-footer {
-  margin-top: 50px;
-  a {
-    color: rgba(255, 255, 255, 0.4);
-    font-weight: 300;
-    font-size: 14px;
-    text-decoration: none;
-    &:hover {
-      color: white;
-    }
-  }
-}
-.file-drop-area {
-background: linear-gradient(to right, #4568dc, #4558BE);
-  color: #D7D7EF;
-  font-family: 'Lato', sans-serif;
-}
-                        </style> 
-                        <script>
-                            var $fileInput = $('.file-input');
-var $droparea = $('.file-drop-area');
-
-// highlight drag area
-$fileInput.on('dragenter focus click', function() {
-  $droparea.addClass('is-active');
-});
-
-// back to normal state
-$fileInput.on('dragleave blur drop', function() {
-  $droparea.removeClass('is-active');
-});
-
-// change inner text
-$fileInput.on('change', function() {
-  var filesCount = $(this)[0].files.length;
-  var $textContainer = $(this).prev();
-
-  if (filesCount === 1) {
-    // if single file is selected, show file name
-    var fileName = $(this).val().split('\\').pop();
-    $textContainer.text(fileName);
-  } else {
-    // otherwise show number of files
-    $textContainer.text(filesCount + ' prevučeno');
-  }
-});
-                        </script>
                 </div>
+
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjige</h2>
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
+                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    <span class="fake-btn">Dodajte CSV fajl</span>
+                    <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                    <input class="file-input" type="file" multiple name="csv_author">
+                    </div>
+                    <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
+                    <i class="fas fa-database"></i>&nbsp; Popunite bazu
+                    </button>
+                    </form>
+                </div>
+
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Galerija</h2>
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
+                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    <span class="fake-btn">Dodajte CSV fajl</span>
+                    <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                    <input class="file-input" type="file" multiple name="csv_author">
+                    </div>
+                    <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
+                    <i class="fas fa-database"></i>&nbsp; Popunite bazu
+                    </button>
+                    </form>
+                </div>
+                
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Autor</h2>
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
+                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    <span class="fake-btn">Dodajte CSV fajl</span>
+                    <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                    <input class="file-input" type="file" multiple name="csv_author">
+                    </div>
+                    <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
+                    <i class="fas fa-database"></i>&nbsp; Popunite bazu
+                    </button>
+                    </form>
+                </div>
+                
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Kategorija</h2>
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
+                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    <span class="fake-btn">Dodajte CSV fajl</span>
+                    <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                    <input class="file-input" type="file" multiple name="csv_author">
+                    </div>
+                    <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
+                    <i class="fas fa-database"></i>&nbsp; Popunite bazu
+                    </button>
+                    </form>
+                </div>
+
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Žanr</h2>
+                <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                    <div class="file-drop-area @error('csv_author') error-border @enderror">
+                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    <span class="fake-btn">Dodajte CSV fajl</span>
+                    <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                    <input class="file-input" type="file" multiple name="csv_author">
+                    </div>
+                    <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
+                    <i class="fas fa-database"></i>&nbsp; Popunite bazu
+                    </button>
+                    </form>
+                </div>
+
+                
+
             </div>
         </div>
     </div>
  </section>
+
+ <style>
+                        
+  .error-border {
+    border: 2.3px dotted red;
+  }
+  
+  #icon {
+    animation: mymove 1s infinite ease-in;
+  }
+  
+  @keyframes mymove {
+    
+    0% { color: red; }
+      50% { color: #fff; }
+      100% { color: red; }
+  }
+  
+  .file-drop-area {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 450px;
+    max-width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    &.is-active {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  .fake-btn {
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  
+  .file-msg {
+    font-size: small;
+    font-weight: 300;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  
+  .file-drop-area {
+  background: linear-gradient(to right, #4568dc, #4558BE);
+    color: #D7D7EF;
+    font-family: 'Lato', sans-serif;
+  }
+                          </style> 
+                          <script>
+                              var $fileInput = $('.file-input');
+  var $droparea = $('.file-drop-area');
+  
+  // highlight drag area
+  $fileInput.on('dragenter focus click', function() {
+    $droparea.addClass('is-active');
+  });
+  
+  // back to normal state
+  $fileInput.on('dragleave blur drop', function() {
+    $droparea.removeClass('is-active');
+  });
+  
+  // change inner text
+  $fileInput.on('change', function() {
+    var filesCount = $(this)[0].files.length;
+    var $textContainer = $(this).prev();
+  
+    if (filesCount === 1) {
+      // if single file is selected, show file name
+      var fileName = $(this).val().split('\\').pop();
+      $textContainer.text(fileName);
+    } else {
+      // otherwise show number of files
+      $textContainer.text(filesCount + ' prevučeno');
+    }
+  });
+  </script>
 
 @endsection

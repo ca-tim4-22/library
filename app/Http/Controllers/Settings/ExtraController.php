@@ -107,7 +107,11 @@ class ExtraController extends Controller
     }
 
     public function save(Request $request) {
-        $get_file = $request->file('csv');
+        $input = $request->validate([
+            'csv_author' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_author');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
     
