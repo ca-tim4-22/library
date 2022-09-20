@@ -119,7 +119,7 @@
                                 @else
                                 <img 
                                 class="rounded-full" 
-                                src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . Auth::user()->photo}}" 
+                                src="{{Auth::user()->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . Auth::user()->photo}}" 
                                 alt="{{Auth::user()->username}}" 
                                 title="{{Auth::user()->username}}" />
                                 @endif

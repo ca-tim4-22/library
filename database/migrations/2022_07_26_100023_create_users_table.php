@@ -39,7 +39,7 @@ return new class extends Migration
         DB::table('users')->insert([
             'user_type_id' => 3,
             'user_gender_id' => 1,
-            'name' => 'Admin',
+            'name' => 'Administrator',
             'JMBG' => 98763285743269,
             'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),

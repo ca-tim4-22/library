@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
@@ -131,5 +132,21 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crop(Request $request) {
+        $dest = 'storage/administrators';
+        $file = $request->file('photo');
+        $new_image_name = date('YmdHis').uniqid().'.jpg';
+
+        $move = $file->move($dest, $new_image_name);
+
+        if (!$move)  {
+            return response()->json(['status' => 0, 'msg' => 'Greška!']);
+        } else {
+            $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
+
+            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+        }
     }
 }

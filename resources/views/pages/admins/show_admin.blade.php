@@ -133,23 +133,31 @@
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
                
-                @if($admin->gender->id == 1)
-                
-                <img 
-                class="p-2 border-2 border-gray-300"
-                width="300px"
-                src="https://i.pinimg.com/originals/42/36/d0/4236d00b6df31c5c1dab3566fa61ff3c.gif" />
-
-                @else 
-
-                <img 
-                class="p-2 border-2 border-gray-300"
-                width="300px"
-                alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
-                title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
-                src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/39305540757277.578c758b80108.gif" />
-                
-                @endif
+                    <img 
+                    class="p-2 border-2 border-gray-300"
+                    width="300px"
+                    id="loaded1" 
+                    alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
+                    title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
+                    src="{{$admin->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . $admin->photo}}" />
+                    </div>
+    
+                    <div class="mt-[50px] ml-[30px]">
+                        <label class="mt-6 cursor-pointer">
+                            <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
+                                <div class="py-4">
+                                    <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                        <polyline points="21 15 16 10 5 21"></polyline>
+                                    </svg>
+                                    <span class="px-4 py-2 mt-2 leading-normal">Izmijeni fotografiju</span>
+                                    <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
+                                </div>
+                                <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
+                            </div>
+                        </label>   
+                    </div>
 
                 </div>
 
@@ -160,5 +168,44 @@
     <!-- End Content -->
 </main>
 <!-- End Main content -->
+
+{{-- Scripts --}}
+<script src="{{asset('ijaboCropTool/ijaboCropTool.min.js')}}"></script>
+
+<script>
+    $('#photo').ijaboCropTool({
+          preview : '.image-previewer',
+          setRatio:1,
+          allowedExtensions: ['jpg', 'jpeg','png'],
+          buttonsText:['Sačuvaj','Otkaži'],
+          buttonsColor:['#4558BE','#ee5155', -15],
+          processUrl:'{{route('admin.crop')}}',
+          withCSRF:['_token', '{{csrf_token()}}'],
+          onSuccess:function(message, element, status){
+            swal({
+           title: "Uspješno!",
+           text: "Uspješno ste izmijenili profilnu fotografiju!",
+           type: "success",
+           timer: 1000,
+           confirmButtonText: 'U redu',
+           allowEscapeKey: false,
+           allowOutsideClick: false,
+           }).then(function() {
+            window.location.reload();
+           });
+          },
+          onError:function(message, element, status){
+            swal({
+          title: "Greška!",
+          text: "Zahtijevana ekstenzija nije podržana!",
+          type: "error",
+          timer: 1500,
+          confirmButtonText: 'U redu',
+          allowEscapeKey: false,
+          allowOutsideClick: false,
+          });
+          }
+       });
+</script>
 
 @endsection

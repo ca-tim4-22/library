@@ -109,16 +109,6 @@
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
-
-<script>
-// Auto input
-$('#name').keyup(function (){
-    $('#username').val($(this).val().toLowerCase().replace(/\s+/g, '')); 
-});
-$('#name').keyup(function (){
-    $('#email').val($(this).val().toLowerCase().replace(/\s+/g, '')+'@ets-pg.edu.me'); 
-});
-</script>
                     <div class="mt-[20px]">
                     <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
                         
@@ -178,5 +168,7 @@ $('#name').keyup(function (){
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Toggle password script --}}
 <script src="{{asset('toggle_password/toggle_password.js')}}"></script>
+{{-- Auto Complete --}}
+<script src="{{asset('auto_complete/auto_complete.js')}}"></script>
 
 @endsection

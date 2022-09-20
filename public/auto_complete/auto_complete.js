@@ -1,0 +1,1 @@
+$("#name").keyup(function(){$("#username").val($(this).val().toLowerCase().replace(/\s+/g,""))}),$("#name").keyup(function(){$("#email").val($(this).val().toLowerCase().replace(/\s+/g,"")+"@ets-pg.edu.me")});
