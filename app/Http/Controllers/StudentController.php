@@ -190,26 +190,19 @@ class StudentController extends Controller
     public function destroy(Request $request, $id)
     {
         $student = User::findOrFail($id);
-        if ($student->gender->id == 1) {
-            $word = 'učenika';
-        } else {
-            $word = 'učenicu';
-        }
 
         if (Auth::user()->id == $student->id) {
             $student->delete();
 
             return to_route('good-bye');
         }
-        
+
         if ($student->photo != 'placeholder') {
             $path = '\\storage\\students\\' . $student->photo;
             unlink(public_path() . $path);
         }
 
         $student->delete();
-        
-        return to_route('all-student')->with('student-deleted', "Uspješno ste izbrisali $word \"$student->name\"");
     }
 
     public function deleteMultiple(Request $request)

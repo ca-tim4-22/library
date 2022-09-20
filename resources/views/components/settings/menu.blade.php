@@ -21,4 +21,7 @@
     <a href="{{route('setting-letter')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/pisma')) ? 'active-book-nav' : ''}}">
         Pisma
     </a>
+    <a href="{{route('setting-extra')}}" class="inline ml-[70px] hover:text-blue-800 {{(request()->is('podesavanja/dodatno')) ? 'active-book-nav' : ''}}">
+        Dodatno
+    </a>
 </div>

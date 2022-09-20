@@ -184,11 +184,6 @@ class LibrarianController extends Controller
     public function destroy(Request $request, $id)
     {
         $librarian = User::findOrFail($id);
-        if ($librarian->gender->id == 1) {
-            $word = 'bibliotekara';
-        } else {
-            $word = 'bibliotekarku';
-        }
 
         if (Auth::user()->id == $librarian->id) {
             $librarian->delete();
@@ -202,8 +197,6 @@ class LibrarianController extends Controller
         }
 
         $librarian->delete();
-        
-        return to_route('all-librarian')->with('librarian-deleted', "Uspješno ste izbrisali $word \"$librarian->name\"");
     }
 
     public function deleteMultiple(Request $request)

@@ -12,6 +12,8 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+{{-- Tailwind --}}
+<script src="https://cdn.tailwindcss.com"></script>
 {{-- Preloader --}}
 <div id="loader"></div>
 
@@ -20,10 +22,10 @@
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
     <!-- Heading of content -->
-    <div class="heading mt-[7px]">
+  <div class="heading mt-[7px]" style="margin-top: 11px">
         <div class="border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] pb-[21px]">
-                <h1>
+                <h1 style="font-size: 30px">
                     Autori
 
 {{-- Session message for author create --}}
@@ -55,7 +57,7 @@
     <div class="height-autori pb-[30px] scroll">
         <div class="flex items-center px-[30px] py-4 space-x-3 rounded-lg justify-between">
             <a href="{{route('new-author')}}"
-                class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
+                class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                 <i class="fas fa-plus mr-[15px]"></i> Novi autor
             </a>
             <div class="flex items-center">
@@ -166,7 +168,6 @@
 
     @else
 
-    <div class="mx-[50px]">
         <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
             <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                 <path fill="currentColor"
@@ -175,7 +176,6 @@
             </svg>
             <p class="font-medium text-white">Trenutno nema autora u bazi podataka! </p>
         </div>
-    </div>
 
     @endif
 

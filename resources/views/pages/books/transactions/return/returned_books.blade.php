@@ -555,7 +555,7 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
-    <x-jquery.jquery></x-jquery.jquery>
-
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
 @endsection
 

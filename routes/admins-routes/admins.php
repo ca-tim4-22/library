@@ -9,7 +9,7 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(AdminController::class)->group(function() {
-// Admins
+// Administrators
 Route::get('/administratori', [AdminController::class, 'index'])->name('all-admin');
 Route::get('/administrator/{user:username}', [AdminController::class, 'show'])->name('show-admin');
 Route::get('/novi-administrator', [AdminController::class, 'create'])->name('new-admin');
@@ -23,7 +23,7 @@ Route::delete('/izbrisi-admina/{id}', [AdminController::class, 'destroy'])->name
 
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
-// Protection for deleting a certain student through URI
+// Protection for deleting a certain administrator through URI
 Route::get('/admins/{id}', function ($id) {});
 Route::post('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
 });

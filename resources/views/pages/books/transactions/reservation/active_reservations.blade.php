@@ -8,8 +8,6 @@
 @endsection
 
 @section('content')
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
 
     <x-sidebar></x-sidebar>
     <!-- Main content -->
@@ -591,4 +589,6 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
 @endsection

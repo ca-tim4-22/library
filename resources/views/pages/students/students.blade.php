@@ -12,8 +12,15 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
+{{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+{{-- Tailwind --}}
+<script src="https://cdn.tailwindcss.com"></script>
+{{-- Trash delete icon --}}
+<link rel="stylesheet" href="{{asset('trash_delete/trash_delete.css')}}">
+{{-- Csrf Token --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
 {{-- Preloader --}}
 <div id="loader"></div>
     
@@ -37,23 +44,13 @@
   </div>
 @endif
 
-{{-- Session message for student delete --}}
-@if (session()->has('student-deleted'))
-<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-    <span class="sr-only">Info</span>
-    <div>
-      <span class="font-medium">Success!</span> {{session('student-deleted')}}
-    </div>
-</div>
-@endif
         </h1>
     </div>
 
     <!-- Space for content -->
     <div class="scroll height-dashboard">
         <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
-            <a href="{{ route('new-student') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
+            <a href="{{ route('new-student') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                 <i class="fas fa-plus mr-[15px]"></i> Novi učenik
             </a>
             <div class="flex items-center">
@@ -105,7 +102,6 @@
 
             @if (count($students) <= 0)
 
-            <div class="mx-[50px]">
                 <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
                     <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                         <path fill="currentColor"
@@ -114,13 +110,12 @@
                     </svg>
                     <p class="font-medium text-white">Trenutno nema registrovanih učenika! </p>
                 </div>
-            </div>  
                 
             @endif
 
             @if (count($students) > 0)
 
-            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE] button delete-all"  data-url="">
+            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all"  data-url="">
                 <div class="icon">
                     <svg class="top">
                         <use xlink:href="#top">
@@ -140,196 +135,7 @@
                     <path d="M16.9535129,8 C17.4663488,8 17.8890201,8.38604019 17.9467852,8.88337887 L17.953255,9.02270969 L17.953255,9.02270969 L17.5309272,18.3196017 C17.5119599,18.7374363 17.2349366,19.0993109 16.8365446,19.2267053 C15.2243631,19.7422351 13.6121815,20 12,20 C10.3878264,20 8.77565288,19.7422377 7.16347932,19.226713 C6.76508717,19.0993333 6.48806648,18.7374627 6.46907425,18.3196335 L6.04751853,9.04540766 C6.02423185,8.53310079 6.39068134,8.09333626 6.88488406,8.01304774 L7.02377738,8.0002579 L16.9535129,8 Z M9.75,10.5 C9.37030423,10.5 9.05650904,10.719453 9.00684662,11.0041785 L9,11.0833333 L9,16.9166667 C9,17.2388328 9.33578644,17.5 9.75,17.5 C10.1296958,17.5 10.443491,17.280547 10.4931534,16.9958215 L10.5,16.9166667 L10.5,11.0833333 C10.5,10.7611672 10.1642136,10.5 9.75,10.5 Z M14.25,10.5 C13.8703042,10.5 13.556509,10.719453 13.5068466,11.0041785 L13.5,11.0833333 L13.5,16.9166667 C13.5,17.2388328 13.8357864,17.5 14.25,17.5 C14.6296958,17.5 14.943491,17.280547 14.9931534,16.9958215 L15,16.9166667 L15,11.0833333 C15,10.7611672 14.6642136,10.5 14.25,10.5 Z"></path>
                 </symbol>
             </svg>
-
-            <style>
-  .button {
-  --background: #3F51B5;
-  --text: #fff;
-  --icon: #fff;
-  display: -webkit-box;
-  display: flex;
-  outline: none;
-  cursor: pointer;
-  border: 0;
-  min-width: 113px;
-  padding: 9px 20px 9px 12px;
-  margin-bottom: 8px;
-  line-height: 24px;
-  overflow: hidden;
-  color: var(--text);
-  background: var(--b, var(--background));
-  -webkit-transition: background 0.4s, -webkit-transform 0.3s;
-  transition: background 0.4s, -webkit-transform 0.3s;
-  transition: transform 0.3s, background 0.4s;
-  transition: transform 0.3s, background 0.4s, -webkit-transform 0.3s;
-  -webkit-transform: scale(var(--scale, 1)) translateZ(0);
-  transform: scale(var(--scale, 1)) translateZ(0);
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-}
-.button:active {
-  --scale: 0.95;
-}
-
-.button .icon,
-.button span {
-  display: inline-block;
-  vertical-align: top;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-.button .icon {
-  width: 24px;
-  height: 24px;
-  position: relative;
-  z-index: 1;
-  margin-right: 8px;
-  color: var(--text);
-}
-.button .icon svg {
-  width: 96px;
-  height: 96px;
-  display: block;
-  position: absolute;
-  left: -36px;
-  top: -36px;
-  will-change: transform;
-  fill: var(--icon);
-  -webkit-transform: scale(0.254) translateZ(0);
-  transform: scale(0.254) translateZ(0);
-  -webkit-animation: var(--name, var(--name-top, none)) 2000ms ease forwards;
-  animation: var(--name, var(--name-top, none)) 2000ms ease forwards;
-}
-.button .icon svg.bottom {
-  --name: var(--name-bottom, none);
-}
-.button span {
-  -webkit-animation: var(--name-text, none) 2000ms ease forwards;
-  animation: var(--name-text, none) 2000ms ease forwards;
-}
-.button.delete {
-  --name-top: trash-top;
-  --name-bottom: trash-bottom;
-  --name-text: text;
-}
-
-@-webkit-keyframes trash-bottom {
-  25%,
-  32% {
-    -webkit-transform: translate(32px, 19px) scale(1) translateZ(0);
-    transform: translate(32px, 19px) scale(1) translateZ(0);
-  }
-  70%,
-  80% {
-    -webkit-transform: translate(32px, 0) scale(0.254) translateZ(0);
-    transform: translate(32px, 0) scale(0.254) translateZ(0);
-  }
-  100% {
-    -webkit-transform: scale(0.254) translateZ(0);
-    transform: scale(0.254) translateZ(0);
-  }
-}
-
-@keyframes trash-bottom {
-  25%,
-  32% {
-    -webkit-transform: translate(32px, 19px) scale(1) translateZ(0);
-    transform: translate(32px, 19px) scale(1) translateZ(0);
-  }
-  70%,
-  80% {
-    -webkit-transform: translate(32px, 0) scale(0.254) translateZ(0);
-    transform: translate(32px, 0) scale(0.254) translateZ(0);
-  }
-  100% {
-    -webkit-transform: scale(0.254) translateZ(0);
-    transform: scale(0.254) translateZ(0);
-  }
-}
-@-webkit-keyframes trash-top {
-  25%,
-  32% {
-    -webkit-transform: translate(38px, 4px) scale(1) rotate(-20deg)
-      translateZ(0);
-    transform: translate(38px, 4px) scale(1) rotate(-20deg) translateZ(0);
-  }
-  70%,
-  80% {
-    -webkit-transform: translate(32px, 0) scale(0.254) translateZ(0);
-    transform: translate(32px, 0) scale(0.254) translateZ(0);
-  }
-  100% {
-    -webkit-transform: scale(0.254) translateZ(0);
-    transform: scale(0.254) translateZ(0);
-  }
-}
-@keyframes trash-top {
-  25%,
-  32% {
-    -webkit-transform: translate(38px, 4px) scale(1) rotate(-20deg)
-      translateZ(0);
-    transform: translate(38px, 4px) scale(1) rotate(-20deg) translateZ(0);
-  }
-  70%,
-  80% {
-    -webkit-transform: translate(32px, 0) scale(0.254) translateZ(0);
-    transform: translate(32px, 0) scale(0.254) translateZ(0);
-  }
-  100% {
-    -webkit-transform: scale(0.254) translateZ(0);
-    transform: scale(0.254) translateZ(0);
-  }
-}
-@-webkit-keyframes text {
-  25% {
-    -webkit-transform: translate(-4px, -4px) rotate(-20deg) translateZ(0);
-    transform: translate(-4px, -4px) rotate(-20deg) translateZ(0);
-  }
-  70% {
-    opacity: 1;
-    -webkit-transform: translate(-12px, 48px) rotate(-80deg) scale(0.2)
-      translateZ(0);
-    transform: translate(-12px, 48px) rotate(-80deg) scale(0.2) translateZ(0);
-  }
-  71% {
-    opacity: 0;
-  }
-  72%,
-  90% {
-    opacity: 0;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes text {
-  25% {
-    -webkit-transform: translate(-4px, -4px) rotate(-20deg) translateZ(0);
-    transform: translate(-4px, -4px) rotate(-20deg) translateZ(0);
-  }
-  70% {
-    opacity: 1;
-    -webkit-transform: translate(-12px, 48px) rotate(-80deg) scale(0.2)
-      translateZ(0);
-    transform: translate(-12px, 48px) rotate(-80deg) scale(0.2) translateZ(0);
-  }
-  71% {
-    opacity: 0;
-  }
-  72%,
-  90% {
-    opacity: 0;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-  100% {
-    opacity: 1;
-  }
-}
-            </style>
+         
 <script>
     document.querySelectorAll(".button").forEach(button =>
   button.addEventListener("click", e => {
@@ -473,7 +279,6 @@
 
             </table>
 
-            <script src="https://cdn.tailwindcss.com"></script>
             <div class="m-3">{!! $students->links() !!}</div>
 
             </div>
@@ -658,7 +463,6 @@ window.location.href = "/ucenik/" + username;
     });   
     });
     </script>
-
 @endsection
 
 

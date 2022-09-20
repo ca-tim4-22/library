@@ -60,7 +60,7 @@
                             <a href="{{route('store-admin')}}" tabindex="0"
                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                             role="menuitem">
-                            <i class="fas fa-users mr-[5px] ml-[3px] py-1"></i>
+                            <i class=" fas fa-user-shield mr-[5px] ml-[3px] py-1"></i>
                             <span class="px-4 py-0">Administrator</span>
                             </a>
                             <a href="{{route('new-librarian')}}" tabindex="0"

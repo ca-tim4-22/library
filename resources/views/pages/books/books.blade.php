@@ -12,18 +12,17 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
-
 {{-- Preloader --}}
 <div id="loader"></div>
 
 <div style="display:none;" id="myDiv">
 
     <!-- Content -->
-    <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
-        <!-- Heading of content -->
-        <div class="heading mt-[7px]">
-            <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                Knjige
+<section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
+    <!-- Heading of content -->
+    <div class="heading mt-[7px]" style="margin-top: 10px">
+        <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
+            Knjige
 
 {{-- Session message for book create --}}
     @if (session()->has('success-book'))
@@ -54,7 +53,7 @@
             <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <a href="{{route('new-book')}}"
-                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">
+                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
                 </a>
                 @else
@@ -374,7 +373,6 @@
                             </tr>
                             @endforeach
                             @else 
-                            <div class="mx-[50px]">
                                 <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
                                     <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                                         <path fill="currentColor"
@@ -383,7 +381,6 @@
                                     </svg>
                                     <p class="font-medium text-white">Trenutno nema knjiga u bazi podataka! </p>
                                 </div>
-                            </div>  
                             @endif
                         </tbody>
                     </table>
@@ -396,4 +393,6 @@
 
 </div>
 
+{{-- Tailwind --}}
+<script src="https://cdn.tailwindcss.com"></script>
 @endsection

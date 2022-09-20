@@ -129,9 +129,22 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $admin = User::findOrFail($id);
+
+        if (Auth::user()->id == $admin->id) {
+            $admin->delete();
+
+            return to_route('good-bye');
+        }
+
+        if ($admin->photo != 'placeholder') {
+            $path = '\\storage\\administrators\\' . $admin->photo;
+            unlink(public_path() . $path);
+        }
+
+        $admin->delete();
     }
 
     public function crop(Request $request) {
