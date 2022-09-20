@@ -1,0 +1,1 @@
+$(".toggle-password").click(function(){$(this).toggleClass("fa-eye fa-eye-slash");var t=$("input[id=password]");"password"==t.attr("type")?t.attr("type","text"):t.attr("type","password")});

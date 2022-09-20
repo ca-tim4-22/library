@@ -355,6 +355,18 @@
                                                     <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Rezerviši knjigu</span>
                                                 </a>
+                                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                                                <form action="{{route('destroy-book', $book->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="outline: none" type="submit" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
+                                                        <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Izbriši knjigu</span>
+                                                    </button>
+                                                </form>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

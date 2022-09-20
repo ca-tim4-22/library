@@ -47,7 +47,7 @@
                 
             </a>
             <a class="tab inline ml-[70px] hover:text-blue-800
-            @error('photo')error-border @enderror
+            @error('cover')error-border @enderror
             ">
                 Multimedija
             </a>      

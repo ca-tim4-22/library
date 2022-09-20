@@ -8,6 +8,7 @@ use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
 use App\Models\Category;
+use App\Models\Gallery;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -144,25 +145,30 @@ class BookController extends Controller
             ]);
         }
      
-        $cover = $request->file('cover');
-        $name = $cover->getClientOriginalName();
-        $cover->move('storage/book-covers', $name);
-        DB::table('galleries')->insert([
-            'book_id' => $book->id,
-            'photo' => $name,
-            'cover' => 1,
-        ]);
+        if ($request->file('cover')) {
+            $cover = $request->file('cover');
+            $name = $cover->getClientOriginalName();
+            $cover->move('storage/book-covers', $name);
+            DB::table('galleries')->insert([
+                'book_id' => $book->id,
+                'photo' => $name,
+                'cover' => 1,
+            ]);
+           
+        }
 
-        $photos = $request->file('photos');
-        foreach ($photos as $photo) {
-        $file = $photo;
-        $name = $file->getClientOriginalName();
-        $file->move('storage/book-covers', $name);
-        DB::table('galleries')->insert([
-            'book_id' => $book->id,
-            'photo' => $name,
-            'cover' => 0,
-        ]);}
+        if ($request->file('photos') && $request->file('cover')) {
+            $photos = $request->file('photos');
+            foreach ($photos as $photo) {
+            $file = $photo;
+            $name = $file->getClientOriginalName();
+            $file->move('storage/book-covers', $name);
+            DB::table('galleries')->insert([
+                'book_id' => $book->id,
+                'photo' => $name,
+                'cover' => 0,
+            ]);}
+        } 
 
         return to_route('all-books')->with('success-book', 'Uspješno ste dodali knjigu.');
     }
@@ -313,6 +319,47 @@ class BookController extends Controller
                 ]);
         };}}
 
+        if ($request->file('cover') || $request->file('photos')) {
+
+            if ($request->file('cover')) {
+
+                $cover_old = Gallery::where([
+                    'book_id' => $book->id,
+                    'cover' => 1,
+                ])->first();
+
+                if ($cover_old) {
+                    $path = '\\storage\\book-covers\\' . $cover_old->photo;
+                    unlink(public_path() . $path); 
+                    $cover_old->delete();
+                }
+
+                $cover = $request->file('cover');
+                $name = $cover->getClientOriginalName();
+                $cover->move('storage/book-covers', $name);
+                DB::table('galleries')->insert([
+                    'book_id' => $book->id,
+                    'photo' => $name,
+                    'cover' => 1,
+                ]);
+            }
+    
+            if ($request->file('photos')) {
+
+            $photos = $request->file('photos');
+            foreach ($photos as $photo) {
+            $file = $photo;
+            $name = $file->getClientOriginalName();
+            $file->move('storage/book-covers', $name);
+            DB::table('galleries')->insert([
+                'book_id' => $book->id,
+                'photo' => $name,
+                'cover' => 0,
+            ]);}
+
+            }
+        } 
+
         $book->update($input);
 
         return back()->with('update-book', 'Uspješno ste izmijenili knjigu.');
@@ -328,13 +375,13 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
        
-            foreach ($book->gallery as $photos) {
-                foreach ($photos->get() as $photo) {
-                    $path = '\\storage\\book-covers\\' . $photo->photo;
-                    unlink(public_path() . $path); 
-                    $book->delete();
-                }
+        foreach ($book->gallery as $photos) {
+            foreach ($photos->get() as $photo) {
+                $path = '\\storage\\book-covers\\' . $photo->photo;
+                unlink(public_path() . $path); 
+                $book->delete();
             }
+        }
 
         return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
     }

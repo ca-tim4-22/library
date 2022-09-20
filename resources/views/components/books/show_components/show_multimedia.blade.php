@@ -5,7 +5,7 @@
         <img 
         style="margin: 10px;border-radius: 10px"
         width="200"
-        class="object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
+        class="img object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
         height="auto"
         width="auto"
         src="{{'/storage/book-covers/' . $photo->photo}}" 
@@ -18,7 +18,7 @@
         <img 
         style="margin: 10px;border-radius: 10px"
         width="200"
-        class="object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
+        class="img object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
         height="auto"
         width="auto"
         src="{{$photo->photo}}" 
@@ -29,7 +29,7 @@
         <img 
         style="margin: 10px;border-radius: 10px"
         width="200"
-        class="object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
+        class="img object-cover {{$photo->cover == 1 ? 'cover' : ''}}" 
         height="auto"
         width="auto"
         src="{{'/storage/book-covers/' . $photo->photo}}" 
@@ -47,7 +47,7 @@
 </style>
 
 <style>
-img {
+.img {
     display: inline-block;
     vertical-align: middle; 
 }

@@ -103,8 +103,7 @@
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Izbriši knjigu</span>
                                         </button>
-                                        </form>
-                                  
+                                    </form>
                                 </div>
                             </div>
                         </div>

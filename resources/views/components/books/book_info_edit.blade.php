@@ -319,10 +319,11 @@
                                             </div>
                                     </div>
                                     </template>
-                                    <div x-show="selected.length    == 0" class="flex-1">
+                                    <div x-show="selected.length == 0" class="flex-1">
                                         <input name="author_id"
-                                            class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
-                                            x-bind:value="selectedValues()">
+                                            class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none" 
+                                            x-bind:value="selectedValues()"
+                                           >
                                     </div>
                                 </div>
                                 <div class="flex items-center w-8 py-1 pl-2 pr-1 text-gray-300 svelte-1l8159u">
@@ -374,6 +375,31 @@
             </div>
         </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">

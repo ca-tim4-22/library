@@ -52,7 +52,6 @@
                         <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
                         <input 
                         type="text" name="name" id="name" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekar()" value="{{old('name')}}"/>
-                        <div id="validateNameBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
@@ -73,19 +72,17 @@
                             <option value="">
                             Odaberite
                             </option>
-                            <option value="1">
-                                Muški
+                            <option value="1" {{ old('user_gender_id') == '1' ? 'selected' : '' }}>
+                            Muški
                             </option>
-                            <option value="2">
-                                Ženski
-                            </option>
-                        </select>
+                            <option value="2" {{ old('user_gender_id') == '2' ? 'selected' : '' }}>
+                            Ženski
+                            </select>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
                         <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{old('JMBG')}}"/>
-                        <div id="validateJmbgBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
@@ -100,23 +97,23 @@
                         </span>
 
                         <input type="email" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf] @error('email') error-border @enderror" onkeydown="clearErrorsEmailBibliotekar()" value="{{old('email')}}" />
-                        <div id="validateEmailBibliotekar"></div>
                     </div>
             
                     <div class="mt-[20px]">
                         <span>Korisničko ime <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
                         <input type="text" name="username" id="username" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekar()" value="{{old('username')}}"/>
-                        <div id="validateUsernameBibliotekar"></div>
                     </div>
 
                     <div class="mt-[20px]">
                         <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
                         <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        <span toggle="#password" class="password-eye fa fa-fw fa-eye field-icon toggle-password">
+                        </span> 
                     </div>
 
                     <div class="mt-[20px]">
                         <span>Ponovite lozinku <span class="text-red-500">*</span></span>
-                        <input type="password" name="password_confirmation" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        <input type="password" name="password_confirmation" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                     </div>
 
                 </div>
@@ -130,7 +127,7 @@
                                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                     <polyline points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal no-select">Dodaj fotografiju</span>
                                 <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
                             </div>
                             <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
@@ -160,5 +157,10 @@
     </div>
 </section>
 <!-- End Content -->
+
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Toggle password script --}}
+<script src="{{asset('toggle_password/toggle_password.js')}}"></script>
 
 @endsection

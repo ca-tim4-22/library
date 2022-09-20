@@ -70,15 +70,15 @@
                         required
                         oninvalid="this.setCustomValidity('Morate odabrati pol')" oninput="setCustomValidity('')"
                         style="cursor: pointer" class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
-                            <option value="">
-                            Odaberite
-                            </option>
-                            <option value="1">
-                                Muški
-                            </option>
-                            <option value="2">
-                                Ženski
-                            </option>
+                        <option value="">
+                        Odaberite
+                        </option>
+                        <option value="1" {{ old('user_gender_id') == '1' ? 'selected' : '' }}>
+                        Muški
+                        </option>
+                        <option value="2" {{ old('user_gender_id') == '2' ? 'selected' : '' }}>
+                        Ženski
+                        </select>
                         </select>
                     </div>
 
@@ -109,7 +109,7 @@
                         <div id="validateUsernameBibliotekar"></div>
                     </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script>
 // Auto input
 $('#name').keyup(function (){
@@ -120,34 +120,20 @@ $('#name').keyup(function (){
 });
 </script>
                     <div class="mt-[20px]">
-                        <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
+                    <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
                         
-                        <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
-                        
+                    <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                     <span toggle="#password" class="password-eye fa fa-fw fa-eye field-icon toggle-password">
                     </span> 
                     </div>
 
-<script>
-// Show password
-$(".toggle-password").click(function() {
-$(this).toggleClass("fa-eye fa-eye-slash");
-var input = $($(this).attr("toggle"));
-if (input.attr("type") == "password") {
-  input.attr("type", "text");
-} else {
-  input.attr("type", "password");
-}
-});
-</script>
-
                     <div>
                         <span>Ponovite lozinku <span class="text-red-500">*</span></span>
-                        <input type="password" name="password_confirmation" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        <input type="password" name="password_confirmation" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                     </div>
-
+                   
                 </div>
-
+              
                 <div class="mt-[50px]">
                     <label class="mt-6 cursor-pointer">
                         <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
@@ -157,7 +143,7 @@ if (input.attr("type") == "password") {
                                     <circle cx="8.5" cy="8.5" r="1.5"></circle>
                                     <polyline points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal no-select">Dodaj fotografiju</span>
                                 <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
                             </div>
                             <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
@@ -187,5 +173,10 @@ if (input.attr("type") == "password") {
     </div>
 </section>
 <!-- End Content -->
+
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Toggle password script --}}
+<script src="{{asset('toggle_password/toggle_password.js')}}"></script>
 
 @endsection

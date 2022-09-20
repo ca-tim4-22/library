@@ -16,7 +16,8 @@
 
                     @foreach ($models['languages'] as $language)
 
-                    <option value="{{$language->id}}">{{$language->name}}</option>
+                    <option value="{{$language->id}}" {{ old('language_id') == $language->id ? 'selected' : '' }}>{{$language->name}}
+                    </option>
 
                     @endforeach
 
@@ -30,11 +31,12 @@
 
                     @foreach ($models['letters'] as $letter)
 
-                    <option value="{{$letter->id}}">{{$letter->name}}</option>
+                    <option value="{{$letter->id}}" {{ old('letter_id') == $letter->id ? 'selected' : '' }}>{{$letter->name}}
+                    </option>
 
                     @endforeach
 
-                        </select>
+                    </select>
                     </div>
 
                     <div class="mt-[20px]">
@@ -44,7 +46,8 @@
 
                         @foreach ($models['bindings'] as $binding)
 
-                        <option value="{{$binding->id}}">{{$binding->name}}</option>
+                        <option value="{{$binding->id}}" {{ old('binding_id') == $binding->id ? 'selected' : '' }}>{{$binding->name}}
+                        </option>
 
                         @endforeach
 
@@ -58,7 +61,8 @@
 
                     @foreach ($models['formats'] as $format)
 
-                    <option value="{{$format->id}}">{{$format->name}}</option>
+                    <option value="{{$format->id}}" {{ old('format_id') == $format->id ? 'selected' : '' }}>{{$format->name}}
+                    </option>
 
                     @endforeach
 

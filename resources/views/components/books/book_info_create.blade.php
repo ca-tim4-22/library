@@ -14,7 +14,6 @@
                             <input type="text" name="title" id="nazivKnjiga"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                 onkeydown="clearErrorsNazivKnjiga()" value="{{old('title')}}"/>
-                            <div id="validateNazivKnjiga"></div>
                         </div>
 
                         <div class="mt-[20px]">
@@ -121,7 +120,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="validateKategorija"></div>
                     </div>
 
                     <div class="mt-[20px]">
@@ -219,7 +217,6 @@
                             </div>
                         </div>
                     </div>
-                    <div id="validateZanr"></div>
                 </div>
         </div>
 
@@ -264,7 +261,7 @@
                                             </div>
                                     </div>
                                     </template>
-                                    <div x-show="selected.length    == 0" class="flex-1">
+                                    <div x-show="selected.length == 0" class="flex-1">
                                         <input name="author_id"
                                             class="w-full h-full p-1 px-2 text-gray-800 bg-transparent outline-none appearance-none"
                                             x-bind:value="selectedValues()">
@@ -317,7 +314,6 @@
                     </div>
                 </div>
             </div>
-            <div id="validateAutori"></div>
         </div>
 
         <div class="mt-[20px]">
@@ -327,12 +323,12 @@
 
                     @foreach ($models['publishers'] as $publisher)
 
-                    <option value="{{$publisher->id}}">{{$publisher->name}}</option>
+                    <option value="{{$publisher->id}}" {{ old('publisher_id') == $publisher->id ? 'selected' : '' }}>{{$publisher->name}}
+                    </option>
 
                     @endforeach
 
             </select>
-            <div id="validateIzdavac"></div>
         </div>
 
         <div class="mt-[20px]">
@@ -345,10 +341,13 @@
                 $year = date("Y");
                 @endphp
                 @for ($counter = 2000; $counter <= $year; $counter++)
-                <option value="{{$counter}}">{{$counter}}</option>
+             
+                <option value="{{$counter}}" {{ old('year') == $counter ? 'selected' : '' }}>
+                    {{$counter}}
+                </option>
+
                 @endfor
             </select>
-            <div id="validateGodinaIzdavanja"></div>
         </div>
 
         <div class="mt-[20px]">
@@ -357,7 +356,6 @@
             <input type="number" name="quantity_count" id="knjigaKolicina"
                 class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                 onkeydown="clearErrorsKnjigaKolicina()" value="{{old('quantity_count')}}"/>
-            <div id="validateKnjigaKolicina"></div>
         </div>
         </div>
         </div>
