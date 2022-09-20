@@ -26,7 +26,7 @@ class BookController extends Controller
      * 
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         $books = Book::latest('id')->paginate(5);
         $count = 0;
@@ -40,14 +40,70 @@ class BookController extends Controller
             $count = 0;
         }
 
-
+        // Default values
+        $books = $books;
+        $searched = false;
+        $error = false;
+        $selected_a = [];
+        $selected_c = [];
+        $id_a = 0;
+        $id_c = 0;
 
         $authors = Author::latest('id')->get();
         $categories = Category::latest('id')->get();
 
+        if (count($authors) && $request->id_author) {
+            foreach ($books as $book) {
+                foreach ($book->authors as $collection) {
+                    $searched = true;
+                    $books = $collection->orderBy('id', 'desc')->whereIn('author_id', $request->id_author)->get();
+                    $result = $books->count();
 
+                    $ids = $request->id_author;
+                    $array = [];
+                    foreach ($ids as $id => $val) {
+                        $array[] = $val;
+                    }
+                    $selected_a = Author::whereIn('id', $array)->get();
+                   
+                    if ($result > 0) {
+                        $error = false;
+                    } else {
+                        $error = true;
+                    }
+                }
+            }
+        }
 
-        return view('pages.books.books', compact('books', 'count', 'authors', 'categories'));
+        if (count($categories) && $request->id_category) {
+            foreach ($books as $book) {
+                foreach ($book->categories as $collection) {
+                    $searched = true;
+                    $books = $collection->orderBy('id', 'desc')->whereIn('category_id', $request->id_category)->get();
+                    $result = $books->count();
+
+                    $ids = $request->id_category;
+                    $array = [];
+                    foreach ($ids as $id => $val) {
+                        $array[] = $val;
+                    }
+                    $selected_c = Category::whereIn('id', $array)->get();
+
+                    if ($result > 0) {
+                        $error = false;
+                    } else {
+                        $error = true;
+                    }
+                }
+            }
+        }
+
+        return view('pages.books.books', compact('books', 'count', 'authors', 'categories', 'searched', 'error', 
+        'selected_a', 
+        'selected_c', 
+        'id_a',
+        'id_c',
+    ));
     }
 
     /**
@@ -82,7 +138,7 @@ class BookController extends Controller
         $input = Validator::make($request->all(), [
             'title' => 'required',
             'page_count' => 'required',
-            'ISBN' => 'required',   
+            'ISBN' => 'required|unique:books',   
             'quantity_count' => 'required',
             'rented_count' => 'required',
             'reserved_count' => 'required',

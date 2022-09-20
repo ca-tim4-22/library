@@ -112,7 +112,6 @@ class DashboardController extends Controller
             $data = [];
         }
 
-
         if (Reservation::count() > 0) {
             $reservations = Reservation::whereDate('reservation_date', today())->get();
         } else {

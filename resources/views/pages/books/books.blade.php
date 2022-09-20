@@ -80,7 +80,8 @@
                 <div class="w-full mt-2">
 
                     <!-- Table -->
-                    @if (count($books) > 0)
+                    {{-- @if (count($books) > 0) --}}
+                    @if ($books != null)
 
                     <table id="sort" class="w-full shadow-lg rounded-xl" id="myTable">
                         <!-- Table head-->
@@ -98,30 +99,35 @@
 
                                 <!-- Autor + dropdown filter for autor -->
     
+                                <form action="{{route('all-books')}}">
                                 <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
 
                                     <button 
                                     type="button"
-                                    class="uceniciDrop-toggle2" 
+                                    class="uceniciDrop-toggle" 
                                     style="outline: none;cursor: pointer;font-weight: bold;">
-                                    @if ($authors->count() > 1)
-                                    Autori
+                                    @if ($selected_a != [])
+                                    Autor: 
+                                    @foreach ($selected_a as $author)
+                                    {{$loop->first ? '' : '|'}}
+                                    {{$author->NameSurname}}
+                                    @endforeach
                                     @else
-                                    Autor
+                                    Autori: Svi
                                     @endif
+                                    <i class="ml-2 fas fa-filter"></i>
                                     </button>
     
-                                    <i class="ml-2 fas fa-filter"></i>
-    
-                                    <div id="uceniciDropdown2"
-                                         class="uceniciMenu2 hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
+                                    <div id="uceniciDropdown"
+                                         class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
                                         <ul class="border-b-2 border-gray-300 list-reset">
                                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                 <input
                                                     class="w-full h-10 px-2 border-2 rounded focus:outline-none"
                                                     placeholder="Traži.."
                                                     onkeyup="filterFunction('searchUcenici', 'uceniciDropdown', 'dropdown-item-ucenik')"
-                                                    id="searchUcenici"><br>
+                                                    id="searchUcenici">
+                                                <br>
                                                 <button
                                                     class="absolute block text-xl text-center text-gray-400 transition-colors w-7 h-7 leading-0 top-[14px] right-4 focus:outline-none hover:text-gray-900">
                                                     <i class="fas fa-search"></i>
@@ -135,7 +141,13 @@
                                                 <label class="flex items-center justify-start">
                                                     <div
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                        <input type="checkbox" class="absolute opacity-0">
+
+                                                        <input
+                                                        style="position: absolute;"
+                                                       {{-- xxxxxxxxxxx --}}
+                                                        class="opacity-0"
+                                                        type="checkbox" name="id_author[]" value="{{$author->id}}">
+
                                                         <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
                                                              viewBox="0 0 20 20">
                                                             <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
@@ -152,89 +164,105 @@
                                             </div>
                                         </ul>
                                         <div class="flex pt-[10px] text-white ">
-                                            <a href="#"
-                                               class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-                                            </a>
+                                        <button 
+                                        type="submit"
+                                        style="outline: none;"
+                                        class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
+                                        Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                        </button>
                                             <a href="{{route('all-books')}}"
                                                class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                                 Poništi <i class="fas fa-times ml-[4px]"></i>
                                             </a>
+                                        </form>
                                         </div>
                                     </div>
                                 </td>
 
                                 <!-- Kategorija + dropdown filter for kategorija -->
-    
+                                
+                                <form action="{{route('all-books')}}">
                                 <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
 
-                                <button 
-                                type="button"
-                                class="uceniciDrop-toggle" 
-                                style="outline: none;cursor: pointer;font-weight: bold;">
-                                @if ($categories->count() > 1)
-                                Kategorije
-                                @else
-                                Kategorija
-                                @endif
-                                </button>
+                                    <button 
+                                    type="button"
+                                    class="bibliotekariDrop-toggle" 
+                                    style="outline: none;cursor: pointer;font-weight: bold;">
+                                    @if ($selected_c != [])
+                                    Kategorija: 
+                                    @foreach ($selected_c as $category)
+                                    {{$loop->first ? '' : '|'}}
+                                    {{$category->name}}
+                                    @endforeach
+                                    @else
+                                    Kategorije: Sve
+                                    @endif
+                                    <i class="ml-2 fas fa-filter"></i>
+                                    </button>
+    
+                                    <div id="bibliotekariDropdown"
+                                         class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
+                                        <ul class="border-b-2 border-gray-300 list-reset">
+                                            <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
+                                                <input
+                                                    class="w-full h-10 px-2 border-2 rounded focus:outline-none"
+                                                    placeholder="Traži.."
+                                                    onkeyup="filterFunction('searchBibliotekari', 'bibliotekariDropdown', 'dropdown-item-bibliotekar')"
+                                                    id="searchBibliotekari"><br>
+                                                <button
+                                                    class="absolute block text-xl text-center text-gray-400 transition-colors w-7 h-7 leading-0 top-[14px] right-4 focus:outline-none hover:text-gray-900">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </li>
+                                            <div class="h-[200px] scroll font-normal">
+    
+                                              @foreach ($categories as $category)
+                                              
+                                              <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-bibliotekar">
+                                                <label class="flex items-center justify-start">
+                                                    <div
+                                                        class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
 
-                                <i class="ml-2 fas fa-filter"></i>
+                                                        <input
+                                                        style="position: absolute;"
+                                                       {{-- xxxxxxxxxxx --}}
+                                                        class="opacity-0"
+                                                        type="checkbox" name="id_category[]" value="{{$category->id}}">
 
-                                <div id="uceniciDropdown"
-                                     class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
-                                    <ul class="border-b-2 border-gray-300 list-reset">
-                                        <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
-                                            <input
-                                                class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži.."
-                                                onkeyup="filterFunction('searchUcenici', 'uceniciDropdown', 'dropdown-item-ucenik')"
-                                                id="searchUcenici"><br>
-                                            <button
-                                                class="absolute block text-xl text-center text-gray-400 transition-colors w-7 h-7 leading-0 top-[14px] right-4 focus:outline-none hover:text-gray-900">
-                                                <i class="fas fa-search"></i>
-                                            </button>
-                                        </li>
-                                        <div class="h-[200px] scroll font-normal">
-
-                                          @foreach ($categories as $category)
-                                          
-                                          <li class="flex p-2 mt-[2px] pt-[15px] group hover:bg-gray-200 dropdown-item-ucenik">
-                                            <label class="flex items-center justify-start">
-                                                <div
-                                                    class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
-                                                    <input type="checkbox" class="absolute opacity-0">
-                                                    <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
-                                                         viewBox="0 0 20 20">
-                                                        <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
-                                                    </svg>
-                                                </div>
-                                            </label>
-                                            <img
-                                            width="30px" height="auto"
-                                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
-                                            alt="{{$category->name}}"
-                                            title="{{$category->name}}">
-                                            <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
-                                            {{$category->name}}
-                                            </p>
-                                        </li>
-
-                                          @endforeach
-                                          
-                                        </div>
-                                    </ul>
-                                    <div class="flex pt-[10px] text-white ">
-                                        <a href="#"
-                                           class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
+                                                        <svg class="hidden w-4 h-4 text-green-500 pointer-events-none fill-current"
+                                                             viewBox="0 0 20 20">
+                                                            <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                                                        </svg>
+                                                    </div>
+                                                </label>
+                                                <img
+                                                width="30px" height="auto"
+                                                src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
+                                                alt="{{$category->name}}"
+                                                title="{{$category->name}}">
+                                                <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
+                                                {{$category->name}}
+                                                </p>
+                                            </li>
+    
+                                              @endforeach
+                                              
+                                            </div>
+                                        </ul>
+                                        <div class="flex pt-[10px] text-white ">
+                                            <button 
+                                            type="submit"
+                                            style="outline: none;"
+                                            class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
                                             Sačuvaj <i class="fas fa-check ml-[4px]"></i>
-                                        </a>
-                                        <a href="{{route('all-books')}}"
-                                           class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                                            </button>
+                                            <a href="{{route('all-books')}}"
+                                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                             Poništi <i class="fas fa-times ml-[4px]"></i>
-                                        </a>
+                                            </a>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
                                 </td>
                                 
                                 <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
@@ -264,6 +292,7 @@
 
                             @foreach ($books as $book)
 
+                            @if ($searched != true)
                             <tr class="hover:bg-gray-200 hover:shadow-md  border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
@@ -371,6 +400,116 @@
                                     </div>
                                 </td>
                             </tr>
+                            @else
+                            <tr class="hover:bg-gray-200 hover:shadow-md  border-b-[1px] border-[#e4dfdf]">
+                                <td class="px-4 py-4 whitespace-no-wrap">
+                                    <label class="inline-flex items-center">
+                                        <input type="checkbox" class="form-checkbox">
+                                    </label>
+                                </td>
+                                <td class="flex flex-row items-center px-4 py-4">
+
+                                    <img 
+                                    class="object-cover w-8 mr-2 h-11" 
+                                    src="{{$book->book->placeholder == 1 ? $book->book->cover->photo : '/storage/book-covers/' . $book->book->cover->photo}}" 
+                                    alt="Naslovna fotografija" 
+                                    title="Naslovna fotografija" />
+
+                                    <a href="{{route('show-book', $book->book->title)}}">
+                                        <span class="font-medium text-center">{{$book->book->title}}</span>
+                                    </a>
+                                </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @foreach ($book->book->authors as $author)
+                                    {{$loop->first ? '' : '|'}}
+                                    {{$author->author->NameSurname}}
+                                    @endforeach
+                                </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @foreach ($book->book->categories as $category)
+                                    {{$loop->first ? '' : '|'}}
+                                    {{$category->category->name}} 
+                                    @endforeach
+                                </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->book->quantity_count - ($book->book->rented_count + $book->book->reserved_count)}}</td>
+                                <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
+                                        href="{{route('active-reservations')}}">{{$book->book->reserved_count}}</td>
+                                <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
+                                        href="{{route('rented-books')}}">{{$book->book->rented_count}}</td>
+
+                                <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
+                                        href="{{route('overdue-books')}}">
+                                      {{$count}}
+                                </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->book->quantity_count}}</td>
+                                <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
+                                    <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
+                                        <i
+                                            class="fas fa-ellipsis-v"></i>
+                                    </p>
+                                    <div
+                                        class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-knjige">
+                                        <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                                            aria-labelledby="headlessui-menu-button-1"
+                                            id="headlessui-menu-items-117" role="menu">
+                                            <div class="py-1">
+                                                <a href="{{route('show-book', $book->book->title)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Pogledaj detalje</span>
+                                                </a>
+                                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                                                <a href="{{route('edit-book', $book->book->id)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Izmijeni knjigu</span>
+                                                </a>
+                                                <a href="{{route('write-off', $book->book->id)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Otpiši knjigu</span>
+                                                </a>
+                                                <a href="{{route('rent-book', $book->book->id)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Izdaj knjigu</span>
+                                                </a>
+                                                <a href="{{route('return-book', $book->book->id)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Vrati knjigu</span>
+                                                </a>
+                                                @endif
+                                                <a href="{{route('reserve-book', $book->book->title)}}" tabindex="0"
+                                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                    role="menuitem">
+                                                    <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
+                                                    <span class="px-4 py-0">Rezerviši knjigu</span>
+                                                </a>
+                                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                                                <form action="{{route('destroy-book', $book->book->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button style="outline: none" type="submit" tabindex="0"
+                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                                        role="menuitem">
+                                                        <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Izbriši knjigu</span>
+                                                    </button>
+                                                </form>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endif
+                            
                             @endforeach
                             @else 
                                 <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
@@ -385,8 +524,19 @@
                         </tbody>
                     </table>
                 </div>
+               @if ($error == false)
+               @else
+               <div class=" flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
+                <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
+                    <path fill="currentColor"
+                            d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
+                    </path>
+                </svg>
+                <p class="font-medium text-white">Ne postoji aktivnost sa tim kriterijumom! </p>
             </div>
         </div>
+    </div>    
+               @endif
 
     </section>
     <!-- End Content -->
