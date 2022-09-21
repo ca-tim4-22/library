@@ -49,7 +49,7 @@
               <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('csvAuthors') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
@@ -64,13 +64,13 @@
 
                 <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjige</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-                    <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <div class="file-drop-area @error('csv_book') error-border @enderror">
+                    <form action="{{ route('csvBooks') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    @error('csv_book') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv_author">
+                    <input class="file-input" type="file" multiple name="csv_book">
                     </div>
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu
@@ -80,13 +80,13 @@
 
                 <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Galerija</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-                    <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <div class="file-drop-area @error('csv_gallery') error-border @enderror">
+                    <form action="{{ route('csvGallery') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    @error('csv_gallery') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv_author">
+                    <input class="file-input" type="file" multiple name="csv_gallery">
                     </div>
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu
@@ -96,13 +96,13 @@
                 
                 <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Autor</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-                    <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <div class="file-drop-area @error('csv_book_author') error-border @enderror">
+                    <form action="{{ route('csvBookAuthors') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    @error('csv_book_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv_author">
+                    <input class="file-input" type="file" multiple name="csv_book_author">
                     </div>
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu
@@ -112,13 +112,13 @@
                 
                 <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Kategorija</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-                    <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <div class="file-drop-area @error('csv_book_category') error-border @enderror">
+                    <form action="{{ route('csvBookCategories') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    @error('csv_book_category') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv_author">
+                    <input class="file-input" type="file" multiple name="csv_book_category">
                     </div>
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu
@@ -128,13 +128,13 @@
 
                 <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Žanr</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
-                    <div class="file-drop-area @error('csv_author') error-border @enderror">
-                    <form action="{{ route('save') }}" method="POST" enctype="multipart/form-data">
+                    <div class="file-drop-area @error('csv_book_genre') error-border @enderror">
+                    <form action="{{ route('csvBookGenres') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
+                    @error('csv_book_genre') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-                    <input class="file-input" type="file" multiple name="csv_author">
+                    <input class="file-input" type="file" multiple name="csv_book_genre">
                     </div>
                     <button style="margin-left: 20px;outline:none;" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
                     <i class="fas fa-database"></i>&nbsp; Popunite bazu

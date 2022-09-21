@@ -4,6 +4,11 @@ namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Author;
+use App\Models\Book;
+use App\Models\BookAuthor;
+use App\Models\BookCategory;
+use App\Models\BookGenre;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class ExtraController extends Controller
@@ -16,72 +21,6 @@ class ExtraController extends Controller
     public function index()
     {
         return view('pages.settings.extra.settings-extra');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     function csvToArray($filename = '', $delimiter = ',')
@@ -106,7 +45,7 @@ class ExtraController extends Controller
         return $data;
     }
 
-    public function save(Request $request) {
+    public function csvAuthors(Request $request) {
         $input = $request->validate([
             'csv_author' => 'required',
         ]);
@@ -122,6 +61,116 @@ class ExtraController extends Controller
         for ($i = 0; $i < count($customerArr); $i ++)
         {
             Author::firstOrCreate($customerArr[$i]);
+        }
+        unlink('csv\\' . $name);
+        
+        return back()->with('success', 'Uspješno ste popunili bazu podataka');    
+    }
+
+    public function csvBooks(Request $request) {
+        $input = $request->validate([
+            'csv_book' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_book');
+        $name = $get_file->getClientOriginalName();
+        $store = $get_file->move('csv', $name);
+    
+        $file = public_path('csv\\' . $name);
+       
+        $customerArr = $this->csvToArray($file);
+    
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            Book::firstOrCreate($customerArr[$i]);
+        }
+        unlink('csv\\' . $name);
+        
+        return back()->with('success', 'Uspješno ste popunili bazu podataka');    
+    }
+
+    public function csvGallery(Request $request) {
+        $input = $request->validate([
+            'csv_gallery' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_gallery');
+        $name = $get_file->getClientOriginalName();
+        $store = $get_file->move('csv', $name);
+    
+        $file = public_path('csv\\' . $name);
+       
+        $customerArr = $this->csvToArray($file);
+    
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            Gallery::firstOrCreate($customerArr[$i]);
+        }
+        unlink('csv\\' . $name);
+        
+        return back()->with('success', 'Uspješno ste popunili bazu podataka');    
+    }
+
+    public function csvBookAuthors(Request $request) {
+        $input = $request->validate([
+            'csv_book_author' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_book_author');
+        $name = $get_file->getClientOriginalName();
+        $store = $get_file->move('csv', $name);
+    
+        $file = public_path('csv\\' . $name);
+       
+        $customerArr = $this->csvToArray($file);
+    
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            BookAuthor::firstOrCreate($customerArr[$i]);
+        }
+        unlink('csv\\' . $name);
+        
+        return back()->with('success', 'Uspješno ste popunili bazu podataka');    
+    }
+
+    public function csvBookCategories(Request $request) {
+        $input = $request->validate([
+            'csv_book_category' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_book_category');
+        $name = $get_file->getClientOriginalName();
+        $store = $get_file->move('csv', $name);
+    
+        $file = public_path('csv\\' . $name);
+       
+        $customerArr = $this->csvToArray($file);
+    
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            BookCategory::firstOrCreate($customerArr[$i]);
+        }
+        unlink('csv\\' . $name);
+        
+        return back()->with('success', 'Uspješno ste popunili bazu podataka');    
+    }
+
+    public function csvBookGenres(Request $request) {
+        $input = $request->validate([
+            'csv_book_genre' => 'required',
+        ]);
+        
+        $get_file = $request->file('csv_book_genre');
+        $name = $get_file->getClientOriginalName();
+        $store = $get_file->move('csv', $name);
+    
+        $file = public_path('csv\\' . $name);
+       
+        $customerArr = $this->csvToArray($file);
+    
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            BookGenre::firstOrCreate($customerArr[$i]);
         }
         unlink('csv\\' . $name);
         
