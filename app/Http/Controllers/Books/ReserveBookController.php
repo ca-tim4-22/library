@@ -55,23 +55,32 @@ class ReserveBookController extends Controller
      */
     public function store(ReserveBookRequest $request, $id)
     {
-        $admin = Auth::user();
-        $variable = GlobalVariable::findOrFail(1);
+        $user = Auth::user();
+        $reservation = Reservation::where('reservationMadeFor_user_id', $request->reservationMadeFor_user_id)->count();
+        if ($reservation == 0) {
+            $variable = GlobalVariable::findOrFail(1);
 
-        $reservation = new Reservation();
-        $reservation->book_id = $id;
-        $reservation->reservationMadeFor_user_id = $request->input('reservationMadeFor_user_id');
-        $reservation->reservationMadeBy_user_id = $admin->id;
-        $reservation->reservation_date = $request->input('reservation_date');
-        $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);
-        $reservation->save();
+            $reservation = new Reservation();
+            $reservation->book_id = $id;
+            $reservation->reservationMadeFor_user_id = $request->input('reservationMadeFor_user_id');
+            $reservation->reservationMadeBy_user_id = $user->id;
+            $reservation->reservation_date = $request->input('reservation_date');
+            $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);
+            $reservation->save();
+    
+            DB::table('reservation_statuses')->insert([
+                'reservation_id' => $reservation->id,
+                'status_reservations_id' => 3,
+            ]);
+        } else {
+            return back()->with('reservation-failed', 'Već postoje rezervacije sa Vašim imenom!');
+        }
 
-        DB::table('reservation_statuses')->insert([
-            'reservation_id' => $reservation->id,
-            'status_reservations_id' => 3,
-        ]);
-
-        return to_route('active-reservations')->with('reserve-success', 'Rezervacija je na čekanju!');
+        if ($user->type->id == 1) {
+            return back()->with('reservation-sent', 'Uspješno! Vaša rezervacija je za sada na čekanju!');
+        } else {
+            return to_route('active-reservations')->with('reserve-success', 'Rezervacija je na čekanju!');
+        }
     }
 
     /**

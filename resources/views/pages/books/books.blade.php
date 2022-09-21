@@ -12,7 +12,15 @@
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Searching functionality --}}
 <x-jquery.search></x-jquery.search>
-{{-- Preloader --}}
+{{-- Sweet Alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+{{-- Tailwind --}}
+<script src="https://cdn.tailwindcss.com"></script>
+{{-- Trash delete icon --}}
+<link rel="stylesheet" href="{{asset('trash_delete/trash_delete.css')}}">
+{{-- Csrf Token --}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <div id="loader"></div>
 
 <div style="display:none;" id="myDiv">
@@ -60,6 +68,36 @@
                 <div  class="inline-flex items-center"></div>
                 @endif
                 <div class="flex items-center">
+                
+                    <style>
+                        #pagination {
+                            border-left: 1px solid #4558BE;
+                            border-bottom: 0.4px solid #000;
+                            cursor: pointer;
+                        }
+                    </style>
+                    <form> 
+                        Broj redova po strani:
+                        <select id="pagination">
+                            <option value="5" @if($items == 5) selected @endif >5</option>
+                            <option value="10" @if($items == 10) selected @endif >10</option>
+                            <option value="25" @if($items == 25) selected @endif >25</option>
+                            <option value="50" @if($items == 50) selected @endif >50</option>
+                            <option value="100" @if($items == 100) selected @endif >100</option>
+                            <option
+                            title="{{$show_all}}"
+                            value="{{$show_all}}" @if($items == $show_all) selected @endif>Prikaži sve</option>
+                        </select>
+                    </form>
+    
+                    @if (!is_a($books, 'Illuminate\Database\Eloquent\Collection'))
+                    <script>
+                        document.getElementById('pagination').onchange = function() {
+                            window.location = "{{ $books->url(1) }}&items=" + this.value;
+                        };
+                    </script>
+                    @endif
+    
                     <div class="relative text-gray-600 focus-within:text-gray-400">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
                             <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
@@ -69,7 +107,7 @@
                                 </svg>
                             </button>
                         </span>
-                        <input id="myInput" type="Traži.." name="q"
+                        <input id="myInput" type="search" name="q"
                             class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                             placeholder="Traži..." autocomplete="off">
                     </div>
@@ -79,6 +117,42 @@
             <div class="px-[30px] pt-2 bg-white">
                 <div class="w-full mt-2">
 
+                    @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                    <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all"  data-url="">
+                        <div class="icon">
+                            <svg class="top">
+                                <use xlink:href="#top">
+                            </svg>
+                            <svg class="bottom">
+                                <use xlink:href="#bottom">
+                            </svg>
+                        </div>
+                        <span>Izbriši</span>
+                    </button>
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="top">
+                            <path d="M15,4 C15.5522847,4 16,4.44771525 16,5 L16,6 L18.25,6 C18.6642136,6 19,6.33578644 19,6.75 C19,7.16421356 18.6642136,7.5 18.25,7.5 L5.75,7.5 C5.33578644,7.5 5,7.16421356 5,6.75 C5,6.33578644 5.33578644,6 5.75,6 L8,6 L8,5 C8,4.44771525 8.44771525,4 9,4 L15,4 Z M14,5.25 L10,5.25 C9.72385763,5.25 9.5,5.47385763 9.5,5.75 C9.5,5.99545989 9.67687516,6.19960837 9.91012437,6.24194433 L10,6.25 L14,6.25 C14.2761424,6.25 14.5,6.02614237 14.5,5.75 C14.5,5.50454011 14.3231248,5.30039163 14.0898756,5.25805567 L14,5.25 Z"></path>
+                        </symbol>
+                        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="bottom">
+                            <path d="M16.9535129,8 C17.4663488,8 17.8890201,8.38604019 17.9467852,8.88337887 L17.953255,9.02270969 L17.953255,9.02270969 L17.5309272,18.3196017 C17.5119599,18.7374363 17.2349366,19.0993109 16.8365446,19.2267053 C15.2243631,19.7422351 13.6121815,20 12,20 C10.3878264,20 8.77565288,19.7422377 7.16347932,19.226713 C6.76508717,19.0993333 6.48806648,18.7374627 6.46907425,18.3196335 L6.04751853,9.04540766 C6.02423185,8.53310079 6.39068134,8.09333626 6.88488406,8.01304774 L7.02377738,8.0002579 L16.9535129,8 Z M9.75,10.5 C9.37030423,10.5 9.05650904,10.719453 9.00684662,11.0041785 L9,11.0833333 L9,16.9166667 C9,17.2388328 9.33578644,17.5 9.75,17.5 C10.1296958,17.5 10.443491,17.280547 10.4931534,16.9958215 L10.5,16.9166667 L10.5,11.0833333 C10.5,10.7611672 10.1642136,10.5 9.75,10.5 Z M14.25,10.5 C13.8703042,10.5 13.556509,10.719453 13.5068466,11.0041785 L13.5,11.0833333 L13.5,16.9166667 C13.5,17.2388328 13.8357864,17.5 14.25,17.5 C14.6296958,17.5 14.943491,17.280547 14.9931534,16.9958215 L15,16.9166667 L15,11.0833333 C15,10.7611672 14.6642136,10.5 14.25,10.5 Z"></path>
+                        </symbol>
+                    </svg>
+                    @endif
+        
+        <script>
+            document.querySelectorAll(".button").forEach(button =>
+          button.addEventListener("click", e => {
+            if (!button.classList.contains("delete")) {
+              button.classList.add("delete");
+        
+              setTimeout(() => button.classList.remove("delete"), 2200);
+            }
+            e.preventDefault();
+          })
+        );
+        </script>
+
                     <table id="sort" class="w-full shadow-lg rounded-xl" id="myTable">
                         <!-- Table head-->
                      
@@ -87,11 +161,22 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox">
+                                        <input type="checkbox" id="check_all">
                                     </label>
                                 </td>
 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="showBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                        class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                        role="menuitem">
+                                        <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
+                                        <span style="padding-top: 1px;">Pogledaj detalje</span>
+                                    </button>
+                                </td>
+
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     Naziv knjige
                                 </th>
 
@@ -143,7 +228,7 @@
                                                         class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
 
                                                         <input
-                                                        style="position: absolute;"
+                                                        style="position: absolute;cursor: pointer;"
                                                         @if(in_array($author->id, $id_a)) checked @endif
                                                         class="opacity-0"
                                                         type="checkbox" name="id_author[]" value="{{$author->id}}">
@@ -154,7 +239,7 @@
                                                         </svg>
                                                     </div>
                                                 </label>
-                                                <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
+                                                <p class="block p-2 text-black cursor-default group-hover:text-blue-600">
                                                 {{$author->NameSurname}}
                                                 </p>
                                             </li>
@@ -225,7 +310,7 @@
                                                     class="flex items-center justify-center flex-shrink-0 w-[16px] h-[16px] mr-2 bg-white border-2 border-gray-400 rounded focus-within:border-blue-500">
 
                                                         <input
-                                                        style="position: absolute;"
+                                                        style="position: absolute;cursor: pointer;"
                                                        @if(in_array($category->id, $id_c)) checked @endif
                                                         class="opacity-0"
                                                         type="checkbox" name="id_category[]" value="{{$category->id}}">
@@ -241,7 +326,7 @@
                                                 src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
                                                 alt="{{$category->name}}"
                                                 title="{{$category->name}}">
-                                                <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
+                                                <p class="block p-2 text-black cursor-default group-hover:text-blue-600">
                                                 {{$category->name}}
                                                 </p>
                                             </li>
@@ -291,16 +376,20 @@
                         </thead>
                         @endif
                         
-                        
-                        <tbody class="bg-white" id="tablex">
+                    <tbody class="bg-white" id="tablex">
 
-                            @foreach ($books as $book)
+                     @foreach ($books as $book)
 
-                            @if ($searched != true)
+                        @if ($searched != true)
                             <tr class="hover:bg-gray-200 hover:shadow-md  border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox">
+                                        <input 
+                                        type="checkbox" 
+                                        id="check" 
+                                        value="{{$book->title}}"
+                                        data-id="{{$book->id}}"
+                                        class="form-checkbox checkbox">
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
@@ -387,28 +476,33 @@
                                                     <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Rezerviši knjigu</span>
                                                 </a>
-                                                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
-                                                <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button style="outline: none" type="submit" tabindex="0"
-                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                                        role="menuitem">
-                                                        <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Izbriši knjigu</span>
-                                                    </button>
-                                                </form>
-                                                @endif
+                                            @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                                            <button 
+                                            data-id="{{ $book->id }}" 
+                                            data-action="{{ route('books.destroy', $book->id) }}" onclick="deleteConfirmation({{$book->id}})"
+                                            style="outline: none;border: none;"
+                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
+                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                            <span class="px-4 py-0">
+                                            Izbriši knjigu
+                                            </span>
+                                            </button> 
+                                            @endif
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
-                            @else
+                        @else
                             <tr class="hover:bg-gray-200 hover:shadow-md  border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 whitespace-no-wrap">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox">
+                                        <input 
+                                        type="checkbox" 
+                                        id="check" 
+                                        value="{{$book->title}}"
+                                        data-id="{{$book->id}}"
+                                        class="form-checkbox checkbox">
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
@@ -512,12 +606,17 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endif
+                        @endif
 
-                            @endforeach
+                     @endforeach
 
-                        </tbody>
+                    </tbody>
                     </table>
+                  
+                    @if (!is_a($books, 'Illuminate\Database\Eloquent\Collection'))
+                         <div class="m-3">{!! $books->links() !!}</div> 
+                    @endif
+
                 </div>
             @if ($error == false)
             @else
@@ -549,6 +648,175 @@
 
 </div>
 
-{{-- Tailwind --}}
-<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    .swal2-popup .swal2-styled:focus {
+     box-shadow: none !important;
+  }
+   </style>
+  
+  <script type="text/javascript">
+     function deleteConfirmation(id) {
+         swal({
+             title: "Izbriši?",
+             text: "Da li ste sigurni da želite da izbrišete knjigu?",
+             type: "warning",
+             showCancelButton: !0,
+             timer: '5000',
+             animation: true,
+             allowEscapeKey: true,
+             allowOutsideClick: false,
+             confirmButtonText: "Da, siguran sam!",
+             cancelButtonText: "Ne, odustani",
+             reverseButtons: !0,
+             confirmButtonColor: '#14de5e',
+             cancelButtonColor: '#f73302',
+         }).then(function (e) {
+             if (e.value === true) {
+                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                 swal(
+                     'Uspješno!',
+                     'Knjiga je uspješno izbrisana.',
+                     'success'
+                     ).then(function() {
+                      window.location.href = "/knjige";
+                     });
+                 $.ajax({
+                     type: 'POST',
+                     url: "{{url('/books')}}/" + id,
+                     data: {_token: CSRF_TOKEN},
+                     dataType: 'JSON',
+                     success: function (results) {
+                     }
+                 });
+             } else {
+                 e.dismiss;
+             }
+         }, function (dismiss) {
+             return false;
+         })
+     }
+     $(document).ajaxStop(function(){
+  // window.location.reload();
+  // window.location.href = "/knjige";
+  });
+  
+  // Script for show book top header
+  function showBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/knjiga/" + title;
+  }
+  
+  </script>
+  
+  <style>
+      .show {
+          display: inline-block !important;
+      }
+      .hidden_header {
+          display: none !important;
+      }
+      .sakriveno {display: none !important}
+      .sakriveno_email {display: none !important}
+  </style>
+  
+  <script>
+  $('input#check').on('change', function() {  
+      if($(this).is(":checked")) {
+        var length = $('input#check:checked').length;
+        if (length == 1) {
+          $('.checkme').addClass('hidden_header');    
+          $('.checkme2').addClass('show');    
+          $('.checkme2').removeClass('sakriveno');   
+         } else {
+          $('.checkme').removeClass('hidden_header');    
+          $('.checkme2').removeClass('show');    
+          $('.checkme2').addClass('sakriveno');  
+         }
+      } else {
+          $('.checkme').removeClass('hidden_header');    
+          $('.checkme2').removeClass('show');    
+          $('.checkme2').addClass('sakriveno');    
+      }
+  });
+  </script>
+  
+  <script type="text/javascript">
+      $(document).ready(function () {
+      $('#check_all').on('click', function(e) {
+      if($(this).is(':checked',true))  
+      {
+      $(".checkbox").prop('checked', true);  
+      } else {  
+      $(".checkbox").prop('checked',false);  
+      }  
+      });
+      $('.checkbox').on('click',function(){
+      if($('.checkbox:checked').length == $('.checkbox').length){
+      $('#check_all').prop('checked',true);
+      }else{
+      $('#check_all').prop('checked',false);
+      }
+      });
+      $('.delete-all').on('click', function(e) {
+      var idsArr = [];  
+      $(".checkbox:checked").each(function() {  
+      idsArr.push($(this).attr('data-id'));
+      });  
+      if(idsArr.length <=0)  
+      {  
+      swal({
+       title: "Greška!",
+       text: "Morate selektovati makar jednu knjigu.",
+       type: "error",
+       timer: 1500,
+       confirmButtonText: 'U redu',
+       allowEscapeKey: false,
+       allowOutsideClick: false,
+       });
+  
+      }  else {  
+      if(confirm("Da li ste sigurni?")){  
+      var strIds = idsArr.join(","); 
+      $.ajax({
+      url: "{{ route('delete-all') }}",
+      type: 'DELETE',
+      headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+      data: 'ids='+strIds,
+      success: function (data) {
+      if (data['status']==true) {
+      $(".checkbox:checked").each(function() {  
+      $(this).parents("tr").remove();
+      });
+      alert(data['message']);
+      } 
+      else {
+      swal({
+       title: "Uspješno!",
+       type: "success",
+       timer: 1000,
+       confirmButtonText: 'U redu',
+       allowEscapeKey: false,
+       allowOutsideClick: false,
+       }).then(function() {
+          window.location.href = "/knjige";
+       });
+      
+      }
+      },
+      error: function (data) {
+      alert(data.responseText);
+      }
+      });
+      }  
+      }  
+      });
+      $('[data-toggle=confirmation]').confirmation({
+      rootSelector: '[data-toggle=confirmation]',
+      onConfirm: function (event, element) {
+      element.closest('form').submit();
+      }
+      });   
+      });
+      </script>
 @endsection

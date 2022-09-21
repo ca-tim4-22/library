@@ -14,7 +14,7 @@ use App\Http\Controllers\Books\ {
     WriteOffController,
     ArchiveBookController,
 };
-
+use App\Models\BookCategory;
 use Illuminate\Support\Facades\ {
     Route,
 };
@@ -82,10 +82,16 @@ Route::put('/approve/{id}', [ActiveReservationController::class, 'approve'])->na
 Route::put('/deny/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
 });
 
+// Additional features
 
+// For multiple book delete
+Route::delete('izbrisi-sve', [BookController::class, 'deleteMultiple'])->name('delete-all');
 
-
-
-
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain book through URI
+Route::get('/books/{id}', function ($id) {});
+Route::post('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+});
 
 ?>

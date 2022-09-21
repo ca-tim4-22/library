@@ -26,7 +26,6 @@ Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destro
 Route::delete('izbrisi-sve', [LibrarianController::class, 'deleteMultiple'])->name('delete-all');
 
 
-
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain librarian through URI

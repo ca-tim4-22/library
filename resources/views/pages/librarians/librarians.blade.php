@@ -196,7 +196,6 @@
                             <label class="inline-flex items-center">
                                 <input 
                                 type="checkbox" 
-                                name="fruit" 
                                 id="check" 
                                 value="{{$librarian->username}}" 
                                 class="form-checkbox checkbox"
@@ -279,7 +278,6 @@
 
             </table>
 
-           
             <div class="m-3">{!! $librarians->links() !!}</div>
 
             </div>

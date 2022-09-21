@@ -8,6 +8,8 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
@@ -59,7 +61,7 @@
                 </div>
             </div>
             <div class="pt-[24px] mr-[30px]">
-                <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+                <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
@@ -117,18 +119,61 @@
 
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
-                    <h3 class="mt-[20px] mb-[10px]">Rezerviši knjigu</h3>
+                    <h3 class="mt-[20px] mb-[10px]">Rezerviši knjigu
+
+{{-- Session message for successfully sent reservation request --}}
+@if (session()->has('reservation-sent'))
+<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Success!</span> {{session('reservation-sent')}}
+    </div>
+  </div>
+@endif   
+
+{{-- Session message for failed reservation request --}}
+@if (session()->has('reservation-failed'))
+<div id="hideDiv" class="flex p-3 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+        <span class="font-medium">Bezuspješno!</span> {{session('reservation-failed')}}
+    </div>
+</div>
+<div class="flex p-4 mt-2 mb-1 text-sm text-white bg-blue-700 rounded-lg" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+        <span class="font-medium">Informacija!</span> Kontaktirajte bibliotekara kako biste mogli istovremeno rezervisati više knjiga (promijenite paket).
+    </div>
+</div>
+@endif   
+
+
+
+                    </h3>
                     <div class="mt-[20px]">
+                        @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                         <span>Izaberi učenika za koga se knjiga rezerviše <span class="text-red-500">* @error('reservationMadeFor_user_id'){{$message}} @enderror</span></span>
-                       <select class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
-                                    name="reservationMadeFor_user_id">
-                                    <option disabled selected></option>
-                                    @foreach($students as $student)
-                                    <option value="{{$student->id}}">
-                                        {{$student->name}}
-                                    </option>
-                                    @endforeach
-                                </select>
+                       <select class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="reservationMadeFor_user_id">
+                        <option disabled selected></option>
+                        @foreach($students as $student)
+                            <option value="{{$student->id}}">
+                                {{$student->name}}
+                            </option>
+                        @endforeach
+                        @else
+                        <span>Korisnik</span>
+
+                        <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="reservationMadeFor_user_id" for="reservationMadeFor_user_id" name="reservationMadeFor_user_id">
+                            <option value="{{Auth::id()}}">
+                                {{Auth::user()->name}}
+                            </option>
+                        </select>  
+                        
+                        @endif
+                        </select>
                     </div>
                     <div class="mt-[20px]">
                         <p>Datum rezervisanja <span class="text-red-500">*</span></p>

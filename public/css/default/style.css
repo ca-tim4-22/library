@@ -25,6 +25,16 @@
   transition: 0.35s;
 }
 
+/* Added info flash-session message properties */
+.bg-blue-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+}
+
+.p-3{
+  padding: 0.75rem;
+}
+
 /* Login - background */
 .bg-login {
   background-image: url('/login.jpg');
@@ -146,6 +156,10 @@
   left: 85%;
   z-index: 11 !important;
   bottom: 30px !important;
+}
+
+.cursor-default {
+  cursor: none;
 }
 
 /* ----------------------------------------------------------- */

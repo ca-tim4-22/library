@@ -9,6 +9,7 @@ use App\Models\BookCategory;
 use App\Models\BookGenre;
 use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\GlobalVariable;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -28,7 +29,17 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $books = Book::latest('id')->paginate(5);
+
+        if ($request->items) {
+            $items = $request->items;
+            $variable = GlobalVariable::findOrFail(4);
+        } else {
+            $variable = GlobalVariable::findOrFail(4);
+            $items = $variable->value;
+        }
+        $books = Book::latest('id')->paginate($items);
+        $show_all = Book::latest('id')->count();
+      
         $count = 0;
 
         if (Rent::count() > 0) {
@@ -109,6 +120,9 @@ class BookController extends Controller
         'id_c',
         'error',
         'show',
+        'items', 
+        'variable', 
+        'show_all',
     ));
     }
 
@@ -438,14 +452,23 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
        
-        foreach ($book->gallery as $photos) {
-            foreach ($photos->get() as $photo) {
-                $path = '\\storage\\book-covers\\' . $photo->photo;
-                unlink(public_path() . $path); 
-                $book->delete();
+        if ($book->placeholder == 0) {
+            foreach ($book->gallery as $photos) {
+                foreach ($photos->get() as $photo) {
+                    $path = '\\storage\\book-covers\\' . $photo->photo;
+                    unlink(public_path() . $path); 
+                    $book->delete();
+                }
             }
         }
 
-        return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
+        $book->delete();
+        // return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
+    }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Book::whereIn('id', explode(",", $ids))->delete();
     }
 }
