@@ -78,8 +78,13 @@ Route::controller(ActiveReservationController::class)->group(function(){
 // Active reservations
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
 Route::get('/detalji-rezervacije-knjige/{id}', [ActiveReservationController::class, 'show'])->name('reserved-info');
-Route::put('/approve/{id}', [ActiveReservationController::class, 'approve'])->name('approve');
-Route::put('/deny/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+Route::get('/potvrdi-rezervaciju/{id}', function ($id) {});
+Route::get('/odbij-rezervaciju/{id}', function ($id) {});
+Route::put('/potvrdi-rezervaciju/{id}', [ActiveReservationController::class, 'approve'])->name('approve');
+Route::put('/odbij-rezervaciju/{id}', [ActiveReservationController::class, 'deny'])->name('deny');
+});
 });
 
 // Additional features
@@ -90,8 +95,8 @@ Route::delete('izbrisi-sve', [BookController::class, 'deleteMultiple'])->name('d
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain book through URI
-Route::get('/books/{id}', function ($id) {});
-Route::post('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+Route::get('/knjige/{id}', function ($id) {});
+Route::post('/knjige/{id}', [BookController::class, 'destroy'])->name('books.destroy');
 });
 
 ?>

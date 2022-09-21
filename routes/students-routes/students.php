@@ -26,8 +26,8 @@ Route::delete('izbrisi-sve', [StudentController::class, 'deleteMultiple'])->name
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain student through URI
-Route::get('/students/{id}', function ($id) {});
-Route::post('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+Route::get('/ucenici/{id}', function ($id) {});
+Route::post('/ucenici/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 });
 });
 

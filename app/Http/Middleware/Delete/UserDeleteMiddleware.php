@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware\Delete;
 
-use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

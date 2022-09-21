@@ -11,8 +11,8 @@
 {{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
 {{-- Sweet Alert --}}
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script> --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Content -->
@@ -22,15 +22,36 @@
     <div class="heading mt-[7px]">
         <h1 class="pl-[30px] pb-[21px]  border-b-[1px] border-[#e4dfdf] ">
             Dashboard
+{{-- Session message for approve reservation --}}
+@if (session()->has('approve'))
+<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Success!</span> {{session('approve')}}
+    </div>
+  </div>
+@endif
+
+{{-- Session message for deny reservation --}}
+@if (session()->has('deny'))
+<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Bezuspješno!</span> {{session('deny')}}
+    </div>
+</div>
+@endif
         </h1>
     </div>
     <!-- Space for content -->
     <div class="pl-[30px] scroll height-dashboard overflow-auto mt-[20px] pb-[30px]">
         <div class="flex flex-row justify-between">
             <div class="mr-[30px]">
-                <h3 class="uppercase mb-[20px]">Aktivnosti</h3>
+                <span style="font-size: 1.3em" id="tooltip_1" class="uppercase mb-[20px]">Aktivnosti</span>
                 <!-- Activity Cards -->
-
+                
             @if (!$data == [])
              
             @foreach ($data as $rent)
@@ -200,11 +221,16 @@ if($(".holder:hidden").length == 0){
                 </div>
                 
             </div>
-            <div class="mr-[50px] ">
-                <h3 class="uppercase mb-[20px] text-left">
+          
+  
+            <div class="mr-[50px]">
+                <span id="tooltip_2" style="font-size: 1.3em" class="cursor-default uppercase mr-[0px] text-left" 
+                >
                     Rezervacije knjiga
-                </h3>
-                <div>
+                  
+                </span>
+             
+                <div class="mt-[20px]">
                     <table class="w-[560px] table-auto">
                         <tbody class="bg-gray-200">
 
@@ -341,7 +367,7 @@ if($(".holder:hidden").length == 0){
                             
                             </div>
                             <p  
-                            style="cursor: help"
+                            style="cursor: default"
                             data-tooltip-content="{{$rented_real}}" 
                             class="with-tooltip2 ml-[10px] number-green text-[#2196f3] hover:text-blue-600">
                                 {{$rented_real > 300 ? '300+' : $rented_real}}
@@ -375,7 +401,7 @@ if($(".holder:hidden").length == 0){
                             
                             </div>
                             <p
-                            style="cursor: help"
+                            style="cursor: default"
                             data-tooltip-content="{{$reserved_real}}"  
                             class="with-tooltip2 ml-[10px] text-[#2196f3] hover:text-blue-600 number-yellow">
                                 {{$reserved_real >= 300 ? '300+' : $reserved_real}}
@@ -442,7 +468,7 @@ to {
 </style>
 
                             <p
-                            style="cursor: help"
+                            style="cursor: default"
                             data-tooltip-content="{{$overdue_real}}"  
                             class="with-tooltip2 ml-[10px] text-[#2196f3] hover:text-blue-600 number-red">
                                 {{$overdue_real >= 300 ? '300+' : $overdue_real}}
@@ -460,7 +486,12 @@ to {
     </div>
 </section>
 <!-- End Content -->
-    
+
+{{-- Tippy JS --}}
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="{{asset('tippy_js/tippy.js')}}"></script>
+
 @endsection
 
 

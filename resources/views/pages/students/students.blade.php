@@ -326,7 +326,7 @@
                    });
                $.ajax({
                    type: 'POST',
-                   url: "{{url('/students')}}/" + id,
+                   url: "{{url('/ucenici')}}/" + id,
                    data: {_token: CSRF_TOKEN},
                    dataType: 'JSON',
                    success: function (results) {

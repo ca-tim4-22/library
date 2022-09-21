@@ -683,7 +683,7 @@
                      });
                  $.ajax({
                      type: 'POST',
-                     url: "{{url('/books')}}/" + id,
+                     url: "{{url('/knjige')}}/" + id,
                      data: {_token: CSRF_TOKEN},
                      dataType: 'JSON',
                      success: function (results) {

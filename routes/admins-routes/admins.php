@@ -24,8 +24,8 @@ Route::delete('/izbrisi-admina/{id}', [AdminController::class, 'destroy'])->name
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain administrator through URI
-Route::get('/admins/{id}', function ($id) {});
-Route::post('/admins/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
+Route::get('/administratori/{id}', function ($id) {});
+Route::post('/administratori/{id}', [AdminController::class, 'destroy'])->name('admins.destroy');
 });
 
 Route::post('/crop/admin', [AdminController::class, 'crop'])->name('admin.crop');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Books;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Rent;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OverdueBookController extends Controller

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Settings\AuthorRequest;
 use App\Models\Author;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
