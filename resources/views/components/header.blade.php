@@ -25,13 +25,13 @@
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Notification Icon -->
                 <div class="relative block">
-                    <a href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
+                    <a style="cursor:default" href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
                         aria-label="Notification">
                         <div class="flex items-center h-5">
                             <div class="_xpkakx">
                                 <span
                                     class="transition duration-300 ease-in bg-[#606FC7] text-[25px] rounded-full px-[11px] py-[7px] ">
-                                    <i class="far fa-bell"></i>
+                                    <i style="cursor: pointer" class="far fa-bell"></i>
                                 </span>
                             </div>
                         </div>
@@ -45,10 +45,10 @@
                     
                 </div>
                 <!-- Add Icon -->
-                <a class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">
+                <a style="cursor: default" class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">
                     <span
                         class="transition duration-300 ease-in bg-[#606FC7] text-[25px] rounded-full px-[11px] py-[7px]  ">
-                        <i class="fas fa-plus"></i>
+                        <i style="cursor: pointer" class="fas fa-plus"></i>
                     </span>
                 </a>
                 <div
@@ -95,7 +95,13 @@
 
                 <!-- Coinis Icon -->
                 <a href="https://coinis.com" target="_blank">
-                    <img style="height: 2%" width="35px" src="{{asset('img/welcome/coinis_logo.jpg')}}" alt="Coinis Logo" title="Coinis Logo">
+                    <img style="height: 2%;border-radius: 30px" width="41px" src="https://academy.ictcortex.me/wp-content/uploads/2021/09/ICTA-logo-350.png" alt="Coinis Logo" title="Coinis Logo">
+                </a>
+                <a href="https://cg.cobiss.net/" target="_blank">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/vZRhz7cL/cobiss-color-vertical.png" alt="Cobiss Logo" title="Cobiss Logo">
+                </a>
+                <a href="https://elektropg.online/ets/" target="_blank">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/3RDCmdYb/277582529-404681021660852-4744432554004180765-n-removebg-preview.png" alt="Vaso Aligrudić" title="Vaso Aligrudić">
                 </a>
                 <!-- User Profile Icon -->
                 <div class="ml-[10px] relative block">
@@ -147,7 +153,8 @@
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                             @endif
-                                <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i>
+                                {{-- <i class="fas fa-file mr-[8px] ml-[5px] py-1"></i> --}}
+                                <i class="fas fa-user-circle mr-[8px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Profil</span>
                             </a>
                             <a href="{{route('logout')}}" tabindex="0"

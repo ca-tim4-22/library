@@ -46,8 +46,14 @@ class BookController extends Controller
         $error = false;
         $selected_a = [];
         $selected_c = [];
-        $id_a = 0;
-        $id_c = 0;
+        $id_a = [];
+        $id_c = [];
+       
+        if ($books->count() > 0) {
+            $show = true;
+        } else {
+            $show = false;
+        }
 
         $authors = Author::latest('id')->get();
         $categories = Category::latest('id')->get();
@@ -58,14 +64,13 @@ class BookController extends Controller
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')->whereIn('author_id', $request->id_author)->get();
                     $result = $books->count();
-
                     $ids = $request->id_author;
                     $array = [];
                     foreach ($ids as $id => $val) {
                         $array[] = $val;
                     }
+                    $id_a = $ids;
                     $selected_a = Author::whereIn('id', $array)->get();
-                   
                     if ($result > 0) {
                         $error = false;
                     } else {
@@ -81,14 +86,13 @@ class BookController extends Controller
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')->whereIn('category_id', $request->id_category)->get();
                     $result = $books->count();
-
                     $ids = $request->id_category;
                     $array = [];
                     foreach ($ids as $id => $val) {
                         $array[] = $val;
                     }
+                    $id_c = $ids;
                     $selected_c = Category::whereIn('id', $array)->get();
-
                     if ($result > 0) {
                         $error = false;
                     } else {
@@ -103,6 +107,8 @@ class BookController extends Controller
         'selected_c', 
         'id_a',
         'id_c',
+        'error',
+        'show',
     ));
     }
 
@@ -152,6 +158,7 @@ class BookController extends Controller
             'letter_id' => 'required',
             'binding_id' => 'required',
             'format_id' => 'required',
+            'cover' => 'required',
         ])->safe()->all();
 
         $category = $request->input('category_id');

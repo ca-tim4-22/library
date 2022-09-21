@@ -309,7 +309,7 @@ if($(".holder:hidden").length == 0){
                     </table>
                     <div class="text-right mt-[5px]">
                         <a href="{{route('active-reservations')}}" class="text-[#2196f3] hover:text-blue-600">
-                            <i class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
+                            <i style="cursor: default" class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
                             Prikaži sve
                         </a>
                     </div>

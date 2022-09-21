@@ -3,8 +3,8 @@
     <div class="">
         <!-- Hamburger Icon -->
         <div
-            class="cursor-pointer text-[#707070] pl-[30px] pt-[28px] pb-[27px] text-[25px] border-b-[1px] border-[#e4dfdf] ">
-            <i id="hamburger" class="hamburger-btn fas fa-bars"></i>
+            class="text-[#707070] pl-[30px] pt-[28px] pb-[27px] text-[25px] border-b-[1px] border-[#e4dfdf] ">
+            <i id="hamburger" class="hamburger-btn fas fa-bars cursor-pointer"></i>
         </div>
         <div class="mt-[30px]">
             <ul class="text-[#2D3B48] sidebar-nav">
@@ -105,11 +105,14 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-books')}}" aria-label="Knjige">
-                   <i class="{{(request()->is('knjige')) ? 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    <i 
+                                    style="font-size: 25px"
+                                    class="{{ (request()->is('knjige')) ? 'text-[25px] text-[#707070] 
+                                    far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070]   far fa-copy  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
-                                        <p
-                                            class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Knjige</p>
+                                        <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                            Knjige
+                                        </p>
                                     </div>
                                 </a>
                             </div>
@@ -123,10 +126,15 @@
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
-                                <a href="{{route('all-author')}}" aria-label="Knjige">
-                          <i class="{{(request()->is('autori')) ? 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                <a href="{{route('all-author')}}" aria-label="Autori">
+                                    <i 
+                                    style="font-size: 21px"
+                                    class="{{ (request()->is('autori')) ? 'text-[25px] text-[#707070] 
+                                    fas fa-user-edit transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-edit transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
-                                     <p class="inline text-[15px] ml-[15px]">Autori</p>
+                                        <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
+                                            Autori
+                                        </p>
                                     </div>
                                 </a>
                             </div>

@@ -19,6 +19,12 @@
 /* Custom */
 /* ----------------------------------------------------------- */
 
+/* Hamburger - sidebar */
+#hamburger:hover {
+  color: #576cdf;
+  transition: 0.35s;
+}
+
 /* Login - background */
 .bg-login {
   background-image: url('/login.jpg');
