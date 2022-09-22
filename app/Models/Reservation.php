@@ -9,7 +9,7 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public $timestamps = false;
+    public $timestamps = [];
 
     public function book() {
         return $this->belongsTo(Book::class);

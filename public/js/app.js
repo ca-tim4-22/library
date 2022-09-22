@@ -1461,10 +1461,10 @@ $(document).on('mouseup', function (e) {
 });
 
 // Books
+
 $('.uceniciDrop-toggle').on('click', function () {
   $('.uceniciMenu').toggle();
 })
-
 
 $(document).on('mouseup', function (e) {
   var uceniciMenu = $(".uceniciMenu");
@@ -1474,20 +1474,6 @@ $(document).on('mouseup', function (e) {
     uceniciMenu.slideUp();
   }
 });
-
-$('.uceniciDrop-toggle2').on('click', function () {
-  $('.uceniciMenu2').toggle();
-})
-
-$(document).on('mouseup', function (e) {
-  var uceniciMenu2 = $(".uceniciMenu2");
-  if (!uceniciMenu2.is(e.target) &&
-    uceniciMenu2.has(e.target).length === 0 &&
-    !$(e.target).is('.uceniciMenu2')) {
-    uceniciMenu2.slideUp();
-  }
-});
-
 
 // 
 
@@ -1782,6 +1768,7 @@ $(document).on('mouseup', function (e) {
     dropdownProfile.slideUp();
   }
 });
+
 
 // Category - table - dropdown
 $(".dotsCategory").click(function () {

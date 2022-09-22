@@ -26,6 +26,50 @@
              <x-books.book_side></x-books.book_side>
 
                         <div class="w-full mt-[10px] ml-2 px-2">
+                       
+{{-- Session message for reserve book --}}
+@if (session()->has('reserve-success') && $is_null <= 0)
+<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Uspješno!</span> {{session('reserve-success')}}
+    </div>
+  </div>
+@endif
+
+{{-- Session message for approve reservation --}}
+@if (session()->has('approve') && $is_null <= 0)
+<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Uspješno!</span> {{session('approve')}}
+    </div>
+  </div>
+@endif
+
+{{-- Session message for deny reservation --}}
+@if (session()->has('deny') && $is_null <= 0)
+<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium"></span> {{session('deny')}}
+    </div>
+</div>
+@endif
+
+{{-- Session message for archive a reservation --}}
+@if (session()->has('archive-reservation') && $is_null <= 0)
+<div style="margin-bottom: 10px" id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+    <span class="sr-only">Info</span>
+    <div>
+      <span class="font-medium">Uspješno!</span> {{session('archive-reservation')}}
+    </div>
+  </div>
+@endif
 
                             @if ($is_null > 0)
 
@@ -37,7 +81,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('reserve-success')}}
+      <span class="font-medium">Uspješno!</span> {{session('reserve-success')}}
     </div>
   </div>
 @endif
@@ -48,7 +92,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('approve')}}
+      <span class="font-medium">Uspješno!</span> {{session('approve')}}
     </div>
   </div>
 @endif
@@ -59,7 +103,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Bezuspješno!</span> {{session('deny')}}
+        <span class="font-medium"></span> {{session('deny')}}
     </div>
 </div>
 @endif
@@ -70,7 +114,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('archive-reservation')}}
+      <span class="font-medium">Uspješno!</span> {{session('archive-reservation')}}
     </div>
   </div>
 @endif
@@ -386,11 +430,13 @@
                                        </label>
                                    </td>
                                    <td class="flex flex-row items-center px-4 py-3">
+                          
                                        <img 
                                        class="object-cover w-8 mr-2 h-11" 
-                                       src="{{$await_reservation->reservation->book->placeholder == 1 ? $await_reservation->reservation->book->cover->photo : '/storage/book-covers/' . $await_reservation->reservation->book->photo}}" 
+                                       src="{{$await_reservation->reservation->book->placeholder == 1 ? $await_reservation->reservation->book->cover->photo : '/storage/book-covers/' . $await_reservation->reservation->book->cover->photo}}" 
                                        alt="Naslovna fotografija" 
                                        title="Naslovna fotografija" />
+                                       
                                        <a href="{{route('show-book', $await_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$await_reservation->reservation->book->title}}</span>
                                        </a>
@@ -489,11 +535,11 @@
                                        </label>
                                    </td>
                                    <td class="flex flex-row items-center px-4 py-3">
-                                       <img 
-                                       class="object-cover w-8 mr-2 h-11" 
-                                       src="{{$true_reservation->reservation->book->placeholder == 1 ? $true_reservation->reservation->book->cover->photo : '/storage/book-covers/' . $true_reservation->reservation->book->photo}}" 
-                                       alt="Naslovna fotografija" 
-                                       title="Naslovna fotografija" />
+                                    <img 
+                                    class="object-cover w-8 mr-2 h-11" 
+                                    src="{{$true_reservation->reservation->book->placeholder == 1 ? $true_reservation->reservation->book->cover->photo : '/storage/book-covers/' . $true_reservation->reservation->book->cover->photo}}" 
+                                    alt="Naslovna fotografija" 
+                                    title="Naslovna fotografija" />
                                        <a href="{{route('show-book', $true_reservation->reservation->book->title)}}">
                                            <span class="font-medium text-center">{{$true_reservation->reservation->book->title}}</span>
                                        </a>

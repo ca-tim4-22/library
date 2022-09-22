@@ -89,7 +89,7 @@ return [
         'numeric' => 'Ovo polje ne može da sadrži više od :max karaktera.',
         'string' => 'Ovo polje ne može da sadrži više od :max karaktera.',
     ],
-    'mimes' => 'The :attribute must be a file of type: :values.',
+    'mimes' => 'Fajl mora biti CSV',
     'mimetypes' => 'The :attribute must be a file of type: :values.',
     'min' => [
         'array' => 'Polje za :attribute mora da sadrži barem :min karaktera.',

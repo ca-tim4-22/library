@@ -47,7 +47,7 @@ class ExtraController extends Controller
 
     public function csvAuthors(Request $request) {
         $input = $request->validate([
-            'csv_author' => 'required',
+            'csv_author' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_author');
@@ -113,7 +113,7 @@ class ExtraController extends Controller
 
     public function csvBookAuthors(Request $request) {
         $input = $request->validate([
-            'csv_book_author' => 'required',
+            'csv_book_author' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_book_author');

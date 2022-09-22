@@ -79,7 +79,7 @@ Route::controller(ActiveReservationController::class)->group(function(){
 Route::get('/aktivne-rezervacije', [ActiveReservationController::class, 'index'])->name('active-reservations');
 Route::get('/detalji-rezervacije-knjige/{id}', [ActiveReservationController::class, 'show'])->name('reserved-info');
 // Middleware protection
-Route::middleware('user-delete')->group(function() {
+Route::middleware('reservation-approval')->group(function() {
 Route::get('/potvrdi-rezervaciju/{id}', function ($id) {});
 Route::get('/odbij-rezervaciju/{id}', function ($id) {});
 Route::put('/potvrdi-rezervaciju/{id}', [ActiveReservationController::class, 'approve'])->name('approve');

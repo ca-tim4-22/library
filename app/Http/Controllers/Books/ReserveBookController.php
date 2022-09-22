@@ -7,6 +7,7 @@ use App\Http\Requests\Book\ReserveBookRequest;
 use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Reservation;
+use App\Models\ReservationStatuses;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -54,8 +55,22 @@ class ReserveBookController extends Controller
     public function store(ReserveBookRequest $request, $id)
     {
         $user = Auth::user();
-        $reservation = Reservation::where('reservationMadeFor_user_id', $request->reservationMadeFor_user_id)->count();
-        if ($reservation == 0) {
+
+        $reservation_old = Reservation::where('reservationMadeFor_user_id', $request->reservationMadeFor_user_id)->latest()->first();
+
+        if ($reservation_old) {
+            $check = ReservationStatuses::where([
+                'reservation_id' => $reservation_old->id,
+                'status_reservations_id' => 2,
+            ])->count();
+            dd($check);
+           
+
+        } else {
+            $status = true;
+        }
+
+        if ($status == true) {
             $variable = GlobalVariable::findOrFail(1);
 
             $reservation = new Reservation();

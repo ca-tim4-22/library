@@ -368,7 +368,7 @@
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{$reservation->reservation->book->placeholder == 1 ? $reservation->reservation->book->cover->photo : '/storage/book-covers/' . $reservation->reservation->book->photo}}" 
+                                    src="{{$reservation->reservation->book->placeholder == 1 ? $reservation->reservation->book->cover->photo : '/storage/book-covers/' . $reservation->reservation->book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
                                     <a href="{{route('show-book', $reservation->reservation->book->title)}}">
@@ -390,7 +390,7 @@
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img
                                     class="object-cover w-8 h-8 rounded-full"
-                                    src="{{$reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->made_for->photo}}" />
+                                    src="{{$reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->reservation->made_for->photo}}" />
                                     <a href="{{route('show-student', $reservation->reservation->made_for->username)}}" class="ml-2 font-medium text-center">{{$reservation->reservation->made_for->name}}</a>
                                 </td>
                                 <td class="px-4 py-3 text-sm leading-5 text-blue-900 whitespace-no-wrap">

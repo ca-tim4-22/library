@@ -49,14 +49,14 @@
     <div class="pl-[30px] scroll height-dashboard overflow-auto mt-[20px] pb-[30px]">
         <div class="flex flex-row justify-between">
             <div class="mr-[30px]">
-                <span style="font-size: 1.3em" id="tooltip_1" class="uppercase mb-[20px]">Aktivnosti</span>
+                <span style="font-size: 1.3em" id="tooltip_1" class="cursor-default uppercase mb-[20px]">Aktivnosti</span>
                 <!-- Activity Cards -->
                 
             @if (!$data == [])
              
             @foreach ($data as $rent)
                
-             <div class="holder">
+             <div class="holder mt-[20px]">
               <div class="activity-card flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
                     <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
@@ -219,9 +219,7 @@ if($(".holder:hidden").length == 0){
                     @endif
                     @endif
                 </div>
-                
             </div>
-          
   
             <div class="mr-[50px]">
                 <span id="tooltip_2" style="font-size: 1.3em" class="cursor-default uppercase mr-[0px] text-left" 
@@ -341,7 +339,7 @@ if($(".holder:hidden").length == 0){
                     </div>
                 </div>
                 <div class="relative">
-                    <h3 class="uppercase mb-[20px] text-left py-[30px]">
+                    <h3 class="uppercase mb-[20px] text-left py-[30px] cursor-default">
                         Statistika
                     </h3>
                     <div class="text-right">

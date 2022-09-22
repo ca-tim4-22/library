@@ -46,7 +46,10 @@
                 Pročitajte uputstvo <i style="cursor: default" class="fas fa-book-reader"></i>
               </a>
               <hr class="mt-[10px]">
-              <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori</h2>
+              <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori 
+                @error('csv_author')
+                <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                @enderror</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_author') error-border @enderror">
                     <form action="{{ route('csvAuthors') }}" method="POST" enctype="multipart/form-data">

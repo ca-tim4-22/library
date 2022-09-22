@@ -105,7 +105,7 @@ class DashboardController extends Controller
         if (count($rents)) {
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
-                    $data = $collection->whereDay('issue_date', date('d'))->orderBy('id', 'desc')->get();
+                    $data = $collection->whereDate('issue_date', today())->orderBy('id', 'desc')->get();
                 }
             }
         } else {
