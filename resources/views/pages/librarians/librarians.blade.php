@@ -64,7 +64,7 @@
                 </style>
                 <form> 
                     Broj redova po strani:
-                    <select id="pagination">
+                    <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
                         <option value="25" @if($items == 25) selected @endif >25</option>
@@ -115,7 +115,7 @@
 
             @if (count($librarians) > 0)
 
-            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all"  data-url="">
+            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all-librarians" data-url="">
                 <div class="icon">
                     <svg class="top">
                         <use xlink:href="#top">
@@ -291,12 +291,6 @@
 </main>
 <!-- End Main content -->
 
-<style>
-  .swal2-popup .swal2-styled:focus {
-   box-shadow: none !important;
-}
- </style>
-
 <script type="text/javascript">
    function deleteConfirmation(id) {
        swal({
@@ -400,7 +394,7 @@ $('input#check').on('change', function() {
     $('#check_all').prop('checked',false);
     }
     });
-    $('.delete-all').on('click', function(e) {
+    $('.delete-all-librarians').on('click', function(e) {
     var idsArr = [];  
     $(".checkbox:checked").each(function() {  
     idsArr.push($(this).attr('data-id'));
@@ -422,7 +416,7 @@ $('input#check').on('change', function() {
     if(confirm("Da li ste sigurni?")){  
     var strIds = idsArr.join(","); 
     $.ajax({
-    url: "{{ route('delete-all') }}",
+    url: "{{ route('delete-all-librarians') }}",
     type: 'DELETE',
     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     data: 'ids='+strIds,

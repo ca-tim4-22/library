@@ -464,7 +464,6 @@ class BookController extends Controller
         }
 
         $book->delete();
-        // return to_route('all-books')->with('book-deleted', "Uspješno ste izbrisali knjigu \"$book->title\".");
     }
 
     public function deleteMultiple(Request $request)

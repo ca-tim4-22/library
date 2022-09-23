@@ -105,9 +105,15 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        if ($user->type->name == 'administrator') {
+            $admin = $user;
+        } else {
+            abort(404);
+        }
+        
+        return view('pages.admins.edit_admin', compact('admin'));
     }
 
     /**
@@ -119,7 +125,32 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $user = Auth::user();   
+        $find_user = User::findOrFail($id);
+        if ($find_user->gender->id == 1) {
+            $word = 'administratora';
+        } else {
+            $word = 'administratorke';
+        }
+
+        $photo_old = $request->photo;
+    
+        if ($file = $request->file('photo')) {
+            $name = $file->getClientOriginalName();
+            $file->move('storage/administrators', $name);
+            $input['photo'] = $name; 
+        } 
+
+        if ($request->password) {
+            $input['password'] = bcrypt($request->password);
+        } else {
+            $input['password'] = Auth::user()->password;
+        }
+
+        $user->whereId($id)->first()->update($input);
+        
+        return to_route('edit-admin', $request->username)->with('admin-updated', "Uspješno ste izmijenili profil $word");
     }
 
     /**
@@ -160,5 +191,11 @@ class AdminController extends Controller
 
             return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
         }
+    }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        User::whereIn('id', explode(",", $ids))->delete();
     }
 }

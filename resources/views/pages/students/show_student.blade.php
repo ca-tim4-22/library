@@ -65,7 +65,7 @@
                     </p>
                     <div
                         class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-student-profile">
-                        <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                        <div class="absolute right-0 w-16 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
                                 {{-- Delete own account --}}
@@ -217,9 +217,7 @@
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
                         <p class="font-medium">
-                            @if ($student->user_type_id == 1)
                             {{$student->gender->id == 1 ? 'Učenik' : 'Učenica'}}
-                            @endif
                         </p>
                     </div>
                     <div class="mt-[40px]">
@@ -243,51 +241,62 @@
                     </div>
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
-                        <p class="font-medium">{{$student->login_count != 0 ? $student->login_count : "Učenik se nikada nije ulogovao na platformu."}}</p>
+                        <p class="font-medium">
+                            @if ($student->login_count <= 0)
+                            @if ($student->gender->id == 1)
+                            Učenik se nikada nije ulogovao na platformu.
+                            @else 
+                            Učenica se nikada nije ulogovala na platformu.
+                            @endif
+                            @else
+                            {{$student->login_count}}
+                            @endif
+                        </p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Poslednji put {{$student->gender->id == 1 ? 'ulogovan' : 'ulogovana'}}</span>
-                        <p class="font-medium">{{$student->login_count <= 0 ? 'Učenik se nikada nije ulogovao na platformu.' : $student->last_login_at->diffForHumans()}}</p>
+                        <span class="text-gray-500">
+                            Poslednji put {{$student->gender->id == 1 ? 'ulogovan' : 'ulogovana'}}
+                        </span>
+                        <p class="font-medium">
+                            @if ($student->login_count <= 0)
+                            @if ($student->gender->id == 1)
+                            Učenik se nikada nije ulogovao na platformu.
+                            @else 
+                            Učenica se nikada nije ulogovala na platformu.
+                            @endif
+                            @else
+                            {{$student->last_login_at->diffForHumans()}}
+                            @endif
+                        </p>
                     </div>
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
-
                     <img 
                     class="p-2 border-2 border-gray-300"
                     width="300px"
-                    id="loaded1" 
                     alt="Profilna slika {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
                     title="Profilna slika {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
-                    src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}" 
-                    onload="showImageStudent();" 
-                    style="display:none;"/>
-                        
-                        <script>
-                            function showImageStudent() {
-                                $("#loading1").hide();
-                                $("#loaded1").show();
-                            }
-                        </script>
+                    src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"/>
                 </div>
-@if (Auth::user()->id == $student->id || Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
-<div class="mt-[50px] ml-[30px]">
-    <label class="mt-6 cursor-pointer">
-        <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
-            <div class="py-4">
-                <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                </svg>
-                <span class="px-4 py-2 mt-2 leading-normal">Izmijeni fotografiju</span>
-                <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
-            </div>
-            <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
-        </div>
-    </label>   
-</div>
-@endif
+                @if (Auth::id() == $student->id)
+                <div class="mt-[50px] ml-[30px]">
+                    <label class="mt-6 cursor-pointer">
+                        <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
+                            <div class="py-4">
+                                <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                    <polyline points="21 15 16 10 5 21"></polyline>
+                                </svg>
+                                <span class="px-4 py-2 mt-2 leading-normal">Izmijeni fotografiju</span>
+                                <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
+                            </div>
+                            <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
+                        </div>
+                    </label>   
+                </div>
+                @endif
                     
                 </div>
             </div>
@@ -324,32 +333,35 @@ style="z-index: 11"
         <!-- Modal Body -->
         <form method="POST" action="{{route('resetPassword', $student->id)}}">
             @csrf
-              
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
                     <span>Unesite novu lozinku <span class="text-red-500">*</span></span>
-                    <input 
-                    oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
-                    style="border: 0.4px solid #223394 !important"
-                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password" id="password" onkeydown="clearErrorsPwResetBibliotekar()" required>
-                    <div id="validatePwResetBibliotekar"></div>
+                <input 
+                style="border: 0.4px solid #223394 !important"
+                class="remove h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2"
+                type="password" 
+                id="password" 
+                data-strength class="form-control input-lg" 
+                name="password" >
+                <span toggle="#password" class="password-eye-reset-modal fa fa-fw fa-eye field-icon toggle-password">
+                </span> 
                 </div>
                 <div class="flex flex-col pb-[30px]">
                     <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                     <input 
+                    id="password"
                     style="border: 0.4px solid #223394 !important"
-                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetStudent()">
-                    <div id="validatePw2ResetStudent"></div>
+                    class="remove h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation">
                 </div>
             </div>
             <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                <button type="button"
+                <button type="button" id="remove-values"
                     class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                     Poništi <i class="fas fa-times ml-[4px]"></i>
                 </button>
-                <button id="resetujSifruBibliotekar" type="submit"
-                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-                    onclick="validacijaSifraBibliotekar()">
+              
+                <button type="submit"
+                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                     Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                 </button>
             </div>
@@ -395,5 +407,9 @@ style="z-index: 11"
           }
        });
 </script>
-    
+
+{{-- Toggle password script --}}
+<script src="{{asset('toggle_password/toggle_password.js')}}"></script>
+{{-- Password Strength --}}
+<script src="{{asset('password_strength/password_strength.js')}}"></script> 
 @endsection

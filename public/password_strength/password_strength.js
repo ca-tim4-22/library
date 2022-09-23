@@ -66,13 +66,16 @@ default:
 
 $("[data-strength]").after("<div id=\"password-strength\" class=\"strength\"><span></span></div>")
 
-
 ;
 
 $("[data-strength]").keyup(function() {
 strength = 0;
 var password = $(this).val();
 passwordCheck(password);
+});
+
+$('#remove-values').click(function() {
+  $(".remove").val('') ;
 });
 
 });

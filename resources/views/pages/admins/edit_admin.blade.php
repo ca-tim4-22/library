@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Izmijeni bibliotekara | Online Biblioteka</title>
+<title>Izmijeni administratora | Online Biblioteka</title>
 
 @endsection
 
@@ -20,13 +20,13 @@
                  <div>
                      <h1>
 
-                    {{-- Librarian update flash message --}}
-                    @if (session()->has('librarian-updated'))
+                    {{-- Administrator update flash message --}}
+                    @if (session()->has('admin-updated'))
                     <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
                         <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                         <span class="sr-only">Info</span>
                         <div>
-                            <span class="font-medium">Success!</span> {{session('librarian-updated')}}
+                            <span class="font-medium">Success!</span> {{session('admin-updated')}}
                         </div>
                     </div>
                     @endif
@@ -37,15 +37,15 @@
                      <nav class="w-full rounded">
                          <ol class="flex list-reset">
                              <li>
-                                 <a href="{{route('all-librarian')}}" class="text-[#2196f3] hover:text-blue-600">
-                                     Svi bibliotekari
+                                 <a href="{{route('all-admin')}}" class="text-[#2196f3] hover:text-blue-600">
+                                     Svi administratori
                                  </a>
                              </li>
                              <li>
                                  <span class="mx-2">/</span>
                              </li>
                              <li>
-                                 <a href="{{route('edit-librarian', $librarian->username)}}" class="text-gray-400 hover:text-blue-600">
+                                 <a href="{{route('edit-admin', $admin->username)}}" class="text-gray-400 hover:text-blue-600">
                                      Izmijeni podatke
                                  </a>
                              </li>
@@ -57,38 +57,38 @@
      </div>
      <!-- Space for content -->
      <div class="scroll height-content section-content">
-         <form class="text-gray-700 text-[14px]" method="POST" action="{{route('update-librarian', $librarian->id)}}" enctype="multipart/form-data">
+         <form class="text-gray-700 text-[14px]" method="POST" action="{{route('update-admin', $admin->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
              <div class="flex flex-row ml-[30px]">
                  <div class="w-[50%] mb-[100px]">
                      <div class="mt-[20px]">
                          <span>Ime i prezime <span class="text-red-500">*</span></span>
-                         <input type="text" name="name" id="name" value="{{$librarian->name}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNameBibliotekarEdit()"/>
+                         <input type="text" name="name" id="name" value="{{$admin->name}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                      </div>
 
                      <div class="mt-[20px]">
                          <span>Tip korisnika</span>
                          <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="user_type_id" disabled>
-                             <option value="2">
-                                 Bibliotekar
+                             <option value="3">
+                                 Administrator
                              </option>
                          </select>
                      </div>
 
                      <div class="mt-[20px]">
                          <span>JMBG <span class="text-red-500">*</span></span>
-                         <input type="text" name="JMBG" id="JMBG" value="{{$librarian->JMBG}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekarEdit()"/>
+                         <input type="text" name="JMBG" id="JMBG" value="{{$admin->JMBG}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekarEdit()"/>
                      </div>
 
                      <div class="mt-[20px]">
                          <span>E-mail <span class="text-red-500">*</span></span>
-                         <input type="email" name="email" id="email" value="{{$librarian->email}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekarEdit()"/>
+                         <input type="email" name="email" id="email" value="{{$admin->email}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsEmailBibliotekarEdit()"/>
                      </div>
 
                      <div class="mt-[20px]">
                          <span>Korisničko ime <span class="text-red-500">*</span></span>
-                         <input type="text" name="username" id="username" value="{{$librarian->username}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
+                         <input type="text" name="username" id="username" value="{{$admin->username}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
                      </div>
 
                      <div class="mt-[20px]">
@@ -119,7 +119,7 @@
                                 id="image-output-student"
                                 alt="Image"
                                 title="Image"
-                                src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"/>
+                                src="{{$admin->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . $admin->photo}}"/>
                         </div>
                     </label>
                 </div>

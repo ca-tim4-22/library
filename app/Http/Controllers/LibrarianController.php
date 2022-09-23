@@ -204,4 +204,5 @@ class LibrarianController extends Controller
         $ids = $request->ids;
         User::whereIn('id', explode(",", $ids))->delete();
     }
+
 }

@@ -108,4 +108,10 @@ class UserController extends Controller
 
         return back()->with('password-updated', 'Uspješno ste izmijenili lozinku.');
     }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        User::whereIn('id', explode(",", $ids))->delete();
+    }
 }

@@ -21,6 +21,9 @@ Route::put('/izmijeni-profil-administratora/{id}', [AdminController::class, 'upd
 Route::delete('/izbrisi-admina/{id}', [AdminController::class, 'destroy'])->name('destroy-admin');
 });
 
+// For multiple student delete
+Route::delete('izbrisi-sve/administratore', [AdminController::class, 'deleteMultiple'])->name('delete-all-admins');
+
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain administrator through URI

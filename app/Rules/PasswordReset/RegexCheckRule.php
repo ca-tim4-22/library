@@ -40,6 +40,6 @@ class RegexCheckRule implements Rule
     public function message()
     {
          // return 'The validation error message.';
-         return 'Polje za lozinku mora sadržati minimum po 1 veliko i malo slovo kao i broj.';
+         return 'Polje za lozinku mora sadržati veliko, malo slovo kao i broj.';
     }
 }

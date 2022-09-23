@@ -69,7 +69,7 @@
                 </style>
                 <form> 
                     Broj redova po strani:
-                    <select id="pagination">
+                    <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
                         <option value="25" @if($items == 25) selected @endif >25</option>

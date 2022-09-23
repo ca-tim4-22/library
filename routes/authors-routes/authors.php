@@ -19,4 +19,16 @@ Route::put('/izmijeni-profil-autora/{id}', [AuthorController::class, 'update'])-
 Route::delete('/izbrisi-autora/{id}', [AuthorController::class, 'destroy'])->name('destroy-author');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sve/autore', [AuthorController::class, 'deleteMultiple'])->name('delete-all-authors');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain author through URI
+Route::get('/autori/{id}', function ($id) {});
+Route::post('/autori/{id}', [AuthorController::class, 'destroy'])->name('authors.destroy');
+});
+
 ?>

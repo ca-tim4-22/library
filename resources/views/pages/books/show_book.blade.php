@@ -8,6 +8,11 @@
 @endsection
 
 @section('content')
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Sweet Alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     <main class="flex flex-row small:hidden">
 
@@ -93,17 +98,66 @@
                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                         <span class="px-4 py-0">Izmijeni knjigu</span>
                                     </a>
-                                    <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
     
-                                        <button style="outline: none" type="submit"  tabindex="0"
-                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                           role="menuitem">
-                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbriši knjigu</span>
-                                        </button>
-                                    </form>
+                                    <button style="cursor: pointer;outline: none;" 
+                                    type="submit" 
+                                    data-id="{{$book->id}}" 
+                                    data-action="{{ route('destroy-book', $book->id) }}" 
+                                    onclick="deleteAuthor({{$book->id}})" 
+                                    style="outline: none;border: none;"
+                                    class="flex w-full px-4 py-2 text-sm text-left text-gray-700 outline-none hover:text-blue-600"
+                                    role="menuitem">
+                                    <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                    <span style="cursor: pointer" class="px-4 py-0">
+                                    Izbriši knjigu
+                                    </span>
+                                    </button>
+                                    
+                                      {{-- Ajax --}}
+                         <script type="text/javascript">
+                            function deleteAuthor(id) {
+                                var token = $("meta[name='csrf-token']").attr("content");
+                                swal({
+                                    text: "Da li ste sigurni da želite da izbrišete knjigu?",
+                                    showCancelButton: !0,
+                                    timer: '5000',
+                                    animation: true,
+                                    allowEscapeKey: true,
+                                    allowOutsideClick: false,
+                                    confirmButtonText: "Da, siguran sam!",
+                                    cancelButtonText: "Ne, odustani",
+                                    reverseButtons: !0,
+                                    confirmButtonColor: '#14de5e',
+                                    cancelButtonColor: '#f73302',
+                                }).then(function (e) {
+                                    if (e.value === true) {
+                                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                                        swal(
+                                            'Uspješno!',
+                                            'Uspješno ste izbrisali knjigu.',
+                                            'success'
+                                            ).then(function() {
+                                            window.location.href = "/knjige";
+                                         });
+                                        $.ajax({
+                                            type: 'DELETE',
+                                            url: "{{url('izbrisi-knjigu')}}/" + id,
+                                            data: {
+                                            "_token": token,
+                                            },
+                                            success: function (results) {
+                                            }
+                                        });
+                                    } else {
+                                        e.dismiss;
+                                    }
+                                }, function (dismiss) {
+                                    return false;
+                                })
+                            }
+                          
+                         </script>
+
                                 </div>
                             </div>
                         </div>

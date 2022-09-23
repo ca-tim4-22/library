@@ -90,7 +90,7 @@ Route::put('/odbij-rezervaciju/{id}', [ActiveReservationController::class, 'deny
 // Additional features
 
 // For multiple book delete
-Route::delete('izbrisi-sve', [BookController::class, 'deleteMultiple'])->name('delete-all');
+Route::delete('izbrisi-sve/knjige', [BookController::class, 'deleteMultiple'])->name('delete-all-books');
 
 // Middleware protection
 Route::middleware('user-delete')->group(function() {

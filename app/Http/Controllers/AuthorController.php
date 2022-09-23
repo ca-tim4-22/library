@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Settings\AuthorRequest;
 use App\Models\Author;
+use App\Models\GlobalVariable;
+use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
@@ -17,11 +19,19 @@ class AuthorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $authors = Author::latest('id')->paginate(5);
+        if ($request->items) {
+            $items = $request->items;
+            $variable = GlobalVariable::findOrFail(4);
+        } else {
+            $variable = GlobalVariable::findOrFail(4);
+            $items = $variable->value;
+        }
+        $authors = Author::latest('id')->paginate($items);
+        $show_all = Author::latest('id')->count();
 
-        return view('pages.authors.authors', compact('authors'));
+        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all'));
     }
 
     /**
@@ -102,7 +112,11 @@ class AuthorController extends Controller
     {
         $author = Author::findOrFail($id);
         $author->delete();
-        
-        return to_route('all-author')->with('author-deleted', "Uspješno ste izbrisali autora \"$author->NameSurname\".");
+    }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Author::whereIn('id', explode(",", $ids))->delete();
     }
 }

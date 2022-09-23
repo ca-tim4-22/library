@@ -165,7 +165,7 @@
   position: relative;
   left: 90%;
   z-index: 11 !important;
-  bottom: 32px !important;
+  bottom: 34px !important;
 }
 
 .cursor-default {
@@ -178,7 +178,13 @@
   width: 0px;
   height: 5px;
   display: block;
-  transition: width 0.3s;
+  transition: width 0.35s;
+}
+
+/* Remove button outline on sweet alert */
+
+.swal2-popup .swal2-styled:focus {
+  box-shadow: none !important;
 }
 
 /* ----------------------------------------------------------- */

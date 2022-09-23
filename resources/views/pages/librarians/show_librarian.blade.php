@@ -65,7 +65,7 @@
                     </p>
                     <div
                         class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-librarian-profile">
-                        <div class="absolute right-0 w-56 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
+                        <div class="absolute right-0 w-16 mt-[10px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                             aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
                                 {{-- Delete own account --}}
@@ -218,9 +218,7 @@
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Tip korisnika</span>
                         <p class="font-medium">
-                            @if ($librarian->user_type_id == 2)
                             {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}
-                            @endif
                         </p>
                     </div>
                     <div class="mt-[40px]">
@@ -245,10 +243,14 @@
                     <div class="mt-[40px]">
                         <span class="text-gray-500">Broj logovanja</span>
                         <p class="font-medium">
-                            @if ($librarian->login_count != 0)
-                            {{$librarian->login_count}} 
+                            @if ($librarian->login_count <= 0)
+                            @if ($librarian->gender->id == 1)
+                            Bibliotekar se nikada nije ulogovao na platformu.
+                            @else 
+                            Bibliotekarka se nikada nije ulogovala na platformu.
+                            @endif
                             @else
-                            {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}} se nikada nije {{$librarian->gender->id == 1 ? 'ulogovao' : 'ulogovala'}} na platformu.
+                            {{$librarian->login_count}}
                             @endif
                         </p>
                     </div>
@@ -256,8 +258,12 @@
                         <span class="text-gray-500">Poslednji put {{$librarian->gender->id == 1 ? 'ulogovan' : 'ulogovana'}}</span>
                         <p class="font-medium">
                             @if ($librarian->login_count <= 0)
-                            {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}} se nikada nije {{$librarian->gender->id == 1 ? 'ulogovao' : 'ulogovala'}} na platformu.
+                            @if ($librarian->gender->id == 1)
+                            Bibliotekar se nikada nije ulogovao na platformu.
                             @else 
+                            Bibliotekarka se nikada nije ulogovala na platformu.
+                            @endif
+                            @else
                             {{$librarian->last_login_at->diffForHumans()}}
                             @endif
                         </p>
@@ -265,7 +271,6 @@
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
-               
                 <img 
                 class="p-2 border-2 border-gray-300"
                 width="300px"
@@ -274,7 +279,6 @@
                 title="Profilna slika {{$librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
                 src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}" />
                 </div>
-
                 @if (Auth::id() == $librarian->id)
                 <div class="mt-[50px] ml-[30px]">
                     <label class="mt-6 cursor-pointer">
@@ -330,38 +334,34 @@ style="z-index: 11"
         <!-- Modal Body -->
         <form method="POST" action="{{route('resetPassword', $librarian->id)}}">
             @csrf
-              
             <div class="flex flex-col px-[30px] py-[30px]">
-                <div class="flex flex-col pb-[30px]">
-                    <span>Unesite novu lozinku <span class="text-red-500">*</span></span>
+            <div class="flex flex-col pb-[30px]">
+                <span>Unesite novu lozinku <span class="text-red-500">*</span></span>
             <input 
             style="border: 0.4px solid #223394 !important"
-            class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2"
+            class="remove h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2"
             type="password" 
             id="password" 
             data-strength class="form-control input-lg" 
             name="password" >
-            
             <span toggle="#password" class="password-eye-reset-modal fa fa-fw fa-eye field-icon toggle-password">
             </span> 
-           
-                </div>
+            </div>
                 <div class="flex flex-col pb-[30px]">
                     <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                     <input 
                     id="password"
                     style="border: 0.4px solid #223394 !important"
-                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetBibliotekar()">
+                    class="remove h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation">
                 </div>
             </div>
             <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-                <button type="button"
-                    class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Poništi <i class="fas fa-times ml-[4px]"></i>
-                </button>
+                <button type="button" id="remove-values"
+                class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
+                Poništi <i class="fas fa-times ml-[4px]"></i>
+            </button>
                 <button id="resetujSifruBibliotekar" type="submit"
-                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-                    onclick="validacijaSifraBibliotekar()">
+                    class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                     Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                 </button>
             </div>
@@ -408,8 +408,6 @@ style="z-index: 11"
        });
 </script>
 
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
 {{-- Toggle password script --}}
 <script src="{{asset('toggle_password/toggle_password.js')}}"></script>
 {{-- Password Strength --}}
