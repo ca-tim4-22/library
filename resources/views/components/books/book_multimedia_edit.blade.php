@@ -4,22 +4,102 @@
      
         <div class="flex justify-center" style="margin-top: 20px">
             <div class="mb-3 w-96">
-              <label for="formFile" class="form-label inline-block mb-2 text-gray-700">Naslovna fotografija</label>
-              <input class="form-control
-              block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              text-gray-700
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="cover" name="cover">
+    
+              <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+                <div class="file-drop-area">
+                <span class="fake-btn">Naslovna fotografija</span>
+                <span class="file-msg">ili prevucite Vašu fotografiju ovdje</span>
+                <input required class="file-input" type="file" name="cover">
+                </div>
+            </div>
+           <style>
+                
+                .file-drop-area {
+                  position: relative;
+                  display: flex;
+                  align-items: center;
+                  width: 450px;
+                  max-width: 100%;
+                  padding: 15px;
+                  border-radius: 5px;
+                  cursor: pointer;
+                  transition: 0.2s;
+                  &.is-active {
+                    background-color: rgba(255, 255, 255, 0.05);
+                  }
+                }
+                
+                .fake-btn {
+                  flex-shrink: 0;
+                  background-color: rgba(255, 255, 255, 0.04);
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                  border-radius: 3px;
+                  padding: 8px 15px;
+                  margin-right: 10px;
+                  font-size: 12px;
+                  text-transform: uppercase;
+                }
+                
+                .file-msg {
+                  font-size: small;
+                  font-weight: 300;
+                  line-height: 1.4;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+                
+                .file-input {
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  height: 100%;
+                  width: 100%;
+                  cursor: pointer;
+                  opacity: 0;
+                  &:focus {
+                    outline: none;
+                  }
+                }
+                
+                
+                .file-drop-area {
+                background: linear-gradient(to right, #4568dc, #4558BE);
+                  color: #D7D7EF;
+                  font-family: 'Lato', sans-serif;
+                }
+           </style> 
+           <script>
+                var $fileInput = $('.file-input');
+                var $droparea = $('.file-drop-area');
+                
+                // highlight drag area
+                $fileInput.on('dragenter focus click', function() {
+                  $droparea.addClass('is-active');
+                });
+                
+                // back to normal state
+                $fileInput.on('dragleave blur drop', function() {
+                  $droparea.removeClass('is-active');
+                });
+                
+                // change inner text
+                $fileInput.on('change', function() {
+                  var filesCount = $(this)[0].files.length;
+                  var $textContainer = $(this).prev();
+                
+                  if (filesCount === 1) {
+                    // if single file is selected, show file name
+                    var fileName = $(this).val().split('\\').pop();
+                    $textContainer.text(fileName);
+                  } else {
+                    // otherwise show number of files
+                    $textContainer.text(filesCount + ' prevučeno');
+                  }
+                });
+            </script>
+    
+    
             </div>
           </div>
     

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Rules\PasswordReset\MinimumPasswordLengthRule;
+use App\Rules\PasswordReset\RegexCheckRule;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -93,9 +94,9 @@ class UserController extends Controller
     public function resetPassword(User $user, Request $request) {
         $request->validate([            
                 'password' => [
-                'required',
                 'confirmed',
                 new MinimumPasswordLengthRule(),
+                new RegexCheckRule(),
             ]
         ]);
         $user->name = $user->name;

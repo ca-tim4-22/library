@@ -16,6 +16,8 @@
 <script src="{{asset('js/session_message_jquery.js')}}"></script>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+{{-- Password Strength --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 
     <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
        <!-- Heading of content -->
@@ -332,18 +334,24 @@ style="z-index: 11"
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
                     <span>Unesite novu lozinku <span class="text-red-500">*</span></span>
-                    <input 
-                    oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
-                    style="border: 0.4px solid #223394 !important"
-                    class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password" id="password" onkeydown="clearErrorsPwResetBibliotekar()" required>
-                    <div id="validatePwResetBibliotekar"></div>
+            <input 
+            style="border: 0.4px solid #223394 !important"
+            class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2"
+            type="password" 
+            id="password" 
+            data-strength class="form-control input-lg" 
+            name="password" >
+            
+            <span toggle="#password" class="password-eye-reset-modal fa fa-fw fa-eye field-icon toggle-password">
+            </span> 
+           
                 </div>
                 <div class="flex flex-col pb-[30px]">
                     <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                     <input 
+                    id="password"
                     style="border: 0.4px solid #223394 !important"
                     class="h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password" name="password_confirmation" id="password_confirmation" onkeydown="clearErrorsPw2ResetBibliotekar()">
-                    <div id="validatePw2ResetBibliotekar"></div>
                 </div>
             </div>
             <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
@@ -400,4 +408,10 @@ style="z-index: 11"
        });
 </script>
 
+{{-- JQuery CDN --}}
+<x-jquery.jquery></x-jquery.jquery>
+{{-- Toggle password script --}}
+<script src="{{asset('toggle_password/toggle_password.js')}}"></script>
+{{-- Password Strength --}}
+<script src="{{asset('password_strength/password_strength.js')}}"></script> 
 @endsection

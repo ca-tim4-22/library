@@ -56,16 +56,14 @@ class ReserveBookController extends Controller
     {
         $user = Auth::user();
 
-        $reservation_old = Reservation::where('reservationMadeFor_user_id', $request->reservationMadeFor_user_id)->latest()->first();
-
+        $reservation_old = Reservation::where('reservationMadeFor_user_id', $request->reservationMadeFor_user_id)->latest('id')->first();
         if ($reservation_old) {
-            $check = ReservationStatuses::where([
-                'reservation_id' => $reservation_old->id,
-                'status_reservations_id' => 2,
-            ])->count();
-            dd($check);
-           
-
+            $check = ReservationStatuses::where('reservation_id', $reservation_old->id)->latest('id')->first();
+            if ($check->status_reservations_id == 2 || $check->status_reservations_id == 4 || $check->status_reservations_id == 5) {
+                $status = true;
+            } else {
+                $status = false;
+            }
         } else {
             $status = true;
         }

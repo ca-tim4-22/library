@@ -165,7 +165,9 @@
                             <tr class="border-b-[1px] border-[#e4dfdf]">
                                 <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" id="check_all">
+                                       @if (Auth::user()->user_type_id != 1)
+                                       <input type="checkbox" id="check_all">
+                                       @endif
                                     </label>
                                 </td>
 
@@ -420,7 +422,14 @@
                                     {{$category->category->name}} 
                                     @endforeach
                                 </td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}</td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    {{-- Prevent negative values --}}
+                                    @if ($book->quantity_count - ($book->rented_count + $book->reserved_count) < 0)
+                                    0
+                                    @else
+                                    {{$book->quantity_count - ($book->rented_count + $book->reserved_count)}}
+                                    @endif
+                                </td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a
                                         href="{{route('active-reservations')}}">{{$book->reserved_count}}</td>
                                 <td class="px-4 py-4 text-sm leading-5 text-blue-800 whitespace-no-wrap"><a

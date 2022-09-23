@@ -15,7 +15,7 @@ class LibrarianController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware(['auth', 'librarian-protect']);
+        $this->middleware(['auth', 'librarian-protect']);
     }
 
     /**

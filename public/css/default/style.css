@@ -158,8 +158,27 @@
   bottom: 30px !important;
 }
 
+.password-eye-reset-modal {
+  color: #4558BE;
+  font-size: 17px;
+  cursor: pointer;
+  position: relative;
+  left: 90%;
+  z-index: 11 !important;
+  bottom: 32px !important;
+}
+
 .cursor-default {
   cursor: default;
+}
+
+/* Password Strength */
+
+.strength span {
+  width: 0px;
+  height: 5px;
+  display: block;
+  transition: width 0.3s;
 }
 
 /* ----------------------------------------------------------- */
