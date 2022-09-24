@@ -68,9 +68,8 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Publisher $publisher)
     {
-        $publisher = Publisher::findOrFail($id);
         return view('pages.settings.publisher.edit_publisher', compact('publisher'));
     }
 
@@ -81,7 +80,7 @@ class PublisherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PublisherRequest $request, $id)
     {
         $input = $request->all();
         $publisher = Publisher::findOrFail($id);  

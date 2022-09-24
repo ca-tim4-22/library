@@ -25,7 +25,6 @@ Route::delete('/izbrisi-bibliotekara/{id}', [LibrarianController::class, 'destro
 // For multiple librarian delete
 Route::delete('izbrisi-sve/bibliotekare', [LibrarianController::class, 'deleteMultiple'])->name('delete-all-librarians');
 
-
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain librarian through URI
@@ -35,7 +34,6 @@ Route::post('/bibliotekari/{id}', [LibrarianController::class, 'destroy'])->name
 
 Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])->name('resetPassword');
 Route::post('/crop/bibliotekar', [LibrarianController::class, 'crop'])->name('librarian.crop');
-
 
 });
 

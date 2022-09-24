@@ -11,7 +11,15 @@
             <span class="file-msg">ili prevucite Vašu fotografiju ovdje</span>
             <input required class="file-input" type="file" name="cover">
             </div>
-        </div>
+          </div>
+
+          <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
+            <div class="file-drop-area">
+            <span class="fake-btn">PDF</span>
+            <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+            <input required class="file-input" type="file" name="pdf">
+            </div>
+          </div>
        <style>
             
             .file-drop-area {
@@ -196,6 +204,7 @@
         </div>
         
     </div>
+    
    
 </div>
 <div class="absolute bottom-0 w-full">

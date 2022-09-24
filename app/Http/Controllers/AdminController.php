@@ -27,10 +27,18 @@ class AdminController extends Controller
             $variable = GlobalVariable::findOrFail(4);
             $items = $variable->value;
         }
-        $administrators = User::latest('id')->where('user_type_id', 3)->paginate($items);
+
+        $searched = $request->trazeno;
+        if($searched){
+            $administrators = User::search($request->trazeno)
+                ->where('user_type_id', 3)->paginate($items);
+        }else{
+            $administrators = User::latest('id')->where('user_type_id', 3)->paginate($items);
+        }
+
         $show_all = User::latest('id')->where('user_type_id', 3)->count();
 
-        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all'));
+        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all', 'searched'));
     }
 
     /**

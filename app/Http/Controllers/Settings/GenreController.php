@@ -78,9 +78,8 @@ class GenreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Genre $genre)
     {
-        $genre = Genre::findOrFail($id);
         return view('pages.settings.genre.edit_genre', compact('genre'));
     }
 
@@ -98,7 +97,7 @@ class GenreController extends Controller
 
         $genre->update($input);
         
-        return back()->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
+        return to_route('edit-genre', $request->name)->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
     }
 
     /**

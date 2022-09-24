@@ -10,8 +10,6 @@
 @section('content')
 {{-- JQuery CDN --}}
 <x-jquery.jquery></x-jquery.jquery>
-{{-- Searching functionality --}}
-<x-jquery.search></x-jquery.search>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -27,7 +25,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('success-letter')}}
+      <span class="font-medium">Uspješno!</span> {{session('success-letter')}}
     </div>
   </div>
 @endif
@@ -84,20 +82,23 @@
                     };
                 </script>
                 
-                <div class="relative text-gray-600 focus-within:text-gray-400">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
-                                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </button>
-                    </span>
-                    <input id="myInput" type="search" name="q"
-                        class="py-2 pl-10 text-sm text-white bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                        placeholder="Traži..." autocomplete="off">
-                </div>
-            </div>
+                <form method="GET" action="{{ route('setting-letter') }}">
+                    <div class="relative text-gray-600 focus-within:text-gray-400">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                            <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </button>
+                        </form>
+                        </span>
+                        <input type="text" name="trazeno" value="{{$searched}}"
+                            class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+                            placeholder="Traži..." autocomplete="off">
+                    </div>
+                    </div>
+                    </form>
         </div>
 
         <div class="inline-block min-w-full px-[50px] pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
@@ -140,7 +141,7 @@
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
-                                        <a href="{{route('edit-letter', $letter->id)}}" tabindex="0"
+                                        <a href="{{route('edit-letter', $letter->name)}}" tabindex="0"
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>

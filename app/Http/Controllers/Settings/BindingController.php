@@ -68,10 +68,8 @@ class BindingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Binding $binding)
     {
-        $binding = Binding::findOrFail($id);
-        
         return view('pages.settings.binding.edit_binding', compact('binding'));
     }
 
@@ -82,7 +80,7 @@ class BindingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BindingRequest $request, $id)
     {
         $input = $request->all();
         $binding = Binding::findOrFail($id);  

@@ -8,7 +8,7 @@
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500 text-[14px]">
-                    @if (!$book->categories->count() == 1)
+                    @if ($book->categories->count() == 1)
                     Kategorija
                     @else
                     Kategorije
@@ -23,7 +23,7 @@
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500 text-[14px]">
-                @if (!$book->genres->count() == 1)
+                @if ($book->genres->count() == 1)
                 Žanr
                 @else
                 Žanrovi
@@ -68,6 +68,11 @@
                 <p class="addReadMore showlesscontent my-[10px]">
                     {!! $book->body !!}
                 </p>
+                
+                <a class="btn btn-primary" href="{{'/storage/pdf/' . $book->pdf}}" download>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                   Download PDF
+                  </a>
             </div>
         </div>
     </div>

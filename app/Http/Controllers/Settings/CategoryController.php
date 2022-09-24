@@ -77,9 +77,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $category = Category::findOrFail($id);
         return view('pages.settings.category.edit_category', compact('category'));
     }
 
@@ -90,7 +89,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $input = $request->all();
         $category = Category::findOrFail($id);  
@@ -106,8 +105,8 @@ class CategoryController extends Controller
         }
 
         $category->update($input);
-        
-        return back()->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
+
+        return to_route('edit-category', $request->name)->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
     }
 
     /**

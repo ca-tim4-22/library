@@ -4,12 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Book extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
     protected $guarded = [];
     public $timestamps = false;
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+        ];
+    }
 
     public function reservations() {
         return $this->hasMany(Reservation::class);

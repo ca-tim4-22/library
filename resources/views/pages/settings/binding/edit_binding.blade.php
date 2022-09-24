@@ -72,7 +72,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Naziv poveza <span class="text-red-500">*</span></p>
+                        <span>Naziv poveza <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
                         <input type="text" name="name" id="name" value="{{$binding->name}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivPovezEdit()"/>
                         <div id="validateNazivPovezEdit"></div>
                     </div>

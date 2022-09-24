@@ -32,10 +32,18 @@ class LibrarianController extends Controller
             $variable = GlobalVariable::findOrFail(4);
             $items = $variable->value;
         }
-        $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+
+        $searched = $request->trazeno;
+        if($searched){
+            $librarians = User::search($request->trazeno)
+                ->where('user_type_id', 2)->paginate($items);
+        } else{
+            $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+        }
+     
         $show_all = User::latest('id')->where('user_type_id', 2)->count();
 
-        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all'));
+        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched'));
     }
 
     /**

@@ -38,7 +38,14 @@ class BookController extends Controller
             $variable = GlobalVariable::findOrFail(4);
             $items = $variable->value;
         }
-        $books = Book::latest('id')->paginate($items);
+
+        $searched_book = $request->trazeno;
+        if($searched_book){
+            $books = Book::search($request->trazeno)->paginate($items);
+        }else{
+            $books = Book::latest('id')->paginate($items);
+        }
+
         $show_all = Book::latest('id')->count();
       
         $count = 0;
@@ -124,6 +131,7 @@ class BookController extends Controller
         'items', 
         'variable', 
         'show_all',
+        'searched_book'
     ));
     }
 
@@ -188,6 +196,11 @@ class BookController extends Controller
         $author = str_replace(['[', ']'], null, $author);
         $authorIds= explode( ',', $author);
 
+        
+        $pdf = $request->pdf;
+        $name = $pdf->getClientOriginalName();
+        $pdf->move('storage/pdf', $name);
+
         $book = new Book();
         $book->title = $request->input('title');
         $book->body = $request->input('body');
@@ -200,6 +213,7 @@ class BookController extends Controller
         $book->language_id = $request->input('language_id');
         $book->ISBN = $request->input('ISBN');
         $book->year = $request->input('year');
+        $book->pdf =  $name;
         $book->save();
 
         foreach($categoryIds as $id) {
@@ -247,6 +261,7 @@ class BookController extends Controller
                 'cover' => 0,
             ]);}
         } 
+
 
         return to_route('all-books')->with('success-book', 'Uspješno ste dodali knjigu.');
     }
@@ -296,10 +311,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(Book $book)
     {
-        $book = Book::findOrFail($id);
-
         $models = [
             'categories'=> DB::table('categories')->get(),
             'genres' => DB::table('genres')->get(),

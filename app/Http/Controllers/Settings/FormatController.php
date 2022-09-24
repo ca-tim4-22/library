@@ -68,9 +68,8 @@ class FormatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Format $format)
     {
-        $format = Format::findOrFail($id);
         return view('pages.settings.format.edit_format', compact('format'));
     }
 
@@ -81,7 +80,7 @@ class FormatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FormatRequest $request, $id)
     {
         $input = $request->all();
         $format = Format::findOrFail($id);  

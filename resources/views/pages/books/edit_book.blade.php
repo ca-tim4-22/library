@@ -35,7 +35,7 @@
                                         <span class="mx-2">/</span>
                                     </li>
                                     <li>
-                                        <a href="{{route('edit-book', $book->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                        <a href="{{route('edit-book', $book->title)}}" class="text-[#2196f3] hover:text-blue-600">
                                             Izmijeni knjigu
                                         </a>
                                     </li>

@@ -33,10 +33,18 @@ class StudentController extends Controller
             $variable = GlobalVariable::findOrFail(4);
             $items = $variable->value;
         }
-        $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
-        $show_all = User::latest('id')->where('user_type_id', 2)->count();
 
-        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all'));
+        $searched = $request->trazeno;
+        if($searched){
+            $students = User::search($request->trazeno)
+                ->where('user_type_id', 1)->paginate($items);
+        }else{
+            $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
+        }
+    
+        $show_all = User::latest('id')->where('user_type_id', 1)->count();
+
+        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched'));
     }
 
     /**

@@ -28,10 +28,17 @@ class AuthorController extends Controller
             $variable = GlobalVariable::findOrFail(4);
             $items = $variable->value;
         }
-        $authors = Author::latest('id')->paginate($items);
+
+        $searched = $request->trazeno;
+        if($searched){
+            $authors = Author::search($request->trazeno)->paginate($items);
+        }else{
+            $authors = Author::latest('id')->paginate($items);
+        }
+
         $show_all = Author::latest('id')->count();
 
-        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all'));
+        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all', 'searched'));
     }
 
     /**

@@ -68,10 +68,8 @@ class LetterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Letter $letter)
     {
-        $letter = Letter::findOrFail($id);
-        
         return view('pages.settings.letter.edit_letter', compact('letter'));
     }
 
@@ -82,14 +80,14 @@ class LetterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LetterRequest $request, $id)
     {
-        $input = $request->all();
         $letter = Letter::findOrFail($id);  
+        $input = $request->all();
 
         $letter->update($input);
         
-        return back()->with('letter-updated', 'Uspješno ste izmijenili pismo: ' . "\"$letter->name\".");
+        return to_route('edit-letter', $request->name)->with('letter-updated', 'Uspješno ste izmijenili pismo.');
     }
 
     /**

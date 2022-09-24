@@ -93,15 +93,17 @@
                 </div>
                 @endif
 
-                <!-- Coinis Icon -->
-                <a href="https://coinis.com" target="_blank">
-                    <img style="height: 2%;border-radius: 30px" width="41px" src="https://academy.ictcortex.me/wp-content/uploads/2021/09/ICTA-logo-350.png" alt="Coinis Logo" title="Coinis Logo">
+                <!-- Cortex Academy Icon -->
+                <a href="https://academy.ictcortex.me/" target="_blank">
+                    <img style="height: 2%;border-radius: 30px" width="41px" src="https://i.postimg.cc/h46syRT4/cortex-academy-logo.png" alt="Coinis Logo" title="Coinis Logo">
                 </a>
+                <!-- Cobiss Icon -->
                 <a href="https://cg.cobiss.net/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/vZRhz7cL/cobiss-color-vertical.png" alt="Cobiss Logo" title="Cobiss Logo">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/152Vp9xP/cobiss-logo.png" alt="Cobiss Logo" title="Cobiss Logo">
                 </a>
+                 <!-- School Icon -->
                 <a href="https://elektropg.online/ets/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/3RDCmdYb/277582529-404681021660852-4744432554004180765-n-removebg-preview.png" alt="Vaso Aligrudić" title="Vaso Aligrudić">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" alt="Vaso Aligrudić" title="Vaso Aligrudić">
                 </a>
                 <!-- User Profile Icon -->
                 <div class="ml-[10px] relative block">

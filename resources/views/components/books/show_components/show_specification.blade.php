@@ -24,7 +24,7 @@
                 </div>
                 <div class="mt-[40px]">
                     <span class="text-gray-500 text-[14px]">Međunarodni standardni broj knjige</span>
-                    <p class="font-medium">{{$book->ISBN}}</p>
+                    <p class="font-medium">ISBN: {{$book->ISBN}}</p>
                 </div>
             </div>
         </div>
