@@ -16,16 +16,16 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\User::factory(50)->create();
 
-        \App\Models\Genre::factory(15)->create();
-        \App\Models\Category::factory(15)->create();
+        // \App\Models\Genre::factory(15)->create();
+        // \App\Models\Category::factory(15)->create();
 
         \App\Models\Author::factory(15)->create();
         // Book factories
-        \App\Models\Book::factory(15)->create();
-        \App\Models\BookAuthor::factory(15)->create();
-        \App\Models\BookCategory::factory(15)->create();
-        \App\Models\BookGenre::factory(15)->create();
-        \App\Models\Gallery::factory(15)->create();
+        // \App\Models\Book::factory(15)->create();
+        // \App\Models\BookAuthor::factory(15)->create();
+        // \App\Models\BookCategory::factory(15)->create();
+        // \App\Models\BookGenre::factory(15)->create();
+        // \App\Models\Gallery::factory(15)->create();
         
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

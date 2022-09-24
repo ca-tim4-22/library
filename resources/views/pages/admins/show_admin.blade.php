@@ -272,7 +272,7 @@
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
                     <img 
-                    class="p-2 border-2 border-gray-300"
+                    class="lightbox p-2 border-2 border-gray-300"
                     width="300px"
                     alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
                     title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"

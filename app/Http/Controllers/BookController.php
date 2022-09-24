@@ -14,6 +14,7 @@ use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -196,10 +197,15 @@ class BookController extends Controller
         $author = str_replace(['[', ']'], null, $author);
         $authorIds= explode( ',', $author);
 
-        
         $pdf = $request->pdf;
-        $name = $pdf->getClientOriginalName();
-        $pdf->move('storage/pdf', $name);
+
+        if ($pdf) {
+           $name = $pdf->getClientOriginalName();
+           $pdf->move('storage/pdf', $name); 
+        } else {
+           $name = 0;
+        }
+        
 
         $book = new Book();
         $book->title = $request->input('title');
@@ -246,8 +252,8 @@ class BookController extends Controller
                 'photo' => $name,
                 'cover' => 1,
             ]);
-           
         }
+
 
         if ($request->file('photos') && $request->file('cover')) {
             $photos = $request->file('photos');
@@ -453,7 +459,7 @@ class BookController extends Controller
 
         $book->update($input);
 
-        return back()->with('update-book', 'Uspješno ste izmijenili knjigu.');
+        return to_route('edit-book', $request->title)->with('update-book', 'Uspješno ste izmijenili knjigu.');
     }
 
     /**
@@ -476,12 +482,36 @@ class BookController extends Controller
             }
         }
 
+        if ($book->pdf != 0) {
+        $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+        unlink(public_path() . $path_pdf); 
+        }
+
         $book->delete();
     }
 
     public function deleteMultiple(Request $request)
     {
         $ids = $request->ids;
+
+        $books = Book::whereIn('id', explode(",", $ids))->get();
+      
+        foreach ($books as $book) {
+            foreach ($book->gallery as $photos) {
+                foreach ($photos->get() as $photo) {
+                    if ($book->placeholder == 0) {
+                    $path = '\\storage\\book-covers\\' . $photo->photo;
+                    unlink(public_path() . $path); 
+                    $book->delete();
+                   }
+                }
+            }
+        if ($book->pdf != 0) {
+            $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+            unlink(public_path() . $path_pdf); 
+           }
+        }
+
         Book::whereIn('id', explode(",", $ids))->delete();
     }
 }

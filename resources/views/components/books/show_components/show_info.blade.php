@@ -69,10 +69,17 @@
                     {!! $book->body !!}
                 </p>
                 
-                <a class="btn btn-primary" href="{{'/storage/pdf/' . $book->pdf}}" download>
-                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                   Download PDF
-                  </a>
+                @if ($book->pdf != 0)
+                <div class="mt-[20px]">
+                    <a 
+                    class="btn-animation inline-flex items-center text-sm py-2 px-3 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]" 
+                    href="{{'/storage/pdf/' . $book->pdf}}" download>
+                    <i class="fas fa-file-pdf mr-[5px]"></i>
+                    Preuzmi PDF
+                    </a>
+                </div>
+                @endif
+
             </div>
         </div>
     </div>

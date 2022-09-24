@@ -9,7 +9,7 @@
             <div class="file-drop-area">
             <span class="fake-btn">Naslovna fotografija</span>
             <span class="file-msg">ili prevucite Vašu fotografiju ovdje</span>
-            <input required class="file-input" type="file" name="cover">
+            <input title="Naslovna fotografija je obavezna" required class="file-input" type="file" name="cover">
             </div>
           </div>
 
@@ -17,7 +17,7 @@
             <div class="file-drop-area">
             <span class="fake-btn">PDF</span>
             <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
-            <input required class="file-input" type="file" name="pdf">
+            <input title="Izaberite fajl" class="file-input" type="file" name="pdf">
             </div>
           </div>
        <style>
