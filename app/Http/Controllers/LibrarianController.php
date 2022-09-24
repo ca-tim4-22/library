@@ -33,17 +33,25 @@ class LibrarianController extends Controller
             $items = $variable->value;
         }
 
+        $show_criterium = false;
+
         $searched = $request->trazeno;
         if($searched){
-            $librarians = User::search($request->trazeno)
-                ->where('user_type_id', 2)->paginate($items);
+            $librarians = User::search($request->trazeno)->where('user_type_id', 2)->paginate($items);
+            $count = User::search($request->trazeno)->get()->count();
+            if ($count == 0) {
+                $show_criterium = true;
+            } else {
+                $show_criterium = false;
+            }
         } else{
             $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+            $show_criterium = false;
         }
      
         $show_all = User::latest('id')->where('user_type_id', 2)->count();
 
-        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched'));
+        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
 
     /**

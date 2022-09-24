@@ -13,6 +13,7 @@ use App\Models\GlobalVariable;
 use App\Models\Rent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,11 +41,20 @@ class BookController extends Controller
             $items = $variable->value;
         }
 
+        $show_criterium = false;
+
         $searched_book = $request->trazeno;
         if($searched_book){
             $books = Book::search($request->trazeno)->paginate($items);
+            $count = Book::search($request->trazeno)->get()->count();
+            if ($count == 0) {
+                $show_criterium = true;
+            } else {
+                $show_criterium = false;
+            }
         }else{
             $books = Book::latest('id')->paginate($items);
+            $show_criterium = false;
         }
 
         $show_all = Book::latest('id')->count();
@@ -132,7 +142,8 @@ class BookController extends Controller
         'items', 
         'variable', 
         'show_all',
-        'searched_book'
+        'searched_book',
+        'show_criterium',
     ));
     }
 

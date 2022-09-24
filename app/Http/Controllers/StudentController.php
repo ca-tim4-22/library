@@ -34,17 +34,25 @@ class StudentController extends Controller
             $items = $variable->value;
         }
 
+        $show_criterium = false;
+
         $searched = $request->trazeno;
         if($searched){
-            $students = User::search($request->trazeno)
-                ->where('user_type_id', 1)->paginate($items);
+            $students = User::search($request->trazeno)->where('user_type_id', 1)->paginate($items);
+            $count = User::search($request->trazeno)->get()->count();
+            if ($count == 0) {
+                $show_criterium = true;
+            } else {
+                $show_criterium = false;
+            }
         }else{
             $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
+            $show_criterium = false;
         }
     
         $show_all = User::latest('id')->where('user_type_id', 1)->count();
 
-        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched'));
+        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
 
     /**

@@ -29,16 +29,25 @@ class AuthorController extends Controller
             $items = $variable->value;
         }
 
+        $show_criterium = false;
+
         $searched = $request->trazeno;
         if($searched){
             $authors = Author::search($request->trazeno)->paginate($items);
+            $count = Author::search($request->trazeno)->get()->count();
+            if ($count == 0) {
+                $show_criterium = true;
+            } else {
+                $show_criterium = false;
+            }
         }else{
             $authors = Author::latest('id')->paginate($items);
+            $show_criterium = false;
         }
 
         $show_all = Author::latest('id')->count();
 
-        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all', 'searched'));
+        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
 
     /**

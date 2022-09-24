@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'librarian-protect']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -28,17 +33,25 @@ class AdminController extends Controller
             $items = $variable->value;
         }
 
+        $show_criterium = false;
+
         $searched = $request->trazeno;
         if($searched){
-            $administrators = User::search($request->trazeno)
-                ->where('user_type_id', 3)->paginate($items);
+            $administrators = User::search($request->trazeno)->where('user_type_id', 3)->paginate($items);
+            $count = User::search($request->trazeno)->get()->count();
+            if ($count == 0) {
+                $show_criterium = true;
+            } else {
+                $show_criterium = false;
+            }
         }else{
             $administrators = User::latest('id')->where('user_type_id', 3)->paginate($items);
+            $show_criterium = false;
         }
 
         $show_all = User::latest('id')->where('user_type_id', 3)->count();
 
-        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all', 'searched'));
+        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
 
     /**
