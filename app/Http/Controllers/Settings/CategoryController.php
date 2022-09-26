@@ -46,14 +46,14 @@ class CategoryController extends Controller
         $input = $request->all();
         $category = $request->name;
         $category_lower = Str::title($category);
-    
+
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
             $input['icon'] = $name; 
             $input['default'] = 'false'; 
         } else {
-            $input['icon'] = 'placeholder.jpg';
+            $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
 
         Category::create($input);
@@ -100,6 +100,7 @@ class CategoryController extends Controller
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
             $input['icon'] = $name; 
+            $input['default'] = 'false'; 
         } else {
             $input['icon'] = $icon_old;
         }

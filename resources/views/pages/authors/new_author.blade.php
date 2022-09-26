@@ -88,8 +88,8 @@
 </section>
 <!-- End Content -->
 
-<x-scripts></x-scripts>
-
+{{-- CKEditor --}}
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('biography', {
         width: "90%",

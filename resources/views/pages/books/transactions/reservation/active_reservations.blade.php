@@ -9,7 +9,6 @@
 
 @section('content')
 
-    <x-sidebar></x-sidebar>
     <!-- Main content -->
     <main class="flex flex-row small:hidden">
 
@@ -22,10 +21,10 @@
                 </h1>
             </div>
 
-             {{-- Books side --}}
-             <x-books.book_side></x-books.book_side>
+            {{-- Books side --}}
+            <x-books.book_side></x-books.book_side>
 
-                        <div class="w-full mt-[10px] ml-2 px-2">
+            <div class="w-full mt-[10px] ml-2 px-2">
                        
 {{-- Session message for reserve book --}}
 @if (session()->has('reserve-success') && $is_null <= 0)
@@ -504,7 +503,7 @@
                                                 aria-labelledby="headlessui-menu-button-1"
                                                 id="headlessui-menu-items-117" role="menu">
                                                <div class="py-1">
-                                                   <a href="{{route('rent-book', $await_reservation->reservation->book->id)}}" tabindex="0"
+                                                   <a href="{{route('rent-book', $await_reservation->reservation->book->title)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
@@ -580,7 +579,7 @@
                                                 aria-labelledby="headlessui-menu-button-1"
                                                 id="headlessui-menu-items-117" role="menu">
                                                <div class="py-1">
-                                                   <a href="{{route('rent-book', $true_reservation->reservation->book->id)}}" tabindex="0"
+                                                   <a href="{{route('rent-book', $true_reservation->reservation->book->title)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
@@ -635,6 +634,5 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
+
 @endsection

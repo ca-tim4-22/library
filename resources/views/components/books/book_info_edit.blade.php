@@ -1,24 +1,7 @@
-{{-- JQuery CDN --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
-{{-- Session message fade out js file --}}
-<script src="{{asset('js/session_message_jquery.js')}}"></script>
-
- <!-- Main content -->
+<!-- Main content -->
  <main class="flex flex-row small:hidden">
-
     <!-- Content -->
     <section style="margin-top: 20px" class="w-screen h-screen pl-[0px] pb-2 text-gray-700">
-
-{{-- Session message for book update --}}
-@if (session()->has('update-book'))
-    <div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-        <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-        <span class="sr-only">Info</span>
-        <div>
-            <span class="font-medium">Success!</span> {{session('update-book')}}
-        </div>
-    </div>
-@endif
 
         <!-- Space for content -->
         <div class="scroll height-content section-content">
@@ -375,31 +358,6 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
         <div class="mt-[20px]">
             <p>Izdavač <span class="text-red-500">*</span></p>
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="publisher_id" id="izdavac" onclick="clearErrorsIzdavac()">
@@ -446,9 +404,11 @@
 </main>
 <!-- End Main content -->
 
-
-<x-scripts></x-scripts>
-
+{{-- CKEditor --}}
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+{{-- File Upload --}}
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://unpkg.com/create-file-list"></script>
 <script>
     CKEDITOR.replace('body', {
         width: "90%",

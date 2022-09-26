@@ -8,8 +8,7 @@
 @endsection
 
 @section('content')
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
+
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -62,7 +61,7 @@
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
                         </a>
-                        <a href="{{route('rent-book', $book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                        <a href="{{route('rent-book', $book->title)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                             <i class="far fa-hand-scissors mr-[3px]"></i>
                             Izdaj knjigu
                         </a>
@@ -70,7 +69,7 @@
                         
                         @if ($book->rent->contains('id', 1))
                             
-                        <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                        <a href="{{route('return-book', $book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
                             Vrati knjigu
                         </a>
@@ -315,4 +314,13 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
+
+    {{-- This had to be here --}}
+    <script>
+        $(".wrapper .tab").click(function() {
+        $(".wrapper .tab").removeClass("active").eq($(this).index()).addClass("active");
+        $(".tab_item").hide().eq($(this).index()).fadeIn()
+    }).eq(0).addClass("active");
+    </script>
+
 @endsection

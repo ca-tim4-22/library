@@ -63,11 +63,11 @@
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="{{route('rent-book', $rent->book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $rent->book->title)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
-                <a href="{{route('return-book', $rent->book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('return-book', $rent->book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="fas fa-redo-alt mr-[3px] "></i>
                     Vrati knjigu
                 </a>

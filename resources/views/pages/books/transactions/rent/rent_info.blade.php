@@ -63,11 +63,11 @@
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="{{route('rent-book', $rent->book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $rent->book->title)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
-                <a href="{{route('return-book', $rent->book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                <a href="{{route('return-book', $rent->book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                     <i class="fas fa-redo-alt mr-[3px] "></i>
                     Vrati knjigu
                 </a>
@@ -90,7 +90,7 @@
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
-                            <form action="{{route('destroy-book', $rent->book->id)}}" method="POST">
+                            <form action="{{route('destroy-rent-book', $rent->book->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button style="outline: none" type="submit"  tabindex="0"
@@ -130,12 +130,17 @@
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Trenutno zadržavanje knjige</span>
                             <p class="font-medium">
-                                @php
-                                $datetime1 = new DateTime(($rent->issue_date));
-                                $datetime2 = new DateTime(($rent->return_date));
-                                $interval = $datetime1->diff($datetime2);
-                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
-                                @endphp
+                                <?php
+                                if ($variable->value % 10 == 1 || $variable->value % 10 == 11 || $variable->value == 1) {
+                                $day = "dan";
+                                } else {
+                                $day = "dana";
+                                }  
+                               $datetime1 = new DateTime(($rent->issue_date));
+                               $datetime2 = new DateTime(($rent->return_date));
+                               $interval = $datetime1->diff($datetime2);
+                               echo '<span style="color: #2A4AB3">' .  $interval->format('%a '. $day)  .'</span>';
+                               ?>
                             </p>
                         </div>
                         <div class="mt-[40px]">
@@ -163,8 +168,19 @@
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}</span>
-                            <a href="{{route('show-librarian', $rent->librarian->username)}}"
-                                class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->librarian->name}}</a>
+
+                {{-- If admin rented a book --}}
+                @if ($rent->librarian->type->id == 2)
+                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                <a>
+                @else 
+                <a href="{{route('show-admin', $rent->librarian->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                    <a>
+                @endif
+               
+
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>

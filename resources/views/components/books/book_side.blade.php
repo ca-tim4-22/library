@@ -1,6 +1,6 @@
 <!-- Space for content -->
 <div class="scroll height-dashboard">
-    <div class="flex items-center px-6 py-4 space-x-3 rounded-lg ml-[292px]">
+    {{-- <div class="flex items-center px-6 py-4 space-x-3 rounded-lg ml-[292px]">
         <div class="flex items-center">
             <div class="relative text-gray-600 focus-within:text-gray-400">
                 <input type="search" name="q"
@@ -11,7 +11,7 @@
         <a href="novaKnjiga.php"
            class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">Pretraži
         </a>
-    </div>
+    </div> --}}
     <div>
         <!-- Space for content -->
         <div class="flex justify-start pt-3 bg-white">

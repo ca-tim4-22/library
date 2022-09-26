@@ -510,7 +510,7 @@
                 <div class="inline-block w-full mt-4">
                     <button type="button"
                         class="btn-animation w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded activity-showMore hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                        Show more
+                        Prikaži još
                     </button>
                 </div>
             </div>

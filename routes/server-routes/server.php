@@ -25,11 +25,14 @@ Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'login' => false]);
 
 Route::get('/register', function() {
     return response('Not found', 404);
 });
+
+Route::get('uloguj-se', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('uloguj-se', [LoginController::class, 'login']);
 
 // Logout route
 Route::get('/logout', [LoginController::class, 'logout']);

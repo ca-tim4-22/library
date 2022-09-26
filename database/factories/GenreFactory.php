@@ -19,6 +19,7 @@ class GenreFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'icon' => '/img/default_images_while_migrations/genres/placeholder.jpg',
+            'default' => 'true',
             'description' => $this->faker->sentence(25),
         ];
     }

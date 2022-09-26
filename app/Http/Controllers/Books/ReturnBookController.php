@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\RentStatus;
 use Illuminate\Http\Request;
@@ -43,12 +44,12 @@ class ReturnBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Book $book)
     {
-        $get_book = Book::findOrFail($id);
-
+        $get_book = $book;
         $books = Book::all();
         $rents = Rent::all();
+        $variable = GlobalVariable::findOrFail(2);
 
         if (count($rents)) {
             foreach ($books as $book) {
@@ -60,7 +61,7 @@ class ReturnBookController extends Controller
             $data = [];
         }
 
-        return view('pages.books.transactions.return.return_book', compact('data', 'get_book'));
+        return view('pages.books.transactions.return.return_book', compact('data', 'get_book', 'variable'));
     }
 
     /**

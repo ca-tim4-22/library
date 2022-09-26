@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-<x-jquery.jquery></x-jquery.jquery>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] pb-4 text-gray-700">
@@ -25,7 +24,7 @@
                             <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
                             <span class="sr-only">Info</span>
                             <div>
-                                <span class="font-medium">Success!</span> {{session('genre-updated')}}
+                                <span class="font-medium">Uspješno!</span> {{session('genre-updated')}}
                             </div>
                          </div>
                          @endif
@@ -66,7 +65,7 @@
 
     <!-- Space for content -->
     <div class="scroll height-content section-content">
-        <form class="text-gray-700" method="POST" action="{{route('update-genre', $genre->id)}}">
+        <form class="text-gray-700" method="POST" enctype="multipart/form-data" action="{{route('update-genre', $genre->id)}}">
             @csrf
             @method('PUT')
             <div class="flex flex-row ml-[30px]">
@@ -74,7 +73,21 @@
                     <div class="mt-[20px]">
                         <p>Naziv žanra <span class="text-red-500">*@error('name') {{$message}} @enderror</span></p>
                         <input type="text" name="name" id="name" value="{{$genre->name}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsNazivZanraEdit()"/>
-                        <div id="validateNazivZanraEdit"></div>
+                    </div>
+
+                    <div class="mt-[20px]">
+                        <p>Uploaduj ikonicu </p>
+                        <div id="empty-cover-art-ikonica"
+                            class="flex w-[90%] mt-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
+                            <div class="bg-gray-300 h-[40px] w-[102px] px-[20px] pt-[10px]">
+                                <label class="cursor-pointer">
+                                    <p class="leading-normal">Priloži...</p>
+                                    <input id="icon-upload" name="icon" id="icon" type='file' class="hidden" :multiple="multiple"
+                                        :accept="accept" />
+                                </label>
+                            </div>
+                            <div id="icon-output" class="h-[40px] px-[20px] pt-[7px]"></div>
+                        </div>
                     </div>
                 </div>
             </div>

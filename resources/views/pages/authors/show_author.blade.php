@@ -8,8 +8,7 @@
 @endsection
 
 @section('content')
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
+
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">

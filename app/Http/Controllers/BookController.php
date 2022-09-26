@@ -11,10 +11,11 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -450,7 +451,7 @@ class BookController extends Controller
                     'photo' => $name,
                     'cover' => 1,
                 ]);
-            }
+            } 
     
             if ($request->file('photos')) {
 
@@ -470,7 +471,9 @@ class BookController extends Controller
 
         $book->update($input);
 
-        return to_route('edit-book', $request->title)->with('update-book', 'Uspješno ste izmijenili knjigu.');
+        FacadesSession::flash('update-book'); 
+
+        return to_route('show-book', $request->title);
     }
 
     /**
@@ -486,13 +489,18 @@ class BookController extends Controller
         if ($book->placeholder == 0) {
             foreach ($book->gallery as $photos) {
                 foreach ($photos->get() as $photo) {
-                    $path = '\\storage\\book-covers\\' . $photo->photo;
-                    unlink(public_path() . $path); 
-                    $book->delete();
+                    // Preventing if image does not exist in storage
+                    if (Storage::disk('local')->has("$photo->photo")) {
+                        $path = '\\storage\\book-covers\\' . $photo->photo;
+                        unlink(public_path() . $path); 
+                        $book->delete();
+                    } else {
+                        $book->delete();
+                    }
                 }
             }
         }
-
+        
         if ($book->pdf != 0) {
         $path_pdf = '\\storage\\pdf\\' . $book->pdf;
         unlink(public_path() . $path_pdf); 

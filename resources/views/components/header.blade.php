@@ -25,13 +25,13 @@
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <!-- Notification Icon -->
                 <div class="relative block">
-                    <a style="cursor:default" href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
+                    <a style="pointer-events: none;" style="cursor:default" href="{{route('dashboard-activity')}}" class="relative inline-block px-3 py-2 focus:outline-none"
                         aria-label="Notification">
                         <div class="flex items-center h-5">
                             <div class="_xpkakx">
                                 <span
                                     class="transition duration-300 ease-in bg-[#606FC7] text-[25px] rounded-full px-[11px] py-[7px] ">
-                                    <i style="cursor: pointer" class="far fa-bell"></i>
+                                    <i style="pointer-events:all;cursor: pointer;" class="far fa-bell" id="bell"></i>
                                 </span>
                             </div>
                         </div>
@@ -45,10 +45,10 @@
                     
                 </div>
                 <!-- Add Icon -->
-                <a style="cursor: default" class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">
+                <a style="pointer-events: none;" class="inline-block border-l-[1px] border-gray-300 px-3" href="#" aria-label="Add something" id="dropdownCreate">
                     <span
                         class="transition duration-300 ease-in bg-[#606FC7] text-[25px] rounded-full px-[11px] py-[7px]  ">
-                        <i style="cursor: pointer" class="fas fa-plus"></i>
+                        <i style="pointer-events:all;cursor: pointer;" class="fas fa-plus" id="plus"></i>
                     </span>
                 </a>
                 <div

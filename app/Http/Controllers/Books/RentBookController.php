@@ -12,6 +12,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RentBookController extends Controller
 {
@@ -24,23 +25,35 @@ class RentBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       $books = Book::all();
+        $searched = $request->trazeno;
+        if ($request->trazeno) {
+            $books = Book::search($request->trazeno)->get();
+            $data = 'no-values';
+        } else {
+            $books = Book::all();
+        }
+        
+        if (count($books) == 0) {
+            $null = true;
+        } else {
+            $null = false;
+        }
 
-       if (RentStatus::where('book_status_id', 1)->count() > 0) {
-       foreach ($books as $book) {
-            foreach ($book->rent as $rent) {
-                foreach ($rent->rent_status as $key) {
-                    $data = $key->where('book_status_id', 1)->orderBy('id', 'desc');
-                }
+        if (RentStatus::where('book_status_id', 1)->count() > 0) {
+        foreach ($books as $book) {
+             foreach ($book->rent as $rent) {
+                 foreach ($rent->rent_status as $key) {
+                     $data = $key->where('book_status_id', 1)->orderBy('id', 'desc')->paginate(5);
+                 }
+             }
             }
-           }
-       } else {
-        $data = 'no-values';
-       }
-
-       return view('pages.books.transactions.rent.rented_books', compact('data'));
+        } else {
+         $data = 'no-values';
+        }
+ 
+        return view('pages.books.transactions.rent.rented_books', compact('data', 'null', 'searched'));
     }
 
     /**
@@ -48,10 +61,9 @@ class RentBookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Book $book)
     {
         $students = User::where('user_type_id', 1)->get();
-        $book = Book::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
         $books = Book::all();
         $current_one = Carbon::now()->format('Y-m-d');
@@ -127,8 +139,9 @@ class RentBookController extends Controller
     public function show($id)
     {
         $rent = Rent::findOrFail($id);
+        $variable = GlobalVariable::findOrFail(2);
 
-        return view('pages.books.transactions.rent.rent_info', compact('rent'));
+        return view('pages.books.transactions.rent.rent_info', compact('rent', 'variable'));
     }
 
     /**
@@ -162,6 +175,6 @@ class RentBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

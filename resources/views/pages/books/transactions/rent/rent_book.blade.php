@@ -59,11 +59,11 @@
                         </div>
                     </div>
                     <div class="pt-[24px] mr-[30px]">
-                        <a href="otpisiKnjigu.php" class="inline hover:text-blue-600">
+                        <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
                         </a>
-                        <a href="{{route('return-book', $book->id)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
+                        <a href="{{route('return-book', $book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
                             Vrati knjigu
                         </a>
@@ -158,7 +158,19 @@
                                     </script>
 
                                     <div>
-                                        <p>Rok vraćanja: <span class="color">{{$variable->value}} dana</span></p>
+                                        <p>Rok vraćanja: 
+                                            <span class="color">
+                                                {{$variable->value}} 
+                                                @php
+                                                if ($variable->value % 10 == 1 || $variable->value % 10 == 11 || $variable->value == 1) {
+                                                echo "dan";
+                                                } else {
+                                                echo "dana";
+                                                }  
+                                                @endphp
+
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -177,15 +189,15 @@
                                     </div>
                                     <div class="text-center pb-[30px]">
                                         <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
-                                            {{$book->quantity_count - ($book->rented_count + $book->reserved_count) >= 0 ? $book->quantity_count - ($book->rented_count + $book->reserved_count) : "0"}}
+                                            {{($book->quantity_count - ($book->rented_count + $book->reserved_count)) >= 0 ? ($book->quantity_count - ($book->rented_count + $book->reserved_count)) : "0"}} 
                                             @php
                                             if ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 1 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 11 || $book->quantity_count - ($book->rented_count + $book->reserved_count) == 1) {
                                             echo "primjerak";
-                                            } elseif ($book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 2 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 3 || $book->quantity_count - ($book->rented_count + $book->reserved_count) % 10 == 4) {
+                                            } elseif (($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 2 || ($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 3 || ($book->quantity_count - ($book->rented_count + $book->reserved_count)) % 10 == 4) {
                                              echo "primjerka";
                                             } else {
                                             echo "primjeraka";
-                                            }
+                                            }  
                                             @endphp
                                         </p>
                                         <a href="{{route('active-reservations')}}">
@@ -258,7 +270,5 @@
             </div>
         </section>
         <!-- End Content -->
-
-        <x-jquery.jquery></x-jquery.jquery>
 
 @endsection

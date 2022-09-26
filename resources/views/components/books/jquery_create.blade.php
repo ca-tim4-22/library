@@ -1,53 +1,32 @@
-<style>
-    .wrapper .active { 
-        color: #2196f3;
-        border-bottom: 2px solid #2196f3;
-        padding-bottom: 18px;
-    }
-    .tab_item { display: none; }
-    .tab_item:first-child { display: block; }
-    .tab {
-        cursor: pointer
-    }
-    .error-border {
-        color: red !important;
-        border-bottom: 2px solid red;
-        padding-bottom: 18px;
-    }
-    .error-border:hover {
-        color: red;
-    }
-    </style>
-
     <div class="py-5 mt-4 text-gray-500 border-b-[1px] border-[#e4dfdf] pl-[30px]">
     <div class="wrapper">
   
         <div class="tabs">
-            <a class="inline tab hover:text-blue-800
-            @error('title')error-border @enderror
-            @error('body')error-border @enderror
-            @error('category_id')error-border @enderror
-            @error('genre_id')error-border @enderror
-            @error('author_id')error-border @enderror
-            @error('publisher_id')error-border @enderror
-            @error('year')error-border @enderror
-            @error('quantity_count')error-border @enderror
+            <a class="inline tab
+            @error('title')error-border-tab @enderror
+            @error('body')error-border-tab @enderror
+            @error('category_id')error-border-tab @enderror
+            @error('genre_id')error-border-tab @enderror
+            @error('author_id')error-border-tab @enderror
+            @error('publisher_id')error-border-tab @enderror
+            @error('year')error-border-tab @enderror
+            @error('quantity_count')error-border-tab @enderror
             ">
                 Osnovni detalji
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800 
-            @error('page_count')error-border @enderror
-            @error('language_id')error-border @enderror
-            @error('letter_id')error-border @enderror
-            @error('binding_id')error-border @enderror
-            @error('format_id')error-border @enderror
-            @error('ISBN')error-border @enderror
+            <a class="tab inline ml-[70px] 
+            @error('page_count')error-border-tab @enderror
+            @error('language_id')error-border-tab @enderror
+            @error('letter_id')error-border-tab @enderror
+            @error('binding_id')error-border-tab @enderror
+            @error('format_id')error-border-tab @enderror
+            @error('ISBN')error-border-tab @enderror
             ">
                 Specifikacija 
                 
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800
-            @error('cover')error-border @enderror
+            <a class="tab inline ml-[70px] 
+            @error('cover')error-border-tab @enderror
             ">
                 Multimedija
             </a>      
@@ -78,8 +57,7 @@
     </div>
     </div>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+    {{-- This had to be here --}}
     <script>
         $(".wrapper .tab").click(function() {
         $(".wrapper .tab").removeClass("active").eq($(this).index()).addClass("active");

@@ -11,12 +11,29 @@
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
+            
             <!-- Heading of content -->
             <div class="heading mt-[7px]" style="margin-top: 11px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
                     Izdate knjige
                 </h1>
             </div>
+
+            <form action="{{route('rented-books')}}" method="GET"> 
+            <div class="flex items-center px-6 py-4 space-x-3 rounded-lg ml-[292px]">
+                <div class="flex items-center">
+                    <div class="relative text-gray-600 focus-within:text-gray-400">
+                        <input type="search" name="trazeno" value="{{$searched}}"
+                               class="py-2 pl-2 text-sm bg-white border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                               placeholder="Pretraži knjige..." autocomplete="off">
+                    </div>
+                </div>
+                <button type="submit"
+                style="outline: none;"
+                   class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] rounded hover:bg-[#4558BE]">Pretraži
+                </button>
+            </div>
+            </form>
 
              {{-- Books side --}}
              <x-books.book_side></x-books.book_side>
@@ -25,7 +42,7 @@
 
                             @if ($data != 'no-values')
 
-                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
+                            <table id="sort" class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]">
 
 {{-- Session message for rent book --}}
 @if (session()->has('rent-success'))
@@ -40,16 +57,14 @@
                                 <thead class="bg-[#EFF3F6]">
 
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                                    <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                                         <label class="inline-flex items-center">
                                             <input type="checkbox" class="form-checkbox">
                                         </label>
-                                    </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
+                                    </td>
+                                  
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                         Naziv knjige
-                                        <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                       onclick="sortTable()"></i>
-                                        </a>
                                     </th>
 
                                     <!-- Izdato uceniku + dropdown filter for ucenik -->
@@ -378,8 +393,8 @@
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
-
-                                @foreach ($data->get() as $book)
+                              <tbody>
+                                @foreach ($data as $book)
 
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                     <td class="px-4 py-3 whitespace-no-wrap">
@@ -466,8 +481,8 @@
                                 </tbody>
                             </table>
 
-                            {{-- <script src="https://cdn.tailwindcss.com"></script>
-                            <div class="m-4">{!! $paginate->links() !!}</div> --}}
+                            <script src="https://cdn.tailwindcss.com"></script>
+                            <div class="m-4">{!! $data->links() !!}</div>
 
                             @else
 
@@ -478,7 +493,15 @@
                                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                                         </path>
                                     </svg>
+                                    @if ($null == true)
+                                    <p class="font-medium text-white">Trenutno nema rezultata za "{{$searched}}".. &#128533;</p>
+                                </div>
+                                <a 
+                                class="btn-animation inline-flex items-center text-sm py-2 px-3 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]"
+                                href="{{route('rented-books')}}"><i class="fas fa-arrow-left mr-[5px]"></i>Nazad</a>
+                                    @else 
                                     <p class="font-medium text-white">Trenutno nema izdatih knjiga! </p>
+                                    @endif
                                 </div>
                             </div>
                             @endif
@@ -492,6 +515,5 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
+    
 @endsection

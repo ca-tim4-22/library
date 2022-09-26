@@ -48,7 +48,7 @@
                                     <span class="mx-2">/</span>
                                 </li>
                                 <li>
-                                    <a href="{{route('return-book', $get_book->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                                    <a href="{{route('return-book', $get_book->title)}}" class="text-[#2196f3] hover:text-blue-600">
                                         Vrati knjigu
                                     </a>
                                 </li>
@@ -62,7 +62,7 @@
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
-                <a href="{{route('rent-book', $get_book->id)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
+                <a href="{{route('rent-book', $get_book->title)}}" class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                     <i class="far fa-hand-scissors mr-[3px]"></i>
                     Izdaj knjigu
                 </a>
@@ -185,10 +185,15 @@
                            <span>
 
                                <?php
+                                if ($variable->value % 10 == 1 || $variable->value % 10 == 11 || $variable->value == 1) {
+                                $day = "dan";
+                                } else {
+                                $day = "dana";
+                                }  
                                $datetime1 = new DateTime(($rent->issue_date));
                                $datetime2 = new DateTime(($rent->return_date));
                                $interval = $datetime1->diff($datetime2);
-                               echo '<span style="color: #2A4AB3">' .  $interval->format('%a dana')  .'</span>';
+                               echo '<span style="color: #2A4AB3">' .  $interval->format('%a '. $day)  .'</span>';
                                ?>
                                </span>
                        </td>

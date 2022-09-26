@@ -95,6 +95,17 @@ class GenreController extends Controller
         $input = $request->all();
         $genre = Genre::findOrFail($id);  
 
+        $icon_old = $genre->icon;
+    
+        if ($file = $request->file('icon')) {
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
+            $file->move('storage/settings/genre', $name);
+            $input['icon'] = $name; 
+            $input['default'] = 'false'; 
+        } else {
+            $input['icon'] = $icon_old;
+        }
+
         $genre->update($input);
         
         return to_route('edit-genre', $request->name)->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");

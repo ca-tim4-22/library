@@ -79,18 +79,31 @@ class ReserveBookController extends Controller
             $reservation->request_date = Carbon::parse($reservation->reservation_date)->addDays($variable->value);
             $reservation->save();
     
-            DB::table('reservation_statuses')->insert([
-                'reservation_id' => $reservation->id,
-                'status_reservations_id' => 3,
-            ]);
+            if ($user->type->id == 2 || $user->type->id == 3) {
+                DB::table('reservation_statuses')->insert([
+                    'reservation_id' => $reservation->id,
+                    'status_reservations_id' => 1,
+                    'created_at' => Carbon::now(),
+                ]);
+            } else {
+                DB::table('reservation_statuses')->insert([
+                    'reservation_id' => $reservation->id,
+                    'status_reservations_id' => 3,
+                    'created_at' => Carbon::now(),
+                ]);
+            }
         } else {
             return back()->with('reservation-failed', 'Već postoje rezervacije sa Vašim imenom!');
         }
 
         if ($user->type->id == 1) {
-            return back()->with('reservation-sent', 'Uspješno! Vaša rezervacija je za sada na čekanju!');
+            return back()->with('reservation-sent', 'Vaša rezervacija je za sada na čekanju!');
         } else {
-            return to_route('active-reservations')->with('reserve-success', 'Rezervacija je na čekanju!');
+            if ($user->type->id == 2 || $user->type->id == 3) {
+                return to_route('active-reservations')->with('reserve-success', 'Rezervisali ste knjigu!');
+            } else {
+                return to_route('active-reservations')->with('reserve-success', 'Rezervacija je na čekanju!');
+            }
         }
     }
 

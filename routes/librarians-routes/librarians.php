@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\ {
 
 use App\Http\Controllers\ {
     LibrarianController,
+    UserController,
 };
 
 Route::controller(LibrarianController::class)->group(function() {

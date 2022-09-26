@@ -168,7 +168,13 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="#" id="btnFullscreen" aria-label="Fullscreen">
-                                    <i class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
+
+                                    {{-- Before fullscreen --}}
+                                    <i id="expand" class="transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-expand"></i>
+
+                                    {{-- While fullscreen mode --}}
+                                    <i id="expand2" class="hidden_expand transition duration-300 ease-in group-hover:text-[#576cdf] text-[25px] text-[#707070] fas fa-compress-alt"></i>
+
                                     <div class="hidden sidebar-item">
                                 <button
                                   id="btnFullscreen"
@@ -190,9 +196,9 @@
     @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
     <div class="sidebar-nav py-[10px] border-t-[1px] border-[#e4dfdf] pt-[23px] pb-[29px] group hover:bg-[#EFF3F6]">
         <!-- Settings Icon -->
-        <a href="{{route('setting-policy')}}" aria-label="Settngs" class="ml-[30px]">
+        <a id="gear_text" href="{{route('setting-policy')}}" aria-label="Podešavanja" class="ml-[30px]">
             <span class="whitespace-nowrap">
-                <i class="{{(request()->is('podesavanja/*')) ? 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                <i id="gear" class="{{(request()->is('podesavanja/*')) ? 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
 
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -201,5 +207,7 @@
             </span>
         </a>
     </div>
+
     @endif
+   
 </nav>

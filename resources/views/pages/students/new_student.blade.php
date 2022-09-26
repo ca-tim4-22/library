@@ -158,8 +158,6 @@
     </section>
     <!-- End Content -->
 
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
 {{-- Toggle password script --}}
 <script src="{{asset('toggle_password/toggle_password.js')}}"></script>
 {{-- Auto Complete --}}

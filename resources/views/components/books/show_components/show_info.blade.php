@@ -1,3 +1,14 @@
+@if (session()->has('update-book'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izmijenili knjigu!", 
+       timer: 1500,
+       type: "success",
+    });
+</script>
+@endif
+
   <!-- Space for content -->
   <div class="section mt-[20px]">
     <div class="flex flex-row justify-between">

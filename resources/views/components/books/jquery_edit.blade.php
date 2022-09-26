@@ -1,40 +1,20 @@
-<style>
-    .wrapper .active { 
-        color: #2196f3;
-        border-bottom: 2px solid #2196f3;
-        padding-bottom: 18px;
-    }
-    .tab_item { display: none; }
-    .tab_item:first-child { display: block; }
-    .tab {
-        cursor: pointer
-    }
-    .error-border {
-        color: red !important;
-        border-bottom: 2px solid red;
-        padding-bottom: 18px;
-    }
-    .error-border:hover {
-        color: red;
-    }
-    </style>
-
+{{-- wrapper, tab_item, error-border --}}
     <div class="py-5 mt-4 text-gray-500 border-b-[1px] border-[#e4dfdf] pl-[30px]">
     <div class="wrapper">
   
         <div class="tabs">
-            <a class="inline tab hover:text-blue-800">
+            <a class="inline tab">
                 Osnovni detalji
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800 
+            <a class="tab inline ml-[70px] 
             @error('ISBN')
-            error-border  
+            error-border-tab
             @enderror
             ">
                 Specifikacija 
                 
             </a>
-            <a class="tab inline ml-[70px] hover:text-blue-800">
+            <a class="tab inline ml-[70px]">
                 Multimedija
             </a>      
         </div>
@@ -65,12 +45,11 @@
     </div>
     </div>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
-    <script>
-        $(".wrapper .tab").click(function() {
-        $(".wrapper .tab").removeClass("active").eq($(this).index()).addClass("active");
-        $(".tab_item").hide().eq($(this).index()).fadeIn()
-    }).eq(0).addClass("active");
-    </script>
+{{-- This had to be here --}}
+<script>
+    $(".wrapper .tab").click(function() {
+    $(".wrapper .tab").removeClass("active").eq($(this).index()).addClass("active");
+    $(".tab_item").hide().eq($(this).index()).fadeIn()
+}).eq(0).addClass("active");
+</script>
 

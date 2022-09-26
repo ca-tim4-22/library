@@ -8,8 +8,6 @@
 @endsection
 
 @section('content')
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -26,7 +24,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('success-category')}}
+      <span class="font-medium">Uspješno!</span> {{session('success-category')}}
     </div>
   </div>
 @endif
@@ -37,7 +35,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('category-deleted')}}
+      <span class="font-medium">Uspješno!</span> {{session('category-deleted')}}
     </div>
   </div>
 @endif
@@ -114,7 +112,7 @@
                             </label>
                         </th>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                        <th class="w-56 px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Naziv kategorije
                         </th>
 
@@ -136,9 +134,9 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img
-                            style="height:30px"
-                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
+                            <img 
+                            style="height:30px" 
+                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : $category->icon}}" 
                             alt="{{$category->name}}"
                             title="{{$category->name}}">
                             <p class="ml-4 text-center no-select">{{$category->name}}</p>

@@ -1,3 +1,101 @@
+// --------------------------------------------------------------
+// Sidebar 
+// --------------------------------------------------------------
+
+var clicks_expand = 0;
+
+$('#expand').click(function() {
+  // First Click
+    if (clicks_expand == 0){
+      $("#expand").hide();
+      $("#expand2").toggleClass('show_expand');
+      $("#expand2").removeClass('hidden_expand');
+    } else {
+      $("#expand").hide();
+      $("#expand2").toggleClass('show_expand');
+      $("#expand2").removeClass('hidden_expand');
+    }
+    ++clicks_expand;
+});
+
+var clicks_expand_2 = 0;
+
+$('#expand2').click(function() {
+  // First Click
+    if (clicks_expand_2 == 0){
+      $("#expand").show();
+      $("#expand2").removeClass('show_expand');
+      $("#expand2").toggleClass('hidden_expand');
+    } else {
+      $("#expand").show();
+      $("#expand2").removeClass('show_expand');
+      $("#expand2").toggleClass('hidden_expand');
+    }
+    ++clicks_expand_2;
+});
+
+$("#gear").click(function () {
+  $("#gear").toggleClass('rotate_gear');
+});
+
+$("#gear_text").click(function () {
+  $("#gear").toggleClass('rotate_gear_text');
+});
+
+// --------------------------------------------------------------
+// Header
+// --------------------------------------------------------------
+
+$("#bell").click(function () {
+  $("#bell").toggleClass('rotate_bell');
+});
+
+var clicks_plus = 0;
+
+$('#plus').click(function() {
+  // First Click
+    if (clicks_plus == 0){
+      $("#plus").toggleClass('rotate_plus');
+    } else{
+      $("#plus").toggleClass('rotate_plus_opposite');
+    }
+    ++clicks_plus;
+});
+
+// --------------------------------------------------------------
+// Custom file dragger
+// --------------------------------------------------------------
+
+var $fileInput = $('.file-input');
+            var $droparea = $('.file-drop-area');
+            
+            // highlight drag area
+            $fileInput.on('dragenter focus click', function() {
+              $droparea.addClass('is-active');
+            });
+            
+            // back to normal state
+            $fileInput.on('dragleave blur drop', function() {
+              $droparea.removeClass('is-active');
+            });
+            
+            // change inner text
+            $fileInput.on('change', function() {
+              var filesCount = $(this)[0].files.length;
+              var $textContainer = $(this).prev();
+            
+              if (filesCount === 1) {
+                // if single file is selected, show file name
+                var fileName = $(this).val().split('\\').pop();
+                $textContainer.text(fileName);
+              } else {
+                // otherwise show number of files
+                $textContainer.text(filesCount + ' prevučeno');
+              }
+            });
+
+// --------------------------------------------------------------
+
 //open and close hamburger menu
 $(function () {
   var hamburger = $('#hamburger');

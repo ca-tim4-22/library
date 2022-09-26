@@ -33,7 +33,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Success!</span> {{session('return-success')}}
+      <span class="font-medium">Uspješno!!</span> {{session('return-success')}}
     </div>
   </div>
 @endif
@@ -454,7 +454,7 @@
                                     <td class="flex flex-row items-center px-4 py-3">
                                         <img 
                                         class="object-cover w-8 mr-2 h-11" 
-                                        src="{{$book->rent->book->placeholder == 1 ? $book->rent->book->cover->photo : '/storage/book-covers/' . $book->cover->book->photo}}" 
+                                        src="{{$book->rent->book->placeholder == 1 ? $book->rent->book->cover->photo : '/storage/book-covers/' . $book->rent->book->cover->photo}}" 
                                         alt="Naslovna fotografija" 
                                         title="Naslovna fotografija" />
                                         <a href="{{route('show-book', $book->rent->book->title)}}">
@@ -504,11 +504,11 @@
                                                         <span class="px-4 py-0">Pogledaj detalje</span>
                                                     </a>
 
-                                                    <a href="{{route('return-book', $book->rent->book->id)}}" tabindex="0"
+                                                    <a href="{{route('rent-book', $book->rent->book->title)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
-                                                        <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                                                        <span class="px-4 py-0">Vrati knjigu</span>
+                                                        <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
+                                                        <span class="px-4 py-0">Izdaj knjigu</span>
                                                     </a>
 
                                                     <a href="{{route('write-off', $book->rent->book->id)}}" tabindex="0"
@@ -555,7 +555,6 @@
         <!-- End Content -->
     </main>
     <!-- End Main content -->
-{{-- JQuery CDN --}}
-<x-jquery.jquery></x-jquery.jquery>
+
 @endsection
 

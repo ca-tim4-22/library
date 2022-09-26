@@ -34,15 +34,16 @@ Route::controller(RentBookController::class)->group(function(){
 // Rented books
 Route::get('/detalji-izdavanja-knjige/{id}', [RentBookController::class, 'show'])->name('rented-info');
 Route::get('/izdate-knjige', [RentBookController::class, 'index'])->name('rented-books');
-Route::get('izdaj-knjigu/{id}',[RentBookController::class, 'create'])->name('rent-book');
+Route::get('izdaj-knjigu/{book:title}',[RentBookController::class, 'create'])->name('rent-book');
 Route::post('izdaj-knjigu/{id}',[RentBookController::class, 'store'])->name('store-rent-book');
+Route::delete('izbrisi-izdatu-knjigu/{id}',[RentBookController::class, 'destroy'])->name('destroy-rent-book');
 });
 
 Route::controller(ReturnBookController::class)->group(function(){
 // Returned books
 Route::get('/detalji-vracanja-knjige/{id}', [ReturnBookController::class, 'show'])->name('returned-info');
 Route::get('/vracene-knjige', [ReturnBookController::class, 'index'])->name('returned-books');
-Route::get('/vrati-knjigu/{id}', [ReturnBookController::class, 'create'])->name('return-book');
+Route::get('/vrati-knjigu/{book:title}', [ReturnBookController::class, 'create'])->name('return-book');
 Route::post('/vrati-knjigu', [ReturnBookController::class, 'store'])->name('store-return-book');
 });
 
