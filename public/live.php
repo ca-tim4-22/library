@@ -1,5 +1,5 @@
 <?php
-unlink(dirname(__FILE__) . "/../storage/framework/down");
+unlink(dirname(__FILE__) . "/../aplikacija/storage/framework/down");
 ?>
 
 <!-- Title -->
@@ -7,9 +7,6 @@ unlink(dirname(__FILE__) . "/../storage/framework/down");
 
 <!-- Icon -->
 <link rel="icon" type="image/x-icon" href="library-favicon.ico">
-
-<!-- Meta -->
-<x-meta></x-meta>
 
 <link rel="stylesheet" href="css/custom-style/live_php.style.css">
 
