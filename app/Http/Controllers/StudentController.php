@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class StudentController extends Controller
 {
@@ -77,8 +78,8 @@ class StudentController extends Controller
             'name' => 'required|min:2|max:255',
             'username' => 'required|min:2|max:255',
             'email' => [new EmailVerificationRule()],
-            'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:14|max:14',
+            // 'password' => 'required|min:8|confirmed',   
+            // 'JMBG' => 'required|min:14|max:14',
             'photo' => 'required',
         ])->safe()->all();
 
@@ -90,11 +91,25 @@ class StudentController extends Controller
         //Hash password
         $user['password'] = Hash::make(request()->password);
       
-        // Store photo
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/students/', $name);
-            $input['photo'] = $name; 
+        // if ($file = $request->file('photo')) {
+        //     $name = time() . $file->getClientOriginalName();
+        //     $file->move('storage/students/', $name);
+        //     $input['photo'] = $name; 
+        // } else {
+        //     $input['photo'] = 'profileImg-default.jpg';
+        // }
+
+        if($request->hasFile('photo')) {
+
+            $image = $request->file('photo');
+            $filename = $image->getClientOriginalName();
+        
+            $image_resize = Image::make($image->getRealPath());              
+
+            $image_resize->resize(500, 500);
+
+            $image_resize->save('storage/students/' . $filename);
+            $input['photo'] = $filename; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';
         }
