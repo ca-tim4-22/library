@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\ {
 };
 
 use App\Http\Controllers\ {
+    BrisiController,
     DashboardController,
     UserController,
 };

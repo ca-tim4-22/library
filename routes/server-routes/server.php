@@ -46,14 +46,6 @@ Route::get('/shutdown', function() {
 });
 });
 
-Route::get('/symlink', function () {
-    Artisan::call('storage:link');
-});
-
-Route::get('/optimize', function () {
-    Artisan::call('optimize');
-});
-
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
