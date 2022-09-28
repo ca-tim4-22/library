@@ -106,13 +106,13 @@
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                        <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             <label class="inline-flex items-center">
                                 <input type="checkbox" class="form-checkbox">
                             </label>
-                        </th>
+                        </td>
 
-                        <th class="w-56 px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Naziv kategorije
                         </th>
 
@@ -134,9 +134,9 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img 
-                            style="height:30px" 
-                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : $category->icon}}" 
+                            <img
+                            width="30px" height="auto"
+                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
                             alt="{{$category->name}}"
                             title="{{$category->name}}">
                             <p class="ml-4 text-center no-select">{{$category->name}}</p>

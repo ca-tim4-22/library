@@ -5,9 +5,18 @@
         <!-- Icon -->
         <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
         <!-- Meta -->
-        <x-meta></x-meta>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
+        <meta http-equiv="content-language" content="en" />
+        <meta name="author" content="tim nullable()" />
+        <meta name="description" content="Online Biblioteka - projekat namijenjen srednjoškolcima..." />
+        <meta name="keywords" content="ict cortex, cortex, coinis, srednjoškolci, učenici, programiranje, kodiranje, biblioteka" />
+        <meta name="theme-color" content="#D22336">
         <!-- Style -->
         <link rel="stylesheet" href="{{asset('maintenance/style/style.css')}}">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     </head>
     <body class="background">
         <div class="container">
@@ -37,7 +46,7 @@
                         <span>Sekundi</span>
                     </div>
                 </div>
-                <button type="button" onClick="showAlert()">Saznajte još</button>
+                <button type="button" onClick="showAlert()">Saznajte više</button>
             </div>
             <img src="https://i.postimg.cc/PfwZ6bDk/rocket.png" class="rocket">
         </div>
@@ -47,31 +56,3 @@
 <script src="{{asset('maintenance/js/maintenance.js')}}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    function showAlert() {
-        let timerInterval
-Swal.fire({
-  title: 'Online Biblioteka će uskoro biti dostupna! Stay tuned:)',
-  timer: 1800,
-  timerProgressBar: true,
-  didOpen: () => {
-    Swal.showLoading()
-    const b = Swal.getHtmlContainer().querySelector('b')
-    timerInterval = setInterval(() => {
-      b.textContent = Swal.getTimerLeft()
-    }, 100)
-  },
-  willClose: () => {
-    clearInterval(timerInterval)
-  }
-}).then((result) => {
-  if (result.dismiss === Swal.DismissReason.timer) {
-    console.log('Zatvoren sam uz pomoć tajmera!')
-  }
-})
-}
-</script>
-<link
-rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-/>

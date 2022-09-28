@@ -104,7 +104,7 @@
 
             @if (count($authors) > 0)
 
-<button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all-librarians" data-url="">
+<button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all-authors" data-url="">
                 <div class="icon">
                     <svg class="top">
                         <use xlink:href="#top">
@@ -147,26 +147,49 @@
                             </label>
                         </td>
 
-                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                        <td style="width: 180px" class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
                             <button
                             onclick="showProfile()"
                             style="outline: none;border: none;font-weight: bold;"
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
-                                <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
+                                <i class="far fa-file mr-[3px] ml-[5px] py-1"></i>
                                 <span style="padding-top: 1px;">Pogledaj detalje</span>
                             </button>
                         </td>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
+                        <th style="width: 250px" class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Naziv autora
                         </th>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            onclick="editAuthor()"
+                            style="outline: none;border: none;font-weight: bold;"
+                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                role="menuitem">
+                                <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izmijeni autora</span>
+                            </button>
+                        </td>
+
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Biografija
                         </th>
 
-                        <td class="px-4 py-4"> </td>
+                        <td style="width: 180px;" class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            style="outline: none;border: none;font-weight: bold;"
+                            class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-authors" 
+                            role="menuitem"
+                            type="submit"
+                            data-url="">
+                                <i class="fas fa-trash mr-[3px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izbriši autora</span>
+                            </button>
+                        </td>
+                     
+                        <td class="px-4 py-4" id="toggle"></td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">
@@ -214,7 +237,7 @@
                                         </a>
                                         <button 
                                         data-id="{{ $author->id }}" 
-                                        data-action="{{ route('authors.destroy', $author->id) }}" onclick="deleteConfirmation({{$author->id}})"
+                                        data-action="{{ route('authors.destroy', $author->id) }}"onclick="deleteConfirmation({{$author->id}})"
                                         style="outline: none;border: none;"
                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
@@ -320,23 +343,30 @@
   // window.location.href = "/bibliotekari";
   });
   
-  // Script for show profile top header
+  // Script for show author profile top header
   function showProfile() {
   var NameSurname = $('#check:checked').val();
   window.location.href = "/autor/" + NameSurname;
+  }
+
+   // Script for edit author profile top header
+   function editAuthor() {
+  var NameSurname = $('#check:checked').val();
+  window.location.href = "/izmijeni-autora/" + NameSurname;
   }
   
   </script>
   
   <style>
       .show {
-          display: inline-block !important;
+          /* display: inline-block !important; */
       }
       .hidden_header {
           display: none !important;
       }
       .sakriveno {display: none !important}
       .sakriveno_email {display: none !important}
+      .hide_toggle {display: none !important}
   </style>
   
   <script>
@@ -347,15 +377,18 @@
           $('.checkme').addClass('hidden_header');    
           $('.checkme2').addClass('show');    
           $('.checkme2').removeClass('sakriveno');   
+          $('#toggle').addClass('hide_toggle');    
          } else {
           $('.checkme').removeClass('hidden_header');    
           $('.checkme2').removeClass('show');    
-          $('.checkme2').addClass('sakriveno');  
+          $('.checkme2').addClass('sakriveno'); 
+          $('#toggle').removeClass('hide_toggle');     
          }
       } else {
           $('.checkme').removeClass('hidden_header');    
           $('.checkme2').removeClass('show');    
           $('.checkme2').addClass('sakriveno');    
+          $('#toggle').removeClass('hide_toggle');     
       }
   });
   </script>
@@ -377,7 +410,7 @@
     $('#check_all').prop('checked',false);
     }
     });
-    $('.delete-all-librarians').on('click', function(e) {
+    $('.delete-all-authors').on('click', function(e) {
     var idsArr = [];  
     $(".checkbox:checked").each(function() {  
     idsArr.push($(this).attr('data-id'));

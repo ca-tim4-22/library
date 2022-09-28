@@ -69,10 +69,12 @@
                         
                         @if ($book->rent->contains('id', 1))
                             
+                        @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                         <a href="{{route('return-book', $book->title)}}" class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                             <i class="fas fa-redo-alt mr-[3px] "></i>
                             Vrati knjigu
                         </a>
+                        @endif
 
                         @endif
                         

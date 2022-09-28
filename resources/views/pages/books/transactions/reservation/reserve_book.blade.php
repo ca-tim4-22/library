@@ -58,6 +58,7 @@
                     </div>
                 </div>
             </div>
+            @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
             <div class="pt-[24px] mr-[30px]">
                 <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
@@ -106,6 +107,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
     <!-- Space for content -->

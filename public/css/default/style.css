@@ -2971,7 +2971,11 @@ h4 {
     background-repeat: no-repeat;
   }
 
-  nav, header, main {
+  body {
+    display: inline;
+  }
+
+  nav, header, main, article {
     display: none !important;
   }
 

@@ -8,6 +8,7 @@ use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\RentStatus;
+use App\Models\Reservation;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,33 +28,15 @@ class RentBookController extends Controller
      */
     public function index(Request $request)
     {
-        $searched = $request->trazeno;
-        if ($request->trazeno) {
-            $books = Book::search($request->trazeno)->get();
-            $data = 'no-values';
-        } else {
-            $books = Book::all();
-        }
-        
-        if (count($books) == 0) {
-            $null = true;
-        } else {
-            $null = false;
-        }
+        $rents = RentStatus::where('book_status_id', 1)->latest()->paginate(5);
+        $librarians = User::where('user_type_id', 2)->latest()->get();
+        $filter = false;
 
-        if (RentStatus::where('book_status_id', 1)->count() > 0) {
-        foreach ($books as $book) {
-             foreach ($book->rent as $rent) {
-                 foreach ($rent->rent_status as $key) {
-                     $data = $key->where('book_status_id', 1)->orderBy('id', 'desc')->paginate(5);
-                 }
-             }
-            }
-        } else {
-         $data = 'no-values';
+        if ($request->id_librarian) {
+            $rents = Rent::whereIn('rent_user_id', $request->id_librarian)->get();
+            $filter = true;
         }
- 
-        return view('pages.books.transactions.rent.rented_books', compact('data', 'null', 'searched'));
+        return view('pages.books.transactions.rent.rented_books', compact('rents', 'librarians', 'filter'));
     }
 
     /**

@@ -17,7 +17,7 @@ class MaintenanceMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->type->name == 3) {
+        if (Auth::check() && Auth::user()->type->id == 3) {
             return $next($request);
         }
         
