@@ -100,15 +100,14 @@ class StudentController extends Controller
         // }
 
         if($request->hasFile('photo')) {
-
             $image = $request->file('photo');
             $filename = $image->getClientOriginalName();
-        
-            $image_resize = Image::make($image->getRealPath());              
-
-            $image_resize->resize(500, 500);
-
-            $image_resize->save('storage/students/' . $filename);
+            // This will generate an image with transparent background
+            $canvas = Image::canvas(245, 245);
+            $image  = Image::make($image->getRealPath())->resize(245, 245, function($constraint)
+            {$constraint->aspectRatio();});
+            $canvas->insert($image, 'center');
+            $canvas->save('storage/students/'. $filename);
             $input['photo'] = $filename; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';

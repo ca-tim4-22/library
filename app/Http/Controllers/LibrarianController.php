@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class LibrarianController extends Controller
@@ -207,10 +208,16 @@ class LibrarianController extends Controller
             return to_route('good-bye');
         }
 
+        $URL = url()->previous();
+
         if ($librarian->photo != 'placeholder') {
-            $path = '\\storage\\librarians\\' . $librarian->photo;
-            unlink(public_path() . $path);
-        }
+            if ($URL == 'http://tim4.ictcortex.me/bibliotekari') {
+                unlink('storage/librarians/' . $librarian->photo);
+            } else {
+                $path = '\\storage\\librarians\\' . $librarian->photo;
+                unlink(public_path() . $path);
+            }
+        } 
 
         $librarian->delete();
     }
