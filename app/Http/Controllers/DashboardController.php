@@ -154,6 +154,7 @@ class DashboardController extends Controller
         $librarians = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
+        $reservations = Reservation::all();
         $error = 'false';
         $selected_s = [];
         $selected_l = [];
@@ -215,6 +216,7 @@ class DashboardController extends Controller
         'id_s',
         'id_l',
         'id_b',
+        'reservations',
     ));
     }
 

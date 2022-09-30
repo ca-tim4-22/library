@@ -27,4 +27,8 @@ class Rent extends Model
     public function rent_status() {
         return $this->hasMany(RentStatus::class, 'rent_id');
     }
+
+    public function rek() {
+        return $this->hasMany(RentStatus::class, 'rent_id')->where('id', 1);
+    }
 }

@@ -22,13 +22,13 @@ class ReturnBookController extends Controller
      */
     public function index()
     {
-        $books = Book::all();
+       $books = Book::all();
 
        if (RentStatus::where('book_status_id', 2)->count() > 0) {
        foreach ($books as $book) {
             foreach ($book->rent as $rent) {
                 foreach ($rent->rent_status as $key) {
-                    $data = $key->where('book_status_id', 2)->orderBy('id', 'desc');
+                    $data = $key->where('book_status_id', 2)->orderBy('id', 'asc');
                 }
             }
            }

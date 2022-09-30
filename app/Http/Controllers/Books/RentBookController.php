@@ -8,12 +8,11 @@ use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\RentStatus;
-use App\Models\Reservation;
+use App\Models\ReservationStatuses;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class RentBookController extends Controller
 {
@@ -28,15 +27,30 @@ class RentBookController extends Controller
      */
     public function index(Request $request)
     {
-        $rents = RentStatus::where('book_status_id', 1)->latest()->paginate(5);
+        $rents = RentStatus::where('book_status_id', 1)->paginate(5);
         $librarians = User::where('user_type_id', 2)->latest()->get();
         $filter = false;
+        $count = true;
+        $id_l = [];
 
         if ($request->id_librarian) {
             $rents = Rent::whereIn('rent_user_id', $request->id_librarian)->get();
             $filter = true;
+            $count = Rent::whereIn('rent_user_id', $request->id_librarian)->count();
+            if ($count <= 0) {
+                $count = false;
+            }
+            $ids = $request->id_librarian;
+            foreach ($ids as $id => $val) {
+                $array[] = $val;
+            }
+            $id_l = $ids;
+        } elseif ($request->keep_from && $request->keep_to) {
+            $from = $request->keep_from;
+            $to = $request->keep_to;
+            $rents = Rent::whereBetween('issue_date', [$from, $to])->get();
         }
-        return view('pages.books.transactions.rent.rented_books', compact('rents', 'librarians', 'filter'));
+        return view('pages.books.transactions.rent.rented_books', compact('rents', 'librarians', 'filter', 'count', 'id_l'));
     }
 
     /**

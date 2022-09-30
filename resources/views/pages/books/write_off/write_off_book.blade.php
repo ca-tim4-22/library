@@ -129,7 +129,7 @@
         <div
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 
-            <form action="{{route('update-write-off', $book->title)}}" method="POST">
+            <form action="{{route('update-write-off', $book->id)}}" method="POST">
             @csrf
 
             @if ($count > 0)

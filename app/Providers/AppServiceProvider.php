@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Models\Rent;
+use App\Models\Reservation;
+use App\Models\ReservationStatuses;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -30,9 +32,14 @@ class AppServiceProvider extends ServiceProvider
     {
         // Localization Carbon
         Carbon::setLocale('sr');
-        if (Schema::hasTable('rents')) {
-        $rents2 = Rent::whereDate('issue_date', today())->get();
-        $notifications = $rents2->count();
+
+        // Notifications
+        $rents_c = Rent::all();
+        $reservations_c = ReservationStatuses::all();
+        if (count($rents_c) > 0 && count($reservations_c) > 0) {
+        $rents = Rent::whereDate('issue_date', today())->get();
+        $reservation = ReservationStatuses::whereDate('created_at', today())->get();
+        $notifications = $rents->count() + $reservation->count();
         } else {
             $notifications = 0;
         }

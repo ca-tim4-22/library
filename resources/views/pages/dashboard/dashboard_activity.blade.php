@@ -248,9 +248,9 @@
                                                 {{$book->title}}
                                                 </p>
                                             </li>
-                                                
+                                            
                                             @endforeach
-
+                                         
                                         </div>
                                     </ul>
                                     <div class="flex pt-[10px] text-white ">
@@ -453,9 +453,20 @@
                   </div>
                   <div class="">
                       <p>
-                          <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                              {{$rent->librarian->name}}
-                          </a>
+
+
+                {{-- If admin rented a book --}}
+                @if ($rent->librarian->type->id == 2)
+          
+                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                </a>
+                @else 
+                <a href="{{route('show-admin', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                </a>
+                @endif
+
                           <a href="{{route('show-book', $rent->book->title)}}">
                             je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
                           </a>
@@ -476,6 +487,61 @@
                  </div>
 
               @endforeach 
+
+              @foreach ($reservations as $reservation)
+              <div class="activity-card flex flex-row mb-[30px]">
+                <div class="w-[60px] h-[60px]">
+                   <img class="rounded-full" src="{{$reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->made_for->photo}}"
+                   alt="Profilna slika učenika: {{$reservation->made_for->name}}"
+                   title="Profilna slika učenika: {{$reservation->made_for->name}}" />
+                 </div>
+                 <div class="ml-[15px] mt-[5px] flex flex-col">
+                   <div class="text-gray-500 mb-[5px]">
+                       <p class="uppercase">
+                           Rezervacija knjige
+                           <span class="inline lowercase">
+                             -
+                               @php
+                                   echo date("d-m-Y", strtotime($reservation->reservation_date));
+                               @endphp
+                           </span>
+                       </p>
+                   </div>
+                   <div class="">
+                       <p>
+
+
+                {{-- If admin reserved a book --}}
+                @if ($reservation->made_by->type->id == 2)
+          
+                <a href="{{route('show-librarian', $reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->made_by->name}}
+                </a>
+                @else 
+                <a href="{{route('show-admin', $reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->made_by->name}}
+                </a>
+                @endif
+
+                           <a href="{{route('show-book', $reservation->book->title)}}">
+                             je {{$reservation->made_by->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$reservation->book->title}} </span>
+                           </a>
+                           <a href="{{route('show-student', $reservation->made_for->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                               {{$rent->borrow->name}}
+                           </a>
+                           dana <span class="font-medium">
+                             @php
+                             echo date("d-m-Y", strtotime($reservation->reservation_date));
+                             @endphp
+                         </span>
+                           <a href="{{route('reserved-info', $reservation->id)}}" class="text-[#2196f3] hover:text-blue-600">
+                               pogledaj detaljnije >>
+                           </a>
+                       </p>
+                   </div>
+                </div>
+                  </div>
+              @endforeach
 
             @else
               

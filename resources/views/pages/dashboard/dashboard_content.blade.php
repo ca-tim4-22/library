@@ -134,9 +134,19 @@
                       </div>
                       <div class="">
                           <p>
-                              <a href="{{route('show-librarian', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                                  {{$reservation->reservation->made_by->name}}
-                              </a>
+
+                {{-- If admin reserved a book --}}
+                @if ($reservation->reservation->made_by->type->id == 2)
+          
+                <a href="{{route('show-librarian', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->reservation->librarian->name}}
+                <a>
+                @else 
+                <a href="{{route('show-admin', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->reservation->made_by->name}}
+                <a>
+                @endif
+
                               je {{$reservation->reservation->made_by->gender->id == 1 ? 'rezervisao' : 'rezervisala'}} knjigu <span class="font-medium">{{$reservation->reservation->book->title}} </span>
                               <a href="{{route('show-student', $reservation->reservation->made_for->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$reservation->reservation->made_for->name}}
