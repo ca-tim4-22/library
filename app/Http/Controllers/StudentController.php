@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class StudentController extends Controller
@@ -47,11 +48,11 @@ class StudentController extends Controller
                 $show_criterium = false;
             }
         }else{
-            $students = User::latest('id')->where('user_type_id', 1)->paginate($items);
+            $students = User::latest()->where('user_type_id', 1)->paginate($items);
             $show_criterium = false;
         }
     
-        $show_all = User::latest('id')->where('user_type_id', 1)->count();
+        $show_all = User::latest()->where('user_type_id', 1)->count();
 
         return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
@@ -79,7 +80,7 @@ class StudentController extends Controller
             'username' => 'required|min:2|max:255',
             'email' => [new EmailVerificationRule()],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:14|max:14',
+            'JMBG' => 'required|min:13|max:13',
             'photo' => 'required',
         ])->safe()->all();
 
@@ -91,6 +92,7 @@ class StudentController extends Controller
         //Hash password
         $user['password'] = Hash::make(request()->password);
 
+        // Store photo
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $filename = time() . $image->getClientOriginalName();
@@ -101,13 +103,11 @@ class StudentController extends Controller
             $canvas->insert($image, 'center');
             $canvas->save('storage/students/'. $filename, 75);
             $input['photo'] = $filename; 
-        } else {
-            $input['photo'] = 'profileImg-default.jpg';
-        }
-
+        } 
         User::create($input);
+        FacadesSession::flash('success-student'); 
 
-        return to_route('all-student')->with('success-student', 'Uspješno ste registrovali učenika ' . "'$request->username'");
+        return to_route('all-student');
     }
 
     public function crop(Request $request) {

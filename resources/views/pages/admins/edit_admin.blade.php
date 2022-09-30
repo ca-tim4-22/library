@@ -99,6 +99,8 @@
                          <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2BibliotekarEdit()"/>
                      </div>
                  </div>
+
+                 @if (Auth::id() != $admin->id)
                  <div class="mt-[50px]">
                     <label class="mt-6 cursor-pointer">
                         <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
@@ -112,6 +114,7 @@
                                 <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileStudent(event)" />
                             </div>
                             <img
+                                style="object-fit: contain;"
                                 name="photo"
                                 class="absolute w-48 h-[188px] bottom-0"
                                 id="image-output-student"
@@ -122,6 +125,7 @@
                     </label>
                 </div>
              </div>
+             @endif
 
              <div class="absolute bottom-0 w-full">
                  <div class="flex flex-row">

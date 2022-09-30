@@ -86,12 +86,16 @@
                                         <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                         <span class="px-4 py-0">Izmijeni knjigu</span>
                                     </a>
-                                    <a href="{{route('destroy-book', $book->id)}}" tabindex="0"
-                                       class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                       role="menuitem">
-                                        <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                        <span class="px-4 py-0">Izbriši knjigu</span>
-                                    </a>
+                                    <form action="{{route('destroy-book', $book->id)}}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="outline: none" type="submit"  tabindex="0"
+                                           class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
+                                           role="menuitem">
+                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                            <span class="px-4 py-0">Izbriši knjigu</span>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

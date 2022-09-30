@@ -216,7 +216,6 @@ class BookController extends Controller
         } else {
            $name = 0;
         }
-        
 
         $book = new Book();
         $book->title = $request->input('title');
@@ -278,9 +277,9 @@ class BookController extends Controller
                 'cover' => 0,
             ]);}
         } 
+        FacadesSession::flash('success-book'); 
 
-
-        return to_route('all-books')->with('success-book', 'Uspješno ste dodali knjigu.');
+        return to_route('all-books');
     }
 
     /**
@@ -467,9 +466,7 @@ class BookController extends Controller
 
             }
         } 
-
         $book->update($input);
-
         FacadesSession::flash('update-book'); 
 
         return to_route('show-book', $request->title);
@@ -506,6 +503,14 @@ class BookController extends Controller
         }
 
         $book->delete();
+
+        $URL = url()->current();
+        if (!str_contains($URL, '/bibliotekari')) {
+            FacadesSession::flash('book-deleted'); 
+            
+            return to_route('all-books');
+        } 
+      
     }
 
     public function deleteMultiple(Request $request)

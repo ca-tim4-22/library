@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AdminController extends Controller
 {
@@ -77,7 +79,7 @@ class AdminController extends Controller
             'username' => 'required|min:2|max:255',
             'email' => [new EmailVerificationRule()],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:14|max:14',
+            'JMBG' => 'required|min:13|max:13',
             'photo' => 'required',
         ])->safe()->all();
 
@@ -89,18 +91,22 @@ class AdminController extends Controller
         //Hash password
         $user['password'] = Hash::make(request()->password);
       
-        // Store photo
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/administrators/', $name);
-            $input['photo'] = $name; 
-        } else {
-            $input['photo'] = 'profileImg-default.jpg';
-        }
-
+         // Store photo
+         if($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $filename = time() . $image->getClientOriginalName();
+            // This will generate an image with transparent background
+            $canvas = Image::canvas(445, 445);
+            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
+            {$constraint->aspectRatio();});
+            $canvas->insert($image, 'center');
+            $canvas->save('storage/administrators/'. $filename, 75);
+            $input['photo'] = $filename; 
+        } 
         User::create($input);
+        FacadesSession::flash('success-admin'); 
 
-        return to_route('all-admin')->with('success-admin', 'Uspješno ste registrovali administratora ' . "'$request->username'");
+        return to_route('all-admin');
     }
 
     /**

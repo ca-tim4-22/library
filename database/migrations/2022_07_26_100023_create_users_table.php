@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_type_id')->default(1);
             $table->unsignedBigInteger('user_gender_id')->nullable();
             $table->string('name', 128);
-            $table->string('JMBG', 14)->unique()->nullable();
+            $table->string('JMBG', 13)->unique()->nullable();
             $table->string('email')->unique();
             $table->string('username', 64)->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -40,7 +40,7 @@ return new class extends Migration
             'user_type_id' => 3,
             'user_gender_id' => 1,
             'name' => 'Administrator',
-            'JMBG' => 98763285743269,
+            'JMBG' => 9876328574326,
             'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
             'username' => 'admin',

@@ -9,8 +9,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class LibrarianController extends Controller
 {
@@ -78,7 +79,7 @@ class LibrarianController extends Controller
             'username' => 'required|min:2|max:255',
             'email' => [new EmailVerificationRule()],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:14|max:14',
+            'JMBG' => 'required|min:13|max:13',
             'photo' => 'required',
         ])->safe()->all();
 
@@ -91,17 +92,21 @@ class LibrarianController extends Controller
         $user['password'] = Hash::make(request()->password);
       
         // Store photo
-        if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('storage/librarians/', $name);
-            $input['photo'] = $name; 
-        } else {
-            $input['photo'] = 'profileImg-default.jpg';
-        }
-
+        if($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $filename = time() . $image->getClientOriginalName();
+            // This will generate an image with transparent background
+            $canvas = Image::canvas(445, 445);
+            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
+            {$constraint->aspectRatio();});
+            $canvas->insert($image, 'center');
+            $canvas->save('storage/librarians/'. $filename, 75);
+            $input['photo'] = $filename; 
+        } 
         User::create($input);
+        FacadesSession::flash('success-librarian'); 
 
-        return to_route('all-librarian')->with('success-librarian', 'Uspješno ste registrovali bibliotekara ' . "'$request->username'");
+        return to_route('all-librarian');
     }
 
     public function crop(Request $request) {

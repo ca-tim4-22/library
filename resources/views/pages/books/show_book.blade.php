@@ -104,7 +104,7 @@
                                     type="submit" 
                                     data-id="{{$book->id}}" 
                                     data-action="{{ route('destroy-book', $book->id) }}" 
-                                    onclick="deleteAuthor({{$book->id}})" 
+                                    onclick="deleteBook({{$book->id}})" 
                                     style="outline: none;border: none;"
                                     class="flex w-full px-4 py-2 text-sm text-left text-gray-700 outline-none hover:text-blue-600"
                                     role="menuitem">
@@ -116,7 +116,7 @@
                                     
                                       {{-- Ajax --}}
                          <script type="text/javascript">
-                            function deleteAuthor(id) {
+                            function deleteBook(id) {
                                 var token = $("meta[name='csrf-token']").attr("content");
                                 swal({
                                     text: "Da li ste sigurni da želite da izbrišete knjigu?",
@@ -133,13 +133,7 @@
                                 }).then(function (e) {
                                     if (e.value === true) {
                                         var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                                        swal(
-                                            'Uspješno!',
-                                            'Uspješno ste izbrisali knjigu.',
-                                            'success'
-                                            ).then(function() {
-                                            window.location.href = "/knjige";
-                                         });
+                                        window.location.href = "/knjige";
                                         $.ajax({
                                             type: 'DELETE',
                                             url: "{{url('izbrisi-knjigu')}}/" + id,

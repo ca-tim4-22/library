@@ -38,7 +38,7 @@ class ReserveBookController extends Controller
      */
     public function create(Book $book)
     {
-        $students = User::where('user_type_id', 1)->get();
+        $students = User::where('user_type_id', 1)->latest()->get();
         $variable = GlobalVariable::findOrFail(1);
         $max_date = Carbon::now()->addDays($variable->value)->format('Y-m-d');
         $today = Carbon::now()->format('Y-m-d');
