@@ -199,7 +199,8 @@
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Izmijeni bibliotekara</span>
+                                <span style="padding-top: 1px;">Izmijeni bibliotekara
+                                </span>
                             </button>
                         </td>
 
@@ -235,8 +236,8 @@
                         <td class="flex flex-row items-center px-4 py-4">
                             
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
-                            alt="Profilna slika bibliotekara: {{$librarian->name}}"
-                            title="Profilna slika bibliotekara: {{$librarian->name}}" />
+                            alt="Profilna slika"
+                            title="Profilna slika" />
 
                             <a href="{{route('show-librarian', $librarian->username)}}">
                                 <span class="font-medium text-center">{{$librarian->name}}</span>

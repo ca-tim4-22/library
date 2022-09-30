@@ -235,8 +235,8 @@
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
                           <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$admin->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . $admin->photo}}"
-                          alt="Profilna slika bibliotekara: {{$admin->name}}"
-                          title="Profilna slika bibliotekara: {{$admin->name}}" />
+                          alt="Profilna slika"
+                          title="Profilna slika" />
 
                           <a href="{{route('show-admin', $admin->username)}}">
                               <span class="font-medium text-center">{{$admin->name}}</span>

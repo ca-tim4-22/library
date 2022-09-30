@@ -268,7 +268,7 @@
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
                     <img 
-                    class="lightbox p-2 border-2 border-gray-300"
+                    class="p-2 border-2 border-gray-300"
                     width="300px"
                     alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
                     title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
@@ -287,7 +287,7 @@
                                 <span class="px-4 py-2 mt-2 leading-normal">Izmijeni fotografiju</span>
                                 <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileLibrarian(event)" />
                             </div>
-                            <img name="photo" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
+                            <img style="object-fit: contain" id="image-output-librarian" class="hidden absolute w-48 h-[188px] bottom-0" />	
                         </div>
                     </label>   
                 </div>

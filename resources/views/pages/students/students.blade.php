@@ -236,8 +236,8 @@
                         <td class="flex flex-row items-center px-4 py-4">
                             
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"
-                            alt="Profilna slika učenika: {{$student->name}}"
-                            title="Profilna slika učenice: {{$student->name}}" />
+                            alt="Profilna slika"
+                            title="Profilna slika" />
 
                             <a href="{{route('show-student', $student->username)}}">
                                 <span class="font-medium text-center">{{$student->name}}</span>

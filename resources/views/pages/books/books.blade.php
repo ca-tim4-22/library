@@ -192,7 +192,7 @@
                                 <!-- Autor + dropdown filter for autor -->
     
                                 <form action="{{route('all-books')}}">
-                                <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                <td class="checkme relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
 
                                     <button 
                                     type="button"
@@ -275,10 +275,23 @@
                                     </div>
                                 </td>
 
+                                    
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="editBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                    role="menuitem">
+                                    <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
+                                    <span style="padding-top: 1px;">Izmijeni knjigu
+                                    </span>
+                                    </button>
+                                </td>
+
                                 <!-- Kategorija + dropdown filter for kategorija -->
                                 
                                 <form action="{{route('all-books')}}">
-                                <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                <td class="checkme relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
 
                                     <button 
                                     type="button"
@@ -361,28 +374,92 @@
                                         </div>
                                     </div>
                                 </td>
+
+                                     
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="writeOffBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                    role="menuitem">
+                                    <i class="fas fa-level-up-alt mr-[5px] ml-[5px] py-1"></i>
+                                    <span style="padding-top: 1px;">Otpiši knjigu
+                                    </span>
+                                    </button>
+                                </td>
                                 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Na raspolaganju
                                 </th>
 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="rentBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                    role="menuitem">
+                                    <i class="far fa-hand-scissors mr-[5px] ml-[5px] py-1"></i>
+                                    <span style="padding-top: 1px;">Izdaj knjigu
+                                    </span>
+                                    </button>
+                                </td>
+
+                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Rezervisano
                                 </th>
 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="returnBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                    role="menuitem">
+                                    <i class="fas fa-redo-alt mr-[5px] ml-[5px] py-1"></i>
+                                    <span style="padding-top: 1px;">Vrati knjigu
+                                    </span>
+                                    </button>
+                                </td>
+
+                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Izdato
                                 </th>
+
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    onclick="reserveBook()"
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                    role="menuitem">
+                                    <i class="far fa-calendar-check mr-[5px] ml-[5px] py-1"></i>
+                                    <span style="padding-top: 1px;">Rezerviši knjigu
+                                    </span>
+                                    </button>
+                                </td>
                                 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     U prekoračenju
                                 </th>
+
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                    <button
+                                    style="outline: none;border: none;font-weight: bold;"
+                                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-books" 
+                                    role="menuitem"
+                                    type="submit"
+                                    data-url="">
+                                        <i class="fas fa-trash mr-[3px] ml-[5px] py-1"></i>
+                                        <span style="padding-top: 1px;">Izbriši knjigu</span>
+                                    </button>
+                                </td>
                                 
-                                <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                     Ukupna količina
                                 </th>
 
-                                <td class="px-4 py-4"></td>
+                                <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                                </td>
+
+                                <td class="px-4 py-4" id="toggle"></td>
                             </tr>
                         </thead>
                         @endif
@@ -452,7 +529,11 @@
                                         href="{{route('overdue-books')}}">
                                       {{$count}}
                                 </td>
-                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$book->quantity_count}}</td>
+
+                                <td class="checkme px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    {{$book->quantity_count}}
+                                </td>
+
                                 <td class="px-6 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                                     <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsKnjige hover:text-[#606FC7]">
                                         <i
@@ -739,45 +820,74 @@
   // window.location.href = "/knjige";
   });
   
-  // Script for show book top header
+  // Script for show a book top header
   function showBook() {
   var title = $('#check:checked').val();
   window.location.href = "/knjiga/" + title;
   }
-  
+  // Script for edit a book top header
+  function editBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/izmijeni-knjigu/" + title;
+  }
+  // Script for write off a book top header
+  function writeOffBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/otpisi-knjigu/" + title;
+  }
+  // Script for rent a book top header
+  function rentBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/izdaj-knjigu/" + title;
+  }
+  // Script for return a book top header
+  function returnBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/vrati-knjigu/" + title;
+  }
+  // Script for reserve a book top header
+  function reserveBook() {
+  var title = $('#check:checked').val();
+  window.location.href = "/rezervisi-knjigu/" + title;
+  }
   </script>
   
   <style>
-      .show {
-          display: inline-block !important;
-      }
-      .hidden_header {
-          display: none !important;
-      }
-      .sakriveno {display: none !important}
-      .sakriveno_email {display: none !important}
-  </style>
-  
-  <script>
-  $('input#check').on('change', function() {  
-      if($(this).is(":checked")) {
-        var length = $('input#check:checked').length;
-        if (length == 1) {
-          $('.checkme').addClass('hidden_header');    
-          $('.checkme2').addClass('show');    
-          $('.checkme2').removeClass('sakriveno');   
-         } else {
-          $('.checkme').removeClass('hidden_header');    
-          $('.checkme2').removeClass('show');    
-          $('.checkme2').addClass('sakriveno');  
-         }
-      } else {
-          $('.checkme').removeClass('hidden_header');    
-          $('.checkme2').removeClass('show');    
-          $('.checkme2').addClass('sakriveno');    
-      }
-  });
-  </script>
+    .show {
+        /* display: inline-block !important; */
+    }
+    .hidden_header {
+        display: none !important;
+    }
+    .sakriveno {display: none !important}
+    .sakriveno_email {display: none !important}
+    .hide_toggle {display: none !important}
+</style>
+
+<script>
+    $('input#check').on('change', function() {  
+        if($(this).is(":checked")) {
+          var length = $('input#check:checked').length;
+          if (length == 1) {
+            $('.checkme').addClass('hidden_header');    
+            $('.checkme2').addClass('show');    
+            $('.checkme2').removeClass('sakriveno');   
+            $('#toggle').addClass('hide_toggle');    
+           } else {
+            $('.checkme').removeClass('hidden_header');    
+            $('.checkme2').removeClass('show');    
+            $('.checkme2').addClass('sakriveno'); 
+            $('#toggle').removeClass('hide_toggle');     
+           }
+        } else {
+            $('.checkme').removeClass('hidden_header');    
+            $('.checkme2').removeClass('show');    
+            $('.checkme2').addClass('sakriveno');    
+            $('#toggle').removeClass('hide_toggle');     
+        }
+    });
+    </script>
+
   
   <script type="text/javascript">
       $(document).ready(function () {
@@ -839,7 +949,6 @@
        }).then(function() {
           window.location.href = "/knjige";
        });
-      
       }
       },
       error: function (data) {
