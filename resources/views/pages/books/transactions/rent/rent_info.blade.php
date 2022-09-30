@@ -130,23 +130,18 @@
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Trenutno zadržavanje knjige</span>
                             <p class="font-medium">
-
                                <?php
                                $datetime1 = new DateTime(($rent->issue_date));
                                $datetime2 = new DateTime(($rent->return_date));
                                $interval = $datetime1->diff($datetime2);
-
                                $interval_x = $interval->format('%a');
-
                                if ($interval_x % 10 == 1 && $interval_x != 11 && $interval_x != 111) {
                                $day = "dan";
                                } else {
                                $day = "dana";
                                }  
-                               
                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a '. $day)  .'</span>';
                                ?>
-                               
                             </p>
                         </div>
                         <div class="mt-[40px]">
