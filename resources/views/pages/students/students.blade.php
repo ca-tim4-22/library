@@ -177,25 +177,36 @@
                             </label>
                         </td>
 
-                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                        <td style="width: 180px" class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
                             <button
                             onclick="showProfile()"
                             style="outline: none;border: none;font-weight: bold;"
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
-                                <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
+                                <i class="far fa-file mr-[3px] ml-[5px] py-1"></i>
                                 <span style="padding-top: 1px;">Pogledaj detalje</span>
                             </button>
                         </td>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
+                        <th style="width: 250px" class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Ime i prezime
                         </th>
-                       
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+
+                         <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            onclick="editStudent()"
+                            style="outline: none;border: none;font-weight: bold;"
+                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                role="menuitem">
+                                <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izmijeni učenika</span>
+                            </button>
+                        </td>
+
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Email
                         </th>
-
+                       
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
                             Tip korisnika
                         </th>
@@ -363,39 +374,45 @@ var username = $('#check:checked').val();
 window.location.href = "/ucenik/" + username;
 }
 
+// Script for edit student profile top header
+function editStudent() {
+  var username = $('#check:checked').val();
+  window.location.href = "/izmijeni-profil-ucenika/" + username;
+}
+
 </script>
 
 <style>
     .show {
-        display: inline-block !important;
-    }
-    .hidden_header {
-        display: none !important;
-    }
-    .sakriveno {display: none !important}
-    .sakriveno_email {display: none !important}
+          /* display: inline-block !important; */
+      }
+      .hidden_header {
+          display: none !important;
+      }
+      .sakriveno {display: none !important}
+      .sakriveno_email {display: none !important}
 </style>
 
 <script>
-  $('input#check').on('change', function() {  
-      if($(this).is(":checked")) {
-        var length = $('input#check:checked').length;
-        if (length == 1) {
-          $('.checkme').addClass('hidden_header');    
-          $('.checkme2').addClass('show');    
-          $('.checkme2').removeClass('sakriveno');   
-         } else {
-          $('.checkme').removeClass('hidden_header');    
-          $('.checkme2').removeClass('show');    
-          $('.checkme2').addClass('sakriveno');  
-         }
-      } else {
-          $('.checkme').removeClass('hidden_header');    
-          $('.checkme2').removeClass('show');    
-          $('.checkme2').addClass('sakriveno');    
-      }
-  });
-  </script>
+    $('input#check').on('change', function() {  
+        if($(this).is(":checked")) {
+          var length = $('input#check:checked').length;
+          if (length == 1) {
+            $('.checkme').addClass('hidden_header');    
+            $('.checkme2').addClass('show');    
+            $('.checkme2').removeClass('sakriveno');   
+           } else {
+            $('.checkme').removeClass('hidden_header');    
+            $('.checkme2').removeClass('show');    
+            $('.checkme2').addClass('sakriveno'); 
+           }
+        } else {
+            $('.checkme').removeClass('hidden_header');    
+            $('.checkme2').removeClass('show');    
+            $('.checkme2').addClass('sakriveno');    
+        }
+    });
+    </script>
 
 <script type="text/javascript">
     $(document).ready(function () {

@@ -31,7 +31,6 @@ class FormatRequest extends FormRequest
                 'required',
                 new MinimumLengthRule(),
                 'max:50',
-                new NoDigitsRule(),
                 new AtSignRule(),
             ],
         ];

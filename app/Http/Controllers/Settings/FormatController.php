@@ -87,7 +87,7 @@ class FormatController extends Controller
 
         $format->update($input);
         
-        return back()->with('format-updated', 'Uspješno ste izmijenili format: ' . "\"$format->name\".");
+        return to_route('edit-format', $request->name)->with('format-updated', 'Uspješno ste izmijenili format: ' . "\"$format->name\".");
     }
 
     /**
