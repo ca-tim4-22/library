@@ -247,7 +247,9 @@
                                                     </div>
                                                 </label>
                                                 <p class="block p-2 text-black cursor-default group-hover:text-blue-600">
+
                                                 {{$author->NameSurname}}
+
                                                 </p>
                                             </li>
     
@@ -412,16 +414,24 @@
                                     </a>
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                                    @foreach ($book->authors as $author)
-                                    {{$loop->first ? '' : '|'}}
-                                    {{$author->author->NameSurname}}
-                                    @endforeach
+                                   @if ($book->authors->count() > 0)
+                                   @foreach ($book->authors as $author)
+                                   {{$loop->first ? '' : '|'}}
+                                   {{$author->author->NameSurname}}
+                                   @endforeach 
+                                   @else  
+                                   Nepoznato
+                                   @endif
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @if ($book->categories->count() > 0)
                                     @foreach ($book->categories as $category)
                                     {{$loop->first ? '' : '|'}}
                                     {{$category->category->name}} 
                                     @endforeach
+                                    @else  
+                                    Nepoznato
+                                    @endif
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                                     {{-- Prevent negative values --}}
@@ -465,7 +475,7 @@
                                                     <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Izmijeni knjigu</span>
                                                 </a>
-                                                <a href="{{route('write-off', $book->id)}}" tabindex="0"
+                                                <a href="{{route('write-off', $book->title)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
@@ -578,7 +588,7 @@
                                                     <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
                                                     <span class="px-4 py-0">Izmijeni knjigu</span>
                                                 </a>
-                                                <a href="{{route('write-off', $book->book->id)}}" tabindex="0"
+                                                <a href="{{route('write-off', $book->book->title)}}" tabindex="0"
                                                     class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                     role="menuitem">
                                                     <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>

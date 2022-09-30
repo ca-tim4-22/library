@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\GlobalVariable;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,12 @@ class WriteOffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index(Book $book)
     {
-        $book = Book::findOrFail($id);
+        $variable = GlobalVariable::findOrFail(2);
+        $count = $book->rent->where('return_date', '<', now())->count();
 
-        return view('pages.books.write_off.write_off_book', compact('book'));
+        return view('pages.books.write_off.write_off_book', compact('book', 'count', 'variable'));
     }
 
     /**
@@ -80,14 +82,14 @@ class WriteOffController extends Controller
         $input = $request->all();
         $book = Book::findOrFail($id);
         $value = $request->input('checkbox');
-        Rent::where('borrow_user_id', $value)->delete();
+        Rent::whereIn('borrow_user_id', $value)->delete();
         $book->quantity_count = $book->quantity_count - 1;
         if ($book->rented_count != 0) {
         $book->rented_count = $book->rented_count - 1;
         }
         $book->update();
 
-        return to_route('overdue-books')->with('write-off', 'Uspješno ste otpisali primjerak knjige.');
+        return back()->with('write-off', 'Uspješno ste otpisali primjerak knjige.');
     }
 
     /**

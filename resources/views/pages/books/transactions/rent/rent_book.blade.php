@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="pt-[24px] mr-[30px]">
-                        <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
+                        <a href="{{route('write-off', $book->title)}}" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
                         </a>
@@ -109,7 +109,7 @@
                             <h3 class="mt-[20px] mb-[10px]">Izdaj knjigu</h3>
                             <div class="mt-[20px]">
                                 <span>Izaberi učenika koji zadužuje knjigu <span class="text-red-500">* @error('borrow_user_id'){{$message}} @enderror</span></span>
-                                <select
+                                <select 
                                     class="flex w-[90%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                     name="borrow_user_id" id="borrow_user_id" onclick="clearErrorsUcenikIzdavanje()">
                                     <option disabled selected></option>

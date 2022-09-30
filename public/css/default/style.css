@@ -51,7 +51,7 @@
 /* Sidebar */
 
 .show_expand {
-  display: block !important;
+  display: inline !important;
 }
 
 .hidden_expand {

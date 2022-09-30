@@ -46,7 +46,7 @@ class RentBookController extends Controller
      */
     public function create(Book $book)
     {
-        $students = User::where('user_type_id', 1)->get();
+        $students = User::where('user_type_id', 1)->latest()->get();
         $variable = GlobalVariable::findOrFail(2);
         $books = Book::all();
         $current_one = Carbon::now()->format('Y-m-d');

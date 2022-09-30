@@ -3,6 +3,28 @@
     swal({
        title: "Uspješno!", 
        text: "Uspješno ste izmijenili knjigu!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif
+
+@if (session()->has('tried-cover'))
+<script>
+    swal({
+       title: "Bezuspješno!", 
+       text: "Ne možete izbrisati naslovnu fotografiju knjige!", 
+       timer: 2500,
+       type: "error",
+    });
+</script>
+@endif
+
+@if (session()->has('book-photo-deleted'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izbrisali fotografiju knjige!", 
        timer: 1500,
        type: "success",
     });
@@ -26,10 +48,14 @@
                     @endif
                 </span>
                 <p class="font-medium">
+                    @if ($book->categories->count() > 0)
                     @foreach ($book->categories as $category)
                     {{$loop->first ? '' : '|'}}
                     {{$category->category->name}} 
                     @endforeach
+                    @else  
+                    Nepoznato
+                    @endif
                 </p>
             </div>
             <div class="mt-[40px]">
@@ -41,10 +67,14 @@
                 @endif
                 </span>
                 <p class="font-medium">
+                @if ($book->genres->count() > 0)
                 @foreach ($book->genres as $genre)
                 {{$loop->first ? '' : '|'}}
                 {{$genre->genre->name}}
                 @endforeach
+                @else  
+                Nepoznato
+                @endif
                 </p>
             </div>
             <div class="mt-[40px]">
@@ -56,10 +86,14 @@
                 @endif
                 </span>
                 <p class="font-medium">
+                @if ($book->authors->count() > 0)
                 @foreach ($book->authors as $author)
                 {{$loop->first ? '' : '|'}}
                 {{$author->author->NameSurname}}
                 @endforeach
+                @else  
+                Nepoznato
+                @endif
                 </p>
             </div>
             <div class="mt-[40px]">

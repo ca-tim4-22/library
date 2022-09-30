@@ -11,7 +11,6 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -532,5 +531,27 @@ class BookController extends Controller
         }
 
         Book::whereIn('id', explode(",", $ids))->delete();
+    }
+
+    public function destroyBookPhoto(Request $request, $id) {
+       
+        $photo = $request->photo;
+        $check = Gallery::where('photo', $photo)->first();
+
+        if ($check->cover != 1) {
+        Gallery::where('photo', $photo)->delete();
+        $URL = url()->current();
+        if (str_contains($URL, '127.0.0.1:8000')) {
+            $path = '\\storage\\book-covers\\' . $photo;
+            unlink(public_path() . $path); 
+        } else {
+            unlink('storage/book-covers/' . $photo);
+        }
+        FacadesSession::flash('book-photo-deleted'); 
+        } else {
+            FacadesSession::flash('tried-cover'); 
+        }
+
+        return back();
     }
 }

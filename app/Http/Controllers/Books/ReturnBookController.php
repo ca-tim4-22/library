@@ -48,15 +48,11 @@ class ReturnBookController extends Controller
     {
         $get_book = $book;
         $books = Book::all();
-        $rents = Rent::all();
+        $rents = RentStatus::where('book_status_id', 1)->count();
         $variable = GlobalVariable::findOrFail(2);
 
-        if (count($rents)) {
-            foreach ($books as $book) {
-                foreach ($book->rent as $collection) {
-                    $data = $collection->orderBy('id', 'asc')->paginate(5);
-                }
-            }
+        if ($rents > 0) {
+            $data = RentStatus::where('book_status_id', 1)->latest()->get();
         } else {
             $data = [];
         }

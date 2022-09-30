@@ -78,8 +78,8 @@ class StudentController extends Controller
             'name' => 'required|min:2|max:255',
             'username' => 'required|min:2|max:255',
             'email' => [new EmailVerificationRule()],
-            // 'password' => 'required|min:8|confirmed',   
-            // 'JMBG' => 'required|min:14|max:14',
+            'password' => 'required|min:8|confirmed',   
+            'JMBG' => 'required|min:14|max:14',
             'photo' => 'required',
         ])->safe()->all();
 
@@ -90,24 +90,16 @@ class StudentController extends Controller
 
         //Hash password
         $user['password'] = Hash::make(request()->password);
-      
-        // if ($file = $request->file('photo')) {
-        //     $name = time() . $file->getClientOriginalName();
-        //     $file->move('storage/students/', $name);
-        //     $input['photo'] = $name; 
-        // } else {
-        //     $input['photo'] = 'profileImg-default.jpg';
-        // }
 
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $filename = $image->getClientOriginalName();
+            $filename = time() . $image->getClientOriginalName();
             // This will generate an image with transparent background
-            $canvas = Image::canvas(245, 245);
-            $image  = Image::make($image->getRealPath())->resize(245, 245, function($constraint)
+            $canvas = Image::canvas(445, 445);
+            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
-            $canvas->save('storage/students/'. $filename);
+            $canvas->save('storage/students/'. $filename, 75);
             $input['photo'] = $filename; 
         } else {
             $input['photo'] = 'profileImg-default.jpg';
@@ -128,12 +120,6 @@ class StudentController extends Controller
         if (!$move)  {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            // $user = auth()->user();
-            // $userPhoto = $user->photo;
-
-            // if ($userPhoto != '') {
-            //     unlink($dest.$userPhoto);
-            // }
             $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
 
             return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);

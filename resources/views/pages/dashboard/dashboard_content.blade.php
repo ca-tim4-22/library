@@ -76,9 +76,18 @@
                     </div>
                     <div class="">
                         <p>
-                            <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                                {{$rent->librarian->name}}
-                            </a>
+
+                {{-- If admin rented a book --}}
+                @if ($rent->librarian->type->id == 2)
+                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                <a>
+                @else 
+                <a href="{{route('show-admin', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                    <a>
+                @endif
+
                             <a href="{{route('show-book', $rent->book->title)}}">
                                 je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
                             </a>

@@ -60,7 +60,7 @@
             </div>
             @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
             <div class="pt-[24px] mr-[30px]">
-                <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
+                <a href="{{route('write-off', $book->title)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
@@ -199,7 +199,7 @@
                             Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>
                         <button id="rezervisiKnjigu" type="submit"
-                            class="btn-animation shadow-lg disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
+                            class="mr-[40px] mb-[10px] btn-animation shadow-lg disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
                             onclick="validacijaRezervisanje()">
                             Rezerviši knjigu <i class="fas fa-check ml-[4px]"></i>
                         </button>

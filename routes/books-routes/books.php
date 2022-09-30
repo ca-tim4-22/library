@@ -14,7 +14,7 @@ use App\Http\Controllers\Books\ {
     WriteOffController,
     ArchiveBookController,
 };
-use App\Models\BookCategory;
+
 use Illuminate\Support\Facades\ {
     Route,
 };
@@ -28,6 +28,8 @@ Route::post('/nova-knjiga', [BookController::class, 'store'])->name('store-book'
 Route::get('/izmijeni-knjigu/{book:title}', [BookController::class, 'edit'])->name('edit-book');
 Route::put('/izmijeni-knjiguu/{id}', [BookController::class, 'update'])->name('update-book');
 Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name('destroy-book');
+
+Route::delete('izbrisi-fotografiju-knjige/{id}',[BookController::class, 'destroyBookPhoto'])->name('delete-book-photo');
 });
 
 Route::controller(RentBookController::class)->group(function(){
@@ -60,7 +62,7 @@ Route::get('/knjige-u-prekoracenju', [OverdueBookController::class, 'index'])->n
 
 Route::controller(WriteOffController::class)->group(function(){
 // Write off a book
-Route::get('/otpisi-knjigu/{id}', [WriteOffController::class, 'index'])->name('write-off');
+Route::get('/otpisi-knjigu/{book:title}', [WriteOffController::class, 'index'])->name('write-off');
 Route::post('/otpisi-knjigu/{id}', [WriteOffController::class, 'update'])->name('update-write-off');
 });
 

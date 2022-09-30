@@ -57,7 +57,7 @@
                     </div>
                     <div class="pt-[24px] mr-[30px]">
                         @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
-                        <a href="{{route('write-off', $book->id)}}" class="inline hover:text-blue-600">
+                        <a href="{{route('write-off', $book->title)}}" class="inline hover:text-blue-600">
                             <i class="fas fa-level-up-alt mr-[3px]"></i>
                             Otpiši knjigu
                         </a>

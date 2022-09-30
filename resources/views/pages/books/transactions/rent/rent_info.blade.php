@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="pt-[24px] mr-[30px]">
-                <a href="{{route('write-off', $rent->book->id)}}" class="inline hover:text-blue-600">
+                <a href="{{route('write-off', $rent->book->title)}}" class="inline hover:text-blue-600">
                     <i class="fas fa-level-up-alt mr-[3px]"></i>
                     Otpiši knjigu
                 </a>
@@ -130,17 +130,23 @@
                         <div class="mt-[40px]">
                             <span class="text-gray-500">Trenutno zadržavanje knjige</span>
                             <p class="font-medium">
-                                <?php
-                                if ($variable->value % 10 == 1 || $variable->value % 10 == 11 || $variable->value == 1) {
-                                $day = "dan";
-                                } else {
-                                $day = "dana";
-                                }  
+
+                               <?php
                                $datetime1 = new DateTime(($rent->issue_date));
                                $datetime2 = new DateTime(($rent->return_date));
                                $interval = $datetime1->diff($datetime2);
+
+                               $interval_x = $interval->format('%a');
+
+                               if ($interval_x % 10 == 1 && $interval_x != 11 && $interval_x != 111) {
+                               $day = "dan";
+                               } else {
+                               $day = "dana";
+                               }  
+                               
                                echo '<span style="color: #2A4AB3">' .  $interval->format('%a '. $day)  .'</span>';
                                ?>
+                               
                             </p>
                         </div>
                         <div class="mt-[40px]">
@@ -179,7 +185,6 @@
                     {{$rent->librarian->name}}
                     <a>
                 @endif
-               
 
                         </div>
                         <div class="mt-[40px]">
