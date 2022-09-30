@@ -16,6 +16,8 @@ Route::post('/csv_galerija', [ExtraController::class, 'csvGallery'])->name('csvG
 Route::post('/csv_knjiga_autori', [ExtraController::class, 'csvBookAuthors'])->name('csvBookAuthors');
 Route::post('/csv_knjiga_kategorije', [ExtraController::class, 'csvBookCategories'])->name('csvBookCategories');
 Route::post('/csv_knjiga_zanrovi', [ExtraController::class, 'csvBookGenres'])->name('csvBookGenres');
+
+Route::get('/upustvo-za-csv', [ExtraController::class, 'readme'])->name('readme');
 });
 
 ?>

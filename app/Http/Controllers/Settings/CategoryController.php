@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CategoryController extends Controller
 {
@@ -120,7 +120,8 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
+        FacadesSession::flash('category-deleted'); 
 
-        return to_route('setting-category')->with('category-deleted', "Uspješno ste izbrisali kategoriju \"$category->name\".");
+        return to_route('setting-category');
     }
 }

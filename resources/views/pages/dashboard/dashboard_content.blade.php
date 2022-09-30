@@ -166,12 +166,7 @@
                 </div>
              @endforeach
 
-
-
-             <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-
-  <style>
+<style>
 div.holder{
   display:none;
 }
@@ -202,7 +197,7 @@ if($(".holder:hidden").length == 0){
     $('#seeMore').css('display', 'inline-block');
 }
 })
-  </script>
+</script>
 
              @else 
 

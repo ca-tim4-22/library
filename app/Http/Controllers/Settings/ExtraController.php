@@ -177,4 +177,8 @@ class ExtraController extends Controller
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
 
+    public function readme() {
+        return view('pages.settings.extra.readme');
+    }
+
 }

@@ -41,8 +41,8 @@
         <!-- Space for content -->
         <div class="section-">
             <div class="flex flex-col">
-              <a href="upustvo.html" target="_blank" class="ml-[30px] mt-[10px] " style="font-size: 20px">
-                Pročitajte uputstvo <i style="cursor: default" class="fas fa-book-reader"></i>
+              <a href="{{route('readme')}}" class="ml-[30px] mt-[10px] " style="font-size: 20px">
+               <span id="readme">Pročitajte uputstvo</span> <i style="cursor: default" class="fas fa-book-reader"></i>
               </a>
               <hr class="mt-[10px]">
               <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori 
@@ -151,15 +151,12 @@
  </section>
 
  <style>
-                        
   .error-border {
     border: 2.3px dotted red;
   }
-  
   #icon {
     animation: alert 1s infinite ease-in;
   }
-  
   @keyframes alert {
     
     0% { color: red; }
@@ -168,4 +165,8 @@
   }
 </style> 
 
+{{-- Tippy JS --}}
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="{{asset('tippy_js/tippy.js')}}"></script>
 @endsection
