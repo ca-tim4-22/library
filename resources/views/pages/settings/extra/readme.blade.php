@@ -4770,7 +4770,7 @@ function myFunction() {
             <tbody>
                 <tr>
                     <td>Autori</td>
-                    <td><a href="https://www.mediafire.com/file/fn7ixgo327fkddq/autori.csv/file">Kliknite ovdje -&gt; otvorite kao .txt</a></td>
+                    <td><a target="_blank" href="https://www.mediafire.com/file/fn7ixgo327fkddq/autori.csv/file">Kliknite ovdje -&gt; otvorite kao .txt</a></td>
                 </tr>
             </tbody>
         </table>
@@ -4793,7 +4793,7 @@ function myFunction() {
                 </tr>
                 <tr>
                     <td>wikipedia</td>
-                    <td><a href="https://sr.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BD%D0%B5%D1%98_%D0%A7%D1%83%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8">https://sr.wikipedia.org/wiki/Корнеј_Чуковски</a></td>
+                    <td><a target="_blank" href="https://sr.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%BD%D0%B5%D1%98_%D0%A7%D1%83%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8">https://sr.wikipedia.org/wiki/Корнеј_Чуковски</a></td>
                 </tr>
             </tbody>
         </table>
@@ -4831,11 +4831,18 @@ function myFunction() {
                 nullable@gmail.com
             </a>
             <br />
-            📞Kontakt: +382 20 237 120<br />
+            📞Kontakt: 
+            <a href="tel:+382 20 237 120">+382 20 237 120</a>
+            <br />
+            	
+
             📌Lokacija: Vasa Raičkovića 26, Podgorica, Crna Gora
         </p>
-        <p class="has-line-data" data-line-start="47" data-line-end="48"><strong>nullable()</strong> 🚀</p>
+            <p class="has-line-data" data-line-start="47" data-line-end="48">
+                <strong>nullable()</strong> 🚀
+            </p>
         <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
      </div>
     </body>
 </html>
