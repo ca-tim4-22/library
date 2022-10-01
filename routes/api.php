@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BindingAPIController;
 use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\GenreAPIController;
@@ -50,4 +51,12 @@ Route::post('/novi-izdavac', [PublisherAPIController::class, 'storePublisher']);
 Route::put('/izmijeni-izdavaca/{id}', [PublisherAPIController::class, 'updatePublisher']);
 Route::delete('/izbrisi-izdavaca/{id}', [PublisherAPIController::class, 'destroyPublisher']);
 Route::get('/trazi-izdavaca/{name}', [PublisherAPIController::class, 'searchPublisher']);
+
+// Bindings
+Route::get('/povezi', [BindingAPIController::class, 'bindings']);
+Route::get('/povez/{id}', [BindingAPIController::class, 'showBinding'])->name('show-binding-api');
+Route::post('/novi-povez', [BindingAPIController::class, 'storeBinding']);
+Route::put('/izmijeni-povez/{id}', [BindingAPIController::class, 'updateBinding']);
+Route::delete('/izbrisi-povez/{id}', [BindingAPIController::class, 'destroyBinding']);
+Route::get('/trazi-povez/{name}', [BindingAPIController::class, 'searchBinding']);
 
