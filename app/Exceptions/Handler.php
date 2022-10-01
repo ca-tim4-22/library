@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
                         'timestamp' => Carbon::now(),
                         'status' => 404,
                         'message' => 'Nije pronađeno',
-                        "detail" => "Uvjerite se da ste dobro ukucali ID knjige u zahtjevu",
+                        "detail" => "Uvjerite se da ste dobro ukucali parametar za ID u zahtjevu",
                         'path' => url()->current(),
                     ]
                     , 404);

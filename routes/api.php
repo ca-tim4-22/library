@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\GenreAPIController;
+use App\Http\Controllers\API\PublisherAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,4 +42,12 @@ Route::post('/novi-zanr', [GenreAPIController::class, 'storeGenre']);
 Route::put('/izmijeni-zanr/{id}', [GenreAPIController::class, 'updateGenre']);
 Route::delete('/izbrisi-zanr/{id}', [GenreAPIController::class, 'destroyGenre']);
 Route::get('/trazi-zanr/{name}', [GenreAPIController::class, 'searchGenre']);
+
+// Publishers
+Route::get('/izdavaci', [PublisherAPIController::class, 'publishers']);
+Route::get('/izdavac/{id}', [PublisherAPIController::class, 'showPublisher'])->name('show-publisher-api');
+Route::post('/novi-izdavac', [PublisherAPIController::class, 'storePublisher']);
+Route::put('/izmijeni-izdavaca/{id}', [PublisherAPIController::class, 'updatePublisher']);
+Route::delete('/izbrisi-izdavaca/{id}', [PublisherAPIController::class, 'destroyPublisher']);
+Route::get('/trazi-izdavaca/{name}', [PublisherAPIController::class, 'searchPublisher']);
 
