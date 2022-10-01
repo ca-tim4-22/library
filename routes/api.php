@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\FormatAPIController;
 use App\Http\Controllers\API\GenreAPIController;
+use App\Http\Controllers\API\LetterAPIController;
 use App\Http\Controllers\API\PublisherAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use Illuminate\Http\Request;
@@ -68,4 +69,12 @@ Route::post('/novi-format', [FormatAPIController::class, 'storeFormat']);
 Route::put('/izmijeni-format/{id}', [FormatAPIController::class, 'updateFormat']);
 Route::delete('/izbrisi-format/{id}', [FormatAPIController::class, 'destroyFormat']);
 Route::get('/trazi-format/{name}', [FormatAPIController::class, 'searchFormat']);
+
+// Letters
+Route::get('/pisma', [LetterAPIController::class, 'letters']);
+Route::get('/pismo/{id}', [LetterAPIController::class, 'showLetter'])->name('show-letter-api');
+Route::post('/novo-pismo', [LetterAPIController::class, 'storeLetter']);
+Route::put('/izmijeni-pismo/{id}', [LetterAPIController::class, 'updateLetter']);
+Route::delete('/izbrisi-pismo/{id}', [LetterAPIController::class, 'destroyLetter']);
+Route::get('/trazi-pismo/{name}', [LetterAPIController::class, 'searchLetter']);
 
