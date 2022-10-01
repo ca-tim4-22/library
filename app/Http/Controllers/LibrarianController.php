@@ -76,11 +76,11 @@ class LibrarianController extends Controller
     {
         $input = Validator::make($request->all(), [
             'name' => 'required|min:2|max:255',
-            'username' => 'required|min:2|max:255',
-            'email' => [new EmailVerificationRule()],
+            'username' => 'required|min:2|max:255|unique:users',
+            'email' => [new EmailVerificationRule(), 'unique:users'],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:13|max:13',
-            'photo' => 'required',
+            'JMBG' => 'required|min:13|max:13|unique:users',
+            'photo' => 'required|image|size:2048',
         ])->safe()->all();
 
         $input['user_type_id'] = 2;
@@ -92,7 +92,7 @@ class LibrarianController extends Controller
         $user['password'] = Hash::make(request()->password);
       
         // Store photo
-        if($request->hasFile('photo')) {
+        if($request->file('photo')) {
             $image = $request->file('photo');
             $filename = time() . $image->getClientOriginalName();
             // This will generate an image with transparent background
@@ -101,7 +101,7 @@ class LibrarianController extends Controller
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4.ictcortex.me')) {
+            if (!str_contains($URL, 'tim4')) {
                 if (!file_exists(public_path() . '\storage\librarians')) {
                     mkdir('storage\librarians', 666, true);
                 }

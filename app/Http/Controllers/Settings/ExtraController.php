@@ -55,7 +55,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -68,7 +68,7 @@ class ExtraController extends Controller
             Author::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -87,7 +87,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -100,7 +100,7 @@ class ExtraController extends Controller
             Book::firstOrCreate($customerArr[$i]);
         }
         
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -119,7 +119,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -132,7 +132,7 @@ class ExtraController extends Controller
             Gallery::firstOrCreate($customerArr[$i]);
         }
         
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -151,7 +151,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -164,7 +164,7 @@ class ExtraController extends Controller
             BookAuthor::firstOrCreate($customerArr[$i]);
         }
         
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -183,7 +183,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -195,7 +195,7 @@ class ExtraController extends Controller
             BookCategory::firstOrCreate($customerArr[$i]);
         }
     
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -214,7 +214,7 @@ class ExtraController extends Controller
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -227,7 +227,7 @@ class ExtraController extends Controller
             BookGenre::firstOrCreate($customerArr[$i]);
         }
        
-        if (str_contains($URL, 'tim4.ictcortex.me')) {
+        if (str_contains($URL, 'tim4')) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);

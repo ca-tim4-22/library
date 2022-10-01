@@ -62,7 +62,7 @@ return [
         'numeric' => 'The :attribute must be greater than or equal to :value.',
         'string' => 'The :attribute must be greater than or equal to :value characters.',
     ],
-    'image' => 'The :attribute must be an image.',
+    'image' => 'Morate priložiti fotografiju',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer' => 'The :attribute must be an integer.',
@@ -125,7 +125,7 @@ return [
     'same' => 'The :attribute and :other must match.',
     'size' => [
         'array' => 'The :attribute must contain :size items.',
-        'file' => 'The :attribute must be :size kilobytes.',
+        'file' => 'Fotografija mora biti manja od :sizekb = 2MB',
         'numeric' => 'The :attribute must be :size.',
         'string' => 'The :attribute must be :size characters.',
     ],

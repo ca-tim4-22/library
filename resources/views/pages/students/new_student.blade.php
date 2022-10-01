@@ -81,8 +81,15 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>JMBG <span class="text-red-500">* @error('JMBG'){{$message}} @enderror</span></span>
-                            <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgUcenik()" value="{{ old('JMBG') }}"/>
+                            <p>JMBG 
+                                <span class="text-red-500">* 
+                                    @error('JMBG'){{$message}} 
+                                    @enderror
+                                </span>
+                                <span style="margin-left: 10px" class="hide_this color" id="characters-counter">13</span>
+                                <i style="color: rgb(3, 241, 3);margin-left: 10px" class="show_this hidden fas fa-check"></i>
+                                </p>
+                            <input id="count" type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{old('JMBG')}}"/>
                         </div>
 
                         <div class="mt-[20px]">
@@ -122,6 +129,9 @@
 
                     <div class="mt-[50px]">
                         <label class="mt-6 cursor-pointer">
+                            @error('photo')
+                            <span class="text-red-500">{{$message}}</span>
+                            @enderror
                             <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
                                 <div class="py-4">
                                     <svg class="mx-auto feather feather-image mb-[15px]" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
@@ -158,6 +168,23 @@
     </section>
     <!-- End Content -->
 
+<style>
+.color {
+color: #4558BE;
+}
+.hide_counter {
+display: none;
+}
+.hidden {
+display: none;
+}
+.red {
+color: red !important;
+}
+</style>
+    
+{{-- JMBG counter --}}
+<script src="{{asset('jmbg_counter/jmbg_counter.js')}}"></script>
 {{-- Toggle password script --}}
 <script src="{{asset('toggle_password/toggle_password.js')}}"></script>
 {{-- Auto Complete --}}

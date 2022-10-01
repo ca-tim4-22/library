@@ -77,11 +77,11 @@ class AdminController extends Controller
     {
         $input = Validator::make($request->all(), [
             'name' => 'required|min:2|max:255',
-            'username' => 'required|min:2|max:255',
-            'email' => [new EmailVerificationRule()],
+            'username' => 'required|min:2|max:255|unique:users',
+            'email' => [new EmailVerificationRule(), 'unique:users'],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:13|max:13',
-            'photo' => 'required',
+            'JMBG' => 'required|min:13|max:13|unique:users',
+            'photo' => 'required|image|size:2048',
         ])->safe()->all();
 
         $input['user_type_id'] = 3;
@@ -102,7 +102,7 @@ class AdminController extends Controller
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4.ictcortex.me')) {
+            if (!str_contains($URL, 'tim4')) {
                 if (!file_exists(public_path() . '\storage\administrators')) {
                     mkdir('storage\administrators', 666, true);
                 }
@@ -197,10 +197,16 @@ class AdminController extends Controller
             return to_route('good-bye');
         }
 
+        $URL = url()->previous();
+
         if ($admin->photo != 'placeholder') {
-            $path = '\\storage\\administrators\\' . $admin->photo;
-            unlink(public_path() . $path);
-        }
+            if ($URL == 'http://tim4.ictcortex.me/administratori') {
+                unlink('storage/administrators/' . $admin->photo);
+            } else {
+                $path = '\\storage\\administrators\\' . $admin->photo;
+                unlink(public_path() . $path);
+            }
+        } 
 
         $admin->delete();
     }

@@ -77,11 +77,11 @@ class StudentController extends Controller
     {
         $input = Validator::make($request->all(), [
             'name' => 'required|min:2|max:255',
-            'username' => 'required|min:2|max:255',
-            'email' => [new EmailVerificationRule()],
+            'username' => 'required|min:2|max:255|unique:users',
+            'email' => [new EmailVerificationRule(), 'unique:users'],
             'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:13|max:13',
-            'photo' => 'required',
+            'JMBG' => 'required|min:13|max:13|unique:users',
+            'photo' => 'required|image|size:2048',
         ])->safe()->all();
 
         $input['user_type_id'] = 1;
@@ -102,7 +102,7 @@ class StudentController extends Controller
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4.ictcortex.me')) {
+            if (!str_contains($URL, 'tim4')) {
                 if (!file_exists(public_path() . '\storage\students')) {
                     mkdir('storage\students', 666, true);
                 }
@@ -212,11 +212,17 @@ class StudentController extends Controller
 
             return to_route('good-bye');
         }
+        
+        $URL = url()->previous();
 
         if ($student->photo != 'placeholder') {
-            $path = '\\storage\\students\\' . $student->photo;
-            unlink(public_path() . $path);
-        }
+            if ($URL == 'http://tim4.ictcortex.me/ucenici') {
+                unlink('storage/students/' . $student->photo);
+            } else {
+                $path = '\\storage\\students\\' . $student->photo;
+                unlink(public_path() . $path);
+            }
+        } 
 
         $student->delete();
     }

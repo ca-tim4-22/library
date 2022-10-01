@@ -70,9 +70,32 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Međunarodni standardni broj knjige <span class="text-red-500">* @error('ISBN') {{$message}} @enderror</span></p>
-                        <input type="tel" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0" value="{{old('ISBN')}}"/>
+                        <p>Međunarodni standardni broj knjige 
+                            <span class="text-red-500">* @error('ISBN') {{$message}} @enderror</span>
+                            <span style="margin-left: 10px" class="hide_this color" id="characters-counter">13</span>
+                            <i style="color: rgb(3, 241, 3);margin-left: 10px" class="show_this hidden fas fa-check"></i>
+                        </p>
+                        <input id="count" type="tel" name="ISBN" id="isbn" class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsIsbn()" placeholder="978-3-16-148410-0" value="{{old('ISBN')}}"/>
                     </div>
+                 
+                    <style>
+                        .color {
+                            color: #4558BE;
+                        }
+                        .hide_counter {
+                            display: none;
+                        }
+                        .hidden {
+                            display: none;
+                        }
+                        .red {
+                            color: red !important;
+                        }
+                    </style>
+                    
+                    {{-- ISBN counter --}}
+                    <script src="{{asset('isbn_counter/isbn_counter.js')}}"></script>
+
                 </div>
             </div>
     </div>
