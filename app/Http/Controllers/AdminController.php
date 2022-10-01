@@ -101,8 +101,11 @@ class AdminController extends Controller
             $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
-            if (!file_exists(public_path() . '\storage\administrators')) {
-                mkdir('storage\administrators', 666, true);
+            $URL = url()->current();
+            if (!str_contains($URL, 'tim4.ictcortex.me')) {
+                if (!file_exists(public_path() . '\storage\administrators')) {
+                    mkdir('storage\administrators', 666, true);
+                }
             }
             $canvas->save('storage/administrators/'. $filename, 75);
             $input['photo'] = $filename; 
