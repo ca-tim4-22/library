@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 
-class BindingCollection extends JsonResource
+class FormatCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -18,8 +18,8 @@ class BindingCollection extends JsonResource
         return [
             'ID' => $this->id,
             'name' => Str::ucfirst($this->name),
-            'show-binding' => [
-                'link' => route('show-binding-api', $this->id)
+            'show-format' => [
+                'link' => route('show-format-api', $this->id)
             ],
         ];
     }

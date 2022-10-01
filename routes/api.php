@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\BindingAPIController;
 use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
+use App\Http\Controllers\API\FormatAPIController;
 use App\Http\Controllers\API\GenreAPIController;
 use App\Http\Controllers\API\PublisherAPIController;
 use App\Http\Controllers\API\UserAPIController;
@@ -59,4 +60,12 @@ Route::post('/novi-povez', [BindingAPIController::class, 'storeBinding']);
 Route::put('/izmijeni-povez/{id}', [BindingAPIController::class, 'updateBinding']);
 Route::delete('/izbrisi-povez/{id}', [BindingAPIController::class, 'destroyBinding']);
 Route::get('/trazi-povez/{name}', [BindingAPIController::class, 'searchBinding']);
+
+// Formats
+Route::get('/formati', [FormatAPIController::class, 'formats']);
+Route::get('/format/{id}', [FormatAPIController::class, 'showFormat'])->name('show-format-api');
+Route::post('/novi-format', [FormatAPIController::class, 'storeFormat']);
+Route::put('/izmijeni-format/{id}', [FormatAPIController::class, 'updateFormat']);
+Route::delete('/izbrisi-format/{id}', [FormatAPIController::class, 'destroyFormat']);
+Route::get('/trazi-format/{name}', [FormatAPIController::class, 'searchFormat']);
 
