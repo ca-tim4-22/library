@@ -100,6 +100,9 @@ class LibrarianController extends Controller
             $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
+            if (!file_exists(public_path() . '\storage\librarians')) {
+                mkdir('storage\librarians', 666, true);
+            }
             $canvas->save('storage/librarians/'. $filename, 75);
             $input['photo'] = $filename; 
         } 
