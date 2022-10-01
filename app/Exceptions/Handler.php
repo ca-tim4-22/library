@@ -69,16 +69,19 @@ class Handler extends ExceptionHandler
                     ]
                     , 404);
             } 
-            if ($exception instanceOf NotFoundHttpException) {
-                return response(
-                    [
-                        "error" => "incorrect-0001",
-                        'timestamp' => Carbon::now(),
-                        'status' => 400,
-                        'message' => 'Neispravan zahtjev',
-                        "detail" => "Uvjerite se da traženi zahtjev postoji",
-                        'path' => url()->current(),
-                    ], 400);
+            $URL = url()->current();
+            if (str_contains($URL, '/api')) {
+                if ($exception instanceOf NotFoundHttpException) {
+                    return response(
+                        [
+                            "error" => "incorrect-0001",
+                            'timestamp' => Carbon::now(),
+                            'status' => 400,
+                            'message' => 'Neispravan zahtjev',
+                            "detail" => "Uvjerite se da traženi zahtjev postoji",
+                            'path' => url()->current(),
+                        ], 400);
+                }
             }
      
         return parent::render($request, $exception);
