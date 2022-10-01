@@ -5,6 +5,7 @@ use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\FormatAPIController;
 use App\Http\Controllers\API\GenreAPIController;
+use App\Http\Controllers\API\LanguageAPIController;
 use App\Http\Controllers\API\LetterAPIController;
 use App\Http\Controllers\API\PublisherAPIController;
 use App\Http\Controllers\API\UserAPIController;
@@ -79,4 +80,13 @@ Route::post('/novo-pismo', [LetterAPIController::class, 'storeLetter']);
 Route::put('/izmijeni-pismo/{id}', [LetterAPIController::class, 'updateLetter']);
 Route::delete('/izbrisi-pismo/{id}', [LetterAPIController::class, 'destroyLetter']);
 Route::get('/trazi-pismo/{name}', [LetterAPIController::class, 'searchLetter']);
+
+// Languages
+Route::get('/jezici', [LanguageAPIController::class, 'languages']);
+Route::get('/jezik/{id}', [LanguageAPIController::class, 'showLanguage'])->name('show-language-api');
+Route::post('/novi-jezik', [LanguageAPIController::class, 'storeLanguage']);
+Route::put('/izmijeni-jezik/{id}', [LanguageAPIController::class, 'updateLanguage']);
+Route::delete('/izbrisi-jezik/{id}', [LanguageAPIController::class, 'destroyLanguage']);
+Route::get('/trazi-jezik/{name}', [LanguageAPIController::class, 'searchLanguage']);
+
 
