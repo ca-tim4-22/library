@@ -47,7 +47,7 @@ return [
     'email' => 'The :attribute must be a valid email address.',
     'ends_with' => 'The :attribute must end with one of the following: :values.',
     'enum' => 'The selected :attribute is invalid.',
-    'exists' => 'The selected :attribute is invalid.',
+    'exists' => 'Navedeni ključ ne postoji',
     'file' => 'The :attribute must be a file.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
@@ -98,7 +98,7 @@ return [
         'string' => 'Polje za :attribute mora da sadrži barem :min karaktera.',
     ],
     'multiple_of' => 'The :attribute must be a multiple of :value.',
-    'not_in' => 'The selected :attribute is invalid.',
+    'not_in' => 'Vrijednost mora biti veća od 0.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'Vrijednost polise mora biti broj.',
     'password' => [
@@ -176,6 +176,7 @@ return [
         'biography' => 'biografiju',
         'password' => 'lozinku',
         'ISBN' => 'ISBN',
+        'quantity_count' => "broj knjiga",
      ],
 
 ];

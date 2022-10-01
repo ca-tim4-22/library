@@ -10,12 +10,9 @@ use App\Http\Resources\UserTypeCollection;
 use App\Http\Resources\UserTypeCountResource;
 use App\Models\User;
 use App\Models\UserType;
-//! vazno
-use Illuminate\Support\Facades\Auth;
-//!
 use Symfony\Component\HttpFoundation\Response;
 
-class APIController extends Controller
+class UserAPIController extends Controller
 {
    public function __construct()
    {

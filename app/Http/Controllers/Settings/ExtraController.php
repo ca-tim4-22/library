@@ -69,7 +69,7 @@ class ExtraController extends Controller
 
     public function csvBooks(Request $request) {
         $input = $request->validate([
-            'csv_book' => 'required',
+            'csv_book' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_book');
@@ -91,7 +91,7 @@ class ExtraController extends Controller
 
     public function csvGallery(Request $request) {
         $input = $request->validate([
-            'csv_gallery' => 'required',
+            'csv_gallery' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_gallery');
@@ -135,7 +135,7 @@ class ExtraController extends Controller
 
     public function csvBookCategories(Request $request) {
         $input = $request->validate([
-            'csv_book_category' => 'required',
+            'csv_book_category' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_book_category');
@@ -157,7 +157,7 @@ class ExtraController extends Controller
 
     public function csvBookGenres(Request $request) {
         $input = $request->validate([
-            'csv_book_genre' => 'required',
+            'csv_book_genre' => 'required|mimes:csv,txt',
         ]);
         
         $get_file = $request->file('csv_book_genre');

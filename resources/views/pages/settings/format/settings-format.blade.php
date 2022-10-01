@@ -111,9 +111,9 @@
                                 <input type="checkbox" class="form-checkbox">
                             </label>
                         </th>
-                        <td class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                             Naziv formata
-                        </td>
+                        </th>
                         <td class="px-4 py-4"> </th>
                     </tr>
                 </thead>

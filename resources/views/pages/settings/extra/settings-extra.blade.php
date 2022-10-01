@@ -42,7 +42,7 @@
         <div class="section-">
             <div class="flex flex-col">
               <a href="{{route('readme')}}" class="ml-[30px] mt-[10px] " style="font-size: 20px">
-               <span id="readme">Pročitajte uputstvo</span> <i style="cursor: default" class="fas fa-book-reader"></i>
+               <span id="readme">Pročitajte uputstvo</span> <i style="cursor: default;color: #4558BE" class="fas fa-book-reader"></i>
               </a>
               <hr class="mt-[10px]">
               <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Autori 
@@ -64,7 +64,11 @@
                     </form>
                 </div>
 
-                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjige</h2>
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjige
+                @error('csv_book')
+                <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                @enderror
+                </h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book') error-border @enderror">
                     <form action="{{ route('csvBooks') }}" method="POST" enctype="multipart/form-data">
@@ -80,7 +84,10 @@
                     </form>
                 </div>
 
-                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Galerija</h2>
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Galerija
+                    @error('csv_gallery')
+                    <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                    @enderror</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_gallery') error-border @enderror">
                     <form action="{{ route('csvGallery') }}" method="POST" enctype="multipart/form-data">
@@ -96,7 +103,10 @@
                     </form>
                 </div>
                 
-                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Autor</h2>
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Autor
+                    @error('csv_book_author')
+                    <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                    @enderror</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_author') error-border @enderror">
                     <form action="{{ route('csvBookAuthors') }}" method="POST" enctype="multipart/form-data">
@@ -112,7 +122,10 @@
                     </form>
                 </div>
                 
-                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Kategorija</h2>
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Kategorija
+                    @error('csv_book_category')
+                    <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                    @enderror</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_category') error-border @enderror">
                     <form action="{{ route('csvBookCategories') }}" method="POST" enctype="multipart/form-data">
@@ -128,7 +141,10 @@
                     </form>
                 </div>
 
-                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Žanr</h2>
+                <h2 class="ml-[30px] mt-[10px]" style="font-size: 25px">Knjiga - Žanr
+                    @error('csv_book_genre')
+                    <span style="color: red;font-size: 20px" class="mt-[10px]">| {{$message}}</span>
+                    @enderror</h2>
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_genre') error-border @enderror">
                     <form action="{{ route('csvBookGenres') }}" method="POST" enctype="multipart/form-data">

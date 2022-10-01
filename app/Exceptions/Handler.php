@@ -2,9 +2,15 @@
 
 namespace App\Exceptions;
 
+use Carbon\Carbon;
+use ErrorException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
+//!
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\ControllerDoesNotReturnResponseException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Handler extends ExceptionHandler
 {
     
@@ -46,9 +52,36 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
         });
     }
 
+    public function render($request, Throwable $exception)
+    {
+            if($exception instanceOf ModelNotFoundException) {
+                return response(
+                    [
+                        "error" => "not-found-0001",
+                        'timestamp' => Carbon::now(),
+                        'status' => 404,
+                        'message' => 'Nije pronađeno',
+                        "detail" => "Uvjerite se da ste dobro ukucali ID knjige u zahtjevu",
+                        'path' => url()->current(),
+                    ]
+                    , 404);
+            } 
+            if ($exception instanceOf NotFoundHttpException) {
+                return response(
+                    [
+                        "error" => "incorrect-0001",
+                        'timestamp' => Carbon::now(),
+                        'status' => 400,
+                        'message' => 'Neispravan zahtjev',
+                        "detail" => "Uvjerite se da traženi zahtjev postoji",
+                        'path' => url()->current(),
+                    ], 400);
+            }
+     
+        return parent::render($request, $exception);
+    }
     
 }
