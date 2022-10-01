@@ -53,16 +53,26 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_author');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
-       
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
+
         $customerArr = $this->csvToArray($file);
     
         for ($i = 0; $i < count($customerArr); $i ++)
         {
             Author::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
@@ -75,8 +85,13 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_book');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
        
         $customerArr = $this->csvToArray($file);
     
@@ -84,7 +99,12 @@ class ExtraController extends Controller
         {
             Book::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+        
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
@@ -97,8 +117,13 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_gallery');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
        
         $customerArr = $this->csvToArray($file);
     
@@ -106,7 +131,12 @@ class ExtraController extends Controller
         {
             Gallery::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+        
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
@@ -119,8 +149,13 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_book_author');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
        
         $customerArr = $this->csvToArray($file);
     
@@ -128,7 +163,12 @@ class ExtraController extends Controller
         {
             BookAuthor::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+        
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
@@ -141,16 +181,25 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_book_category');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
-       
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
         $customerArr = $this->csvToArray($file);
     
         for ($i = 0; $i < count($customerArr); $i ++)
         {
             BookCategory::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+    
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
@@ -163,8 +212,13 @@ class ExtraController extends Controller
         $get_file = $request->file('csv_book_genre');
         $name = $get_file->getClientOriginalName();
         $store = $get_file->move('csv', $name);
-    
-        $file = public_path('csv\\' . $name);
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            $file = 'csv/' . $name;
+        } else {
+            $file = public_path('csv\\' . $name);
+        }
        
         $customerArr = $this->csvToArray($file);
     
@@ -172,7 +226,12 @@ class ExtraController extends Controller
         {
             BookGenre::firstOrCreate($customerArr[$i]);
         }
-        unlink('csv\\' . $name);
+       
+        if (str_contains($URL, 'tim4.ictcortex.me')) {
+            unlink('csv/' . $name);
+        } else {
+            unlink('csv\\' . $name);
+        }
         
         return back()->with('success', 'Uspješno ste popunili bazu podataka');    
     }
