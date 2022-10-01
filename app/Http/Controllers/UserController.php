@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Rules\PasswordReset\MinimumPasswordLengthRule;
 use App\Rules\PasswordReset\RegexCheckRule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -106,6 +108,12 @@ class UserController extends Controller
         $user->JMBG = $user->JMBG;
         $user->password = bcrypt($request['password']);
         $user->save();
+
+        DB::table('oauth_access_tokens')
+        ->where('user_id', Auth::id())
+        ->update([
+            'revoked' => 1
+        ]);
 
         return back()->with('password-updated', 'Uspješno ste izmijenili lozinku.');
     }

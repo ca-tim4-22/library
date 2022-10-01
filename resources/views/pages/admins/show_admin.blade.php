@@ -338,6 +338,7 @@ style="z-index: 11"
                     <span>Ponovite lozinku <span class="text-red-500">*</span></span>
                     <input 
                     id="password"
+                    name="password_confirmation"
                     style="border: 0.4px solid #223394 !important"
                     class="remove h-[40px] px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-[#576cdf] mt-2" type="password">
                 </div>
