@@ -134,9 +134,9 @@
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
-                            <img
-                            width="30px" height="auto"
-                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
+                            <img 
+                            style="height:30px" 
+                            src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : $category->icon}}" 
                             alt="{{$category->name}}"
                             title="{{$category->name}}">
                             <p class="ml-4 text-center no-select">{{$category->name}}</p>

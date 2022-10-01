@@ -117,11 +117,11 @@ class LibrarianController extends Controller
         $move = $file->move($dest, $new_image_name);
 
         if (!$move)  {
-            return response()->json(['status' => 0, 'msg' => 'Greška!']);
+        return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
+        $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
 
-            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+        return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
         }
     }
 
@@ -185,12 +185,6 @@ class LibrarianController extends Controller
             $file->move('storage/librarians', $name);
             $input['photo'] = $name; 
         } 
-
-        if ($request->password) {
-            $input['password'] = bcrypt($request->password);
-        } else {
-            $input['password'] = Auth::user()->password;
-        }
 
         $user->whereId($id)->first()->update($input);
         

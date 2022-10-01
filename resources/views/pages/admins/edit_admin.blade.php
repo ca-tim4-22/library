@@ -88,16 +88,7 @@
                          <span>Korisničko ime <span class="text-red-500">*</span></span>
                          <input type="text" name="username" id="username" value="{{$admin->username}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
                      </div>
-
-                     <div class="mt-[20px]">
-                         <span>Lozinka <span class="text-red-500">*</span></span>
-                         <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPwBibliotekarEdit()"/>
-                     </div>
-
-                     <div class="mt-[20px]">
-                         <span>Ponovite lozinku <span class="text-red-500">*</span></span>
-                         <input type="password" name="password" id="password" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsPw2BibliotekarEdit()"/>
-                     </div>
+                    
                  </div>
 
                  @if (Auth::id() != $admin->id)

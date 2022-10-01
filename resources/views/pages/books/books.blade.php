@@ -345,9 +345,9 @@
                                                         </svg>
                                                     </div>
                                                 </label>
-                                                <img
-                                                width="30px" height="auto"
-                                                src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : '/img/default_images_while_migrations/categories/' . $category->icon}}"
+                                                <img 
+                                                style="height:30px" 
+                                                src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : $category->icon}}" 
                                                 alt="{{$category->name}}"
                                                 title="{{$category->name}}">
                                                 <p class="block p-2 text-black cursor-default group-hover:text-blue-600">

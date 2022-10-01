@@ -170,12 +170,6 @@ class AdminController extends Controller
             $input['photo'] = $name; 
         } 
 
-        if ($request->password) {
-            $input['password'] = bcrypt($request->password);
-        } else {
-            $input['password'] = Auth::user()->password;
-        }
-
         $user->whereId($id)->first()->update($input);
         
         return to_route('edit-admin', $request->username)->with('admin-updated', "Uspješno ste izmijenili profil $word");

@@ -23,12 +23,12 @@ return new class extends Migration
         });
 
         DB::table('categories')->insert([
-            ['name' => 'Pravo', 'icon' => 'law.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Nauka, priroda i matematika', 'icon' => 'science.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Školske knjige', 'icon' => 'school_books.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Istorijske knjige', 'icon' => 'history.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Dječije knjige', 'icon' => 'kids_book.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
-            ['name' => 'Hrana i piće', 'icon' => 'food_and_drink.png', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Pravo', 'icon' => '/img/default_images_while_migrations/categories/law.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Nauka, priroda i matematika', 'icon' => '/img/default_images_while_migrations/categories/science.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Školske knjige', 'icon' => '/img/default_images_while_migrations/categories/school_books.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Istorijske knjige', 'icon' => '/img/default_images_while_migrations/categories/history.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Dječije knjige', 'icon' => '/img/default_images_while_migrations/categories/kids_book.png',  'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
+            ['name' => 'Hrana i piće', 'icon' => '/img/default_images_while_migrations/categories/food_and_drink.png', 'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'default' => 'true'],
         ]);
     }
 
