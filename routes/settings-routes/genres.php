@@ -16,4 +16,16 @@ Route::get('/podesavanja/izmijeni-zanr/{genre:name}', [GenreController::class, '
 Route::put('/podesavanja/izmijeni-zanr/{id}', [GenreController::class, 'update'])->name('update-genre');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sve/zanrove', [GenreController::class, 'deleteMultiple'])->name('delete-all-genres');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain genre through URI
+Route::get('/podesavanja/zanrovi/{id}', function ($id) {});
+Route::post('/podesavanja/zanrovi/{id}', [GenreController::class, 'destroy'])->name('genres.destroy');
+});
+
 ?>

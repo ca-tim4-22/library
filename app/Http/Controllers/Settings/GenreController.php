@@ -121,7 +121,11 @@ class GenreController extends Controller
     {
         $genre = Genre::findOrFail($id);
         $genre->delete();
-        
-        return to_route('setting-genre')->with('genre-deleted', "Uspješno ste izbrisali žanr \"$genre->name\".");
+    }
+
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Genre::whereIn('id', explode(",", $ids))->delete();
     }
 }
