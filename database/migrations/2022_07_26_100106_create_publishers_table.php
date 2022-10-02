@@ -20,14 +20,32 @@ return new class extends Migration
         });
 
         DB::table('publishers')->insert([
+            ['name' => 'Građevinska knjiga'],
+            ['name' => 'Darkwood'],
+            ['name' => 'Dedić'],
+            ['name' => 'Digital'],
+            ['name' => 'Esotheria'],
+            ['name' => 'Bijeli put'],
+            ['name' => 'Agencija Obradović'],
+            ['name' => 'Plavi krug'],
+            ['name' => 'Biblioner'],
+            ['name' => 'Albatros plus'],
+            ['name' => 'Algoritam media'],
+            ['name' => 'Biblijsko društvo'],
+            ['name' => 'Draslar'],
+            ['name' => 'Evro book'],
+            ['name' => 'Filip Višnjić'],
+            ['name' => 'Forma B'],
+            ['name' => 'Geopoetika'],
+            ['name' => 'Glosarijum'],
+            ['name' => 'Jutarnji list Zagreb'],
             ['name' => 'Admiral Books'],
             ['name' => 'Adižes'],
             ['name' => 'Agencija Matić'],
-            ['name' => 'Agencija Obradović'],
+            ['name' => 'Obodsko Slovo'],
+            ['name' => 'Akademska knjiga'],
             ['name' => 'Akruks Book'],
             ['name' => 'Čarobna knjiga'],
-            ['name' => 'Obodsko Slovo'],
-            ['name' => 'Građevinska knjiga'],
         ]);
     }
 

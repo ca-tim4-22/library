@@ -30,12 +30,17 @@ class GenreRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                'unique:genres',
                 new MinimumLengthRule(),
-                new MaximumLengthRule(),
+                'max:50',
                 new NoDigitsRule(),
                 new AtSignRule(),
-            ]
-        ];
+            ],
+            'description' => [
+                'required',
+                new MinimumLengthRule(),
+                'max:255',
+                new AtSignRule(),
+            ],
+    ];
     }
 }

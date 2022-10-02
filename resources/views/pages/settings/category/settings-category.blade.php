@@ -161,7 +161,7 @@ e.preventDefault();
                     </button>
                 </td>
                 
-                <th style="width: 200px" class="px-4 py-4 tracking-wider text-left checkme" id="arrow">
+                <th style="width: 300px" class="px-4 py-4 tracking-wider text-left checkme" id="arrow">
                     Naziv kategorije
                 </th>
 
@@ -199,7 +199,7 @@ e.preventDefault();
                         data-id="{{$category->id}}">
                     </label>
                 </td>
-                <td class="flex flex-row items-center px-4 py-4">
+                <td style="width: 300px" class="flex flex-row items-center px-4 py-4">
                     <img 
                     style="height:30px" 
                     src="{{$category->default == 'false' ? '/storage/settings/category/' . $category->icon : $category->icon}}" 

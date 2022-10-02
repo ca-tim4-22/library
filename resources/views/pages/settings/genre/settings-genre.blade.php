@@ -140,49 +140,55 @@
         );
         </script>
 
-            <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
-                <thead class="bg-[#EFF3F6]">
-                    <tr class="border-b-[1px] border-[#e4dfdf]">
-                        <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                            <label class="inline-flex items-center">
-                                <input type="checkbox" id="check_all">
-                            </label>
-                        </td>
-                       
+<table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
+    <thead class="bg-[#EFF3F6]">
+        <tr class="border-b-[1px] border-[#e4dfdf]">
+            <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="check_all">
+                </label>
+            </td>
+            <td style="width: 200px" class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                <button
+                onclick="editGenre()"
+                style="outline: none;border: none;font-weight: bold;"
+                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                    role="menuitem">
+                    <i class="fas fa-edit mr-[5px] ml-[5px] py-1"></i>
+                    <span style="padding-top: 1px;">Izmijeni žanr</span>
+                </button>
+            </td>
+            
+            <th style="width: 300px" class="px-4 py-4 tracking-wider text-left checkme" id="arrow">
+                Naziv žanra
+            </th>
 
-                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
-                            <button
-                            onclick="editGenre()"
-                            style="outline: none;border: none;font-weight: bold;"
-                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
-                                role="menuitem">
-                                <i class="fas fa-edit mr-[5px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Izmijeni žanr</span>
-                            </button>
-                        </td>
-                        
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-                            Naziv žanra
-                        </th>
+            <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                <button
+                style="outline: none;border: none;font-weight: bold;"
+                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-genres" 
+                role="menuitem"
+                type="submit"
+                data-url="">
+                    <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
+                    <span style="padding-top: 1px;">Izbriši žanr</span>
+                </button>
+            </td>
 
-                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
-                        <button
-                        style="outline: none;border: none;font-weight: bold;"
-                        class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-genres" 
-                        role="menuitem"
-                        type="submit"
-                        data-url="">
-                        <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
-                        <span style="padding-top: 1px;">Izbriši žanr</span>
-                        </button>
-                        </td>
-
-                        <td class="px-4 py-4" id="toggle"></td>
+            <th class="px-4 py-4  tracking-wider text-left checkme" id="arrow">
+                Opis žanra
+            </th>
+            
+            <td class="px-4 py-4"></td>
+        </tr>
+    </thead>      
+                    
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">
                     
                     @foreach ($genres as $genre)
+
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
@@ -194,7 +200,7 @@
                                 data-id="{{$genre->id}}">
                             </label>
                         </td>
-                        <td class="flex flex-row items-center px-4 py-4">
+                        <td style="width: 300px" class="flex flex-row items-center px-4 py-4">
                             <img 
                             style="height:30px" 
                             src="{{$genre->default == 'false' ? '/storage/settings/genre/' . $genre->icon : $genre->icon}}" 
@@ -202,12 +208,13 @@
                             title="{{$genre->name}}">
                             <p class="ml-4 text-center no-select">{{$genre->name}}</p>
                         </td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{!! $genre->description !!}</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
-                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsGenre hover:text-[#606FC7]">
+                            <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsCategory hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
                             </p>
                             <div
-                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-genre">
+                                class="relative z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-category">
                                 <div class="absolute right-[25px] w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                     aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                     <div class="py-1">
@@ -217,7 +224,6 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Izmijeni žanr</span>
                                         </a>
-                                       
                                         <button 
                                         data-id="{{ $genre->id }}" 
                                         data-action="{{ route('genres.destroy', $genre->id) }}"onclick="deleteConfirmation({{$genre->id}})"
@@ -228,13 +234,12 @@
                                         Izbriši žanr
                                         </span>
                                         </button> 
-                                        
                                     </div>
                                 </div>
                             </div>
                         </td>
-                        
                     </tr>
+                    
                     @endforeach
 
                 </tbody>

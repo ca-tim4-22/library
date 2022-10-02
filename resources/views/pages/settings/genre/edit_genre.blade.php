@@ -88,6 +88,16 @@
                             </div>
                             <div id="icon-output" class="h-[40px] px-[20px] pt-[7px]"></div>
                         </div>
+
+                        <div class="mt-[20px]">
+                            <p class="inline-block">Opis</p>
+    
+                            <textarea name="description" id="description" rows="10"
+                            class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">{{$genre->description}}
+                        </textarea>
+    
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -109,5 +119,14 @@
     </div>
 </section>
 <!-- End Content -->
+
+{{-- CKEditor --}}
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description', {
+        width: "90%",
+        height: "150px"
+    });
+</script>
 
 @endsection
