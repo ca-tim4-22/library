@@ -11,7 +11,6 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
-use App\Models\RentStatus;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -187,14 +186,14 @@ class BookController extends Controller
             'reserved_count' => 'required|min:0|not_in:0',
             'body' => 'required|min:2|max:1000',
             'year' => 'required|min:0|not_in:0',
-            'category_id' => 'required|numeric',
-            'genre_id' => 'required|numeric',
-            'author_id' => 'required|numeric',
-            'publisher_id' => 'required|numeric',
-            'language_id' => 'required|numeric',
-            'letter_id' => 'required|numeric',
-            'binding_id' => 'required|numeric',
-            'format_id' => 'required|numeric',
+            'category_id' => 'required',
+            'genre_id' => 'required',
+            'author_id' => 'required',
+            'publisher_id' => 'required',
+            'language_id' => 'required',
+            'letter_id' => 'required',
+            'binding_id' => 'required',
+            'format_id' => 'required',
             'cover' => 'required',
         ])->safe()->all();
 

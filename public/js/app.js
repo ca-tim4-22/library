@@ -165,17 +165,17 @@ $(document).ready(function () {
   if ($('.activity-card').length > 6) {
     $('.activity-card:gt(6)').hide();
     $('.activity-showMore').show();
-    $(this).text('Show more');
+    $(this).text('Prikaži više');
   }
 
   $('.activity-showMore').on('click', function () {
     //toggle elements with class .ty-compact-list that their index is bigger than 2
     $('.activity-card:gt(6)').toggle();
     //change text of show more element just for demonstration purposes to this demo
-    if ($(this).text() == 'Show less') {
-      $(this).text('Show more')
+    if ($(this).text() == 'Prikaži manje') {
+      $(this).text('Prikaži više')
     } else {
-      $(this).text('Show less');
+      $(this).text('Prikaži manje');
     }
   });
 

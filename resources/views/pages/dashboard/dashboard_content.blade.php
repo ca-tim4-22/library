@@ -60,14 +60,18 @@
              <div class="holder mt-[20px]">
               <div class="activity-card flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
-                    <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
-                    alt="Profilna slika učenika: {{$rent->borrow->name}}"
-                    title="Profilna slika učenika: {{$rent->borrow->name}}" />
+              
+                    <img 
+                    class="rounded-full"
+                    alt="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                    title="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                    src="{{$rent->librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $rent->librarian->photo}}" />
+
                 </div>
                 <div class="ml-[15px] mt-[5px] flex flex-col">
                     <div class="text-gray-500 mb-[5px]">
                         <p class="uppercase">
-                            Izdavanje knjige
+                          <span style="color: #058C63">Izdavanje knjige</span>
                             <span class="inline lowercase">
                               -
                                 @php
@@ -116,16 +120,18 @@
              <div class="holder">
                 <div class="activity-card flex flex-row mb-[30px]">
                   <div class="w-[60px] h-[60px]">
+
                       <img 
-                      class="rounded-full" 
-                      src="{{$reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->reservation->made_for->photo}}"
-                      alt="Profilna slika učenika: {{$reservation->reservation->made_for->name}}"
-                      title="Profilna slika učenika: {{$reservation->reservation->made_for->name}}" />
+                      class="rounded-full"
+                      alt="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                      title="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                      src="{{$rent->librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $rent->librarian->photo}}" />
+
                   </div>
                   <div class="ml-[15px] mt-[5px] flex flex-col">
                       <div class="text-gray-500 mb-[5px]">
                           <p class="uppercase">
-                              Rezervacija knjige
+                             <span style="color: rgb(217,119,6)">Rezervacija knjige</span>
                               <span class="inline lowercase">
                                 -
                                   @php
@@ -141,7 +147,7 @@
                 @if ($reservation->reservation->made_by->type->id == 2)
           
                 <a href="{{route('show-librarian', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">
-                    {{$reservation->reservation->librarian->name}}
+                    {{$reservation->reservation->made_by->name}}
                 <a>
                 @else 
                 <a href="{{route('show-admin', $reservation->reservation->made_by->username)}}" class="text-[#2196f3] hover:text-blue-600">

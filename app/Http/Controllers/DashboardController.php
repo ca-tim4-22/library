@@ -169,22 +169,22 @@ class DashboardController extends Controller
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
                     if ($request->id_student) {
-                        $data = $collection->orderBy('id', 'desc')->where('borrow_user_id', $request->id_student)->get();
-                        $selected_s = User::where('id', $request->id_student)->first();
+                        $data = $collection->orderBy('id', 'desc')->whereIn('borrow_user_id', $request->id_student)->get();
+                        $selected_s = User::whereIn('id', $request->id_student)->first();
                         $id_s = $selected_s->id;
                         if($data->count() <= 0) {
                         $error = 'true';
                         } 
                     } elseif ($request->id_librarian) {
-                        $data = $collection->orderBy('id', 'desc')->where('rent_user_id', $request->id_librarian)->get();
-                        $selected_l = User::where('id', $request->id_librarian)->first();
+                        $data = $collection->orderBy('id', 'desc')->whereIn('rent_user_id', $request->id_librarian)->get();
+                        $selected_l = User::whereIn('id', $request->id_librarian)->first();
                         $id_l = $selected_l->id;
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
                     } elseif ($request->id_book) {
-                        $data = $collection->orderBy('id', 'desc')->where('book_id', $request->id_book)->get();
-                        $selected_b = Book::where('id', $request->id_book)->first();
+                        $data = $collection->orderBy('id', 'desc')->whereIn('book_id', $request->id_book)->get();
+                        $selected_b = Book::whereIn('id', $request->id_book)->first();
                         $id_b = $selected_b->id;
                         if($data->count() <= 0) {
                         $error = 'true';

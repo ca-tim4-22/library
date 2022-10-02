@@ -88,8 +88,7 @@
                             <i
                                 class="fas fa-ellipsis-v"></i>
                         </p>
-                        <div
-                            class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-knjiga-osnovni-detalji">
+                        <div style="z-index: 111" class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-knjiga-osnovni-detalji">
                             <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                  aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                                 <div class="py-1">
@@ -170,7 +169,7 @@
                         <x-books.show_components.holder :book="$book" :rents="$rents"></x-books.show_components.holder>
                     </div>
                 </div>
-                <div id="hideBookMenu" class="min-w-[20%] border-l-[1px] border-[#e4dfdf]" style="z-index: 11;background-color: #fff">
+                <div id="hideBookMenu" class="min-w-[20%] border-l-[1px] border-[#e4dfdf]" style="background-color: #fff">
                     <div class="border-b-[1px] border-[#e4dfdf]" style="background-color: #fff">
                         <div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between">
                             <div class="text-gray-500 ">

@@ -9,7 +9,10 @@
             <div class="file-drop-area">
             <span class="fake-btn">Naslovna fotografija</span>
             <span class="file-msg">ili prevucite Vašu fotografiju ovdje</span>
-            <input title="Naslovna fotografija je obavezna" required class="file-input" type="file" name="cover">
+            <input
+            oninvalid="this.setCustomValidity('Naslovna fotografija je obavezna')"
+            oninput="this.setCustomValidity('')"
+             title="Naslovna fotografija je obavezna" required class="file-input" type="file" name="cover">
             </div>
           </div>
 
