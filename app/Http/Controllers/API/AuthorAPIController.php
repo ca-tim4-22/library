@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Exceptions\UserCheckRoleException;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AuthorCollection;
+use App\Http\Resources\Count\AuthorCountResource;
 use App\Http\Resources\ShowAuthorResource;
 use App\Models\Author;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class AuthorAPIController extends Controller
 {
     public function __construct()
     {
-     $this->middleware('auth:api')->except('authors', 'showAuthor', 'searchAuthor');
+     $this->middleware('auth:api')->except('authors', 'showAuthor', 'searchAuthor', 'authorsCount');
     }
  
      public function authors() 
@@ -122,4 +123,11 @@ class AuthorAPIController extends Controller
              ], Response::HTTP_OK);
          }
      }
+
+     public function authorsCount() {
+        $null = 'null';
+        return response([
+            'authors_count' => new AuthorCountResource($null)
+        ], Response::HTTP_OK);
+       }
 }

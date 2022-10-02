@@ -41,6 +41,4 @@ class UserAPIController extends Controller
         'user_types_count' => new UserTypeCountResource($null)
     ], Response::HTTP_OK);
    }
-
-
 }

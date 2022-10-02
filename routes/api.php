@@ -97,6 +97,7 @@ Route::post('/novi-autor', [AuthorAPIController::class, 'storeAuthor']);
 Route::put('/izmijeni-autora/{id}', [AuthorAPIController::class, 'updateAuthor']);
 Route::delete('/izbrisi-autora/{id}', [AuthorAPIController::class, 'destroyAuthor']);
 Route::get('/trazi-autora/{NameSurname}', [AuthorAPIController::class, 'searchAuthor']);
+Route::get('/autori-broj', [AuthorAPIController::class, 'authorsCount']);
 
 
 
