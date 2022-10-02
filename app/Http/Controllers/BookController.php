@@ -440,15 +440,15 @@ class BookController extends Controller
                 
                 if ($cover_old) {
 
-                    $URL = url()->previous();
+                    $URL = url()->current();
                
-                    if (str_contains('tim4', $URL)) {
-                        $path = 'storage/book-covers\\' . $cover_old->photo;
+                    if (str_contains($URL, 'tim4')) {
+                        unlink('storage/book-covers/' . $cover_old->photo);
                     } else {
                         $path = '\\storage\\book-covers\\' . $cover_old->photo;
+                        unlink(public_path() . $path);
                     }
-
-                    unlink(public_path() . $path); 
+                    
                     $cover_old->delete();
                 }
 

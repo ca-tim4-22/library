@@ -26,7 +26,7 @@ Route::get('/knjiga/{book:title}', [BookController::class, 'show'])->name('show-
 Route::get('/nova-knjiga', [BookController::class, 'create'])->name('new-book');
 Route::post('/nova-knjiga', [BookController::class, 'store'])->name('store-book');
 Route::get('/izmijeni-knjigu/{book:title}', [BookController::class, 'edit'])->name('edit-book');
-Route::put('/izmijeni-knjiguu/{id}', [BookController::class, 'update'])->name('update-book');
+Route::put('/izmijeni-knjigu/{id}', [BookController::class, 'update'])->name('update-book');
 Route::delete('/izbrisi-knjigu/{id}', [BookController::class, 'destroy'])->name('destroy-book');
 
 Route::delete('izbrisi-fotografiju-knjige/{id}',[BookController::class, 'destroyBookPhoto'])->name('delete-book-photo');
