@@ -11,6 +11,9 @@
             <a class="tab inline ml-[70px]">
                 Multimedija
             </a>      
+            <a class="tab inline ml-[70px]">
+                Istorija iznajmljivanja
+            </a>      
         </div>
         
         <div class="tab_content">
@@ -25,6 +28,10 @@
         
         <div class="tab_item">
         <x-books.show_components.show_multimedia :book="$book"></x-books.show_components.show_multimedia>
+        </div>
+
+        <div class="tab_item">
+        <x-books.show_components.show_history :book="$book" :rents="$rents"></x-books.show_components.show_history>
         </div>
         
         </div>

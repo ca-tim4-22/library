@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class holder extends Component
 {
     public $book;
+    public $rents;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($book)
+    public function __construct($book, $rents)
     {
         $this->book = $book;
+        $this->rents = $rents;
     }
 
     /**

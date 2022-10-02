@@ -34,7 +34,7 @@
   <!-- Space for content -->
   <div class="section mt-[20px]">
     <div class="flex flex-row justify-between">
-        <div class="mr-[30px]">
+        <div id="margin_change1" class="mr-[30px]">
             <div class="mt-[20px]">
                 <span class="text-gray-500 text-[14px]">Naziv knjige</span>
                 <p class="font-medium">{{$book->title}}</p>
@@ -105,7 +105,7 @@
                 <p class="font-medium">{{$book->year}}</p>
             </div>
         </div>
-        <div class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
+        <div id="margin_change" class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
             <div>
                 <h4 class="text-gray-500 ">
                     Kratki sadržaj

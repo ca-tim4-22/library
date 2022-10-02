@@ -57,6 +57,8 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $exception)
     {
+        $URL = url()->current();
+        if (str_contains($URL, '/api')) {
             if($exception instanceOf ModelNotFoundException) {
                 return response(
                     [
@@ -69,8 +71,6 @@ class Handler extends ExceptionHandler
                     ]
                     , 404);
             } 
-            $URL = url()->current();
-            if (str_contains($URL, '/api')) {
                 if ($exception instanceOf NotFoundHttpException) {
                     return response(
                         [

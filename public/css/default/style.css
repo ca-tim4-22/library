@@ -27,6 +27,25 @@ select::-webkit-scrollbar-thumb {
   border-radius: 15px;
 }
 
+/* Hide book side menu */
+
+@media (max-width: 1606px){
+
+  #hideBookMenu {
+    display: none;
+  }
+  
+  #margin_change1 {
+    width: 1000px;
+  }
+
+  #margin_change {
+    margin-left: 30% !important;
+  }
+  
+}
+
+
 /* Handle on hover */
 select::-webkit-scrollbar-thumb:hover {
   background: #555; 

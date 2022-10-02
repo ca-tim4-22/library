@@ -167,11 +167,11 @@
             <div class="flex flex-row overflow-auto height-osnovniDetalji">
                 <div class="w-[80%]">
                     <div class="">
-                        <x-books.show_components.holder :book="$book"></x-books.show_components.holder>
+                        <x-books.show_components.holder :book="$book" :rents="$rents"></x-books.show_components.holder>
                     </div>
                 </div>
-                <div class="min-w-[20%] border-l-[1px] border-[#e4dfdf] ">
-                    <div class="border-b-[1px] border-[#e4dfdf]">
+                <div id="hideBookMenu" class="min-w-[20%] border-l-[1px] border-[#e4dfdf]" style="z-index: 11;background-color: #fff">
+                    <div class="border-b-[1px] border-[#e4dfdf]" style="background-color: #fff">
                         <div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between">
                             <div class="text-gray-500 ">
                                 <p>Na raspolaganju:</p>

@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
+use App\Models\RentStatus;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -291,8 +292,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $book = $book;
         $books = Book::all();
+        $rents = Rent::where('book_id', $book->id)->get();
 
         if (Rent::count() > 0) {
             foreach ($books as $booke) {
@@ -319,7 +320,7 @@ class BookController extends Controller
         $text = 'primjeraka';
         }
 
-        return view('pages.books.show_book', compact('book', 'count', 'text'));
+        return view('pages.books.show_book', compact('book', 'count', 'text', 'rents'));
     }
 
     /**
@@ -436,8 +437,17 @@ class BookController extends Controller
                     'cover' => 1,
                 ])->first();
 
+                
                 if ($cover_old) {
-                    $path = '\\storage\\book-covers\\' . $cover_old->photo;
+
+                    $URL = url()->previous();
+               
+                    if (str_contains('tim4', $URL)) {
+                        $path = 'storage/book-covers\\' . $cover_old->photo;
+                    } else {
+                        $path = '\\storage\\book-covers\\' . $cover_old->photo;
+                    }
+
                     unlink(public_path() . $path); 
                     $cover_old->delete();
                 }
