@@ -21,8 +21,12 @@ Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
 Route::group(['prefix'=>'v1'], function(){
 // Users
 Route::get('/korisnici', [UserAPIController::class, 'users']);
-Route::get('/ucenici', [UserAPIController::class, 'students']);
-Route::get('/bibliotekari', [UserAPIController::class, 'librarians']);
+Route::get('/ucenici-svi', [UserAPIController::class, 'students']);
+Route::get('/ucenici', [UserAPIController::class, 'studentsMale']);
+Route::get('/ucenice', [UserAPIController::class, 'studentsFemale']);
+Route::get('/bibliotekari-svi', [UserAPIController::class, 'librarians']);
+Route::get('/bibliotekari', [UserAPIController::class, 'librariansMale']);
+Route::get('/bibliotekarke', [UserAPIController::class, 'librariansFemale']);
 Route::get('/tipovi-korisnika', [UserAPIController::class, 'userTypes']);
 Route::get('/tipovi-korisnika-broj', [UserAPIController::class, 'userTypesCount']);
 

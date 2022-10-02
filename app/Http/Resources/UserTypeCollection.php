@@ -2,9 +2,8 @@
 
 namespace App\Http\Resources;
 
-use App\Models\User;
-use App\Models\UserType;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class UserTypeCollection extends JsonResource
 {
@@ -18,7 +17,7 @@ class UserTypeCollection extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => $this->name,
+            'name' => Str::ucfirst($this->name),
         ];
     }
 }
