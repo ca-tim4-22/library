@@ -176,18 +176,18 @@
                         </th>
 
                         <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
-                            <button
-                    style="outline: none;border: none;font-weight: bold;"
-                    class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-genres" 
-                    role="menuitem"
-                    type="submit"
-                    data-url="">
+                        <button
+                        style="outline: none;border: none;font-weight: bold;"
+                        class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-genres" 
+                        role="menuitem"
+                        type="submit"
+                        data-url="">
                         <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
                         <span style="padding-top: 1px;">Izbriši žanr</span>
-                    </button>
+                        </button>
                         </td>
 
-                        <td class="px-4 py-4" id="toggle"></th>
+                        <td class="px-4 py-4" id="toggle"></td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">
@@ -238,7 +238,6 @@
                                         Izbriši žanr
                                         </span>
                                         </button> 
-                                        </form>
                                         
                                     </div>
                                 </div>
@@ -258,7 +257,6 @@
 
     @else
 
-    <div class="mx-[50px]">
         <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">                       
             <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                 <path fill="currentColor"
@@ -267,7 +265,6 @@
             </svg>
             <p class="font-medium text-white">Trenutno nema žanrova u bazi podataka! </p>
         </div>
-    </div>  
 
     @endif
 

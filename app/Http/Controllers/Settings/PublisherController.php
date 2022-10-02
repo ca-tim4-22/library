@@ -100,7 +100,11 @@ class PublisherController extends Controller
     {
         $publisher = Publisher::findOrFail($id);
         $publisher->delete();
+    }
 
-        return to_route('setting-publisher')->with('publisher-deleted', "Uspješno ste izbrisali izdavača \"$publisher->name\".");
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Publisher::whereIn('id', explode(",", $ids))->delete();
     }
 }
