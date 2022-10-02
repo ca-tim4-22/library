@@ -18,17 +18,34 @@ Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
     return $request->user();
 });
 
+// Version 1.0
 Route::group(['prefix'=>'v1'], function(){
+
 // Users
 Route::get('/korisnici', [UserAPIController::class, 'users']);
+
+// Students
 Route::get('/ucenici-svi', [UserAPIController::class, 'students']);
 Route::get('/ucenici', [UserAPIController::class, 'studentsMale']);
 Route::get('/ucenice', [UserAPIController::class, 'studentsFemale']);
+
+// Librarians
 Route::get('/bibliotekari-svi', [UserAPIController::class, 'librarians']);
 Route::get('/bibliotekari', [UserAPIController::class, 'librariansMale']);
 Route::get('/bibliotekarke', [UserAPIController::class, 'librariansFemale']);
+
+// Administrators
+Route::get('/administratori-svi', [UserAPIController::class, 'administrators']);
+Route::get('/administratori/{parameter}', [UserAPIController::class, 'sortAdministrators']);
+
+// User types
 Route::get('/tipovi-korisnika', [UserAPIController::class, 'userTypes']);
 Route::get('/tipovi-korisnika-broj', [UserAPIController::class, 'userTypesCount']);
+
+// User sorting
+Route::get('/bibliotekari/{parameter}', [UserAPIController::class, 'sortLibrarians']);
+Route::get('/ucenici/{parameter}', [UserAPIController::class, 'sortStudents']);
+Route::get('/administratori/{parameter}', [UserAPIController::class, 'sortAdministrators']);
 
 // Books
 Route::get('/knjige', [BookAPIController::class, 'books']);
@@ -111,6 +128,7 @@ Route::put('/izmijeni-globalnu-varijablu/{id}', [GlobalVariableAPIController::cl
 Route::delete('/izbrisi-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'destroyGlobalVariable']);
 Route::get('/trazi-globalnu-varijablu/{variable}', [GlobalVariableAPIController::class, 'searchGlobalVariable']);
 Route::get('/globalne-varijable-broj', [GlobalVariableAPIController::class, 'globalVariablesCount']);
+
 });
 
 

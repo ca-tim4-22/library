@@ -16,10 +16,11 @@ class ShowAuthorResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID' => $this->id,
-            'name' => Str::ucfirst($this->NameSurname),
-            'biography' => $this->biography,
-            'wikipedia' => $this->wikipedia,
+            'id' => $this->id,
+            // 'ID' => $this->id,
+            // 'name' => Str::ucfirst($this->NameSurname),
+            // 'biography' => $this->biography,
+            // 'wikipedia' => $this->wikipedia,
         ];
     }
 }
