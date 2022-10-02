@@ -23,7 +23,7 @@ Route::delete('izbrisi-sve/formate', [FormatController::class, 'deleteMultiple']
 
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
-// Protection for deleting a certain publisher through URI
+// Protection for deleting a certain format through URI
 Route::get('/podesavanja/formati/{id}', function ($id) {});
 Route::post('/podesavanja/formati/{id}', [FormatController::class, 'destroy'])->name('formats.destroy');
 });

@@ -148,10 +148,35 @@
                                 <input type="checkbox" id="check_all">
                             </label>
                         </td>
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+
+                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            onclick="editFormat()"
+                            style="outline: none;border: none;font-weight: bold;"
+                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                role="menuitem">
+                                <i class="fas fa-edit mr-[5px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izmijeni format</span>
+                            </button>
+                        </td>
+
+                        <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                             Naziv formata
                         </th>
-                        <td class="px-4 py-4"> </th>
+
+                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            style="outline: none;border: none;font-weight: bold;"
+                            class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-formats" 
+                            role="menuitem"
+                            type="submit"
+                            data-url="">
+                            <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
+                            <span style="padding-top: 1px;">Izbriši format</span>
+                            </button>
+                            </td>
+
+                        <td class="px-4 py-4" id="toggle"></td>
                     </tr>
                 </thead>
                 <tbody class="bg-white" id="tablex">

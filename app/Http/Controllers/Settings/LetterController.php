@@ -100,7 +100,11 @@ class LetterController extends Controller
     {
         $letter = Letter::findOrFail($id);
         $letter->delete();
+    }
 
-        return to_route('setting-letter')->with('letter-deleted', "Uspješno ste izbrisali pismo \"$letter->name\".");
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Letter::whereIn('id', explode(",", $ids))->delete();
     }
 }

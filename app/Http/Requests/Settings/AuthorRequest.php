@@ -46,6 +46,7 @@ class AuthorRequest extends FormRequest
             'wikipedia' => [
                 'required',
                 new MinimumLengthRule(),
+                'url',
             ],
         ];
     }

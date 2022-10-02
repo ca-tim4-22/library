@@ -16,4 +16,16 @@ Route::get('/podesavanja/izmijeni-pismo/{letter:name}', [LetterController::class
 Route::put('/podesavanja/izmijeni-pismo/{id}', [LetterController::class, 'update'])->name('update-letter');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sva/pisma', [LetterController::class, 'deleteMultiple'])->name('delete-all-letters');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain letter through URI
+Route::get('/podesavanja/pisma/{id}', function ($id) {});
+Route::post('/podesavanja/pisma/{id}', [LetterController::class, 'destroy'])->name('letters.destroy');
+});
+
 ?>

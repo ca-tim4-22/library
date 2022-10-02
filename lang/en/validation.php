@@ -134,7 +134,7 @@ return [
     'timezone' => 'The :attribute must be a valid timezone.',
     'unique' => 'Već postoji.',
     'uploaded' => 'The :attribute failed to upload.',
-    'url' => 'The :attribute must be a valid URL.',
+    'url' => 'Morate priložiti validnu URL adresu.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
     /*

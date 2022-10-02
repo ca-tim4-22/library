@@ -18,7 +18,7 @@ class LetterCollection extends JsonResource
         return [
             'ID' => $this->id,
             'name' => Str::ucfirst($this->name),
-            'show-format' => [
+            'show-letter' => [
                 'link' => route('show-letter-api', $this->id)
             ],
         ];

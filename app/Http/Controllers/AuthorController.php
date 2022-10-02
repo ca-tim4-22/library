@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Settings\AuthorRequest;
 use App\Models\Author;
 use App\Models\GlobalVariable;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
