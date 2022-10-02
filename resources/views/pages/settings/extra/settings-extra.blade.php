@@ -8,6 +8,8 @@
 @endsection
 
 @section('content')
+{{-- Preloader --}}
+<script src="{{asset('preloader/preloader.js')}}" ></script>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -37,6 +39,10 @@
     {{-- Component for menu --}}
     <x-settings.menu></x-settings.menu>
 
+<!-- Space for content -->
+{{-- Preloader --}}
+<div id="loader"></div>
+<div style="display:none;" id="myDiv">
     <div class="height-ucenikProfile pb-[30px] scroll">
         <!-- Space for content -->
         <div class="section-">

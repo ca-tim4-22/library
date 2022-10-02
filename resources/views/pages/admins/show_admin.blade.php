@@ -11,12 +11,17 @@
 @endsection
 
 @section('content')
+{{-- Preloader --}}
+<script src="{{asset('preloader/preloader.js')}}" ></script>
 {{-- Sweet Alert --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
-       <!-- Heading of content -->
+<section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
+<!-- Space for content -->
+{{-- Preloader --}}
+<div id="loader"></div>
+<div style="display:none;" id="myDiv">
        <div class="heading">
         <div class="flex flex-row justify-between border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] py-[10px] flex flex-col">

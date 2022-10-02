@@ -8,15 +8,17 @@
 @endsection
 
 @section('content')
-
+{{-- Preloader --}}
+<script src="{{asset('preloader/preloader.js')}}" ></script>
 {{-- Sweet Alert --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Content -->
 <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
-    
+{{-- Preloader --}}
+<div id="loader"></div>
+<div style="display:none;" id="myDiv">
     <!-- Heading of content -->
     <div class="heading mt-[7px]">
         <h1 class="pl-[30px] pb-[21px]  border-b-[1px] border-[#e4dfdf] ">

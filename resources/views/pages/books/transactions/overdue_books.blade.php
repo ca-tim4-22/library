@@ -8,6 +8,9 @@
 @endsection
 
 @section('content')
+{{-- Preloader --}}
+<link rel="stylesheet" href="{{asset('preloader/preloader2.css')}}">
+<script src="{{asset('preloader/preloader2.js')}}" ></script>
 
     <main class="flex flex-row small:hidden">
 
@@ -25,6 +28,9 @@
 
                         <div class="w-full mt-[10px] ml-2 px-2">
 
+{{-- Preloader --}}
+<div id="loader2"></div>
+<div style="display:none;" id="myDiv2">
                             @if ($data != 'no-values')
 
                             @if ($data->whereDate('return_date', '<', date('Y-m-d'))->count())

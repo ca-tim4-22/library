@@ -9,10 +9,13 @@
 @endsection
 
 @section('content')
+{{-- Preloader --}}
+<link rel="stylesheet" href="{{asset('preloader/preloader2.css')}}">
+<script src="{{asset('preloader/preloader2.js')}}" ></script>
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
-            
+
             <!-- Heading of content -->
             <div class="heading mt-[7px]" style="margin-top: 11px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
@@ -40,7 +43,9 @@
              <x-books.book_side></x-books.book_side>
 
                         <div class="w-full mt-[10px] ml-2 px-2">
-
+{{-- Preloader --}}
+<div id="loader2"></div>
+<div style="display:none;" id="myDiv2">
                             @if (count($rents) > 0)
 
                             <table id="sort" class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]">

@@ -8,6 +8,9 @@
 @endsection
 
 @section('content')
+{{-- Preloader --}}
+<link rel="stylesheet" href="{{asset('preloader/preloader2.css')}}">
+<script src="{{asset('preloader/preloader2.js')}}" ></script>
 
     <!-- Main content -->
     <main class="flex flex-row small:hidden">
@@ -25,7 +28,9 @@
              <x-books.book_side></x-books.book_side>
 
                         <div class="w-full mt-[10px] ml-2 px-2">
-
+{{-- Preloader --}}
+<div id="loader2"></div>
+<div style="display:none;" id="myDiv2">
                             @if ($is_null > 0)
 
                             <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije" id="myTable">
