@@ -6,6 +6,7 @@ use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
 use App\Http\Controllers\API\FormatAPIController;
 use App\Http\Controllers\API\GenreAPIController;
+use App\Http\Controllers\API\GlobalVariableAPIController;
 use App\Http\Controllers\API\LanguageAPIController;
 use App\Http\Controllers\API\LetterAPIController;
 use App\Http\Controllers\API\PublisherAPIController;
@@ -98,6 +99,16 @@ Route::put('/izmijeni-autora/{id}', [AuthorAPIController::class, 'updateAuthor']
 Route::delete('/izbrisi-autora/{id}', [AuthorAPIController::class, 'destroyAuthor']);
 Route::get('/trazi-autora/{NameSurname}', [AuthorAPIController::class, 'searchAuthor']);
 Route::get('/autori-broj', [AuthorAPIController::class, 'authorsCount']);
+
+// Global Variables
+Route::get('/globalne-varijable', [GlobalVariableAPIController::class, 'globalVariables']);
+Route::get('/globalna-varijabla/{id}', [GlobalVariableAPIController::class, 'showGlobalVariable'])->name('show-global-variable-api');
+Route::post('/nova-globalna-varijabla', [GlobalVariableAPIController::class, 'storeGlobalVariable']);
+Route::put('/izmijeni-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'updateGlobalVariable']);
+Route::delete('/izbrisi-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'destroyGlobalVariable']);
+Route::get('/trazi-globalnu-varijablu/{variable}', [GlobalVariableAPIController::class, 'searchGlobalVariable']);
+Route::get('/globalne-varijable-broj', [GlobalVariableAPIController::class, 'globalVariablesCount']);
+
 
 
 

@@ -21,7 +21,6 @@ class SettingController extends Controller
     
     // Custom methods
     public function policy() {
-        // $policies = GlobalVariable::all();
         $policy1 = GlobalVariable::findOrFail(1);
         $policy2 = GlobalVariable::findOrFail(2);
         $policy3 = GlobalVariable::findOrFail(3); 

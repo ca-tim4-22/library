@@ -3,12 +3,11 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Str;
 
-class LetterCollection extends JsonResource
+class ShowGlobalVariableResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
@@ -17,10 +16,8 @@ class LetterCollection extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => Str::ucfirst($this->name),
-            'show-format' => [
-                'link' => route('show-letter-api', $this->id)
-            ],
+            'name' => $this->variable,
+            'value' => $this->value,
         ];
     }
 }

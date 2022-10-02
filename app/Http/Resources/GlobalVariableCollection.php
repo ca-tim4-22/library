@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
 
-class LetterCollection extends JsonResource
+class GlobalVariableCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -17,9 +17,9 @@ class LetterCollection extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => Str::ucfirst($this->name),
-            'show-format' => [
-                'link' => route('show-letter-api', $this->id)
+            'name' => Str::ucfirst($this->variable),
+            'show-global-variable' => [
+                'link' => route('show-global-variable-api', $this->id)
             ],
         ];
     }

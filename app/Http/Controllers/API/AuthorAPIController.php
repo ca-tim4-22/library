@@ -124,10 +124,10 @@ class AuthorAPIController extends Controller
          }
      }
 
-     public function authorsCount() {
-        $null = 'null';
-        return response([
-            'authors_count' => new AuthorCountResource($null)
-        ], Response::HTTP_OK);
-       }
+    public function authorsCount() {
+    $null = 'null';
+    return response([
+    'authors_count' => new AuthorCountResource($null)
+    ], Response::HTTP_OK);
+    }
 }
