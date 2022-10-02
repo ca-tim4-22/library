@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Bibliotekari | Online Biblioteka</title>
+<title>Podešavanja | Kategorije - Online Biblioteka</title>
     
 @endsection
 
