@@ -100,7 +100,11 @@ class BindingController extends Controller
     {
         $binding = Binding::findOrFail($id);
         $binding->delete();
+    }
 
-        return to_route('setting-binding')->with('binding-deleted', "Uspješno ste izbrisali povez \"$binding->name\".");
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Binding::whereIn('id', explode(",", $ids))->delete();
     }
 }

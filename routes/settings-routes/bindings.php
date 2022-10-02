@@ -16,4 +16,16 @@ Route::get('/podesavanja/izmijeni-povez/{binding:name}', [BindingController::cla
 Route::put('/podesavanja/izmijeni-povez/{id}', [BindingController::class, 'update'])->name('update-binding');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sve/poveze', [BindingController::class, 'deleteMultiple'])->name('delete-all-bindings');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain publisher through URI
+Route::get('/podesavanja/povezi/{id}', function ($id) {});
+Route::post('/podesavanja/povezi/{id}', [BindingController::class, 'destroy'])->name('bindings.destroy');
+});
+
 ?>
