@@ -16,4 +16,16 @@ Route::get('/podesavanja/izmijeni-kategoriju/{category:name}', [CategoryControll
 Route::put('/podesavanja/izmijeni-kategoriju/{id}', [CategoryController::class, 'update'])->name('update-category');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sve/kategorije', [CategoryController::class, 'deleteMultiple'])->name('delete-all-categories');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain category through URI
+Route::get('/podesavanja/kategorije/{id}', function ($id) {});
+Route::post('/podesavanja/kategorije/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+});
+
 ?>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\CategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session as FacadesSession;
 
@@ -120,8 +121,11 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        FacadesSession::flash('category-deleted'); 
+    }
 
-        return to_route('setting-category');
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Category::whereIn('id', explode(",", $ids))->delete();
     }
 }

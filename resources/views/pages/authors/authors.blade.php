@@ -184,7 +184,7 @@
                             role="menuitem"
                             type="submit"
                             data-url="">
-                                <i class="fas fa-trash mr-[3px] ml-[5px] py-1"></i>
+                                <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
                                 <span style="padding-top: 1px;">Izbriši autora</span>
                             </button>
                         </td>

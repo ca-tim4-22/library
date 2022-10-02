@@ -8,6 +8,14 @@
 @endsection
 
 @section('content')
+{{-- Sweet Alert --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+{{-- Tailwind --}}
+<script src="https://cdn.tailwindcss.com"></script>
+{{-- Trash delete icon --}}
+<link rel="stylesheet" href="{{asset('trash_delete/trash_delete.css')}}">
+{{-- Csrf Token --}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -29,16 +37,7 @@
   </div>
 @endif
 
-{{-- Session message for category delete --}}
-@if (session()->has('category-deleted'))
-<div id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-red-700 bg-red-200 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
-    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
-    <span class="sr-only">Info</span>
-    <div>
-      <span class="font-medium">Uspješno!</span> {{session('category-deleted')}}
-    </div>
-  </div>
-@endif
+
                 </h1>
             </div>
         </div>
@@ -103,24 +102,81 @@
 
             @if (count($categories) > 0)
 
+            <button type="submit" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE] button delete-all-categories" data-url="">
+                <div class="icon">
+                    <svg class="top">
+                        <use xlink:href="#top">
+                    </svg>
+                    <svg class="bottom">
+                        <use xlink:href="#bottom">
+                    </svg>
+                </div>
+                <span>Izbriši</span>
+            </button>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="top">
+                    <path d="M15,4 C15.5522847,4 16,4.44771525 16,5 L16,6 L18.25,6 C18.6642136,6 19,6.33578644 19,6.75 C19,7.16421356 18.6642136,7.5 18.25,7.5 L5.75,7.5 C5.33578644,7.5 5,7.16421356 5,6.75 C5,6.33578644 5.33578644,6 5.75,6 L8,6 L8,5 C8,4.44771525 8.44771525,4 9,4 L15,4 Z M14,5.25 L10,5.25 C9.72385763,5.25 9.5,5.47385763 9.5,5.75 C9.5,5.99545989 9.67687516,6.19960837 9.91012437,6.24194433 L10,6.25 L14,6.25 C14.2761424,6.25 14.5,6.02614237 14.5,5.75 C14.5,5.50454011 14.3231248,5.30039163 14.0898756,5.25805567 L14,5.25 Z"></path>
+                </symbol>
+                <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="bottom">
+                    <path d="M16.9535129,8 C17.4663488,8 17.8890201,8.38604019 17.9467852,8.88337887 L17.953255,9.02270969 L17.953255,9.02270969 L17.5309272,18.3196017 C17.5119599,18.7374363 17.2349366,19.0993109 16.8365446,19.2267053 C15.2243631,19.7422351 13.6121815,20 12,20 C10.3878264,20 8.77565288,19.7422377 7.16347932,19.226713 C6.76508717,19.0993333 6.48806648,18.7374627 6.46907425,18.3196335 L6.04751853,9.04540766 C6.02423185,8.53310079 6.39068134,8.09333626 6.88488406,8.01304774 L7.02377738,8.0002579 L16.9535129,8 Z M9.75,10.5 C9.37030423,10.5 9.05650904,10.719453 9.00684662,11.0041785 L9,11.0833333 L9,16.9166667 C9,17.2388328 9.33578644,17.5 9.75,17.5 C10.1296958,17.5 10.443491,17.280547 10.4931534,16.9958215 L10.5,16.9166667 L10.5,11.0833333 C10.5,10.7611672 10.1642136,10.5 9.75,10.5 Z M14.25,10.5 C13.8703042,10.5 13.556509,10.719453 13.5068466,11.0041785 L13.5,11.0833333 L13.5,16.9166667 C13.5,17.2388328 13.8357864,17.5 14.25,17.5 C14.6296958,17.5 14.943491,17.280547 14.9931534,16.9958215 L15,16.9166667 L15,11.0833333 C15,10.7611672 14.6642136,10.5 14.25,10.5 Z"></path>
+                </symbol>
+            </svg>
+
+<script>
+    document.querySelectorAll(".button").forEach(button =>
+  button.addEventListener("click", e => {
+    if (!button.classList.contains("delete")) {
+      button.classList.add("delete");
+
+      setTimeout(() => button.classList.remove("delete"), 2200);
+    }
+    e.preventDefault();
+  })
+);
+</script>
+
             <table id="sort" class="overflow shadow-lg rounded-xl min-w-full border-[1px] border-[#e4dfdf]" id="myTable">
                 <thead class="bg-[#EFF3F6]">
                     <tr class="border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
+                                <input type="checkbox" id="check_all">
                             </label>
                         </td>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                        <td style="width: 200px" class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            onclick="editCategory()"
+                            style="outline: none;border: none;font-weight: bold;"
+                                class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
+                                role="menuitem">
+                                <i class="fas fa-edit mr-[5px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izmijeni kategoriju</span>
+                            </button>
+                        </td>
+                        
+                        <th style="width: 200px" class="px-4 py-4 tracking-wider text-left checkme" id="arrow">
                             Naziv kategorije
                         </th>
 
-                        <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
+                        <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
+                            <button
+                            style="outline: none;border: none;font-weight: bold;"
+                            class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-categories" 
+                            role="menuitem"
+                            type="submit"
+                            data-url="">
+                                <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                <span style="padding-top: 1px;">Izbriši kategoriju</span>
+                            </button>
+                        </td>
+
+                        <th class="px-4 py-4  tracking-wider text-left checkme" id="arrow">
                             Opis kategorije
                         </th>
                         
-                        <td class="px-4 py-4"> </th>
+                        <td class="px-4 py-4"></td>
                     </tr>
                 </thead>
 
@@ -130,7 +186,12 @@
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
-                                <input type="checkbox" class="form-checkbox">
+                                <input 
+                                type="checkbox" 
+                                id="check" 
+                                value="{{$category->name}}" 
+                                class="form-checkbox checkbox"
+                                data-id="{{$category->id}}">
                             </label>
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
@@ -157,19 +218,16 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">Izmijeni kategoriju</span>
                                         </a>
-                                        <form action="{{route('destroy-category', $category->id)}}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button
-                                            style="outline: none;border: none"
-                                            type="submit"
-                                            tabindex="0"
-                                            class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
-                                            role="menuitem">
-                                            <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izbriši kategoriju</span>
-                                        </button>
-                                        </form>
+                                        <button 
+                                        data-id="{{ $category->id }}" 
+                                        data-action="{{ route('categories.destroy', $category->id) }}"onclick="deleteConfirmation({{$category->id}})"
+                                        style="outline: none;border: none;"
+                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
+                                        <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
+                                        <span class="px-4 py-0">
+                                        Izbriši kategoriju
+                                        </span>
+                                        </button> 
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +237,6 @@
 
                     @else
 
-                    <div class="mx-[50px]">
                         <div class="w-[400px] flex items-center px-6 py-4 my-4 text-lg bg-[#3f51b5] rounded-lg">
                             <svg viewBox="0 0 24 24" class="w-5 h-5 mr-3 text-white sm:w-5 sm:h-5">
                                 <path fill="currentColor"
@@ -188,14 +245,12 @@
                             </svg>
                             <p class="font-medium text-white">Trenutno nema kategorija u bazi podataka! </p>
                         </div>
-                    </div>
 
                     @endif
 
                 </tbody>
             </table>
 
-            <script src="https://cdn.tailwindcss.com"></script>
             <div class="m-3">{!! $categories->links() !!}</div>
 
         </div>
@@ -203,5 +258,178 @@
 
 </section>
 <!-- End Content -->
+
+
+
+
+<script type="text/javascript">
+     function deleteConfirmation(id) {
+         swal({
+             title: "Izbriši?",
+             text: "Da li ste sigurni da želite da izbrišete kategoriju?",
+             type: "warning",
+             showCancelButton: !0,
+             timer: '5000',
+             animation: true,
+             allowEscapeKey: true,
+             allowOutsideClick: false,
+             confirmButtonText: "Da, siguran sam!",
+             cancelButtonText: "Ne, odustani",
+             reverseButtons: !0,
+             confirmButtonColor: '#14de5e',
+             cancelButtonColor: '#f73302',
+         }).then(function (e) {
+             if (e.value === true) {
+                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                 swal(
+                     'Uspješno!',
+                     'Kategorija je uspješno izbrisana.',
+                     'success'
+                     ).then(function() {
+                      window.location.href = "/podesavanja/kategorije";
+                     });
+                 $.ajax({
+                     type: 'POST',
+                     url: "{{url('/podesavanja/kategorije')}}/" + id,
+                     data: {_token: CSRF_TOKEN},
+                     dataType: 'JSON',
+                     success: function (results) {
+                     }
+                 });
+             } else {
+                 e.dismiss;
+             }
+         }, function (dismiss) {
+             return false;
+         })
+     }
+     $(document).ajaxStop(function(){
+  // window.location.reload();
+  // window.location.href = "/bibliotekari";
+  });
+
+ // Script for edit category profile top header
+ function editCategory() {
+ var name = $('#check:checked').val();
+ window.location.href = "/podesavanja/izmijeni-kategoriju/" + name;
+ }
+ </script>
+
+
+<style>
+    .show {
+        /* display: inline-block !important; */
+    }
+    .hidden_header {
+        display: none !important;
+    }
+    .sakriveno {display: none !important}
+    .sakriveno_email {display: none !important}
+    .hide_toggle {display: none !important}
+</style>
+
+<script>
+$('input#check').on('change', function() {  
+    if($(this).is(":checked")) {
+      var length = $('input#check:checked').length;
+      if (length == 1) {
+        $('.checkme').addClass('hidden_header');    
+        $('.checkme2').addClass('show');    
+        $('.checkme2').removeClass('sakriveno');   
+        $('#toggle').addClass('hide_toggle');    
+       } else {
+        $('.checkme').removeClass('hidden_header');    
+        $('.checkme2').removeClass('show');    
+        $('.checkme2').addClass('sakriveno'); 
+        $('#toggle').removeClass('hide_toggle');     
+       }
+    } else {
+        $('.checkme').removeClass('hidden_header');    
+        $('.checkme2').removeClass('show');    
+        $('.checkme2').addClass('sakriveno');    
+        $('#toggle').removeClass('hide_toggle');     
+    }
+});
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#check_all').on('click', function(e) {
+    if($(this).is(':checked',true))  
+    {
+    $(".checkbox").prop('checked', true);  
+    } else {  
+    $(".checkbox").prop('checked',false);  
+    }  
+    });
+    $('.checkbox').on('click',function(){
+    if($('.checkbox:checked').length == $('.checkbox').length){
+    $('#check_all').prop('checked',true);
+    }else{
+    $('#check_all').prop('checked',false);
+    }
+    });
+    $('.delete-all-categories').on('click', function(e) {
+    var idsArr = [];  
+    $(".checkbox:checked").each(function() {  
+    idsArr.push($(this).attr('data-id'));
+    });  
+    if(idsArr.length <=0)  
+    {  
+
+    swal({
+     title: "Greška!",
+     text: "Morate selektovati makar jednu kategoriju.",
+     type: "error",
+     timer: 1500,
+     confirmButtonText: 'U redu',
+     allowEscapeKey: false,
+     allowOutsideClick: false,
+     });
+
+    }  else {  
+    if(confirm("Da li ste sigurni?")){  
+    var strIds = idsArr.join(","); 
+    $.ajax({
+    url: "{{ route('delete-all-categories') }}",
+    type: 'DELETE',
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    data: 'ids='+strIds,
+    success: function (data) {
+    if (data['status']==true) {
+    $(".checkbox:checked").each(function() {  
+    $(this).parents("tr").remove();
+    });
+    alert(data['message']);
+    } 
+    else {
+    swal({
+     title: "Uspješno!",
+     type: "success",
+     timer: 1000,
+     confirmButtonText: 'U redu',
+     allowEscapeKey: false,
+     allowOutsideClick: false,
+     }).then(function() {
+        window.location.href = "/podesavanja/kategorije";
+     });
+    
+    }
+    },
+    error: function (data) {
+    alert(data.responseText);
+    }
+    });
+    }  
+    }  
+    });
+    $('[data-toggle=confirmation]').confirmation({
+    rootSelector: '[data-toggle=confirmation]',
+    onConfirm: function (event, element) {
+    element.closest('form').submit();
+    }
+    });   
+    });
+    </script>
 
 @endsection
