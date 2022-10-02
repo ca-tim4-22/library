@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Exceptions\BookAuthorExistsException;
+use App\Exceptions\BookCategoryExistsException;
+use App\Exceptions\BookGenreExistsException;
 use App\Exceptions\UserCheckRoleException;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -28,8 +31,35 @@ class BookAPIController extends Controller
     public function showBook($id) 
     {
         $book = Book::findOrFail($id);
+        $this->BookCategoryExists($book);
+        $this->BookGenreExists($book);
+        $this->BookAuthorExists($book);
         
         return new ShowBookResource($book);
+    }
+
+    public function BookCategoryExists($book) 
+    {
+        if (count($book->categories) > 0) {
+        } else {
+            throw new BookCategoryExistsException();
+        }
+    }
+
+    public function BookGenreExists($book) 
+    {
+        if (count($book->genres) > 0) {
+        } else {
+            throw new BookGenreExistsException();
+        }
+    }
+
+    public function BookAuthorExists($book) 
+    {
+        if (count($book->genres) > 0) {
+        } else {
+            throw new BookAuthorExistsException();
+        }
     }
 
     public function storeBook(Request $request)
@@ -49,7 +79,7 @@ class BookAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom dodavanja nove knjige",
                 'errors' => $validator->errors()
             ], 422);
@@ -98,7 +128,7 @@ class BookAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom izmjene knjige",
                 'errors' => $validator->errors()
             ], 422);

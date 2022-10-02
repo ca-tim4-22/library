@@ -39,7 +39,7 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom dodavanja novog izdavača",
                 'errors' => $validator->errors()
             ], 422);
@@ -62,7 +62,7 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom izmjene izdavača",
                 'errors' => $validator->errors()
             ], 422);

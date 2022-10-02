@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
             if($exception instanceOf ModelNotFoundException) {
                 return response(
                     [
-                        "error" => "not-found-0001",
+                        "error" => "error-0001",
                         'timestamp' => Carbon::now(),
                         'status' => 404,
                         'message' => 'Nije pronađeno',
@@ -74,7 +74,7 @@ class Handler extends ExceptionHandler
                 if ($exception instanceOf NotFoundHttpException) {
                     return response(
                         [
-                            "error" => "incorrect-0001",
+                            "error" => "error-0002",
                             'timestamp' => Carbon::now(),
                             'status' => 400,
                             'message' => 'Neispravan zahtjev',

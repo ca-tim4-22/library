@@ -40,7 +40,7 @@ class CategoryAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja nove kategorije",
                 'errors' => $validator->errors()
             ], 422);
@@ -66,7 +66,7 @@ class CategoryAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom izmjene kategorije",
                 'errors' => $validator->errors()
             ], 422);

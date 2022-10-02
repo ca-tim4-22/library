@@ -40,7 +40,7 @@ class GenreAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom dodavanja novog žanra",
                 'errors' => $validator->errors()
             ], 422);
@@ -67,7 +67,7 @@ class GenreAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'validation-error-0001', 
+                'error'=> 'error-0003', 
                 'message' => "Došlo je do greške prilikom izmjene žanra",
                 'errors' => $validator->errors()
             ], 422);
