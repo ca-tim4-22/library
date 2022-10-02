@@ -81,7 +81,7 @@ class GenreAPIController extends Controller
 
         return response([
             'data' => new ShowGenreResource($genre)
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_OK);
     }
 
     public function destroyGenre($id)

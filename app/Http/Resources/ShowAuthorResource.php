@@ -18,7 +18,7 @@ class ShowAuthorResource extends JsonResource
         return [
             'ID' => $this->id,
             'name' => Str::ucfirst($this->NameSurname),
-            'biography' => $this->description,
+            'biography' => $this->biography,
             'wikipedia' => $this->wikipedia,
         ];
     }

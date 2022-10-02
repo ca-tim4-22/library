@@ -73,7 +73,7 @@ class PublisherAPIController extends Controller
 
         return response([
             'data' => new ShowPublisherResource($publisher)
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_OK);
     }
 
     public function destroyPublisher($id)

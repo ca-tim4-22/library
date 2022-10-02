@@ -78,7 +78,7 @@ class CategoryAPIController extends Controller
 
         return response([
             'data' => new ShowCategoryResource($category)
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_OK);
     }
 
     public function destroyCategory($id)

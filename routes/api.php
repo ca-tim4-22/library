@@ -12,14 +12,13 @@ use App\Http\Controllers\API\LetterAPIController;
 use App\Http\Controllers\API\PublisherAPIController;
 use App\Http\Controllers\API\UserAPIController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
     return $request->user();
 });
 
+Route::group(['prefix'=>'v1'], function(){
 // Users
 Route::get('/korisnici', [UserAPIController::class, 'users']);
 Route::get('/ucenici', [UserAPIController::class, 'students']);
@@ -108,7 +107,7 @@ Route::put('/izmijeni-globalnu-varijablu/{id}', [GlobalVariableAPIController::cl
 Route::delete('/izbrisi-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'destroyGlobalVariable']);
 Route::get('/trazi-globalnu-varijablu/{variable}', [GlobalVariableAPIController::class, 'searchGlobalVariable']);
 Route::get('/globalne-varijable-broj', [GlobalVariableAPIController::class, 'globalVariablesCount']);
-
+});
 
 
 

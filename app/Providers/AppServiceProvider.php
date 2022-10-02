@@ -3,12 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Rent;
-use App\Models\Reservation;
 use App\Models\ReservationStatuses;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         } else {
             $notifications = 0;
         }
-       
+        JsonResource::withoutWrapping();
         view()->share('notifications', $notifications);
 
           /**

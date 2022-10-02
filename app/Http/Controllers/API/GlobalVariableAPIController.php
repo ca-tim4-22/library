@@ -78,7 +78,7 @@ class GlobalVariableAPIController extends Controller
  
          return response([
              'data' => new ShowGlobalVariableResource($variable)
-         ], Response::HTTP_CREATED);
+         ], Response::HTTP_OK);
      }
  
      public function destroyGlobalVariable($id)

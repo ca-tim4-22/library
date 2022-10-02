@@ -73,7 +73,7 @@ class BindingAPIController extends Controller
  
          return response([
              'data' => new ShowBindingResource($binding)
-         ], Response::HTTP_CREATED);
+         ], Response::HTTP_OK);
      }
  
      public function destroyBinding($id)

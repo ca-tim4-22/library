@@ -82,7 +82,7 @@ class AuthorAPIController extends Controller
  
          return response([
              'data' => new ShowAuthorResource($author)
-         ], Response::HTTP_CREATED);
+         ], Response::HTTP_OK);
      }
  
      public function destroyAuthor($id)

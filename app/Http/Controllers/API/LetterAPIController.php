@@ -73,7 +73,7 @@ class LetterAPIController extends Controller
  
          return response([
              'data' => new ShowLetterResource($letter)
-         ], Response::HTTP_CREATED);
+         ], Response::HTTP_OK);
      }
  
      public function destroyLetter($id)

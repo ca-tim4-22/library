@@ -73,7 +73,7 @@ class LanguageAPIController extends Controller
  
          return response([
              'data' => new ShowLanguageResource($language)
-         ], Response::HTTP_CREATED);
+         ], Response::HTTP_OK);
      }
  
      public function destroyLanguage($id)

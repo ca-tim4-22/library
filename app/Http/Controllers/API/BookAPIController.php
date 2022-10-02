@@ -120,7 +120,7 @@ class BookAPIController extends Controller
 
         return response([
             'data' => new ShowBookResource($book)
-        ], Response::HTTP_CREATED);
+        ], Response::HTTP_OK);
     }
 
     public function destroyBook($id)
