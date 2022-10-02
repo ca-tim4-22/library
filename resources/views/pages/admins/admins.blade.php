@@ -280,6 +280,7 @@
                                                 @endif
                                             </span>
                                         </a>
+                                    
                                             <button 
                                             data-id="{{ $admin->id }}" 
                                             data-action="{{ route('admins.destroy', $admin->id) }}" onclick="deleteConfirmation({{$admin->id}})"

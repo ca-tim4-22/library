@@ -141,7 +141,6 @@
                         </span>
                     </div>
                 </li>
-                @endif
 
                 <!-- Izdavanje Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
@@ -153,7 +152,7 @@
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Izdavanje knjiga
+                                            Transakcije
                                         </p>
                                     </div>
                                 </a>
@@ -161,6 +160,7 @@
                         </span>
                     </div>
                 </li>
+                @endif
 
                 <!-- Expand menu example -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA]">

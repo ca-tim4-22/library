@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ShowBindingResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class ShowBindingResource extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => $this->name,
+            'name' => Str::ucfirst($this->name),
         ];
     }
 }

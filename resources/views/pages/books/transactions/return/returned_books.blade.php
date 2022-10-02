@@ -11,6 +11,8 @@
 {{-- Preloader --}}
 <link rel="stylesheet" href="{{asset('preloader/preloader2.css')}}">
 <script src="{{asset('preloader/preloader2.js')}}" ></script>
+{{-- Search --}}
+<script src="{{asset('js/search-jquery.js')}}"></script>
 
         <!-- Content -->
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
@@ -19,6 +21,16 @@
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
                     Vraćene knjige
                 </h1>
+            </div>
+
+            <div class="flex items-center px-6 py-4 space-x-3 rounded-lg ml-[292px]">
+                <div class="flex items-center">
+                    <div class="relative text-gray-600 focus-within:text-gray-400">
+                        <input type="search" id="myInput"
+                               class="py-2 pl-2 text-sm bg-white border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                               placeholder="Pretraži..." autocomplete="off">
+                    </div>
+                </div>
             </div>
 
              {{-- Books side --}}
@@ -35,7 +47,7 @@
 
 {{-- Session message for return book --}}
 @if (session()->has('return-success'))
-<div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+<div id="hideDiv2" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
@@ -448,6 +460,8 @@
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
+                                
+                                <tbody id="tablex">
 
                                 @foreach ($data->get() as $book)
 

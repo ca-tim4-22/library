@@ -8,7 +8,6 @@ use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
 use App\Models\RentStatus;
-use App\Models\ReservationStatuses;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,7 +17,7 @@ class RentBookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['protect-all', 'librarian-protect']);
     }
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class RentBookController extends Controller
      */
     public function index(Request $request)
     {
-        $rents = RentStatus::where('book_status_id', 1)->paginate(5);
+        $rents = RentStatus::where('book_status_id', 1)->latest()->paginate(5);
         $librarians = User::where('user_type_id', 2)->latest()->get();
         $filter = false;
         $count = true;
@@ -124,7 +123,7 @@ class RentBookController extends Controller
        $rent_status->rent_id = $book_rent->id;
        $rent_status->save();
 
-       return to_route('rented-books')->with('rent-success', 'Uspješno ste izdali knjigu!');
+       return to_route('rented-books')->with('rent-success', 'Izdali ste knjigu!');
     }
 
     /**

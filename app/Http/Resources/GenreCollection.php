@@ -19,7 +19,7 @@ class GenreCollection extends JsonResource
             'ID' => $this->id,
             'name' => Str::ucfirst($this->name),
             'description' => $this->description,
-            'show-category' => [
+            'show-genre' => [
                 'link' => route('show-genre-api', $this->id)
             ],
         ];

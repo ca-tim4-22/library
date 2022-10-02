@@ -11,7 +11,7 @@ class ArchiveBookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('protect-all');
     }
     /**
      * Display a listing of the resource.
@@ -87,7 +87,7 @@ class ArchiveBookController extends Controller
             'reserved_count' => $reservation->book->reserved_count - 1,
         ]);
 
-        return back()->with('archive-reservation', 'Uspješno ste arhivirali rezervaciju ID-' . $reservation->id);
+        return back()->with('archive-reservation', 'Arhivirali ste rezervaciju ID-' . $reservation->id);
     }
 
     /**

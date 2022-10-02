@@ -8,6 +8,8 @@
 @endsection
 
 @section('content')
+{{-- Search --}}
+<script src="{{asset('js/search-jquery.js')}}"></script>
 
  <!-- Content -->
  <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
@@ -119,7 +121,7 @@
                         </svg>
                     </button>
                 </span>
-                <input type="search" name="q"
+                <input type="search" id="myInput"
                     class="py-2 pl-10 border-[#e4dfdf] text-sm text-white border-[1px] bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
                     placeholder="Traži..." autocomplete="off">
             </div>
@@ -159,7 +161,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="bg-white">
+                <tbody id="tablex" class="bg-white">
 
                    @foreach ($data as $rent)
                    

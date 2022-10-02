@@ -7,13 +7,12 @@ use App\Http\Requests\Settings\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CategoryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('protect-all');
     }
     
     /**

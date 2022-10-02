@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 
 class ExtraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('protect-all');
+    }
     /**
      * Display a listing of the resource.
      *

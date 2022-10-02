@@ -17,4 +17,8 @@ class Author extends Model
             'NameSurname' => $this->NameSurname,
         ];
     }
+
+    public function getNameSurnameAttribute($value) {
+        return ucfirst($value);
+    }
 }

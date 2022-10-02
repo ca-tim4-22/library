@@ -13,7 +13,7 @@ class ReturnBookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['protect-all', 'librarian-protect']);
     }
     /**
      * Display a listing of the resource.
@@ -76,7 +76,7 @@ class ReturnBookController extends Controller
         $book->rented_count = $book->rented_count - 1;  
         $book->save();
 
-        return to_route('returned-books')->with('return-success', 'Uspješno ste vratili knjigu.');
+        return to_route('returned-books')->with('return-success', 'Vratili ste knjigu.');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ShowGlobalVariableResource extends JsonResource
 {
@@ -16,7 +17,7 @@ class ShowGlobalVariableResource extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => $this->variable,
+            'name' => Str::ucfirst($this->name),
             'value' => $this->value,
         ];
     }

@@ -9,6 +9,29 @@
 /* Custom */
 /* ----------------------------------------------------------- */
 
+/* Option dropdown */
+
+/* width */
+select::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+select::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+select::-webkit-scrollbar-thumb {
+  background: #4558BE; 
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+select::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 /*Button - transition*/
 
 .btn-animation {

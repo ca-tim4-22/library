@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use Algolia\AlgoliaSearch\Http\Psr7\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\AdministratorCollection;
 use App\Http\Resources\LibrarianCollection;
 use App\Http\Resources\LibrarianFemaleCollection;
 use App\Http\Resources\LibrarianMaleCollection;
-use App\Http\Resources\ShowAuthorResource;
-use App\Http\Resources\ShowUserResource;
 use App\Http\Resources\StudentCollection;
 use App\Http\Resources\StudentFemaleCollection;
 use App\Http\Resources\StudentMaleCollection;
@@ -18,7 +15,6 @@ use App\Http\Resources\UserTypeCollection;
 use App\Http\Resources\UserTypeCountResource;
 use App\Models\User;
 use App\Models\UserType;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserAPIController extends Controller

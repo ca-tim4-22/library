@@ -12,7 +12,7 @@ class WriteOffController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['protect-all', 'librarian-protect']);
     }
     /**
      * Display a listing of the resource.

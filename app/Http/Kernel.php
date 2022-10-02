@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'user-delete' => \App\Http\Middleware\Delete\UserDeleteMiddleware::class,
         'reservation-approval' => \App\Http\Middleware\Delete\ReservationApprovalMiddleware::class,
         'librarian-protect' => \App\Http\Middleware\Protect\LibrarianProtectMiddleware::class,
+        'protect-all' => \App\Http\Middleware\Protect\ProtectAllMiddleware::class,
     ];
 }

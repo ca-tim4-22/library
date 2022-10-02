@@ -21,8 +21,9 @@ class BookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'librarian-protect'])
+        $this->middleware(['librarian-protect'])
         ->except('index', 'show');
+        $this->middleware('protect-all');
     }
 
     /**

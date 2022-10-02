@@ -74,4 +74,8 @@ class User extends Authenticatable
     public function gender() {
         return $this->belongsTo(UserGender::class, 'user_gender_id');
     }
+
+    public function getNameAttribute($value) {
+        return ucfirst($value);
+    }
 }

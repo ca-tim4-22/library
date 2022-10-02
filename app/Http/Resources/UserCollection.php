@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class UserCollection extends JsonResource
 {
@@ -16,7 +17,7 @@ class UserCollection extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => $this->name,
+            'name' => Str::ucfirst($this->name),
             'username' => $this->username,
             'gender' => $this->gender->name,
             'email' => $this->email,

@@ -19,6 +19,10 @@ class Book extends Model
         ];
     }
 
+    public function getTitleAttribute($value) {
+        return ucfirst($value);
+    }
+
     public function reservations() {
         return $this->hasMany(Reservation::class);
     }

@@ -10,13 +10,12 @@ use App\Models\GlobalVariable;
 use App\Models\Letter;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class SettingController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'librarian-protect']);
+        $this->middleware(['protect-all', 'librarian-protect']);
     }
     
     // Custom methods

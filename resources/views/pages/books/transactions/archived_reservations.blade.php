@@ -11,6 +11,8 @@
 {{-- Preloader --}}
 <link rel="stylesheet" href="{{asset('preloader/preloader2.css')}}">
 <script src="{{asset('preloader/preloader2.js')}}" ></script>
+{{-- Search --}}
+<script src="{{asset('js/search-jquery.js')}}"></script>
 
     <!-- Main content -->
     <main class="flex flex-row small:hidden">
@@ -22,6 +24,16 @@
                 <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
                     Arhivirane rezervacije
                 </h1>
+            </div>
+
+            <div class="flex items-center px-6 py-4 space-x-3 rounded-lg ml-[292px]">
+                <div class="flex items-center">
+                    <div class="relative text-gray-600 focus-within:text-gray-400">
+                        <input type="search" id="myInput"
+                               class="py-2 pl-2 text-sm bg-white border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
+                               placeholder="Pretraži..." autocomplete="off">
+                    </div>
+                </div>
             </div>
 
              {{-- Books side --}}
@@ -360,7 +372,8 @@
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
-                                <tbody class="bg-white">
+
+                                <tbody class="bg-white" id="tablex">
 
                             @foreach ($archived_reservations as $reservation)
 

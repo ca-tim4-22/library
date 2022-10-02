@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LibrarianProtectMiddleware
+class ProtectAllMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class LibrarianProtectMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->type->id == 1) {
-            return response()->view('maintenance.access_denied')->setStatusCode(403);
+        if (!Auth::check()) {
+            return to_route('login');
         } else {
             return $next($request);
         }

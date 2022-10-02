@@ -375,7 +375,6 @@
                                     </div>
                                 </td>
 
-                                     
                                 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
                                     <button
                                     onclick="writeOffBook()"
