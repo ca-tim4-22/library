@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthorAPIController;
 use App\Http\Controllers\API\BindingAPIController;
 use App\Http\Controllers\API\BookAPIController;
 use App\Http\Controllers\API\CategoryAPIController;
@@ -88,5 +89,14 @@ Route::post('/novi-jezik', [LanguageAPIController::class, 'storeLanguage']);
 Route::put('/izmijeni-jezik/{id}', [LanguageAPIController::class, 'updateLanguage']);
 Route::delete('/izbrisi-jezik/{id}', [LanguageAPIController::class, 'destroyLanguage']);
 Route::get('/trazi-jezik/{name}', [LanguageAPIController::class, 'searchLanguage']);
+
+// Authors
+Route::get('/autori', [AuthorAPIController::class, 'authors']);
+Route::get('/autor/{id}', [AuthorAPIController::class, 'showAuthor'])->name('show-author-api');
+Route::post('/novi-autor', [AuthorAPIController::class, 'storeAuthor']);
+Route::put('/izmijeni-autora/{id}', [AuthorAPIController::class, 'updateAuthor']);
+Route::delete('/izbrisi-autora/{id}', [AuthorAPIController::class, 'destroyAuthor']);
+Route::get('/trazi-autora/{NameSurname}', [AuthorAPIController::class, 'searchAuthor']);
+
 
 
