@@ -16,4 +16,16 @@ Route::get('/podesavanja/izmijeni-format/{format:name}', [FormatController::clas
 Route::put('/podesavanja/izmijeni-format/{id}', [FormatController::class, 'update'])->name('update-format');
 });
 
+// Additional features
+
+// For multiple author delete
+Route::delete('izbrisi-sve/formate', [FormatController::class, 'deleteMultiple'])->name('delete-all-formats');
+
+// Middleware protection
+Route::middleware('user-delete')->group(function() {
+// Protection for deleting a certain publisher through URI
+Route::get('/podesavanja/formati/{id}', function ($id) {});
+Route::post('/podesavanja/formati/{id}', [FormatController::class, 'destroy'])->name('formats.destroy');
+});
+
 ?>

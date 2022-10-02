@@ -100,7 +100,11 @@ class FormatController extends Controller
     {
         $format = Format::findOrFail($id);
         $format->delete();
+    }
 
-        return to_route('setting-format')->with('format-deleted', "Uspješno ste izbrisali format \"$format->name\".");
+    public function deleteMultiple(Request $request)
+    {
+        $ids = $request->ids;
+        Format::whereIn('id', explode(",", $ids))->delete();
     }
 }
