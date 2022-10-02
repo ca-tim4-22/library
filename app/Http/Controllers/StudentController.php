@@ -81,7 +81,7 @@ class StudentController extends Controller
             'email' => [new EmailVerificationRule(), 'unique:users'],
             'password' => 'required|min:8|confirmed',   
             'JMBG' => 'required|min:13|max:13|unique:users',
-            'photo' => 'required|image|size:2048',
+            'photo' => 'required|image',
         ])->safe()->all();
 
         $input['user_type_id'] = 1;
