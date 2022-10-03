@@ -163,11 +163,21 @@
                         </div>
                         <div class="mt-[40px]">
                             <span class="text-gray-500">{{$reservation->made_by->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}</span>
-                            <a href="{{route('show-librarian', $reservation->made_by->username)}}"
-                                class="block font-medium text-[#2196f3] hover:text-blue-600">{{$reservation->made_by->name}}</a>
+
+                {{-- If admin reserved a book --}}
+                @if ($reservation->made_by->type->id == 2)
+                <a href="{{route('show-librarian', $reservation->made_by->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->made_by->name}}
+                <a>
+                @else 
+                <a href="{{route('show-admin', $reservation->made_by->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$reservation->made_by->name}}
+                    <a>
+                @endif
+
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">{{$reservation->made_by->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
+                            <span class="text-gray-500">{{$reservation->made_for->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
                             <a href="{{route('show-student', $reservation->made_for->username)}}"
                                 class="block font-medium text-[#2196f3] hover:text-blue-600">{{$reservation->made_for->name}}</a>
                         </div>

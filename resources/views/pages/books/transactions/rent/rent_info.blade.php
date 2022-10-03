@@ -183,7 +183,7 @@
 
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
+                            <span class="text-gray-500">{{$rent->borrow->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
                             <a href="{{route('show-student', $rent->borrow->username)}}"
                                 class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->borrow->name}}</a>
                         </div>

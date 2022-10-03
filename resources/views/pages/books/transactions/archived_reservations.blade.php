@@ -45,23 +45,18 @@
 <div style="display:none;" id="myDiv2">
                             @if ($is_null > 0)
 
-                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije" id="myTable">
+                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf] rezervacije" id="sort">
                                 <thead class="bg-[#EFF3F6]">
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </th>
-                                    <th class="flex items-center px-4 py-4 leading-4 tracking-wider text-left">Naziv
-                                        knjige<a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                             onclick="sortTable()"></i></a>
+                              
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                        Naziv knjige
                                     </th>
 
                                     <!-- Datum rezervacije + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum rezervacije<i class="ml-2 fas fa-filter"></i>
+                                        <span style="font-weight: bold">Datum rezervacije</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                             <div
@@ -88,13 +83,13 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
 
                                     <!-- Rezervacija istice + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Rezervacija
-                                        ističe<i class="ml-2 fas fa-filter"></i>
+                                        <span style="font-weight: bold">Rezervacija
+                                            ističe</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="zadrzavanjeDropdown"
                                              class="zadrzavanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <div
@@ -113,21 +108,21 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                   Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                   Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
 
                                     <!-- Rezervaciju podnio + dropdown filter for ucenik -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Rezervaciju
-                                        podnio<i class="ml-2 fas fa-filter"></i>
+                                        <span style="font-weight: bold">Rezervaciju
+                                            podnio</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="uceniciDropdown"
                                              class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px]  right-0 border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -262,20 +257,20 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
 
                                     <!-- Status + dropdown filter for status -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer statusDrop-toggle">
-                                        Status<i class="ml-2 fas fa-filter"></i>
+                                        <span style="font-weight: bold">Status</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="statusDropdown"
                                              class="statusMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -360,15 +355,15 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                   Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                   Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
@@ -378,11 +373,7 @@
                             @foreach ($archived_reservations as $reservation)
 
                             <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-                                <td class="px-4 py-3 whitespace-no-wrap">
-                                    <label class="inline-flex items-center">
-                                        <input type="checkbox" class="form-checkbox">
-                                    </label>
-                                </td>
+                             
                                 <td class="flex flex-row items-center px-4 py-3">
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 

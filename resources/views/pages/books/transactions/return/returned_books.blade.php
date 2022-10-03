@@ -43,7 +43,7 @@
 <div style="display:none;" id="myDiv2">
                             @if ($data != 'no-values')
 
-                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
+                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="sort">
 
 {{-- Session message for return book --}}
 @if (session()->has('return-success'))
@@ -59,28 +59,21 @@
                                 <thead class="bg-[#EFF3F6]">
 
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                         Naziv knjige
-                                        <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                       onclick="sortTable()"></i>
-                                        </a>
                                     </th>
+                                    
                                     <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato učeniku<i class="ml-2 fas fa-filter"></i>
+                                        <span style="font-weight: bold">Izdato učeniku</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="uceniciDropdown"
                                              class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
                                                 <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                     <input
                                                         class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                        placeholder="Search"
+                                                        placeholder="Traži..."
                                                         onkeyup="filterFunction('searchUcenici', 'uceniciDropdown', 'dropdown-item-ucenik')"
                                                         id="searchUcenici"><br>
                                                     <button
@@ -216,11 +209,11 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Datum izdavanja + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja<i class="fas fa-filter"></i>
+                                        <span style="font-weight: bold"> Datum izdavanja</span><i class="fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                             <div
@@ -247,11 +240,11 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Datum vracanja + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
-                                        Datum vraćanja<i class="fas fa-filter"></i>
+                                      <span style="font-weight: bold">Datum vraćanja</span><i class="fas fa-filter"></i>
                                         <div id="vracanjeDropdown"
                                              class="vracanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <div
@@ -270,19 +263,19 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Zadrzavanje knjige + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Zadržavanje knjige <i class="fas fa-filter"></i>
+                                        <span style="font-weight: bold">Zadržavanje knjige</span> <i class="fas fa-filter"></i>
                                         <div id="zadrzavanjeDropdown"
                                              class="zadrzavanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <div
@@ -309,18 +302,18 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Knjigu izdao + dropdown filter for bibliotekari -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer bibliotekariDrop-toggle">
-                                        Knjigu izdao<i class="fas fa-filter"></i>
+                                        <span style="font-weight: bold">Knjigu izdao</span><i class="fas fa-filter"></i>
                                         <div id="bibliotekariDropdown"
                                              class="bibliotekariMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
                                                 <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                     <input
                                                         class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                        placeholder="Search"
+                                                        placeholder="Traži..."
                                                         onkeyup="filterFunction('searchBibliotekari', 'bibliotekariDropdown', 'dropdown-item-bibliotekar')"
                                                         id="searchBibliotekari"><br>
                                                     <button
@@ -448,15 +441,15 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                   Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                   Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
@@ -466,11 +459,6 @@
                                 @foreach ($data->get() as $book)
 
                                 <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-                                    <td class="px-4 py-3 whitespace-no-wrap">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </td>
                                     <td class="flex flex-row items-center px-4 py-3">
                                         <img 
                                         class="object-cover w-8 mr-2 h-11" 
@@ -517,7 +505,7 @@
                                                  aria-labelledby="headlessui-menu-button-1"
                                                  id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                    <a href="{{route('rented-info', $book->rent->id)}}" tabindex="0"
+                                                    <a href="{{route('returned-info', $book->rent->id)}}" tabindex="0"
                                                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                                        role="menuitem">
                                                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>

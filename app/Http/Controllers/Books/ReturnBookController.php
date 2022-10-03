@@ -28,7 +28,7 @@ class ReturnBookController extends Controller
        foreach ($books as $book) {
             foreach ($book->rent as $rent) {
                 foreach ($rent->rent_status as $key) {
-                    $data = $key->where('book_status_id', 2)->orderBy('id', 'asc');
+                    $data = $key->where('book_status_id', 2)->orderBy('id', 'desc');
                 }
             }
            }

@@ -162,12 +162,24 @@
                             </p>
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Bibliotekar</span>
-                            <a href="{{route('show-librarian', $rent->librarian->username)}}"
-                                class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->librarian->name}}</a>
+
+                            <span class="text-gray-500">{{$rent->librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}</span>
+
+                {{-- If admin returned a book --}}
+                @if ($rent->librarian->type->id == 2)
+                <a href="{{route('show-librarian', $rent->librarian->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                <a>
+                @else 
+                <a href="{{route('show-admin', $rent->librarian->username)}}" class="block font-medium text-[#2196f3] hover:text-blue-600">
+                    {{$rent->librarian->name}}
+                    <a>
+                @endif
+                           
+
                         </div>
                         <div class="mt-[40px]">
-                            <span class="text-gray-500">Učenik</span>
+                            <span class="text-gray-500">{{$rent->borrow->gender->id == 1 ? 'Učenik' : 'Učenica'}}</span>
                             <a href="{{route('show-student', $rent->borrow->username)}}"
                                 class="block font-medium text-[#2196f3] hover:text-blue-600">{{$rent->borrow->name}}</a>
                         </div>

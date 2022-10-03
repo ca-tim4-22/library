@@ -47,25 +47,17 @@
 
                             @if ($data->whereDate('return_date', '<', date('Y-m-d'))->count())
 
-                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="myTable">
+                            <table class="shadow-lg rounded-xl w-full border-[1px] border-[#e4dfdf]" id="sort">
 
                                 <thead class="bg-[#EFF3F6]">
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </th>
-                                    <th class="px-4 py-4 leading-4 tracking-wider text-left">
+                                    <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                         Naziv knjige
-                                        <a href="#"><i class="ml-2 fa-lg fas fa-long-arrow-alt-down"
-                                                       onclick="sortTable()"></i>
-                                        </a>
                                     </th>
                                     <!-- Datum izdavanja + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
-                                        Datum izdavanja<i class="ml-2 fas fa-filter"></i>
+                                      <span style="font-weight: bold">Datum izdavanja</span><i class="ml-2 fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
                                             <div
@@ -92,11 +84,11 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Izdato uceniku + dropdown filter for ucenik -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer uceniciDrop-toggle">
-                                        Izdato učeniku<i class="fas fa-filter"></i>
+                                        <span style="font-weight: bold">Izdato učeniku</span><i class="fas fa-filter"></i>
                                         <div id="uceniciDropdown"
                                              class="uceniciMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-t pin-l border-2 border-gray-300">
                                             <ul class="border-b-2 border-gray-300 list-reset">
@@ -239,15 +231,15 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <!-- Prekoracenje u danima -->
-                                    <th class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    <td class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
                                         Prekoračenje u danima
-                                    </th>
+                                    </td>
                                     <!-- Trenutno zadrzavanje knjige + dropdown filter for date -->
-                                    <th
+                                    <td
                                         class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer zadrzavanjeDrop-toggle">
-                                        Trenutno zadržavanje knjige<i class="fas fa-filter"></i>
+                                       <span style="font-weight: bold">Trenutno zadržavanje knjige</span><i class="fas fa-filter"></i>
                                         <div id="zadrzavanjeDropdown"
                                              class="zadrzavanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
                                             <div
@@ -274,7 +266,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </td>
                                     <td class="px-4 py-4"> </td>
                                 </tr>
                                 </thead>
@@ -284,11 +276,6 @@
                                 @foreach ($data->whereDate('return_date', '<', date('Y-m-d'))->get() as $overdue_book)
 
                                  <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-                                    <td class="px-4 py-3 whitespace-no-wrap">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </td>
                                     <td class="flex flex-row items-center px-4 py-3">
 
                                         <img 

@@ -61,12 +61,6 @@
                                 <thead class="bg-[#EFF3F6]">
 
                                 <tr class="border-b-[1px] border-[#e4dfdf]">
-                                    <td class="px-4 py-4 leading-4 tracking-wider text-left text-blue-500">
-                                        <label class="inline-flex items-center">
-                                            <input type="checkbox" class="form-checkbox">
-                                        </label>
-                                    </td>
-                                  
                                     <th class="px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
                                         Naziv knjige
                                     </th>
@@ -341,11 +335,6 @@
 @foreach ($rents as $book)
 
    <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
-        <td class="px-4 py-3 whitespace-no-wrap">
-            <label class="inline-flex items-center">
-                <input type="checkbox" class="form-checkbox">
-            </label>
-        </td>
         <td class="flex flex-row items-center px-4 py-3">
             <img 
             class="object-cover w-8 mr-2 h-11" 
