@@ -1,4 +1,4 @@
-## Online Biblioteka - nullable() | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
+## Online Biblioteka | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 
 > Online biblioteka predstavlja projekat ICT Cortex akademije namijenjen učenicima srednjih škola, kako bi se što bolje i efikasnije spremili za sve buduće izazove koje ih čekaju. Više informacija ispod...
 
@@ -187,8 +187,15 @@ error-0005 -> Knjiga nema autora, kategoriju ili žanr, 406
 * phpMyAdmin
 * HeidiSQL
 
-
-
+> tim nullable()
+<div>
+<a href="https://github.com/ca-tim4-22/library" target="_blank"><img src="https://i.postimg.cc/LXf55bzz/nullable-logo.jpg" width="35"></a>
+<a href="https://ictcortex.me/" target="_blank"><img src="https://i.postimg.cc/CMHZTdSJ/cortex.jpg" width="35"></a>
+<a href="https://academy.ictcortex.me/" target="_blank"><img src="https://i.postimg.cc/h46syRT4/cortex-academy-logo.png" width="35"></a>
+<a href="https://www.elektropg.online/" target="_blank"><img src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" width="35"></a>
+<a href="https://cg.cobiss.net/" target="_blank"><img src="https://i.postimg.cc/152Vp9xP/cobiss-logo.png" width="35"></a>
+<a href="https://coinis.com/" target="_blank"><img src="https://i.postimg.cc/ZnhJsPWZ/coinis.jpg" width="35"></a>
+</div>
 
 
 
