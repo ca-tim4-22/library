@@ -91,16 +91,16 @@ Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti ap
 - aktivnu rezervaciju ili rezervaciju na čekanju, ne može poslati zahtjev za rezervaciju knjige
 - ukoliko ima odbijenu ili isteklu rezervaciju, može poslati zahtjev za rezervaciju knjige
 
-### Napomena:
+## Napomena:
 > Ukoliko rezervaciju izvrši bibliotekar/ka, ona odmah dobija status "Prihvaćena", a ukoliko je izvrši učenik/ca dobija status "Na čekanju" sve dok je bibliotekar/ka ne prihvati
 
-### Vraćanje knjige
+## Vraćanje knjige
 > Radnja - operacija vraćanja knjige je dostupna samo ukoliko je knjiga izdata
 
-### Otpisivanje knjige
+## Otpisivanje knjige
 > Radnja - operacija otpisivanja knjige je dostupna samo ukoliko je knjiga u prekoračenju
 
-### Rezervacije - statusi
+## Rezervacije - statusi
 > Rezervacije imaju 5 statusa:
 - Prihvaćena
 - Odbijena
@@ -108,19 +108,79 @@ Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti ap
 - Arhivirana
 - Istekla
 
-### Session - flash poruke - statusi
+## Session - flash poruke - statusi
 - Info
 - Uspješno
 - Bezuspješno
 
+## Cron jobs
+> Postoje 2 zadatka:
+- Prvi zadatak koji se izvršava na dnevnom nivou i koji aktivne istekle rezervacije automatski arhivira
+- Drugi zadatak koji se izvršava na mjesečnom nivou i koji automatski briše korisnike koji se nisu ulogovali duže od 365 dana
+
+## Shutdown mode
+> Administrator može "poslati" aplikaciju u tzv. "shutdown" mode. Laravel u sebi ima ugrađenu komandu "php artisan down" koja gasi aplikaciju. 
+Na našoj aplikaciji to radimo pomoću web rute "/shutdown".
+### Koraci:
+1. Kada želite ugasiti aplikaciju -> Otići na URL "{{base_url}}/shutdown" ! napomena: morate biti ulogovani i biti "administrator"
+2. Kada želite upaliti aplikaciju -> Otići na URL "{{base_url}}/live.php" nakon čega će vam se pojavite "redirect" stranica
+
 ## Dodatno
-* Dodata CSRF protekcija
-* Dodata middleware zaštita na svim rutama(web i api)
-* Dodate detaljne flash-session poruke sa nekoliko statusa
+* CSRF protekcija
+* Middleware zaštita na svim rutama(web i api)
+* Auto deployment - cPanel
+* Ajax requests
+* Detaljne flash-session poruke sa nekoliko statusa
 * Svaki korisnik ima standardnu(eng. default) fotografiju
 * Implementirana statistika na "dashboard" stranici
 * Implementirana paginacija sa padajućom listom 
+* Cron jobs
+* Minified code
+* Autocomplete fields
+* Password indicator
+* Full text search | Algolia | Laravel Scout
+* Multiple delete
 * Dodat CKEditor kao bogati tekstualni editor
+* Kompresovanje i resize(auto fit width) fotografija
+* Kropovanje fotografija
+* Maintenance mode i stranica
+* Fantastične performanse (242ms) GTmetrix Grade
+* "Not found" stranica
+* Ispravni title i meta tagovi
+* Laravel components
+* "Not allowed" stranica
+* Single info prilikom selektovanja
+* API Token expire -> 1h -> 3600s
+* API Token revoke nakon izmjene lozinke
+* Validacija email adrese(školski email)
+* Preloader
+* Polovi za korisnike
+* Password eye
+* API Resources i Collections
+* PDF za knjige
+* Prilagođavanje riječi (1 primjerak, 4 primjerka)
+* Custom web rute za login i register
+* Upustvo za CSV
+* Dozvoljena 3 pokušaja logovanja
+* Brisanje slika nakon brisanja korisnika, knjige
+* Multi filteri
+* Default podaci prilikom migracija
+* Scroll indicator
+* Scroll to top
+* Struktuiran kod, rute i folderi
+* Tačni HTTP status kodovi
+* Fullscreen funkcionalnost
+* Events & Listeners (last login at, login count)
+* Laravel accessors
+* Sortiranje u oba smjera (asc,desc)
+* SEO rute
+* Load more animacija
+* Polisa za paginaciju
+* Custom validation rules
+* Custom validation messages
+* Image preview - Lightbox
+* Notification count
+* Podrška za CSV
 * Validacija formi
 
 ## RESTful API - Passport
@@ -152,12 +212,16 @@ error-0004 -> Pogrešan role, 406
 
 error-0005 -> Knjiga nema autora, kategoriju ili žanr, 406
 
+Pronašli ste bug?
+-------------
+[Pošaljite problem](https://github.com/ca-tim4-22/library/issues) (zahtijeva GitHub nalog)
 
 ## 🚀 Korišćene tehnologije
 
 * PHP v.8.1.
 * Laravel v.9.32 / Laravel Blade
 * MySQL
+* Ajax
 * HTML v.5 / CSS v.3 / Tailwind CSS v.3
 * JavaScript / JQuery v.3.6
 * cdnjs
@@ -175,6 +239,7 @@ error-0005 -> Knjiga nema autora, kategoriju ili žanr, 406
 * Laravel Telescope
 * Tinker
 * Algolia
+* Laravel Scout
 * GitHub Actions / FTP Deploy
 * FakerPHP
 * Guzzle
