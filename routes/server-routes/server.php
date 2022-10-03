@@ -25,7 +25,7 @@ Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
-Auth::routes(['register' => false, 'login' => false]);
+Auth::routes(['register' => false, 'login' => false, 'reset' => false]);
 
 // Login routes
 Route::get('uloguj-se', [LoginController::class, 'showLoginForm'])->name('login');

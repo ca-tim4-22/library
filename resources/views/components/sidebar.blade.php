@@ -56,7 +56,7 @@
                 @endif
 
 
-                @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
+                @if (Auth::user()->type->id == 3)
                 <!-- Librarians Icon -->
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
 

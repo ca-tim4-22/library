@@ -13,8 +13,13 @@ Route::controller(LibrarianController::class)->group(function() {
 // Librarians
 Route::get('/bibliotekari', [LibrarianController::class, 'index'])->name('all-librarian');
 Route::get('/bibliotekar/{user:username}', [LibrarianController::class, 'show'])->name('show-librarian');
+
+// Prevent making new librarians if auth user -> librarian
+Route::middleware('librarian-not-librarian')->group(function() {
 Route::get('/novi-bibliotekar', [LibrarianController::class, 'create'])->name('new-librarian');
 Route::post('/novi-bibliotekar', [LibrarianController::class, 'store'])->name('store-librarian');
+});
+
 Route::get('/izmijeni-profil-bibliotekara/{user:username}', [LibrarianController::class, 'edit'])->name('edit-librarian');
 Route::put('/izmijeni-profil-bibliotekara/{id}', [LibrarianController::class, 'update'])->name('update-librarian');
 

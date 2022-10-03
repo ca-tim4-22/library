@@ -136,7 +136,7 @@
                 <span class="text-gray-500">Ime i prezime</span>
                 <p class="font-medium">{{$author->NameSurname}}</p>
             </div>
-            <div class="mt-[40px]">
+            <div class="mt-[40px]" style="width: 520px">
                 <span class="text-gray-500">Biografija</span>
                 <p class="font-medium max-w-[550px]">
                     {!! $author->biography !!}

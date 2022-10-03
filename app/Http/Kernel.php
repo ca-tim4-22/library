@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'reservation-approval' => \App\Http\Middleware\Delete\ReservationApprovalMiddleware::class,
         'librarian-protect' => \App\Http\Middleware\Protect\LibrarianProtectMiddleware::class,
         'protect-all' => \App\Http\Middleware\Protect\ProtectAllMiddleware::class,
+        'librarian-not-librarian' => \App\Http\Middleware\Protect\LibrarianNotLibrarianMiddleware::class,
     ];
 }
