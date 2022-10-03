@@ -1,4 +1,25 @@
-<?php unlink(dirname(__FILE__) . "/../storage/framework/down") ?>
+<?php 
+// Program to display URL of current page.
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+$link = "https";
+else $link = "http";
+
+// Here append the common URL characters.
+$link .= "://";
+
+// Append the host(domain name, ip) to the URL.
+$link .= $_SERVER['HTTP_HOST'];
+
+// Append the requested resource location to the URL
+$link .= $_SERVER['REQUEST_URI'];
+
+if (str_contains($link, 'tim4')) {
+    unlink("/home/tim4/aplikacija/storage/framework/down");
+} else {
+    unlink(dirname(__FILE__) . "/../storage/framework/down");
+}
+?>
+
 <title>Redirekcija - Online Biblioteka</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
 <link rel="icon" type="image/x-icon" href="library-favicon.ico" />
