@@ -48,14 +48,14 @@ class GenreController extends Controller
         $genre_lower = Str::title($genre);
 
         if ($file = $request->file('icon')) {
-            $name = time() . $file->getClientOriginalName();
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $input['icon'] = $name;  
-            $input['default'] = 'false';  
+            $input['icon'] = $name; 
+            $input['default'] = 'false'; 
         } else {
             $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
-        
+
         Genre::create($input);
 
         return to_route('setting-genre')->with('success-genre', "Uspješno ste dodali žanr " . "\"$genre_lower\"");

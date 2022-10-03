@@ -216,7 +216,7 @@ class LibrarianController extends Controller
         $URL = url()->previous();
 
         if ($librarian->photo != 'placeholder') {
-            if ($URL == 'http://tim4.ictcortex.me/bibliotekari') {
+            if ($URL == 'http://tim4.ictcortex.me/bibliotekari' || $URL == 'https://tim4.ictcortex.me/bibliotekari') {
                 unlink('storage/librarians/' . $librarian->photo);
             } else {
                 $path = '\\storage\\librarians\\' . $librarian->photo;

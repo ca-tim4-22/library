@@ -35,12 +35,6 @@ class GenreRequest extends FormRequest
                 new NoDigitsRule(),
                 new AtSignRule(),
             ],
-            'description' => [
-                'required',
-                new MinimumLengthRule(),
-                'max:255',
-                new AtSignRule(),
-            ],
     ];
     }
 }

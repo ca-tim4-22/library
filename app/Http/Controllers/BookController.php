@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -496,7 +497,12 @@ class BookController extends Controller
             foreach ($book->gallery as $photos) {
                 foreach ($photos->get() as $photo) {
                     // Preventing if image does not exist in storage
-                    if (Storage::disk('local')->has("$photo->photo")) {
+                    $URL = url()->current();
+
+                    if (str_contains($URL, 'tim4') && file_exists('storage/book-covers/' . $photo->photo)) {
+                    unlink('storage/book-covers/' . $photo->photo); 
+                    $book->delete();
+                    } elseif(file_exists('\\storage\\book-covers\\' . $photo->photo)) {
                         $path = '\\storage\\book-covers\\' . $photo->photo;
                         unlink(public_path() . $path); 
                         $book->delete();
@@ -507,20 +513,25 @@ class BookController extends Controller
             }
         }
         
+        $URL = url()->current();
+
         if ($book->pdf != 0) {
-        $path_pdf = '\\storage\\pdf\\' . $book->pdf;
-        unlink(public_path() . $path_pdf); 
+        // Preventing if pdf does not exist in storage
+        if (str_contains($URL, 'tim4') && file_exists('storage/pdf/' . $book->pdf)) {
+            unlink('storage/pdf/' . $book->pdf);
+        } elseif(file_exists('\\storage\\pdf\\' . $book->pdf)) {
+            $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+            unlink(public_path() . $path_pdf); 
+        }
         }
 
         $book->delete();
 
-        $URL = url()->current();
         if (!str_contains($URL, '/bibliotekari')) {
             FacadesSession::flash('book-deleted'); 
             
             return to_route('all-books');
         } 
-      
     }
 
     public function deleteMultiple(Request $request)
@@ -528,21 +539,18 @@ class BookController extends Controller
         $ids = $request->ids;
 
         $books = Book::whereIn('id', explode(",", $ids))->get();
-      
+        $URL = url()->current();
+
         foreach ($books as $book) {
-            foreach ($book->gallery as $photos) {
-                foreach ($photos->get() as $photo) {
-                    if ($book->placeholder == 0) {
-                    $path = '\\storage\\book-covers\\' . $photo->photo;
-                    unlink(public_path() . $path); 
-                    $book->delete();
-                   }
+            if ($book->pdf != 0) {
+                // Preventing if pdf does not exist in storage
+                if (str_contains($URL, 'tim4')  && file_exists('storage/pdf/' . $book->pdf)) {
+                    unlink('storage/pdf/' . $book->pdf);
+                } elseif(file_exists('\\storage\\pdf\\' . $book->pdf)) {
+                    $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+                    unlink(public_path() . $path_pdf); 
                 }
-            }
-        if ($book->pdf != 0) {
-            $path_pdf = '\\storage\\pdf\\' . $book->pdf;
-            unlink(public_path() . $path_pdf); 
-           }
+                }
         }
 
         Book::whereIn('id', explode(",", $ids))->delete();
