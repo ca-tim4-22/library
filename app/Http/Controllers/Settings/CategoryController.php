@@ -119,6 +119,16 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+
+        $URL = url()->current();
+
+        // Delete default icon && icon in storage
+        if (str_contains($URL, 'tim4') && file_exists('storage/settings/category/' . $category->icon)) {
+            unlink('storage/settings/category/' . $category->icon);
+         } elseif(!str_contains($URL, 'tim4') && file_exists(public_path() . '\\storage\\settings\\category\\' . $category->icon)) {
+           unlink(public_path() . '\\storage\\settings\\category\\' . $category->icon);
+        }
+
         $category->delete();
     }
 

@@ -120,6 +120,16 @@ class GenreController extends Controller
     public function destroy($id)
     {
         $genre = Genre::findOrFail($id);
+
+        $URL = url()->current();
+
+        // Delete default icon && icon in storage
+        if (str_contains($URL, 'tim4') && file_exists('storage/settings/genre/' . $genre->icon)) {
+            unlink('storage/settings/genre/' . $genre->icon);
+         } elseif(!str_contains($URL, 'tim4') && file_exists(public_path() . '\\storage\\settings\\genre\\' . $genre->icon)) {
+           unlink(public_path() . '\\storage\\settings\\genre\\' . $genre->icon);
+        }
+
         $genre->delete();
     }
 
