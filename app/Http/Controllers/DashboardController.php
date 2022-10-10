@@ -154,7 +154,8 @@ class DashboardController extends Controller
         $librarians = User::latest('id')->where('user_type_id', 2)->get();
         $students = User::latest('id')->where('user_type_id', 1)->get();
         $rents = Rent::all();
-        $reservations = Reservation::all();
+        // $reservations = Reservation::all();
+        $reservations = ReservationStatuses::where('status_reservations_id', 1)->get();
         $error = 'false';
         $selected_s = [];
         $selected_l = [];
@@ -175,6 +176,7 @@ class DashboardController extends Controller
                         if($data->count() <= 0) {
                         $error = 'true';
                         } 
+                        $reservations = null;
                     } elseif ($request->id_librarian) {
                         $data = $collection->orderBy('id', 'desc')->whereIn('rent_user_id', $request->id_librarian)->get();
                         $selected_l = User::whereIn('id', $request->id_librarian)->first();
@@ -182,6 +184,7 @@ class DashboardController extends Controller
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
+                        $reservations = null;
                     } elseif ($request->id_book) {
                         $data = $collection->orderBy('id', 'desc')->whereIn('book_id', $request->id_book)->get();
                         $selected_b = Book::whereIn('id', $request->id_book)->first();
@@ -189,6 +192,7 @@ class DashboardController extends Controller
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
+                         $reservations = null;
                     } elseif ($request->from && $request->to) {
                         $from = $request->from;
                         $to = $request->to;
@@ -198,6 +202,7 @@ class DashboardController extends Controller
                         if($data->count() <= 0) {
                         $error = 'true';
                         }
+                        $reservations = null;
                     } else {
                         $data = $collection->orderBy('id', 'desc')->get();
                         $to = null;

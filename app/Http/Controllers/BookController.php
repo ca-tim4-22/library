@@ -355,14 +355,14 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $input = Validator::make($request->all(), [
-            'title' => 'required|min:2|max:255',
+            'title' => 'required',
             'page_count' => 'required|min:1|max:1000',
             'ISBN' => 'required|min:13|max:13',
-            'quantity_count' => 'required|min:0',
+             'quantity_count' => 'required|min:0',
             'rented_count' => 'required|min:0',
             'reserved_count' => 'required|min:0',
-            'body' => 'required|min:0|max:255',
-            'year' => 'required|min:0',
+             'body' => 'required',
+            'year' => 'required',
         ])->safe()->all();
 
         $book = Book::findOrFail($id);  
@@ -442,9 +442,9 @@ class BookController extends Controller
 
                     $URL = url()->current();
                
-                    if (str_contains($URL, 'tim4')) {
+                    if (str_contains($URL, 'tim4') && file_exists('storage/book-covers/' . $cover_old->photo)) {
                         unlink('storage/book-covers/' . $cover_old->photo);
-                    } else {
+                    } elseif(!str_contains($URL, 'tim4')) {
                         $path = '\\storage\\book-covers\\' . $cover_old->photo;
                         unlink(public_path() . $path);
                     }

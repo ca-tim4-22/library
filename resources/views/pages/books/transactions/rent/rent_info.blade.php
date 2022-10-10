@@ -192,97 +192,11 @@
             </div>
         </div>
     </div>
-    <div class="absolute bottom-0 w-full">
-        <div class="flex flex-row">
-            <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                <button type="submit"
-                    class="btn-animation show-otpisiModal shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#FF470E] bg-[#FF5722]">
-                    <i class="fas fa-level-up-alt mr-[4px] "></i> Otpiši knjigu
-                </button>
-                <button type="submit"
-                    class="ml-[10px] btn-animation show-vratiModal shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                    <i class="fas fa-redo-alt mr-[4px] "></i> Vrati knjigu
-                </button>
-                <button type="button"
-                    class="ml-[10px] btn-animation show-izbrisiModal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    <i class="fas fa-trash mr-[4px]"></i> Izbriši zapis
-                </button>
-            </div>
-        </div>
-    </div>
 </section>
 <!-- End Content -->
 </main>
 <!-- End Main content -->
 
-<!-- Modal - Vrati Knjigu -->
-<div
-class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 vrati-modal">
-<!-- Modal -->
-<div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-    <!-- Modal Header -->
-    <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-        <h3>Da li zelite da vratite knjigu "Tom Sojer" za ucenika "Milos Milosevic"</h3>
-    </div>
-    <!-- Modal Body -->
-    <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button" onclick="history.back()"
-            class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-            Ponisti <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button type="submit"
-            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
-            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-        </button>
-    </div>
-</div>
-</div>
-
-<!-- Modal - Otpisi Knjigu -->
-<div
-class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 otpisi-modal">
-<!-- Modal -->
-<div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-    <!-- Modal Header -->
-    <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-        <h3>Da li zelite da otpisete knjigu "Tom Sojer" za ucenika "Milos Milosevic?"</h3>
-    </div>
-    <!-- Modal Body -->
-    <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button" onclick="history.back()"
-            class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-            Ponisti <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button type="submit"
-            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
-            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-        </button>
-    </div>
-</div>
-</div>
-
-<!-- Modal - Izbrisi Zapis -->
-<div
-class="fixed top-0 left-0 flex items-center justify-center hidden w-full h-screen bg-black bg-opacity-50 izbrisi-modal">
-<!-- Modal -->
-<div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
-    <!-- Modal Header -->
-    <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-        <h3>Da li zelite da izbrisete zapis knjige "Tom Sojer" za ucenika "Milos Milosevic?"</h3>
-    </div>
-    <!-- Modal Body -->
-    <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
-        <button type="button" onclick="history.back()"
-            class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-            Ponisti <i class="fas fa-times ml-[4px]"></i>
-        </button>
-        <button type="submit"
-            class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"">
-            Potvrdi <i class="fas fa-check ml-[4px]"></i>
-        </button>
-    </div>
-</div>
-</div>
 
 
 @endsection

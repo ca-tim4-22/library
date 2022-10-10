@@ -76,11 +76,11 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -223,17 +223,17 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
                                     </td>
                                     <!-- Prekoracenje u danima -->
-                                    <td class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    <td style="font-weight: bold" class="px-4 py-4 text-sm leading-4 tracking-wider text-left">
                                         Prekoračenje u danima
                                     </td>
                                     <!-- Trenutno zadrzavanje knjige + dropdown filter for date -->
@@ -258,11 +258,11 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sacuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Ponisti <i class="fas fa-times ml-[4px]"></i>
+                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>

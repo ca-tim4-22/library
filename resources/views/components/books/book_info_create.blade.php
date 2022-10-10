@@ -340,7 +340,7 @@
                 @php
                 $year = date("Y");
                 @endphp
-                @for ($counter = 2000; $counter <= $year; $counter++)
+                @for ($counter = 1900; $counter <= $year; $counter++)
              
                 <option value="{{$counter}}" {{ old('year') == $counter ? 'selected' : '' }}>
                     {{$counter}}

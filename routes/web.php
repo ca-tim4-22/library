@@ -10,7 +10,7 @@ use App\Http\Controllers\ {
 };
 
 // Dashboard routes
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'protect-all'], function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard/prikaz-aktivnosti', [DashboardController::class, 'index_activity'])->name('dashboard-activity');
 
