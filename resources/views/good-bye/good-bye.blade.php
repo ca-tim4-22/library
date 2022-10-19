@@ -28,7 +28,7 @@
 
       <h1>Žao nam je što odlazite!</h1>
       <div>
-          <p>&mdash; <a href="https://github.com/ca-tim4-22/library" target="_blank"><span>[nullable]</span></a> tim</p>
+          <p>&mdash; <a href="https://perisicnikola37.github.io/nullable/" target="_blank"><span>[nullable]</span></a> tim</p>
           <img src="{{asset('good_bye/img/good-bye-rocket.gif')}}" alt="Good Bye!" title="Good Bye!">
       </div>
       <a href="{{route('redirect')}}">Početna stranica</a>
