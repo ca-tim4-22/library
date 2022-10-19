@@ -92,14 +92,10 @@
                     </div>
                 </div>
                 @endif
-
-                <!-- Cortex Academy Icon -->
-                <a href="https://academy.ictcortex.me/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px" width="41px" src="https://i.postimg.cc/h46syRT4/cortex-academy-logo.png" alt="Coinis Logo" title="Coinis Logo">
-                </a>
-                <!-- Cobiss Icon -->
+            
+                <!-- nullable() Icon -->
                 <a href="https://cg.cobiss.net/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/152Vp9xP/cobiss-logo.png" alt="Cobiss Logo" title="Cobiss Logo">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="Cobiss Logo" title="Cobiss Logo">
                 </a>
                  <!-- School Icon -->
                 <a href="https://elektropg.online/ets/" target="_blank">

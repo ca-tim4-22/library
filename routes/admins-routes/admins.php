@@ -18,7 +18,7 @@ Route::get('/izmijeni-profil-administratora/{user:username}', [AdminController::
 Route::put('/izmijeni-profil-administratora/{id}', [AdminController::class, 'update'])->name('update-admin');
 
 // Delete ownself
-Route::delete('/izbrisi-admina/{id}', [AdminController::class, 'destroy'])->name('destroy-admin');
+Route::delete('/izbrisi-administratora/{id}', [AdminController::class, 'destroy'])->name('destroy-admin');
 });
 
 // For multiple student delete

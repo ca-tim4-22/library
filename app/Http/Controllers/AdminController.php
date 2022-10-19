@@ -189,7 +189,7 @@ class AdminController extends Controller
     public function destroy(Request $request, $id)
     {
         $admin = User::findOrFail($id);
-
+        
         if (Auth::user()->id == $admin->id) {
             $admin->delete();
 
