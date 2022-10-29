@@ -93,15 +93,15 @@
                 </div>
                 @endif
             
-                <!-- nullable() Icon -->
-                <a href="https://cg.cobiss.net/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="Cobiss Logo" title="Cobiss Logo">
+                <!-- nullable() Logo -->
+                <a href="https://perisicnikola37.github.io/nullable" target="_blank">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="Nullable Logo" title="Nullable Logo">
                 </a>
-                 <!-- School Icon -->
+                 <!-- School Logo -->
                 <a href="https://elektropg.online/ets/" target="_blank">
                     <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" alt="Vaso Aligrudić" title="Vaso Aligrudić">
                 </a>
-                <!-- User Profile Icon -->
+                <!-- User Profile Photo -->
                 <div class="ml-[10px] relative block">
                     <a href="#" class="relative inline-block px-3 py-2 focus:outline-none" id="dropdownProfile"
                         aria-label="User profile">

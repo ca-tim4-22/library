@@ -87,7 +87,7 @@ class LetterController extends Controller
 
         $letter->update($input);
         
-        return to_route('edit-letter', $request->name)->with('letter-updated', 'Uspješno ste izmijenili pismo.');
+        return to_route('setting-letter')->with('letter-updated', 'Uspješno ste izmijenili pismo.');
     }
 
     /**
