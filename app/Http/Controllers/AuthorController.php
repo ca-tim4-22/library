@@ -115,7 +115,7 @@ class AuthorController extends Controller
 
         $author->update($input);
 
-        return to_route('edit-author', $author->NameSurname)->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
+        return to_route('all-author')->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
     }
 
     /**
