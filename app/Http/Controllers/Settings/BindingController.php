@@ -87,7 +87,7 @@ class BindingController extends Controller
 
         $binding->update($input);
         
-        return to_route('edit-binding', $request->name)->with('binding-updated', 'Uspješno ste izmijenili povez: ' . "\"$binding->name\".");
+        return to_route('setting-binding')->with('binding-updated', 'Uspješno ste izmijenili povez: ' . "\"$binding->name\".");
     }
 
     /**
