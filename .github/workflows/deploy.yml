@@ -1,22 +1,22 @@
-on: push
-name: Online Biblioteka🚀
-jobs:
-  web-deploy:
-    name: Hosting deployment🎉
-    runs-on: ubuntu-latest
-    steps:
-    - name: Provjera najnovije verzije🚚
-      uses: actions/checkout@v2
+# on: push
+# name: Online Biblioteka🚀
+# jobs:
+#   web-deploy:
+#     name: Hosting deployment🎉
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Provjera najnovije verzije🚚
+#       uses: actions/checkout@v2
     
-    - name: Sinhronizacija fajlova📂 
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: aplikacija/
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
-          **/public/**
+#     - name: Sinhronizacija fajlova📂 
+#       uses: SamKirkland/FTP-Deploy-Action@4.3.2
+#       with:
+#         server: ${{ secrets.FTP_SERVER }}
+#         username: ${{ secrets.FTP_USERNAME }}
+#         password: ${{ secrets.FTP_PASSWORD }}
+#         server-dir: aplikacija/
+#         exclude: |
+#           **/.git*
+#           **/.git*/**
+#           **/node_modules/**
+#           **/public/**
