@@ -87,7 +87,7 @@ class PublisherController extends Controller
 
         $publisher->update($input);
         
-        return to_route('edit-publisher', $request->name)->with('publisher-updated', 'Uspješno ste izmijenili izdavača: ' . "\"$publisher->name\".");
+        return to_route('setting-publisher')->with('publisher-updated', 'Uspješno ste izmijenili izdavača: ' . "\"$publisher->name\".");
     }
 
     /**
