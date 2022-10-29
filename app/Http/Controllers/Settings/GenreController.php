@@ -108,7 +108,7 @@ class GenreController extends Controller
 
         $genre->update($input);
         
-        return to_route('edit-genre', $request->name)->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
+        return to_route('setting-genre')->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
     }
 
     /**
