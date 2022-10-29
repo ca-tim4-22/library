@@ -43,7 +43,6 @@
        type: "success",
     });
 </script>
-{{ Session::forget('success-author') }}
 @endif 
 
 {{-- Author update flash message --}}

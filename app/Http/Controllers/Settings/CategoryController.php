@@ -107,7 +107,7 @@ class CategoryController extends Controller
 
         $category->update($input);
 
-        return to_route('edit-category', $request->name)->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
+        return to_route('setting-category')->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
     }
 
     /**

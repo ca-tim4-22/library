@@ -40,6 +40,17 @@
 </div>
 @endif
 
+{{-- Category update flash message --}}
+@if (session()->has('category-updated'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izmijenili kategoriju!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif 
 
         </h1>
     </div>
