@@ -274,7 +274,7 @@ if($(".holder:hidden").length == 0){
                                     </a>
                                 </td>
                                 <td class="px-2 py-2">
-                                    <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 px-[6px] py-[2px] rounded-[10px]">
+                                    <span class="px-[10px] py-[3px] bg-gray-200 text-gray-800 rounded-[10px]">
                                         @php
                                         echo date("d-m-Y", strtotime($await_reservation->reservation->reservation_date));
                                         @endphp
