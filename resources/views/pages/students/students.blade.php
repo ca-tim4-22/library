@@ -26,6 +26,7 @@
 <div style="display:none;" id="myDiv">
 
 <!-- Content -->
+<body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
     <div class="heading mt-[7px]" style="margin-top: 10px">
@@ -485,12 +486,12 @@ function editStudent() {
     }  
     }  
     });
-    $('[data-toggle=confirmation]').confirmation({
-    rootSelector: '[data-toggle=confirmation]',
-    onConfirm: function (event, element) {
-    element.closest('form').submit();
-    }
-    });   
+    // $('[data-toggle=confirmation]').confirmation({
+    // rootSelector: '[data-toggle=confirmation]',
+    // onConfirm: function (event, element) {
+    // element.closest('form').submit();
+    // }
+    // });   
     });
     </script>
 @endsection

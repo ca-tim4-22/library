@@ -16,6 +16,7 @@
 <script src="{{asset('js/search-jquery.js')}}"></script>
 
         <!-- Content -->
+        <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
         <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
 
             <!-- Heading of content -->
