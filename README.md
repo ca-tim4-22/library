@@ -11,6 +11,18 @@
 * Composer >= v.2.4
 * Predlažemo da posjetite Laravel-ov oficijalni vebsajt
 
+#### GD - php ekstenzija za manipulaciju fotografija
+S obzirom da su korišćeni paketi za dinamično manipulisanje priloženih fotografija moguće je da se pojavi greška ukoliko Vam fajl "php.ini" nije ispravno konfigurisan. Ovaj fajl po default-u onemogućava određene ekstenzije, a time i pakete(dependencies) koje smo koristili u projektu. Sve što je potrebno jeste:
+<br>
+-> Da otvorite Vaš "php.ini" fajl kao tekstualni dokument (koristeći Notepad ili neki drugi slični softver)
+<br>
+->  Pronađite liniju `;extension=gd` i izmijenite je u `extension=gd`
+<br>
+->  Restartujte Vaš apache server
+> Ukoliko ne znate da pronađete "php.ini" fajl.. najčešći path je `C:\php`. Možete ukucati i komandu: `php --ini` u command promt-u kako biste dobili još informacija
+
+
+
 ## Instalacija
 * Klonirajte ovaj repozitorijum sledećom komandom:
 ```shell
