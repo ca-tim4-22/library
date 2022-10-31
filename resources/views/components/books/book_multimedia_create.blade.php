@@ -130,7 +130,7 @@
             </button>
 
         <button style="margin-right: 30px" id="sacuvajKnjigu" type="submit"
-        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]" onclick="validacijaSpecifikacija()">
+        class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
         Sačuvaj <i class="fas fa-check ml-[4px]"></i>
         </button>
         </div>

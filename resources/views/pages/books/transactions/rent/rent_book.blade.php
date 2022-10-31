@@ -263,8 +263,7 @@
                                     Poništi <i class="fas fa-times ml-[4px]"></i>
                                 </button>
                                 <button id="izdajKnjigu" type="submit"
-                                        class="mr-[15px] mb-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]"
-                                        onclick="validacijaIzdavanje()">
+                                        class="mr-[15px] mb-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
                                     Izdaj knjigu <i class="fas fa-check ml-[4px]"></i>
                                 </button>
                             </div>

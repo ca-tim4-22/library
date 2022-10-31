@@ -20,6 +20,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
  <!-- Content -->
+ <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
  <section class="w-screen h-screen pl-[80px] py-4 text-gray-700">
     <!-- Heading of content -->
     <div class="heading mt-[7px]">
@@ -430,12 +431,12 @@ $('input#check').on('change', function() {
    }  
    }  
    });
-   $('[data-toggle=confirmation]').confirmation({
-   rootSelector: '[data-toggle=confirmation]',
-   onConfirm: function (event, element) {
-   element.closest('form').submit();
-   }
-   });   
+//    $('[data-toggle=confirmation]').confirmation({
+//    rootSelector: '[data-toggle=confirmation]',
+//    onConfirm: function (event, element) {
+//    element.closest('form').submit();
+//    }
+//    });   
    });
    </script>
 
