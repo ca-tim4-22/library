@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $reservations_c = ReservationStatuses::all();
         if (count($rents_c) > 0 && count($reservations_c) > 0) {
         $rents = Rent::whereDate('issue_date', today())->get();
-        $reservation = ReservationStatuses::whereDate('created_at', today())->where('status_reservations_id', 1)->get();
+        $reservation = ReservationStatuses::whereDate('created_at', today())->where('status_resertions_id', 1)->get();
         $notifications =$rents->count() + $reservation->count();
         } else {
             $notifications = 0;
