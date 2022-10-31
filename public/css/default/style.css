@@ -9,6 +9,12 @@
 /* Custom */
 /* ----------------------------------------------------------- */
 
+#haha:hover {
+  background-color: #1d35c1;
+  transition: 0.3s ease-in-out;
+}
+
+
 /* Option dropdown */
 
 /* width */

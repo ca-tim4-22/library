@@ -82,7 +82,7 @@ class PolicyController extends Controller
 
         $policy->update($input);
 
-        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->variable\".");
+        return back()->with('policy-updated', 'Izmijenili ste polisu: ' . "\"$policy->variable\".");
     }
 
     public function paginationUpdate(PolicyPaginationUpdateRequest $request) 
@@ -92,7 +92,7 @@ class PolicyController extends Controller
 
         $policy->update($input);
 
-        return back()->with('policy-updated', 'Uspješno ste izmijenili polisu: ' . "\"$policy->variable\".");
+        return back()->with('policy-updated', 'Izmijenili ste polisu: ' . "\"$policy->variable\".");
     }
 
     /**

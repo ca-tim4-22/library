@@ -17,6 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
 <section class="w-screen h-screen pl-[80px] pb-2 text-gray-700">
 <!-- Space for content -->
 {{-- Preloader --}}
