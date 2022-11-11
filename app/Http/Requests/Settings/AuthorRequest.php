@@ -48,6 +48,9 @@ class AuthorRequest extends FormRequest
                 new MinimumLengthRule(),
                 'url',
             ],
+            'photo' => [
+                'required'
+            ]
         ];
     }
 }

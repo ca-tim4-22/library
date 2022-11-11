@@ -212,6 +212,9 @@
 
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
+                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"
+                            alt="Profilna slika"
+                            title="Profilna slika" />
                             <label class="inline-flex items-center">
                                 <input 
                                 type="checkbox" 

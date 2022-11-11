@@ -6,6 +6,8 @@ use App\Http\Requests\Settings\AuthorRequest;
 use App\Models\Author;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class AuthorController extends Controller
 {
@@ -70,6 +72,24 @@ class AuthorController extends Controller
     {
         $input = $request->all();
         
+        // Store photo
+        if($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $filename = time() . $image->getClientOriginalName();
+            // This will generate an image with transparent background
+            $canvas = Image::canvas(445, 445);
+            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
+            {$constraint->aspectRatio();});
+            $canvas->insert($image, 'center');
+            $URL = url()->current();
+            if (!str_contains($URL, 'tim4')) {
+                if (!file_exists(public_path() . '\storage\authors')) {
+                    mkdir('storage\authors', 666, true);
+                }
+            }
+            $canvas->save('storage/authors/'. $filename, 75);
+            $input['photo'] = $filename; 
+        } 
         $author = Author::create($input);
 
         return to_route('all-author')->with('success-author', 'Uspješno ste dodali autora ' . "'$author->NameSurname'.");
