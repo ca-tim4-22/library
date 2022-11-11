@@ -161,11 +161,6 @@ class AdminController extends Controller
         $input = $request->all();
         $user = Auth::user();   
         $find_user = User::findOrFail($id);
-        if ($find_user->gender->id == 1) {
-            $word = 'administratora';
-        } else {
-            $word = 'administratorke';
-        }
 
         $photo_old = $request->photo;
     
@@ -176,8 +171,9 @@ class AdminController extends Controller
         } 
 
         $user->whereId($id)->first()->update($input);
-        
-        return to_route('edit-admin', $request->username)->with('admin-updated', "Uspješno ste izmijenili profil $word");
+        FacadesSession::flash('admin-updated'); 
+
+        return to_route('all-admin');
     }
 
     /**

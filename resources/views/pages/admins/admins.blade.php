@@ -44,6 +44,18 @@
 </script>
 @endif
 
+  {{-- Administrator update flash message --}}
+  @if (session()->has('admin-updated'))
+  <script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izmijenili profil administratora!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+  @endif
+
         </h1>
     </div>
 

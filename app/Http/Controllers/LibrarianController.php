@@ -178,11 +178,6 @@ class LibrarianController extends Controller
         $input = $request->all();
         $user = Auth::user();   
         $find_user = User::findOrFail($id);
-        if ($find_user->gender->id == 1) {
-            $word = 'bibliotekara';
-        } else {
-            $word = 'bibliotekarke';
-        }
 
         $photo_old = $request->photo;
     
@@ -193,8 +188,9 @@ class LibrarianController extends Controller
         } 
 
         $user->whereId($id)->first()->update($input);
-        
-        return to_route('edit-librarian', $request->username)->with('librarian-updated', "Uspješno ste izmijenili profil $word");
+        FacadesSession::flash('librarian-updated'); 
+
+        return to_route('all-librarian');
     }
 
     /**

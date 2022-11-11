@@ -45,6 +45,18 @@
 </script>
 @endif
 
+{{-- Student update flash message --}}
+@if (session()->has('student-updated'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izmijenili profil učenika!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif
+
         </h1>
     </div>
 

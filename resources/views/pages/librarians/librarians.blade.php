@@ -42,6 +42,18 @@
 </script>
 @endif
 
+{{-- Librarian update flash message --}}
+@if (session()->has('librarian-updated'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste izmijenili profil bibliotekara!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif
+
         </h1>
     </div>
 
