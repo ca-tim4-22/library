@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Settings\AuthorRequest;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Models\Author;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session as FacadesSession;
 use Intervention\Image\ImageManagerStatic as Image;
-
 class AuthorController extends Controller
 {
     public function __construct()
@@ -72,27 +71,16 @@ class AuthorController extends Controller
     {
         $input = $request->all();
         
-        // Store photo
-        if($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
-            // This will generate an image with transparent background
-            $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
-            {$constraint->aspectRatio();});
-            $canvas->insert($image, 'center');
-            $URL = url()->current();
-            if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path() . '\storage\authors')) {
-                    mkdir('storage\authors', 666, true);
-                }
-            }
-            $canvas->save('storage/authors/'. $filename, 75);
-            $input['photo'] = $filename; 
-        } 
+        if($request->file('photo')){
+            $file= $request->file('photo');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file->move(('storage/authors'), $filename);
+            $input['photo']= $filename;
+        }
         $author = Author::create($input);
+        FacadesSession::flash('success-author'); 
 
-        return to_route('all-author')->with('success-author', 'Uspješno ste dodali autora ' . "'$author->NameSurname'.");
+        return to_route('all-author');
     }
 
     /**
@@ -116,8 +104,6 @@ class AuthorController extends Controller
      */
     public function edit(Author $author)
     {
-        $author = $author;
-        
         return view('pages.authors.edit_author', compact('author'));
     }
 
@@ -132,10 +118,10 @@ class AuthorController extends Controller
     {
         $input = $request->all();
         $author = Author::findOrFail($id);  
-
         $author->update($input);
+        FacadesSession::flash('author-updated'); 
 
-        return to_route('all-author')->with('author-updated', 'Uspješno ste izmijenili autora: ' . "\"$author->NameSurname\".");
+        return to_route('all-author');
     }
 
     /**

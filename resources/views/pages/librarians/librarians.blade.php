@@ -234,6 +234,7 @@
 
                     @foreach ($librarians as $librarian)
                     <tr class="hover:bg-gray-200 hover:shadow-md border-[1px] border-[#e4dfdf]">
+                        
                         <td class="px-4 py-4 whitespace-no-wrap">
                             <label class="inline-flex items-center">
                                 <input 
@@ -244,6 +245,7 @@
                                 data-id="{{$librarian->id}}">
                             </label>
                         </td>
+                        
                         <td class="flex flex-row items-center px-4 py-4">
                             
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
@@ -254,6 +256,7 @@
                                 <span class="font-medium text-center">{{$librarian->name}}</span>
                             </a>
                         </td>
+                        
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                             {{$librarian->email}}
                         </td>

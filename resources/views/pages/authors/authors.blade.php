@@ -107,7 +107,7 @@
                     </form>
                     </span>
                     <input type="search" name="trazeno" value="{{$searched}}"
-                        class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+                        class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
                         placeholder="Traži..." autocomplete="off">
                 </div>
                 </div>
@@ -212,9 +212,6 @@
 
                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                         <td class="px-4 py-4 whitespace-no-wrap">
-                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"
-                            alt="Profilna slika"
-                            title="Profilna slika" />
                             <label class="inline-flex items-center">
                                 <input 
                                 type="checkbox" 
@@ -224,11 +221,18 @@
                                 data-id="{{$author->id}}">
                             </label>
                         </td>
-                        <td class="flex flex-row items-center px-4 py-3">
-                            <a href="{{route('show-author', $author)}}">
-                                <span class="mr-2 font-medium text-center">{{$author->NameSurname}}</span>
+
+                        <td class="flex flex-row items-center px-4 py-4">
+                            
+                            <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"
+                            alt="Profilna slika"
+                            title="Profilna slika" />
+
+                            <a href="{{route('show-author', $author->NameSurname)}}">
+                                <span class="font-medium text-center">{{$author->NameSurname}}</span>
                             </a>
                         </td>
+
                         </td>
                         <td class="px-4 py-3 text-sm leading-5 whitespace-no-wrap">{!! $author->biography !!}</td>
                         <td class="px-4 py-3 text-sm leading-5 text-right whitespace-no-wrap">
