@@ -104,7 +104,7 @@
                     </form>
                     </span>
                     <input type="search" name="trazeno" value="{{$searched}}"
-                        class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+                        class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
                         placeholder="Traži..." autocomplete="off">
                 </div>
                 </div>
