@@ -1,0 +1,93 @@
+/* Preloader */
+#loader2 {
+    position: absolute;
+    left: 60%;
+    top: 60%;
+    z-index: 1;
+    width: 35px;
+    height: 35px;
+    margin: -76px 0 0 -76px;
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #4558BE;
+    -webkit-animation: spin 0.35s linear infinite;
+    animation: spin 0.35s linear infinite;
+  }
+
+  @media only screen and (max-width: 1500px) {
+    #loader2 {
+        left: 66%;
+        top: 50%;
+      }
+  }
+
+  @media only screen and (min-width: 1920px) {
+    #loader2 {
+        left: 58%;
+        top: 55%;
+      }
+  }
+
+  @media (min-width: 2520px) {
+    #loader2 {
+        left: 52%;
+        top: 50%;
+      }
+}
+
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s;
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from {
+      bottom: -100px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes animatebottom {
+    from {
+      bottom: -100px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+  
+  #myDiv2 {
+    display: none;
+  }
+  
+  /*# sourceMappingURL=preloader.css.map */
