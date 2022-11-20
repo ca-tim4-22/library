@@ -14,6 +14,7 @@
     <meta name="description" content="Online Biblioteka - projekat namijenjen srednjoškolcima..." />
     <meta name="keywords" content="ict cortex, cortex, coinis, srednjoškolci, učenici, programiranje, kodiranje, biblioteka" />
     <meta name="theme-color" content="#D22336">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <!-- End Meta -->
     <!-- Styles -->
     {{-- Main style --}}
