@@ -114,11 +114,20 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AuthorRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $input = $request->all();
         $author = Author::findOrFail($id);  
-        $author->update($input);
+
+        $photo_old = $request->photo;
+        if($request->file('photo')){
+            $file= $request->file('photo');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file->move(('storage/authors'), $filename);
+            $input['photo']= $filename;
+        }
+
+        $author->whereId($id)->first()->update($input);
         FacadesSession::flash('author-updated'); 
 
         return to_route('all-author');

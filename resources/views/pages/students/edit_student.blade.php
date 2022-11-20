@@ -90,7 +90,7 @@
                                         <polyline points="21 15 16 10 5 21"></polyline>
                                     </svg>
                                     <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
-                                    <input type='file' name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileStudent(event)" />
+                                    <input type="file" name="photo" for="photo" id="photo" class="hidden" :accept="accept" onchange="loadFileStudent(event)" />
                                 </div>
                                 <img
                                     style="object-fit: contain;"

@@ -50,7 +50,6 @@
                         class="fas fa-ellipsis-v"></i>
                 </p>
 
-
                 <div
                 class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-autor">
                 <div class="absolute right-0 w-56 mt-[7px] origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
@@ -132,9 +131,18 @@
     <!-- Space for content -->
     <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
         <div class="mr-[30px]">
-            <div class="mt-[20px]">
+                <div class="mt-[20px]">
                 <span class="text-gray-500">Ime i prezime</span>
-                <p class="font-medium">{{$author->NameSurname}}</p>
+                <p class="font-medium">{{$author->NameSurname}} </p>
+
+                <img 
+                style="float: right;margin: -30px 20px;"
+                class="p-2 border-2 border-gray-300"
+                width="300px"
+                alt="Slika autora"
+                title="Slika autora"
+                src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"/>
+
             </div>
             <div class="mt-[40px]" style="width: 520px">
                 <span class="text-gray-500">Biografija</span>
@@ -149,6 +157,7 @@
                     class="wikipedia-link"
                     href="{{$author->wikipedia}}" 
                     target="_blank">Pročitaj više</a>
+                </p>
             </div>
         </div>
     </div>
