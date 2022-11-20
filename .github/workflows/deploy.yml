@@ -20,4 +20,3 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/public/**
-
