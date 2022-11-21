@@ -139,8 +139,8 @@
                 style="float: right;margin: -30px 20px;"
                 class="p-2 border-2 border-gray-300"
                 width="300px"
-                alt="Slika autora"
-                title="Slika autora"
+                alt="Fotografija autora"
+                title="Fotografija autora"
                 src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"/>
 
             </div>

@@ -225,8 +225,8 @@
                         <td class="flex flex-row items-center px-4 py-4">
                             
                             <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"
-                            alt="Profilna slika"
-                            title="Profilna slika" />
+                            alt="Profilna fotografija"
+                            title="Profilna fotografija" />
 
                             <a href="{{route('show-author', $author->NameSurname)}}">
                                 <span class="font-medium text-center">{{$author->NameSurname}}</span>

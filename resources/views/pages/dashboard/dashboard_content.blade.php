@@ -64,8 +64,8 @@
               
                     <img 
                     class="rounded-full"
-                    alt="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
-                    title="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                    alt="Profilna fotografija {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                    title="Profilna fotografija {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
                     src="{{$rent->librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $rent->librarian->photo}}" />
 
                 </div>
@@ -124,8 +124,8 @@
 
                       <img 
                       class="rounded-full"
-                      alt="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
-                      title="Profilna slika {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                      alt="Profilna fotografija {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
+                      title="Profilna fotografija {{$rent->librarian->gender->id == 1 ? 'bibliotekara' : 'bibliotekarke'}}"
                       src="{{$rent->librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $rent->librarian->photo}}" />
 
                   </div>

@@ -276,8 +276,8 @@
                     <img 
                     class="p-2 border-2 border-gray-300"
                     width="300px"
-                    alt="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
-                    title="Profilna slika {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
+                    alt="Profilna fotografija {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
+                    title="Profilna fotografija {{$admin->gender->id == 1 ? 'administratora' : 'administratorke'}}"
                     src="{{$admin->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . $admin->photo}}"/>
                 </div>
                 @if (Auth::id() == $admin->id)

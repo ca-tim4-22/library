@@ -178,7 +178,7 @@ Na našoj aplikaciji to radimo pomoću web rute "/shutdown" koja je zaštićena.
 * Custom web rute za login i register
 * Upustvo za CSV
 * Dozvoljena 3 pokušaja logovanja
-* Brisanje slika nakon brisanja korisnika, knjige itd.
+* Brisanje fotografija nakon brisanja korisnika, knjige itd.
 * Multi filteri
 * Default podaci prilikom migracija
 * Scroll indicator - funkcionalnost

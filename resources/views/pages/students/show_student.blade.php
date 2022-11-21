@@ -278,8 +278,8 @@
                     <img 
                     class="p-2 border-2 border-gray-300"
                     width="300px"
-                    alt="Profilna slika {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
-                    title="Profilna slika {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
+                    alt="Profilna fotografija {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
+                    title="Profilna fotografija {{$student->gender->id == 1 ? 'učenika' : 'učenice'}}"
                     src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"/>
                 </div>
                 @if (Auth::id() == $student->id)

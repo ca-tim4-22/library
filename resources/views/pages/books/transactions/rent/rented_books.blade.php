@@ -149,7 +149,7 @@
 
                                     <!-- Datum izdavanja + dropdown filter for date -->
                                     <td
-                                        class="font-bold relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
+                                        class="relative px-4 py-4 text-sm font-bold leading-4 tracking-wider text-left cursor-pointer datumDrop-toggle">
                                         Datum izdavanja<i class="fas fa-filter"></i>
                                         <div id="datumDropdown"
                                              class="datumMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] pin-l border-2 border-gray-300">
@@ -180,7 +180,7 @@
                                     </td>
                                     <!-- Datum vracanja + dropdown filter for date -->
                                     <td
-                                        class="font-bold relative px-4 py-4 text-sm leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
+                                        class="relative px-4 py-4 text-sm font-bold leading-4 tracking-wider text-left cursor-pointer vracanjeDrop-toggle">
                                         Datum vraćanja<i class="fas fa-filter"></i>
                                         <div id="vracanjeDropdown"
                                              class="vracanjeMenu hidden absolute rounded bg-white min-w-[310px] p-[10px] shadow-md top-[42px] right-0 border-2 border-gray-300">
@@ -212,7 +212,7 @@
 
                                     <!-- Dropdown filter for date -->
                                     <form action="{{route('rented-books')}}">
-                                    <td class="font-bold relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    <td class="relative px-4 py-4 text-sm font-bold leading-4 tracking-wider text-left">
 
                                         <button 
                                         type="button" 
@@ -257,7 +257,7 @@
 
                                     <!-- Dropdown filter for librarians -->
                                     <form action="{{route('rented-books')}}">
-                                    <td class="font-bold relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                    <td class="relative px-4 py-4 text-sm font-bold leading-4 tracking-wider text-left">
                                         
                                         <button 
                                         type="button" 
@@ -302,8 +302,8 @@
                                                         </div>
                                                     </label>
                                                     <img width="40px" height="30px" class="ml-[15px] rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
-                                                    alt="Profilna slika bibliotekara: {{$librarian->name}}"
-                                                    title="Profilna slika bibliotekara: {{$librarian->name}}" />
+                                                    alt="Profilna fotografija bibliotekara: {{$librarian->name}}"
+                                                    title="Profilna fotografija bibliotekara: {{$librarian->name}}" />
                                                     <p class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
                                                         {{$librarian->name}}
                                                     </p>

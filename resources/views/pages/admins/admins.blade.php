@@ -106,7 +106,7 @@
         </form>
         </span>
         <input type="search" name="trazeno" value="{{$searched}}"
-            class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+            class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
             placeholder="Traži..." autocomplete="off">
     </div>
     </div>
@@ -247,8 +247,8 @@
                         </td>
                         <td class="flex flex-row items-center px-4 py-4">
                           <img class="object-cover w-8 h-8 mr-2 rounded-full" src="{{$admin->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/administrators/' . $admin->photo}}"
-                          alt="Profilna slika"
-                          title="Profilna slika" />
+                          alt="Profilna fotografija"
+                          title="Profilna fotografija" />
 
                           <a href="{{route('show-admin', $admin->username)}}">
                               <span class="font-medium text-center">{{$admin->name}}</span>

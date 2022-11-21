@@ -85,8 +85,8 @@
                                                     </div>
                                                 </label>
                                                     <img width="40px" height="30px" class="ml-[15px] rounded-full" src="{{$student->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $student->photo}}"
-                                                    alt="Profilna slika učenika: {{$student->name}}"
-                                                    title="Profilna slika učenika: {{$student->name}}" />
+                                                    alt="Profilna fotografija učenika: {{$student->name}}"
+                                                    title="Profilna fotografija učenika: {{$student->name}}" />
                                                 <p
                                                     class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
                                                     {{$student->name}}
@@ -163,8 +163,8 @@
                                                     </div>
                                                 </label>
                                             <img width="40px" height="30px" class="ml-[15px] rounded-full" src="{{$librarian->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/librarians/' . $librarian->photo}}"
-                                            alt="Profilna slika bibliotekara: {{$librarian->name}}"
-                                            title="Profilna slika bibliotekara: {{$librarian->name}}" />
+                                            alt="Profilna fotografija bibliotekara: {{$librarian->name}}"
+                                            title="Profilna fotografija bibliotekara: {{$librarian->name}}" />
                                             <p
                                                 class="block p-2 text-black cursor-pointer group-hover:text-blue-600">
                                                 {{$librarian->name}}
@@ -336,8 +336,8 @@
                <div class="activity-card flex flex-row mb-[30px]">
                <div class="w-[60px] h-[60px]">
                   <img class="rounded-full" src="{{$rent->borrow->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $rent->borrow->photo}}"
-                  alt="Profilna slika učenika: {{$rent->borrow->name}}"
-                  title="Profilna slika učenika: {{$rent->borrow->name}}" />
+                  alt="Profilna fotografija učenika: {{$rent->borrow->name}}"
+                  title="Profilna fotografija učenika: {{$rent->borrow->name}}" />
                 </div>
                 <div class="ml-[15px] mt-[5px] flex flex-col">
                   <div class="text-gray-500 mb-[5px]">
@@ -393,8 +393,8 @@
               <div class="activity-card flex flex-row mb-[30px]">
                 <div class="w-[60px] h-[60px]">
                    <img class="rounded-full" src="{{$reservation->reservation->made_for->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/students/' . $reservation->reservation->made_for->photo}}"
-                   alt="Profilna slika učenika: {{$reservation->reservation->made_for->name}}"
-                   title="Profilna slika učenika: {{$reservation->reservation->made_for->name}}" />
+                   alt="Profilna fotografija učenika: {{$reservation->reservation->made_for->name}}"
+                   title="Profilna fotografija učenika: {{$reservation->reservation->made_for->name}}" />
                  </div>
                  <div class="ml-[15px] mt-[5px] flex flex-col">
                    <div class="text-gray-500 mb-[5px]">
