@@ -73,7 +73,7 @@
                 <div class="mt-[50px]">
                     <label class="mt-6 cursor-pointer">
                         @error('photo')
-                        <span class="text-red-500">{{$message}}</span>
+                        <p class="mb-2 text-center text-red-500">{{$message}}</p>
                         @enderror
                         <div id="empty-cover-art" class="relative w-48 h-48 py-[48px] text-center border-2 border-gray-300 border-solid">
                             <div class="py-4">
@@ -95,7 +95,9 @@
             <div class="absolute bottom-0 w-full">
                 <div class="flex flex-row">
                     <div class="inline-block w-full text-white text-right py-[7px] mr-[100px]">
-                        <button type="button" onclick="history.back()"
+                        
+                        <button type="button" 
+                            onclick="location.href='{{ route('all-author') }}'"
                             class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                             Poništi <i class="fas fa-times ml-[4px]"></i>
                         </button>

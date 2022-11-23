@@ -77,7 +77,7 @@
                          <span>Korisničko ime <span class="text-red-500">*</span></span>
                          <input type="text" name="username" id="username" value="{{$librarian->username}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsUsernameBibliotekarEdit()"/>
                      </div>
-                    
+
                  </div>
 
                  @if (Auth::id() != $librarian->id)

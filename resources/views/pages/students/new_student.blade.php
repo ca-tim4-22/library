@@ -87,7 +87,7 @@
                                     @enderror
                                 </span>
                                 <span style="margin-left: 10px" class="hide_this color" id="characters-counter">13</span>
-                                <i style="color: rgb(3, 241, 3);margin-left: 10px" class="show_this hidden fas fa-check"></i>
+                                <i style="color: rgb(3, 241, 3);margin-left: 10px" class="hidden show_this fas fa-check"></i>
                                 </p>
                             <input id="count" type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]" onkeydown="clearErrorsJmbgBibliotekar()" value="{{old('JMBG')}}"/>
                         </div>
@@ -151,7 +151,8 @@
                 <div class="absolute bottom-0 w-full">
                     <div class="flex flex-row">
                         <div class="inline-block w-full text-right py-[7px] mr-[100px] text-white">
-                            <button type="button" onclick="history.back()"
+                            <button type="button" 
+                                    onclick="location.href='{{ route('all-student') }}'"
                                     class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
                                 Poništi <i class="fas fa-times ml-[4px]"></i>
                             </button>
