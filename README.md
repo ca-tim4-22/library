@@ -124,6 +124,14 @@ Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti ap
 - Uspješno
 - Bezuspješno
 
+## Zaštita
+- Middleware zaštita na svim rutama (web i api)
+- CSRF token - protekcija
+- Korišćene polise
+- Hash-ovanje lozinki - bcrypt
+- Zaštita na tri nivoa.. po rolama -> administrator/ka, bibliotekar/ka i učenik/ca
+
+
 ## Cron jobs
 > Postoje 2 "zadatka":
 - Prvi zadatak koji se izvršava na dnevnom nivou i koji aktivne istekle rezervacije automatski arhivira
@@ -137,21 +145,21 @@ Na našoj aplikaciji to radimo pomoću web rute "/shutdown" koja je zaštićena.
 2. Kada želite upaliti aplikaciju -> Otići na URL "{{base_url}}/live.php" nakon čega će vam se pojaviti "redirect" stranica
 
 ## Dodatno
-* CSRF protekcija
-* Middleware zaštita na svim rutama(web i api)
 * Auto deployment - cPanel
 * Cron jobs
 * Ajax requests
 * Detaljne flash-session poruke 
-* Korisnici, kategorije i žanrovi imaju standardnu(default) fotografiju
+* Korisnici, kategorije i žanrovi imaju standardnu (default) fotografiju
 * Dinamična statistika na "dashboard" stranici
 * Implementirana Tailwind paginacija sa padajućom listom 
 * Laravel Events & Listeners (last login at, login count)
 * Laravel Accessors
 * Laravel Task Scheduling
+* Laravel Eloquent / Query Builder
 * Custom Laravel Validation rules
 * Laravel components
 * Polisa za paginaciju
+* Organizovane rute po folderima
 * Notification count 
 * Password indicator - funkcionalnost
 * Full text search | Algolia | Laravel Scout
@@ -169,7 +177,7 @@ Na našoj aplikaciji to radimo pomoću web rute "/shutdown" koja je zaštićena.
 * API Token expire -> 1h -> 3600s
 * API Token revoke nakon izmjene lozinke
 * API Resources i Collections
-* Validacija email adrese(školski email)
+* Validacija email adrese (školski email)
 * Preloader - animacija
 * Polovi za korisnike 
 * Password eye - funkcionalnost
