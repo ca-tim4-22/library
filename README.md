@@ -100,6 +100,30 @@ Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti ap
 - aktivnu rezervaciju ili rezervaciju na čekanju, ne može poslati zahtjev za rezervaciju knjige
 - ukoliko ima odbijenu ili isteklu rezervaciju, može poslati zahtjev za rezervaciju knjige
 
+## Tabelarni prikaz:
+
+| Funckionalnost     | Administrator/ka        | Bibliotekar/ka      | Učenik/ca  |
+| ------------- |:-------------:|:-------------:| -----:|
+| Gašenje aplikacije           | ✔️ | ❌ | ❌ |
+| Aktivacija aplikacije        | ✔️ | ❌ | ❌ |
+| Upravljanje bazom - CSV      | ✔️ | ❌ | ❌ |
+| Izmjena meta informacija     | ✔️ | ❌ | ❌ |
+| Izmjena globalnih varijabli  | ✔️ | ❌ | ❌ |
+| CRUD nad administratorima    | ✔️ | ❌ | ❌ |
+| CRUD nad bibliotekarima      | ✔️ | ✔️ | ❌ |
+| CRUD nad učenicima           | ✔️ | ✔️ | ❌ |
+| CRUD nad knjigama            | ✔️ | ✔️ | ❌ |
+| CRUD nad autorima            | ✔️ | ✔️ | ❌ |
+| CRUD nad podešavanjima       | ✔️ | ✔️ | ❌ |
+| Izmjena svog profila         | ✔️ | ✔️ | ✔️ |
+| Prikaz dostupnih knjiga      | ✔️ | ✔️ | ✔️ |
+| Izdate knjige                | ✔️ | ✔️ | ❌ |
+| Vraćene knjige               | ✔️ | ✔️ | ❌ |
+| Knjige u prekoračenju        | ✔️ | ✔️ | ❌ |
+| Aktivne rezervacije knjiga   | ✔️ | ✔️ | ✔️ |
+| Arhivirane rezervacije knjiga| ✔️ | ✔️ | ✔️ |
+| Rezervacija knjige           | ✔️ | ✔️ | ✔️ |
+
 ## Napomena:
 > Ukoliko rezervaciju izvrši bibliotekar/ka, ona odmah dobija status "Prihvaćena", a ukoliko je izvrši učenik/ca dobija status "Na čekanju" sve dok je bibliotekar/ka ne prihvati
 
