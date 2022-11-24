@@ -23,6 +23,7 @@ class UserCollection extends JsonResource
             'email' => $this->email,
             'JMBG' => $this->JMBG,
             'role' => $this->type->name,
+            'photo' => $this->photo,
             'login_count' => $this->login_count,
             'last_login_at' => $this->last_login_at->diffForHumans(),
         ];

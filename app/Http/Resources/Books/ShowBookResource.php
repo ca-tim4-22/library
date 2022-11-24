@@ -49,6 +49,7 @@ class ShowBookResource extends JsonResource
             'rented_count' => $this->rented_count,
             'reserved_count' => $this->reserved_count,
             'page_count' => $this->page_count,
+            'cover' => $this->cover->photo,
             'pdf' => $answer,
             'categories' => [
                 'ID' => $category->category->id,

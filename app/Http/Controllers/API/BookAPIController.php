@@ -107,7 +107,7 @@ class BookAPIController extends Controller
         ]);
 
         return response([
-            'data' => new ShowBookResource($book)
+            "message" => "Uspješno ste dodali knjigu",
         ], Response::HTTP_CREATED);
     }
 

@@ -17,7 +17,7 @@ class ShowGlobalVariableResource extends JsonResource
     {
         return [
             'ID' => $this->id,
-            'name' => Str::ucfirst($this->name),
+            'name' => Str::ucfirst($this->variable),
             'value' => $this->value,
         ];
     }
