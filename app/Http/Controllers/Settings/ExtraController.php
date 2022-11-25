@@ -27,6 +27,11 @@ class ExtraController extends Controller
         return view('pages.settings.extra.settings-extra');
     }
 
+    public function indexStatistics()
+    {
+        return view('pages.settings.extra.statistics');
+    }
+
     function csvToArray($filename = '', $delimiter = ',')
     {
         if (!file_exists($filename) || !is_readable($filename))
