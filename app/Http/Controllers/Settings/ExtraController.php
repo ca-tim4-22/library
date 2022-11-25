@@ -9,7 +9,9 @@ use App\Models\BookAuthor;
 use App\Models\BookCategory;
 use App\Models\BookGenre;
 use App\Models\Gallery;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ExtraController extends Controller
 {
@@ -29,7 +31,14 @@ class ExtraController extends Controller
 
     public function indexStatistics()
     {
-        return view('pages.settings.extra.statistics');
+        $adminCount = User::where('user_type_id', 3)->count();
+        $adminToday = User::whereDate('created_at', today())->where('user_type_id', 3)->count();
+        $librarianCount = User::where('user_type_id', 2)->count();
+        $librarianToday = User::whereDate('created_at', today())->where('user_type_id', 2)->count();
+        $studentCount = User::where('user_type_id', 1)->count();
+        $studentToday = User::whereDate('created_at', today())->where('user_type_id', 2)->count();
+        $bookCount = Book::count();
+        return view('pages.settings.extra.statistics', compact('adminCount', 'librarianCount', 'studentCount', 'bookCount', 'adminToday', 'librarianToday', 'studentToday'));
     }
 
     function csvToArray($filename = '', $delimiter = ',')

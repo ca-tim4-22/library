@@ -55,40 +55,97 @@
             .fas{
                 font-size: 25px;
             }
-            .count {
+            .counter {
                 color: #4558BE;
                 font-size: 35px;
             }
+            .fa-chevron-down {
+                color: #4558BE;
+            }
         </style>
-
       <div class="flexx">
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-user-shield"></i>
             <br>
-            <p class="count">8</p>
+            <p class="counter" data-count="{{$adminCount}}"></p>
             <p>Administratori</p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-user-friends"></i>
             <br>
-            <p class="count">12</p>
+            <p class="counter" data-count="{{$librarianCount}}"></p>
             <p>Bibliotekari</p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-users"></i>
             <br>
-            <p class="count">32</p>
+            <p class="counter" data-count="{{$studentCount}}"></p>
             <p>Učenici</p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-book"></i>
             <br>
-            <p class="count">128</p>
+            <p class="counter" data-count="{{$bookCount}}"></p>
             <p>Knjige</p>
         </div>
       </div>
 
+      <h1 style="text-align: center;margin-bottom: -80px">Prethodna 24 časa
+    <br>
+    <i class="fas fa-chevron-down"></i></h1>
+      <div class="flexx">
+        <div class="one" style="margin: 0px 100px;font-size: 50px">
+            <i class="fas fa-user-shield"></i>
+            <br>
+            <p class="counter" data-count="{{$adminToday}}"></p>
+            <p>Administratori</p>
+        </div>
+        <div class="one" style="margin: 0px 100px;font-size: 50px">
+            <i class="fas fa-user-friends"></i>
+            <br>
+            <p class="counter" data-count="{{$librarianToday}}"></p>
+            <p>Bibliotekari</p>
+        </div>
+        <div class="one" style="margin: 100px;font-size: 50px">
+            <i class="fas fa-users"></i>
+            <br>
+            <p class="counter" data-count="{{$studentToday}}"></p>
+            <p>Učenici</p>
+        </div>
+        <div class="one" style="margin: 100px;font-size: 50px">
+            <i class="fas fa-book"></i>
+            <br>
+            <p class="counter" data-count="{{$bookCount}}"></p>
+            <p>Knjige</p>
+        </div>
+      </div>
+      <hr>
     </div>
+
+    <script>
+        $(document).ready(function () {
+$(".counter").each(function () {
+   var count = $(this);
+   var countTo = count.attr('data-count');
+   // console.log(countTo);
+   $({countNum:count.text()}).animate({
+           countNum:countTo,
+       },
+       {
+
+           duration:2000,
+           easing:'linear',
+           step:function(){
+               count.text(Math.floor(this.countNum));
+           },
+           complete:function(){
+               count.text(this.countNum);
+           }
+       });
+});
+});
+</script>
+
 
 </div>
  </section>
