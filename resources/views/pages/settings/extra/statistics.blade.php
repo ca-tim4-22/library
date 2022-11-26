@@ -52,7 +52,7 @@
                 text-transform: uppercase;
                 font-weight: 500;
             }
-            .fas{
+            .one .fas {   
                 font-size: 25px;
             }
             .counter {
@@ -90,9 +90,9 @@
         </div>
       </div>
 
-      <h1 style="text-align: center;margin-bottom: -80px">Prethodna 24 časa
-    <br>
-    <i class="fas fa-chevron-down"></i></h1>
+      <h1 class="text-center" style="margin-bottom: -120px;margin-top: -50px">Prethodna 24 časa <br>
+      <i class="fas fa-chevron-down"></i>
+      </h1>    
       <div class="flexx">
         <div class="one" style="margin: 0px 100px;font-size: 50px">
             <i class="fas fa-user-shield"></i>
@@ -122,17 +122,15 @@
       <hr>
     </div>
 
-    <script>
-        $(document).ready(function () {
+<script>
+$(document).ready(function () {
 $(".counter").each(function () {
    var count = $(this);
    var countTo = count.attr('data-count');
-   // console.log(countTo);
    $({countNum:count.text()}).animate({
            countNum:countTo,
        },
        {
-
            duration:2000,
            easing:'linear',
            step:function(){
@@ -148,6 +146,6 @@ $(".counter").each(function () {
 
 
 </div>
- </section>
+</section>
 
 @endsection

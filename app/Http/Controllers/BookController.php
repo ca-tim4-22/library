@@ -11,12 +11,10 @@ use App\Models\Category;
 use App\Models\Gallery;
 use App\Models\GlobalVariable;
 use App\Models\Rent;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session as FacadesSession;
-use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -134,18 +132,7 @@ class BookController extends Controller
             }
         }
 
-        return view('pages.books.books', compact('books', 'count', 'authors', 'categories', 'searched', 'error', 
-        'selected_a', 
-        'selected_c', 
-        'id_a',
-        'id_c',
-        'error',
-        'show',
-        'items', 
-        'variable', 
-        'show_all',
-        'searched_book',
-        'show_criterium',
+        return view('pages.books.books', compact('books', 'count', 'authors', 'categories', 'searched', 'error', 'selected_a', 'selected_c', 'id_a', 'id_c', 'error', 'show', 'items',  'variable', 'show_all', 'searched_book', 'show_criterium',
     ));
     }
 

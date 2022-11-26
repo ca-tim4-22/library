@@ -113,7 +113,7 @@
                             </form>
                             </span>
                             <input type="search" name="trazeno" value="{{$searched_book}}"
-                                class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+                                class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
                                 placeholder="Traži..." autocomplete="off">
                         </div>
                         </div>
@@ -193,7 +193,7 @@
                                 <!-- Autor + dropdown filter for autor -->
     
                                 <form action="{{route('all-books')}}">
-                                <td class="checkme relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left checkme">
 
                                     <button 
                                     type="button"
@@ -292,7 +292,7 @@
                                 <!-- Kategorija + dropdown filter for kategorija -->
                                 
                                 <form action="{{route('all-books')}}">
-                                <td class="checkme relative px-4 py-4 text-sm leading-4 tracking-wider text-left">
+                                <td class="relative px-4 py-4 text-sm leading-4 tracking-wider text-left checkme">
 
                                     <button 
                                     type="button"
@@ -388,7 +388,7 @@
                                     </button>
                                 </td>
                                 
-                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     Na raspolaganju
                                 </th>
 
@@ -404,7 +404,7 @@
                                     </button>
                                 </td>
 
-                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     Rezervisano
                                 </th>
 
@@ -420,7 +420,7 @@
                                     </button>
                                 </td>
 
-                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     Izdato
                                 </th>
 
@@ -436,7 +436,7 @@
                                     </button>
                                 </td>
                                 
-                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     U prekoračenju
                                 </th>
 
@@ -452,7 +452,7 @@
                                     </button>
                                 </td>
                                 
-                                <th class="checkme px-4 py-4 leading-4 tracking-wider text-left" id="arrow">
+                                <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
                                     Ukupna količina
                                 </th>
 
@@ -484,7 +484,7 @@
 
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{$book->placeholder == 1 ? $book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
+                                    src="{{$book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
 
@@ -530,7 +530,7 @@
                                       {{$count}}
                                 </td>
 
-                                <td class="checkme px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap checkme">
                                     {{$book->quantity_count}}
                                 </td>
 
