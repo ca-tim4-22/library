@@ -481,7 +481,7 @@
                                     </label>
                                 </td>
                                 <td class="flex flex-row items-center px-4 py-4">
-
+                                    
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
                                     src="{{$book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
