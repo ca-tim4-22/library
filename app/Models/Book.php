@@ -68,6 +68,6 @@ class Book extends Model
     }
     
     public function cover() {
-        return $this->hasOne(Gallery::class, 'book_id')->where('cover', 1);
+        return $this->hasOne(Gallery::class)->where('cover', 1);
     }
 }
