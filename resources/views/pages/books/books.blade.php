@@ -484,7 +484,7 @@
                                     
                                     <img 
                                     class="object-cover w-8 mr-2 h-11" 
-                                    src="{{$book->cover->photo : '/storage/book-covers/' . $book->cover->photo}}" 
+                                    src="{{'/storage/book-covers/' . $book->cover->photo}}" 
                                     alt="Naslovna fotografija" 
                                     title="Naslovna fotografija" />
 
