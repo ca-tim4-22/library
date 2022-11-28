@@ -105,9 +105,10 @@
             </button>
         </form>
         </span>
-        <input type="search" name="trazeno" value="{{$searched}}"
+        <input type="text" name="trazeno" value="{{$searched}}"
             class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
             placeholder="Traži..." autocomplete="off">
+            <img class="algolia" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Logo-algolia-nebula-blue-withspaces%402x.png/1200px-Logo-algolia-nebula-blue-withspaces%402x.png" alt="">
     </div>
     </div>
     </form>

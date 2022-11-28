@@ -14,6 +14,18 @@
   transition: 0.3s ease-in-out;
 }
 
+/* Algolia logo */
+
+.algolia {
+  width: 115px;
+  display:inline;
+  margin-left: -60px;
+}
+
+.algolia:hover {
+  opacity: 0.8 !important;
+  transition: 0.25s;
+}
 
 /* Option dropdown */
 
