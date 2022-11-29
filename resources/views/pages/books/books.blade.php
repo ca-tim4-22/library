@@ -115,6 +115,9 @@
                             <input type="search" name="trazeno" value="{{$searched_book}}"
                                 class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
                                 placeholder="Traži..." autocomplete="off">
+                                <a href="https://www.algolia.com" target="_blank">
+                                    <img class="algolia" src="{{asset('algolia.png')}}" alt="Algolia Logo">
+                                </a>
                         </div>
                         </div>
                         </form>
