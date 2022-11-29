@@ -9,11 +9,6 @@
 /* Custom */
 /* ----------------------------------------------------------- */
 
-#haha:hover {
-  background-color: #1d35c1;
-  transition: 0.3s ease-in-out;
-}
-
 .algolia {
     height: 50px;
     display: inline;
@@ -107,6 +102,11 @@ select::-webkit-scrollbar-thumb:hover {
 }
 
 /* Sidebar */
+
+#haha:hover {
+    background-color: #1d35c1;
+    transition: 0.3s ease-in-out;
+}
 
 .show_expand {
   display: inline !important;
