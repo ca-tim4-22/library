@@ -8,8 +8,8 @@
             <div class="block">
                 <a href="{{route('dashboard')}}" class="text-[20px] font-medium">
                     <div class="flex">
-                        <img src='{{asset('img/logo.svg')}}' alt="Online Biblioteka" title="Online Biblioteka" width="35px" height="35px">
-                        <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online Biblioteka</p>
+                        <img src='{{asset('img/logo.svg')}}' alt="Online biblioteka" title="Online biblioteka" width="35px" height="35px">
+                        <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online biblioteka</p>
                     </div>
 
                 </a>

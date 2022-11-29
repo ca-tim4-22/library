@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 {{-- Title --}}
-<title>Zaboravljena lozinka - Online Biblioteka</title>
+<title>Zaboravljena lozinka - Online biblioteka</title>
 
 {{-- Icon --}}
 <link rel="icon" type="image/x-icon" href="{{ asset('img/library-favicon.ico') }}">

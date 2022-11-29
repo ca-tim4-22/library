@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Izmijeni bibliotekara | Online Biblioteka</title>
+<title>Izmijeni bibliotekara | Online biblioteka</title>
 
 @endsection
 

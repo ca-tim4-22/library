@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>Pristup odbijen - Online Biblioteka</title>
+<title>Pristup odbijen - Online biblioteka</title>
 <!-- Icon -->
 <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
 <!-- Meta -->
@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
 <meta http-equiv="content-language" content="en" />
 <meta name="author" content="tim nullable()" />
-<meta name="description" content="Online Biblioteka - projekat namijenjen srednjoškolcima..." />
+<meta name="description" content="Online biblioteka - projekat namijenjen srednjoškolcima..." />
 <meta name="keywords" content="ict cortex, cortex, coinis, srednjoškolci, učenici, programiranje, kodiranje, biblioteka" />
 <meta name="theme-color" content="#D22336">
 <!-- Style -->

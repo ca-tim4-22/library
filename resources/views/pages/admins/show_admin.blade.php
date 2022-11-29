@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Profil administratora | Online Biblioteka</title>
+<title>Profil administratora | Online biblioteka</title>
 
 <!-- ijaboCropTool Style -->
 <link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">

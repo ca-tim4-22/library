@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>Operacija uspješna | Online Biblioteka</title>
+<title>Operacija uspješna | Online biblioteka</title>
 <!-- Meta -->
 <x-meta></x-meta>
 <div class="photo">

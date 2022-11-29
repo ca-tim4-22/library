@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Profil učenika | Online Biblioteka</title>
+<title>Profil učenika | Online biblioteka</title>
 
 <!-- ijaboCropTool Style -->
 <link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">
