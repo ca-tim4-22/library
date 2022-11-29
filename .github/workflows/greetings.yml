@@ -1,0 +1,16 @@
+name: Poruka
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    steps:
+    - uses: actions/first-interaction@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: "Hvala Vam što ste prijavili problem! Riješićemo ga što je brže moguće!"
+        pr-message: "Hvala Vam što ste poslali pull request! Uskoro ćemo ga razmotriti!"
