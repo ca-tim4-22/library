@@ -261,7 +261,7 @@
                               <a href="{{route('show-librarian', $rent->librarian->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$rent->librarian->name}}
                               </a>
-                              je izdao/la knjigu
+                              je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu
                               <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$rent->borrow->name}}
                               </a>

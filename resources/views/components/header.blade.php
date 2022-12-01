@@ -11,7 +11,6 @@
                         <img src='{{asset('img/logo.svg')}}' alt="Online biblioteka" title="Online biblioteka" width="35px" height="35px">
                         <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;Online biblioteka</p>
                     </div>
-
                 </a>
             </div>
         </a>
@@ -93,11 +92,11 @@
                 </div>
                 @endif
             
-                <!-- nullable() Logo -->
+                <!-- nullable() logo -->
                 <a href="https://perisicnikola37.github.io/nullable" target="_blank">
                     <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="nullable() logo">
                 </a>
-                 <!-- School Logo -->
+                 <!-- school logo -->
                 <a href="https://elektropg.online/ets/" target="_blank">
                     <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" alt="Vaso Aligrudić">
                 </a>
