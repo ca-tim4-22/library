@@ -90,8 +90,8 @@
                                 name="photo"
                                 class="absolute w-48 h-[188px] bottom-0"
                                 id="image-output-student"
-                                alt="Image"
-                                title="Image"
+                                alt="Fotografija autora"
+                                title="Fotografija autora"
                                 src="{{$author->photo == 'placeholder' ? '/img/profileImg-default.jpg' : '/storage/authors/' . $author->photo}}"/>
                         </div>
                     </label>
