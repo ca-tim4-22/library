@@ -95,11 +95,11 @@
             
                 <!-- nullable() Logo -->
                 <a href="https://perisicnikola37.github.io/nullable" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="Nullable Logo" title="Nullable Logo">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="38px" src="https://i.postimg.cc/CMnpbPWn/nullable.jpg" alt="nullable() logo">
                 </a>
                  <!-- School Logo -->
                 <a href="https://elektropg.online/ets/" target="_blank">
-                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" alt="Vaso Aligrudić" title="Vaso Aligrudić">
+                    <img style="height: 2%;border-radius: 30px;margin-left: 15px" width="42px" src="https://i.postimg.cc/cHNTcVzk/elektro-logo.png" alt="Vaso Aligrudić">
                 </a>
                 <!-- User Profile Photo -->
                 <div class="ml-[10px] relative block">
