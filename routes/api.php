@@ -21,113 +21,136 @@ Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
 // Version 1.0
 Route::group(['prefix'=>'v1'], function(){
 
+    
+Route::controller(UserAPIController::class)->group(function() {
 // Users
-Route::get('/korisnici', [UserAPIController::class, 'users']);
+Route::get('/korisnici', 'users');
 
 // Students
-Route::get('/ucenici-svi', [UserAPIController::class, 'students']);
-Route::get('/ucenici', [UserAPIController::class, 'studentsMale']);
-Route::get('/ucenice', [UserAPIController::class, 'studentsFemale']);
+Route::get('/ucenici-svi', 'students');
+Route::get('/ucenici', 'studentsMale');
+Route::get('/ucenice', 'studentsFemale');
 
 // Librarians
-Route::get('/bibliotekari-svi', [UserAPIController::class, 'librarians']);
-Route::get('/bibliotekari', [UserAPIController::class, 'librariansMale']);
-Route::get('/bibliotekarke', [UserAPIController::class, 'librariansFemale']);
+Route::get('/bibliotekari-svi', 'librarians');
+Route::get('/bibliotekari', 'librariansMale');
+Route::get('/bibliotekarke', 'librariansFemale');
 
 // Administrators
-Route::get('/administratori-svi', [UserAPIController::class, 'administrators']);
-Route::get('/administratori/{parameter}', [UserAPIController::class, 'sortAdministrators']);
+Route::get('/administratori-svi', 'administrators');
+Route::get('/administratori/{parameter}', 'sortAdministrators');
 
 // User types
-Route::get('/tipovi-korisnika', [UserAPIController::class, 'userTypes']);
-Route::get('/tipovi-korisnika-broj', [UserAPIController::class, 'userTypesCount']);
+Route::get('/tipovi-korisnika', 'userTypes');
+Route::get('/tipovi-korisnika-broj', 'userTypesCount');
 
 // User sorting
-Route::get('/bibliotekari/{parameter}', [UserAPIController::class, 'sortLibrarians']);
-Route::get('/ucenici/{parameter}', [UserAPIController::class, 'sortStudents']);
-Route::get('/administratori/{parameter}', [UserAPIController::class, 'sortAdministrators']);
+Route::get('/bibliotekari/{parameter}', 'sortLibrarians');
+Route::get('/ucenici/{parameter}', 'sortStudents');
+Route::get('/administratori/{parameter}', 'sortAdministrators');
+});
 
+Route::controller(BookAPIController::class)->group(function() {
 // Books
-Route::get('/knjige', [BookAPIController::class, 'books']);
-Route::get('/knjiga/{id}', [BookAPIController::class, 'showBook'])->name('show-book-api');
-Route::post('/nova-knjiga', [BookAPIController::class, 'storeBook']);
-Route::put('/izmijeni-knjigu/{id}', [BookAPIController::class, 'updateBook']);
-Route::delete('/izbrisi-knjigu/{id}', [BookAPIController::class, 'destroyBook']);
-Route::get('/trazi-knjigu/{title}', [BookAPIController::class, 'searchBook']);
+Route::get('/knjige', 'books');
+Route::get('/knjiga/{id}', 'showBook')->name('show-book-api');
+Route::post('/nova-knjiga', 'storeBook');
+Route::put('/izmijeni-knjigu/{id}', 'updateBook');
+Route::delete('/izbrisi-knjigu/{id}', 'destroyBook');
+Route::get('/trazi-knjigu/{title}', 'searchBook');
+});
 
+Route::controller(CategoryAPIController::class)->group(function() {
 // Categories
-Route::get('/kategorije', [CategoryAPIController::class, 'categories']);
-Route::get('/kategorija/{id}', [CategoryAPIController::class, 'showCategory'])->name('show-category-api');
-Route::post('/nova-kategorija', [CategoryAPIController::class, 'storeCategory']);
-Route::put('/izmijeni-kategoriju/{id}', [CategoryAPIController::class, 'updateCategory']);
-Route::delete('/izbrisi-kategoriju/{id}', [CategoryAPIController::class, 'destroyCategory']);
-Route::get('/trazi-kategoriju/{name}', [CategoryAPIController::class, 'searchCategory']);
+Route::get('/kategorije', 'categories');
+Route::get('/kategorija/{id}', 'showCategory')->name('show-category-api');
+Route::post('/nova-kategorija', 'storeCategory');
+Route::put('/izmijeni-kategoriju/{id}', 'updateCategory');
+Route::delete('/izbrisi-kategoriju/{id}', 'destroyCategory');
+Route::get('/trazi-kategoriju/{name}', 'searchCategory');
+});
 
+Route::controller(GenreAPIController::class)->group(function() {
 // Genres
-Route::get('/zanrovi', [GenreAPIController::class, 'genres']);
-Route::get('/zanr/{id}', [GenreAPIController::class, 'showGenre'])->name('show-genre-api');
-Route::post('/novi-zanr', [GenreAPIController::class, 'storeGenre']);
-Route::put('/izmijeni-zanr/{id}', [GenreAPIController::class, 'updateGenre']);
-Route::delete('/izbrisi-zanr/{id}', [GenreAPIController::class, 'destroyGenre']);
-Route::get('/trazi-zanr/{name}', [GenreAPIController::class, 'searchGenre']);
+Route::get('/zanrovi', 'genres');
+Route::get('/zanr/{id}', 'showGenre')->name('show-genre-api');
+Route::post('/novi-zanr', 'storeGenre');
+Route::put('/izmijeni-zanr/{id}', 'updateGenre');
+Route::delete('/izbrisi-zanr/{id}', 'destroyGenre');
+Route::get('/trazi-zanr/{name}', 'searchGenre');
+});
 
+Route::controller(PublisherAPIController::class)->group(function() {
 // Publishers
-Route::get('/izdavaci', [PublisherAPIController::class, 'publishers']);
-Route::get('/izdavac/{id}', [PublisherAPIController::class, 'showPublisher'])->name('show-publisher-api');
-Route::post('/novi-izdavac', [PublisherAPIController::class, 'storePublisher']);
-Route::put('/izmijeni-izdavaca/{id}', [PublisherAPIController::class, 'updatePublisher']);
-Route::delete('/izbrisi-izdavaca/{id}', [PublisherAPIController::class, 'destroyPublisher']);
-Route::get('/trazi-izdavaca/{name}', [PublisherAPIController::class, 'searchPublisher']);
+Route::get('/izdavaci', 'publishers');
+Route::get('/izdavac/{id}', 'showPublisher')->name('show-publisher-api');
+Route::post('/novi-izdavac', 'storePublisher');
+Route::put('/izmijeni-izdavaca/{id}', 'updatePublisher');
+Route::delete('/izbrisi-izdavaca/{id}', 'destroyPublisher');
+Route::get('/trazi-izdavaca/{name}', 'searchPublisher');
+});
 
+Route::controller(BindingAPIController::class)->group(function() {
 // Bindings
-Route::get('/povezi', [BindingAPIController::class, 'bindings']);
-Route::get('/povez/{id}', [BindingAPIController::class, 'showBinding'])->name('show-binding-api');
-Route::post('/novi-povez', [BindingAPIController::class, 'storeBinding']);
-Route::put('/izmijeni-povez/{id}', [BindingAPIController::class, 'updateBinding']);
-Route::delete('/izbrisi-povez/{id}', [BindingAPIController::class, 'destroyBinding']);
-Route::get('/trazi-povez/{name}', [BindingAPIController::class, 'searchBinding']);
+Route::get('/povezi', 'bindings');
+Route::get('/povez/{id}', 'showBinding')->name('show-binding-api');
+Route::post('/novi-povez', 'storeBinding');
+Route::put('/izmijeni-povez/{id}', 'updateBinding');
+Route::delete('/izbrisi-povez/{id}', 'destroyBinding');
+Route::get('/trazi-povez/{name}', 'searchBinding');
+});
 
+Route::controller(FormatAPIController::class)->group(function() {
 // Formats
-Route::get('/formati', [FormatAPIController::class, 'formats']);
-Route::get('/format/{id}', [FormatAPIController::class, 'showFormat'])->name('show-format-api');
-Route::post('/novi-format', [FormatAPIController::class, 'storeFormat']);
-Route::put('/izmijeni-format/{id}', [FormatAPIController::class, 'updateFormat']);
-Route::delete('/izbrisi-format/{id}', [FormatAPIController::class, 'destroyFormat']);
-Route::get('/trazi-format/{name}', [FormatAPIController::class, 'searchFormat']);
+Route::get('/formati', 'formats');
+Route::get('/format/{id}', 'showFormat')->name('show-format-api');
+Route::post('/novi-format', 'storeFormat');
+Route::put('/izmijeni-format/{id}', 'updateFormat');
+Route::delete('/izbrisi-format/{id}', 'destroyFormat');
+Route::get('/trazi-format/{name}', 'searchFormat');
+});
 
+Route::controller(LetterAPIController::class)->group(function() {
 // Letters
-Route::get('/pisma', [LetterAPIController::class, 'letters']);
-Route::get('/pismo/{id}', [LetterAPIController::class, 'showLetter'])->name('show-letter-api');
-Route::post('/novo-pismo', [LetterAPIController::class, 'storeLetter']);
-Route::put('/izmijeni-pismo/{id}', [LetterAPIController::class, 'updateLetter']);
-Route::delete('/izbrisi-pismo/{id}', [LetterAPIController::class, 'destroyLetter']);
-Route::get('/trazi-pismo/{name}', [LetterAPIController::class, 'searchLetter']);
+Route::get('/pisma', 'letters');
+Route::get('/pismo/{id}', 'showLetter')->name('show-letter-api');
+Route::post('/novo-pismo', 'storeLetter');
+Route::put('/izmijeni-pismo/{id}', 'updateLetter');
+Route::delete('/izbrisi-pismo/{id}', 'destroyLetter');
+Route::get('/trazi-pismo/{name}', 'searchLetter');
+});
 
+Route::controller(LanguageAPIController::class)->group(function() {
 // Languages
-Route::get('/jezici', [LanguageAPIController::class, 'languages']);
-Route::get('/jezik/{id}', [LanguageAPIController::class, 'showLanguage'])->name('show-language-api');
-Route::post('/novi-jezik', [LanguageAPIController::class, 'storeLanguage']);
-Route::put('/izmijeni-jezik/{id}', [LanguageAPIController::class, 'updateLanguage']);
-Route::delete('/izbrisi-jezik/{id}', [LanguageAPIController::class, 'destroyLanguage']);
-Route::get('/trazi-jezik/{name}', [LanguageAPIController::class, 'searchLanguage']);
+Route::get('/jezici', 'languages');
+Route::get('/jezik/{id}', 'showLanguage')->name('show-language-api');
+Route::post('/novi-jezik', 'storeLanguage');
+Route::put('/izmijeni-jezik/{id}', 'updateLanguage');
+Route::delete('/izbrisi-jezik/{id}', 'destroyLanguage');
+Route::get('/trazi-jezik/{name}', 'searchLanguage');
+});
 
+Route::controller(AuthorAPIController::class)->group(function() {
 // Authors
-Route::get('/autori', [AuthorAPIController::class, 'authors']);
-Route::get('/autor/{id}', [AuthorAPIController::class, 'showAuthor'])->name('show-author-api');
-Route::post('/novi-autor', [AuthorAPIController::class, 'storeAuthor']);
-Route::put('/izmijeni-autora/{id}', [AuthorAPIController::class, 'updateAuthor']);
-Route::delete('/izbrisi-autora/{id}', [AuthorAPIController::class, 'destroyAuthor']);
-Route::get('/trazi-autora/{NameSurname}', [AuthorAPIController::class, 'searchAuthor']);
-Route::get('/autori-broj', [AuthorAPIController::class, 'authorsCount']);
+Route::get('/autori', 'authors');
+Route::get('/autor/{id}', 'showAuthor')->name('show-author-api');
+Route::post('/novi-autor', 'storeAuthor');
+Route::put('/izmijeni-autora/{id}', 'updateAuthor');
+Route::delete('/izbrisi-autora/{id}', 'destroyAuthor');
+Route::get('/trazi-autora/{NameSurname}', 'searchAuthor');
+Route::get('/autori-broj', 'authorsCount');
+});
 
+Route::controller(GlobalVariableAPIController::class)->group(function() {
 // Global Variables
-Route::get('/globalne-varijable', [GlobalVariableAPIController::class, 'globalVariables']);
-Route::get('/globalna-varijabla/{id}', [GlobalVariableAPIController::class, 'showGlobalVariable'])->name('show-global-variable-api');
-Route::post('/nova-globalna-varijabla', [GlobalVariableAPIController::class, 'storeGlobalVariable']);
-Route::put('/izmijeni-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'updateGlobalVariable']);
-Route::delete('/izbrisi-globalnu-varijablu/{id}', [GlobalVariableAPIController::class, 'destroyGlobalVariable']);
-Route::get('/trazi-globalnu-varijablu/{variable}', [GlobalVariableAPIController::class, 'searchGlobalVariable']);
-Route::get('/globalne-varijable-broj', [GlobalVariableAPIController::class, 'globalVariablesCount']);
+Route::get('/globalne-varijable', 'globalVariables');
+Route::get('/globalna-varijabla/{id}', 'showGlobalVariable')->name('show-global-variable-api');
+Route::post('/nova-globalna-varijabla', 'storeGlobalVariable');
+Route::put('/izmijeni-globalnu-varijablu/{id}', 'updateGlobalVariable');
+Route::delete('/izbrisi-globalnu-varijablu/{id}', 'destroyGlobalVariable');
+Route::get('/trazi-globalnu-varijablu/{variable}', 'searchGlobalVariable');
+Route::get('/globalne-varijable-broj', 'globalVariablesCount');
+});
 
 });
 

@@ -28,11 +28,12 @@ Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 Auth::routes(['register' => false, 'login' => false, 'reset' => false]);
 
 // Login routes
-Route::get('uloguj-se', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('uloguj-se', [LoginController::class, 'login']);
-
+Route::controller(LoginController::class)->group(function() {
+Route::get('uloguj-se', 'showLoginForm')->name('login');
+Route::post('uloguj-se', 'login');
 // Logout route
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::get('/logout', 'logout');
+});
 
 // Middleware protection
 Route::middleware('maintenance-protection')->group(function() {
@@ -43,9 +44,11 @@ Route::get('/shutdown', function() {
 });
 });
 
-Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
-Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+Route::controller(ForgotPasswordController::class)->group(function() {
+Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.get');
+Route::post('forget-password', 'submitForgetPasswordForm')->name('forget.password.post'); 
+Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
+Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
+});
 
 ?>
