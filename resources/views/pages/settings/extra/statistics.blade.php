@@ -68,25 +68,49 @@
             <i class="fas fa-user-shield"></i>
             <br>
             <p class="counter" data-count="{{$adminCount}}"></p>
-            <p>Administratori</p>
+            <p>
+                @php
+                if($adminCount % 10 == 1 && $adminCount != 11) {
+                    echo "Admininistrator";
+                } else {
+                    echo "Administratora";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-user-friends"></i>
             <br>
             <p class="counter" data-count="{{$librarianCount}}"></p>
-            <p>Bibliotekari</p>
+            <p>
+                @php
+                if($librarianCount % 10 == 1 && $librarianCount != 11) {
+                    echo "Bibliotekar";
+                } else {
+                    echo "Bibliotekara";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-users"></i>
             <br>
             <p class="counter" data-count="{{$studentCount}}"></p>
-            <p>Učenici</p>
+            <p>
+                @php
+                if($studentCount % 10 == 1 && $studentCount != 11) {
+                    echo "Učenik";
+                } else {
+                    echo "Učenika";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-book"></i>
             <br>
             <p class="counter" data-count="{{$bookCount}}"></p>
-            <p>Knjige</p>
+            <p>Knjiga</p>
         </div>
       </div>
 
@@ -98,25 +122,49 @@
             <i class="fas fa-user-shield"></i>
             <br>
             <p class="counter" data-count="{{$adminToday}}"></p>
-            <p>Administratori</p>
+            <p>
+                @php
+                if($adminToday % 10 == 1 && $adminToday != 11) {
+                    echo "Admininistrator";
+                } else {
+                    echo "Administratora";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 0px 100px;font-size: 50px">
             <i class="fas fa-user-friends"></i>
             <br>
             <p class="counter" data-count="{{$librarianToday}}"></p>
-            <p>Bibliotekari</p>
+            <p>
+                @php
+                if($librarianToday % 10 == 1 && $librarianToday != 11) {
+                    echo "Bibliotekar";
+                } else {
+                    echo "Bibliotekara";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-users"></i>
             <br>
             <p class="counter" data-count="{{$studentToday}}"></p>
-            <p>Učenici</p>
+            <p>
+                @php
+                if($studentToday % 10 == 1 && $studentToday != 11) {
+                    echo "Učenik";
+                } else {
+                    echo "Učenika";
+                }
+                @endphp
+            </p>
         </div>
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-book"></i>
             <br>
             <p class="counter" data-count="{{$bookCount}}"></p>
-            <p>Knjige</p>
+            <p>Knjiga</p>
         </div>
       </div>
       <hr>
@@ -143,7 +191,6 @@ $(".counter").each(function () {
 });
 });
 </script>
-
 
 </div>
 </section>
