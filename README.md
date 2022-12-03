@@ -61,6 +61,13 @@ php artisan serve
 
 Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti aplikaciju i vidjeti je na http::/localhost Vašeg domena u zavisnosti od konfiguracije.
 
+## Organizacija projekta
+> Cijeli progres se prati na sledećim platformama za project management:
+- Trello
+- monday.com
+#### Oba board-a su sinhronizovana.
+> za link-ove kontaktirati administratora 
+
 ## Kredencijali
 * Možete se ulogovati sledećim kredencijalima:
     * Email adresa: admin@gmail.com
