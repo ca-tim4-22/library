@@ -10,29 +10,31 @@ use App\Http\Controllers\ {
 
 Route::controller(StudentController::class)->group(function() {
 // Students
-Route::get('/ucenici', [StudentController::class, 'index'])->name('all-student');
-Route::get('/ucenik/{user:username}', [StudentController::class, 'show'])->name('show-student');
-Route::get('/novi-ucenik', [StudentController::class, 'create'])->name('new-student');
-Route::post('/novi-ucenik', [StudentController::class, 'store'])->name('store-student');
-Route::get('/izmijeni-profil-ucenika/{user:username}', [StudentController::class, 'edit'])->name('edit-student');
-Route::put('/izmijeni-profil-ucenika/{id}', [StudentController::class, 'update'])->name('update-student');
+Route::get('/ucenici', 'index')->name('all-student');
+Route::get('/ucenik/{user:username}', 'show')->name('show-student');
+Route::get('/novi-ucenik', 'create')->name('new-student');
+Route::post('/novi-ucenik', 'store')->name('store-student');
+Route::get('/izmijeni-profil-ucenika/{user:username}', 'edit')->name('edit-student');
+Route::put('/izmijeni-profil-ucenika/{id}', 'update')->name('update-student');
 
 // Additional features
 
 // Delete ownself
-Route::delete('/izbrisi-ucenika/{id}', [StudentController::class, 'destroy'])->name('destroy-student');
+Route::delete('/izbrisi-ucenika/{id}', 'destroy')->name('destroy-student');
 
 // For multiple student delete
-Route::delete('izbrisi-sve/ucenike', [StudentController::class, 'deleteMultiple'])->name('delete-all-students');
+Route::delete('izbrisi-sve/ucenike', 'deleteMultiple')->name('delete-all-students');
 
 // Middleware protection
 Route::middleware('user-delete')->group(function() {
 // Protection for deleting a certain student through URI
 Route::get('/ucenici/{id}', function ($id) {});
-Route::post('/ucenici/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
-});
+Route::post('/ucenici/{id}', 'destroy')->name('students.destroy');
 });
 
-Route::post('/crop/ucenik', [StudentController::class, 'crop'])->name('student.crop');
+Route::post('/crop/ucenik', 'crop')->name('student.crop');
+
+});
+
 
 ?>
