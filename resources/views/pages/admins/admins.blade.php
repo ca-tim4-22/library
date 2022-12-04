@@ -258,7 +258,7 @@
                           </a>
                       </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            {{$admin->email}}
+                            <a href="mailto:{{$admin->email}}">{{$admin->email}}</a>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                         {{$admin->gender->id == 1 ? 'Administrator' : 'Administratorka'}}

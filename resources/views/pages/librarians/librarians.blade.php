@@ -261,7 +261,7 @@
                         </td>
                         
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            {{$librarian->email}}
+                            <a href="mailto:{{$librarian->email}}">{{$librarian->email}}</a>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                         {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}

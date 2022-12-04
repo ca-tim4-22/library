@@ -107,7 +107,7 @@
         </form>
         </span>
         <input type="search" name="trazeno" value="{{$searched}}"
-            class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
+            class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
             placeholder="Traži..." autocomplete="off">
             <a href="https://www.algolia.com" target="_blank">
                 <img class="algolia" src="{{asset('algolia.png')}}" alt="Algolia Logo">
@@ -260,7 +260,7 @@
                             </a>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                            {{$student->email}}
+                            <a href="mailto:{{$student->email}}">{{$student->email}}</a>
                         </td>
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                         {{$student->gender->id == 1 ? 'Učenik' : 'Učenica'}}
