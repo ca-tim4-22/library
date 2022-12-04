@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Models\Author;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManagerStatic as Image;
 class AuthorController extends Controller
 {
     public function __construct()

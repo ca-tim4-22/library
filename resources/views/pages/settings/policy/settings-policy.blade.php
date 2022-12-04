@@ -16,7 +16,7 @@
         <div class="border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] pb-[21px]">
                 <h1>
-                    Podešavanja
+                    Podešavanja 
                 {{-- Policy update flash message --}}
                 @if (session()->has('policy-updated'))
                 <div style="width:30%" id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -58,7 +58,7 @@
                             @csrf
                             @method('PUT')
                             <button
-                            id="haha"
+                            id="edit-btn"
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">

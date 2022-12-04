@@ -4,14 +4,12 @@
         <!-- Hamburger Icon -->
         <div
             class="text-[#707070] pl-[30px] pt-[28px] pb-[27px] text-[25px] border-b-[1px] border-[#e4dfdf] ">
-            <i id="hamburger" class="hamburger-btn fas fa-bars cursor-pointer"></i>
+            <i id="hamburger" class="cursor-pointer hamburger-btn fas fa-bars"></i>
         </div>
         <div class="mt-[30px]">
             <ul class="text-[#2D3B48] sidebar-nav">
                 <!-- Dashboard Icon -->
-
                 <li class="pt-[18px] pb-[14px] mb-[4px] group hover:bg-[#EAEAEA] h-[60px]">
-
                     <div class="ml-[30px]">
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>

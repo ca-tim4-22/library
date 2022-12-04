@@ -166,11 +166,6 @@
     hr {
        margin: 20px 0 20px 0;
     }
-    .wikipedia-link:hover {
-        color: #4558BE;
-        transition: 0.25s ease-out;
-    }
-    
 </style>
 <!-- End Content -->
     

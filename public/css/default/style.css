@@ -20,6 +20,26 @@
     filter: grayscale(0%)
 }
 
+/* Show author page */
+
+.wikipedia-link {
+  transition: color 0.35s;
+}
+.wikipedia-link:hover {
+  color: #4558BE;
+}
+
+/* settings policy page - edit button */
+
+#edit-btn {
+  transition: background-color 0.3s ease-in-out;
+}
+
+#edit-btn:hover {
+    background-color: #1d35c1;
+    /* transition: 0.3s ease-in-out; */
+}
+
 /* Option dropdown */
 
 /* width */
@@ -103,11 +123,6 @@ select::-webkit-scrollbar-thumb:hover {
 
 /* Sidebar */
 
-#haha:hover {
-    background-color: #1d35c1;
-    transition: 0.3s ease-in-out;
-}
-
 .show_expand {
   display: inline !important;
 }
@@ -156,9 +171,12 @@ select::-webkit-scrollbar-thumb:hover {
 }
 
 /* Hamburger - sidebar */
+#hamburger {
+  transition: color 0.25s;
+}
+
 #hamburger:hover {
   color: #576cdf;
-  transition: 0.35s;
 }
 
 /* JQuery Book Tabs */
@@ -2894,6 +2912,12 @@ h4 {
   --tw-bg-opacity: 1;
   background-color: rgba(245, 85, 73, var(--tw-bg-opacity));
 }
+
+/* Custom */
+.hover\:bg-gray-200 {
+  transition: background-color 0.3s ease-out;
+}
+
 .hover\:bg-gray-200:hover{
   --tw-bg-opacity: 1;
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
@@ -2922,6 +2946,12 @@ h4 {
   --tw-bg-opacity: 1;
   background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
 }
+
+/* Custom */
+.hover\:bg-\[\#EAEAEA\] {
+  transition: background-color 0.25s ease-out;
+}
+
 .hover\:bg-\[\#EAEAEA\]:hover{
   --tw-bg-opacity: 1;
   background-color: rgba(234, 234, 234, var(--tw-bg-opacity));
@@ -2938,10 +2968,22 @@ h4 {
   --tw-text-opacity: 1;
   color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
+
+/* Custom */
+.hover\:text-\[\#606FC7\] {
+  transition: color 0.25s;
+}
+
 .hover\:text-\[\#606FC7\]:hover{
   --tw-text-opacity: 1;
   color: rgba(96, 111, 199, var(--tw-text-opacity));
 }
+
+/* Custom */
+.hover\:text-blue-600 {
+  transition: color 0.35s;
+}
+
 .hover\:text-blue-600:hover{
   --tw-text-opacity: 1;
   color: rgba(37, 99, 235, var(--tw-text-opacity));
@@ -2950,6 +2992,12 @@ h4 {
   --tw-text-opacity: 1;
   color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
+
+/* Custom */
+.hover\:text-blue-800 {
+  transition: color 0.25s;
+}
+
 .hover\:text-blue-800:hover{
   --tw-text-opacity: 1;
   color: rgba(30, 64, 175, var(--tw-text-opacity));
