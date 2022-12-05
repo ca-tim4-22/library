@@ -91,6 +91,7 @@
                             @csrf
                             @method('PUT')
                             <button
+                            id="edit-btn"
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
@@ -123,6 +124,7 @@
                             @csrf
                             @method('PUT')
                             <button
+                            id="edit-btn"
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
@@ -158,6 +160,7 @@
                             @csrf
                             @method('PUT')
                             <button
+                            id="edit-btn"
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
