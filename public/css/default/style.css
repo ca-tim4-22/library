@@ -110,13 +110,24 @@ select::-webkit-scrollbar-thumb:hover {
   0% {transform: rotate(90deg)}
 }
 
-.rotate_bell {
-  animation: rotate_bell 0.4s ease-out; 
+.scale_bell {
+  animation: scale_bell 0.4s ease-out; 
 }
 
-@keyframes rotate_bell {
+@keyframes scale_bell {
   0% {
     transform: scale(1.2);
+    transition: 0.5s;
+  }
+}
+
+.scale_link {
+  animation: scale_link 0.4s ease-out; 
+}
+
+@keyframes scale_link {
+  0% {
+    transform: scale(1.05);
     transition: 0.5s;
   }
 }

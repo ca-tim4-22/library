@@ -60,32 +60,32 @@
                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                             role="menuitem">
                             <i class=" fas fa-user-shield mr-[5px] ml-[3px] py-1"></i>
-                            <span class="px-4 py-0">Administrator</span>
+                            <span id="scale_link_ad" class="px-4 py-0">Administrator</span>
                             </a>
                             <a href="{{route('new-librarian')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[8px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Bibliotekar</span>
+                                <span id="scale_link_l" class="px-4 py-0">Bibliotekar</span>
                             </a>
                             @endif
                             <a href="{{route('store-student')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-users mr-[5px] ml-[3px] py-1"></i>
-                                <span class="px-4 py-0">Učenik</span>
+                                <span id="scale_link_s" class="px-4 py-0">Učenik</span>
                             </a>
                             <a href="{{route('new-book')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-copy mr-[10px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Knjiga</span>
+                                <span id="scale_link_b" class="px-4 py-0">Knjiga</span>
                             </a>
                             <a href="{{route('new-author')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="far fa-address-book mr-[10px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Autor</span>
+                                <span id="scale_link_au" class="px-4 py-0">Autor</span>
                             </a>
                         </div>
                     </div>
@@ -150,13 +150,13 @@
                                 role="menuitem">
                             @endif
                                 <i class="fas fa-user-circle mr-[8px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Profil</span>
+                                <span id="scale_link_profile" class="px-4 py-0">Profil</span>
                             </a>
                             <a href="{{route('logout')}}" tabindex="0"
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                                 <i class="fas fa-sign-out-alt mr-[5px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Odjavi se</span>
+                                <span id="scale_link_logout" class="px-4 py-0">Odjavi se</span>
                             </a>
                         </div>
                     </div>
