@@ -56,7 +56,7 @@
     </div>
     <!-- Scripts -->
     {{-- Main script --}}
-    <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/app.js')}}?2"></script>
     {{-- Sorting  --}}
     <script src="{{asset('js/sorting-jquery.js')}}"></script>
     {{-- Session message fade out --}}
