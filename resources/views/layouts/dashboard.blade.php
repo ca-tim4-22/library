@@ -16,6 +16,10 @@
     <meta name="theme-color" content="#D22336">
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
     <!-- End Meta -->
+    <!-- Remove cache -->
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     <!-- Styles -->
     {{-- Main style --}}
     <link rel="stylesheet" href="{{asset('css/default/style.css')}}">
