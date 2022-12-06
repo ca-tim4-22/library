@@ -22,7 +22,7 @@
     <meta http-equiv='pragma' content='no-cache'>
     <!-- Styles -->
     {{-- Main style --}}
-    <link rel="stylesheet" href="{{asset('css/default/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/default/style.css')}}?version=1" />
     {{-- Sorting --}}
     <link rel="stylesheet" href="{{asset('css/sorting/sorting.css')}}">
     {{-- Font awesome v.5.15. --}}
