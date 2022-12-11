@@ -20,6 +20,11 @@ S obzirom da su korišćeni paketi za dinamično manipulisanje priloženih fotog
 <br>
 ->  Restartujte Vaš apache server
 > Ukoliko ne znate da pronađete "php.ini" fajl.. najčešći path je `C:\php`. Možete ukucati i komandu: `php --ini` u command promt-u kako biste dobili još informacija
+#### Moguća greška: 
+-> "Unsupported cipher or incorrect key length. Supported ciphers are..."
+<br>
+U pitanju je loše izgenerisani APP_KEY tj. enkripcioni ključ aplikacije. Otvorite ".env" fajl koji se nalazi u root-u projekta. Izbrišite upisanu vrijednost i pokrenite komandu:
+> php artisan key:generate
 
 ## Instalacija
 * Klonirajte ovaj repozitorijum sledećom komandom:
