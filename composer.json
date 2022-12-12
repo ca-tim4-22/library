@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "algolia/algoliasearch-client-php": "^3.3",
         "algolia/scout-extended": "^2.0",
+        "enlightn/enlightn": "^2.1",
         "fakerphp/faker": "^1.20",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
