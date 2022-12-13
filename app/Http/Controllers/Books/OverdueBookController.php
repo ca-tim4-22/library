@@ -42,7 +42,7 @@ class OverdueBookController extends Controller
      */
     public function create()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -53,7 +53,7 @@ class OverdueBookController extends Controller
      */
     public function store(Request $request)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -64,7 +64,7 @@ class OverdueBookController extends Controller
      */
     public function show($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -75,7 +75,7 @@ class OverdueBookController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -87,7 +87,7 @@ class OverdueBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -98,6 +98,6 @@ class OverdueBookController extends Controller
      */
     public function destroy($id)
     {
-        return null;
+        return response()->noContent();
     }
 }

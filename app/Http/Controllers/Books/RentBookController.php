@@ -148,7 +148,7 @@ class RentBookController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -160,7 +160,7 @@ class RentBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**

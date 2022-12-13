@@ -28,7 +28,7 @@ class ReserveBookController extends Controller
      */
     public function index()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -115,7 +115,7 @@ class ReserveBookController extends Controller
      */
     public function show($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -126,7 +126,7 @@ class ReserveBookController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -138,7 +138,7 @@ class ReserveBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -149,6 +149,6 @@ class ReserveBookController extends Controller
      */
     public function destroy($id)
     {
-        return null;
+        return response()->noContent();
     }
 }

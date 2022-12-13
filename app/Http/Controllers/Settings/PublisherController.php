@@ -32,7 +32,7 @@ class PublisherController extends Controller
      */
     public function create()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -58,7 +58,7 @@ class PublisherController extends Controller
      */
     public function show($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**

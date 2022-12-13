@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -68,7 +68,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**

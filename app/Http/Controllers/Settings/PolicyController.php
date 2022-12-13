@@ -22,7 +22,7 @@ class PolicyController extends Controller
      */
     public function index()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -32,7 +32,7 @@ class PolicyController extends Controller
      */
     public function create()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -43,7 +43,7 @@ class PolicyController extends Controller
      */
     public function store(Request $request)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -54,7 +54,7 @@ class PolicyController extends Controller
      */
     public function show($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -65,7 +65,7 @@ class PolicyController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -99,6 +99,6 @@ class PolicyController extends Controller
      */
     public function destroy($id)
     {
-        return null;
+        return response()->noContent();
     }
 }

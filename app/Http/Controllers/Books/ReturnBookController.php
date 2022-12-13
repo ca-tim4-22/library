@@ -100,7 +100,7 @@ class ReturnBookController extends Controller
      */
     public function edit($id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -112,7 +112,7 @@ class ReturnBookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
@@ -123,6 +123,6 @@ class ReturnBookController extends Controller
      */
     public function destroy($id)
     {
-        return null;
+        return response()->noContent();
     }
 }

@@ -16,6 +16,6 @@ class Listener
      */
     public function handle(Login $event)
     {
-        return null;
+        return response()->noContent();
     }
 }

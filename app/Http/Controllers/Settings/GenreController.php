@@ -32,7 +32,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return null;
+        return response()->noContent();
     }
 
     /**
