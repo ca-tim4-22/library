@@ -18,7 +18,6 @@ class UserDeleteMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check() && Auth::user()->type->id == 3) {
-            return $next($request);
             return response()->view('success.success')->setStatusCode(200);
         } else {
             return response()->view('maintenance.access_denied')->setStatusCode(403);
