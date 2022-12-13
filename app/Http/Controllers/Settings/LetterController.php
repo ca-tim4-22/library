@@ -43,10 +43,9 @@ class LetterController extends Controller
      */
     public function store(LetterRequest $request)
     {
-        $input = $request->all();
         $letter = $request->name;
         $letter_lower = Str::title($letter);
-        Letter::create($input);
+        Letter::create($request->validated());
         
         return to_route('setting-letter')->with('success-letter', "Uspješno ste dodali " . "\"$letter_lower\"" . "pismo.");
     }
@@ -83,9 +82,7 @@ class LetterController extends Controller
     public function update(LetterRequest $request, $id)
     {
         $letter = Letter::findOrFail($id);  
-        $input = $request->all();
-
-        $letter->update($input);
+        $letter->update($request->validated());
         
         return to_route('setting-letter')->with('letter-updated', 'Uspješno ste izmijenili pismo.');
     }

@@ -43,10 +43,8 @@ class BindingController extends Controller
      */
     public function store(BindingRequest $request)
     {
-        // $input = $request->all();
         $binding = $request->name;
         $binding_lower = Str::title($binding);
-        // Binding::create($input);
         Binding::create($request->validated());
         
         return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
@@ -83,10 +81,8 @@ class BindingController extends Controller
      */
     public function update(BindingRequest $request, $id)
     {
-        $input = $request->all();
         $binding = Binding::findOrFail($id);  
-
-        $binding->update($input);
+        $binding->update($request->validated());
         
         return to_route('setting-binding')->with('binding-updated', 'Uspješno ste izmijenili povez: ' . "\"$binding->name\".");
     }

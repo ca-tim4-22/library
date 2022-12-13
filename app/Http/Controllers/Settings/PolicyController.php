@@ -77,20 +77,16 @@ class PolicyController extends Controller
      */
     public function update(PolicyUpdateRequest $request, $id)
     {
-        $input = $request->all();
         $policy = GlobalVariable::findOrFail($id);
-
-        $policy->update($input);
+        $policy->update($request->validated());
 
         return back()->with('policy-updated', 'Izmijenili ste polisu: ' . "\"$policy->variable\".");
     }
 
     public function paginationUpdate(PolicyPaginationUpdateRequest $request) 
     {
-        $input = $request->all();
         $policy = GlobalVariable::findOrFail(4);
-
-        $policy->update($input);
+        $policy->update($request->validated());
 
         return back()->with('policy-updated', 'Izmijenili ste polisu: ' . "\"$policy->variable\".");
     }

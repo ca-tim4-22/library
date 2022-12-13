@@ -43,10 +43,9 @@ class PublisherController extends Controller
      */
     public function store(PublisherRequest $request)
     {
-        $input = $request->all();
         $publisher = $request->name;
         $publisher_lower = Str::title($publisher);
-        Publisher::create($input);
+        Publisher::create($request->validated());
         
         return to_route('setting-publisher')->with('success-publisher', "Uspješno ste dodali " . "\"$publisher_lower\"" . "izdavača.");
     }
@@ -82,10 +81,8 @@ class PublisherController extends Controller
      */
     public function update(PublisherRequest $request, $id)
     {
-        $input = $request->all();
         $publisher = Publisher::findOrFail($id);  
-
-        $publisher->update($input);
+        $publisher->update($request->validated());
         
         return to_route('setting-publisher')->with('publisher-updated', 'Uspješno ste izmijenili izdavača: ' . "\"$publisher->name\".");
     }

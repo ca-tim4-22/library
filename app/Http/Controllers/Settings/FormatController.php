@@ -43,10 +43,9 @@ class FormatController extends Controller
      */
     public function store(FormatRequest $request)
     {
-        $input = $request->all();
         $format = $request->name;
         $format_lower = Str::title($format);
-        Format::create($input);
+        Format::create($request->validated());
         
         return to_route('setting-format')->with('success-format', "Uspješno ste dodali " . "\"$format_lower\"" . "format.");
     }
@@ -82,10 +81,8 @@ class FormatController extends Controller
      */
     public function update(FormatRequest $request, $id)
     {
-        $input = $request->all();
         $format = Format::findOrFail($id);  
-
-        $format->update($input);
+        $format->update($request->validated());
         
         return to_route('setting-format')->with('format-updated', 'Uspješno ste izmijenili format: ' . "\"$format->name\".");
     }
