@@ -9,16 +9,6 @@ use Illuminate\Queue\InteractsWithQueue;
 class Listener
 {
     /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Handle the event.
      *
      * @param  \App\Providers\Illuminate\Auth\Events\Login  $event
@@ -26,6 +16,6 @@ class Listener
      */
     public function handle(Login $event)
     {
-        //
+        return null;
     }
 }

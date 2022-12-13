@@ -32,7 +32,7 @@ class ArchiveBookController extends Controller
      */
     public function create()
     {
-        //
+        return null;
     }
 
     /**
@@ -43,7 +43,7 @@ class ArchiveBookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return null;
     }
 
     /**
@@ -54,7 +54,7 @@ class ArchiveBookController extends Controller
      */
     public function show($id)
     {
-        //
+        return null;
     }
 
     /**
@@ -65,7 +65,7 @@ class ArchiveBookController extends Controller
      */
     public function edit($id)
     {
-        //
+        return null;
     }
 
     /**
@@ -98,7 +98,7 @@ class ArchiveBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return null;
     }
 }
 

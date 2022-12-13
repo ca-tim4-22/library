@@ -32,7 +32,7 @@ class BindingController extends Controller
      */
     public function create()
     {
-        //
+        return null;
     }
 
     /**
@@ -58,7 +58,7 @@ class BindingController extends Controller
      */
     public function show($id)
     {
-        //
+        return null;
     }
 
     /**
