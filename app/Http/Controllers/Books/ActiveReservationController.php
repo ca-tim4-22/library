@@ -38,7 +38,7 @@ class ActiveReservationController extends Controller
      */
     public function create()
     {
-        //
+        return null;
     }
 
     /**
@@ -49,7 +49,7 @@ class ActiveReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return null;
     }
 
     /**
@@ -73,7 +73,7 @@ class ActiveReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        return null;
     }
 
     /**
@@ -85,7 +85,7 @@ class ActiveReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return null;
     }
 
     /**
@@ -96,7 +96,7 @@ class ActiveReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return null;
     }
 
     public function approve(Request $request, $id) {
