@@ -90,14 +90,14 @@ class AdminController extends Controller
 
         //Hash password
         $user['password'] = Hash::make(request()->password);
-      
+
          // Store photo
-         if($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
+         if($filee = $request->file('photo')) {
+            // $image = $request->file('photo');
+            $filename = time() . $filee->getClientOriginalName();
             // This will generate an image with transparent background
             $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
+            $image  = Image::make($filee->getRealPath())->resize(445, 445, function($constraint)
             {$constraint->aspectRatio();});
             $canvas->insert($image, 'center');
             $URL = url()->current();
