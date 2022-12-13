@@ -47,7 +47,7 @@ class BindingController extends Controller
         $binding = $request->name;
         $binding_lower = Str::title($binding);
         // Binding::create($input);
-        Binding::create($request->all());
+        Binding::create($request->validated());
         
         return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
     }
