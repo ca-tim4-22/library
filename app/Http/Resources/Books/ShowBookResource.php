@@ -15,6 +15,17 @@ class ShowBookResource extends JsonResource
      */
     public function toArray($request)
     {
+        // Make no undefined variables
+        if(!isset($category)) {
+            $category = null;
+        }
+        if(!isset($genre)) {
+            $genre = null;
+        } 
+        if(!isset($author)) {
+            $author = null;
+        }
+        // Foreach relations
         foreach ($this->categories as $category) {
             $category = $category;
         }
@@ -23,9 +34,6 @@ class ShowBookResource extends JsonResource
         }
         foreach ($this->authors as $author) {
             $author = $author;
-        }
-        if(!isset($author)) {
-            $author = null;
         }
         if ($this->pdf == 0) {
             $answer = 'Nema pdf';

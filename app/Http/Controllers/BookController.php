@@ -512,7 +512,7 @@ class BookController extends Controller
         }
         }
 
-        $book->delete();
+        return $book->delete();
 
         if (!str_contains($URL, '/bibliotekari')) {
             FacadesSession::flash('book-deleted'); 

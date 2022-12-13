@@ -203,7 +203,7 @@ class AdminController extends Controller
             }
         } 
 
-        $admin->delete();
+        return $admin->delete();
     }
 
     public function crop(Request $request) {
