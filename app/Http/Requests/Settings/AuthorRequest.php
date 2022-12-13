@@ -7,8 +7,6 @@ use App\Rules\Settings\MinimumLengthRule;
 use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-use function PHPSTORM_META\map;
-
 class AuthorRequest extends FormRequest
 {
     /**

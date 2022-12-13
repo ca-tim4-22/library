@@ -24,6 +24,9 @@ class ShowBookResource extends JsonResource
         foreach ($this->authors as $author) {
             $author = $author;
         }
+        if(!isset($author)) {
+            $author = null;
+        }
         if ($this->pdf == 0) {
             $answer = 'Nema pdf';
         } else {
