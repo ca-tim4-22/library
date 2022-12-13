@@ -512,13 +512,13 @@ class BookController extends Controller
         }
         }
 
-        return $book->delete();
-
         if (!str_contains($URL, '/bibliotekari')) {
             FacadesSession::flash('book-deleted'); 
             
             return to_route('all-books');
         } 
+
+        return $book->delete();
     }
 
     public function deleteMultiple(Request $request)
