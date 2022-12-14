@@ -1,4 +1,4 @@
-name: Poruka
+name: Poruka💬
 
 on: [pull_request_target, issues]
 
