@@ -1,4 +1,4 @@
-name: Compress Images on Push to main branch
+name: Kompresovanje fotografija📸
 on:
   push:
     branches:
