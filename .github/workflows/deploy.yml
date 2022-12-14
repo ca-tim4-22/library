@@ -1,5 +1,5 @@
 on: push
-name: Online biblioteka🚀
+name: Automatski deployment🚀
 jobs:
   web-deploy:
     name: Hosting deployment🎉
