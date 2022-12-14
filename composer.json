@@ -18,8 +18,7 @@
         "laravel/scout": "^9.4",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "laravelcollective/html": "^6.3",
-        "swiftmailer/swiftmailer": "^6.0"
+        "laravelcollective/html": "^6.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
