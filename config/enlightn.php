@@ -62,7 +62,7 @@ return [
     | analyzers if the environment does not match.
     |
     */
-    'skip_env_specific' => env('ENLIGHTN_SKIP_ENVIRONMENT_SPECIFIC', false),
+    'skip_env_specific' => env('ENLIGHTN_SKIP_ENVIRONMENT_SPECIFIC', true),
 
     /*
     |--------------------------------------------------------------------------

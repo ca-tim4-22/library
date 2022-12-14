@@ -22,6 +22,7 @@ class AdminController extends Controller
     
     /**
      * Display a listing of the resource.
+     * @return \Illuminate\View\View
      *
      * @return \Illuminate\Http\Response
      */
