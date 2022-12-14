@@ -293,13 +293,13 @@ class BookController extends Controller
         $text = '0 primjeraka';
         }
 
-        if ($count > 0 || $count % 10 == 1 && $count % 10 == 11 || $count == 1) {
+        if (isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11 || $count == 1) {
         $count = $count;
         $text = 'primjerak';
-        } elseif ($count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
+        } elseif (isset($count) && $count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
         $count = $count;
         $text = 'primjerka';
-        } elseif ($count <= 0) {
+        } elseif (isset($count) && $count <= 0) {
         $count = null;
         $text = "0 primjeraka";
         } else {

@@ -56,7 +56,9 @@ class DashboardController extends Controller
                     }
                 }
             }
-            $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            if (isset($overdue_books)) {
+                $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            }
             $overdue_real = $overdue_books;
             
             if ($overdue_books > $rented_books && $overdue_books > $reserved_books) {
