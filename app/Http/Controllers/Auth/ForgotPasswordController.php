@@ -19,6 +19,7 @@ class ForgotPasswordController extends Controller
        * Write code on Method
        *
        * @return response()
+       * @return \Illuminate\View\View
        */
       public function showForgetPasswordForm()
       {
@@ -29,6 +30,7 @@ class ForgotPasswordController extends Controller
        * Write code on Method
        *
        * @return response()
+       * @return \Illuminate\Http\RedirectResponse
        */
       public function submitForgetPasswordForm(Request $request)
       {
@@ -64,6 +66,7 @@ class ForgotPasswordController extends Controller
        * Write code on Method
        *
        * @return response()
+       * @return \Illuminate\Http\RedirectResponse
        */
       public function submitResetPasswordForm(Request $request)
       {

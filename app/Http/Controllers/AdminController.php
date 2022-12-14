@@ -19,11 +19,12 @@ class AdminController extends Controller
     {
         $this->middleware(['protect-all', 'librarian-protect']);
     }
-    
+
     /**
-     * Display a listing of the resource.
-     * @return \Illuminate\View\View
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\View\View
+    */
     public function index(Request $request)
     {
         if ($request->items) {
@@ -69,7 +70,7 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -135,7 +136,7 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(User $user)
     {
@@ -153,7 +154,7 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
@@ -179,7 +180,7 @@ class AdminController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request, $id)
     {
