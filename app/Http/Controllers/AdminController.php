@@ -23,8 +23,6 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      * @return \Illuminate\View\View
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -60,7 +58,7 @@ class AdminController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -120,7 +118,7 @@ class AdminController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+    * @return \Illuminate\View\View
      */
     public function show(User $user)
     {
