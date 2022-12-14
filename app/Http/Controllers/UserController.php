@@ -89,7 +89,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::findOrFail($id)->delete();
+        return User::findOrFail($id)->delete();
     }
 
     // Custom password reset with modal

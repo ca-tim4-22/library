@@ -55,7 +55,7 @@ class RentBookController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\View/View
+     * @return \Illuminate\View\View
      */
     public function create(Book $book)
     {
@@ -171,6 +171,6 @@ class RentBookController extends Controller
      */
     public function destroy($id)
     {
-        
+        return response()->noContent();
     }
 }

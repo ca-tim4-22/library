@@ -96,7 +96,8 @@ class LetterController extends Controller
     public function destroy($id)
     {
         $letter = Letter::findOrFail($id);
-        $letter->delete();
+
+        return $letter->delete();
     }
 
     public function deleteMultiple(Request $request)

@@ -130,7 +130,7 @@ class GenreController extends Controller
            unlink(public_path() . '\\storage\\settings\\genre\\' . $genre->icon);
         }
 
-        $genre->delete();
+        return $genre->delete();
     }
 
     public function deleteMultiple(Request $request)

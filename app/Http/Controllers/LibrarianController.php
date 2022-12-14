@@ -220,7 +220,7 @@ class LibrarianController extends Controller
             }
         } 
 
-        $librarian->delete();
+        return $librarian->delete();
     }
 
     public function deleteMultiple(Request $request)

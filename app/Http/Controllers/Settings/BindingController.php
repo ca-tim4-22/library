@@ -96,7 +96,8 @@ class BindingController extends Controller
     public function destroy($id)
     {
         $binding = Binding::findOrFail($id);
-        $binding->delete();
+
+        return $binding->delete();
     }
 
     public function deleteMultiple(Request $request)

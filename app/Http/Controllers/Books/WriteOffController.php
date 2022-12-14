@@ -45,7 +45,7 @@ class WriteOffController extends Controller
      */
     public function store(Request $request)
     {
-
+        return response()->noContent();
     }
 
     /**

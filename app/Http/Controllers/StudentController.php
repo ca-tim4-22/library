@@ -220,7 +220,7 @@ class StudentController extends Controller
             }
         } 
 
-        $student->delete();
+        return $student->delete();
     }
 
     public function deleteMultiple(Request $request)

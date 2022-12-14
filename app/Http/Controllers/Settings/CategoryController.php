@@ -129,7 +129,7 @@ class CategoryController extends Controller
            unlink(public_path() . '\\storage\\settings\\category\\' . $category->icon);
         }
 
-        $category->delete();
+        return $category->delete();
     }
 
     public function deleteMultiple(Request $request)
