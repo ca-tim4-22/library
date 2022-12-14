@@ -284,6 +284,7 @@ Pronašli ste bug?
 * Flowbite
 
 ## 🚀 Dodatni alati i paketi
+* Enlightn
 * CKEditor 
 * Mailtrap
 * HTML Laravel Collective v.6
@@ -312,6 +313,14 @@ Pronašli ste bug?
 * phpMyAdmin
 * HeidiSQL
 * XAMPP
+
+## 🚀 GitHub akcije
+* GitHub pages
+* Auto deployment on hosting
+* Image Compressing
+* Enlightn checks
+* Dependabot
+* First interaction
 
 > tim nullable()
 <div>
