@@ -28,7 +28,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        return response()->noContent();
     }
 
     /**
