@@ -284,22 +284,23 @@ Pronašli ste bug?
 * Flowbite
 
 ## 🚀 Dodatni alati i paketi
-* Enlightn
-* CKEditor 
 * Mailtrap
-* HTML Laravel Collective v.6
+* Algolia
 * Laravel UI
 * Laravel Sluggable
 * Laravel Debugbar
 * Laravel Telescope
+* Laravel Socialite
+* CKEditor 
 * Composer
 * Tinker
+* Enlightn
 * Git/GitHub
 * Swift Mailer
 * Heroku
-* Algolia
 * Laravel Scout
 * GitHub Actions / FTP Deploy
+* HTML Laravel Collective v.6
 * FakerPHP
 * Guzzle
 * Intervention Image

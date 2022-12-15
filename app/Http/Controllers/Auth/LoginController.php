@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+
+use Socialite;
+use Str;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -51,5 +54,30 @@ class LoginController extends Controller
         $user->login_count = $user->login_count + 1;
         $user->last_login_at = now();
         $user->save();
+    }
+    
+    public function github() {
+        return Socialite::driver('github')->redirect();
+    }
+
+    public function githubRedirect() {
+        $user = Socialite::driver('github')->user();
+
+        $user = User::firstOrCreate([
+            'email' => $user->nickname
+        ], [
+            'email' => $user->nickname,
+            'name' => $user->name,
+            'username' => $user->nickname,
+            'user_gender_id' => 1,
+            'password' => bcrypt(Str::random(10)),
+        ]);
+        $user->update([
+            'login_count'=> $user->login_count + 1,
+            'last_login_at'=> now(),
+        ]);
+        Auth::login($user, true);
+
+        return redirect('/dashboard');
     }
 }
