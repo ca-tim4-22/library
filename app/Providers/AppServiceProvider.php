@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Rent;
-use App\Models\ReservationStatuses;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
