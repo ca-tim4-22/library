@@ -47,6 +47,10 @@ cp .env.example .env
 ```shell
 SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
 ```
+* Takođe, s obzirom da ova aplikacija koristi Laravel Socialize za registraciju/logovanje pomoću third party aplikacija/platformi poput Google-a, GitHub-a i sl. moraćete pitati administratora za ključeve sledećih varijabli:
+```shell
+GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
+```
 * Generišite enkripcioni ključ:
 ```shell
 php artisan key:generate
