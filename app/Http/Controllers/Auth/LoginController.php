@@ -68,17 +68,12 @@ class LoginController extends Controller
             'email' => $user->getNickname(),
             'name' => $user->getName(),
             'username' => $user->getNickname(),
-            'user_gender_id' => 1,
             'password' => bcrypt(Str::random(10)),
-            'photo' => 'ss.png',
+            'photo' => 'github_avatar' . '-' . uniqid() . '.png',
+            'github' => 1,
         ]);
 
-        // $url = $user->photo;
-        // $contents = file_get_contents($url);
-        // $name = 'ddsad';
-        // Storage::put($name, $contents);
-
-        Storage::disk('local')->put('ss.png', file_get_contents($user->getAvatar()));
+        Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));
 
         $user2->update([
             'login_count'=> $user2->login_count + 1,
@@ -86,6 +81,10 @@ class LoginController extends Controller
         ]);
         Auth::login($user2, true);
 
-        return redirect($this->redirectTo);
+        if ($user2->github == 1) {
+            return redirect('/approvee');
+        } else {
+            return redirect($this->redirectTo);
+        }
     }
 }

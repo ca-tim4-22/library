@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f95de396aa3ffb3c27d7e1c697335a4a",
+    "content-hash": "79db096005703e85043cd2f9dba68946",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -7640,6 +7640,54 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.5"
             },
             "time": "2022-09-12T13:28:28+00:00"
+        },
+        {
+            "name": "tuqqu/gender-detector",
+            "version": "v0.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tuqqu/gender-detector.git",
+                "reference": "d24ed55f477fd095a198c3023092d19d11286d02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tuqqu/gender-detector/zipball/d24ed55f477fd095a198c3023092d19d11286d02",
+                "reference": "d24ed55f477fd095a198c3023092d19d11286d02",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "phpunit/phpunit": "^9.4",
+                "symfony/var-dumper": "^5.2",
+                "vimeo/psalm": "^4.2"
+            },
+            "bin": [
+                "bin/gender-detector"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GenderDetector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tuqqu"
+                }
+            ],
+            "description": "A library to detect a person's gender by their first name.",
+            "support": {
+                "issues": "https://github.com/tuqqu/gender-detector/issues",
+                "source": "https://github.com/tuqqu/gender-detector/tree/v0.4.1"
+            },
+            "time": "2022-12-16T12:54:17+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

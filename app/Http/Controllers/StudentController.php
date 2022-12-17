@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GlobalVariable;
 use App\Models\User;
+use App\Models\UserGender;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,9 +19,38 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware(['protect-all', 'librarian-protect'])
-        ->except('show', 'crop', 'edit', 'update', 'destroy');
+        ->except('show', 'crop', 'edit', 'update', 'destroy', 'approvee', 'updatic');
     }
-    
+
+    public function approvee() {
+        $user = Auth::user();
+        $genders = UserGender::all();
+        $first = rand(1, 10);
+        $second = rand(1, 10);
+
+        $result = $first + $second;
+
+        return view('hah.hah', compact('user', 'genders', 'first', 'second'));
+    }
+
+    public function updatic(Request $request, $id, $result) {
+        $input = $request->all();
+        $result_blade = $request->result;
+      
+        $user = Auth::user();
+
+        if($result_blade == 1) {
+            $user->update([
+                'JMBG' => $request->JMBG,
+                'user_gender_id' => $request->user_gender_id,
+            ]);
+
+            return redirect('/dashboard');
+        } else {
+            return back();
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
