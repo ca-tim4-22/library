@@ -25,30 +25,26 @@ class StudentController extends Controller
     public function approvee() {
         $user = Auth::user();
         $genders = UserGender::all();
-        $first = rand(1, 10);
-        $second = rand(1, 10);
 
-        $result = $first + $second;
-
-        return view('hah.hah', compact('user', 'genders', 'first', 'second'));
+        return view('hah.hah', compact('user', 'genders'));
     }
 
-    public function updatic(Request $request, $id, $result) {
-        $input = $request->all();
-        $result_blade = $request->result;
+    public function updatic(Request $request) {
+        // $input = $request->all();
+        // $result_blade = $request->result;
       
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        if($result_blade == 1) {
-            $user->update([
-                'JMBG' => $request->JMBG,
-                'user_gender_id' => $request->user_gender_id,
-            ]);
+        // if($result_blade == 1) {
+        //     $user->update([
+        //         'JMBG' => $request->JMBG,
+        //         'user_gender_id' => $request->user_gender_id,
+        //     ]);
 
-            return redirect('/dashboard');
-        } else {
-            return back();
-        }
+        //     return redirect('/dashboard');
+        // } else {
+        //     return back();
+        // }
     }
 
     /**
