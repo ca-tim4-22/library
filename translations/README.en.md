@@ -1,4 +1,4 @@
-<kbd>[<img title="Engleski" alt="Engleski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg" width="22">](translations/README.al.md)</kbd>
+<kbd>[<img title="Srpski" alt="Srpski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rs.svg" width="22">](../README.md)</kbd>
 <kbd>[<img title="Italijanski" alt="Italijanski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" width="22">](translations/README.al.md)</kbd>
 
 ## Online library | Web application & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
@@ -269,7 +269,7 @@ error-0005 -> The book has no author, category, or genre, 406
 
 Found a bug?
 -------------
-[Send issue](https://github.com-tim4-22/library/issues) (requires GitHub account)
+[Send issue](https://github.com/ca-tim4-22/library/issues) (requires GitHub account)
 
 ## 🚀 Used technologies
 
