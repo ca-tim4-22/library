@@ -1,3 +1,6 @@
+<kbd>[<img title="Engleski" alt="Engleski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg" width="22">](translations/README.al.md)</kbd>
+<kbd>[<img title="Italijanski" alt="Italijanski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" width="22">](translations/README.al.md)</kbd>
+
 ## Online biblioteka | Veb aplikacija & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### Šta je "Online biblioteka"?
 > Online biblioteka predstavlja projekat ICT Cortex akademije namijenjen učenicima srednjih škola kako bi se što bolje i efikasnije spremili za sve buduće izazove koje ih čekaju. Više informacija ispod...
@@ -46,6 +49,10 @@ cp .env.example .env
 * S obzirom da ova aplikacija koristi Algoliu za pretraživanje moraćete pitati administratora za ključeve sledećih varijabli:
 ```shell
 SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
+```
+* Takođe, s obzirom da ova aplikacija koristi Laravel Socialize za registraciju/logovanje pomoću third party aplikacija/platformi poput Google-a, GitHub-a i sl. moraćete pitati administratora za ključeve sledećih varijabli:
+```shell
+GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
 ```
 * Generišite enkripcioni ključ:
 ```shell
@@ -284,22 +291,23 @@ Pronašli ste bug?
 * Flowbite
 
 ## 🚀 Dodatni alati i paketi
-* Enlightn
-* CKEditor 
 * Mailtrap
-* HTML Laravel Collective v.6
+* Algolia
 * Laravel UI
 * Laravel Sluggable
 * Laravel Debugbar
 * Laravel Telescope
+* Laravel Socialite
+* CKEditor 
 * Composer
 * Tinker
+* Enlightn
 * Git/GitHub
 * Swift Mailer
 * Heroku
-* Algolia
 * Laravel Scout
 * GitHub Actions / FTP Deploy
+* HTML Laravel Collective v.6
 * FakerPHP
 * Guzzle
 * Intervention Image

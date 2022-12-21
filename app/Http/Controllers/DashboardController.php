@@ -20,7 +20,7 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -56,9 +56,7 @@ class DashboardController extends Controller
                     }
                 }
             }
-            if (isset($overdue_books)) {
-                $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
-            }
+            $overdue_books = $data2->rent->whereDate('return_date', '<', date('Y-m-d'))->count();
             $overdue_real = $overdue_books;
             
             if ($overdue_books > $rented_books && $overdue_books > $reserved_books) {
@@ -273,7 +271,6 @@ class DashboardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

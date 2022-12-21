@@ -9,6 +9,10 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(StudentController::class)->group(function() {
+
+Route::get('/approvee', 'approvee')->name('approvee');
+Route::put('/approvee/{id}', 'updatic')->name('updatic');
+
 // Students
 Route::get('/ucenici', 'index')->name('all-student');
 Route::get('/ucenik/{user:username}', 'show')->name('show-student');

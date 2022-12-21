@@ -14,8 +14,9 @@
         "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/passport": "^11.2",
-        "laravel/sanctum": "^2.14.1",
+        "laravel/sanctum": "^3.0.1",
         "laravel/scout": "^9.4",
+        "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "laravelcollective/html": "^6.3"
@@ -24,6 +25,7 @@
         "barryvdh/laravel-debugbar": "^3.7",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
+        "laravel/telescope": "^4.10",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
@@ -58,7 +60,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {

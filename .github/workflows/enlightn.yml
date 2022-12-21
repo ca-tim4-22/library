@@ -31,7 +31,7 @@ jobs:
           composer install --prefer-dist --no-interaction --no-progress --no-scripts
 
       - name: Run Enlightn Checks and Trigger the Enlightn Bot
-        # if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         env:
           ENLIGHTN_USERNAME: ${{ secrets.ENLIGHTN_USERNAME }}
           ENLIGHTN_API_TOKEN: ${{ secrets.ENLIGHTN_API_TOKEN }}
