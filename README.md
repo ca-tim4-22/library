@@ -1,5 +1,5 @@
-<kbd>[<img title="Engleski" alt="Engleski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg" width="22">](translations/README.al.md)</kbd>
-<kbd>[<img title="Italijanski" alt="Italijanski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" width="22">](translations/README.al.md)</kbd>
+<kbd>[<img title="Engleski" alt="Engleski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg" width="22">](translations/README.en.md)</kbd>
+<kbd>[<img title="Italijanski" alt="Italijanski" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" width="22">](translations/README.ita.md)</kbd>
 
 ## Online biblioteka | Veb aplikacija & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### Šta je "Online biblioteka"?
