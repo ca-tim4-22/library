@@ -23,11 +23,16 @@ In this project are used packages for dynamically manipulating the attached phot
 <br>
 ->  Restart your apache server
 > If you don't know how to find the "php.ini" file... the most common path is `C:\php`. You can also type the command: `php --ini' in the command prompt to get more information
+
 #### Possible error: 
 -> "Unsupported cipher or incorrect key length. Supported ciphers are..."
 <br>
 It is a wrong generated APP_KEY ie. an application encryption key. Open the ".env" file located at the root of the project. Delete the entered value and run the command:
 > php artisan key:generate
+
+-> "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"
+<br>
+You may not have started your local server. Depending on which software you are using as a server package, start it as well as the Apache server and try again. Known softwares: WAMP, XAMPP, ampss, and so on.
 
 ## Installation
 * Clone this repository using this command:

@@ -23,11 +23,16 @@ S obzirom da su korišćeni paketi za dinamično manipulisanje priloženih fotog
 <br>
 ->  Restartujte Vaš apache server
 > Ukoliko ne znate da pronađete "php.ini" fajl.. najčešći path je `C:\php`. Možete ukucati i komandu: `php --ini` u command promt-u kako biste dobili još informacija
+
 #### Moguća greška: 
 -> "Unsupported cipher or incorrect key length. Supported ciphers are..."
 <br>
 U pitanju je loše izgenerisani APP_KEY tj. enkripcioni ključ aplikacije. Otvorite ".env" fajl koji se nalazi u root-u projekta. Izbrišite upisanu vrijednost i pokrenite komandu:
 > php artisan key:generate
+
+-> "SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it"
+<br>
+Moguće je da niste startovali Vaš lokalni server. U zavisnosti koji softver koristite kao serverski paket pokrenite ga kao i Apache server i pokušajte ponovo. Poznati softveri: WAMP, XAMPP, ampps i tako dalje.
 
 ## Instalacija
 * Klonirajte ovaj repozitorijum sledećom komandom:
