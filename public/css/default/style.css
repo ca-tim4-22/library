@@ -412,6 +412,12 @@ select::-webkit-scrollbar-thumb:hover {
   cursor: default;
 }
 
+u {
+  text-decoration: underline;
+  text-underline-position: under;
+  text-decoration-color: #F44437;
+}
+
 /* Password Strength */
 
 .strength span {

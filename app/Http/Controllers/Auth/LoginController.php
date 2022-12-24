@@ -82,7 +82,7 @@ class LoginController extends Controller
         Auth::login($user2, true);
 
         if ($user2->github == 1) {
-            return redirect('/approvee');
+            return to_route('approve-index');
         } else {
             return redirect($this->redirectTo);
         }

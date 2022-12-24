@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GitHubVerifyRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
 use App\Models\UserGender;
@@ -19,32 +20,30 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware(['protect-all', 'librarian-protect'])
-        ->except('show', 'crop', 'edit', 'update', 'destroy', 'approvee', 'updatic');
+        ->except('show', 'crop', 'edit', 'update', 'destroy', 'approveIndex', 'approveUpdate');
     }
 
-    public function approvee() {
+    public function approveIndex() {
         $user = Auth::user();
-        $genders = UserGender::all();
-
-        return view('hah.hah', compact('user', 'genders'));
+        
+        return view('github-verify/github_verify', compact('user'));
     }
 
-    public function updatic(Request $request) {
-        // $input = $request->all();
-        // $result_blade = $request->result;
-      
-        // $user = Auth::user();
+    public function approveUpdate(GitHubVerifyRequest $request) {
+        $input = $request->all();
+        $user = Auth::user();
 
-        // if($result_blade == 1) {
-        //     $user->update([
-        //         'JMBG' => $request->JMBG,
-        //         'user_gender_id' => $request->user_gender_id,
-        //     ]);
+        if($request->result == 24) {
+            $user->update([
+                'JMBG' => $request->JMBG,
+                'user_gender_id' => $request->user_gender_id,
+                'active' => true,
+            ]);
 
-        //     return redirect('/dashboard');
-        // } else {
-        //     return back();
-        // }
+            return redirect('/dashboard');
+        } else {
+            return back();
+        }
     }
 
     /**

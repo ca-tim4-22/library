@@ -10,8 +10,8 @@ use App\Http\Controllers\ {
 
 Route::controller(StudentController::class)->group(function() {
 
-Route::get('/approvee', 'approvee')->name('approvee');
-Route::put('/approvee/{id}', 'updatic')->name('updatic');
+Route::get('/potvrdite-nalog', 'approveIndex')->name('approve-index');
+Route::put('/potvrdite-nalog/{id}', 'approveUpdate')->name('approve-update');
 
 // Students
 Route::get('/ucenici', 'index')->name('all-student');

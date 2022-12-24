@@ -43,34 +43,57 @@
         </div>
         <!-- Space for content -->
         <div class="scroll height-content section-content">
-            <form class="text-gray-700 text-[14px]" method="POST" action="{{route('updatic', $user->id)}}" enctype="multipart/form-data">
+            <form class="text-gray-700 text-[14px]" method="POST" action="{{route('approve-update', $user->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="flex flex-row ml-[30px]">
                     <div class="w-[50%] mb-[100px]">
 
-                        <div class="mt-[20px]">
-                            <span>JMBG<span class="text-red-500">*</span></span>
-                            <input type="text" name="JMBG" id="JMBG" value="{{$user->JMBG}}" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        <div style="margin-top: 1rem;" class="text-base">
+                            S obzirom da ste se registrovali koristeći third party aplikaciju bićete primorani da izvršite <u>potvrdu</u> svog naloga. Popunite sledeća polja ispravnim podacima i pritisnite dugme "Sačuvaj".
                         </div>
 
                         <div class="mt-[20px]">
-                            <span>Tip korisnika</span>
-                            <select class="flex w-[90%] mt-2 px-2 py-2 border bg-white border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" name="user_gender_id">
-                                @foreach ($genders as $gender)
-                                <option value="{{$gender->id}}">
-                                    {{$gender->name}}
-                                </option>
-                                @endforeach
+                            <span>JMBG <span class="text-red-500">*</span></span>
+                            @error('JMBG')
+                            <span style="color:#cd1a2b;font-size:15px">{{$message}}</span>
+                            @enderror
+                            <input type="number" name="JMBG" id="JMBG" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none 
+                            @if(!$errors->any()) focus:ring-2 focus:ring-[#576cdf]  @endif
+                            @error('JMBG') error-border @enderror" 
+                            value="{{old('JMBG')}}"/>
+                        </div>
+
+                        <div class="mt-[20px]">
+                            <span>Vaš pol  <span class="text-red-500">*</span></span></span>
+                        <select
+                        required
+                        oninvalid="this.setCustomValidity('Morate odabrati pol')" oninput="setCustomValidity('')"
+                        style="cursor: pointer" class="flex w-[90%] mt-2 px-2 py-2 border shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]" id="user_gender_id" for="user_gender_id" name="user_gender_id">
+                            <option>
+                            Odaberite
+                            </option>
+                            <option value="1" {{ old('user_gender_id') == '1' ? 'selected' : '' }}>
+                            Muški
+                            </option>
+                            <option value="2" {{ old('user_gender_id') == '2' ? 'selected' : '' }}>
+                            Ženski
                             </select>
                         </div>
-
                         <div class="mt-[20px]">
-                        <label for="">Saberi 2 + 4 = ?</label>
-
-                        <input type="number" name="result" id="result" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
+                        <label>Saberite 12 + 12 = ?  <span class="text-red-500">*</span></span></label>
+                        @error('result')
+                        <span style="color:#cd1a2b;font-size:15px">{{$message}}</span>
+                        @enderror
+                        <input type="number" name="result" id="result" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none 
+                            @if(!$errors->any()) focus:ring-2 focus:ring-[#576cdf]  @endif
+                            @error('result') error-border @enderror" 
+                            value="{{old('result')}}"/>
                         </div>
-
+                        <br>
+                        @error('g-recaptcha-response') <span style="color:#cd1a2b;font-size:15px">{{$message}}</span> @enderror
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
                     </div>
 
                 <div class="absolute bottom-0 w-full">

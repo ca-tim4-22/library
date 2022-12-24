@@ -84,7 +84,8 @@
                     <div class="mt-[20px]">
                     <p>JMBG 
                     <span class="text-red-500">* 
-                        @error('JMBG'){{$message}} 
+                        @error('JMBG')
+                        {{$message}} 
                         @enderror
                     </span>
                     <span style="margin-left: 10px" class="hide_this color" id="characters-counter">13</span>
