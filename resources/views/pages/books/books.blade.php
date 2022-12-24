@@ -701,7 +701,7 @@
                                                 </a>
                                                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                                                 <form action="{{route('destroy-book', $book->book->id)}}" method="POST">
-                                                    @csrf
+                                                    @csrf @honeypot   
                                                     @method('DELETE')
                                                     <button style="outline: none" type="submit" tabindex="0"
                                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"

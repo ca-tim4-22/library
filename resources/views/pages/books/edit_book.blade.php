@@ -48,7 +48,7 @@
 
             {{-- Form for update a book --}}
             <form action="{{route('update-book', $book->id)}}" method="POST" enctype="multipart/form-data">
-            @csrf
+            @csrf @honeypot   
             @method('PUT')
             <x-books.jquery_edit :models="$models" :book="$book"></x-books.jquery_edit>
             </form>

@@ -93,7 +93,7 @@
                             </a>
 
                             <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                @csrf
+                                @csrf @honeypot   
                                 @method('DELETE')
                                 <button style="outline: none" type="submit"  tabindex="0"
                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
@@ -114,7 +114,7 @@
     <div class="scroll height-content section-content">
 
         <form class="text-gray-700" action="{{route('store-reserve-book', $book->id)}}" method="POST">
-            @csrf
+            @csrf @honeypot   
             @method('POST')
 
             <div class="flex flex-row ml-[30px]">

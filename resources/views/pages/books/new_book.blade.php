@@ -48,7 +48,7 @@
 
             {{-- Form for create a new book --}}
             <form action="{{route('store-book')}}" method="POST" enctype="multipart/form-data">
-            @csrf
+            @csrf @honeypot   
             <x-books.jquery_create :models="$models"></x-books.jquery_create>
             </form>
     </main>

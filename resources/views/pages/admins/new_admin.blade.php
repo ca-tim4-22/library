@@ -45,7 +45,7 @@
     <!-- Space for content -->
     <div class="scroll height-content section-content">
         <form class="text-gray-700 text-[14px]" method="POST" action="{{route('store-admin')}}" enctype="multipart/form-data">
-        @csrf
+        @csrf @honeypot   
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
 

@@ -20,7 +20,7 @@
         </div>
 
         <form action="{{route('update-book', $book->id)}}" method="POST" enctype="multipart/form-data">
-        @csrf
+        @csrf @honeypot   
         @method('PUT')
         
         <div class="tab_content">

@@ -18,7 +18,7 @@ class InactiveUsersMiddleware
     public function handle(Request $request, Closure $next)
     {
         $URL = url()->current();
-        if (Auth::guest() || Auth::user()->active == 1 || str_contains($URL, 'potvrdite-nalog')) {
+        if (Auth::guest() || Auth::user()->active == 1 || str_contains($URL, 'potvrdite-nalog') || str_contains($URL, 'logout')) {
             return $next($request);
         }
         

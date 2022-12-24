@@ -20,7 +20,8 @@
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
-        "laravelcollective/html": "^6.3"
+        "laravelcollective/html": "^6.3",
+        "spatie/laravel-honeypot": "^4.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

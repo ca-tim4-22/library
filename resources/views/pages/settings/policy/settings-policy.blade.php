@@ -55,7 +55,7 @@
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
                         <form class="flex" method="POST" action="{{route('update-policy', $policy1->id)}}">
-                            @csrf
+                            @csrf @honeypot   
                             @method('PUT')
                             <button
                             id="edit-btn"
@@ -88,7 +88,7 @@
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
                         <form class="flex" method="POST" action="{{route('update-policy', $policy2->id)}}">
-                            @csrf
+                            @csrf @honeypot   
                             @method('PUT')
                             <button
                             id="edit-btn"
@@ -121,7 +121,7 @@
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
                         <form class="flex" method="POST" action="{{route('update-policy', $policy3->id)}}">
-                            @csrf
+                            @csrf @honeypot   
                             @method('PUT')
                             <button
                             id="edit-btn"
@@ -157,7 +157,7 @@
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
                         <form class="flex" method="POST" action="{{route('update-pagination', $policy4->id)}}">
-                            @csrf
+                            @csrf @honeypot   
                             @method('PUT')
                             <button
                             id="edit-btn"

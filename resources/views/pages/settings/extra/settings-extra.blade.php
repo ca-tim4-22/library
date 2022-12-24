@@ -59,7 +59,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_author') error-border @enderror">
                     <form action="{{ route('csvAuthors') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
@@ -79,7 +79,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book') error-border @enderror">
                     <form action="{{ route('csvBooks') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_book') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
@@ -98,7 +98,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_gallery') error-border @enderror">
                     <form action="{{ route('csvGallery') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_gallery') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
@@ -117,7 +117,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_author') error-border @enderror">
                     <form action="{{ route('csvBookAuthors') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_book_author') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
@@ -136,7 +136,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_category') error-border @enderror">
                     <form action="{{ route('csvBookCategories') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_book_category') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
@@ -155,7 +155,7 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area @error('csv_book_genre') error-border @enderror">
                     <form action="{{ route('csvBookGenres') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    @csrf @honeypot   
                     @error('csv_book_genre') <i class="fas fa-exclamation mr-[5px]" id="icon"></i> @enderror
                     <span class="fake-btn">Dodajte CSV fajl</span>
                     <span class="file-msg">ili prevucite Vaš fajl ovdje</span>

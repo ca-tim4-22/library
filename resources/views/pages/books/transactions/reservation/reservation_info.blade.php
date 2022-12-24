@@ -91,7 +91,7 @@
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
                             <form action="{{route('destroy-book', $reservation->book->id)}}" method="POST">
-                                @csrf
+                                @csrf @honeypot   
                                 @method('DELETE')
                                 <button style="outline: none" type="submit"  tabindex="0"
                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"

@@ -326,7 +326,7 @@ style="z-index: 11"
         </div>
         <!-- Modal Body -->
         <form method="POST" action="{{route('resetPassword', $admin->id)}}">
-            @csrf
+            @csrf @honeypot   
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
                     <span>Unesite novu lozinku <span class="text-red-500">*</span></span>

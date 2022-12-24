@@ -11,7 +11,7 @@
     @foreach($book->gallery as $photo)
     <div style="display: inline-block">
     <form action="{{route('delete-book-photo', $photo->id)}}" method="POST" style="display: inline-block">
-        @csrf
+        @csrf @honeypot   
         @method('DELETE')
             <button style="outline: none;" value="{{$photo->photo}}" name="photo"><span class="close"><i class="fas fa-times multimedia-times"></i></span></button>
     </form>

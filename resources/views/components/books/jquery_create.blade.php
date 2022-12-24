@@ -33,7 +33,7 @@
         </div>
 
         <form action="{{route('store-book')}}" method="POST" enctype="multipart/form-data">
-        @csrf
+        @csrf @honeypot   
         
         <div class="tab_content">
         

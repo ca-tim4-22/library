@@ -53,7 +53,7 @@
     <!-- Space for content -->
     <div class="scroll height-content section-content">
         <form class="text-gray-700" method="POST" enctype="multipart/form-data" action="{{route('update-category', $category->id)}}">
-            @csrf
+            @csrf @honeypot   
             @method('PUT')
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">

@@ -471,7 +471,7 @@
                                    <td class="px-4 py-3 changeStatus">
 
                                    <form style="display: inline" action="{{route('approve', ['id' => $await_reservation->id])}}" method="POST">
-                                   @csrf
+                                   @csrf @honeypot   
                                    @method('PUT')
                                        <button style="outline: none;" href="#" class="hover:text-green-500 mr-[5px]">
                                            <i class="fas fa-check reservedStatus"></i>
@@ -479,7 +479,7 @@
                                    </form>
 
                                    <form style="display: inline" action="{{route('deny', ['id' => $await_reservation->id])}}" method="POST">
-                                   @csrf
+                                   @csrf @honeypot   
                                    @method('PUT')
                                        <button style="outline: none;" href="#" class="hover:text-red-500 ">
                                            <i class="fas fa-times deniedStatus"></i>
@@ -593,7 +593,7 @@
                                                     </a>
 
                                                     <form action="{{route('update-archive-reservation', $true_reservation->reservation->id)}}" method="POST">
-                                                       @csrf
+                                                       @csrf @honeypot   
                                                        @method('PUT')
                                                            <button tabindex="0"
                                                            type="submit"

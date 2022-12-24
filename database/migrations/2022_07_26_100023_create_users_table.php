@@ -51,6 +51,7 @@ return new class extends Migration
             'updated_at' => Carbon::now(),
             'last_login_at' => Carbon::now(),
             'login_count' => 0,
+            'active' => 1,
         ]);
     }
 

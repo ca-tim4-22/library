@@ -92,7 +92,7 @@
                                 <span class="px-4 py-0">Izmijeni knjigu</span>
                             </a>
                             <form action="{{route('destroy-book', $book->id)}}" method="POST">
-                                @csrf
+                                @csrf @honeypot   
                                 @method('DELETE')
                                 <button style="outline: none" type="submit"  tabindex="0"
                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
@@ -132,7 +132,7 @@
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 
             <form action="{{route('update-write-off', $book->id)}}" method="POST">
-            @csrf
+            @csrf @honeypot   
 
             @if ($count > 0)
 
