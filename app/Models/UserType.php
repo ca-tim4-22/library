@@ -9,4 +9,5 @@ class UserType extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $timestamps = false;
 }

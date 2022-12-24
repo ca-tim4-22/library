@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Binding;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 256);
         });
 
-        DB::table('bindings')->insert([
+        $data =  array(
             ['name' => 'Francuski povez'],
             ['name' => 'Umjetnički povez'],
             ['name' => 'Kožni povez'],
@@ -27,7 +27,9 @@ return new class extends Migration
             ['name' => 'Koričenje spiralom'],
             ['name' => 'Meki povez'],
             ['name' => 'Tvrdi povez'],
-        ]);
+        );
+
+        Binding::insert($data);
     }
 
     /**

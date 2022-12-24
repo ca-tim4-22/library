@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\BookStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -18,11 +18,13 @@ return new class extends Migration
             $table->id();
             $table->string('status', 256);
         });
-
-        DB::table('book_statuses')->insert([
+      
+        $data = array(
             ['status' => 'true'],
             ['status' => 'false'],
-        ]);
+        );
+
+        BookStatus::insert($data);
     }
 
     /**

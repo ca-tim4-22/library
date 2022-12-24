@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\UserType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,12 +19,13 @@ return new class extends Migration
             $table->string('name', 256);
         });
 
-        DB::table('user_types')->insert([
+        $data = array(
             ['name' => 'student'],
             ['name' => 'librarian'],
             ['name' => 'administrator'],
-        ]);
+        );
 
+        UserType::insert($data);
     }
 
     /**

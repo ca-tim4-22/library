@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\StatusReservation;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -19,13 +20,15 @@ return new class extends Migration
             $table->string('status');
         });
 
-        DB::table('status_reservations')->insert([
+        $data =  array(
             ['status' => 'true'],
             ['status' => 'false'],
             ['status' => 'await'],
             ['status' => 'archived'],
             ['status' => 'expired'],
-        ]);
+        );
+
+        StatusReservation::insert($data);
     }
 
     /**

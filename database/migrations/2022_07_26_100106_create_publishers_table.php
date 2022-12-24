@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Publisher;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 256);
         });
 
-        DB::table('publishers')->insert([
+        $data = array(
             ['name' => 'Građevinska knjiga'],
             ['name' => 'Darkwood'],
             ['name' => 'Dedić'],
@@ -46,7 +46,9 @@ return new class extends Migration
             ['name' => 'Akademska knjiga'],
             ['name' => 'Akruks Book'],
             ['name' => 'Čarobna knjiga'],
-        ]);
+        );
+
+        Publisher::insert($data);
     }
 
     /**

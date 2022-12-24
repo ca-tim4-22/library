@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Letter;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 256);
         });
 
-        DB::table('letters')->insert([
+        $data = array(
             ['name' => 'Rimska abeceda'],
             ['name' => 'Mongolska abeceda'],
             ['name' => 'Grčka abeceda'],
@@ -28,7 +28,9 @@ return new class extends Migration
             ['name' => 'Fonetsko pismo'],
             ['name' => 'Ćirilica'],
             ['name' => 'Latinica'],
-        ]);
+        );
+
+        Letter::insert($data);
     }
 
     /**

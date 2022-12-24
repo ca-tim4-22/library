@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Language;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name', 256);
         });
 
-        DB::table('languages')->insert([
+        $data =  array(
             ['name' => 'Crnogorski'],
             ['name' => 'Srpski'],
             ['name' => 'Bosanski'],
@@ -29,7 +29,9 @@ return new class extends Migration
             ['name' => 'Engleski'],
             ['name' => 'Francuski'],
             ['name' => 'Italijanski'],
-        ]);
+        );
+
+        Language::insert($data);
     }
 
     /**
