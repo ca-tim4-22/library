@@ -43,11 +43,12 @@ class BindingController extends Controller
      */
     public function store(BindingRequest $request)
     {
-        $binding = $request->name;
-        $binding_lower = Str::title($binding);
-        Binding::create($request->validated());
+        dd('cao');
+        // $binding = $request->name;
+        // $binding_lower = Str::title($binding);
+        // Binding::create($request->validated());
         
-        return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
+        // return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
     }
 
     /**

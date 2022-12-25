@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GitHubVerifyRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
-use App\Models\UserGender;
 use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -40,9 +39,14 @@ class StudentController extends Controller
                 'active' => true,
             ]);
 
-            return redirect('/dashboard');
+            return to_route('show-student', $user->username)
+                ->with('account-approved', 'Aktivirali ste svoj nalog!')
+                ->withFragment('#uspjesna-aktivacija');
         } else {
-            return back();
+            return to_route('approve-index')
+                ->withInput($request->input())
+                ->withErrors(['result' => 'Unesena vrijednost nije odgovarajuća. Pokušajte ponovo'])
+                ->withFragment('#ponovni-pokusaj');
         }
     }
 

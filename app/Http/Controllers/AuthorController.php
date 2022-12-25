@@ -68,15 +68,16 @@ class AuthorController extends Controller
      */
     public function store(AuthorRequest $request)
     {
-        $input = $request->all();
+        $validated = $request->validated();
         
         if($request->file('photo')){
             $file= $request->file('photo');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file->move(('storage/authors'), $filename);
-            $input['photo']= $filename;
+            $validated['photo']= $filename;
         }
-        $author = Author::create($input);
+
+        $author = Author::create($validated);
         FacadesSession::flash('success-author'); 
 
         return to_route('all-author');

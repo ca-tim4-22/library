@@ -48,7 +48,6 @@
         @csrf @honeypot   
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
-
                 <div class="mt-[20px]">
                         <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
                         <input 

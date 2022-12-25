@@ -54,7 +54,8 @@
         <!-- Space for content -->
         <div class="scroll height-content section-content">
             <form class="text-gray-700" method="POST" action="{{route('store-binding')}}">
-                @csrf @honeypot   
+                @csrf 
+                @honeypot
                 <div class="flex flex-row ml-[30px]">
                     <div class="w-[50%] mb-[150px]">
                         <div class="mt-[20px]">

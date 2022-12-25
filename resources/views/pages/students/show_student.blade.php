@@ -210,6 +210,18 @@
   </div>
 @endif
 
+{{-- Session message for account activation --}}
+@if (session()->has('account-approved'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Aktivirali ste nalog!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif 
+
             <div class="flex flex-row">
                 <div class="mr-[30px]">
                     <div class="mt-[20px]">

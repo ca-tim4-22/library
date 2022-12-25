@@ -20,7 +20,7 @@ return [
      * to the name_field_name. This improves the
      * protection against bots.
      */
-    'randomize_name_field_name' => env('HONEYPOT_RANDOMIZE', false),
+    'randomize_name_field_name' => env('HONEYPOT_RANDOMIZE', true),
 
     /*
      * When this is activated, requests will be checked if
@@ -39,7 +39,7 @@ return [
      * If the form is submitted faster than this amount of seconds
      * the form submission will be considered invalid.
      */
-    'amount_of_seconds' => env('HONEYPOT_SECONDS', 3),
+    'amount_of_seconds' => env('HONEYPOT_SECONDS', 2),
 
     /*
      * This class is responsible for sending a response to requests that
@@ -48,7 +48,7 @@ return [
      * A valid responder is any class that implements
      * `Spatie\Honeypot\SpamResponder\SpamResponder`
      */
-    'respond_to_spam_with' => BlankPageResponder::class,
+    // 'respond_to_spam_with' => BlankPageResponder::class,
 
     /*
      * When activated, requests will be checked if honeypot fields are missing,
