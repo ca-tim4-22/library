@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class CategoryController extends Controller
 {
@@ -43,22 +43,20 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $input = $request->all();
-        $category = $request->name;
-        $category_lower = Str::title($category);
+        $validated = $request->validated();
 
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $input['icon'] = $name; 
-            $input['default'] = 'false'; 
+            $validated['icon'] = $name; 
+            $validated['default'] = 'false'; 
         } else {
-            $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
+            $validated['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
+        FacadesSession::flash('success-category'); 
+        Category::create($validated);
 
-        Category::create($input);
-
-        return to_route('setting-category')->with('success-category', "Uspješno ste dodali kategoriju " . "\"$category_lower\"");
+        return to_route('setting-category');
     }
     /**
      * Display the specified resource.
@@ -91,23 +89,22 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        $input = $request->all();
-        $category = Category::findOrFail($id);  
-
+        $validated = $request->validated();
+        $category = Category::findOrFail($id);
         $icon_old = $category->icon;
     
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $input['icon'] = $name; 
-            $input['default'] = 'false'; 
+            $validated['icon'] = $name; 
+            $validated['default'] = 'false'; 
         } else {
-            $input['icon'] = $icon_old;
+            $validated['icon'] = $icon_old;
         }
+        FacadesSession::flash('category-updated'); 
+        $category->update($validated);
 
-        $category->update($input);
-
-        return to_route('setting-category')->with('category-updated', 'Uspješno ste izmijenili kategoriju: ' . "\"$category->name\".");
+        return to_route('setting-category');
     }
 
     /**
@@ -118,7 +115,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-
         $URL = url()->current();
 
         // Delete default icon && icon in storage

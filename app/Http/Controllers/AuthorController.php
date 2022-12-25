@@ -76,9 +76,8 @@ class AuthorController extends Controller
             $file->move(('storage/authors'), $filename);
             $validated['photo']= $filename;
         }
-
-        $author = Author::create($validated);
         FacadesSession::flash('success-author'); 
+        $author = Author::create($validated);
 
         return to_route('all-author');
     }
@@ -116,19 +115,18 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
+        $validated = $request->validated();
         $author = Author::findOrFail($id);  
-
         $photo_old = $request->photo;
+
         if($request->file('photo')){
             $file= $request->file('photo');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file->move(('storage/authors'), $filename);
-            $input['photo']= $filename;
+            $validated['photo']= $filename;
         }
-
-        $author->whereId($id)->first()->update($input);
         FacadesSession::flash('author-updated'); 
+        $author->whereId($id)->first()->update($validated);
 
         return to_route('all-author');
     }
