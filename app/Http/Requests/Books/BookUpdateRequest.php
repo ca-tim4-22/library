@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Book;
+namespace App\Http\Requests\Books;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookStoreRequest extends FormRequest
+class BookUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class BookStoreRequest extends FormRequest
         return [
             'title' => 'required|min:2|max:255',
             'page_count' => 'required|numeric|min:0|max:2000|not_in:0',
-            'ISBN' => 'required|min:13|max:13|unique:books',   
+            'ISBN' => "required|min:13|max:13|unique:books,ISBN,$this->id,id",   
             'quantity_count' => 'required|min:0|not_in:0',
             'body' => 'required|min:2|max:1000',
             'year' => 'required|min:0|not_in:0',

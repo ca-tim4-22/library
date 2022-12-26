@@ -12,7 +12,6 @@ Route::controller(StudentController::class)->group(function() {
 // Registration using third party application
 Route::get('/potvrdite-nalog', 'approveIndex')->name('approve-index');
 Route::put('/potvrdite-nalog/{id}', 'approveUpdate')->name('approve-update');
-
 // Students
 Route::get('/ucenici', 'index')->name('all-student');
 Route::get('/ucenik/{user:username}', 'show')->name('show-student');
@@ -39,6 +38,5 @@ Route::post('/ucenici/{id}', 'destroy')->name('students.destroy');
 Route::post('/crop/ucenik', 'crop')->name('student.crop');
 
 });
-
 
 ?>

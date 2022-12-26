@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Book;
+namespace App\Http\Requests\Books;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReserveBookRequest extends FormRequest
+class RentBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class ReserveBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'reservationMadeFor_user_id' => 'required',
+            'borrow_user_id' => 'required',
         ];
     }
 }
