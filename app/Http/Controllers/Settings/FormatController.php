@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\FormatRequest;
 use App\Models\Format;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class FormatController extends Controller
 {
@@ -43,11 +43,10 @@ class FormatController extends Controller
      */
     public function store(FormatRequest $request)
     {
-        $format = $request->name;
-        $format_lower = Str::title($format);
+        FacadesSession::flash('success-format'); 
         Format::create($request->validated());
         
-        return to_route('setting-format')->with('success-format', "Uspješno ste dodali " . "\"$format_lower\"" . "format.");
+        return to_route('setting-format');
     }
 
     /**

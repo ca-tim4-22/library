@@ -4,7 +4,6 @@ namespace App\Http\Requests\Settings;
 
 use App\Rules\Settings\AtSignRule;
 use App\Rules\Settings\MinimumLengthRule;
-use App\Rules\Settings\NoDigitsRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FormatRequest extends FormRequest
