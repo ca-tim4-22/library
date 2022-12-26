@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\LetterRequest;
 use App\Models\Letter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class LetterController extends Controller
 {
@@ -43,11 +43,10 @@ class LetterController extends Controller
      */
     public function store(LetterRequest $request)
     {
-        $letter = $request->name;
-        $letter_lower = Str::title($letter);
+        FacadesSession::flash('success-letter'); 
         Letter::create($request->validated());
         
-        return to_route('setting-letter')->with('success-letter', "Uspješno ste dodali " . "\"$letter_lower\"" . "pismo.");
+        return to_route('setting-letter');
     }
 
     /**
