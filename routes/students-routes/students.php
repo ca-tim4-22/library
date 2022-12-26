@@ -9,7 +9,7 @@ use App\Http\Controllers\ {
 };
 
 Route::controller(StudentController::class)->group(function() {
-
+// Registration using third party application
 Route::get('/potvrdite-nalog', 'approveIndex')->name('approve-index');
 Route::put('/potvrdite-nalog/{id}', 'approveUpdate')->name('approve-update');
 

@@ -55,7 +55,7 @@ class LoginController extends Controller
         $user->save();
     }
     
-    public function github() {
+    public function gitHub() {
         return Socialite::driver('github')->redirect();
     }
 

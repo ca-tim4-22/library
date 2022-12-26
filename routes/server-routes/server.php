@@ -34,7 +34,7 @@ Route::post('uloguj-se', 'login');
 // Logout route
 Route::get('/logout', 'logout');
 
-Route::get('/sign-in/github', 'github');
+Route::get('/sign-in/github', 'gitHub');
 Route::get('/sign-in/github/redirect', 'githubRedirect');
 });
 

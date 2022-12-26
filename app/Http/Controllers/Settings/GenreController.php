@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
@@ -43,22 +44,20 @@ class GenreController extends Controller
      */
     public function store(GenreRequest $request)
     {
-        $input = $request->all();
-        $genre = $request->name;
-        $genre_lower = Str::title($genre);
+        $validated = $request->validated();
 
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $input['icon'] = $name; 
-            $input['default'] = 'false'; 
+            $validated['icon'] = $name; 
+            $validated['default'] = 'false'; 
         } else {
-            $input['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
+            $validated['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
+        FacadesSession::flash('success-genre'); 
+        Genre::create($validated);
 
-        Genre::create($input);
-
-        return to_route('setting-genre')->with('success-genre', "Uspješno ste dodali žanr " . "\"$genre_lower\"");
+        return to_route('setting-genre');
     }
 
     /**

@@ -17,7 +17,7 @@ class LibrarianNotLibrarianMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->type->id == 2) {
+        if (Auth::check() && Auth::user()->type->id == 2) {
             return response()->view('maintenance.access_denied')->setStatusCode(403);
         } else {
             return $next($request);

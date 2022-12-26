@@ -18,14 +18,21 @@ class StudentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['protect-all', 'librarian-protect'])
-        ->except('show', 'crop', 'edit', 'update', 'destroy', 'approveIndex', 'approveUpdate');
+        $this->middleware(['protect-all']);
     }
 
     public function approveIndex() {
-        $user = Auth::user();
         
-        return view('github-verify/github_verify', compact('user'));
+        $user = User::where([
+            'id' => Auth::id(),
+            'active' => 0,
+        ])->first();
+
+        if (!$user) {
+            return to_route('show-student', $user->username);
+        } else {
+            return view('github-verify/github_verify', compact('user'));
+        }
     }
 
     public function approveUpdate(GitHubVerifyRequest $request) {
