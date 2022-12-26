@@ -10,6 +10,11 @@
                 <div class="flex flex-row ml-[30px] mb-[150px]">
                     <div class="w-[50%]">
                         <div class="mt-[20px]">
+                            @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                {{$error}}
+                            @endforeach
+                            @endif
                             <p>Naziv knjige <span class="text-red-500">* @error('title') {{$message}} @enderror</span></p>
                             <input type="text" name="title" id="nazivKnjiga"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"

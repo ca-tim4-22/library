@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Book\BookStoreRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookAuthor;
@@ -163,63 +164,32 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function store(BookStoreRequest $request)
     {
-        $input = Validator::make($request->all(), [
-            'title' => 'required|min:2|max:255',
-            'page_count' => 'required|numeric|min:0|max:2000|not_in:0',
-            'ISBN' => 'required|min:13|max:13|unique:books',   
-            'quantity_count' => 'required|min:0|not_in:0',
-            'rented_count' => 'required|min:0|not_in:0',
-            'reserved_count' => 'required|min:0|not_in:0',
-            'body' => 'required|min:2|max:1000',
-            'year' => 'required|min:0|not_in:0',
-            'category_id' => 'required',
-            'genre_id' => 'required',
-            'author_id' => 'required',
-            'publisher_id' => 'required',
-            'language_id' => 'required',
-            'letter_id' => 'required',
-            'binding_id' => 'required',
-            'format_id' => 'required',
-            'cover' => 'required',
-        ])->safe()->all();
-
-        $category = $request->input('category_id');
+        $validated = $request->validated();
+        
+        $category = $request->category_id;
         $category = str_replace(['[', ']'], null, $category);
         $categoryIds= explode( ',', $category);
 
-        $genre = $request->input('genre_id');
+        $genre = $request->genre_id;
         $genre = str_replace(['[', ']'], null, $genre);
         $genreIds= explode( ',', $genre);
 
-        $author = $request->input('author_id');
+        $author = $request->author_id;
         $author = str_replace(['[', ']'], null, $author);
         $authorIds= explode( ',', $author);
 
-        $pdf = $request->pdf;
-
-        if ($pdf) {
+        if ($pdf = $request->pdf) {
            $name = $pdf->getClientOriginalName();
            $pdf->move('storage/pdf', $name); 
+           $validated['pdf'] = $name;
         } else {
-           $name = 0;
+           $name = null;
         }
-
-        $book = new Book();
-        $book->title = $request->input('title');
-        $book->body = $request->input('body');
-        $book->publisher_id = $request->input('publisher_id');
-        $book->quantity_count = $request->input('quantity_count');
-        $book->page_count = $request->input('page_count');;
-        $book->binding_id = $request->input('binding_id');
-        $book->letter_id = $request->input('letter_id');
-        $book->format_id = $request->input('format_id');
-        $book->language_id = $request->input('language_id');
-        $book->ISBN = $request->input('ISBN');
-        $book->year = $request->input('year');
-        $book->pdf =  $name;
-        $book->save();
+        $validated['rented_count'] = 0;
+        $validated['reserved_count'] = 0;
+        $book = Book::create(collect($validated)->except(['category_id', 'author_id', 'genre_id'])->toArray());
 
         foreach($categoryIds as $id) {
             BookCategory::create([
@@ -227,14 +197,12 @@ class BookController extends Controller
                 'category_id' => $id,
             ]);
         }
-
         foreach($genreIds as $id) {
             BookGenre::create([
                 'book_id' => $book->id,
                 'genre_id' => $id,
             ]);
         }
-
         foreach($authorIds as $id) {
             BookAuthor::create([
                 'book_id' => $book->id,
@@ -242,7 +210,7 @@ class BookController extends Controller
             ]);
         }
      
-        if ($request->file('cover')) {
+        if ($request->file('cover')->isValid()) {
             $cover = $request->file('cover');
             $name = $cover->getClientOriginalName();
             $cover->move('storage/book-covers', $name);
@@ -253,8 +221,7 @@ class BookController extends Controller
             ]);
         }
 
-
-        if ($request->file('photos') && $request->file('cover')) {
+        if ($request->hasFile('photos') && $request->hasFile('cover')) {
             $photos = $request->file('photos');
             foreach ($photos as $photo) {
             $file = $photo;
