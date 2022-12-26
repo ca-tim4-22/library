@@ -95,7 +95,7 @@ class FormatController extends Controller
     {
         $format = Format::findOrFail($id);
 
-        return  $format->delete();
+        return $format->delete();
     }
 
     public function deleteMultiple(Request $request)

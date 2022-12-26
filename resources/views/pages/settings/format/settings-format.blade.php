@@ -183,15 +183,15 @@
 
                         <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
                             <button
+                            type="submit"
                             style="outline: none;border: none;font-weight: bold;"
                             class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none delete-all-formats" 
                             role="menuitem"
-                            type="submit"
                             data-url="">
                             <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
                             <span style="padding-top: 1px;">Izbriši format</span>
                             </button>
-                            </td>
+                        </td>
 
                         <td class="px-4 py-4" id="toggle"></td>
                     </tr>
