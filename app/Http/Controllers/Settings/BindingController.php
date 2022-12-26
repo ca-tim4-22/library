@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\BindingRequest;
 use App\Models\Binding;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class BindingController extends Controller
 {
@@ -43,12 +43,10 @@ class BindingController extends Controller
      */
     public function store(BindingRequest $request)
     {
-        dd('cao');
-        // $binding = $request->name;
-        // $binding_lower = Str::title($binding);
-        // Binding::create($request->validated());
+        FacadesSession::flash('success-binding'); 
+        Binding::create($request->validated());
         
-        // return to_route('setting-binding')->with('success-binding', "Uspješno ste dodali " . "\"$binding_lower\"" . "povez.");
+        return to_route('setting-binding');
     }
 
     /**
