@@ -82,7 +82,7 @@ class LibrarianController extends Controller
         $validated['password'] = Hash::make($request->password);
       
         // Store photo
-        if($request->file('photo')) {
+        if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $filename = time() . $image->getClientOriginalName();
             // This will generate an image with transparent background

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Users\UserStoreRequest;
+use App\Http\Requests\Users\UserUpdateRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
-use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -72,27 +72,17 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $input = Validator::make($request->all(), [
-            'name' => 'required|min:2|max:255',
-            'username' => 'required|min:2|max:255|unique:users',
-            'email' => [new EmailVerificationRule(), 'unique:users'],
-            'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:13|max:13|unique:users',
-            'photo' => 'required|image',
-        ])->safe()->all();
+        $validated = $request->validated();
+        $validated['user_type_id'] = 3;
+        $validated['user_gender_id'] = $request->user_gender_id;
+        $validated['last_login_at'] = Carbon::now();
+        // Hash password
+        $validated['password'] = Hash::make($request->password);
 
-        $input['user_type_id'] = 3;
-        $input['user_gender_id'] = $request->user_gender_id;
-        $input['last_login_at'] = Carbon::now();
-        $input['password'] = Hash::make($request->password);
-
-        //Hash password
-        $user['password'] = Hash::make(request()->password);
-      
-         // Store photo
-         if($request->hasFile('photo')) {
+        // Store photo
+        if($request->hasFile('photo')) {
             $image = $request->file('photo');
             $filename = time() . $image->getClientOriginalName();
             // This will generate an image with transparent background
@@ -107,9 +97,9 @@ class AdminController extends Controller
                 }
             }
             $canvas->save('storage/administrators/'. $filename, 75);
-            $input['photo'] = $filename; 
+            $validated['photo'] = $filename; 
         } 
-        User::create($input);
+        User::create($validated);
         FacadesSession::flash('success-admin'); 
 
         return to_route('all-admin');
@@ -156,21 +146,18 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $input = $request->all();
+        $validated = $request->validated();
         $user = Auth::user();   
-        $find_user = User::findOrFail($id);
-
-        $photo_old = $request->photo;
     
         if ($file = $request->file('photo')) {
             $name = $file->getClientOriginalName();
             $file->move('storage/administrators', $name);
-            $input['photo'] = $name; 
+            $validated['photo'] = $name; 
         } 
 
-        $user->whereId($id)->first()->update($input);
+        $user->whereId($id)->first()->update($validated);
         FacadesSession::flash('admin-updated'); 
 
         return to_route('all-admin');

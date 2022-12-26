@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GitHubVerifyRequest;
+use App\Http\Requests\Users\UserStoreRequest;
+use App\Http\Requests\Users\UserUpdateRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
-use App\Rules\EmailVerification\EmailVerificationRule;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session as FacadesSession;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -109,25 +109,15 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $input = Validator::make($request->all(), [
-            'name' => 'required|min:2|max:255',
-            'username' => 'required|min:2|max:255|unique:users',
-            'email' => [new EmailVerificationRule(), 'unique:users'],
-            'password' => 'required|min:8|confirmed',   
-            'JMBG' => 'required|min:13|max:13|unique:users',
-            'photo' => 'required|image',
-        ])->safe()->all();
-
-        $input['user_type_id'] = 1;
-        $input['user_gender_id'] = $request->user_gender_id;
-        $input['last_login_at'] = Carbon::now();
-        $input['password'] = Hash::make($request->password);
-
-        //Hash password
-        $user['password'] = Hash::make(request()->password);
-
+        $validated = $request->validated();
+        $validated['user_type_id'] = 1;
+        $validated['user_gender_id'] = $request->user_gender_id;
+        $validated['last_login_at'] = Carbon::now();
+        // Hash password
+        $validated['password'] = Hash::make($request->password);
+     
         // Store photo
         if($request->hasFile('photo')) {
             $image = $request->file('photo');
@@ -144,9 +134,9 @@ class StudentController extends Controller
                 }
             }
             $canvas->save('storage/students/'. $filename, 75);
-            $input['photo'] = $filename; 
+            $validated['photo'] = $filename; 
         } 
-        User::create($input);
+        User::create($validated);
         FacadesSession::flash('success-student'); 
 
         return to_route('all-student');
@@ -209,9 +199,9 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
-        $input = $request->all();
+        $validated = $request->validated();
         $user = Auth::user();
         $find_user = User::findOrFail($id);
 
@@ -220,10 +210,10 @@ class StudentController extends Controller
         if ($file = $request->file('photo')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('storage/students', $name);
-            $input['photo'] = $name;
+            $validated['photo'] = $name;
         }
 
-        $user->whereId($id)->first()->update($input);
+        $user->whereId($id)->first()->update($validated);
         FacadesSession::flash('student-updated'); 
 
         return to_route('all-student');
