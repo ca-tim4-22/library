@@ -35,6 +35,15 @@ class GenreRequest extends FormRequest
                 new NoDigitsRule(),
                 new AtSignRule(),
             ],
+            'description' => ['required', 'min:20', 'max:100'],
     ];
+    }
+
+    public function messages()
+    {
+        return [
+            'description.min' => 'Polje za opis žanra mora sadržati minimum 20 karaktera.',
+            'description.max' => 'Polje za opis žanra smije sadržati maksimum 100 karaktera.',
+        ];
     }
 }

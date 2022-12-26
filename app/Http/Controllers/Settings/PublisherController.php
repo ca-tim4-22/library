@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\PublisherRequest;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PublisherController extends Controller
 {
@@ -43,11 +43,10 @@ class PublisherController extends Controller
      */
     public function store(PublisherRequest $request)
     {
-        $publisher = $request->name;
-        $publisher_lower = Str::title($publisher);
         Publisher::create($request->validated());
-        
-        return to_route('setting-publisher')->with('success-publisher', "Uspješno ste dodali " . "\"$publisher_lower\"" . "izdavača.");
+        FacadesSession::flash('success-publisher'); 
+
+        return to_route('setting-publisher');
     }
 
     /**

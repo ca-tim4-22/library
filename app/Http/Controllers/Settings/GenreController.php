@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class GenreController extends Controller
 {

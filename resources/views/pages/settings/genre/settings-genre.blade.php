@@ -443,12 +443,6 @@ $('input#check').on('change', function() {
    }  
    }  
    });
-//    $('[data-toggle=confirmation]').confirmation({
-//    rootSelector: '[data-toggle=confirmation]',
-//    onConfirm: function (event, element) {
-//    element.closest('form').submit();
-//    }
-//    });   
    });
    </script>
 
