@@ -74,7 +74,7 @@ class LoginController extends Controller
         ]);
 
         Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));
-
+     
         $user2->update([
             'login_count'=> $user2->login_count + 1,
             'last_login_at'=> now(),
