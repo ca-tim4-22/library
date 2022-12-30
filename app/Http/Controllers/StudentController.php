@@ -27,11 +27,12 @@ class StudentController extends Controller
             'id' => Auth::id(),
             'active' => 0,
         ])->first();
-
-        if (!$user) {
-            return to_route('show-student', $user->username);
-        } else {
+   
+        if (isset($user)) {
             return view('github-verify/github_verify', compact('user'));
+        } else {
+            return to_route('dashboard')
+            ->withFragment('#uspjesno-logovanje');
         }
     }
 

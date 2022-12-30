@@ -28,7 +28,7 @@
 <section class="w-screen h-screen py-4 pl-[80px] text-[#333333]">
     <!-- Heading of content -->
     <div class="heading mt-[7px]" style="margin-top: 10px">
-        <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
+        <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf]">
             Knjige
 
 {{-- Session message for book create --}}

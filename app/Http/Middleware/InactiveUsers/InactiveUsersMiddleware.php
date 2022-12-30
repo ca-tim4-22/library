@@ -20,8 +20,8 @@ class InactiveUsersMiddleware
         $URL = url()->current();
         if (Auth::guest() || Auth::user()->active == 1 || str_contains($URL, 'potvrdite-nalog') || str_contains($URL, 'logout')) {
             return $next($request);
+        } else {
+            return response()->view('maintenance.access_denied')->setStatusCode(403);
         }
-        
-        return response()->view('maintenance.access_denied')->setStatusCode(403);
     }
 }

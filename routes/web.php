@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MailChimpController;
+
 use Illuminate\Support\Facades\ {
     Route,
 };
@@ -8,6 +10,8 @@ use App\Http\Controllers\ {
     DashboardController,
     UserController,
 };
+
+Route::get('/send', [MailChimpController::class, 'index'])->name('subscribe');
 
 // Dashboard routes
 Route::group(['middleware' => 'protect-all'], function () {

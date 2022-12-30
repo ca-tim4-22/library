@@ -20,6 +20,35 @@
     filter: grayscale(0%)
 }
 
+/* Newsletter */
+
+#newsletter-input {
+  width: 20rem !important;
+  padding-left: 10px;
+}
+
+#newsletter-btn {
+  background-color: #4558BE;
+  transition: background-color 0.45s ease;
+}
+
+#newsletter-btn:hover {
+  background-color: #2741d1;
+}
+
+#newsletter-p {
+  margin-top: 10px;
+}
+
+div.absolutee {
+  position: fixed;
+  left: 50%;
+  bottom: 120px;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+} 
+
 /* Show author page */
 
 .wikipedia-link {

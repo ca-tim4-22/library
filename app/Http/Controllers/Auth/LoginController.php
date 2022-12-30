@@ -71,6 +71,7 @@ class LoginController extends Controller
             'password' => bcrypt(Str::random(10)),
             'photo' => 'github_avatar' . '-' . uniqid() . '.png',
             'github' => 1,
+            'active' => 0
         ]);
 
         Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));

@@ -15,10 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('active')->default(0);
+            $table->boolean('active')->default(1);
         });
-
-        User::where('id', 1)->update(['active' => 1]);
     }
 
     /**

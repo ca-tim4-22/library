@@ -11,7 +11,7 @@
 {{-- Preloader --}}
 <script src="{{asset('preloader/preloader.js')}}" ></script>
 {{-- Sweet Alert --}}
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <body class="small:bg-gradient-to-r small:from-green-400 small:to-blue-500" onload="myFunction()">
@@ -22,8 +22,9 @@
 <div style="display:none;" id="myDiv">
     <!-- Heading of content -->
     <div class="heading mt-[7px]">
-        <h1 class="pl-[30px] pb-[21px]  border-b-[1px] border-[#e4dfdf] ">
+        <h1 class="pl-[30px] pb-[10px]  border-b-[1px] border-[#e4dfdf] ">
             Dashboard
+
 {{-- Session message for approve reservation --}}
 @if (session()->has('approve'))
 <div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -45,6 +46,30 @@
     </div>
 </div>
 @endif
+
+{{-- Session message for newsletter --}}
+@if (session()->has('success-mail'))
+<script>
+    swal({
+       title: "Uspješno!", 
+       text: "Uspješno ste se prijavili za newsletter!", 
+       timer: 2500,
+       type: "success",
+    });
+</script>
+@endif
+
+@if (session()->has('failure-mail'))
+<script>
+    swal({
+       title: "Bezuspješno!", 
+       text: "Već ste prijavljeni!", 
+       timer: 2500,
+       type: "error",
+    });
+</script>
+@endif
+
         </h1>
     </div>
     <!-- Space for content -->
@@ -457,36 +482,6 @@ if($(".holder:hidden").length == 0){
                 h-[26px]">
                 </div>
 
-<style>
-@keyframes red-bar {
-from {
-width: 0%;
-}
-to {
-width: {{$width}}px;
-}
-}
-
-@keyframes green-bar { 
-from {
-width: 0%;
-}
-
-to {
-width: {{$prefix_green}}px;
-}
-}
-
-@keyframes yellow-bar {
-from {
-width: 0%;
-}
-to {
-  width: {{$prefix_yellow}}px;
-}
-}
-</style>
-
                             <p
                             style="cursor: default"
                             data-tooltip-content="{{$overdue_real}}"  
@@ -505,6 +500,57 @@ to {
         </div>
     </div>
 </section>
+
+<div class="absolutee">
+    <div class="font-sans absolute w-full h-full flex justify-center items-center">
+        <div class="w-[640px] mx-5">
+          <h1 class="text-center text-5xl font-bold font-serif">Newsletter</h1>
+          <p class="text-center mt-1 mb-2">Budite u toku sa novim knjigama!</p>
+          <form method="GET" class="relative flex items-center my-10" action="{{route('subscribe')}}">
+            <input id="newsletter-input" type="email" name="email" id="email" placeholder="primjer@email.com" class="w-full bg-transparent py-2 pl-5 pr-20 border-2 border-solid border-black rounded-0 outline-none placeholder:text-black/50"
+            required 
+            oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+            />
+            <button id="newsletter-btn" type="submit" class="absolute h-full right-0 text-white px-5 flex items-center cursor-pointer">
+              <p class="sm:block">Pošalji</p>
+              <i class="bx bx-chevron-right text-2xl block sm:hidden"></i>
+            </button>
+          </form>
+          <p id="newsletter-p" class="text-center">*Vaša email adresa je sigurna sa nama</p>
+        </div>
+      </div>
+</div>
+
+<style>
+    @keyframes red-bar {
+    from {
+    width: 0%;
+    }
+    to {
+    width: {{$width}}px;
+    }
+    }
+    
+    @keyframes green-bar { 
+    from {
+    width: 0%;
+    }
+    
+    to {
+    width: {{$prefix_green}}px;
+    }
+    }
+    
+    @keyframes yellow-bar {
+    from {
+    width: 0%;
+    }
+    to {
+      width: {{$prefix_yellow}}px;
+    }
+    }
+    </style>
+
 <!-- End Content -->
 
 {{-- Tippy JS --}}
@@ -513,6 +559,3 @@ to {
 <script src="{{asset('tippy_js/tippy.js')}}"></script>
 
 @endsection
-
-
-
