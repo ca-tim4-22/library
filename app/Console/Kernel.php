@@ -32,6 +32,16 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
         $users = User::where('last_login_at', '<', Carbon::now()->subDays(365))->delete();
         })->everyMinute();
+
+        // Schedule for status 1 
+        $schedule->call(function () {
+        GlobalVariable::where('value', 0)->update(['value' => 1]);
+        })->dailyAt('07:00');
+
+        // Schedule for status 0
+        $schedule->call(function () {
+        GlobalVariable::where('value', 1)->update(['value' => 0]);
+        })->dailyAt('13:00');
     }
 
     /**

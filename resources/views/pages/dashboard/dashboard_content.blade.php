@@ -526,7 +526,7 @@ if($(".holder:hidden").length == 0){
         <div class="w-[640px] mx-5">
           <h1 class="text-5xl font-bold font-serif">Korisni linkovi</h1>
           <ul>
-            <li class="mt-2 wikipedia-link"><a href="{{'working-time'}}">Radno vrijeme <i class="fas fa-clock"></i></a></li>
+            <li class="mt-2 wikipedia-link"><a href="{{route('working-time')}}">Radno vrijeme <i class="fas fa-clock"></i></a></li>
             <li class="mt-2 wikipedia-link"><a href="{{route('faq')}}">FAQ - Često postavljana pitanja <i class="fas fa-question"></i></a></li>
             <li class="mt-2 wikipedia-link"><a target="_blank" href="https://elektropg.online/">Sajt škole <i class="fas fa-school"></i></a></li>
           </ul>

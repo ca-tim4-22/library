@@ -10,4 +10,8 @@ class GlobalVariable extends Model
     use HasFactory;
     protected $guarded = [];
     public $timestamps = false;
+
+    public function checkStatus() {
+        return $this->value == 1;
+    }
 }

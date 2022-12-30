@@ -25,6 +25,7 @@ return new class extends Migration
             ['variable' => 'Rok vraćanja', 'value' => 30],
             ['variable' => 'Rok konflikta', 'value' => 30],
             ['variable' => 'Paginacija', 'value' => 5],
+            ['variable' => 'Status', 'value' => 0],
         );
 
         GlobalVariable::insert($data);

@@ -10,6 +10,7 @@ use App\Http\Controllers\ {
     MailChimpController,
 };
 use App\Models\Book;
+use App\Models\GlobalVariable;
 
 // Dashboard routes
 Route::group(['middleware' => 'protect-all'], function () {
@@ -24,7 +25,9 @@ Route::get('/faq', function() {
     return view('pages.links.faq', ['count' => Book::count()]);
 })->name('faq');
 
-Route::view("/radno-vrijeme", 'pages.links.working_time')->name('working-time');
+Route::get('/radno-vrijeme', function() {
+    return view('pages.links.working_time', ['status' => GlobalVariable::where('id', 5)->first()]);
+})->name('working-time');
 });
 
 

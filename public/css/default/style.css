@@ -5,6 +5,14 @@
   font-family: 'Rubik';
 }
 
+.ttb {
+  color: #4558BE;
+}
+
+.ttr {
+  color: red;
+}
+
 /* ----------------------------------------------------------- */
 /* Custom */
 /* ----------------------------------------------------------- */
@@ -57,6 +65,20 @@ div.absolutee2 {
   transform: translate(-50%, -50%);
   margin: 0 auto;
 } 
+
+/* Working time page */
+
+#working_time_list img {
+  user-select: none;
+  margin-top: 20vh;
+  margin-bottom: 20px;
+  height: 120px;
+}
+
+#working_time_list {
+  letter-spacing: 2px;
+  font-size: 25px;
+}
 
 /* Show author page */
 
