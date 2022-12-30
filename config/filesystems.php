@@ -36,6 +36,12 @@ return [
             'throw' => false,
         ],
 
+        'third_party_upload' => [
+            'driver' => 'local',
+            'root' => '/home/tim4/public_html/storage/students',
+            'visibility' => 'public',
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

@@ -74,7 +74,15 @@ class LoginController extends Controller
             'active' => 0
         ]);
 
-        Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));
+        $URL = url()->current();
+
+        if (str_contains($URL, 'tim4')) {
+            Storage::disk('third_party_upload')->put($user2->photo, file_get_contents($user->getAvatar()));
+        } else {
+            Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));
+        }
+
+        
      
         $user2->update([
             'login_count'=> $user2->login_count + 1,
