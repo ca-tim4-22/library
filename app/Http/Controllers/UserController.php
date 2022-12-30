@@ -24,7 +24,6 @@ class UserController extends Controller
     public function index()
     {
         return response()->noContent();
-        Newsletter::subscribe('rincewind@discworld.com');
     }
 
     /**

@@ -42,7 +42,16 @@
 
 div.absolutee {
   position: fixed;
-  left: 50%;
+  left: 20%;
+  bottom: 120px;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+} 
+
+div.absolutee2 {
+  position: fixed;
+  left: 80%;
   bottom: 120px;
   width: 100%;
   transform: translate(-50%, -50%);
@@ -1600,6 +1609,12 @@ h4 {
 }
 .mt-\[20px\]{
   margin-top: 20px;
+}
+.mt-40 {
+  margin-top: 40px;
+}
+.mt-\[28px\]{
+  margin-top: 28px;
 }
 .mr-\[30px\]{
   margin-right: 30px;

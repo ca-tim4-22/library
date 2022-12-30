@@ -21,8 +21,8 @@
 <div id="loader"></div>
 <div style="display:none;" id="myDiv">
     <!-- Heading of content -->
-    <div class="heading mt-[7px]">
-        <h1 class="pl-[30px] pb-[10px]  border-b-[1px] border-[#e4dfdf] ">
+    <div class="heading mt-[28px]">
+        <h1 class="pl-[30px] pb-[2px]  border-b-[1px] border-[#e4dfdf] ">
             Dashboard
 
 {{-- Session message for approve reservation --}}
@@ -517,6 +517,19 @@ if($(".holder:hidden").length == 0){
             </button>
           </form>
           <p id="newsletter-p" class="text-center">*Vaša email adresa je sigurna sa nama</p>
+        </div>
+      </div>
+</div>
+
+<div class="absolutee2">
+    <div class="font-sans absolute w-full h-full flex justify-center items-center">
+        <div class="w-[640px] mx-5">
+          <h1 class="text-5xl font-bold font-serif">Korisni linkovi</h1>
+          <ul>
+            <li class="mt-2 wikipedia-link"><a href="{{'working-time'}}">Radno vrijeme <i class="fas fa-clock"></i></a></li>
+            <li class="mt-2 wikipedia-link"><a href="{{route('faq')}}">FAQ - Često postavljana pitanja <i class="fas fa-question"></i></a></li>
+            <li class="mt-2 wikipedia-link"><a target="_blank" href="https://elektropg.online/">Sajt škole <i class="fas fa-school"></i></a></li>
+          </ul>
         </div>
       </div>
 </div>
