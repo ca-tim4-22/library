@@ -27,9 +27,9 @@
                    <ul id="working_time_list">
                     
                     @if (!$status->checkStatus())
-                    <center><img src="https://i.gifer.com/WltQ.gif"></center>
+                    <center><img src="{{asset('img/opened.gif')}}"></center>
                     @else   
-                    <center><img src="https://www.gcpalampur.ac.in/images/Closed-Sign.gif"></center>
+                    <center><img src="{{asset('img/closed.gif')}}"></center>
                     @endif
                   
                     <li>Ponedeljak: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
