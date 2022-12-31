@@ -42,6 +42,9 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
         GlobalVariable::where('value', 1)->update(['value' => 0]);
         })->dailyAt('13:00');
+
+        // Schedule for backup
+        $schedule->command('backup:run')->daily()->at('12:00');
     }
 
     /**
