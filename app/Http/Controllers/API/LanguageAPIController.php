@@ -39,9 +39,9 @@ class LanguageAPIController extends Controller
          ]);
          if ($validator->fails()) {
              return response()->json([
-                 'error'=> 'error-0003',
-                 'message' => "Došlo je do greške prilikom dodavanja novog jezika",
-                 'errors' => $validator->errors()
+                'error'=> 'error-0003',
+                'message' => "Došlo je do greške prilikom dodavanja novog jezika",
+                'errors' => $validator->errors()
              ], 422);
          }
  

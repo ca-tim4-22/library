@@ -39,7 +39,7 @@ return [
      * If the form is submitted faster than this amount of seconds
      * the form submission will be considered invalid.
      */
-    'amount_of_seconds' => env('HONEYPOT_SECONDS', 0),
+    'amount_of_seconds' => env('HONEYPOT_SECONDS', 5),
 
     /*
      * This class is responsible for sending a response to requests that
@@ -48,7 +48,7 @@ return [
      * A valid responder is any class that implements
      * `Spatie\Honeypot\SpamResponder\SpamResponder`
      */
-    // 'respond_to_spam_with' => BlankPageResponder::class,
+    'respond_to_spam_with' => BlankPageResponder::class,
 
     /*
      * When activated, requests will be checked if honeypot fields are missing,

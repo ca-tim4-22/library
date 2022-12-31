@@ -28,6 +28,8 @@ Route::get('/faq', function() {
 Route::get('/radno-vrijeme', function() {
     return view('pages.links.working_time', ['status' => GlobalVariable::where('id', 5)->first()]);
 })->name('working-time');
+
+Route::view('/spam-prevent', 'maintenance.spam_prevent')->name('spam-prevent');
 });
 
 
