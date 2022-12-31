@@ -499,12 +499,13 @@ if($(".holder:hidden").length == 0){
             </div>
         </div>
     </div>
+
 </section>
 
 <div class="absolutee">
     <div class="font-sans absolute w-full h-full flex justify-center items-center">
         <div class="w-[640px] mx-5">
-          <h1 class="text-center text-5xl font-bold font-serif">Newsletter</h1>
+          <h3 class="text-center text-5xl font-bold font-serif">Newsletter</h3>
           <p class="text-center mt-1 mb-2">Budite u toku sa novim knjigama!</p>
           <form method="GET" class="relative flex items-center my-10" action="{{route('subscribe')}}">
             <input id="newsletter-input" type="email" name="email" id="email" placeholder="primjer@email.com" class="w-full bg-transparent py-2 pl-5 pr-20 border-2 border-solid border-black rounded-0 outline-none placeholder:text-black/50"
@@ -524,7 +525,7 @@ if($(".holder:hidden").length == 0){
 <div class="absolutee2">
     <div class="font-sans absolute w-full h-full flex justify-center items-center">
         <div class="w-[640px] mx-5">
-          <h1 class="text-5xl font-bold font-serif">Korisni linkovi</h1>
+          <h3 class="text-5xl font-bold font-serif">Korisni linkovi</h3>
           <ul>
             <li class="mt-2 wikipedia-link"><a href="{{route('working-time')}}">Radno vrijeme <i class="fas fa-clock"></i></a></li>
             <li class="mt-2 wikipedia-link"><a href="{{route('faq')}}">FAQ - Često postavljana pitanja <i class="fas fa-question"></i></a></li>

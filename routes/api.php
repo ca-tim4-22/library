@@ -1,16 +1,19 @@
 <?php
 
-use App\Http\Controllers\API\AuthorAPIController;
-use App\Http\Controllers\API\BindingAPIController;
-use App\Http\Controllers\API\BookAPIController;
-use App\Http\Controllers\API\CategoryAPIController;
-use App\Http\Controllers\API\FormatAPIController;
-use App\Http\Controllers\API\GenreAPIController;
-use App\Http\Controllers\API\GlobalVariableAPIController;
-use App\Http\Controllers\API\LanguageAPIController;
-use App\Http\Controllers\API\LetterAPIController;
-use App\Http\Controllers\API\PublisherAPIController;
-use App\Http\Controllers\API\UserAPIController;
+use App\Http\Controllers\API\ {
+    AuthorAPIController,
+    BindingAPIController,
+    BookAPIController,
+    CategoryAPIController,
+    FormatAPIController,
+    GenreAPIController,
+    GlobalVariableAPIController,
+    LanguageAPIController,
+    LetterAPIController,
+    PublisherAPIController,
+    UserAPIController
+};
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
