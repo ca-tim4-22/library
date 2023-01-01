@@ -20,3 +20,5 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/public/**
+    - name: Install Dependencies
+      run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
