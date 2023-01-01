@@ -67,10 +67,10 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-user-shield"></i>
             <br>
-            <p class="counter" data-count="{{$adminCount}}"></p>
+            <p class="counter" data-count="{{$data['adminCount']}}"></p>
             <p>
                 @php
-                if($adminCount % 10 == 1 && $adminCount != 11) {
+                if($data['adminCount'] % 10 == 1 && $data['adminCount'] != 11) {
                     echo "Admininistrator";
                 } else {
                     echo "Administratora";
@@ -81,10 +81,10 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-user-friends"></i>
             <br>
-            <p class="counter" data-count="{{$librarianCount}}"></p>
+            <p class="counter" data-count="{{$data['librarianCount']}}"></p>
             <p>
                 @php
-                if($librarianCount % 10 == 1 && $librarianCount != 11) {
+                if($data['librarianCount'] % 10 == 1 && $data['librarianCount'] != 11) {
                     echo "Bibliotekar";
                 } else {
                     echo "Bibliotekara";
@@ -95,10 +95,10 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-users"></i>
             <br>
-            <p class="counter" data-count="{{$studentCount}}"></p>
+            <p class="counter" data-count="{{$data['studentCount']}}"></p>
             <p>
                 @php
-                if($studentCount % 10 == 1 && $studentCount != 11) {
+                if($data['studentCount'] % 10 == 1 && $data['studentCount'] != 11) {
                     echo "Učenik";
                 } else {
                     echo "Učenika";
@@ -109,7 +109,7 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-book"></i>
             <br>
-            <p class="counter" data-count="{{$bookCount}}"></p>
+            <p class="counter" data-count="{{$data['bookCount']}}"></p>
             <p>Knjiga</p>
         </div>
       </div>
@@ -121,10 +121,10 @@
         <div class="one" style="margin: 0px 100px;font-size: 50px">
             <i class="fas fa-user-shield"></i>
             <br>
-            <p class="counter" data-count="{{$adminToday}}"></p>
+            <p class="counter" data-count="{{$data['adminToday']}}"></p>
             <p>
                 @php
-                if($adminToday % 10 == 1 && $adminToday != 11) {
+                if($data['adminToday'] % 10 == 1 && $data['adminToday'] != 11) {
                     echo "Admininistrator";
                 } else {
                     echo "Administratora";
@@ -135,10 +135,10 @@
         <div class="one" style="margin: 0px 100px;font-size: 50px">
             <i class="fas fa-user-friends"></i>
             <br>
-            <p class="counter" data-count="{{$librarianToday}}"></p>
+            <p class="counter" data-count="{{$data['librarianToday']}}"></p>
             <p>
                 @php
-                if($librarianToday % 10 == 1 && $librarianToday != 11) {
+                if($data['librarianToday'] % 10 == 1 && $data['librarianToday'] != 11) {
                     echo "Bibliotekar";
                 } else {
                     echo "Bibliotekara";
@@ -149,10 +149,10 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-users"></i>
             <br>
-            <p class="counter" data-count="{{$studentToday}}"></p>
+            <p class="counter" data-count="{{$data['studentToday']}}"></p>
             <p>
                 @php
-                if($studentToday % 10 == 1 && $studentToday != 11) {
+                if($data['studentToday'] % 10 == 1 && $data['studentToday'] != 11) {
                     echo "Učenik";
                 } else {
                     echo "Učenika";
@@ -163,7 +163,7 @@
         <div class="one" style="margin: 100px;font-size: 50px">
             <i class="fas fa-book"></i>
             <br>
-            <p class="counter" data-count="{{$bookCount}}"></p>
+            <p class="counter" data-count="{{$data['bookCount']}}"></p>
             <p>Knjiga</p>
         </div>
       </div>

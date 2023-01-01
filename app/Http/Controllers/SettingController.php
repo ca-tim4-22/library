@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Binding;
-use App\Models\Category;
-use App\Models\Format;
-use App\Models\Genre;
-use App\Models\GlobalVariable;
-use App\Models\Letter;
-use App\Models\Publisher;
 use Illuminate\Http\Request;
+
+use App\Models\ {
+    Binding,
+    Category,
+    Format,
+    Genre,
+    GlobalVariable,
+    Letter,
+    Publisher
+};
 
 class SettingController extends Controller
 {
@@ -24,6 +27,7 @@ class SettingController extends Controller
         $policy2 = GlobalVariable::findOrFail(2);
         $policy3 = GlobalVariable::findOrFail(3); 
         $policy4 = GlobalVariable::findOrFail(4); 
+        
         return view('pages.settings.policy.settings-policy', compact('policy1', 'policy2', 'policy3', 'policy4'));
     }
     public function category(Request $request) {

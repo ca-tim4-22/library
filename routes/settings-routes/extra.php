@@ -17,6 +17,8 @@ Route::post('/csv_knjiga_autori', 'csvBookAuthors')->name('csvBookAuthors');
 Route::post('/csv_knjiga_kategorije', 'csvBookCategories')->name('csvBookCategories');
 Route::post('/csv_knjiga_zanrovi', 'csvBookGenres')->name('csvBookGenres');
 Route::get('/upustvo-za-csv', 'readme')->name('readme');
+
+Route::get('/podesavanja/statistika', 'indexStatistics')->name('setting-statistics');
 });
 
 ?>

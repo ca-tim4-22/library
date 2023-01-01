@@ -85,11 +85,12 @@ class StudentController extends Controller
                 $show_criterium = false;
             }
         }else{
-            $students = User::latest()->where('user_type_id', 1)->paginate($items);
+            $students = User::with('gender')->latest()->where('user_type_id', 1)->paginate($items);
             $show_criterium = false;
         }
     
-        $show_all = User::latest()->where('user_type_id', 1)->count();
+        $count_model = new User();
+        $show_all = $count_model->getCount(1);
 
         return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }

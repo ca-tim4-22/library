@@ -78,10 +78,10 @@ class User extends Authenticatable
         return ucfirst($value);
     }
 
-    public function getCount() {
+    public function getCount($id) {
         return DB::table('users')
         ->select(DB::raw('count(*) as count'))
-        ->where('user_type_id', 2)
+        ->where('user_type_id', $id)
         ->first()
         ->count;
     }

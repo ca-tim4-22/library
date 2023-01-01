@@ -40,6 +40,7 @@ class LibrarianController extends Controller
         $searched = $request->trazeno;
         if($searched){
             $librarians = User::search($request->trazeno)->where('user_type_id', 2)->paginate($items);
+
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
                 $show_criterium = true;
@@ -52,7 +53,7 @@ class LibrarianController extends Controller
         }
 
         $count_model = new User();
-        $show_all = $count_model->getCount();
+        $show_all = $count_model->getCount(2);
 
         return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }

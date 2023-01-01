@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Books\BookStoreRequest;
-use App\Http\Requests\Books\BookUpdateRequest;
-use App\Models\Author;
-use App\Models\Book;
-use App\Models\BookAuthor;
-use App\Models\BookCategory;
-use App\Models\BookGenre;
-use App\Models\Category;
-use App\Models\Gallery;
-use App\Models\GlobalVariable;
-use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session as FacadesSession;
+
+use App\Http\Requests\Books\ {
+    BookStoreRequest,
+    BookUpdateRequest,
+};
+
+use App\Models\ {
+    Author,
+    Book,
+    BookAuthor,
+    BookCategory,
+    BookGenre,
+    Category,
+    Gallery,
+    GlobalVariable,
+    Rent,
+};
 
 class BookController extends Controller
 {

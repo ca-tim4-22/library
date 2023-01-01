@@ -47,11 +47,12 @@ class AdminController extends Controller
                 $show_criterium = false;
             }
         }else{
-            $administrators = User::latest('id')->where('user_type_id', 3)->paginate($items);
+            $administrators = User::with('gender')->latest()->where('user_type_id', 3)->paginate($items);
             $show_criterium = false;
         }
 
-        $show_all = User::latest('id')->where('user_type_id', 3)->count();
+        $count_model = new User();
+        $show_all = $count_model->getCount(3);
 
         return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }
