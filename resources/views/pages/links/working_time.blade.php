@@ -26,7 +26,7 @@
                 <div class="text-center">
                    <ul id="working_time_list">
                     
-                    @if (!$status->checkStatus())
+                    @if ($status->checkStatus())
                     <center><img src="{{asset('img/opened.gif')}}"></center>
                     @else   
                     <center><img src="{{asset('img/closed.gif')}}"></center>

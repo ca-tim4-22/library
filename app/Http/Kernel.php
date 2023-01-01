@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         'librarian-protect' => \App\Http\Middleware\Protect\LibrarianProtectMiddleware::class,
         'protect-all' => \App\Http\Middleware\Protect\ProtectAllMiddleware::class,
         'librarian-not-librarian' => \App\Http\Middleware\Protect\LibrarianNotLibrarianMiddleware::class,
+        'adminer' => \App\Http\Middleware\EncryptCookies::class
     ];
 }
