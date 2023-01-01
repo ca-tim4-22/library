@@ -7,6 +7,9 @@ jobs:
     steps:
     - name: Provjera najnovije verzije🚚
       uses: actions/checkout@v2
+      
+    - name: Install Dependencies
+      run: composer install 
     
     - name: Sinhronizacija fajlova📂 
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
@@ -20,5 +23,3 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/public/**
-    - name: Install Dependencies
-      run: composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
