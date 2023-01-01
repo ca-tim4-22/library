@@ -26,7 +26,7 @@ class RentBookController extends Controller
      */
     public function index(Request $request)
     {
-        $rents = RentStatus::where('book_status_id', 1)->latest()->paginate(5);
+        $rents = RentStatus::with('rent')->where('book_status_id', 1)->latest()->paginate(5);
         $librarians = User::where('user_type_id', 2)->latest()->get();
         $filter = false;
         $count = true;
@@ -61,7 +61,7 @@ class RentBookController extends Controller
     {
         $students = User::where('user_type_id', 1)->latest()->get();
         $variable = GlobalVariable::findOrFail(2);
-        $books = Book::all();
+        $books = Book::with('rent')->get();
         $current_one = Carbon::now()->format('Y-m-d');
         $date = Carbon::now()->addDays($variable->value)->format('m-d-Y');
         $current_two = str_replace('-', '/', $date);

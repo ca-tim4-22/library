@@ -39,7 +39,6 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -59,13 +58,12 @@ class BookController extends Controller
             } else {
                 $show_criterium = false;
             }
-        }else{
-            $books = Book::latest('id')->paginate($items);
+        } else{
+            $books = Book::with('cover', 'authors', 'categories', 'rent')->latest('id')->paginate($items);
             $show_criterium = false;
         }
 
-        $show_all = Book::latest('id')->count();
-      
+        $show_all = Book::count();
         $count = 0;
 
         if (Rent::count() > 0) {
@@ -139,7 +137,8 @@ class BookController extends Controller
             }
         }
 
-        return view('pages.books.books', compact('books', 'count', 'authors', 'categories', 'searched', 'error', 'selected_a', 'selected_c', 'id_a', 'id_c', 'error', 'show', 'items',  'variable', 'show_all', 'searched_book', 'show_criterium',
+        return view('pages.books.books', compact('books', 
+        'count', 'authors', 'categories', 'searched', 'error', 'selected_a', 'selected_c', 'id_a', 'id_c', 'error', 'show', 'items',  'variable', 'show_all', 'searched_book', 'show_criterium',
     ));
     }
 
@@ -252,9 +251,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        $books = Book::all();
-        $rents = Rent::where('book_id', $book->id)->get();
-
+        $books = Book::with('rent')->get();
+        $rents = Rent::with('rent_status')->where('book_id', $book->id)->get();
         if (Rent::count() > 0) {
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
@@ -265,6 +263,7 @@ class BookController extends Controller
         $count = null;
         $text = '0 primjeraka';
         }
+        $count = null;
 
         if (isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11 || $count == 1) {
         $count = $count;

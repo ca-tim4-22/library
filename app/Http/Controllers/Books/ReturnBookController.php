@@ -22,7 +22,7 @@ class ReturnBookController extends Controller
      */
     public function index()
     {
-       $books = Book::all();
+       $books = Book::with('rent', 'cover')->get();
 
        if (RentStatus::where('book_status_id', 2)->count() > 0) {
        foreach ($books as $book) {
@@ -47,7 +47,7 @@ class ReturnBookController extends Controller
     public function create(Book $book)
     {
         $get_book = $book;
-        $books = Book::all();
+        $books = Book::with('rent', 'cover')->get();
         $rents = RentStatus::where('book_status_id', 1)->count();
         $variable = GlobalVariable::findOrFail(2);
 

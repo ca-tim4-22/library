@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\AuthorSeeder;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,9 @@ return new class extends Migration
             $table->string('wikipedia', 255);
             $table->timestamps();
         });
+
+        $seeder = new AuthorSeeder();
+        $seeder->run();
     }
 
     /**

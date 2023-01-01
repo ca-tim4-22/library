@@ -88,7 +88,7 @@
                             </a>
 
                             <form action="{{route('destroy-book', $get_book->id)}}" method="POST">
-                                @csrf @honeypot   
+                                @csrf 
                                 @method('DELETE')
                                 <button
                                         style="outline: none;border: none;"
@@ -131,7 +131,7 @@
             class="inline-block min-w-full pt-3 align-middle bg-white rounded-bl-lg rounded-br-lg shadow-dashboard">
 
             <form action="{{route('store-return-book')}}" method="POST">
-            @csrf @honeypot   
+            @csrf
 
             @if (!$data == [])
 
