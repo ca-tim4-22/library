@@ -9,8 +9,11 @@ use App\Http\Controllers\ {
     UserController,
     MailChimpController,
 };
-use App\Models\Book;
-use App\Models\GlobalVariable;
+
+use App\Models\ {
+    Book,
+    GlobalVariable,
+};
 
 // Dashboard routes
 Route::group(['middleware' => 'protect-all'], function () {

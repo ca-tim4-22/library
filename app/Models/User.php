@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 
@@ -75,5 +76,13 @@ class User extends Authenticatable
 
     public function getNameAttribute($value) {
         return ucfirst($value);
+    }
+
+    public function getCount() {
+        return DB::table('users')
+        ->select(DB::raw('count(*) as count'))
+        ->where('user_type_id', 2)
+        ->first()
+        ->count;
     }
 }

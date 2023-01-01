@@ -17,7 +17,7 @@ Route::get('/', function () {
 });
 
 // Welcome view
-Route::view('/pocetna', 'welcome.welcome')->name('redirect');
+Route::view('/pocetna', 'welcome.welcome')->name('redirect')->middleware('librarian-not-librarian');
 
 // Middleware protection
 Route::middleware('see-you-later-protection')->group(function(){

@@ -47,11 +47,12 @@ class LibrarianController extends Controller
                 $show_criterium = false;
             }
         } else{
-            $librarians = User::latest('id')->where('user_type_id', 2)->paginate($items);
+            $librarians = User::with('gender')->latest()->where('user_type_id', 2)->paginate($items);
             $show_criterium = false;
         }
-     
-        $show_all = User::latest('id')->where('user_type_id', 2)->count();
+
+        $count_model = new User();
+        $show_all = $count_model->getCount();
 
         return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }

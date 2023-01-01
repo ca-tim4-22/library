@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Books;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Book\RentBookRequest;
+use App\Http\Requests\Books\RentBookRequest;
 use App\Models\Book;
 use App\Models\GlobalVariable;
 use App\Models\Rent;

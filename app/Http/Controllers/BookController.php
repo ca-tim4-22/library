@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Book\BookStoreRequest;
-use App\Http\Requests\Book\BookUpdateRequest;
+use App\Http\Requests\Books\BookStoreRequest;
+use App\Http\Requests\Books\BookUpdateRequest;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookAuthor;

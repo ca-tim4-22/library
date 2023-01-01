@@ -29,6 +29,8 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
+        "barryvdh/laravel-ide-helper": "^2.12",
+        "beyondcode/laravel-query-detector": "^1.6",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
         "laravel/telescope": "^4.10",

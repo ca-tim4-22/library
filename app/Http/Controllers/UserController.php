@@ -35,7 +35,7 @@ class UserController extends Controller
     {
         return response()->noContent();
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
