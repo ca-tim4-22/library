@@ -12,6 +12,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "././public"
-          remote_dir: "/home/tim4/public_html"
+          server-dir: aplikacija/
+          local-dir: "public/"
+          remote-dir: "public_html/"
           delete: "false"
