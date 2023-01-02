@@ -54,9 +54,22 @@ cp .env.example .env
 ```shell
 SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
 ```
-* Inoltre, poiché questa app utilizza Laravel Socialize per la registrazione/l'accesso utilizzando un'app/piattaforma di terze parti come Google, GitHub, ecc., dovrai chiedere all'amministratore le chiavi delle seguenti varianti:
+* Inoltre, poiché questa app utilizza Laravel Socialite per la registrazione/l'accesso utilizzando un'app/piattaforma di terze parti come Google, GitHub, ecc., dovrai chiedere all'amministratore le chiavi delle seguenti varianti:
 ```shell
 GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
+
+* Se vuoi integrare la newsletter, puoi definire i tuoi valori per le variabili specificate:
+```shell
+MAILCHIMP_APIKEY | MAILCHIMP_LIST_ID
+```
+Utilizziamo un servizio di posta newsletter: Mailchimp
+
+* Se vuoi visitare il tuo database locale in modo rapido, efficiente e moderno, puoi farlo facilmente con l'amministratore che abbiamo integrato insieme all'applicazione. Puoi visitare l'interfaccia utente di amministrazione andando a:
+```shell
+{{base_url}}/adminer
+```
+Usiamo il tema: Hydra Dark
+
 ```
 * Genera chiave di crittografia:
 ```shell
@@ -77,11 +90,19 @@ php artisan serve
 
 Dopo aver eseguito tutti i comandi precedenti, dovresti eseguire l'applicazione e vederla su http::/localhost del tuo dominio a seconda della tua configurazione.
 
+> Nota 1.1: Se vuoi scrivere/eseguire test già esistenti, assicurati di cambiare la variabile env: APP_ENV=local -> APP_ENV=testing
+
+> Note 1.2: se si desidera eseguire il backup del database, farlo utilizzando il comando pacchetto integrato:
+```shell
+php artisan backup:run
+```
+
 ## Organizzazione del progetto
 > Tutti i progressi vengono monitorati sulla seguente piattaforma di gestione dei progetti:
 - Trello
 - monday.com
-#### Entrambe le schede sono sincronizzate.
+- Asana
+#### Tutte le schede sono sincronizzate.
 > per i link contattare l'amministratore
 
 ## Credenziali
@@ -174,11 +195,15 @@ Dopo aver eseguito tutti i comandi precedenti, dovresti eseguire l'applicazione 
 - Politiche utilizzate
 - Hashing delle password - bcrypt
 - Protezione su tre livelli... per ruoli -> amministratore, bibliotecario e studente
+- Honeypot 
+- Protezione XSS
 
 ## Lavori cron: attività pianificate
-> Ci sono 2 compiti:
+> Ci sono 3 compiti:
 - La prima attività che viene eseguita su base giornaliera e che archivia automaticamente le prenotazioni attive scadute
-- Un'altra attività che viene eseguita su base mensile ed elimina automaticamente gli utenti che non hanno effettuato l'accesso per più di 365 giorni.
+- Un'altra attività che viene eseguita su base mensile ed elimina automaticamente gli utenti che non hanno effettuato l'accesso per più di 365 giorni
+- La terza attività viene eseguita due volte al giorno e cambia automaticamente lo stato della biblioteca in termini di lavoro. Quando la libreria è chiusa, lo stato è '0' e quando è aperta è '1'. Con orari di lavoro definiti, inizio e fine in ore, questa attività viene eseguita in tali orari e cambia lo stato
+
 ## Modalità di spegnimento
 > L'amministratore può "inviare" l'applicazione alla cosiddetta modalità "spegnimento". Laravel ha un comando "php artigiano down" integrato che "chiude" l'applicazione.
 La nostra applicazione funziona utilizzando il percorso web "/shutdown" che è protetto.
@@ -299,6 +324,8 @@ Trovato un bug?
 * Laravel Debugbar
 * Laravel Telescope
 * Laravel Socialite
+* Laravel Backup
+* Laravel IDE helper
 * CKEditor 
 * Composer
 * Tinker
@@ -314,14 +341,20 @@ Trovato un bug?
 * Intervention Image
 * ijaboCrop Tool
 * Passport authentication
+* Query detector
 * Postman
 * Swagger
 * Insomnia
 * GTmetrix
 * Visual Studio Code
 * phpMyAdmin
+* Git/GitHub
+* Adminer
 * HeidiSQL
 * XAMPP
+* Honeypot
+* Mailchimp integration
+* reCAPTCHA
 
 ## 🚀 Azioni GitHub
 * GitHub pages

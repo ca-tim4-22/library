@@ -55,10 +55,23 @@ cp .env.example .env
 ```shell
 SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
 ```
-* Takođe, s obzirom da ova aplikacija koristi Laravel Socialize za registraciju/logovanje pomoću third party aplikacija/platformi poput Google-a, GitHub-a i sl. moraćete pitati administratora za ključeve sledećih varijabli:
+* Takođe, s obzirom da ova aplikacija koristi Laravel Socialite za registraciju/logovanje pomoću third party aplikacija/platformi poput Google-a, GitHub-a i sl. moraćete pitati administratora za ključeve sledećih varijabli:
 ```shell
 GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
 ```
+
+* Ukoliko želite da integrišete newsletter možete definisati svoje vrijednosti za navedene varijable:
+```shell
+MAILCHIMP_APIKEY | MAILCHIMP_LIST_ID
+```
+Koristimo newsletter mail servis: Mailchimp
+
+* Ukoliko želite da posjetite Vašu lokalnu bazu podataka na brz, efikasan i moderan način to možete veoma lako izvršiti pomoću adminera kojeg smo integrisali zajedno uz aplikaciju. Adminer UI možete posjetiti odlaskom na:
+```shell
+{{base_url}}/adminer
+```
+Koristimo temu: Hydra Dark
+
 * Generišite enkripcioni ključ:
 ```shell
 php artisan key:generate
@@ -78,11 +91,19 @@ php artisan serve
 
 Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti aplikaciju i vidjeti je na http::/localhost Vašeg domena u zavisnosti od konfiguracije.
 
+> Napomena 1.1: Ukoliko želite da pišete/izvršavate već postojeće testove budite sigurni da ste izmijenili env varijablu: APP_ENV=local -> APP_ENV=testing
+
+> Napomena 1.2: Ukoliko želite da napravite backup Vaše baze podataka, to možete uraditi pomoću integrisanog paketa komandom:
+```shell
+php artisan backup:run
+```
+
 ## Organizacija projekta
 > Cijeli progres se prati na sledećim platformama za project management:
 - Trello
 - monday.com
-#### Oba board-a su sinhronizovana.
+- Asana
+#### Svi board-ovi su sinhronizovani.
 > za link-ove kontaktirati administratora 
 
 ## Kredencijali
@@ -176,11 +197,14 @@ Nakon izvršenja svih gore navedenih komandi, trebalo bi da možete pokrenuti ap
 - Korišćene polise
 - Hash-ovanje lozinki - bcrypt
 - Zaštita na tri nivoa.. po rolama -> administrator/ka, bibliotekar/ka i učenik/ca
+- Honeypot 
+- XSS zaštita
 
 ## Cron jobs
-> Postoje 2 "zadatka":
+> Postoje 3 "zadatka":
 - Prvi zadatak koji se izvršava na dnevnom nivou i koji aktivne istekle rezervacije automatski arhivira
 - Drugi zadatak koji se izvršava na mjesečnom nivou i koji automatski briše korisnike koji se nisu ulogovali duže od 365 dana
+- Treći zadatak se izvršava dvaput dnevno i automatski mijenja status biblioteke u radnom smislu. Kada je biblioteka zatvorena status je '0', a kada je otvorena '1'. Sa definisanim radnim vremenom, početak i kraj u satima, ovaj zadatak se izvršava u tim terminima i mijenja status
 
 ## Shutdown mode
 > Administrator može "poslati" aplikaciju u tzv. "shutdown" mode. Laravel u sebi ima ugrađenu komandu "php artisan down" koja "gasi" aplikaciju. 
@@ -303,11 +327,12 @@ Pronašli ste bug?
 * Laravel Debugbar
 * Laravel Telescope
 * Laravel Socialite
+* Laravel Backup
+* Laravel IDE helper
 * CKEditor 
 * Composer
 * Tinker
 * Enlightn
-* Git/GitHub
 * Swift Mailer
 * Heroku
 * Laravel Scout
@@ -318,14 +343,20 @@ Pronašli ste bug?
 * Intervention Image
 * ijaboCrop Tool
 * Passport authentication
+* Query detector
 * Postman
 * Swagger
 * Insomnia
 * GTmetrix
 * Visual Studio Code
 * phpMyAdmin
+* Git/GitHub
+* Adminer
 * HeidiSQL
 * XAMPP
+* Honeypot
+* Mailchimp integration
+* reCAPTCHA
 
 ## 🚀 GitHub akcije
 * GitHub pages

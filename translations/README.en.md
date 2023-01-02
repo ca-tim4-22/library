@@ -54,10 +54,23 @@ cp .env.example .env
 ```shell
 SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
 ```
-* Also, since this app uses Laravel Socialize for registration/log in using a third-party app/platform like Google, GitHub, etc. you will need to ask the administrator for the keys of the following variants:
+* Also, since this app uses Laravel Socialite for registration/log in using a third-party app/platform like Google, GitHub, etc. you will need to ask the administrator for the keys of the following variants:
 ```shell
 GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
 ```
+
+* If you want to integrate the newsletter, you can define your own values ​​for the specified variables:
+```shell
+MAILCHIMP_APIKEY | MAILCHIMP_LIST_ID
+```
+We use a newsletter mail service: Mailchimp
+
+* If you want to visit your local database in a fast, efficient, and modern way, you can easily do it with the admin that we have integrated together with the application. You can visit the Admin UI by going to:
+```shell
+{{base_url}}/adminer
+```
+We use the theme: Hydra Dark
+
 * Generate encryption key:
 ```shell
 php artisan key:generate
@@ -77,11 +90,19 @@ php artisan serve
 
 After executing all the above commands, you should run the application and see it at http::/localhost of your domain depending on your configuration.
 
+> Note 1.1: If you want to write/execute already existing tests, be sure to change the env variable: APP_ENV=local -> APP_ENV=testing
+
+> Note 1.2: If you want to back up your database, do so using the integrated package command:
+```shell
+php artisan backup:run
+```
+
 ## Project organization
 > All progress is tracked on the following project management platform:
 - Trello
 - monday.com
-#### Both boards are synchronized.
+- Asana
+#### All boards are synchronized.
 > for links contact the administrator
 
 ## Credentials
@@ -174,11 +195,15 @@ After executing all the above commands, you should run the application and see i
 - Used policies
 - Password hashing - bcrypt
 - Protection on three levels.. by roles -> administrator, librarian, and student
+- Honeypot 
+- XSS protection
 
 ## Cron jobs - scheduled tasks
-> There are 2 tasks:
+> There are 3 tasks:
 - The first task that is executed on a daily basis and that automatically archives active expired reservations
-- Another task that is executed on a monthly basis and automatically deletes users who have not logged in for more than 365 days.
+- Another task that is executed on a monthly basis and automatically deletes users who have not logged in for more than 365 days
+- The third task is executed twice a day and automatically changes the status of the library in terms of work. When the library is closed, the status is '0', and when it is open, it is '1'. With defined working hours, start and end in hours, this task executes in those times and changes the status
+
 ## Shutdown mode
 > The administrator can "send" the application to the so-called "shutdown" mode. Laravel has a built-in "php artisan down" command that "shuts down" the application.
 Our application work using the web route "/shutdown" which is protected.
@@ -299,6 +324,8 @@ Found a bug?
 * Laravel Debugbar
 * Laravel Telescope
 * Laravel Socialite
+* Laravel Backup
+* Laravel IDE helper
 * CKEditor 
 * Composer
 * Tinker
@@ -314,14 +341,20 @@ Found a bug?
 * Intervention Image
 * ijaboCrop Tool
 * Passport authentication
+* Query detector
 * Postman
 * Swagger
 * Insomnia
 * GTmetrix
 * Visual Studio Code
 * phpMyAdmin
+* Git/GitHub
+* Adminer
 * HeidiSQL
 * XAMPP
+* Honeypot
+* Mailchimp integration
+* reCAPTCHA
 
 ## 🚀 GitHub actions
 * GitHub pages
