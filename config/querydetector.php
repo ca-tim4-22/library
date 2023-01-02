@@ -5,7 +5,7 @@ return [
      * Enable or disable the query detection.
      * If this is set to "null", the app.debug config value will be used.
      */
-    'enabled' => env('QUERY_DETECTOR_ENABLED', true),
+    'enabled' => env('QUERY_DETECTOR_ENABLED'),
 
     /*
      * Threshold level for the N+1 query detection. If a relation query will be
