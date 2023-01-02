@@ -8,8 +8,11 @@ jobs:
     - name: Provjera najnovije verzije🚚
       uses: actions/checkout@v2
       
-    - name: Install Dependencies
-      run: composer install 
+    - name: Instalacija paketa
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      
+    - name: Brisanje keša
+      run: rm -rf bootstrap/cache/*
     
     - name: Sinhronizacija fajlova📂 
       uses: SamKirkland/FTP-Deploy-Action@4.3.2

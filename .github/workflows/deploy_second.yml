@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    paths:
+      - 'public/*'
 name: Automatski deployment🚀
 jobs:
   web-deploy:
@@ -14,5 +17,8 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: public
+        local-dir: public/
         server-dir: public_html/
+        exclude: |
+          **/index.php*
+          **/.htaccess*/**
