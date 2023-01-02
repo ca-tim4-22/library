@@ -301,6 +301,9 @@ Trovato un bug?
 -------------
 [Invia problema](https://github.com/ca-tim4-22/library/issues) (richiede un account GitHub)
 
+## Contribuisci al progetto
+[CONTRIBUTING.md](/CONTRIBUTING.md)
+
 ## 🚀 Tecnologie usate
 
 * PHP v.8.1.

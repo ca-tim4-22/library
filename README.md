@@ -304,6 +304,9 @@ Pronašli ste bug?
 -------------
 [Pošaljite problem](https://github.com/ca-tim4-22/library/issues) (zahtijeva GitHub nalog)
 
+## Doprinesi projektu
+[CONTRIBUTING.md](CONTRIBUTING.md)
+
 ## 🚀 Korišćene tehnologije
 
 * PHP v.8.1.
