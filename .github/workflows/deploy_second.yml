@@ -1,0 +1,17 @@
+on: push
+name: Automatski deployment 2🚀
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Here is the deployment action
+      - name: Upload
+        uses: airvzxf/ftp-deployment-action@latest
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local_dir: "././public"
+          remote_dir: "/home/tim4/public_html"
+          delete: "false"
