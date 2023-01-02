@@ -2,20 +2,20 @@ on:
   push:
     paths:
       - 'public/*'
-name: FTP Deploy
+name: Automatski deployment🚀
 jobs:
-  FTP-Deploy-Action:
-    name: FTP-Deploy-Action
+  web-deploy:
+    name: Hosting deployment 2🎉
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2.1.0
+    - name: Provjera najnovije verzije🚚
+      uses: actions/checkout@v2
+    
+    - name: Sinhronizacija fajlova📂 
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        fetch-depth: 2
-    - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@master
-      with:
-        ftp-server: ${{ secrets.FTP_SERVER }}
-        ftp-username: ${{ secrets.FTP_USERNAME }}
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
         local-dir: public/
         server-dir: public_html/
