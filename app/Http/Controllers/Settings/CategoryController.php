@@ -43,18 +43,20 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $validated = $request->validated();
-
         if ($file = $request->file('icon')) {
             $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $validated['icon'] = $name; 
-            $validated['default'] = 'false'; 
+            $icon = $name; 
+            $default = 'false'; 
         } else {
-            $validated['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
+            $icon = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
-        Session::flash('success-category'); 
-        Category::create($validated);
+        Category::create([
+            ...$request->validated(), 
+            'default' => $default,
+            'icon' => $icon,
+        ]);
+        Session::flash('success-category', trans('Dodali ste kategoriju!')); 
 
         return to_route('setting-category');
     }

@@ -43,8 +43,8 @@ class LetterController extends Controller
      */
     public function store(LetterRequest $request)
     {
-        Session::flash('success-letter'); 
         Letter::create($request->validated());
+        Session::flash('success-letter', trans('Dodali ste pismo!')); 
         
         return to_route('setting-letter');
     }

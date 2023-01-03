@@ -35,6 +35,7 @@ class GenreRequest extends FormRequest
                 new AtSignRule(),
             ],
             'description' => ['required', 'min:20', 'max:100'],
+            'icon' => 'required'
     ];
     }
 

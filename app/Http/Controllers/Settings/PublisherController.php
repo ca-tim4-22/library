@@ -44,7 +44,7 @@ class PublisherController extends Controller
     public function store(PublisherRequest $request)
     {
         Publisher::create($request->validated());
-        Session::flash('success-publisher'); 
+        Session::flash('success-publisher', trans('Dodali ste izdavača!')); 
 
         return to_route('setting-publisher');
     }

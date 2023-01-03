@@ -16,8 +16,7 @@
                                 <a href="{{route('dashboard')}}" aria-label="Dashboard">
                                     <i 
                                     style="font-size: 21px"
-                                    class="{{ (request()->is('dashboard')) ? 'text-[25px] text-[#707070] 
-                                    fas fa-tachometer-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-tachometer-alt  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    class="{{ (request()->is('dashboard')) ? 'text-[25px] fas fa-tachometer-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-tachometer-alt  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
                                             {{__('Dashboard')}}
@@ -39,7 +38,7 @@
                                 <a href="{{route('all-admin')}}" aria-label="Administratori">
                                     <i 
                                     style="font-size: 20px"
-                                    class="{{ (request()->is('administratori')) ? 'text-[25px] text-[#707070] 
+                                    class="{{ (request()->is('administratori')) ? 'text-[25px] 
                                     fas fa-user-shield transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-shield  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
@@ -62,7 +61,7 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-librarian')}}" aria-label="Bibliotekari">
-                                    <i class="{{ (request()->is('bibliotekari')) ? 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    <i class="{{ (request()->is('bibliotekari')) ? 'text-[25px]  far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
                                             {{__('Bibliotekari')}}
@@ -84,7 +83,7 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                                 <a href="{{route('all-student')}}" aria-label="Ucenici">
-                                    <i class="{{(request()->is('ucenici')) ? 'text-[18px] text-[#707070] fas fa-users transition duration-300 ease-in text-[#576cdf]' : 'text-[18px] text-[#707070] fas fa-users transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    <i class="{{(request()->is('ucenici')) ? 'text-[18px] fas fa-users transition duration-300 ease-in text-[#576cdf]' : 'text-[18px] text-[#707070] fas fa-users transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -105,8 +104,8 @@
                                 <a href="{{route('all-books')}}" aria-label="Knjige">
                                     <i 
                                     style="font-size: 25px"
-                                    class="{{ (request()->is('knjige')) ? 'text-[25px] text-[#707070] 
-                                    far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070]   far fa-copy  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                                    class="{{ (request()->is('knjige')) ? 'text-[25px]
+                                    far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-copy  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
                                             {{__('Knjige')}}
@@ -127,7 +126,7 @@
                                 <a href="{{route('all-author')}}" aria-label="Autori">
                                     <i 
                                     style="font-size: 21px"
-                                    class="{{ (request()->is('autori')) ? 'text-[25px] text-[#707070] 
+                                    class="{{ (request()->is('autori')) ? 'text-[25px] 
                                     fas fa-user-edit transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-edit transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
@@ -146,7 +145,7 @@
                         <span class="flex justify-between w-full whitespace-nowrap">
                             <div>
                            <a href="{{route('rented-books')}}" aria-label="Knjige">
-                              <i class="{{(request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) || (request()->is('knjige-u-prekoracenju')) || (request()->is('aktivne-rezervacije')) || (request()->is('arhivirane-rezervacije')) ? 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                              <i class="{{(request()->is('izdate-knjige')) || (request()->is('vracene-knjige')) || (request()->is('knjige-u-prekoracenju')) || (request()->is('aktivne-rezervacije')) || (request()->is('arhivirane-rezervacije')) ? 'text-[25px] fas fa-exchange-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-exchange-alt transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
@@ -196,7 +195,7 @@
         <!-- Settings Icon -->
         <a id="gear_text" href="{{route('setting-policy')}}" aria-label="Podešavanja" class="ml-[30px]">
             <span class="whitespace-nowrap">
-                <i id="gear" class="{{(request()->is('podesavanja/*')) ? 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
+                <i id="gear" class="{{(request()->is('podesavanja/*')) ? 'text-[25px] fas fa-cog transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-cog transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
 
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">

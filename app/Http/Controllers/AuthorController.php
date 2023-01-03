@@ -40,7 +40,7 @@ class AuthorController extends Controller
             } else {
                 $show_criterium = false;
             }
-        }else{
+        } else{
             $authors = Author::latest('id')->paginate($items);
             $show_criterium = false;
         }

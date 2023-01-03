@@ -40,6 +40,7 @@ class CategoryRequest extends FormRequest
                     'max:255',
                     new AtSignRule(),
                 ],
+                'icon' => 'required'
         ];
     }
 }

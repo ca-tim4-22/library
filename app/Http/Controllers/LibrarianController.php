@@ -23,7 +23,7 @@ class LibrarianController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
         if ($request->items) {
             $items = $request->items;
@@ -49,9 +49,7 @@ class LibrarianController extends Controller
             $librarians = User::with('gender')->latest()->where('user_type_id', 2)->paginate($items);
             $show_criterium = false;
         }
-
-        $count_model = new User();
-        $show_all = $count_model->getCount(2);
+        $show_all = $user->getCount(2);
 
         return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
     }

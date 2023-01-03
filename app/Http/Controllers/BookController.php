@@ -35,7 +35,7 @@ class BookController extends Controller
      * 
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index(Request $request, BookService $bookService)
     {
         if ($request->items) {
             $items = $request->items;
@@ -91,49 +91,7 @@ class BookController extends Controller
         $authors = Author::latest('id')->get();
         $categories = Category::latest('id')->get();
 
-        if (count($authors) && $request->id_author) {
-            foreach ($books as $book) {
-                foreach ($book->authors as $collection) {
-                    $searched = true;
-                    $books = $collection->orderBy('id', 'desc')->whereIn('author_id', $request->id_author)->get();
-                    $result = $books->count();
-                    $ids = $request->id_author;
-                    $array = [];
-                    foreach ($ids as $id => $val) {
-                        $array[] = $val;
-                    }
-                    $id_a = $ids;
-                    $selected_a = Author::whereIn('id', $array)->get();
-                    if ($result > 0) {
-                        $error = false;
-                    } else {
-                        $error = true;
-                    }
-                }
-            }
-        }
-
-        if (count($categories) && $request->id_category) {
-            foreach ($books as $book) {
-                foreach ($book->categories as $collection) {
-                    $searched = true;
-                    $books = $collection->orderBy('id', 'desc')->whereIn('category_id', $request->id_category)->get();
-                    $result = $books->count();
-                    $ids = $request->id_category;
-                    $array = [];
-                    foreach ($ids as $id => $val) {
-                        $array[] = $val;
-                    }
-                    $id_c = $ids;
-                    $selected_c = Category::whereIn('id', $array)->get();
-                    if ($result > 0) {
-                        $error = false;
-                    } else {
-                        $error = true;
-                    }
-                }
-            }
-        }
+        $bookService->index($request, $books, $authors, $categories);
 
         return view('pages.books.books', compact('books', 
         'count', 'authors', 'categories', 'searched', 'error', 'selected_a', 'selected_c', 'id_a', 'id_c', 'error', 'show', 'items',  'variable', 'show_all', 'searched_book', 'show_criterium',
@@ -217,7 +175,7 @@ class BookController extends Controller
         } elseif (isset($count) && $count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
         $count = $count;
         $text = 'primjerka';
-        } elseif (isset($count) && $count <= 0) {
+        } elseif (isset($count) || $count <= 0) {
         $count = null;
         $text = "0 primjeraka";
         } else {
@@ -276,91 +234,31 @@ class BookController extends Controller
      *
      * @param  int  $id
      */
-    public function destroy($id)
+    public function destroy($id, BookService $bookService)
     {
         $book = Book::findOrFail($id);
-       
-        if ($book->placeholder == 0) {
-            foreach ($book->gallery as $photos) {
-                foreach ($photos->get() as $photo) {
-                    // Preventing if image does not exist in storage
-                    $URL = url()->current();
-
-                    if (str_contains($URL, 'tim4') && file_exists('storage/book-covers/' . $photo->photo)) {
-                    unlink('storage/book-covers/' . $photo->photo); 
-                    $book->delete();
-                    } elseif(file_exists('\\storage\\book-covers\\' . $photo->photo)) {
-                        $path = '\\storage\\book-covers\\' . $photo->photo;
-                        unlink(public_path() . $path); 
-                        $book->delete();
-                    } else {
-                        $book->delete();
-                    }
-                }
-            }
-        }
-        
         $URL = url()->current();
-
-        if ($book->pdf != 0) {
-        // Preventing if pdf does not exist in storage
-        if (str_contains($URL, 'tim4') && file_exists('storage/pdf/' . $book->pdf)) {
-            unlink('storage/pdf/' . $book->pdf);
-        } elseif(file_exists('\\storage\\pdf\\' . $book->pdf)) {
-            $path_pdf = '\\storage\\pdf\\' . $book->pdf;
-            unlink(public_path() . $path_pdf); 
-        }
-        }
+        $bookService->destroyBook($book);
 
         if (!str_contains($URL, '/bibliotekari')) {
-            Session::flash('book-deleted'); 
-            
             return to_route('all-books');
         } 
 
         return $book->delete();
     }
 
-    public function deleteMultiple(Request $request)
+    public function deleteMultiple(Request $request, BookService $bookService)
     {
         $ids = $request->ids;
-
-        $books = Book::whereIn('id', explode(",", $ids))->get();
-        $URL = url()->current();
-
-        foreach ($books as $book) {
-            if ($book->pdf != 0) {
-                // Preventing if pdf does not exist in storage
-                if (str_contains($URL, 'tim4')  && file_exists('storage/pdf/' . $book->pdf)) {
-                    unlink('storage/pdf/' . $book->pdf);
-                } elseif(file_exists('\\storage\\pdf\\' . $book->pdf)) {
-                    $path_pdf = '\\storage\\pdf\\' . $book->pdf;
-                    unlink(public_path() . $path_pdf); 
-                }
-                }
-        }
+        $bookService->destroyMultiple($ids);
 
         Book::whereIn('id', explode(",", $ids))->delete();
     }
 
-    public function destroyBookPhoto(Request $request, $id) {
-       
+    public function destroyBookPhoto(Request $request, $id, BookService $bookService) {
         $photo = $request->photo;
         $check = Gallery::where('photo', $photo)->first();
-
-        if ($check->cover != 1) {
-        Gallery::where('photo', $photo)->delete();
-        $URL = url()->current();
-        if (str_contains($URL, '127.0.0.1:8000')) {
-            $path = '\\storage\\book-covers\\' . $photo;
-            unlink(public_path() . $path); 
-        } else {
-            unlink('storage/book-covers/' . $photo);
-        }
-        Session::flash('book-photo-deleted'); 
-        } else {
-            Session::flash('tried-cover'); 
-        }
+        $bookService->destroyPhoto($check, $photo);
 
         return back();
     }

@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Uploaduj ikonicu </p>
+                        <p>Uploaduj ikonicu  <span class="text-red-500">*@error('icon') {{$message}} @enderror</span></p>
                         <div id="empty-cover-art-ikonica"
                             class="flex w-[90%] mt-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
                             <div class="bg-gray-300 h-[40px] w-[102px] px-[20px] pt-[10px]">
