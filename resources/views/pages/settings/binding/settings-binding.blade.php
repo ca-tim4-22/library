@@ -27,17 +27,18 @@
             <div class="heading mt-[7px]" style="margin-top: 10px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
                     Podešavanja
-
+   
 
 {{-- Session message for binding create --}}
 @if (session()->has('success-binding'))
 <script>
-    swal({
-       title: "Uspješno!", 
-       text: "Dodali ste povez!", 
-       timer: 2500,
-       type: "success",
-    });
+var user = "{{Session::get('success-binding')}}";
+swal({
+    title: "Uspješno!", 
+    text: user, 
+    timer: 2500,
+    type: "success",
+});
 </script>
 @endif 
 

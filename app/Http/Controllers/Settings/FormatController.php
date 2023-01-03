@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use App\Http\Requests\Settings\FormatRequest;
 use App\Models\Format;
 use Illuminate\Http\Request;
@@ -43,7 +43,7 @@ class FormatController extends Controller
      */
     public function store(FormatRequest $request)
     {
-        FacadesSession::flash('success-format'); 
+        Session::flash('success-format'); 
         Format::create($request->validated());
         
         return to_route('setting-format');

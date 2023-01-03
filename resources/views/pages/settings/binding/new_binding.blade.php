@@ -50,7 +50,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Space for content -->
         <div class="scroll height-content section-content">
             <form class="text-gray-700" method="POST" action="{{route('store-binding')}}">

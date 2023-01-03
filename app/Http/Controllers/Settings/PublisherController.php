@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use App\Http\Requests\Settings\PublisherRequest;
 use App\Models\Publisher;
 use Illuminate\Http\Request;
@@ -44,7 +44,7 @@ class PublisherController extends Controller
     public function store(PublisherRequest $request)
     {
         Publisher::create($request->validated());
-        FacadesSession::flash('success-publisher'); 
+        Session::flash('success-publisher'); 
 
         return to_route('setting-publisher');
     }

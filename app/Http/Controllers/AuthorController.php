@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Settings\AuthorRequest;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use App\Models\Author;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
@@ -76,7 +76,7 @@ class AuthorController extends Controller
             $file->move(('storage/authors'), $filename);
             $validated['photo']= $filename;
         }
-        FacadesSession::flash('success-author'); 
+        Session::flash('success-author'); 
         $author = Author::create($validated);
 
         return to_route('all-author');
@@ -125,7 +125,7 @@ class AuthorController extends Controller
             $file->move(('storage/authors'), $filename);
             $validated['photo']= $filename;
         }
-        FacadesSession::flash('author-updated'); 
+        Session::flash('author-updated'); 
         $author->whereId($id)->first()->update($validated);
 
         return to_route('all-author');

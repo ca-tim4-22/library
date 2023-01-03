@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use App\Http\Requests\Settings\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
@@ -53,7 +53,7 @@ class GenreController extends Controller
         } else {
             $validated['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
-        FacadesSession::flash('success-genre'); 
+        Session::flash('success-genre'); 
         Genre::create($validated);
 
         return to_route('setting-genre');

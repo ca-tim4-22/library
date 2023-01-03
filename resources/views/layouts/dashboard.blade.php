@@ -61,5 +61,6 @@
     <script src="{{asset('js/sorting-jquery.js')}}"></script>
     {{-- Session message fade out --}}
     <script src="{{asset('js/session_message_jquery.js')}}"></script>
+
 </body>
 </html>

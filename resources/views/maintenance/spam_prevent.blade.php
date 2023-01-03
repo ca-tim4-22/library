@@ -17,7 +17,7 @@
         <div class="bottom"></div>
     </div>
     <h1>499</h1>
-    <h4 class="ttw">Previše <span class="ttr">pokušaja</span> / Zahtjev je poslat u roku od &lt; <span class="ttr">5s</span> </h5>
+    <h4 class="ttw">Previše <span class="ttr">pokušaja</span> / Zahtjev je poslat u roku od &lt; <span class="ttr">{{ config('app.honeypot_seconds') }}s</span> </h5>
 </div>
 
   

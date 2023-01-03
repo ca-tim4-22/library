@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session as FacadesSession;
 use App\Http\Requests\Settings\BindingRequest;
 use App\Models\Binding;
 use Illuminate\Http\Request;
+use Session;
 
 class BindingController extends Controller
 {
@@ -43,9 +43,9 @@ class BindingController extends Controller
      */
     public function store(BindingRequest $request)
     {
-        FacadesSession::flash('success-binding'); 
         Binding::create($request->validated());
-        
+        Session::flash('success-binding', trans('Dodali ste povez!')); 
+
         return to_route('setting-binding');
     }
 

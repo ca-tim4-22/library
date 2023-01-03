@@ -38,6 +38,7 @@ class UserStoreRequest extends FormRequest
             'password' => 'required|min:8|confirmed',   
             'JMBG' => 'required|min:13|max:13|unique:users',
             'photo' => 'image',
+            'user_gender_id' => 'required'
         ];
     }
 }

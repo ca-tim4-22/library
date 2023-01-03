@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\CategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         } else {
             $validated['icon'] = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
-        FacadesSession::flash('success-category'); 
+        Session::flash('success-category'); 
         Category::create($validated);
 
         return to_route('setting-category');
@@ -101,7 +101,7 @@ class CategoryController extends Controller
         } else {
             $validated['icon'] = $icon_old;
         }
-        FacadesSession::flash('category-updated'); 
+        Session::flash('category-updated'); 
         $category->update($validated);
 
         return to_route('setting-category');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 
 use App\Http\Requests\Books\ {
     BookStoreRequest,
@@ -14,14 +14,12 @@ use App\Http\Requests\Books\ {
 use App\Models\ {
     Author,
     Book,
-    BookAuthor,
-    BookCategory,
-    BookGenre,
     Category,
     Gallery,
     GlobalVariable,
     Rent,
 };
+use App\Services\BookService;
 
 class BookController extends Controller
 {
@@ -169,21 +167,9 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(BookStoreRequest $request)
+    public function store(BookStoreRequest $request, BookService $bookService)
     {
         $validated = $request->validated();
-        
-        $category = $request->category_id;
-        $category = str_replace(['[', ']'], [], $category);
-        $categoryIds= explode( ',', $category);
-
-        $genre = $request->genre_id;
-        $genre = str_replace(['[', ']'], [], $genre);
-        $genreIds= explode( ',', $genre);
-
-        $author = $request->author_id;
-        $author = str_replace(['[', ']'], [], $author);
-        $authorIds= explode( ',', $author);
 
         if ($pdf = $request->pdf) {
            $name = $pdf->getClientOriginalName();
@@ -195,50 +181,10 @@ class BookController extends Controller
         $validated['rented_count'] = 0;
         $validated['reserved_count'] = 0;
         $book = Book::create(collect($validated)->except(['category_id', 'author_id', 'genre_id'])->toArray());
-
-        foreach($categoryIds as $id) {
-            BookCategory::create([
-                'book_id' => $book->id,
-                'category_id' => $id,
-            ]);
-        }
-        foreach($genreIds as $id) {
-            BookGenre::create([
-                'book_id' => $book->id,
-                'genre_id' => $id,
-            ]);
-        }
-        foreach($authorIds as $id) {
-            BookAuthor::create([
-                'book_id' => $book->id,
-                'author_id' => $id,
-            ]);
-        }
-     
-        if ($request->file('cover')->isValid()) {
-            $cover = $request->file('cover');
-            $name = $cover->getClientOriginalName();
-            $cover->move('storage/book-covers', $name);
-            DB::table('galleries')->insert([
-                'book_id' => $book->id,
-                'photo' => $name,
-                'cover' => 1,
-            ]);
-        }
-
-        if ($request->hasFile('photos') && $request->hasFile('cover')) {
-            $photos = $request->file('photos');
-            foreach ($photos as $photo) {
-            $file = $photo;
-            $name = $file->getClientOriginalName();
-            $file->move('storage/book-covers', $name);
-            DB::table('galleries')->insert([
-                'book_id' => $book->id,
-                'photo' => $name,
-                'cover' => 0,
-            ]);}
-        } 
-        FacadesSession::flash('success-book'); 
+       
+        $bookService->foreachStore($request, $book);
+        $bookService->imagesStore($request, $book);
+        Session::flash('success-book'); 
 
         return to_route('all-books');
     }
@@ -311,107 +257,16 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BookUpdateRequest $request, $id)
+    public function update(BookUpdateRequest $request, $id, BookService $bookService)
     {
-        $validated = $request->validated();
-
         $book = Book::findOrFail($id);  
+        $bookService->foreachUpdate($request, $book);
+        $bookService->imagesUpdate($request, $book);
 
-        // Categories update
-        if ($request->category_id) {
-        $category = $request->input('category_id');
-        $category = str_replace(['[', ']'], [], $category);
-        $categoryIds= explode( ',', $category);
-        $count = BookCategory::where('category_id', $request->category_id)->count();
-        if ($count >= 1) {
-            BookCategory::where('category_id', $request->category_id)->delete();
-        } else {
-            foreach($categoryIds as $id) {
-                BookCategory::create([
-                    'book_id' => $book->id,
-                    'category_id' => $id,
-                ]);
-        };}}
-
-        // Genres update
-        if ($request->genre_id) {
-        $genre = $request->input('genre_id');
-        $genre = str_replace(['[', ']'], [], $genre);
-        $genreIds= explode( ',', $genre);
-        $count = BookGenre::where('genre_id', $request->genre_id)->count();
-        if ($count >= 1) {
-            BookGenre::where('genre_id', $request->genre_id)->delete();
-        } else {
-            foreach($genreIds as $id) {
-                BookGenre::create([
-                    'book_id' => $book->id,
-                    'genre_id' => $id,
-                ]);
-        };}}
-
-        // Authors update
-        if ($request->author_id) {
-        $category = $request->input('author_id');
-        $category = str_replace(['[', ']'], [], $category);
-        $categoryIds= explode( ',', $category);
-        $count = BookAuthor::where('author_id', $request->author_id)->count();
-        if ($count >= 1) {
-            BookAuthor::where('author_id', $request->author_id)->delete();
-            foreach($categoryIds as $id) {
-                BookAuthor::create([
-                    'book_id' => $book->id,
-                    'author_id' => $id,
-                ]);}
-
-        } else {
-            foreach($categoryIds as $id) {
-                BookAuthor::create([
-                    'book_id' => $book->id,
-                    'author_id' => $id,
-                ]);
-        };}}
-
-        if ($request->hasFile('cover') || $request->hasFile('photos')) {
-            if ($request->hasFile('cover')) {
-                $cover_old = Gallery::where([
-                    'book_id' => $book->id,
-                    'cover' => 1,
-                ])->first();
-                if ($cover_old) {
-                    $URL = url()->current();
-                    if (str_contains($URL, 'tim4') && file_exists('storage/book-covers/' . $cover_old->photo)) {
-                        unlink('storage/book-covers/' . $cover_old->photo);
-                    } elseif(!str_contains($URL, 'tim4')) {
-                        $path = '\\storage\\book-covers\\' . $cover_old->photo;
-                        unlink(public_path() . $path);
-                    }
-                    $cover_old->delete();
-                }
-
-                $cover = $request->file('cover');
-                $name = $cover->getClientOriginalName();
-                $cover->move('storage/book-covers', $name);
-                DB::table('galleries')->insert([
-                    'book_id' => $book->id,
-                    'photo' => $name,
-                    'cover' => 1,
-                ]);
-            } 
-    
-            if ($request->hasFile('photos')) {
-            $photos = $request->file('photos');
-            foreach ($photos as $photo) {
-            $file = $photo;
-            $name = $file->getClientOriginalName();
-            $file->move('storage/book-covers', $name);
-            DB::table('galleries')->insert([
-                'book_id' => $book->id,
-                'photo' => $name,
-                'cover' => 0,
-            ]);
-        }}} 
-        $book->update(collect($validated)->except(['category_id', 'author_id', 'genre_id'])->toArray());
-        FacadesSession::flash('update-book'); 
+        $book->update(collect($request->validated())
+        ->except(['category_id', 'author_id', 'genre_id'])
+        ->toArray());
+        Session::flash('update-book'); 
 
         return to_route('show-book', $request->title);
     }
@@ -458,7 +313,7 @@ class BookController extends Controller
         }
 
         if (!str_contains($URL, '/bibliotekari')) {
-            FacadesSession::flash('book-deleted'); 
+            Session::flash('book-deleted'); 
             
             return to_route('all-books');
         } 
@@ -502,9 +357,9 @@ class BookController extends Controller
         } else {
             unlink('storage/book-covers/' . $photo);
         }
-        FacadesSession::flash('book-photo-deleted'); 
+        Session::flash('book-photo-deleted'); 
         } else {
-            FacadesSession::flash('tried-cover'); 
+            Session::flash('tried-cover'); 
         }
 
         return back();

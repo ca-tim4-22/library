@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use App\Http\Requests\Settings\LetterRequest;
 use App\Models\Letter;
 use Illuminate\Http\Request;
@@ -43,7 +43,7 @@ class LetterController extends Controller
      */
     public function store(LetterRequest $request)
     {
-        FacadesSession::flash('success-letter'); 
+        Session::flash('success-letter'); 
         Letter::create($request->validated());
         
         return to_route('setting-letter');

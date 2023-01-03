@@ -7,11 +7,12 @@ use App\Http\Requests\Users\UserStoreRequest;
 use App\Http\Requests\Users\UserUpdateRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
+use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session as FacadesSession;
+use Session;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class StudentController extends Controller
@@ -111,35 +112,10 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(UserStoreRequest $request)
+    public function store(UserStoreRequest $request, UserService $userService)
     {
-        $validated = $request->validated();
-        $validated['user_type_id'] = 1;
-        $validated['user_gender_id'] = $request->user_gender_id;
-        $validated['last_login_at'] = Carbon::now();
-        // Hash password
-        $validated['password'] = Hash::make($request->password);
-     
-        // Store photo
-        if($request->hasFile('photo')) {
-            $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
-            // This will generate an image with transparent background
-            $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
-            {$constraint->aspectRatio();});
-            $canvas->insert($image, 'center');
-            $URL = url()->current();
-            if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path() . '\storage\students')) {
-                    mkdir('storage\students', 666, true);
-                }
-            }
-            $canvas->save('storage/students/'. $filename, 75);
-            $validated['photo'] = $filename; 
-        } 
-        User::create($validated);
-        FacadesSession::flash('success-student'); 
+        $userService->storeStudent($request);      
+        Session::flash('success-student'); 
 
         return to_route('all-student');
     }
@@ -216,7 +192,7 @@ class StudentController extends Controller
         }
 
         $user->whereId($id)->first()->update($validated);
-        FacadesSession::flash('student-updated'); 
+        Session::flash('student-updated'); 
 
         return to_route('all-student');
     }
