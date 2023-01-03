@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Dashboard | Online biblioteka</title>
+<title>{{__('Dashboard | Online biblioteka')}}</title>
 
 @endsection
 
@@ -23,8 +23,8 @@
     <!-- Heading of content -->
     <div class="heading mt-[28px]">
         <h1 class="pl-[30px] pb-[2px]  border-b-[1px] border-[#e4dfdf] ">
-            Dashboard
-
+            {{__('Dashboard')}}
+           
 {{-- Session message for approve reservation --}}
 @if (session()->has('approve'))
 <div id="hideDiv" class="flex p-4 mt-4 mb-4 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -42,7 +42,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Bezuspješno!</span> {{session('deny')}}
+      <span class="font-medium">{{__('Bezuspješno')}}!</span> {{session('deny')}}
     </div>
 </div>
 @endif
@@ -76,9 +76,8 @@
     <div class="pl-[30px] scroll height-dashboard overflow-auto mt-[20px] pb-[30px]">
         <div class="flex flex-row justify-between">
             <div class="mr-[30px]">
-                <span style="font-size: 1.3em" id="tooltip_1" class="cursor-default uppercase mb-[20px]">Aktivnosti</span>
-                <!-- Activity Cards -->
-                
+                <span style="font-size: 1.3em" id="tooltip_1" class="cursor-default uppercase mb-[20px]">{{__('Aktivnosti')}}</span>
+            <!-- Activity Cards -->
             @if (!$data == [])
              
             @foreach ($data as $rent)
@@ -97,7 +96,7 @@
                 <div class="ml-[15px] mt-[5px] flex flex-col">
                     <div class="text-gray-500 mb-[5px]">
                         <p class="uppercase">
-                          <span style="color: #058C63">Izdavanje knjige</span>
+                          <span style="color: #058C63">{{__('Izdavanje knjige')}}</span>
                             <span class="inline lowercase">
                               -
                                 @php
@@ -132,7 +131,7 @@
                               @endphp
                           </span>
                             <a href="{{route('rented-info', $rent->id)}}" class="text-[#2196f3] hover:text-blue-600">
-                                pogledaj detaljnije >>
+                                {{__('pogledaj detaljnije')}} >>
                             </a>
                         </p>
                     </div>
@@ -242,7 +241,7 @@ if($(".holder:hidden").length == 0){
                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                         </path>
                     </svg>
-                    <p class="font-medium text-white">Nema današnjih aktivnosti!</p>
+                    <p class="font-medium text-white">{{__('Nema današnjih aktivnosti!')}}</p>
                 </div>
             </div>
 
@@ -253,7 +252,7 @@ if($(".holder:hidden").length == 0){
                     id="seeMore" 
                     style="cursor: pointer;display: none;"
                     class="btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                    Prikaži još
+                    {{__('Prikaži još')}}
                     </a>
                     @if ($data_await != [] && $data != [])
                     @if ($data_await->count() > 0 || $data->count() > 0)
@@ -261,7 +260,7 @@ if($(".holder:hidden").length == 0){
                     href="{{route('dashboard-activity')}}"
                     style="cursor: pointer"
                     class="mt-4 btn-animation block text-center w-full px-4 py-2 text-sm tracking-wider text-gray-600 transition duration-300 ease-in border-[1px] border-gray-400 rounded hover:bg-gray-200 focus:outline-none focus:ring-[1px] focus:ring-gray-300">
-                    Prikaži sve
+                    {{__('Prikaži sve')}}
                     </a>
                     @endif
                     @endif
@@ -271,7 +270,7 @@ if($(".holder:hidden").length == 0){
             <div class="mr-[50px]">
                 <span id="tooltip_2" style="font-size: 1.3em" class="cursor-default uppercase mr-[0px] text-left" 
                 >
-                    Rezervacije knjiga
+                    {{__('Rezervacije knjiga')}}
                   
                 </span>
              
@@ -370,7 +369,7 @@ if($(".holder:hidden").length == 0){
                                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                                         </path>
                                     </svg>
-                                    <p class="font-medium text-white">Trenutno nema rezervacija na čekanju! </p>
+                                    <p class="font-medium text-white">{{__('Trenutno nema rezervacija na čekanju!')}}</p>
                                 </div>
                             </div>
 
@@ -381,18 +380,18 @@ if($(".holder:hidden").length == 0){
                     <div class="text-right mt-[5px]">
                         <a href="{{route('active-reservations')}}" class="text-[#2196f3] hover:text-blue-600">
                             <i style="cursor: default" class="fas fa-calendar-alt mr-[4px]" aria-hidden="true"></i>
-                            Prikaži sve
+                            {{__('Prikaži sve')}}
                         </a>
                     </div>
                 </div>
                 <div class="relative">
                     <h3 class="uppercase mb-[20px] text-left py-[30px] cursor-default">
-                        Statistika
+                        {{__('Statistika')}}
                     </h3>
                     <div class="text-right">
                         <div class="flex pb-[30px]">
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('rented-books')}}">
-                                Izdate knjige
+                                {{__('Izdate knjige')}}
                             </a>
                             <div class="ml-[30px] bg-green-600 transition duration-200 ease-in  hover:bg-green-900 
                             @if($rented_books > $reserved_books && $rented_books > $overdue_books)
@@ -420,7 +419,7 @@ if($(".holder:hidden").length == 0){
                         </div>
                         <div class="flex pb-[30px]">
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('active-reservations')}}">
-                                Rezervisane knjige
+                                {{__('Rezervisane knjige')}}
                             </a>
                             <div class="ml-[30px] bg-yellow-600 transition duration-200 ease-in  hover:bg-yellow-900
                             @if($reserved_books > $rented_books && $reserved_books > $overdue_books || $reserved_books > $overdue_books && $reserved_books == $rented_books)
@@ -454,7 +453,7 @@ if($(".holder:hidden").length == 0){
                         </div>
                         <div class="flex pb-[30px]">
                             <a class="w-[145px] text-[#2196f3] hover:text-blue-600" href="{{route('overdue-books')}}">
-                                Knjige u prekoračenju
+                                {{__('Knjige u prekoračenju')}}
                             </a>
 
                 <div class="ml-[30px] bg-red-600 transition duration-200 ease-in hover:bg-red-900 
@@ -499,41 +498,40 @@ if($(".holder:hidden").length == 0){
             </div>
         </div>
     </div>
-
+    <div class="absolutee">
+        <div class="font-sans absolute w-full h-full flex justify-center items-center">
+            <div class="w-[640px] mx-5">
+              <h3 class="text-center text-5xl font-bold font-serif">{{__('Newsletter')}}</h3>
+              <p class="text-center mt-1 mb-2">{{__('Budite u toku sa novim knjigama!')}}</p>
+              <form method="GET" class="relative flex items-center my-10" action="{{route('subscribe')}}">
+                <input id="newsletter-input" type="email" name="email" id="email" placeholder="{{__('primjer')}}@email.com" class="w-full bg-transparent py-2 pl-5 pr-20 border-2 border-solid border-black rounded-0 outline-none placeholder:text-black/50"
+                required 
+                oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                />
+                <button id="newsletter-btn" type="submit" class="absolute h-full right-0 text-white px-5 flex items-center cursor-pointer">
+                  <p class="sm:block">{{__('Pošalji')}}</p>
+                  <i class="bx bx-chevron-right text-2xl block sm:hidden"></i>
+                </button>
+              </form>
+              <p id="newsletter-p" class="text-center">*{{__('Vaša email adresa je sigurna sa nama')}}</p>
+            </div>
+          </div>
+    </div>
+    
+    <div class="absolutee2">
+        <div class="font-sans absolute w-full h-full flex justify-center items-center">
+            <div class="w-[640px] mx-5">
+              <h3 class="text-5xl font-bold font-serif">{{__('Korisni linkovi')}}</h3>
+              <ul>
+                <li class="mt-2 wikipedia-link"><a href="{{route('working-time')}}">{{__('Radno vrijeme')}} <i class="fas fa-clock"></i></a></li>
+                <li class="mt-2 wikipedia-link"><a href="{{route('faq')}}">{{__('FAQ - Često postavljana pitanja')}}<i class="fas fa-question"></i></a></li>
+                <li class="mt-2 wikipedia-link"><a target="_blank" href="https://elektropg.online/">{{__('Sajt škole')}} <i class="fas fa-school"></i></a></li>
+              </ul>
+            </div>
+          </div>
+    </div>
 </section>
 
-<div class="absolutee">
-    <div class="font-sans absolute w-full h-full flex justify-center items-center">
-        <div class="w-[640px] mx-5">
-          <h3 class="text-center text-5xl font-bold font-serif">Newsletter</h3>
-          <p class="text-center mt-1 mb-2">Budite u toku sa novim knjigama!</p>
-          <form method="GET" class="relative flex items-center my-10" action="{{route('subscribe')}}">
-            <input id="newsletter-input" type="email" name="email" id="email" placeholder="primjer@email.com" class="w-full bg-transparent py-2 pl-5 pr-20 border-2 border-solid border-black rounded-0 outline-none placeholder:text-black/50"
-            required 
-            oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
-            />
-            <button id="newsletter-btn" type="submit" class="absolute h-full right-0 text-white px-5 flex items-center cursor-pointer">
-              <p class="sm:block">Pošalji</p>
-              <i class="bx bx-chevron-right text-2xl block sm:hidden"></i>
-            </button>
-          </form>
-          <p id="newsletter-p" class="text-center">*Vaša email adresa je sigurna sa nama</p>
-        </div>
-      </div>
-</div>
-
-<div class="absolutee2">
-    <div class="font-sans absolute w-full h-full flex justify-center items-center">
-        <div class="w-[640px] mx-5">
-          <h3 class="text-5xl font-bold font-serif">Korisni linkovi</h3>
-          <ul>
-            <li class="mt-2 wikipedia-link"><a href="{{route('working-time')}}">Radno vrijeme <i class="fas fa-clock"></i></a></li>
-            <li class="mt-2 wikipedia-link"><a href="{{route('faq')}}">FAQ - Često postavljana pitanja <i class="fas fa-question"></i></a></li>
-            <li class="mt-2 wikipedia-link"><a target="_blank" href="https://elektropg.online/">Sajt škole <i class="fas fa-school"></i></a></li>
-          </ul>
-        </div>
-      </div>
-</div>
 
 <style>
     @keyframes red-bar {

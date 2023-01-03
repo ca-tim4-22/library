@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Radno vrijeme | Online biblioteka</title>
+<title>{{__('Radno vrijeme | Online biblioteka')}}</title>
 
 @endsection
 
@@ -32,12 +32,12 @@
                     <center><img src="{{asset('img/closed.gif')}}"></center>
                     @endif
                   
-                    <li>Ponedeljak: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
-                    <li>Utorak: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
-                    <li>Srijeda: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
-                    <li>Četvrtak: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
-                    <li>Petak: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
-                    <li>Vikend: <span class="ttr">Ne radimo</span> </li>
+                    <li>{{__('Ponedeljak')}}: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
+                    <li>{{__('Utorak')}}: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
+                    <li>{{__('Srijeda')}}: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
+                    <li>{{__('Četvrtak')}}: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
+                    <li>{{__('Petak')}}: <span class="ttb">7h</span>-<span class="ttb">13h</span> </li>
+                    <li>{{__('Vikend')}}: <span class="ttr">{{__('Ne radimo')}}</span> </li>
                    </ul>
                 </div>
         </div>

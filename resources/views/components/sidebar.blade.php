@@ -20,7 +20,7 @@
                                     fas fa-tachometer-alt transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-tachometer-alt  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                            Dashboard
+                                            {{__('Dashboard')}}
                                         </p>
                                     </div>
                                 </a>
@@ -43,7 +43,7 @@
                                     fas fa-user-shield transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-shield  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                            Administratori
+                                            {{__('Administratori')}}
                                         </p>
                                     </div>
                                 </a>
@@ -65,7 +65,7 @@
                                     <i class="{{ (request()->is('bibliotekari')) ? 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] far fa-address-book transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                            Bibliotekari
+                                            {{__('Bibliotekari')}}
                                         </p>
                                     </div>
                                 </a>
@@ -88,7 +88,7 @@
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Učenici</p>
+                                            {{__('Učenici')}}</p>
                                     </div>
                                 </a>
                             </div>
@@ -109,7 +109,7 @@
                                     far fa-copy transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070]   far fa-copy  transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                            Knjige
+                                            {{__('Knjige')}}
                                         </p>
                                     </div>
                                 </a>
@@ -131,7 +131,7 @@
                                     fas fa-user-edit transition duration-300 ease-in text-[#576cdf]' : 'text-[25px] text-[#707070] fas fa-user-edit transition duration-300 ease-in group-hover:text-[#576cdf]'}}"></i>
                                     <div class="hidden sidebar-item">
                                         <p class=" inline text-[15px] ml-[20px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                            Autori
+                                            {{__('Autori')}}
                                         </p>
                                     </div>
                                 </a>
@@ -150,7 +150,7 @@
                                     <div class="hidden sidebar-item">
                                         <p
                                             class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                                            Transakcije
+                                            {{__('Transakcije')}}
                                         </p>
                                     </div>
                                 </a>
@@ -200,7 +200,7 @@
 
                 <div class="hidden sidebar-item">
                     <p class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">
-                        Podešavanja</p>
+                        {{__('Podešavanja')}}</p>
                 </div>
             </span>
         </a>

@@ -169,8 +169,8 @@ return [
             'to' => 'perisicnikola37@gmail.com',
 
             'from' => [
-                'address' => env('MAIL_FROM_ADDRESS'),
-                'name' => env('MAIL_FROM_NAME'),
+                'address' => env('MAIL_FROM_ADDRESS', 'library@gmail.com'),
+                'name' => env('MAIL_FROM_NAME', 'Online library'),
             ],
         ],
 

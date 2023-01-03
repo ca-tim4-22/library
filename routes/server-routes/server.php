@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\ {
     ForgotPasswordController,
     LoginController,
 };
-
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\ {
     Artisan,
     Auth,
@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\ {
 Route::get('/', function () {
     return to_route('redirect');
 });
+
+// Translate - change locale
+Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
 // Welcome view
 Route::view('/pocetna', 'welcome.welcome')->name('redirect')->middleware('librarian-not-librarian');

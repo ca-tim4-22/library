@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>FAQ | Online biblioteka</title>
+<title>{{__('FAQ | Online biblioteka')}}</title>
 
 @endsection
 
@@ -28,67 +28,67 @@
                         <div class="container px-5 py-24 mx-auto mt-40">
                           <div class="text-center mb-20">
                             <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-gray-900 mb-4">
-                              Najčešće postavljana pitanja
+                              {{__('Najčešće postavljana pitanja')}}
                             </h1>
                           </div>
                           <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                             <div class="w-full lg:w-1/2 px-4 py-2">
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Koliko često se dodaju nove knjige?
+                                  {{__('Koliko često se dodaju nove knjige?')}}
                                 </summary>
                 
                                 <span class="px-4 py-2">
-                                  Knjige se dodaju u bazu čim stignu u realnoj školskoj biblioteci.
+                                  {{__('Knjige se dodaju u bazu čim stignu u realnoj školskoj biblioteci.')}}
                                 </span>
                               </details>
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Koliko mogu da rezervišem/pozajmim knjiga?
+                                  {{__('Koliko mogu da rezervišem/pozajmim knjiga?')}}
                                 </summary>
                 
                                 <span class="px-4 py-2">
-                                  U istom vremenu možete rezervisati/pozajmiti samo jedan primjerak knjige.
+                                  {{__('U istom vremenu možete rezervisati/pozajmiti samo jedan primjerak knjige.')}}
                                 </span>
                               </details>
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Da li mogu odmah preuzeti rezervisanu knjigu?
+                                  {{__('Da li mogu odmah preuzeti rezervisanu knjigu?')}}
                                 </summary>
                 
                                 <span class="px-4 py-2">
-                                  Morate sačekati da bibliotekar/ka potvrdi Vaš zahtjev za rezervaciju. Nakon toga možete preuzeti Vašu knjigu.
+                                 {{__('Morate sačekati da bibliotekar/ka potvrdi Vaš zahtjev za rezervaciju. Nakon toga možete preuzeti Vašu knjigu.')}}
                                 </span>
                               </details>
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Koliko se vremena čeka za prihvatanje rezervacije?
+                                  {{__('Koliko se vremena čeka za prihvatanje rezervacije?')}}
                                 </summary>
                 
                                 <span class="px-4 py-2">
-                                  Prosječno svaka rezervacija bude razmotrena u toku 24h od podnošenja iste, izuzev vikenda.
+                                  {{__('Prosječno svaka rezervacija bude razmotrena u toku 24h od podnošenja iste, izuzev vikenda.')}}
                                 </span>
                               </details>
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Koliko ukupno ima knjiga u biblioteci?
+                                  {{__('Koliko ukupno ima knjiga u biblioteci?')}}
                                 </summary>
                 
                                 <span class="px-4 py-2">
-                                  Ukupan broj knjiga: {{$count}}
+                                  {{__('Ukupan broj knjiga:')}} {{$count}}
                                 </span>
                               </details>
                               <details class="mb-4">
                                 <summary class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                  Koga mogu kontaktirati za više informacija?
+                                  {{__('Koga mogu kontaktirati za više informacija?')}}
                                 </summary>
                 
                                 <span>
-                                  Škola - kontakt telefona -> <a href="tel:+382 20 237 120">+382 20 237 120</a>
+                                  {{__('Škola - kontakt telefona')}} -> <a href="tel:+382 20 237 120">+382 20 237 120</a>
                                   <br>
-                                  Škola - lokacija -> Vasa Raičkovića 26, Podgorica, Crna Gora
+                                  {{__('Škola - lokacija')}} -> Vasa Raičkovića 26, Podgorica, Crna Gora
                                   <br>
-                                  Razvojni tim - email adresa -> <a href="mailto:nullable@gmail.com">nullable@gmail.com</a>
+                                  {{__('Razvojni tim - email adresa')}} -> <a href="mailto:nullable@gmail.com">nullable@gmail.com</a>
                                 </span>
                               </details>
                             </div>
