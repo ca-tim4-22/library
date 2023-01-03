@@ -62,10 +62,35 @@
     "Odjavi se": "Log out",
     "primjer": "example",
     "Podešavanja": "Settings",
+    "Ovo polje je obavezno": "This field is required",
     "Transakcije": "Transactions",
+    "Novi administrator": "New administrator",
+    "Broj redova po strani:": "Rows per page",
+    "Traži..": "Search",
+
+    
+
+
+
+    "Trenutno nema registrovanih administratora!": "There are no administrators right now!",
+    "Trenutno nema rezultata za": "There are no results for",
+    "Nazad": "Back",
+    "Izbriši": "Delete",
+    "Pogledaj detalje": "Show details",
+    "Ime i prezime": "Name and surname",
+    "Email": "Email",
+    "Izmijeni administratora": "Edit administrator",
+    "Tip korisnika": "User type",
+    "Zadnji pristup sistemu": "Last access",
+    "Izmijeni svoj nalog": "Edit your account",
+    "Izmijeni administratorku": "Edit administrator",
+    "Izbriši svoj nalog ": "Delete your account",
+    "Izbriši administratora": "Delete administrator",
+    "Izbriši administratorku": "Delete administrator",
 
 
     "Dashboard | Online biblioteka": "Dashboard | Online library",
+    "Administratori | Online biblioteka": "Administrators | Online library",
     "Radno vrijeme | Online biblioteka": "Working time | Online library",
     "FAQ | Online biblioteka": "FAQ | Online library",
 

@@ -506,7 +506,7 @@ if($(".holder:hidden").length == 0){
               <form method="GET" class="relative flex items-center my-10" action="{{route('subscribe')}}">
                 <input id="newsletter-input" type="email" name="email" id="email" placeholder="{{__('primjer')}}@email.com" class="w-full bg-transparent py-2 pl-5 pr-20 border-2 border-solid border-black rounded-0 outline-none placeholder:text-black/50"
                 required 
-                oninvalid="this.setCustomValidity('Ovo polje je obavezno')"
+                oninvalid="this.setCustomValidity('{{__('Ovo polje je obavezno')}}')"
                 />
                 <button id="newsletter-btn" type="submit" class="absolute h-full right-0 text-white px-5 flex items-center cursor-pointer">
                   <p class="sm:block">{{__('Pošalji')}}</p>
