@@ -77,7 +77,7 @@
                     }
                 </style>
                 <form> 
-                    {{__(' Broj redova po strani:')}}
+                    {{__('Broj redova po strani:')}}
                     <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
@@ -108,7 +108,7 @@
                     </span>
                     <input type="search" name="trazeno" value="{{$searched}}"
                         class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
-                        placeholder="Traži..." autocomplete="off">
+                        placeholder="{{__('Traži..')}}" autocomplete="off">
                         <a href="https://www.algolia.com" target="_blank">
                             <img class="algolia" src="{{asset('algolia.png')}}" alt="Algolia Logo">
                         </a>
@@ -130,7 +130,7 @@
                         <use xlink:href="#bottom">
                     </svg>
                 </div>
-                <span>Izbriši</span>
+                <span>{{__('Izbriši')}}</span>
             </button>
             
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">

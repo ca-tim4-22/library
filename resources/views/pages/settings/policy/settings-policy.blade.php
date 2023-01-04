@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Podešavanja | Polise - Online biblioteka</title>
+<title>{{__('Podešavanja | Polise - Online biblioteka')}}</title>
 
 @endsection
 
@@ -16,7 +16,7 @@
         <div class="border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] pb-[21px]">
                 <h1>
-                    Podešavanja 
+                    {{__('Podešavanja')}} 
                 {{-- Policy update flash message --}}
                 @if (session()->has('policy-updated'))
                 <div style="width:30%" id="hideDiv" class="flex p-2 mt-2 mb-1 text-sm text-green-700 bg-green-200 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
@@ -47,10 +47,10 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
                         <h3>
-                            {{$policy1->variable}}
+                            {{__($policy1->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            Ovdje se definiše rok za rezervaciju u danima. Po isteku tog roka, rezervacija ističe i dobija status zatvaranja 'Rezervacija istekla'.
+                            {{__("Ovdje se definiše rok za rezervaciju u danima. Po isteku tog roka, rezervacija ističe i dobija status zatvaranja 'Rezervacija istekla'.")}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -62,13 +62,13 @@
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
-                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> {{__('Izmijeni')}}
                             </button>
                             <input type="text" name="variable" value="{{$policy1->variable}}" class="hidden" />
                             <input type="text" name="value" value="{{$policy1->value}}"
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
-                            <p class="ml-[10px] mt-[15px]">dana</p>
+                            <p class="ml-[10px] mt-[15px]">{{__('dana')}}</p>
 
                         </form>
 
@@ -80,10 +80,10 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
                         <h3>
-                            {{$policy2->variable}}
+                            {{__($policy2->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            Ovdje se definiše rok za vraćanje u danima. Po isteku tog roka + rok prekoračenja, izdata knjiga ulazi u prekoračenje i moguće je otpisati primjerak.
+                           {{__('Ovdje se definiše rok za vraćanje u danima. Po isteku tog roka + rok prekoračenja, izdata knjiga ulazi u prekoračenje i moguće je otpisati primjerak.')}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -95,13 +95,13 @@
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
-                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> {{__('Izmijeni')}}
                             </button>
                             <input type="text" name="variable" value="{{$policy2->variable}}" class="hidden" />
                             <input type="text" name="value" value="{{$policy2->value}}"
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
-                            <p class="ml-[10px] mt-[15px]">dana</p>
+                            <p class="ml-[10px] mt-[15px]">{{__('dana')}}</p>
 
                         </form>
 
@@ -113,10 +113,10 @@
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
                         <h3>
-                            {{$policy3->variable}}
+                            {{__($policy3->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            Ovdje se definiše rok za prekoračenje u danima. Nakon isteka roka za vraćanje učenik može vratiti knjigu u roku prekoračenja, nakon čega izdati primjerak ulazi u knjige u prekoračenju.
+                            {{__('Ovdje se definiše rok za prekoračenje u danima. Nakon isteka roka za vraćanje učenik može vratiti knjigu u roku prekoračenja, nakon čega izdati primjerak ulazi u knjige u prekoračenju.')}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -128,13 +128,13 @@
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
-                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> {{__('Izmijeni')}}
                             </button>
                             <input type="text" name="variable" value="{{$policy3->variable}}" class="hidden" />
                             <input type="text" name="value" value="{{$policy3->value}}"
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
-                            <p class="ml-[10px] mt-[15px]">dana</p>
+                            <p class="ml-[10px] mt-[15px]">{{__('dana')}}</p>
 
                         </form>
 
@@ -146,12 +146,12 @@
                   <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div>
                         <h3>
-                            {{$policy4->variable}}
+                             {{__($policy4->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            Ovdje se definiše broj redova koji će se prikazivati na jednoj stranici tabelarnog prikaza. 
+                            {{__('Ovdje se definiše broj redova koji će se prikazivati na jednoj stranici tabelarnog prikaza.')}}
                             <br>
-                            Moguće vrijednosti: 
+                            {{__('Moguće vrijednosti:')}}
                                 <span style="color: #4558BE">5</span>, <span style="color: #4558BE">10</span>, <span style="color: #4558BE">25</span>, <span style="color: #4558BE">50</span> i <span style="color: #4558BE">100</span>
                         </p>
                     </div>
@@ -164,13 +164,13 @@
                             type="submit"
                             style="border: none;outline: none"
                             class="text-sm text-white bg-[#4558BE] rounded-l-md px-4 py-2 whitespace-no-wrap">
-                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> Izmijeni
+                            <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i> {{__('Izmijeni')}}
                             </button>
                             <input type="text" name="variable" value="{{$policy4->variable}}" class="hidden" />
                             <input type="text" name="value" value="{{$policy4->value}}"
                                 class="h-[50px] flex-1 w-full px-4 py-2 text-sm text-gray-700 placeholder-gray-400 bg-white border-[1px]  border-[#e4dfdf]  rounded-r-md shadow-sm appearance-none focus:outline-none "
                                 placeholder="..." />
-                            <p class="ml-[10px] mt-[15px]">redova</p>
+                            <p class="ml-[10px] mt-[15px]">{{__('redova')}}</p>
 
                         </form>
 

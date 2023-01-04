@@ -55,7 +55,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži.."
+                                            placeholder="{{__('Traži..')}}"
                                                 onkeyup="filterFunction('searchUcenici', 'uceniciDropdown', 'dropdown-item-izdato')"
                                                 id="searchUcenici"><br>
                                             <button
@@ -133,7 +133,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži.."
+                                            placeholder="{{__('Traži..')}}"
                                                 onkeyup="filterFunction('searchBibliotekari', 'bibliotekariDropdown', 'dropdown-item-bibliotekar')"
                                                 id="searchBibliotekari"><br>
                                             <button
@@ -209,7 +209,7 @@
                                     <ul class="border-b-2 border-gray-300 list-reset">
                                         <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                             <input class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                placeholder="Traži.."
+                                            placeholder="{{__('Traži..')}}"
                                                 onkeyup="filterFunction('searchKnjige', 'knjigeDropdown', 'dropdown-item-knjiga')"
                                                 id="searchKnjige"><br>
                                             <button

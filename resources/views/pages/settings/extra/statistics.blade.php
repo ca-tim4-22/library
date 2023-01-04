@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Podešavanja | Statistika - Online biblioteka</title>
+<title>{{__('Podešavanja | Statistika - Online biblioteka')}}</title>
 
 @endsection
 
@@ -19,9 +19,8 @@
         <div class="border-b-[1px] border-[#e4dfdf]">
             <div class="pl-[30px] pb-[21px]">
                 <h1>
-                    Podešavanja
+                    {{__('Podešavanja')}}
                 </h1>
-
             </div>
         </div>
     </div>
@@ -71,9 +70,9 @@
             <p>
                 @php
                 if($data['adminCount'] % 10 == 1 && $data['adminCount'] != 11) {
-                    echo "Admininistrator";
+                    echo __('Admininistrator');
                 } else {
-                    echo "Administratora";
+                    echo __('Administratora');
                 }
                 @endphp
             </p>
@@ -85,9 +84,9 @@
             <p>
                 @php
                 if($data['librarianCount'] % 10 == 1 && $data['librarianCount'] != 11) {
-                    echo "Bibliotekar";
+                    echo __('Bibliotekar');
                 } else {
-                    echo "Bibliotekara";
+                    echo __('Bibliotekara');
                 }
                 @endphp
             </p>
@@ -99,9 +98,9 @@
             <p>
                 @php
                 if($data['studentCount'] % 10 == 1 && $data['studentCount'] != 11) {
-                    echo "Učenik";
+                    echo __('Učenik');
                 } else {
-                    echo "Učenika";
+                    echo __('Učenika');
                 }
                 @endphp
             </p>
@@ -110,11 +109,12 @@
             <i class="fas fa-book"></i>
             <br>
             <p class="counter" data-count="{{$data['bookCount']}}"></p>
-            <p>Knjiga</p>
+            {{-- leave blank space --}}
+            <p>{{__('Knjiga ')}}</p>
         </div>
       </div>
 
-      <h1 class="text-center" style="margin-bottom: -120px;margin-top: -50px">Prethodna 24 časa <br>
+      <h1 class="text-center" style="margin-bottom: -120px;margin-top: -50px">{{__('Prethodna 24 časa')}}<br>
       <i class="fas fa-chevron-down"></i>
       </h1>    
       <div class="flexx">
@@ -125,9 +125,9 @@
             <p>
                 @php
                 if($data['adminToday'] % 10 == 1 && $data['adminToday'] != 11) {
-                    echo "Admininistrator";
+                    echo __('Admininistrator');
                 } else {
-                    echo "Administratora";
+                    echo __('Administratora');
                 }
                 @endphp
             </p>
@@ -139,9 +139,9 @@
             <p>
                 @php
                 if($data['librarianToday'] % 10 == 1 && $data['librarianToday'] != 11) {
-                    echo "Bibliotekar";
+                    echo __('Bibliotekar');
                 } else {
-                    echo "Bibliotekara";
+                    echo __('Bibliotekara');
                 }
                 @endphp
             </p>
@@ -153,9 +153,9 @@
             <p>
                 @php
                 if($data['studentToday'] % 10 == 1 && $data['studentToday'] != 11) {
-                    echo "Učenik";
+                    echo __('Učenik');
                 } else {
-                    echo "Učenika";
+                    echo __('Učenika');
                 }
                 @endphp
             </p>
@@ -164,7 +164,8 @@
             <i class="fas fa-book"></i>
             <br>
             <p class="counter" data-count="{{$data['bookCount']}}"></p>
-            <p>Knjiga</p>
+            {{-- leave blank space --}}
+            <p>{{__('Knjiga ')}}</p>
         </div>
       </div>
       <hr>

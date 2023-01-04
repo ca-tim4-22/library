@@ -31,7 +31,7 @@
                     <div class="relative text-gray-600 focus-within:text-gray-400">
                         <input type="search" id="myInput"
                                class="py-2 pl-2 text-sm bg-white border-2 border-gray-200 rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                               placeholder="Pretraži..." autocomplete="off">
+                               placeholder="{{__('Traži..')}}" autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                                             <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                 <input
                                                     class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                    placeholder="Traži.."
+                                                    placeholder="{{__('Traži..')}}"
                                                     onkeyup="filterFunction('searchUcenici', 'uceniciDropdown3', 'dropdown-item-ucenik')"
                                                     id="searchUcenici"><br>
                                                 <button
@@ -273,7 +273,7 @@
                                                 <li class="p-2 pb-[15px] border-b-[2px] relative border-gray-300">
                                                     <input
                                                         class="w-full h-10 px-2 border-2 rounded focus:outline-none"
-                                                        placeholder="Traži..."
+                                                        placeholder="{{__('Traži..')}}"
                                                         onkeyup="filterFunction('searchBibliotekari', 'bibliotekariDropdown', 'dropdown-item-bibliotekar')"
                                                         id="searchBibliotekari"><br>
                                                     <button

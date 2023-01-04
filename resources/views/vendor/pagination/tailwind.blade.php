@@ -27,17 +27,17 @@
         <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm leading-5 text-gray-700">
-                    <span>Prikazivanje</span>
+                    <span>{{__('Prikazivanje')}}</span>
                     @if ($paginator->firstItem())
                         <span class="font-medium color">{{ $paginator->firstItem() }}</span>
-                        <span>do</span>
+                        <span>{{__('do')}}</span>
                         <span class="font-medium color">{{ $paginator->lastItem() }}</span>
                     @else
                         {{ $paginator->count() }}
                     @endif
-                    <span>od</span>
+                    <span>{{__('od')}}</span>
                     <span class="font-medium color">{{ $paginator->total() }}</span>
-                    <span>rezultata</span>
+                    <span>{{__('rezultata')}}</span>
                 </p>
             </div>
 

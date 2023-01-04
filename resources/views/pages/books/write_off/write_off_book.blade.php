@@ -124,7 +124,7 @@
                 </span>
                 <input type="search" id="myInput"
                     class="py-2 pl-10 border-[#e4dfdf] text-sm text-white border-[1px] bg-white rounded-md focus:outline-none focus:bg-white focus:text-gray-900"
-                    placeholder="Traži..." autocomplete="off">
+                    placeholder="{{__('Traži..')}}" autocomplete="off">
             </div>
         </div>
 

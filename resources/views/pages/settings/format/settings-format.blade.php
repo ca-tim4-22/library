@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Podešavanja | Formati - Online biblioteka</title>
+<title>{{__('Podešavanja | Formati - Online biblioteka')}}</title>
     
 @endsection
 
@@ -26,8 +26,7 @@
     <div class="heading mt-[7px]">
             <div class="heading mt-[7px]" style="margin-top: 10px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
-                    Podešavanja
-
+                    {{__('Podešavanja')}}
 {{-- Session message for format create --}}
 @if (session()->has('success-format'))
 <script>
@@ -69,7 +68,7 @@
         <div class="flex items-center justify-between px-[50px] py-8 space-x-3 rounded-lg">
             <a href="{{route('new-format')}}"
             class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                <i class="fas fa-plus mr-[15px]"></i> Novi format
+                <i class="fas fa-plus mr-[15px]"></i> {{__('Novi format')}}
             </a>
             <div class="flex items-center">
 
@@ -81,7 +80,7 @@
                     }
                 </style>
                 <form> 
-                    {{__(' Broj redova po strani:')}}
+                    {{__('Broj redova po strani:')}}
                     <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
@@ -110,7 +109,7 @@
                         </span>
                         <input type="text" name="trazeno" value="{{$searched}}"
                             class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none  focus:text-gray-900"
-                            placeholder="Traži..." autocomplete="off">
+                            placeholder="{{__('Traži..')}}" autocomplete="off">
                             <a href="https://www.algolia.com" target="_blank">
                                 <img class="algolia" src="{{asset('algolia.png')}}" alt="Algolia Logo">
                             </a>
@@ -132,7 +131,7 @@
                         <use xlink:href="#bottom">
                     </svg>
                 </div>
-                <span>Izbriši</span>
+                <span>{{__('Izbriši')}}</span>
             </button>
             
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -173,12 +172,12 @@
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[5px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Izmijeni format</span>
+                                <span style="padding-top: 1px;">{{__('Izmijeni format')}}</span>
                             </button>
                         </td>
 
                         <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-                            Naziv formata
+                            {{__('Naziv formata')}}
                         </th>
 
                         <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -189,7 +188,7 @@
                             role="menuitem"
                             data-url="">
                             <i class="fas fa-trash mr-[5px] ml-[5px] py-1"></i>
-                            <span style="padding-top: 1px;">Izbriši format</span>
+                            <span style="padding-top: 1px;">{{__('Izbriši format')}}</span>
                             </button>
                         </td>
 
@@ -227,7 +226,7 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Izmijeni format</span>
+                                            <span class="px-4 py-0">{{__('Izmijeni format')}}</span>
                                         </a>
                                        
                                         <button 
@@ -237,7 +236,7 @@
                                         class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
                                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                         <span class="px-4 py-0">
-                                        Izbriši format
+                                        {{__('Izbriši format')}}
                                         </span>
                                         </button> 
 
@@ -265,7 +264,7 @@
                         d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                 </path>
             </svg>
-            <p class="font-medium text-white">Trenutno nema formata u bazi podataka! </p>
+            <p class="font-medium text-white">{{__('Trenutno nema formata u bazi podataka!')}}</p>
         </div>
 
     @endif

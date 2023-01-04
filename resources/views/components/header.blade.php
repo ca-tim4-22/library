@@ -112,6 +112,10 @@
                     <button class="ml-3 outline-none" name="lang" type="submit" value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>
                         <img width="30" src="https://vectorflags.s3.amazonaws.com/flags/uk-circle-01.png" alt="{{__('Engleski')}}" title="{{__('Engleski')}}">
                     </button>
+
+                    <button class="ml-3 outline-none" name="lang" type="submit" value="it" {{ session()->get('locale') == 'it' ? 'selected' : '' }}>
+                        <img width="30" src="https://cdn.countryflags.com/thumbs/italy/flag-round-250.png" alt="{{__('Engleski')}}" title="{{__('Engleski')}}">
+                    </button>
                    </form>
 
                 <!-- User Profile Photo -->
