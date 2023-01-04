@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Bibliotekari | Online biblioteka</title>
+<title>{{__('Bibliotekari | Online biblioteka')}}</title>
     
 @endsection
 
@@ -28,7 +28,7 @@
     <!-- Heading of content -->
     <div class="heading mt-[7px]" style="margin-top: 10px">
         <h1 style="font-size: 30px" class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf] ">
-            Bibliotekari
+            {{__('Bibliotekari')}}
 
 {{-- Session message for librarian create --}}
 @if (session()->has('success-librarian'))
@@ -61,7 +61,7 @@
     <div class="scroll height-dashboard">
         <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
             <a href="{{ route('new-librarian') }}" class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                <i class="fas fa-plus mr-[15px]"></i> Novi bibliotekar
+                <i class="fas fa-plus mr-[15px]"></i> {{__('Novi bibliotekar')}}
             </a>
             <div class="flex items-center">
                 
@@ -73,7 +73,7 @@
                     }
                 </style>
                 <form> 
-                    Broj redova po strani:
+                    {{__('Broj redova po strani:')}}
                     <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
@@ -82,7 +82,7 @@
                         <option value="100" @if($items == 100) selected @endif >100</option>
                         <option
                         title="{{$show_all}}"
-                        value="{{$show_all}}" @if($items == $show_all) selected @endif>Prikaži sve</option>
+                        value="{{$show_all}}" @if($items == $show_all) selected @endif>{{__('Prikaži sve')}}</option>
                     </select>
                 </form>
 
@@ -105,7 +105,7 @@
                     </span>
                     <input type="search" name="trazeno" value="{{$searched}}"
                         class="py-2 pl-10 text-sm bg-white rounded-md focus:outline-none focus:text-gray-900"
-                        placeholder="Traži..." autocomplete="off">
+                        placeholder="{{__('Traži..')}}" autocomplete="off">
                         <a href="https://www.algolia.com" target="_blank">
                             <img class="algolia" src="{{asset('algolia.png')}}" alt="Algolia Logo">
                         </a>
@@ -124,7 +124,7 @@
                                 d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                         </path>
                     </svg>
-                    <p class="font-medium text-white">Trenutno nema registrovanih bibliotekara! </p>
+                    <p class="font-medium text-white">{{__('Trenutno nema registrovanih bibliotekara!')}}</p>
                 </div>
                 
             @endif
@@ -138,11 +138,11 @@
                            d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                    </path>
                </svg>
-               <p class="font-medium text-white">Trenutno nema rezultata za "{{$searched}}".. &#128533;</p>
+               <p class="font-medium text-white">{{__('Trenutno nema rezultata za')}} "{{$searched}}".. &#128533;</p>
            </div>
            <a 
            class="btn-animation inline-flex items-center text-sm py-2 px-3 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]"
-           href="{{route('all-librarian')}}"><i class="fas fa-arrow-left mr-[5px]"></i>Nazad</a>
+           href="{{route('all-librarian')}}"><i class="fas fa-arrow-left mr-[5px]"></i>{{__('Nazad')}}</a>
         @endif 
 
 
@@ -157,7 +157,7 @@
                         <use xlink:href="#bottom">
                     </svg>
                 </div>
-                <span>Izbriši</span>
+                <span>{{__('Izbriši')}}</span>
             </button>
             
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -198,12 +198,12 @@
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
                                 <i class="far fa-file mr-[3px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Pogledaj detalje</span>
+                                <span style="padding-top: 1px;">{{__('Pogledaj detalje')}}</span>
                             </button>
                         </td>
 
                         <th style="width: 250px" class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-                            Ime i prezime
+                            {{__('Ime i prezime')}}
                         </th>
 
                          <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -213,21 +213,21 @@
                                 class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                 role="menuitem">
                                 <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Izmijeni bibliotekara
+                                <span style="padding-top: 1px;">{{__('Izmijeni bibliotekara')}}
                                 </span>
                             </button>
                         </td>
 
                         <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-                            Email
+                          {{__('Email')}}
                         </th>
                        
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
-                            Tip korisnika
+                           {{__('Tip korisnika')}}
                         </th>
                       
                         <th class="px-4 py-4 leading-4 tracking-wider text-left changeme" id="arrow">
-                            Zadnji pristup sistemu
+                           {{__('Zadnji pristup sistemu')}}
                         </th>
 
                         <td class="px-4 py-4"></td>
@@ -266,7 +266,7 @@
                         <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                         {{$librarian->gender->id == 1 ? 'Bibliotekar' : 'Bibliotekarka'}}
                         </td>
-                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$librarian->login_count == 0 ? 'Korisnik se nikada nije ulogovao.' : $librarian->last_login_at->diffForHumans()}}</td>
+                        <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">{{$librarian->login_count == 0 ? __('Korisnik se nikada nije ulogovao.') : $librarian->last_login_at->diffForHumans()}}</td>
                         <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
                             <p class="inline cursor-pointer text-[20px] py-[10px] px-[30px] border-gray-300 dotsLibrarian hover:text-[#606FC7]">
                                 <i class="fas fa-ellipsis-v"></i>
@@ -280,7 +280,7 @@
                                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                             role="menuitem">
                                             <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
-                                            <span class="px-4 py-0">Pogledaj detalje</span>
+                                            <span class="px-4 py-0">{{__('Pogledaj detalje')}}</span>
                                         </a>
                                         
                                         <a 
@@ -290,11 +290,11 @@
                                             <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
                                             <span class="px-3 py-0">
                                                 @if (Auth::id() == $librarian->id)
-                                                Izmijeni svoj nalog 
+                                                {{__('Izmijeni svoj nalog ')}}
                                                 @elseif ($librarian->gender->id == 1)
-                                                Izmijeni bibliotekara
+                                                {{__('Izmijeni bibliotekara')}}
                                                 @else 
-                                                Izmijeni bibliotekarku
+                                                {{__('Izmijeni bibliotekarku')}}
                                                 @endif
                                             </span>
                                         </a>
@@ -306,11 +306,11 @@
                                             <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                             <span class="px-4 py-0">
                                             @if (Auth::id() == $librarian->id)
-                                            Izbriši svoj nalog 
+                                            {{__('Izbriši svoj nalog ')}}
                                             @elseif ($librarian->gender->id == 1)
-                                            Izbriši bibliotekara
+                                            {{__('Izbriši bibliotekara')}}
                                             @else 
-                                            Izbriši bibliotekarku
+                                            {{__('Izbriši bibliotekarku')}}
                                             @endif
                                             </span>
                                             </button> 

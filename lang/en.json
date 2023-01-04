@@ -64,15 +64,10 @@
     "Podešavanja": "Settings",
     "Ovo polje je obavezno": "This field is required",
     "Transakcije": "Transactions",
-    "Novi administrator": "New administrator",
     "Broj redova po strani:": "Rows per page",
-    "Traži..": "Search",
-
-    
-
-
-
-    "Trenutno nema registrovanih administratora!": "There are no administrators right now!",
+    "Traži..": "Search..",
+    "Trenutno nema registrovanih administratora!": "There are no registered administrators right now!",
+    "Trenutno nema registrovanih bibliotekara!": "There are no registered librarians right now!",
     "Trenutno nema rezultata za": "There are no results for",
     "Nazad": "Back",
     "Izbriši": "Delete",
@@ -80,17 +75,31 @@
     "Ime i prezime": "Name and surname",
     "Email": "Email",
     "Izmijeni administratora": "Edit administrator",
+    "Izmijeni bibliotekara": "Edit librarian",
+    "Izmijeni učenika": "Edit student",
     "Tip korisnika": "User type",
     "Zadnji pristup sistemu": "Last access",
     "Izmijeni svoj nalog": "Edit your account",
     "Izmijeni administratorku": "Edit administrator",
+    "Izmijeni bibliotekarku": "Edit librarian",
+    "Izmijeni učenicu": "Edit student",
     "Izbriši svoj nalog ": "Delete your account",
     "Izbriši administratora": "Delete administrator",
+    "Izbriši bibliotekara": "Delete administrator",
+    "Izbriši učenika": "Delete student",
     "Izbriši administratorku": "Delete administrator",
+    "Izbriši bibliotekarku": "Delete librarian",
+    "Izbriši učenicu": "Delete student",
+    "Korisnik se nikada nije ulogovao.": "The user has never logged in.",
+    "Novi administrator": "New administrator",
+    "Novi bibliotekar": "New librarian",
+    "Novi učenik": "New student",
 
 
+    
     "Dashboard | Online biblioteka": "Dashboard | Online library",
     "Administratori | Online biblioteka": "Administrators | Online library",
+    "Bibliotekari | Online biblioteka": "Librarians | Online library",
     "Radno vrijeme | Online biblioteka": "Working time | Online library",
     "FAQ | Online biblioteka": "FAQ | Online library",
 

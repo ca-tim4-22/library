@@ -33,7 +33,7 @@ class UserService
             ...$request->validated(), 
             'last_login_at' => Carbon::now(),
             'user_type_id' => 2,
-            'photo' => $filename,
+            'photo' => isset($filename) ? $filename : 'placeholder',
             'password' => Hash::make($request->password)
         ]);
 
@@ -64,7 +64,7 @@ class UserService
             ...$request->validated(), 
             'last_login_at' => Carbon::now(),
             'user_type_id' => 3,
-            'photo' => $filename,
+            'photo' => isset($filename) ? $filename : 'placeholder',
             'password' => Hash::make($request->password)
         ]);
 
@@ -88,14 +88,13 @@ class UserService
                 }
             }
             $canvas->save('storage/students/'. $filename, 75);
-            $validated['photo'] = $filename; 
         } 
 
         $user = User::create([
             ...$request->validated(), 
             'last_login_at' => Carbon::now(),
             'user_type_id' => 1,
-            'photo' => $filename,
+            'photo' => isset($filename) ? $filename : 'placeholder',
             'password' => Hash::make($request->password)
         ]);
 
