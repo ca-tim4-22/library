@@ -114,7 +114,23 @@
                     </button>
 
                     <button class="ml-3 outline-none" name="lang" type="submit" value="it" {{ session()->get('locale') == 'it' ? 'selected' : '' }}>
-                        <img width="30" src="https://cdn.countryflags.com/thumbs/italy/flag-round-250.png" alt="{{__('Engleski')}}" title="{{__('Engleski')}}">
+                        <img width="30" src="https://cdn.countryflags.com/thumbs/italy/flag-round-250.png" alt="{{__('Italijanski')}}" title="{{__('Italijanski')}}">
+                    </button>
+                    
+                    <button class="ml-3 outline-none" name="lang" type="submit" value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>
+                        <img width="30" src="https://cdn-icons-png.flaticon.com/512/197/197560.png" alt="{{__('Francuski')}}" title="{{__('Francuski')}}">
+                    </button>
+
+                    <button class="ml-3 outline-none" name="lang" type="submit" value="zh" {{ session()->get('locale') == 'zh' ? 'selected' : '' }}>
+                        <img width="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Circle_Flag_of_the_People%27s_Republic_of_China.svg/2048px-Circle_Flag_of_the_People%27s_Republic_of_China.svg.png" alt="{{__('Kineski')}}" title="{{__('Kineski')}}">
+                    </button>
+
+                    <button class="ml-3 outline-none" name="lang" type="submit" value="ru" {{ session()->get('locale') == 'ru' ? 'selected' : '' }}>
+                        <img width="30" src="https://cdn.countryflags.com/thumbs/russia/flag-round-250.png" alt="{{__('Ruski')}}" title="{{__('Ruski')}}">
+                    </button>
+                    
+                    <button class="ml-3 outline-none" name="lang" type="submit" value="hi" {{ session()->get('locale') == 'hi' ? 'selected' : '' }}>
+                        <img width="30" src="https://cdn-icons-png.flaticon.com/512/197/197419.png" alt="{{__('Hindi')}}" title="{{__('Hindi')}}">
                     </button>
                    </form>
 
