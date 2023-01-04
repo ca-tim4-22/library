@@ -19,10 +19,10 @@ class AdminController extends Controller
     }
 
     /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\View\View
-    */
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         if ($request->items) {
@@ -36,23 +36,27 @@ class AdminController extends Controller
         $show_criterium = false;
 
         $searched = $request->trazeno;
-        if($searched){
-            $administrators = User::search($request->trazeno)->where('user_type_id', 3)->paginate($items);
+        if ($searched) {
+            $administrators = User::search($request->trazeno)
+                ->where('user_type_id', 3)->paginate($items);
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
                 $show_criterium = true;
             } else {
                 $show_criterium = false;
             }
-        }else{
-            $administrators = User::with('gender')->latest()->where('user_type_id', 3)->paginate($items);
+        } else {
+            $administrators = User::with('gender')->latest()
+                ->where('user_type_id', 3)->paginate($items);
             $show_criterium = false;
         }
 
         $count_model = new User();
         $show_all = $count_model->getCount(3);
 
-        return view('pages.admins.admins', compact('administrators', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
+        return view('pages.admins.admins',
+            compact('administrators', 'items', 'variable', 'show_all',
+                'searched', 'show_criterium'));
     }
 
     /**
@@ -69,12 +73,13 @@ class AdminController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserStoreRequest $request, UserService $userService)
     {
-        $userService->storeAdministrator($request);      
-        Session::flash('success-admin'); 
+        $userService->storeAdministrator($request);
+        Session::flash('success-admin');
 
         return to_route('all-admin');
     }
@@ -83,7 +88,8 @@ class AdminController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-    * @return \Illuminate\View\View
+     *
+     * @return \Illuminate\View\View
      */
     public function show(User $user)
     {
@@ -92,7 +98,7 @@ class AdminController extends Controller
         } else {
             abort(404);
         }
-        
+
         return view('pages.admins.show_admin', compact('admin'));
     }
 
@@ -100,6 +106,7 @@ class AdminController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(User $user)
@@ -109,7 +116,7 @@ class AdminController extends Controller
         } else {
             abort(404);
         }
-        
+
         return view('pages.admins.edit_admin', compact('admin'));
     }
 
@@ -118,21 +125,22 @@ class AdminController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserUpdateRequest $request, $id)
     {
         $validated = $request->validated();
-        $user = Auth::user();   
-    
+        $user = Auth::user();
+
         if ($file = $request->file('photo')) {
             $name = $file->getClientOriginalName();
             $file->move('storage/administrators', $name);
-            $validated['photo'] = $name; 
-        } 
+            $validated['photo'] = $name;
+        }
 
         $user->whereId($id)->first()->update($validated);
-        Session::flash('admin-updated'); 
+        Session::flash('admin-updated');
 
         return to_route('all-admin');
     }
@@ -145,7 +153,7 @@ class AdminController extends Controller
     public function destroy(Request $request, $id)
     {
         $admin = User::findOrFail($id);
-        
+
         if (Auth::user()->id == $admin->id) {
             $admin->delete();
 
@@ -156,29 +164,34 @@ class AdminController extends Controller
 
         if ($admin->photo != 'placeholder') {
             if ($URL == 'http://tim4.ictcortex.me/administratori') {
-                unlink('storage/administrators/' . $admin->photo);
+                unlink('storage/administrators/'.$admin->photo);
             } else {
-                $path = '\\storage\\administrators\\' . $admin->photo;
-                unlink(public_path() . $path);
+                $path = '\\storage\\administrators\\'.$admin->photo;
+                unlink(public_path().$path);
             }
-        } 
+        }
 
         return $admin->delete();
     }
 
-    public function crop(Request $request) {
+    public function crop(Request $request)
+    {
         $dest = 'storage/administrators';
         $file = $request->file('photo');
         $new_image_name = date('YmdHis').uniqid().'.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move)  {
+        if (!$move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
+            $user = User::where('id', Auth::id())
+                ->update(['photo' => $new_image_name]);
 
-            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+            return response()->json([
+                'status' => 1,
+                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+            ]);
         }
     }
 

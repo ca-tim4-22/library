@@ -43,6 +43,7 @@ return [
     /**
      *
      * The curl timout in seconds to validate a recaptcha token
+     *
      * @since v3.5.0
      *
      */
@@ -59,6 +60,7 @@ return [
     /**
      *
      * Default route called to check the Google reCAPTCHA token
+     *
      * @since v3.2.0
      *
      */
@@ -67,6 +69,7 @@ return [
     /**
      *
      * The name of the parameter used to send Google reCAPTCHA token to verify route
+     *
      * @since v3.2.0
      *
      */
@@ -76,6 +79,7 @@ return [
      *
      * The default Google reCAPTCHA language code
      * It has no effect with v3
+     *
      * @see   https://developers.google.com/recaptcha/docs/language
      * @since v3.6.0
      *
@@ -85,6 +89,7 @@ return [
     /**
      *
      * The default form ID. Only for "invisible" reCAPTCHA
+     *
      * @since v4.0.0
      *
      */
@@ -94,6 +99,7 @@ return [
      *
      * Deferring the render can be achieved by specifying your onload callback function and adding parameters to the JavaScript resource.
      * It has no effect with v3 and invisible
+     *
      * @see   https://developers.google.com/recaptcha/docs/display#explicit_render
      * @since v4.0.0
      * Supported true, false
@@ -105,6 +111,7 @@ return [
      *
      * Set API domain. You can use "www.recaptcha.net" in case "www.google.com" is not accessible.
      * (no check will be made on the entered value)
+     *
      * @see   https://developers.google.com/recaptcha/docs/faq#can-i-use-recaptcha-globally
      * @since v4.3.0
      * Default 'www.google.com' (ReCaptchaBuilder::DEFAULT_RECAPTCHA_API_DOMAIN)
@@ -115,24 +122,27 @@ return [
     /**
      *
      * Set `true` when the error message must be null
+     *
      * @since v5.1.0
      * Default false
      *
      */
-    'empty_message' => false,
+    'empty_message'                => false,
 
     /**
      *
      * Set either the error message or the errom message translation key
+     *
      * @since v5.1.0
      * Default 'validation.recaptcha'
      *
      */
-    'error_message_key' => 'validation.recaptcha',
+    'error_message_key'            => 'validation.recaptcha',
 
     /**
      *
      * g-recaptcha tag attributes and grecaptcha.render parameters (v2 only)
+     *
      * @see   https://developers.google.com/recaptcha/docs/display#render_param
      * @since v4.0.0
      */

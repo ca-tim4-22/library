@@ -11,13 +11,14 @@ class GlobalVariableCollection extends JsonResource
      * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return [
-            'ID' => $this->id,
-            'name' => Str::ucfirst($this->variable),
+            'ID'                   => $this->id,
+            'name'                 => Str::ucfirst($this->variable),
             'show-global-variable' => [
                 'link' => route('show-global-variable-api', $this->id)
             ],

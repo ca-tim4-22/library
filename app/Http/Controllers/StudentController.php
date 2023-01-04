@@ -22,30 +22,31 @@ class StudentController extends Controller
         $this->middleware(['protect-all']);
     }
 
-    public function approveIndex() {
-        
+    public function approveIndex()
+    {
         $user = User::where([
-            'id' => Auth::id(),
+            'id'     => Auth::id(),
             'active' => 0,
         ])->first();
-   
+
         if (isset($user)) {
             return view('github-verify/github_verify', compact('user'));
         } else {
             return to_route('dashboard')
-            ->withFragment('#uspjesno-logovanje');
+                ->withFragment('#uspjesno-logovanje');
         }
     }
 
-    public function approveUpdate(GitHubVerifyRequest $request) {
+    public function approveUpdate(GitHubVerifyRequest $request)
+    {
         $input = $request->all();
         $user = Auth::user();
 
-        if($request->result == 24) {
+        if ($request->result == 24) {
             $user->update([
-                'JMBG' => $request->JMBG,
+                'JMBG'           => $request->JMBG,
                 'user_gender_id' => $request->user_gender_id,
-                'active' => true,
+                'active'         => true,
             ]);
 
             return to_route('show-student', $user->username)
@@ -77,23 +78,27 @@ class StudentController extends Controller
         $show_criterium = false;
 
         $searched = $request->trazeno;
-        if($searched){
-            $students = User::search($request->trazeno)->where('user_type_id', 1)->paginate($items);
+        if ($searched) {
+            $students = User::search($request->trazeno)->where('user_type_id',
+                1)->paginate($items);
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
                 $show_criterium = true;
             } else {
                 $show_criterium = false;
             }
-        }else{
-            $students = User::with('gender')->latest()->where('user_type_id', 1)->paginate($items);
+        } else {
+            $students = User::with('gender')->latest()->where('user_type_id', 1)
+                ->paginate($items);
             $show_criterium = false;
         }
-    
+
         $count_model = new User();
         $show_all = $count_model->getCount(1);
 
-        return view('pages.students.students', compact('students', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
+        return view('pages.students.students',
+            compact('students', 'items', 'variable', 'show_all', 'searched',
+                'show_criterium'));
     }
 
     /**
@@ -110,29 +115,35 @@ class StudentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserStoreRequest $request, UserService $userService)
     {
-        $userService->storeStudent($request);      
-        Session::flash('success-student'); 
+        $userService->storeStudent($request);
+        Session::flash('success-student');
 
         return to_route('all-student');
     }
 
-    public function crop(Request $request) {
+    public function crop(Request $request)
+    {
         $dest = 'storage/students';
         $file = $request->file('photo');
         $new_image_name = date('YmdHis').uniqid().'.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move)  {
+        if (!$move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            $user = User::where('id', Auth::user()->id)->update(['photo' => $new_image_name]);
+            $user = User::where('id', Auth::user()->id)
+                ->update(['photo' => $new_image_name]);
 
-            return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+            return response()->json([
+                'status' => 1,
+                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+            ]);
         }
     }
 
@@ -140,6 +151,7 @@ class StudentController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(User $user)
@@ -149,7 +161,7 @@ class StudentController extends Controller
         } else {
             abort(404);
         }
-        
+
         return view('pages.students.show_student', compact('student'));
     }
 
@@ -157,6 +169,7 @@ class StudentController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(User $user)
@@ -166,7 +179,7 @@ class StudentController extends Controller
         } else {
             abort(404);
         }
-        
+
         return view('pages.students.edit_student', compact('student'));
     }
 
@@ -175,6 +188,7 @@ class StudentController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserUpdateRequest $request, $id)
@@ -186,13 +200,13 @@ class StudentController extends Controller
         $photo_old = $request->photo;
 
         if ($file = $request->file('photo')) {
-            $name = time() . $file->getClientOriginalName();
+            $name = time().$file->getClientOriginalName();
             $file->move('storage/students', $name);
             $validated['photo'] = $name;
         }
 
         $user->whereId($id)->first()->update($validated);
-        Session::flash('student-updated'); 
+        Session::flash('student-updated');
 
         return to_route('all-student');
     }
@@ -211,17 +225,17 @@ class StudentController extends Controller
 
             return to_route('good-bye');
         }
-        
+
         $URL = url()->previous();
 
         if ($student->photo != 'placeholder') {
             if ($URL == 'http://tim4.ictcortex.me/ucenici') {
-                unlink('storage/students/' . $student->photo);
+                unlink('storage/students/'.$student->photo);
             } else {
-                $path = '\\storage\\students\\' . $student->photo;
-                unlink(public_path() . $path);
+                $path = '\\storage\\students\\'.$student->photo;
+                unlink(public_path().$path);
             }
-        } 
+        }
 
         return $student->delete();
     }

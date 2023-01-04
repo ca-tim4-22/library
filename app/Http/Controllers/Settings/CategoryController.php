@@ -14,7 +14,7 @@ class CategoryController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,31 +39,35 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(CategoryRequest $request)
     {
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
+            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $icon = $name; 
-            $default = 'false'; 
+            $icon = $name;
+            $default = 'false';
         } else {
-            $icon = '/img/default_images_while_migrations/genres/placeholder.jpg';
+            $icon
+                = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
         Category::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'default' => $default,
-            'icon' => $icon,
+            'icon'    => $icon,
         ]);
-        Session::flash('success-category', trans('Dodali ste kategoriju!')); 
+        Session::flash('success-category', trans('Dodali ste kategoriju!'));
 
         return to_route('setting-category');
     }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,11 +79,13 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Category $category)
     {
-        return view('pages.settings.category.edit_category', compact('category'));
+        return view('pages.settings.category.edit_category',
+            compact('category'));
     }
 
     /**
@@ -87,6 +93,7 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(CategoryRequest $request, $id)
@@ -94,16 +101,16 @@ class CategoryController extends Controller
         $validated = $request->validated();
         $category = Category::findOrFail($id);
         $icon_old = $category->icon;
-    
+
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
+            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
-            $validated['icon'] = $name; 
-            $validated['default'] = 'false'; 
+            $validated['icon'] = $name;
+            $validated['default'] = 'false';
         } else {
             $validated['icon'] = $icon_old;
         }
-        Session::flash('category-updated'); 
+        Session::flash('category-updated');
         $category->update($validated);
 
         return to_route('setting-category');
@@ -120,10 +127,16 @@ class CategoryController extends Controller
         $URL = url()->current();
 
         // Delete default icon && icon in storage
-        if (str_contains($URL, 'tim4') && file_exists('storage/settings/category/' . $category->icon)) {
-            unlink('storage/settings/category/' . $category->icon);
-         } elseif(!str_contains($URL, 'tim4') && file_exists(public_path() . '\\storage\\settings\\category\\' . $category->icon)) {
-           unlink(public_path() . '\\storage\\settings\\category\\' . $category->icon);
+        if (str_contains($URL, 'tim4')
+            && file_exists('storage/settings/category/'.$category->icon)
+        ) {
+            unlink('storage/settings/category/'.$category->icon);
+        } elseif (!str_contains($URL, 'tim4')
+            && file_exists(public_path().'\\storage\\settings\\category\\'
+                .$category->icon)
+        ) {
+            unlink(public_path().'\\storage\\settings\\category\\'
+                .$category->icon);
         }
 
         return $category->delete();

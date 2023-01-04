@@ -8,6 +8,7 @@ class jquery_edit extends Component
 {
     public $models;
     public $book;
+
     /**
      * Create a new component instance.
      *

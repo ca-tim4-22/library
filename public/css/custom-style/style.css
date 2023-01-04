@@ -1,23 +1,24 @@
 a {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .background {
-  background-image: url("/login.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    background-image: url("/login.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .no-select {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .transition-custom {
-  -webkit-transition: 0.25s ease-out;
-  transition: 0.25s ease-out;
+    -webkit-transition: 0.25s ease-out;
+    transition: 0.25s ease-out;
 }
+
 /*# sourceMappingURL=style.css.map */

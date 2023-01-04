@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -24,11 +23,16 @@ return new class extends Migration
             $table->date('reservation_date');
             $table->date('close_date')->nullable();
 
-            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
-            $table->foreign('reservationMadeFor_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('reservationMadeBy_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('closeReservation_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('closure_reason')->references('id')->on('cancellation_reasons')->onDelete('cascade');
+            $table->foreign('book_id')->references('id')->on('books')
+                ->onDelete('cascade');
+            $table->foreign('reservationMadeFor_user_id')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->foreign('reservationMadeBy_user_id')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->foreign('closeReservation_user_id')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->foreign('closure_reason')->references('id')
+                ->on('cancellation_reasons')->onDelete('cascade');
         });
     }
 

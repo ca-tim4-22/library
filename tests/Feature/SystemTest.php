@@ -19,11 +19,12 @@ class SystemTest extends TestCase
      *
      * @return void
      */
-    public function test_test_user_delete_function() {
+    public function test_test_user_delete_function()
+    {
         $user = User::create([
             'name' => 'Test user',
         ])->delete();
-        
+
         $this->assertTrue(true);
     }
 
@@ -33,13 +34,15 @@ class SystemTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function test_admin_user_exists() {
+    public function test_admin_user_exists()
+    {
         $this->assertDatabaseHas('users', [
             'name' => 'Administrator'
         ]);
     }
 
-    public function test_user_types_exists() {
+    public function test_user_types_exists()
+    {
         $this->assertDatabaseHas('user_types', [
             'name' => 'student',
             'name' => 'librarian',
@@ -50,14 +53,15 @@ class SystemTest extends TestCase
     public function test_users_can_not_authenticate_with_invalid_password()
     {
         $this->post('/uloguj-se', [
-            'email' => 'admin@gmail.com',
+            'email'    => 'admin@gmail.com',
             'password' => 'wrong-password',
         ]);
- 
+
         $this->assertGuest();
     }
 
-    public function test_register_page_status() {
+    public function test_register_page_status()
+    {
         $response = $this->get('/register');
         $response->assertDontSee('Sva prava zadržana');
         $response->assertStatus(404);

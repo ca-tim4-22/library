@@ -22,8 +22,8 @@ class BookCategoryFactory extends Factory
         static $num1 = 1;
         static $num2 = 1;
         return [
-            'book_id' => $num1++,
-            'category_id' => $num2++    ,
+            'book_id'     => $num1++,
+            'category_id' => $num2++,
         ];
     }
 }

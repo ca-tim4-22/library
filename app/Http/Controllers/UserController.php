@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -35,11 +35,12 @@ class UserController extends Controller
     {
         return response()->noContent();
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,6 +52,7 @@ class UserController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,6 +64,7 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,6 +77,7 @@ class UserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -92,9 +96,10 @@ class UserController extends Controller
     }
 
     // Custom password reset with modal
-    public function resetPassword(User $user, Request $request) {
-        $request->validate([            
-                'password' => [
+    public function resetPassword(User $user, Request $request)
+    {
+        $request->validate([
+            'password' => [
                 'confirmed',
                 new MinimumPasswordLengthRule(),
                 new RegexCheckRule(),
@@ -108,12 +113,13 @@ class UserController extends Controller
         $user->save();
 
         DB::table('oauth_access_tokens')
-        ->where('user_id', Auth::id())
-        ->update([
-            'revoked' => 1
-        ]);
+            ->where('user_id', Auth::id())
+            ->update([
+                'revoked' => 1
+            ]);
 
-        return back()->with('password-updated', 'Uspješno ste izmijenili lozinku.');
+        return back()->with('password-updated',
+            'Uspješno ste izmijenili lozinku.');
     }
 
     public function deleteMultiple(Request $request)

@@ -2,7 +2,7 @@
 
 return [
 
-    'backup' => [
+    'backup'          => [
 
         /*
          * The name of this application. You can use this name to monitor
@@ -10,14 +10,14 @@ return [
          */
         'name' => env('APP_NAME'),
 
-        'source' => [
+        'source'                       => [
 
-            'files' => [
+            'files'     => [
 
                 /*
                  * The list of directories and files that will be included in the backup.
                  */
-                'include' => [
+                'include'                       => [
                     // base_path(),
                 ],
 
@@ -26,7 +26,7 @@ return [
                  *
                  * Directories used by the backup process will automatically be excluded.
                  */
-                'exclude' => [
+                'exclude'                       => [
                     base_path('vendor'),
                     base_path('node_modules'),
                 ],
@@ -34,7 +34,7 @@ return [
                 /*
                  * Determines if symlinks should be followed.
                  */
-                'follow_links' => false,
+                'follow_links'                  => false,
 
                 /*
                  * Determines if it should avoid unreadable folders.
@@ -46,7 +46,7 @@ return [
                  * Set to `null` to include complete absolute path
                  * Example: base_path()
                  */
-                'relative_path' => null,
+                'relative_path'                 => null,
             ],
 
             /*
@@ -95,7 +95,7 @@ return [
          *
          * If you do not want any compressor at all, set it to null.
          */
-        'database_dump_compressor' => null,
+        'database_dump_compressor'     => null,
 
         /*
          * The file extension used for the database dump files.
@@ -105,7 +105,7 @@ return [
          */
         'database_dump_file_extension' => '',
 
-        'destination' => [
+        'destination'         => [
 
             /*
              * The filename prefix used for the backup zip file.
@@ -115,7 +115,7 @@ return [
             /*
              * The disk names on which the backups will be stored.
              */
-            'disks' => [
+            'disks'           => [
                 'backup',
             ],
         ],
@@ -129,7 +129,7 @@ return [
          * The password to be used for archive encryption.
          * Set to `null` to disable encryption.
          */
-        'password' => env('BACKUP_ARCHIVE_PASSWORD'),
+        'password'            => env('BACKUP_ARCHIVE_PASSWORD'),
 
         /*
          * The encryption algorithm to be used for archive encryption.
@@ -138,7 +138,7 @@ return [
          * When set to 'default', we'll use ZipArchive::EM_AES_256 if it is
          * available on your system.
          */
-        'encryption' => 'default',
+        'encryption'          => 'default',
     ],
 
     /*
@@ -148,29 +148,29 @@ return [
      * You can also use your own notification classes, just make sure the class is named after one of
      * the `Spatie\Backup\Notifications\Notifications` classes.
      */
-    'notifications' => [
+    'notifications'   => [
 
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class         => ['mail'],
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFoundNotification::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailedNotification::class        => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification::class     => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFoundNotification::class   => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessfulNotification::class    => ['mail'],
         ],
 
         /*
          * Here you can specify the notifiable to which the notifications should be sent. The default
          * notifiable will use the variables specified in this config file.
          */
-        'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
+        'notifiable'    => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
             'to' => 'perisicnikola37@gmail.com',
 
             'from' => [
                 'address' => env('MAIL_FROM_ADDRESS', 'library@gmail.com'),
-                'name' => env('MAIL_FROM_NAME', 'Online library'),
+                'name'    => env('MAIL_FROM_NAME', 'Online library'),
             ],
         ],
 
@@ -180,7 +180,7 @@ return [
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
-            'channel' => null,
+            'channel'     => null,
 
             'username' => null,
 
@@ -194,12 +194,12 @@ return [
             /*
              * If this is an empty string, the name field on the webhook will be used.
              */
-            'username' => '',
+            'username'    => '',
 
             /*
              * If this is an empty string, the avatar on the webhook will be used.
              */
-            'avatar_url' => '',
+            'avatar_url'  => '',
         ],
     ],
 
@@ -210,10 +210,10 @@ return [
      */
     'monitor_backups' => [
         [
-            'name' => env('APP_NAME'),
-            'disks' => ['backup'],
+            'name'          => env('APP_NAME'),
+            'disks'         => ['backup'],
             'health_checks' => [
-                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class          => 1,
                 \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 5000,
             ],
         ],
@@ -247,27 +247,27 @@ return [
             /*
              * The number of days for which backups must be kept.
              */
-            'keep_all_backups_for_days' => 7,
+            'keep_all_backups_for_days'                            => 7,
 
             /*
              * The number of days for which daily backups must be kept.
              */
-            'keep_daily_backups_for_days' => 16,
+            'keep_daily_backups_for_days'                          => 16,
 
             /*
              * The number of weeks for which one weekly backup must be kept.
              */
-            'keep_weekly_backups_for_weeks' => 8,
+            'keep_weekly_backups_for_weeks'                        => 8,
 
             /*
              * The number of months for which one monthly backup must be kept.
              */
-            'keep_monthly_backups_for_months' => 4,
+            'keep_monthly_backups_for_months'                      => 4,
 
             /*
              * The number of years for which one yearly backup must be kept.
              */
-            'keep_yearly_backups_for_years' => 2,
+            'keep_yearly_backups_for_years'                        => 2,
 
             /*
              * After cleaning up the backups remove the oldest backup until

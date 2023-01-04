@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class book_info extends Component
 {
     public $models;
+
     /**
      * Create a new component instance.
      *

@@ -19,6 +19,7 @@ class RentBookController extends Controller
     {
         $this->middleware(['protect-all', 'librarian-protect']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,16 +27,19 @@ class RentBookController extends Controller
      */
     public function index(Request $request)
     {
-        $rents = RentStatus::with('rent')->where('book_status_id', 1)->latest()->paginate(5);
+        $rents = RentStatus::with('rent')->where('book_status_id', 1)->latest()
+            ->paginate(5);
         $librarians = User::where('user_type_id', 2)->latest()->get();
         $filter = false;
         $count = true;
         $id_l = [];
 
         if ($request->id_librarian) {
-            $rents = Rent::whereIn('rent_user_id', $request->id_librarian)->get();
+            $rents = Rent::whereIn('rent_user_id', $request->id_librarian)
+                ->get();
             $filter = true;
-            $count = Rent::whereIn('rent_user_id', $request->id_librarian)->count();
+            $count = Rent::whereIn('rent_user_id', $request->id_librarian)
+                ->count();
             if ($count <= 0) {
                 $count = false;
             }
@@ -49,7 +53,8 @@ class RentBookController extends Controller
             $to = $request->keep_to;
             $rents = Rent::whereBetween('issue_date', [$from, $to])->get();
         }
-        return view('pages.books.transactions.rent.rented_books', compact('rents', 'librarians', 'filter', 'count', 'id_l'));
+        return view('pages.books.transactions.rent.rented_books',
+            compact('rents', 'librarians', 'filter', 'count', 'id_l'));
     }
 
     /**
@@ -69,67 +74,77 @@ class RentBookController extends Controller
         if (Rent::count() > 0) {
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
-                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
+                        ->count();
                 }
             }
         } else {
-        $count = null;
-        $text = '0 primjeraka';
+            $count = null;
+            $text = '0 primjeraka';
         }
 
         if (isset($count) && $count > 0 && $count % 10 == 1) {
-        $count = $count;
-        $text = 'primjerak';
-        } elseif (isset($count) && $count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
-        $count = $count;
-        $text = 'primjerka';
+            $count = $count;
+            $text = 'primjerak';
+        } elseif (isset($count) && $count > 0 && $count % 10 == 2
+            || $count % 10 == 3
+            || $count % 10 == 4
+        ) {
+            $count = $count;
+            $text = 'primjerka';
         } elseif (isset($count) && $count <= 0) {
-        $count = null;
-        $text = "0 primjeraka";
+            $count = null;
+            $text = "0 primjeraka";
         } else {
-        $count = $count;
-        $text = 'primjeraka';
+            $count = $count;
+            $text = 'primjeraka';
         }
 
-        return view('pages.books.transactions.rent.rent_book', compact('students', 'book', 'variable', 'count', 'text', 'current_one', 'current_two'));
+        return view('pages.books.transactions.rent.rent_book',
+            compact('students', 'book', 'variable', 'count', 'text',
+                'current_one', 'current_two'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(RentBookRequest $request, $id)
     {
-       $book = Book::findOrFail($id);
-       $user = Auth::user();
-       // Grabbing return date and formatting it to Y/m/d
-       $myDate = $request->input('return_date');
+        $book = Book::findOrFail($id);
+        $user = Auth::user();
+        // Grabbing return date and formatting it to Y/m/d
+        $myDate = $request->input('return_date');
 
-       $book_rent = new Rent();
-       $book_rent->book_id = $book->id;
-       $book_rent->rent_user_id = $user->id;
-       $book_rent->borrow_user_id = $request->input('borrow_user_id');
-       $book_rent->issue_date = $request->input('issue_date');
-       $book_rent->return_date = Carbon::createFromFormat('m/d/Y', $myDate)->format('Y/m/d');
-       $book_rent->save();
+        $book_rent = new Rent();
+        $book_rent->book_id = $book->id;
+        $book_rent->rent_user_id = $user->id;
+        $book_rent->borrow_user_id = $request->input('borrow_user_id');
+        $book_rent->issue_date = $request->input('issue_date');
+        $book_rent->return_date = Carbon::createFromFormat('m/d/Y', $myDate)
+            ->format('Y/m/d');
+        $book_rent->save();
 
-       $book->rented_count = $book->rented_count + 1;
-       $book->save();
+        $book->rented_count = $book->rented_count + 1;
+        $book->save();
 
-       $rent_status = new RentStatus();
-       $rent_status->book_status_id = 1;
-       $rent_status->rent_id = $book_rent->id;
-       $rent_status->save();
+        $rent_status = new RentStatus();
+        $rent_status->book_status_id = 1;
+        $rent_status->rent_id = $book_rent->id;
+        $rent_status->save();
 
-       return to_route('rented-books')->with('rent-success', 'Izdali ste knjigu!');
+        return to_route('rented-books')->with('rent-success',
+            'Izdali ste knjigu!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function show($id)
@@ -137,13 +152,15 @@ class RentBookController extends Controller
         $rent = Rent::findOrFail($id);
         $variable = GlobalVariable::findOrFail(2);
 
-        return view('pages.books.transactions.rent.rent_info', compact('rent', 'variable'));
+        return view('pages.books.transactions.rent.rent_info',
+            compact('rent', 'variable'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -156,6 +173,7 @@ class RentBookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -167,6 +185,7 @@ class RentBookController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

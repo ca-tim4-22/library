@@ -14,7 +14,7 @@ class BindingController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,12 +39,13 @@ class BindingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(BindingRequest $request)
     {
         Binding::create($request->validated());
-        Session::flash('success-binding', trans('Dodali ste povez!')); 
+        Session::flash('success-binding', trans('Dodali ste povez!'));
 
         return to_route('setting-binding');
     }
@@ -53,6 +54,7 @@ class BindingController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,6 +66,7 @@ class BindingController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Binding $binding)
@@ -76,14 +79,16 @@ class BindingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(BindingRequest $request, $id)
     {
-        $binding = Binding::findOrFail($id);  
+        $binding = Binding::findOrFail($id);
         $binding->update($request->validated());
-        
-        return to_route('setting-binding')->with('binding-updated', 'Uspješno ste izmijenili povez: ' . "\"$binding->name\".");
+
+        return to_route('setting-binding')->with('binding-updated',
+            'Uspješno ste izmijenili povez: '."\"$binding->name\".");
     }
 
     /**

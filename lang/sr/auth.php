@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Uneseni podaci nisu odgovarajući. Probajte ponovo.',
+    'failed'   => 'Uneseni podaci nisu odgovarajući. Probajte ponovo.',
     'password' => 'Unesena lozinka nije odgovarajuća.',
     'throttle' => 'Previše pokušaja. Probajte ponovo za :seconds sekundi.',
 

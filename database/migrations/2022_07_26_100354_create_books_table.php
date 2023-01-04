@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -30,12 +29,17 @@ return new class extends Migration
             $table->string('year');
             $table->string('pdf')->default('0')->nullable();
             $table->integer('placeholder')->default(0)->nullable();
-            
-            $table->foreign('letter_id')->references('id')->on('letters')->onDelete('cascade');
-            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');
-            $table->foreign('binding_id')->references('id')->on('bindings')->onDelete('cascade');
-            $table->foreign('format_id')->references('id')->on('formats')->onDelete('cascade');
-            $table->foreign('publisher_id')->references('id')->on('publishers')->onDelete('cascade');
+
+            $table->foreign('letter_id')->references('id')->on('letters')
+                ->onDelete('cascade');
+            $table->foreign('language_id')->references('id')->on('languages')
+                ->onDelete('cascade');
+            $table->foreign('binding_id')->references('id')->on('bindings')
+                ->onDelete('cascade');
+            $table->foreign('format_id')->references('id')->on('formats')
+                ->onDelete('cascade');
+            $table->foreign('publisher_id')->references('id')->on('publishers')
+                ->onDelete('cascade');
         });
     }
 

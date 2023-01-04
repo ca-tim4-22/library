@@ -6,40 +6,42 @@ return [
     /*
      * This switch determines if the honeypot protection should be activated.
      */
-    'enabled' => env('HONEYPOT_ENABLED'),
+    'enabled'                                => env('HONEYPOT_ENABLED'),
 
     /*
      * Here you can specify name of the honeypot field. Any requests that submit a non-empty
      * value for this name will be discarded. Make sure this name does not
      * collide with a form field that is actually used.
      */
-    'name_field_name' => env('HONEYPOT_NAME'),
+    'name_field_name'                        => env('HONEYPOT_NAME'),
 
     /*
      * When this is activated there will be a random string added
      * to the name_field_name. This improves the
      * protection against bots.
      */
-    'randomize_name_field_name' => env('HONEYPOT_RANDOMIZE'),
+    'randomize_name_field_name'              => env('HONEYPOT_RANDOMIZE'),
 
     /*
      * When this is activated, requests will be checked if
      * form is submitted faster than this amount of seconds
      */
-    'valid_from_timestamp' => env('HONEYPOT_VALID_FROM_TIMESTAMP', true),
+    'valid_from_timestamp'                   => env('HONEYPOT_VALID_FROM_TIMESTAMP',
+        true),
 
     /*
      * This field contains the name of a form field that will be used to verify
      * if the form wasn't submitted too quickly. Make sure this name does not
      * collide with a form field that is actually used.
      */
-    'valid_from_field_name' => env('HONEYPOT_VALID_FROM', 'valid_from'),
+    'valid_from_field_name'                  => env('HONEYPOT_VALID_FROM',
+        'valid_from'),
 
     /*
      * If the form is submitted faster than this amount of seconds
      * the form submission will be considered invalid.
      */
-    'amount_of_seconds' => env('HONEYPOT_SECONDS'),
+    'amount_of_seconds'                      => env('HONEYPOT_SECONDS'),
 
     /*
      * This class is responsible for sending a response to requests that
@@ -48,7 +50,7 @@ return [
      * A valid responder is any class that implements
      * `Spatie\Honeypot\SpamResponder\SpamResponder`
      */
-    'respond_to_spam_with' => BlankPageResponder::class,
+    'respond_to_spam_with'                   => BlankPageResponder::class,
 
     /*
      * When activated, requests will be checked if honeypot fields are missing,
@@ -62,5 +64,5 @@ return [
      * rules for a request. In most cases, you shouldn't change
      * this value.
      */
-    'spam_protection' => \Spatie\Honeypot\SpamProtection::class,
+    'spam_protection'                        => \Spatie\Honeypot\SpamProtection::class,
 ];

@@ -24,21 +24,21 @@ class BookUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2|max:255',
-            'page_count' => 'required|numeric|min:0|max:2000|not_in:0',
-            'ISBN' => "required|min:13|max:13|unique:books,ISBN,$this->id,id",   
+            'title'          => 'required|min:2|max:255',
+            'page_count'     => 'required|numeric|min:0|max:2000|not_in:0',
+            'ISBN'           => "required|min:13|max:13|unique:books,ISBN,$this->id,id",
             'quantity_count' => 'required|min:0|not_in:0',
-            'body' => 'required|min:2|max:1000',
-            'year' => 'required|min:0|not_in:0',
+            'body'           => 'required|min:2|max:1000',
+            'year'           => 'required|min:0|not_in:0',
             // These go with except()
             // 'category_id' => 'required',
             // 'genre_id' => 'required',
             // 'author_id' => 'required',
-            'publisher_id' => 'required',
-            'language_id' => 'required',
-            'letter_id' => 'required',
-            'binding_id' => 'required',
-            'format_id' => 'required',
+            'publisher_id'   => 'required',
+            'language_id'    => 'required',
+            'letter_id'      => 'required',
+            'binding_id'     => 'required',
+            'format_id'      => 'required',
         ];
     }
 }

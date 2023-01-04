@@ -22,20 +22,21 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->word(),
-            'page_count' => $this->faker->numberBetween(1, 999),
-            'letter_id' => Letter::all()->random(),
-            'language_id' => Language::all()->random(),
-            'binding_id' => Binding::all()->random(),
-            'format_id' => Format::all()->random(),
-            'publisher_id' => Publisher::all()->random(),
-            'ISBN' => $this->faker->numberBetween(1111111111111, 9999999999999),
+            'title'          => $this->faker->word(),
+            'page_count'     => $this->faker->numberBetween(1, 999),
+            'letter_id'      => Letter::all()->random(),
+            'language_id'    => Language::all()->random(),
+            'binding_id'     => Binding::all()->random(),
+            'format_id'      => Format::all()->random(),
+            'publisher_id'   => Publisher::all()->random(),
+            'ISBN'           => $this->faker->numberBetween(1111111111111,
+                9999999999999),
             'quantity_count' => $this->faker->numberBetween(1, 10),
-            'rented_count' => 0,
+            'rented_count'   => 0,
             'reserved_count' => 0,
-            'body' => $this->faker->sentence(30),
-            'year' => $this->faker->numberBetween(2000, 2022),
-            'placeholder' => 1,
+            'body'           => $this->faker->sentence(30),
+            'year'           => $this->faker->numberBetween(2000, 2022),
+            'placeholder'    => 1,
         ];
     }
 }

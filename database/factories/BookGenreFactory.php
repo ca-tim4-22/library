@@ -19,7 +19,7 @@ class BookGenreFactory extends Factory
     public function definition()
     {
         return [
-            'book_id' => Book::all()->random(),
+            'book_id'  => Book::all()->random(),
             'genre_id' => Genre::all()->random(),
         ];
     }

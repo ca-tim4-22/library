@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
- 
+
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,29 +12,31 @@ class UserService
 {
     public function storeLibrarian(Request $request): User
     {
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
+            $filename = time().$image->getClientOriginalName();
             // This will generate an image with transparent background
             $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
-            {$constraint->aspectRatio();});
+            $image = Image::make($image->getRealPath())->resize(445, 445,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                });
             $canvas->insert($image, 'center');
             $URL = url()->current();
             if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path() . '\storage\librarians')) {
+                if (!file_exists(public_path().'\storage\librarians')) {
                     mkdir('storage\librarians', 666, true);
                 }
             }
-            $canvas->save('storage/librarians/'. $filename, 75);
-        } 
+            $canvas->save('storage/librarians/'.$filename, 75);
+        }
 
         $user = User::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id' => 2,
-            'photo' => isset($filename) ? $filename : 'placeholder',
-            'password' => Hash::make($request->password)
+            'user_type_id'  => 2,
+            'photo'         => isset($filename) ? $filename : 'placeholder',
+            'password'      => Hash::make($request->password)
         ]);
 
         return $user;
@@ -42,30 +44,32 @@ class UserService
 
     public function storeAdministrator(Request $request): User
     {
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
+            $filename = time().$image->getClientOriginalName();
             // This will generate an image with transparent background
             $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
-            {$constraint->aspectRatio();});
+            $image = Image::make($image->getRealPath())->resize(445, 445,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                });
             $canvas->insert($image, 'center');
             $URL = url()->current();
             if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path() . '\storage\administrators')) {
+                if (!file_exists(public_path().'\storage\administrators')) {
                     mkdir('storage\administrators', 666, true);
                 }
             }
-            $canvas->save('storage/administrators/'. $filename, 75);
-            $validated['photo'] = $filename; 
-        } 
+            $canvas->save('storage/administrators/'.$filename, 75);
+            $validated['photo'] = $filename;
+        }
 
         $user = User::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id' => 3,
-            'photo' => isset($filename) ? $filename : 'placeholder',
-            'password' => Hash::make($request->password)
+            'user_type_id'  => 3,
+            'photo'         => isset($filename) ? $filename : 'placeholder',
+            'password'      => Hash::make($request->password)
         ]);
 
         return $user;
@@ -73,29 +77,31 @@ class UserService
 
     public function storeStudent(Request $request): User
     {
-        if($request->hasFile('photo')) {
+        if ($request->hasFile('photo')) {
             $image = $request->file('photo');
-            $filename = time() . $image->getClientOriginalName();
+            $filename = time().$image->getClientOriginalName();
             // This will generate an image with transparent background
             $canvas = Image::canvas(445, 445);
-            $image  = Image::make($image->getRealPath())->resize(445, 445, function($constraint)
-            {$constraint->aspectRatio();});
+            $image = Image::make($image->getRealPath())->resize(445, 445,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                });
             $canvas->insert($image, 'center');
             $URL = url()->current();
             if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path() . '\storage\students')) {
+                if (!file_exists(public_path().'\storage\students')) {
                     mkdir('storage\students', 666, true);
                 }
             }
-            $canvas->save('storage/students/'. $filename, 75);
-        } 
+            $canvas->save('storage/students/'.$filename, 75);
+        }
 
         $user = User::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id' => 1,
-            'photo' => isset($filename) ? $filename : 'placeholder',
-            'password' => Hash::make($request->password)
+            'user_type_id'  => 1,
+            'photo'         => isset($filename) ? $filename : 'placeholder',
+            'password'      => Hash::make($request->password)
         ]);
 
         return $user;

@@ -12,13 +12,14 @@ class MaximumPasswordLengthRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
         $passwordLength = Str::length($value);
 
-        if($passwordLength <= 255) {
+        if ($passwordLength <= 255) {
             return true;
         } else {
             return false;

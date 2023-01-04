@@ -27,20 +27,20 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-                'name' => [
-                    'required',
-                    new MinimumLengthRule(),
-                    'max:50',
-                    new NoDigitsRule(),
-                    new AtSignRule(),
-                ],
-                'description' => [
-                    'required',
-                    new MinimumLengthRule(),
-                    'max:255',
-                    new AtSignRule(),
-                ],
-                'icon' => 'required'
+            'name'        => [
+                'required',
+                new MinimumLengthRule(),
+                'max:50',
+                new NoDigitsRule(),
+                new AtSignRule(),
+            ],
+            'description' => [
+                'required',
+                new MinimumLengthRule(),
+                'max:255',
+                new AtSignRule(),
+            ],
+            'icon'        => 'required'
         ];
     }
 }

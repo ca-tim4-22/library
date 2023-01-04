@@ -19,10 +19,10 @@
 {{-- Action Button --}}
 @isset($actionText)
 <?php
-    $color = match ($level) {
-        'success', 'error' => $level,
-        default => 'primary',
-    };
+$color = match ($level) {
+    'success', 'error' => $level,
+    default => 'primary',
+};
 ?>
 @component('mail::button', ['url' => $actionUrl, 'color' => $color])
 {{ $actionText }}
@@ -47,13 +47,14 @@ tim <span style="font-weight: bold;">nullable()</span>
 @isset($actionText)
 @slot('subcopy')
 @lang(
-    "Ukoliko imate problema sa \":actionText\" dugmetom, kopirajte i nalijepite sledeći URL\n".
-    'u Vaš pretraživač:',
-    [
-        'actionText' => $actionText,
-    ]
-) 
-{{-- <span class="break-all">[{{ $displayableActionUrl }}]tim4.ictcortex.me</span> --}}
+"Ukoliko imate problema sa \":actionText\" dugmetom, kopirajte i nalijepite sledeći URL\n".
+'u Vaš pretraživač:',
+[
+'actionText' => $actionText,
+]
+)
+{{-- <span
+        class="break-all">[{{ $displayableActionUrl }}]tim4.ictcortex.me</span> --}}
 <a href="tim4.ictcortex.me">www.tim4.ictcortex.me</a>
 @endslot
 @endisset

@@ -9,6 +9,7 @@ use Laravel\Scout\Searchable;
 class Book extends Model
 {
     use HasFactory, Searchable;
+
     protected $guarded = [];
     public $timestamps = false;
 
@@ -19,55 +20,68 @@ class Book extends Model
         ];
     }
 
-    public function getTitleAttribute($value) {
+    public function getTitleAttribute($value)
+    {
         return ucfirst($value);
     }
 
-    public function reservations() {
+    public function reservations()
+    {
         return $this->hasMany(Reservation::class);
     }
 
-    public function authors() {
+    public function authors()
+    {
         return $this->hasMany(BookAuthor::class);
     }
 
-    public function genres() {
+    public function genres()
+    {
         return $this->hasMany(BookGenre::class);
     }
 
-    public function categories() {
+    public function categories()
+    {
         return $this->hasMany(BookCategory::class);
     }
 
-    public function letter() {
+    public function letter()
+    {
         return $this->belongsTo(Letter::class);
     }
 
-    public function language() {
+    public function language()
+    {
         return $this->belongsTo(Language::class);
     }
 
-    public function binding() {
+    public function binding()
+    {
         return $this->belongsTo(Binding::class);
     }
 
-    public function format() {
+    public function format()
+    {
         return $this->belongsTo(Format::class);
     }
 
-    public function publisher() {
+    public function publisher()
+    {
         return $this->belongsTo(Publisher::class);
     }
 
-    public function rent(){
+    public function rent()
+    {
         return $this->hasMany(Rent::class);
     }
 
-    public function gallery(){
+    public function gallery()
+    {
         return $this->hasMany(Gallery::class);
     }
-    
-    public function cover() {
+
+    public function cover()
+    {
         return $this->hasOne(Gallery::class)->where('cover', 1);
     }
 }

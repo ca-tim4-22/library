@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class BookGenre extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
     public $timestamps = false;
 
-    public function genre() {
+    public function genre()
+    {
         return $this->belongsTo(Genre::class);
     }
 }

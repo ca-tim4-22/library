@@ -21,8 +21,8 @@ class GalleryFactory extends Factory
         static $number = 1;
         return [
             'book_id' => $number++,
-            'photo' => 'https://source.unsplash.com/random',
-            'cover' => '1',
+            'photo'   => 'https://source.unsplash.com/random',
+            'cover'   => '1',
         ];
     }
 }

@@ -14,6 +14,7 @@ class WriteOffController extends Controller
     {
         $this->middleware(['protect-all', 'librarian-protect']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +25,8 @@ class WriteOffController extends Controller
         $variable = GlobalVariable::findOrFail(2);
         $count = $book->rent->where('return_date', '<', now())->count();
 
-        return view('pages.books.write_off.write_off_book', compact('book', 'count', 'variable'));
+        return view('pages.books.write_off.write_off_book',
+            compact('book', 'count', 'variable'));
     }
 
     /**
@@ -41,6 +43,7 @@ class WriteOffController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,6 +55,7 @@ class WriteOffController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,6 +67,7 @@ class WriteOffController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,6 +80,7 @@ class WriteOffController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -85,17 +91,19 @@ class WriteOffController extends Controller
         Rent::whereIn('borrow_user_id', $value)->delete();
         $book->quantity_count = $book->quantity_count - 1;
         if ($book->rented_count != 0) {
-        $book->rented_count = $book->rented_count - 1;
+            $book->rented_count = $book->rented_count - 1;
         }
         $book->update();
 
-        return back()->with('write-off', 'Uspješno ste otpisali primjerak knjige.');
+        return back()->with('write-off',
+            'Uspješno ste otpisali primjerak knjige.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

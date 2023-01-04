@@ -11,11 +11,14 @@ class RegexCheckRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        if(preg_match('/\A(?=[\x20-\x7E]*?[A-Z])(?=[\x20-\x7E]*?[a-z])(?=[\x20-\x7E]*?[0-9])[\x20-\x7E]{6,}\z/', $value)) {
+        if (preg_match('/\A(?=[\x20-\x7E]*?[A-Z])(?=[\x20-\x7E]*?[a-z])(?=[\x20-\x7E]*?[0-9])[\x20-\x7E]{6,}\z/',
+            $value)
+        ) {
             return true;
         } else {
             return false;
@@ -29,7 +32,7 @@ class RegexCheckRule implements Rule
      */
     public function message()
     {
-         // return 'The validation error message.';
-         return 'Polje za lozinku mora sadržati veliko, malo slovo kao i broj.';
+        // return 'The validation error message.';
+        return 'Polje za lozinku mora sadržati veliko, malo slovo kao i broj.';
     }
 }

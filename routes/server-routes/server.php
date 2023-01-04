@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use App\Http\Controllers\Auth\ {
     ForgotPasswordController,
@@ -17,44 +17,50 @@ Route::get('/', function () {
 });
 
 // Translate - change locale
-Route::get('lang/change', [LanguageController::class, 'change'])->name('changeLang');
+Route::get('lang/change', [LanguageController::class, 'change'])
+    ->name('changeLang');
 
 // Welcome view
-Route::view('/pocetna', 'welcome.welcome')->name('redirect')->middleware('librarian-not-librarian');
+Route::view('/pocetna', 'welcome.welcome')->name('redirect')
+    ->middleware('librarian-not-librarian');
 
 // Middleware protection
-Route::middleware('see-you-later-protection')->group(function(){
-Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
+Route::middleware('see-you-later-protection')->group(function () {
+    Route::view('/good-bye', 'good-bye.good-bye')->name('good-bye');
 });
 
 // Laravel Authentication route
 Auth::routes(['register' => false, 'login' => false, 'reset' => false]);
 
 // Login routes
-Route::controller(LoginController::class)->group(function() {
-Route::get('uloguj-se', 'showLoginForm')->name('login');
-Route::post('uloguj-se', 'login');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('uloguj-se', 'showLoginForm')->name('login');
+    Route::post('uloguj-se', 'login');
 // Logout route
-Route::get('/logout', 'logout');
+    Route::get('/logout', 'logout');
 
-Route::get('/sign-in/github', 'gitHub');
-Route::get('/sign-in/github/redirect', 'githubRedirect');
+    Route::get('/sign-in/github', 'gitHub');
+    Route::get('/sign-in/github/redirect', 'githubRedirect');
 });
 
 // Middleware protection
-Route::middleware('maintenance-protection')->group(function() {
+Route::middleware('maintenance-protection')->group(function () {
 // Server down route
-Route::get('/shutdown', function() {
-    Artisan::call('down', ['--render' => "maintenance.maintenance"]);
-    return back();
-});
+    Route::get('/shutdown', function () {
+        Artisan::call('down', ['--render' => "maintenance.maintenance"]);
+        return back();
+    });
 });
 
-Route::controller(ForgotPasswordController::class)->group(function() {
-Route::get('forget-password', 'showForgetPasswordForm')->name('forget.password.get');
-Route::post('forget-password', 'submitForgetPasswordForm')->name('forget.password.post'); 
-Route::get('reset-password/{token}', 'showResetPasswordForm')->name('reset.password.get');
-Route::post('reset-password', 'submitResetPasswordForm')->name('reset.password.post');
+Route::controller(ForgotPasswordController::class)->group(function () {
+    Route::get('forget-password', 'showForgetPasswordForm')
+        ->name('forget.password.get');
+    Route::post('forget-password', 'submitForgetPasswordForm')
+        ->name('forget.password.post');
+    Route::get('reset-password/{token}', 'showResetPasswordForm')
+        ->name('reset.password.get');
+    Route::post('reset-password', 'submitResetPasswordForm')
+        ->name('reset.password.post');
 });
 
 ?>

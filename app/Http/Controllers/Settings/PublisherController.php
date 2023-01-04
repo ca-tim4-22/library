@@ -14,7 +14,7 @@ class PublisherController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,12 +39,13 @@ class PublisherController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(PublisherRequest $request)
     {
         Publisher::create($request->validated());
-        Session::flash('success-publisher', trans('Dodali ste izdavača!')); 
+        Session::flash('success-publisher', trans('Dodali ste izdavača!'));
 
         return to_route('setting-publisher');
     }
@@ -53,6 +54,7 @@ class PublisherController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,11 +66,13 @@ class PublisherController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Publisher $publisher)
     {
-        return view('pages.settings.publisher.edit_publisher', compact('publisher'));
+        return view('pages.settings.publisher.edit_publisher',
+            compact('publisher'));
     }
 
     /**
@@ -76,14 +80,16 @@ class PublisherController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(PublisherRequest $request, $id)
     {
-        $publisher = Publisher::findOrFail($id);  
+        $publisher = Publisher::findOrFail($id);
         $publisher->update($request->validated());
-        
-        return to_route('setting-publisher')->with('publisher-updated', 'Uspješno ste izmijenili izdavača: ' . "\"$publisher->name\".");
+
+        return to_route('setting-publisher')->with('publisher-updated',
+            'Uspješno ste izmijenili izdavača: '."\"$publisher->name\".");
     }
 
     /**

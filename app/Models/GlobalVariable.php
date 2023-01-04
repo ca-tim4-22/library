@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class GlobalVariable extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
     public $timestamps = false;
 
-    public function checkStatus() {
+    public function checkStatus()
+    {
         return $this->value == 1;
     }
 }

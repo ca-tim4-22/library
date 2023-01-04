@@ -16,16 +16,17 @@ use Illuminate\Support\Facades\Auth;
 class PublisherAPIController extends Controller
 {
     public function __construct()
-   {
-    $this->middleware('auth:api')->except('publishers', 'showPublisher', 'searchPublisher');
-   }
+    {
+        $this->middleware('auth:api')->except('publishers', 'showPublisher',
+            'searchPublisher');
+    }
 
-    public function publishers() 
+    public function publishers()
     {
         return PublisherCollection::collection(Publisher::paginate(5));
     }
 
-    public function showPublisher($id) 
+    public function showPublisher($id)
     {
         $publisher = Publisher::findOrFail($id);
 
@@ -39,16 +40,16 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'error-0003', 
+                'error'   => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog izdavača",
-                'errors' => $validator->errors()
+                'errors'  => $validator->errors()
             ], 422);
         }
 
         $publisher = new Publisher();
         $publisher->name = $request["Naziv"];
         $publisher->save();
-      
+
         return response([
             'data' => new ShowPublisherResource($publisher)
         ], Response::HTTP_CREATED);
@@ -62,12 +63,12 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'=> 'error-0003', 
+                'error'   => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene izdavača",
-                'errors' => $validator->errors()
+                'errors'  => $validator->errors()
             ], 422);
         }
-        
+
         $publisher->name = $request["Naziv"];
         $publisher->update();
 
@@ -77,17 +78,17 @@ class PublisherAPIController extends Controller
     }
 
     public function destroyPublisher($id)
-    {    
+    {
         $this->UserCheckRoleException($id);
         $publisher = Publisher::findOrFail($id);
         $publisher->delete();
-         
+
         return response()->json([
             "message" => "Uspješno ste izbrisali izdavača",
         ]);
     }
 
-    public function UserCheckRoleException($product) 
+    public function UserCheckRoleException($product)
     {
         if (Auth::user()->type->id == 1) {
             throw new UserCheckRoleException();
@@ -96,16 +97,16 @@ class PublisherAPIController extends Controller
 
     public function searchPublisher($name)
     {
-        $publisher = Publisher::where('name', 'like', '%' . $name . '%')->first();
+        $publisher = Publisher::where('name', 'like', '%'.$name.'%')->first();
 
         if ($publisher == null) {
             return response(
                 [
-                    "error" => "not-found-0001",
+                    "error"     => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status' => 404,
-                    'message' => 'Ne postoji izdavač sa tim nazivom',
-                    'path' => url()->current(),
+                    'status'    => 404,
+                    'message'   => 'Ne postoji izdavač sa tim nazivom',
+                    'path'      => url()->current(),
                 ]
                 , 404);
         } else {

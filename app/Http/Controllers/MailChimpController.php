@@ -13,13 +13,13 @@ class MailChimpController extends Controller
     {
         $name = Auth::user()->name;
 
-        if(!Newsletter::isSubscribed($request->email)) {
-            Newsletter::subscribe($request->email, ['FNAME'=>$name]);
+        if (!Newsletter::isSubscribed($request->email)) {
+            Newsletter::subscribe($request->email, ['FNAME' => $name]);
 
-            Session::flash('success-mail'); 
+            Session::flash('success-mail');
             return back();
         } else {
-            Session::flash('failure-mail'); 
+            Session::flash('failure-mail');
             return back();
         }
     }

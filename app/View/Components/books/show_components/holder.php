@@ -8,6 +8,7 @@ class holder extends Component
 {
     public $book;
     public $rents;
+
     /**
      * Create a new component instance.
      *

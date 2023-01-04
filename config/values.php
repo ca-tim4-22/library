@@ -1,7 +1,7 @@
 <?php
 
-    return [
+return [
 
-        'stage' => env('APP_ENV', 'local'),
+    'stage' => env('APP_ENV', 'local'),
 
-    ];
+];

@@ -26,13 +26,13 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware(['librarian-protect'])
-        ->except('index', 'show');
+            ->except('index', 'show');
         $this->middleware('protect-all');
     }
 
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function index(Request $request, BookService $bookService)
@@ -48,7 +48,7 @@ class BookController extends Controller
         $show_criterium = false;
 
         $searched_book = $request->trazeno;
-        if($searched_book){
+        if ($searched_book) {
             $books = Book::search($request->trazeno)->paginate($items);
             $count = Book::search($request->trazeno)->get()->count();
             if ($count == 0) {
@@ -56,8 +56,9 @@ class BookController extends Controller
             } else {
                 $show_criterium = false;
             }
-        } else{
-            $books = Book::with('cover', 'authors', 'categories', 'rent')->latest('id')->paginate($items);
+        } else {
+            $books = Book::with('cover', 'authors', 'categories', 'rent')
+                ->latest('id')->paginate($items);
             $show_criterium = false;
         }
 
@@ -65,11 +66,13 @@ class BookController extends Controller
         $count = 0;
 
         if (Rent::count() > 0) {
-        foreach ($books as $book) {
-            foreach ($book->rent as $rent) {
-                $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+            foreach ($books as $book) {
+                foreach ($book->rent as $rent) {
+                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
+                        ->count();
+                }
             }
-        }} else {
+        } else {
             $count = 0;
         }
 
@@ -81,7 +84,7 @@ class BookController extends Controller
         $selected_c = [];
         $id_a = [];
         $id_c = [];
-       
+
         if ($books->count() > 0) {
             $show = true;
         } else {
@@ -93,9 +96,11 @@ class BookController extends Controller
 
         $bookService->index($request, $books, $authors, $categories);
 
-        return view('pages.books.books', compact('books', 
-        'count', 'authors', 'categories', 'searched', 'error', 'selected_a', 'selected_c', 'id_a', 'id_c', 'error', 'show', 'items',  'variable', 'show_all', 'searched_book', 'show_criterium',
-    ));
+        return view('pages.books.books', compact('books',
+            'count', 'authors', 'categories', 'searched', 'error', 'selected_a',
+            'selected_c', 'id_a', 'id_c', 'error', 'show', 'items', 'variable',
+            'show_all', 'searched_book', 'show_criterium',
+        ));
     }
 
     /**
@@ -106,14 +111,14 @@ class BookController extends Controller
     public function create()
     {
         $models = [
-            'categories'=> DB::table('categories')->get(),
-            'genres' => DB::table('genres')->get(),
-            'authors' => DB::table('authors')->latest()->get(),
+            'categories' => DB::table('categories')->get(),
+            'genres'     => DB::table('genres')->get(),
+            'authors'    => DB::table('authors')->latest()->get(),
             'publishers' => DB::table('publishers')->get(),
-            'bindings' => DB::table('bindings')->get(),
-            'formats' => DB::table('formats')->get(),
-            'languages' => DB::table('languages')->get(),
-            'letters' =>DB::table('letters')->get()
+            'bindings'   => DB::table('bindings')->get(),
+            'formats'    => DB::table('formats')->get(),
+            'languages'  => DB::table('languages')->get(),
+            'letters'    => DB::table('letters')->get()
         ];
 
         return view('pages.books.new_book', compact('models'));
@@ -123,6 +128,7 @@ class BookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(BookStoreRequest $request, BookService $bookService)
@@ -130,19 +136,23 @@ class BookController extends Controller
         $validated = $request->validated();
 
         if ($pdf = $request->pdf) {
-           $name = $pdf->getClientOriginalName();
-           $pdf->move('storage/pdf', $name); 
-           $validated['pdf'] = $name;
+            $name = $pdf->getClientOriginalName();
+            $pdf->move('storage/pdf', $name);
+            $validated['pdf'] = $name;
         } else {
-           $name = null;
+            $name = null;
         }
         $validated['rented_count'] = 0;
         $validated['reserved_count'] = 0;
-        $book = Book::create(collect($validated)->except(['category_id', 'author_id', 'genre_id'])->toArray());
-       
+        $book = Book::create(collect($validated)->except([
+            'category_id',
+            'author_id',
+            'genre_id'
+        ])->toArray());
+
         $bookService->foreachStore($request, $book);
         $bookService->imagesStore($request, $book);
-        Session::flash('success-book'); 
+        Session::flash('success-book');
 
         return to_route('all-books');
     }
@@ -151,6 +161,7 @@ class BookController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show(Book $book)
@@ -160,49 +171,57 @@ class BookController extends Controller
         if (Rent::count() > 0) {
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
-                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))->count();
+                    $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
+                        ->count();
                 }
             }
         } else {
-        $count = null;
-        $text = '0 primjeraka';
+            $count = null;
+            $text = '0 primjeraka';
         }
         $count = null;
 
-        if (isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11 || $count == 1) {
-        $count = $count;
-        $text = 'primjerak';
-        } elseif (isset($count) && $count > 0 && $count % 10 == 2 || $count % 10 == 3 || $count % 10 == 4) {
-        $count = $count;
-        $text = 'primjerka';
+        if (isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11
+            || $count == 1
+        ) {
+            $count = $count;
+            $text = 'primjerak';
+        } elseif (isset($count) && $count > 0 && $count % 10 == 2
+            || $count % 10 == 3
+            || $count % 10 == 4
+        ) {
+            $count = $count;
+            $text = 'primjerka';
         } elseif (isset($count) || $count <= 0) {
-        $count = null;
-        $text = "0 primjeraka";
+            $count = null;
+            $text = "0 primjeraka";
         } else {
-        $count = $count;
-        $text = 'primjeraka';
+            $count = $count;
+            $text = 'primjeraka';
         }
 
-        return view('pages.books.show_book', compact('book', 'count', 'text', 'rents'));
+        return view('pages.books.show_book',
+            compact('book', 'count', 'text', 'rents'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit(Book $book)
     {
         $models = [
-            'categories'=> DB::table('categories')->get(),
-            'genres' => DB::table('genres')->get(),
-            'authors' => DB::table('authors')->get(),
+            'categories' => DB::table('categories')->get(),
+            'genres'     => DB::table('genres')->get(),
+            'authors'    => DB::table('authors')->get(),
             'publishers' => DB::table('publishers')->get(),
-            'bindings' => DB::table('bindings')->get(),
-            'formats' => DB::table('formats')->get(),
-            'languages' => DB::table('languages')->get(),
-            'letters' =>DB::table('letters')->get()
+            'bindings'   => DB::table('bindings')->get(),
+            'formats'    => DB::table('formats')->get(),
+            'languages'  => DB::table('languages')->get(),
+            'letters'    => DB::table('letters')->get()
         ];
 
         return view('pages.books.edit_book', compact('book', 'models'));
@@ -213,18 +232,22 @@ class BookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(BookUpdateRequest $request, $id, BookService $bookService)
-    {
-        $book = Book::findOrFail($id);  
+    public function update(
+        BookUpdateRequest $request,
+        $id,
+        BookService $bookService
+    ) {
+        $book = Book::findOrFail($id);
         $bookService->foreachUpdate($request, $book);
         $bookService->imagesUpdate($request, $book);
 
         $book->update(collect($request->validated())
-        ->except(['category_id', 'author_id', 'genre_id'])
-        ->toArray());
-        Session::flash('update-book'); 
+            ->except(['category_id', 'author_id', 'genre_id'])
+            ->toArray());
+        Session::flash('update-book');
 
         return to_route('show-book', $request->title);
     }
@@ -242,7 +265,7 @@ class BookController extends Controller
 
         if (!str_contains($URL, '/bibliotekari')) {
             return to_route('all-books');
-        } 
+        }
 
         return $book->delete();
     }
@@ -255,7 +278,11 @@ class BookController extends Controller
         Book::whereIn('id', explode(",", $ids))->delete();
     }
 
-    public function destroyBookPhoto(Request $request, $id, BookService $bookService) {
+    public function destroyBookPhoto(
+        Request $request,
+        $id,
+        BookService $bookService
+    ) {
         $photo = $request->photo;
         $check = Gallery::where('photo', $photo)->first();
         $bookService->destroyPhoto($check, $photo);

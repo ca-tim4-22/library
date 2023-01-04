@@ -36,8 +36,9 @@ class LibrarianController extends Controller
         $show_criterium = false;
 
         $searched = $request->trazeno;
-        if($searched){
-            $librarians = User::search($request->trazeno)->where('user_type_id', 2)->paginate($items);
+        if ($searched) {
+            $librarians = User::search($request->trazeno)->where('user_type_id',
+                2)->paginate($items);
 
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
@@ -45,13 +46,16 @@ class LibrarianController extends Controller
             } else {
                 $show_criterium = false;
             }
-        } else{
-            $librarians = User::with('gender')->latest()->where('user_type_id', 2)->paginate($items);
+        } else {
+            $librarians = User::with('gender')->latest()->where('user_type_id',
+                2)->paginate($items);
             $show_criterium = false;
         }
         $show_all = $user->getCount(2);
 
-        return view('pages.librarians.librarians', compact('librarians', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
+        return view('pages.librarians.librarians',
+            compact('librarians', 'items', 'variable', 'show_all', 'searched',
+                'show_criterium'));
     }
 
     /**
@@ -68,29 +72,35 @@ class LibrarianController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserStoreRequest $request, UserService $userService)
     {
         $userService->storeLibrarian($request);
-        Session::flash('success-librarian'); 
+        Session::flash('success-librarian');
 
         return to_route('all-librarian');
     }
 
-    public function crop(Request $request) {
+    public function crop(Request $request)
+    {
         $dest = 'storage/librarians';
         $file = $request->file('photo');
         $new_image_name = date('YmdHis').uniqid().'.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move)  {
-        return response()->json(['status' => 0, 'msg' => 'Greška!']);
+        if (!$move) {
+            return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-        $user = User::where('id', Auth::id())->update(['photo' => $new_image_name]);
+            $user = User::where('id', Auth::id())
+                ->update(['photo' => $new_image_name]);
 
-        return response()->json(['status' => 1, 'msg' => 'Uspješno ste izmijenili profilnu sliku!']);
+            return response()->json([
+                'status' => 1,
+                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+            ]);
         }
     }
 
@@ -98,6 +108,7 @@ class LibrarianController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function show(User $user)
@@ -115,6 +126,7 @@ class LibrarianController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(User $user)
@@ -124,7 +136,7 @@ class LibrarianController extends Controller
         } else {
             abort(404);
         }
-        
+
         return view('pages.librarians.edit_librarian', compact('librarian'));
     }
 
@@ -134,21 +146,22 @@ class LibrarianController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UserUpdateRequest $request, $id)
     {
         $validated = $request->validated();
-        $user = User::findOrFail($id);   
-    
+        $user = User::findOrFail($id);
+
         if ($file = $request->file('photo')) {
             $name = $file->getClientOriginalName();
             $file->move('storage/librarians', $name);
-            $validated['photo'] = $name; 
-        } 
+            $validated['photo'] = $name;
+        }
 
         $user->whereId($id)->first()->update($validated);
-        Session::flash('librarian-updated'); 
+        Session::flash('librarian-updated');
 
         return to_route('all-librarian');
     }
@@ -170,13 +183,15 @@ class LibrarianController extends Controller
         $URL = url()->previous();
 
         if ($librarian->photo != 'placeholder') {
-            if ($URL == 'http://tim4.ictcortex.me/bibliotekari' || $URL == 'https://tim4.ictcortex.me/bibliotekari') {
-                unlink('storage/librarians/' . $librarian->photo);
+            if ($URL == 'http://tim4.ictcortex.me/bibliotekari'
+                || $URL == 'https://tim4.ictcortex.me/bibliotekari'
+            ) {
+                unlink('storage/librarians/'.$librarian->photo);
             } else {
-                $path = '\\storage\\librarians\\' . $librarian->photo;
-                unlink(public_path() . $path);
+                $path = '\\storage\\librarians\\'.$librarian->photo;
+                unlink(public_path().$path);
             }
-        } 
+        }
 
         return $librarian->delete();
     }

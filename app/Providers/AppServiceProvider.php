@@ -45,27 +45,28 @@ class AppServiceProvider extends ServiceProvider
             $rents_c = Rent::all();
             $reservations_c = ReservationStatuses::all();
             if (count($rents_c) > 0 && count($reservations_c) > 0) {
-            $rents = Rent::whereDate('issue_date', today())->get();
-            $reservation = ReservationStatuses::whereDate('created_at', today())->where('status_reservations_id', 1)->get();
-            $notifications =$rents->count() + $reservation->count();
-            }  else {
+                $rents = Rent::whereDate('issue_date', today())->get();
+                $reservation = ReservationStatuses::whereDate('created_at',
+                    today())->where('status_reservations_id', 1)->get();
+                $notifications = $rents->count() + $reservation->count();
+            } else {
                 $notifications = 0;
             }
         }
-       
+
         // Remove 'data' wrapping -> API
         JsonResource::withoutWrapping();
 
         // Shareable variable to all  views
         view()->share('notifications', $notifications);
-
-          /**
+        /**
          * Paginate a standard Laravel Collection.
          *
-         * @param int $perPage
-         * @param int $total
-         * @param int $page
-         * @param string $pageName
+         * @param  int  $perPage
+         * @param  int  $total
+         * @param  int  $page
+         * @param  string  $pageName
+         *
          * @return array
          */
     }

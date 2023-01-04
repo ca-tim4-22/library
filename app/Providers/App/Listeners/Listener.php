@@ -12,6 +12,7 @@ class Listener
      * Handle the event.
      *
      * @param  \App\Providers\Illuminate\Auth\Events\Login  $event
+     *
      * @return void
      */
     public function handle(Login $event)

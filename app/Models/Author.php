@@ -9,6 +9,7 @@ use Laravel\Scout\Searchable;
 class Author extends Model
 {
     use HasFactory, Searchable;
+
     protected $guarded = [];
 
     public function toSearchableArray()
@@ -18,7 +19,8 @@ class Author extends Model
         ];
     }
 
-    public function getNameSurnameAttribute($value) {
+    public function getNameSurnameAttribute($value)
+    {
         return ucfirst($value);
     }
 }

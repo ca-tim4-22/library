@@ -43,7 +43,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +72,7 @@ return [
     */
 
     // 'timezone' => 'UTC',
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'timezone'  => env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -220,8 +220,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Image'     => Intervention\Image\Facades\Image::class,
         // 'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     ])->toArray(),

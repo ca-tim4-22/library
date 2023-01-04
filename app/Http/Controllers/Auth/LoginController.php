@@ -49,41 +49,46 @@ class LoginController extends Controller
     }
 
     // Last Login At Listener
-    public function authenticated(Request $request, $user) {
+    public function authenticated(Request $request, $user)
+    {
         $user->login_count = $user->login_count + 1;
         $user->last_login_at = now();
         $user->save();
     }
-    
-    public function gitHub() {
+
+    public function gitHub()
+    {
         return Socialite::driver('github')->redirect();
     }
 
-    public function githubRedirect() {
+    public function githubRedirect()
+    {
         $user = Socialite::driver('github')->user();
 
         $user2 = User::firstOrCreate([
             'email' => $user->getNickname()
         ], [
-            'email' => $user->getNickname(),
-            'name' => $user->getName(),
+            'email'    => $user->getNickname(),
+            'name'     => $user->getName(),
             'username' => $user->getNickname(),
             'password' => bcrypt(Str::random(10)),
-            'photo' => 'github_avatar' . '-' . uniqid() . '.png',
-            'github' => 1,
-            'active' => 0
+            'photo'    => 'github_avatar'.'-'.uniqid().'.png',
+            'github'   => 1,
+            'active'   => 0
         ]);
 
         $URL = url()->current();
         if (str_contains($URL, 'tim4')) {
-            Storage::disk('third_party_upload')->put($user2->photo, file_get_contents($user->getAvatar()));
+            Storage::disk('third_party_upload')->put($user2->photo,
+                file_get_contents($user->getAvatar()));
         } else {
-            Storage::disk('local')->put($user2->photo, file_get_contents($user->getAvatar()));
+            Storage::disk('local')->put($user2->photo,
+                file_get_contents($user->getAvatar()));
         }
-     
+
         $user2->update([
-            'login_count'=> $user2->login_count + 1,
-            'last_login_at'=> now(),
+            'login_count'   => $user2->login_count + 1,
+            'last_login_at' => now(),
         ]);
         Auth::login($user2, true);
 

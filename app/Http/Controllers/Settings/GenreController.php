@@ -14,7 +14,7 @@ class GenreController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,24 +39,26 @@ class GenreController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(GenreRequest $request)
     {
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
+            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $icon = $name; 
-            $default = 'false'; 
+            $icon = $name;
+            $default = 'false';
         } else {
-            $icon = '/img/default_images_while_migrations/genres/placeholder.jpg';
+            $icon
+                = '/img/default_images_while_migrations/genres/placeholder.jpg';
         }
         Genre::create([
-            ...$request->validated(), 
+            ...$request->validated(),
             'default' => $default,
-            'icon' => $icon,
+            'icon'    => $icon,
         ]);
-        Session::flash('success-genre', trans('Dodali ste žanr!')); 
+        Session::flash('success-genre', trans('Dodali ste žanr!'));
 
         return to_route('setting-genre');
     }
@@ -65,6 +67,7 @@ class GenreController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,6 +79,7 @@ class GenreController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Genre $genre)
@@ -88,27 +92,29 @@ class GenreController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(GenreRequest $request, $id)
     {
         $input = $request->all();
-        $genre = Genre::findOrFail($id);  
+        $genre = Genre::findOrFail($id);
 
         $icon_old = $genre->icon;
-    
+
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
+            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
-            $input['icon'] = $name; 
-            $input['default'] = 'false'; 
+            $input['icon'] = $name;
+            $input['default'] = 'false';
         } else {
             $input['icon'] = $icon_old;
         }
 
         $genre->update($input);
-        
-        return to_route('setting-genre')->with('genre-updated', 'Uspješno ste izmijenili žanr: ' . "\"$genre->name\".");
+
+        return to_route('setting-genre')->with('genre-updated',
+            'Uspješno ste izmijenili žanr: '."\"$genre->name\".");
     }
 
     /**
@@ -123,10 +129,15 @@ class GenreController extends Controller
         $URL = url()->current();
 
         // Delete default icon && icon in storage
-        if (str_contains($URL, 'tim4') && file_exists('storage/settings/genre/' . $genre->icon)) {
-            unlink('storage/settings/genre/' . $genre->icon);
-         } elseif(!str_contains($URL, 'tim4') && file_exists(public_path() . '\\storage\\settings\\genre\\' . $genre->icon)) {
-           unlink(public_path() . '\\storage\\settings\\genre\\' . $genre->icon);
+        if (str_contains($URL, 'tim4')
+            && file_exists('storage/settings/genre/'.$genre->icon)
+        ) {
+            unlink('storage/settings/genre/'.$genre->icon);
+        } elseif (!str_contains($URL, 'tim4')
+            && file_exists(public_path().'\\storage\\settings\\genre\\'
+                .$genre->icon)
+        ) {
+            unlink(public_path().'\\storage\\settings\\genre\\'.$genre->icon);
         }
 
         return $genre->delete();

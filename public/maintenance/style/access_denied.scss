@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
 }
+
 body,
 html {
   margin: 0;
@@ -11,33 +12,40 @@ html {
   overflow: hidden;
   user-select: none;
 }
+
 body {
   background-image: url('/login.jpg');
   background-position: center;
   background-size: cover;
   font-family: sans-serif;
 }
+
 .ttw {
   color: #fff;
 }
+
 .ttr {
   color: red;
 }
+
 .container {
   z-index: 1;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   padding: 10px;
   min-width: 300px;
+
   div {
     display: inline-block;
   }
+
   .lock {
     opacity: 1;
   }
+
   h1 {
     font-family: 'Comfortaa', cursive;
     font-size: 100px;
@@ -46,21 +54,25 @@ body {
     font-weight: 100;
     margin: 0;
   }
+
   p {
     color: #fff;
   }
 }
+
 .lock {
   transition: 0.5s ease;
   position: relative;
   overflow: hidden;
   opacity: 0;
+
   &.generated {
     transform: scale(0.5);
     position: absolute;
     animation: 2s move linear;
     animation-fill-mode: forwards;
   }
+
   ::after {
     content: '';
     background: darken(#F76B1C, 20%);
@@ -72,6 +84,7 @@ body {
     top: 0;
     left: 0;
   }
+
   .bottom {
     background: #D68910;
     height: 40px;
@@ -80,6 +93,7 @@ body {
     position: relative;
     margin: 0 auto;
   }
+
   .top {
     height: 60px;
     width: 50px;
@@ -89,20 +103,23 @@ body {
     position: relative;
     top: 30px;
     margin: 0 auto;
+
     &::after {
       padding: 10px;
       border-radius: 50%;
     }
   }
 }
+
 @keyframes move {
   to {
     top: 100%;
   }
 }
+
 @media (max-width: 420px) {
   .container {
-    transform: translate(-50%,-50%) scale(0.8)
+    transform: translate(-50%, -50%) scale(0.8)
   }
   .lock.generated {
     transform: scale(0.3);

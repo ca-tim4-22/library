@@ -13,6 +13,7 @@ class SeeYouLaterMiddleware
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     *
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
@@ -20,7 +21,8 @@ class SeeYouLaterMiddleware
         if (!Auth::check()) {
             return $next($request);
         }
-        
-        return response()->view('maintenance.access_denied')->setStatusCode(403);
+
+        return response()->view('maintenance.access_denied')
+            ->setStatusCode(403);
     }
 }

@@ -22,7 +22,7 @@ class BookAuthorFactory extends Factory
         static $num1 = 1;
         static $num2 = 1;
         return [
-            'book_id' => $num1++,
+            'book_id'   => $num1++,
             'author_id' => $num2++,
         ];
     }

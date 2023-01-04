@@ -35,18 +35,18 @@ class AuthorRequest extends FormRequest
                 new MinimumLengthRule(),
                 new AtSignRule(),
             ],
-            'biography' => [
+            'biography'   => [
                 'required',
                 new MinimumLengthRule(),
                 'max:1000',
                 new AtSignRule(),
             ],
-            'wikipedia' => [
+            'wikipedia'   => [
                 'required',
                 new MinimumLengthRule(),
                 'url',
             ],
-            'photo' => [
+            'photo'       => [
                 'required'
             ]
         ];

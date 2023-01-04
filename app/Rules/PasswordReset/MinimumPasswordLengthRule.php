@@ -12,13 +12,14 @@ class MinimumPasswordLengthRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
         $passwordLength = Str::length($value);
 
-        if($passwordLength >= 8) {
+        if ($passwordLength >= 8) {
             return true;
         } else {
             return false;

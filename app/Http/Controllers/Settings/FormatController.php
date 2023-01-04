@@ -14,7 +14,7 @@ class FormatController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,13 +39,14 @@ class FormatController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(FormatRequest $request)
     {
-        Session::flash('success-format'); 
+        Session::flash('success-format');
         Format::create($request->validated());
-        
+
         return to_route('setting-format');
     }
 
@@ -53,6 +54,7 @@ class FormatController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,6 +66,7 @@ class FormatController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Format $format)
@@ -76,14 +79,16 @@ class FormatController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(FormatRequest $request, $id)
     {
-        $format = Format::findOrFail($id);  
+        $format = Format::findOrFail($id);
         $format->update($request->validated());
-        
-        return to_route('setting-format')->with('format-updated', 'Uspješno ste izmijenili format: ' . "\"$format->name\".");
+
+        return to_route('setting-format')->with('format-updated',
+            'Uspješno ste izmijenili format: '."\"$format->name\".");
     }
 
     /**

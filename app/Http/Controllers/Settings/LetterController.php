@@ -14,7 +14,7 @@ class LetterController extends Controller
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -39,13 +39,14 @@ class LetterController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LetterRequest $request)
     {
         Letter::create($request->validated());
-        Session::flash('success-letter', trans('Dodali ste pismo!')); 
-        
+        Session::flash('success-letter', trans('Dodali ste pismo!'));
+
         return to_route('setting-letter');
     }
 
@@ -53,6 +54,7 @@ class LetterController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,6 +66,7 @@ class LetterController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Letter $letter)
@@ -76,14 +79,16 @@ class LetterController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(LetterRequest $request, $id)
     {
-        $letter = Letter::findOrFail($id);  
+        $letter = Letter::findOrFail($id);
         $letter->update($request->validated());
-        
-        return to_route('setting-letter')->with('letter-updated', 'Uspješno ste izmijenili pismo.');
+
+        return to_route('setting-letter')->with('letter-updated',
+            'Uspješno ste izmijenili pismo.');
     }
 
     /**

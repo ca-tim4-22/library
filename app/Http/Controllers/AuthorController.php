@@ -7,13 +7,14 @@ use Session;
 use App\Models\Author;
 use App\Models\GlobalVariable;
 use Illuminate\Http\Request;
+
 class AuthorController extends Controller
 {
     public function __construct()
     {
         $this->middleware('protect-all');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +33,7 @@ class AuthorController extends Controller
         $show_criterium = false;
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $authors = Author::search($request->trazeno)->paginate($items);
             $count = Author::search($request->trazeno)->get()->count();
             if ($count == 0) {
@@ -40,14 +41,16 @@ class AuthorController extends Controller
             } else {
                 $show_criterium = false;
             }
-        } else{
+        } else {
             $authors = Author::latest('id')->paginate($items);
             $show_criterium = false;
         }
 
         $show_all = Author::latest('id')->count();
 
-        return view('pages.authors.authors', compact('authors', 'items', 'variable', 'show_all', 'searched', 'show_criterium'));
+        return view('pages.authors.authors',
+            compact('authors', 'items', 'variable', 'show_all', 'searched',
+                'show_criterium'));
     }
 
     /**
@@ -64,19 +67,20 @@ class AuthorController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(AuthorRequest $request)
     {
         $validated = $request->validated();
-        
-        if($request->file('photo')){
-            $file= $request->file('photo');
-            $filename= date('YmdHi').$file->getClientOriginalName();
+
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(('storage/authors'), $filename);
-            $validated['photo']= $filename;
+            $validated['photo'] = $filename;
         }
-        Session::flash('success-author'); 
+        Session::flash('success-author');
         $author = Author::create($validated);
 
         return to_route('all-author');
@@ -86,6 +90,7 @@ class AuthorController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\View\View
      */
     public function show(Author $author)
@@ -99,7 +104,8 @@ class AuthorController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-       * @return \Illuminate\View\View
+     *
+     * @return \Illuminate\View\View
      */
     public function edit(Author $author)
     {
@@ -111,21 +117,22 @@ class AuthorController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
         $validated = $request->validated();
-        $author = Author::findOrFail($id);  
+        $author = Author::findOrFail($id);
         $photo_old = $request->photo;
 
-        if($request->file('photo')){
-            $file= $request->file('photo');
-            $filename= date('YmdHi').$file->getClientOriginalName();
+        if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(('storage/authors'), $filename);
-            $validated['photo']= $filename;
+            $validated['photo'] = $filename;
         }
-        Session::flash('author-updated'); 
+        Session::flash('author-updated');
         $author->whereId($id)->first()->update($validated);
 
         return to_route('all-author');

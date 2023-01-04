@@ -25,23 +25,25 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => "required|min:2|max:128",
+            'name'     => "required|min:2|max:128",
             'username' => "required|min:2|max:64|unique:users,username,$this->id,id",
-            'email' => [
-                'required', 
-                'string', 
-                'email', 
-                'min:2', 
-                'max:255', 
+            'email'    => [
+                'required',
+                'string',
+                'email',
+                'min:2',
+                'max:255',
                 "unique:users,email,$this->id,id",
-                new EmailVerificationRule(),],
+                new EmailVerificationRule(),
+            ],
         ];
     }
 
     public function messages()
     {
         return [
-            'username.unique' => "Uneseno korisničko ime -> " . $_REQUEST['username'] . " je zauzeto.",  
+            'username.unique' => "Uneseno korisničko ime -> "
+                .$_REQUEST['username']." je zauzeto.",
         ];
     }
 }

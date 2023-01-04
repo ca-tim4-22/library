@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class jquery_create extends Component
 {
     public $models;
+
     /**
      * Create a new component instance.
      *

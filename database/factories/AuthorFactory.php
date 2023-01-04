@@ -18,8 +18,8 @@ class AuthorFactory extends Factory
     {
         return [
             'NameSurname' => $this->faker->name(),
-            'wikipedia' => 'https://sr.wikipedia.org/wiki/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B0',
-            'biography' => $this->faker->sentence(25),
+            'wikipedia'   => 'https://sr.wikipedia.org/wiki/%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B0',
+            'biography'   => $this->faker->sentence(25),
         ];
     }
 }

@@ -13,6 +13,7 @@ class ArchiveBookController extends Controller
     {
         $this->middleware('protect-all');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +40,7 @@ class ArchiveBookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,6 +52,7 @@ class ArchiveBookController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,6 +64,7 @@ class ArchiveBookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -73,6 +77,7 @@ class ArchiveBookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
@@ -82,18 +87,20 @@ class ArchiveBookController extends Controller
         $reservation->reservations()->where('reservation_id', $id)->update([
             'status_reservations_id' => 4,
         ]);
-        
+
         $save = $reservation->book->update([
             'reserved_count' => $reservation->book->reserved_count - 1,
         ]);
 
-        return back()->with('archive-reservation', 'Arhivirali ste rezervaciju ID-' . $reservation->id);
+        return back()->with('archive-reservation',
+            'Arhivirali ste rezervaciju ID-'.$reservation->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

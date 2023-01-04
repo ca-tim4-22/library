@@ -20,17 +20,21 @@ class SettingController extends Controller
     {
         $this->middleware(['protect-all', 'librarian-protect']);
     }
-    
+
     // Custom methods
-    public function policy() {
+    public function policy()
+    {
         $policy1 = GlobalVariable::findOrFail(1);
         $policy2 = GlobalVariable::findOrFail(2);
-        $policy3 = GlobalVariable::findOrFail(3); 
-        $policy4 = GlobalVariable::findOrFail(4); 
-        
-        return view('pages.settings.policy.settings-policy', compact('policy1', 'policy2', 'policy3', 'policy4'));
+        $policy3 = GlobalVariable::findOrFail(3);
+        $policy4 = GlobalVariable::findOrFail(4);
+
+        return view('pages.settings.policy.settings-policy',
+            compact('policy1', 'policy2', 'policy3', 'policy4'));
     }
-    public function category(Request $request) {
+
+    public function category(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -40,15 +44,18 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $categories = Category::search($request->trazeno)->paginate($items);
-        } else{
+        } else {
             $categories = Category::latest('id')->paginate($items);
         }
-  
-        return view('pages.settings.category.settings-category', compact('categories', 'items', 'variable', 'searched'));
+
+        return view('pages.settings.category.settings-category',
+            compact('categories', 'items', 'variable', 'searched'));
     }
-    public function genre(Request $request) {
+
+    public function genre(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -58,15 +65,18 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $genres = Genre::search($request->trazeno)->paginate($items);
-        } else{
+        } else {
             $genres = Genre::latest('id')->paginate($items);
         }
 
-        return view('pages.settings.genre.settings-genre', compact('genres', 'items', 'variable', 'searched'));
+        return view('pages.settings.genre.settings-genre',
+            compact('genres', 'items', 'variable', 'searched'));
     }
-    public function publisher(Request $request) {
+
+    public function publisher(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -76,15 +86,19 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
-            $publishers = Publisher::search($request->trazeno)->paginate($items);
-        } else{
+        if ($searched) {
+            $publishers = Publisher::search($request->trazeno)
+                ->paginate($items);
+        } else {
             $publishers = Publisher::latest('id')->paginate($items);
         }
-       
-        return view('pages.settings.publisher.settings-publisher', compact('publishers', 'items', 'variable', 'searched'));
+
+        return view('pages.settings.publisher.settings-publisher',
+            compact('publishers', 'items', 'variable', 'searched'));
     }
-    public function binding(Request $request) {
+
+    public function binding(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -94,15 +108,18 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $bindings = Binding::search($request->trazeno)->paginate($items);
-        } else{
+        } else {
             $bindings = Binding::latest('id')->paginate($items);
         }
-      
-        return view('pages.settings.binding.settings-binding', compact('bindings', 'items', 'variable', 'searched'));
+
+        return view('pages.settings.binding.settings-binding',
+            compact('bindings', 'items', 'variable', 'searched'));
     }
-    public function format(Request $request) {
+
+    public function format(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -112,15 +129,18 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $formats = Format::search($request->trazeno)->paginate($items);
-        } else{
+        } else {
             $formats = Format::latest('id')->paginate($items);
         }
 
-        return view('pages.settings.format.settings-format', compact('formats', 'items', 'variable', 'searched'));
+        return view('pages.settings.format.settings-format',
+            compact('formats', 'items', 'variable', 'searched'));
     }
-    public function letter(Request $request) {
+
+    public function letter(Request $request)
+    {
         if ($request->items) {
             $items = $request->items;
             $variable = GlobalVariable::findOrFail(4);
@@ -130,12 +150,13 @@ class SettingController extends Controller
         }
 
         $searched = $request->trazeno;
-        if($searched){
+        if ($searched) {
             $letters = Letter::search($request->trazeno)->paginate($items);
-        } else{
+        } else {
             $letters = Letter::latest('id')->paginate($items);
         }
 
-        return view('pages.settings.letter.settings-letter', compact('letters', 'items', 'variable', 'searched'));
+        return view('pages.settings.letter.settings-letter',
+            compact('letters', 'items', 'variable', 'searched'));
     }
 }

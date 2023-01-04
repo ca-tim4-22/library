@@ -24,18 +24,19 @@ class UserFactory extends Factory
         $password = Str::random(10);
 
         return [
-            'name' => fake()->name(),
-            'username' => fake()->name(),
-            'user_type_id' => UserType::all()->random(),
-            'user_gender_id' => UserGender::all()->random(),
-            'JMBG' => $this->faker->numberBetween(1111111111111, 9999999999999),
-            'email' => fake()->safeEmail(),
+            'name'              => fake()->name(),
+            'username'          => fake()->name(),
+            'user_type_id'      => UserType::all()->random(),
+            'user_gender_id'    => UserGender::all()->random(),
+            'JMBG'              => $this->faker->numberBetween(1111111111111,
+                9999999999999),
+            'email'             => fake()->safeEmail(),
             'email_verified_at' => Carbon::now(),
-            'photo' => 'placeholder',
-            'password' => Hash::make($password),
-            'remember_token' => Str::random(10),
-            'login_count' => 1,
-            'last_login_at' => Carbon::now(),
+            'photo'             => 'placeholder',
+            'password'          => Hash::make($password),
+            'remember_token'    => Str::random(10),
+            'login_count'       => 1,
+            'last_login_at'     => Carbon::now(),
         ];
     }
 

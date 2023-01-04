@@ -9,6 +9,7 @@ use Laravel\Scout\Searchable;
 class Genre extends Model
 {
     use HasFactory, Searchable;
+
     protected $guarded = [];
     public $timestamps = false;
 

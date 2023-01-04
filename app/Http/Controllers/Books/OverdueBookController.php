@@ -13,6 +13,7 @@ class OverdueBookController extends Controller
     {
         $this->middleware(['protect-all', 'librarian-protect']);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +22,7 @@ class OverdueBookController extends Controller
     public function index()
     {
         $books = Book::all();
-        
+
         if (Rent::count() > 0) {
             foreach ($books as $book) {
                 foreach ($book->rent as $rent) {
@@ -49,6 +50,7 @@ class OverdueBookController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -60,6 +62,7 @@ class OverdueBookController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -71,6 +74,7 @@ class OverdueBookController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -83,6 +87,7 @@ class OverdueBookController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,6 +99,7 @@ class OverdueBookController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

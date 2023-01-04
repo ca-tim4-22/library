@@ -11,11 +11,14 @@ class PaginationPolicyRule implements Rule
      *
      * @param  string  $attribute
      * @param  mixed  $value
+     *
      * @return bool
      */
     public function passes($attribute, $value)
     {
-        if ($value == 5 || $value == 10 || $value == 25 || $value == 50 || $value == 100) {
+        if ($value == 5 || $value == 10 || $value == 25 || $value == 50
+            || $value == 100
+        ) {
             return true;
         } else {
             return false;

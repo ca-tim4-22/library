@@ -5,13 +5,13 @@ return [
      * Enable or disable the query detection.
      * If this is set to "null", the app.debug config value will be used.
      */
-    'enabled' => env('QUERY_DETECTOR_ENABLED'),
+    'enabled'     => env('QUERY_DETECTOR_ENABLED'),
 
     /*
      * Threshold level for the N+1 query detection. If a relation query will be
      * executed more then this amount, the detector will notify you about it.
      */
-    'threshold' => (int) env('QUERY_DETECTOR_THRESHOLD', 1),
+    'threshold'   => (int)env('QUERY_DETECTOR_THRESHOLD', 1),
 
     /*
      * Here you can whitelist model relations.
@@ -20,7 +20,7 @@ return [
      * So if an "Author" model would have a "posts" relation that points to a "Post" class, you need to add both
      * the "posts" attribute and the "Post::class", since the relation can get resolved in multiple ways.
      */
-    'except' => [
+    'except'      => [
         //Author::class => [
         //    Post::class,
         //    'posts',
@@ -62,7 +62,7 @@ return [
      * Writes the N+1 queries into the Laravel.log file
      * \BeyondCode\QueryDetector\Outputs\Log::class
      */
-    'output' => [
+    'output'      => [
         \BeyondCode\QueryDetector\Outputs\Alert::class,
         \BeyondCode\QueryDetector\Outputs\Log::class,
     ]
