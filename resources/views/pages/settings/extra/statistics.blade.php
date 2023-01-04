@@ -77,7 +77,7 @@
                         @php
                         if($data['adminCount'] % 10 == 1 && $data['adminCount']
                         != 11) {
-                        echo __('Admininistrator');
+                        echo __('Administrator');
                         } else {
                         echo __('Administratora');
                         }
@@ -126,8 +126,7 @@
             </div>
 
             <h1 class="text-center"
-                style="margin-bottom: -120px;margin-top: -50px">{{__('Prethodna
-                24 časa')}}<br>
+                style="margin-bottom: -120px;margin-top: -50px">{{__('Prethodna 24 časa')}}<br>
                 <i class="fas fa-chevron-down"></i>
             </h1>
             <div class="flexx">
@@ -139,7 +138,7 @@
                         @php
                         if($data['adminToday'] % 10 == 1 && $data['adminToday']
                         != 11) {
-                        echo __('Admininistrator');
+                        echo __('Administrator');
                         } else {
                         echo __('Administratora');
                         }

@@ -60,9 +60,7 @@
                             {{__($policy1->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            {{__("Ovdje se definiše rok za rezervaciju u danima.
-                            Po isteku tog roka, rezervacija ističe i dobija
-                            status zatvaranja 'Rezervacija istekla'.")}}
+                            {{__("Ovdje se definiše rok za rezervaciju u danima. Po isteku tog roka, rezervacija ističe i dobija status zatvaranja 'Rezervacija istekla'.")}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -100,10 +98,7 @@
                             {{__($policy2->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            {{__('Ovdje se definiše rok za vraćanje u danima. Po
-                            isteku tog roka + rok prekoračenja, izdata knjiga
-                            ulazi u prekoračenje i moguće je otpisati
-                            primjerak.')}}
+                            {{__('Ovdje se definiše rok za vraćanje u danima. Po isteku tog roka + rok prekoračenja, izdata knjiga ulazi u prekoračenje i moguće je otpisati primjerak.')}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -141,10 +136,7 @@
                             {{__($policy3->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            {{__('Ovdje se definiše rok za prekoračenje u
-                            danima. Nakon isteka roka za vraćanje učenik može
-                            vratiti knjigu u roku prekoračenja, nakon čega
-                            izdati primjerak ulazi u knjige u prekoračenju.')}}
+                    {{__('Ovdje se definiše rok za prekoračenje u danima. Nakon isteka roka za vraćanje učenik može vratiti knjigu u roku prekoračenja, nakon čega izdati primjerak ulazi u knjige u prekoračenju.')}}
                         </p>
                     </div>
                     <div class="relative ml-[60px] mt-[20px]">
@@ -182,9 +174,7 @@
                             {{__($policy4->variable)}}
                         </h3>
                         <p class="pt-[15px] max-w-[400px]">
-                            {{__('Ovdje se definiše broj redova koji će se
-                            prikazivati na jednoj stranici tabelarnog
-                            prikaza.')}}
+                            {{__('Ovdje se definiše broj redova koji će se prikazivati na jednoj stranici tabelarnog prikaza.')}}
                             <br>
                             {{__('Moguće vrijednosti:')}}
                             <span style="color: #4558BE">5</span>, <span

@@ -69,8 +69,7 @@
             <div class="flex items-center justify-between px-[50px] py-8 space-x-3 rounded-lg">
                 <a href="{{route('new-category')}}"
                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                    <i class="fas fa-plus mr-[15px]"></i> {{__('Nova
-                    kategorija')}}
+                    <i class="fas fa-plus mr-[15px]"></i> {{__('Nova kategorija')}}
                 </a>
                 <div class="flex items-center">
 

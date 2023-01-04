@@ -425,8 +425,7 @@
                                         </path>
                                     </svg>
                                     <p class="font-medium text-white">
-                                        {{__('Trenutno nema rezervacija na
-                                        čekanju!')}}</p>
+                                        {{__('Trenutno nema rezervacija na čekanju!')}}</p>
                                 </div>
                             </div>
 
@@ -585,7 +584,7 @@
                             <i class="bx bx-chevron-right text-2xl block sm:hidden"></i>
                         </button>
                     </form>
-                    <p id="newsletter-p" class="text-center">*{{__('Vaša email adresa sigurna sa nama')}}</p>
+                    <p id="newsletter-p" class="text-center">*{{__('Vaša email adresa je sigurna sa nama')}}</p>
                 </div>
             </div>
         </div>

@@ -66,8 +66,7 @@
             <div class="flex items-center justify-between px-[30px] py-4 space-x-3 rounded-lg">
                 <a href="{{ route('new-admin') }}"
                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                    <i class="fas fa-plus mr-[15px]"></i> {{__('Novi
-                    administrator')}}
+                    <i class="fas fa-plus mr-[15px]"></i> {{__('Novi administrator')}}
                 </a>
                 <div class="flex items-center">
 

@@ -86,8 +86,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
@@ -114,8 +113,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
@@ -141,8 +139,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
@@ -168,8 +165,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
@@ -195,8 +191,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
@@ -222,8 +217,7 @@
                         </div>
                         <button style="margin-left: 20px;outline:none;"
                                 class="btn-animation inline-flex items-center text-sm py-2.5 px-5 rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite
-                            bazu')}}
+                            <i class="fas fa-database"></i>&nbsp; {{__('Popunite bazu')}}
                         </button>
                         </form>
                     </div>
