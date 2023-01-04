@@ -120,12 +120,12 @@
                 @endif
 
                             <a href="{{route('show-book', $rent->book->title)}}">
-                                je {{$rent->librarian->gender->id == 1 ? 'izdao' : 'izdala'}} knjigu <span class="font-medium">{{$rent->book->title}} </span>
+                                je {{$rent->librarian->gender->id == 1 ? __('izdao') : {{__('izdala')}}}} {{__('knjigu')}} <span class="font-medium">{{$rent->book->title}} </span>
                             </a>
                             <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                 {{$rent->borrow->name}}
                             </a>
-                            dana <span class="font-medium">
+                            {{__('dana ')}} <span class="font-medium">
                               @php
                               echo date("d-m-Y", strtotime($rent->issue_date));
                               @endphp
@@ -156,7 +156,7 @@
                   <div class="ml-[15px] mt-[5px] flex flex-col">
                       <div class="text-gray-500 mb-[5px]">
                           <p class="uppercase">
-                             <span style="color: rgb(217,119,6)">Rezervacija knjige</span>
+                             <span style="color: rgb(217,119,6)">{{__('Rezervacija knjige')}}</span>
                               <span class="inline lowercase">
                                 -
                                   @php
@@ -180,17 +180,17 @@
                 <a>
                 @endif
 
-                              je {{$reservation->reservation->made_by->gender->id == 1 ? 'rezervisao' : 'rezervisala'}} knjigu <span class="font-medium">{{$reservation->reservation->book->title}} </span>
+                              je {{$reservation->reservation->made_by->gender->id == 1 ? __('rezervisao') : {{__('rezervisala')}}}} {{__('knjigu')}} <span class="font-medium">{{$reservation->reservation->book->title}} </span>
                               <a href="{{route('show-student', $reservation->reservation->made_for->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$reservation->reservation->made_for->name}}
                               </a>
-                              dana <span class="font-medium">
+                              {{__('dana ')}} <span class="font-medium">
                                 @php
                                 echo date("d-m-Y", strtotime($reservation->reservation->reservation_date));
                                 @endphp
                             </span>
                               <a href="{{route('reserved-info', $reservation->reservation->id)}}" class="text-[#2196f3] hover:text-blue-600">
-                                  pogledaj detaljnije >>
+                                  {{__('pogledaj detaljnije')}} >>
                               </a>
                           </p>
                       </div>
