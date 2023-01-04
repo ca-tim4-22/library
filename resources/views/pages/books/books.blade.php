@@ -80,7 +80,7 @@
                         }
                     </style>
                     <form> 
-                        Broj redova po strani:
+                        {{__(' Broj redova po strani:')}}
                         <select id="pagination" style="outline: none">
                             <option value="5" @if($items == 5) selected @endif >5</option>
                             <option value="10" @if($items == 10) selected @endif >10</option>
@@ -89,7 +89,7 @@
                             <option value="100" @if($items == 100) selected @endif >100</option>
                             <option
                             title="{{$show_all}}"
-                            value="{{$show_all}}" @if($items == $show_all) selected @endif>Prikaži sve</option>
+                            value="{{$show_all}}" @if($items == $show_all) selected @endif>{{__('Prikaži sve')}}</option>
                         </select>
                     </form>
     

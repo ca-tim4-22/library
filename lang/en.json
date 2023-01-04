@@ -68,6 +68,7 @@
     "Traži..": "Search..",
     "Trenutno nema registrovanih administratora!": "There are no registered administrators right now!",
     "Trenutno nema registrovanih bibliotekara!": "There are no registered librarians right now!",
+    "Trenutno nema registrovanih učenika!": "There are no registered students right now!",
     "Trenutno nema rezultata za": "There are no results for",
     "Nazad": "Back",
     "Izbriši": "Delete",
@@ -100,6 +101,7 @@
     "Dashboard | Online biblioteka": "Dashboard | Online library",
     "Administratori | Online biblioteka": "Administrators | Online library",
     "Bibliotekari | Online biblioteka": "Librarians | Online library",
+    "Učenici | Online biblioteka": "Students | Online library",
     "Radno vrijeme | Online biblioteka": "Working time | Online library",
     "FAQ | Online biblioteka": "FAQ | Online library",
 

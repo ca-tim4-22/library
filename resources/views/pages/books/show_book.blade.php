@@ -299,7 +299,7 @@
 
                         <div class="mt-[40px]">
                             <a href="{{route('dashboard-activity')}}" class="text-[#2196f3] hover:text-blue-600">
-                                <i class="fas fa-history"></i> Prikaži sve
+                                <i class="fas fa-history"></i> {{__('Prikaži sve')}}
                             </a>
                         </div>
                     </div>

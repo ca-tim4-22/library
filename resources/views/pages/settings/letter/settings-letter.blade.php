@@ -81,7 +81,7 @@
                     }
                 </style>
                 <form> 
-                    Broj redova po strani:
+                    {{__(' Broj redova po strani:')}}
                     <select id="pagination" style="outline: none">
                         <option value="5" @if($items == 5) selected @endif >5</option>
                         <option value="10" @if($items == 10) selected @endif >10</option>
