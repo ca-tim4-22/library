@@ -201,10 +201,8 @@
                                 <div class="">
                                     <p>
 
-                                        {{-- If admin reserved a book --}}
-                                        @if
-                                        ($reservation->reservation->made_by->type->id
-                                        == 2)
+                            {{-- If admin reserved a book --}}
+                            @if($reservation->reservation->made_by->type->id == 2)
 
                                         <a href="{{route('show-librarian', $reservation->reservation->made_by->username)}}"
                                            class="text-[#2196f3] hover:text-blue-600">
@@ -235,8 +233,7 @@
                             </span>
                                                         <a href="{{route('reserved-info', $reservation->reservation->id)}}"
                                                            class="text-[#2196f3] hover:text-blue-600">
-                                                            {{__('pogledaj
-                                                            detaljnije')}} >>
+                                                            {{__('pogledaj detaljnije')}} >>
                                                         </a>
                                     </p>
                                 </div>
@@ -288,8 +285,7 @@
                                       d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                                 </path>
                             </svg>
-                            <p class="font-medium text-white">{{__('Nema
-                                današnjih aktivnosti!')}}</p>
+                            <p class="font-medium text-white">{{__('Nema današnjih aktivnosti!')}}</p>
                         </div>
                     </div>
 
@@ -573,8 +569,7 @@
                 <div class="w-[640px] mx-5">
                     <h3 class="text-center text-5xl font-bold font-serif">
                         {{__('Newsletter')}}</h3>
-                    <p class="text-center mt-1 mb-2">{{__('Budite u toku sa
-                        novim knjigama!')}}</p>
+                    <p class="text-center mt-1 mb-2">{{__('Budite u toku sa novim knjigama!')}}</p>
                     <form method="GET" class="relative flex items-center my-10"
                           action="{{route('subscribe')}}">
                         <input id="newsletter-input" type="email" name="email"
@@ -590,8 +585,7 @@
                             <i class="bx bx-chevron-right text-2xl block sm:hidden"></i>
                         </button>
                     </form>
-                    <p id="newsletter-p" class="text-center">*{{__('Vaša email
-                        adresa je sigurna sa nama')}}</p>
+                    <p id="newsletter-p" class="text-center">*{{__('Vaša email adresa sigurna sa nama')}}</p>
                 </div>
             </div>
         </div>
@@ -599,20 +593,16 @@
         <div class="absolutee2">
             <div class="font-sans absolute w-full h-full flex justify-center items-center">
                 <div class="w-[640px] mx-5">
-                    <h3 class="text-5xl font-bold font-serif">{{__('Korisni
-                        linkovi')}}</h3>
+                    <h3 class="text-5xl font-bold font-serif">{{__('Korisni linkovi')}}</h3>
                     <ul>
                         <li class="mt-2 wikipedia-link"><a
-                                    href="{{route('working-time')}}">{{__('Radno
-                                vrijeme')}} <i class="fas fa-clock"></i></a>
+                                    href="{{route('working-time')}}">{{__('Radno vrijeme')}} <i class="fas fa-clock"></i></a>
                         </li>
                         <li class="mt-2 wikipedia-link"><a
-                                    href="{{route('faq')}}">{{__('FAQ - Često
-                                postavljana pitanja')}}<i
+                                    href="{{route('faq')}}">{{__('FAQ - Često postavljana pitanja')}}<i
                                         class="fas fa-question"></i></a></li>
                         <li class="mt-2 wikipedia-link"><a target="_blank"
-                                                           href="https://elektropg.online/">{{__('Sajt
-                                škole')}} <i class="fas fa-school"></i></a></li>
+                                                           href="https://elektropg.online/">{{__('Sajt škole')}} <i class="fas fa-school"></i></a></li>
                     </ul>
                 </div>
             </div>

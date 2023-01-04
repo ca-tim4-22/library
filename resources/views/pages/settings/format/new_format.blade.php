@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Novi format | Online biblioteka</title>
+<title>{{__('Novi format | Online biblioteka')}}</title>
 
 @endsection
 
@@ -80,7 +80,7 @@
                         </button>
                         <button id="sacuvajFormat" type="submit"
                                 class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                             <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>
                 </div>

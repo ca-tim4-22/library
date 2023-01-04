@@ -4,7 +4,7 @@
 
 <head>
     <!-- Title -->
-    <title>Good bye | Online biblioteka</title>
+    <title>{{__('Good bye | Online biblioteka')}}</title>
     <!-- Icon -->
     <link rel="icon" type="image/x-icon"
           href="{{asset('library-favicon.ico')}}">

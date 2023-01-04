@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Nedostupno - Online biblioteka</title>
+    <title>{{__('Nedostupno | Online biblioteka')}}</title>
     <link rel="icon" type="image/x-icon"
           href="{{asset('library-favicon.ico')}}"/>
     <meta charset="UTF-8"/>

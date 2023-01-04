@@ -16,9 +16,7 @@
                                        class="flex items-center">
                                     <i class="{{(request()->is('izdate-knjige')) ? 'text-[#576cdf]' : ''}} text-[#707070] text-[20px] far fa-copy transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div>
-                                            <p
-                                                    class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Izdate knjige</p>
+                                            <p class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">{{__('Izdate knjige')}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -38,7 +36,7 @@
                                         <div>
                                             <p
                                                     class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Vraćene knjige</p>
+                                                {{__('Vraćene knjige')}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -56,7 +54,7 @@
                                        class="flex items-center">
                                     <i class="{{(request()->is('knjige-u-prekoracenju')) ? 'text-[#576cdf]' : ''}} text-[#707070] text-[20px] fas fa-exclamation-triangle transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div>
-                                            <p class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">Knjige u prekoračenju</p>
+                                            <p class="text-[15px] ml-[17px] transition duration-300 ease-in group-hover:text-[#576cdf]">{{__('Knjige u prekoračenju')}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -75,7 +73,7 @@
                                     <i class="{{(request()->is('aktivne-rezervacije')) ? 'text-[#576cdf]' : ''}} text-[#707070] text-[20px] far fa-calendar-check transition duration-300 ease-in group-hover:text-[#576cdf]"></i>
                                         <div>
                                             <p class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Aktivne rezervacije</p>
+                                                {{__('Aktivne rezervacije')}}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -95,7 +93,7 @@
                                         <div>
                                             <p
                                                     class="text-[15px] ml-[21px] transition duration-300 ease-in group-hover:text-[#576cdf]">
-                                                Arhivirane rezervacije</p>
+                                                {{__('Arhivirane rezervacije')}}</p>
                                         </div>
                                     </a>
                                 </div>

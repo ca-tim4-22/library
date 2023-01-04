@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Uloguj se - Online biblioteka</title>
+<head><title>{{__('Uloguj se | Online biblioteka')}}</title>
     <link rel="icon" type="image/x-icon"
           href="{{asset('library-favicon.ico')}}">
     <meta charset="UTF-8"/>

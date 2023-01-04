@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Upustvo za CSV | Online biblioteka</title>
+    <title>{{__('Upustvo za CSV | Online biblioteka')}}</title>
     <link rel="icon" type="image/x-icon"
           href="{{asset('library-favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('readme/readme.css')}}">

@@ -301,7 +301,7 @@
 <script type="text/javascript">
     function deleteConfirmation(id) {
         swal({
-            title: "Izbriši?",
+            title: "@lang('Izbriši?')",
             text: "Da li ste sigurni da želite da izbrišete izdavača?",
             type: "warning",
             showCancelButton: !0,
@@ -309,8 +309,8 @@
             animation: true,
             allowEscapeKey: true,
             allowOutsideClick: false,
-            confirmButtonText: "Da, siguran sam!",
-            cancelButtonText: "Ne, odustani",
+            confirmButtonText: "@lang('Da, siguran sam!')",
+            cancelButtonText: "@lang('Ne, odustani')",
             reverseButtons: !0,
             confirmButtonColor: '#14de5e',
             cancelButtonColor: '#f73302',

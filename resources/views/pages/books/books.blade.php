@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Knjige | Online biblioteka</title>
+<title>{{__('Knjige | Online biblioteka')}}</title>
 
 @endsection
 
@@ -31,7 +31,7 @@
         <div class="heading mt-[7px]" style="margin-top: 10px">
             <h1 style="font-size: 30px"
                 class="pl-[30px] pb-[22px] border-b-[1px] border-[#e4dfdf]">
-                Knjige
+                {{__('Knjige')}}
 
                 {{-- Session message for book create --}}
                 @if (session()->has('success-book'))
@@ -65,7 +65,7 @@
                 @if (Auth::user()->type->id == 2 || Auth::user()->type->id == 3)
                 <a href="{{route('new-book')}}"
                    class="btn-animation inline-flex items-center text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]">
-                    <i class="fas fa-plus mr-[15px]"></i> Nova knjiga
+                    <i class="fas fa-plus mr-[15px]"></i> {{__('Nova knjiga')}}
                 </a>
                 @else
                 <div class="inline-flex items-center"></div>
@@ -102,14 +102,12 @@
                             <option
                                     title="{{$show_all}}"
                                     value="{{$show_all}}" @if($items==
-                                    $show_all) selected @endif>{{__('Prikaži
-                                sve')}}
+                                    $show_all) selected @endif>{{__('Prikaži sve')}}
                             </option>
                         </select>
                     </form>
 
-                    @if (!is_a($books,
-                    'Illuminate\Database\Eloquent\Collection'))
+                    @if (!is_a($books, 'Illuminate\Database\Eloquent\Collection'))
                     <script>
                         document.getElementById('pagination').onchange = function () {
                             window.location = "{{ $books->url(1) }}&items=" + this.value;
@@ -213,13 +211,13 @@
                                     class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                                     role="menuitem">
                                 <i class="far fa-file mr-[5px] ml-[5px] py-1"></i>
-                                <span style="padding-top: 1px;">Pogledaj detalje</span>
+                                <span style="padding-top: 1px;">{{__('Pogledaj detalje')}}</span>
                             </button>
                         </td>
 
                         <th class="px-4 py-4 leading-4 tracking-wider text-left checkme"
                             id="arrow">
-                            Naziv knjige
+                            {{__('Naziv knjige')}}
                         </th>
 
                         <!-- Autor + dropdown filter for autor -->
@@ -232,13 +230,13 @@
                                         class="uceniciDrop-toggle"
                                         style="outline: none;cursor: pointer;font-weight: bold;">
                                     @if ($selected_a != [])
-                                    Autor:
+                                    {{__('Autor')}};
                                     @foreach ($selected_a as $author)
                                     {{$loop->first ? '' : '|'}}
                                     {{$author->NameSurname}}
                                     @endforeach
                                     @else
-                                    Autori: Svi
+                                    {{__('Autori')}}: {{__('Svi')}}
                                     @endif
                                     <i class="ml-2 fas fa-filter"></i>
                                 </button>
@@ -300,13 +298,11 @@
                                                 type="submit"
                                                 style="outline: none;"
                                                 class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                            Sačuvaj <i
-                                                    class="fas fa-check ml-[4px]"></i>
+                                                {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                                         </button>
                                         <a href="{{route('all-books')}}"
                                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Poništi <i
-                                                    class="fas fa-times ml-[4px]"></i>
+                                            {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                                         </a>
                         </form>
             </div>
@@ -321,7 +317,7 @@
                     class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
                     role="menuitem">
                 <i class="fas fa-edit mr-[3px] ml-[5px] py-1"></i>
-                <span style="padding-top: 1px;">Izmijeni knjigu
+                <span style="padding-top: 1px;">{{__('Izmijeni knjigu')}}
                                     </span>
             </button>
         </td>
@@ -336,13 +332,13 @@
                         class="bibliotekariDrop-toggle"
                         style="outline: none;cursor: pointer;font-weight: bold;">
                     @if ($selected_c != [])
-                    Kategorija:
+                    {{__('Kategorija')}}:
                     @foreach ($selected_c as $category)
                     {{$loop->first ? '' : '|'}}
                     {{$category->name}}
                     @endforeach
                     @else
-                    Kategorije: Sve
+                    {{__('Kategorije')}}: {{__('Sve')}}
                     @endif
                     <i class="ml-2 fas fa-filter"></i>
                 </button>
@@ -404,11 +400,11 @@
                                 type="submit"
                                 style="outline: none;"
                                 class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                            Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                         </button>
                         <a href="{{route('all-books')}}"
                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                            Poništi <i class="fas fa-times ml-[4px]"></i>
+                            {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                         </a>
         </form>
 </div>
@@ -422,13 +418,13 @@
             class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
             role="menuitem">
         <i class="fas fa-level-up-alt mr-[5px] ml-[5px] py-1"></i>
-        <span style="padding-top: 1px;">Otpiši knjigu
+        <span style="padding-top: 1px;">{{__('Otpiši knjigu')}}
                                     </span>
     </button>
 </td>
 
 <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-    Na raspolaganju
+    {{__('Na raspolaganju')}}
 </th>
 
 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -438,13 +434,13 @@
             class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
             role="menuitem">
         <i class="far fa-hand-scissors mr-[5px] ml-[5px] py-1"></i>
-        <span style="padding-top: 1px;">Izdaj knjigu
+        <span style="padding-top: 1px;">{{__('Izdaj knjigu')}}
                                     </span>
     </button>
 </td>
 
 <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-    Rezervisano
+    {{__('Rezervisano')}}
 </th>
 
 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -454,13 +450,13 @@
             class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
             role="menuitem">
         <i class="fas fa-redo-alt mr-[5px] ml-[5px] py-1"></i>
-        <span style="padding-top: 1px;">Vrati knjigu
+        <span style="padding-top: 1px;">{{__('Vrati knjigu')}}
                                     </span>
     </button>
 </td>
 
 <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-    Izdato
+    {{__('Izdato')}}
 </th>
 
 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -470,13 +466,13 @@
             class="flex w-full px-1 text-sm leading-5 text-left text-blue-600 outline-none"
             role="menuitem">
         <i class="far fa-calendar-check mr-[5px] ml-[5px] py-1"></i>
-        <span style="padding-top: 1px;">Rezerviši knjigu
+        <span style="padding-top: 1px;">{{__('Rezerviši knjigu')}}
                                     </span>
     </button>
 </td>
 
 <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-    U prekoračenju
+    {{__('U prekoračenju')}}
 </th>
 
 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -487,12 +483,12 @@
             type="submit"
             data-url="">
         <i class="fas fa-trash mr-[3px] ml-[5px] py-1"></i>
-        <span style="padding-top: 1px;">Izbriši knjigu</span>
+        <span style="padding-top: 1px;">{{__('Izbriši knjigu')}}</span>
     </button>
 </td>
 
 <th class="px-4 py-4 leading-4 tracking-wider text-left checkme" id="arrow">
-    Ukupna količina
+    {{__('Ukupna količina')}}
 </th>
 
 <td class="px-3 py-5 leading-4 tracking-wider text-left sakriveno checkme2">
@@ -538,7 +534,7 @@
         {{$author->author->NameSurname}}
         @endforeach
         @else
-        Nepoznato
+        {{__('Nepoznato')}}
         @endif
     </td>
     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
@@ -548,7 +544,7 @@
         {{$category->category->name}}
         @endforeach
         @else
-        Nepoznato
+        {{__('Nepoznato')}}
         @endif
     </td>
     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
@@ -591,7 +587,7 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Pogledaj detalje</span>
+                        <span class="px-4 py-0">{{__('Pogledaj detalje')}}</span>
                     </a>
                     @if (Auth::user()->type->id == 2 || Auth::user()->type->id
                     == 3)
@@ -599,26 +595,26 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Izmijeni knjigu</span>
+                        <span class="px-4 py-0">{{__('Izmijeni knjigu')}}</span>
                     </a>
                     <a href="{{route('write-off', $book->title)}}" tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Otpiši knjigu</span>
+                        <span class="px-4 py-0">{{__('Otpiši knjigu')}}</span>
                     </a>
                     <a href="{{route('rent-book', $book->title)}}" tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Izdaj knjigu</span>
+                        <span class="px-4 py-0">{{__('Izdaj knjigu')}}</span>
                     </a>
                     <a href="{{route('return-book', $book->title)}}"
                        tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Vrati knjigu</span>
+                        <span class="px-4 py-0">{{__('Vrati knjigu')}}</span>
                     </a>
                     @endif
                     <a href="{{route('reserve-book', $book->title)}}"
@@ -626,7 +622,7 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Rezerviši knjigu</span>
+                        <span class="px-4 py-0">{{__('Rezerviši knjigu')}}</span>
                     </a>
                     @if (Auth::user()->type->id == 2 || Auth::user()->type->id
                     == 3)
@@ -638,8 +634,8 @@
                             class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600">
                         <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                         <span class="px-4 py-0">
-                                            Izbriši knjigu
-                                            </span>
+                            {{__('Izbriši knjigu')}}
+                        </span>
                     </button>
                     @endif
                 </div>
@@ -717,7 +713,7 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-file mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Pogledaj detalje</span>
+                        <span class="px-4 py-0">{{__('Pogledaj detalje')}}</span>
                     </a>
                     @if (Auth::user()->type->id == 2 || Auth::user()->type->id
                     == 3)
@@ -726,28 +722,28 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-edit mr-[6px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Izmijeni knjigu</span>
+                        <span class="px-4 py-0">{{__('Izmijeni knjigu')}}</span>
                     </a>
                     <a href="{{route('write-off', $book->book->title)}}"
                        tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-level-up-alt mr-[14px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Otpiši knjigu</span>
+                        <span class="px-4 py-0">{{__('Otpiši knjigu<')}}</span>
                     </a>
                     <a href="{{route('rent-book', $book->book->title)}}"
                        tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-hand-scissors mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Izdaj knjigu</span>
+                        <span class="px-4 py-0">{{__('Izdaj knjigu<')}}/span>
                     </a>
                     <a href="{{route('return-book', $book->book->title)}}"
                        tabindex="0"
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="fas fa-redo-alt mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Vrati knjigu</span>
+                        <span class="px-4 py-0">{{__('Vrati knjigu')}}</span>
                     </a>
                     @endif
                     <a href="{{route('reserve-book', $book->book->title)}}"
@@ -755,7 +751,7 @@
                        class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                        role="menuitem">
                         <i class="far fa-calendar-check mr-[10px] ml-[5px] py-1"></i>
-                        <span class="px-4 py-0">Rezerviši knjigu</span>
+                        <span class="px-4 py-0">{{__('Rezerviši knjigu')}}</span>
                     </a>
                     @if (Auth::user()->type->id == 2 || Auth::user()->type->id
                     == 3)
@@ -767,7 +763,7 @@
                                 class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                 role="menuitem">
                             <i class="fa fa-trash mr-[10px] ml-[5px] py-1"></i>
-                            <span class="px-4 py-0">Izbriši knjigu</span>
+                            <span class="px-4 py-0">{{__('Izbriši knjigu')}}</span>
                         </button>
                     </form>
                     @endif
@@ -796,8 +792,8 @@
               d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
         </path>
     </svg>
-    <p class="font-medium text-white">Ne postoji rezultat sa tim
-        kriterijumom! </p>
+        kriterijumom!</p>
+        <p class="font-medium text-white">{{__('Ne postoji rezultat sa tim kriterijumom!')}}</p>
 </div>
 </div>
 </div>
@@ -812,7 +808,7 @@
               d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
         </path>
     </svg>
-    <p class="font-medium text-white">Trenutno nema knjiga u bazi podataka!</p>
+    <p class="font-medium text-white">{{__('Trenutno nema knjiga u bazi podataka!')}}</p>
 </div>
 @endif
 
@@ -825,12 +821,12 @@
               d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
         </path>
     </svg>
-    <p class="font-medium text-white">Trenutno nema rezultata za
+    <p class="font-medium text-white">{{__('Trenutno nema rezultata za')}}
         "{{$searched_book}}".. &#128533;</p>
 </div>
 <a
         class="btn-animation inline-flex items-center text-sm py-2 px-3 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]"
-        href="{{route('all-books')}}"><i class="fas fa-arrow-left mr-[5px]"></i>Nazad</a>
+        href="{{route('all-books')}}"><i class="fas fa-arrow-left mr-[5px]"></i>{{__('Nazad')}}</a>
 @endif
 
 
@@ -842,16 +838,16 @@
 <script type="text/javascript">
     function deleteConfirmation(id) {
         swal({
-            title: "Izbriši?",
-            text: "Da li ste sigurni da želite da izbrišete knjigu?",
+            title: "@lang('Izbriši?')",
+            text: "@lang('Da li ste sigurni da želite da izbrišete knjigu?')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
             animation: true,
             allowEscapeKey: true,
             allowOutsideClick: false,
-            confirmButtonText: "Da, siguran sam!",
-            cancelButtonText: "Ne, odustani",
+            confirmButtonText: "@lang('Da, siguran sam!')",
+            cancelButtonText: "@lang('Ne, odustani')",
             reverseButtons: !0,
             confirmButtonColor: '#14de5e',
             cancelButtonColor: '#f73302',

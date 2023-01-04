@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Knjiga | Online biblioteka</title>
+<title>{{__('Knjiga | Online biblioteka')}}</title>
 
 @endsection
 
@@ -39,7 +39,7 @@
                                     <li>
                                         <a href="{{route('all-books')}}"
                                            class="text-[#2196f3] hover:text-blue-600">
-                                            Evidencija knjiga
+                                            {{__('Evidencija knjiga')}}
                                         </a>
                                     </li>
                                     <li>
@@ -62,12 +62,12 @@
                     <a href="{{route('write-off', $book->title)}}"
                        class="inline hover:text-blue-600">
                         <i class="fas fa-level-up-alt mr-[3px]"></i>
-                        Otpiši knjigu
+                        {{__('Otpiši knjigu')}}
                     </a>
                     <a href="{{route('rent-book', $book->title)}}"
                        class="inline hover:text-blue-600 ml-[20px] pr-[10px]">
                         <i class="far fa-hand-scissors mr-[3px]"></i>
-                        Izdaj knjigu
+                        {{__('Izdaj knjigu')}}
                     </a>
                     @endif
 
@@ -78,7 +78,7 @@
                     <a href="{{route('return-book', $book->title)}}"
                        class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-redo-alt mr-[3px] "></i>
-                        Vrati knjigu
+                        {{__('Vrati knjigu')}}
                     </a>
                     @endif
 
@@ -87,7 +87,7 @@
                     <a href="{{route('reserve-book', $book->title)}}"
                        class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="far fa-calendar-check mr-[3px] "></i>
-                        Rezerviši knjigu
+                        {{__('Rezerviši knjigu')}}
                     </a>
 
                     @if (Auth::user()->type->id == 2 || Auth::user()->type->id
@@ -107,7 +107,7 @@
                                    class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                    role="menuitem">
                                     <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                    <span class="px-4 py-0">Izmijeni knjigu</span>
+                                    <span class="px-4 py-0">{{__('Izmijeni knjigu')}}</span>
                                 </a>
 
                                 <button style="cursor: pointer;outline: none;"
@@ -121,7 +121,7 @@
                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                     <span style="cursor: pointer"
                                           class="px-4 py-0">
-                                    Izbriši knjigu
+                                    {{__('Izbriši knjigu')}}
                                     </span>
                                 </button>
 
@@ -130,14 +130,14 @@
                                     function deleteBook(id) {
                                         var token = $("meta[name='csrf-token']").attr("content");
                                         swal({
-                                            text: "Da li ste sigurni da želite da izbrišete knjigu?",
+                                            text: "@lang('Da li ste sigurni da želite da izbrišete knjigu?')",
                                             showCancelButton: !0,
                                             timer: '5000',
                                             animation: true,
                                             allowEscapeKey: true,
                                             allowOutsideClick: false,
-                                            confirmButtonText: "Da, siguran sam!",
-                                            cancelButtonText: "Ne, odustani",
+                                            confirmButtonText: "@lang('Da, siguran sam!')",
+                                            cancelButtonText: "@lang('Ne, odustani')",
                                             reverseButtons: !0,
                                             confirmButtonColor: '#14de5e',
                                             cancelButtonColor: '#f73302',
@@ -189,11 +189,11 @@
                      style="background-color: #fff">
                     <div class="ml-[30px] mr-[70px] mt-[20px] flex flex-row justify-between">
                         <div class="text-gray-500 ">
-                            <p>Na raspolaganju:</p>
-                            <p class="mt-[20px]">Rezervisano:</p>
-                            <p class="mt-[20px]">Izdato:</p>
-                            <p class="mt-[20px]">U prekoračenju:</p>
-                            <p class="mt-[20px]">Ukupna količina:</p>
+                            <p>{{__('Na raspolaganju')}}:</p>
+                            <p class="mt-[20px]">{{__('Rezervisano')}}:</p>
+                            <p class="mt-[20px]">{{__('Izdato')}}:</p>
+                            <p class="mt-[20px]">{{__('U prekoračenju')}}:</p>
+                            <p class="mt-[20px]">{{__('Ukupna količina')}}:</p>
                         </div>
                         <div class="text-center pb-[30px]">
                             <p class=" bg-green-200 text-green-700 rounded-[10px] px-[6px] py-[2px] text-[14px]">
@@ -290,7 +290,7 @@
                     <div class="mt-[40px] flex flex-col max-w-[304px]">
                         <div class="text-gray-500 ">
                             <p class="inline uppercase">
-                                Izdavanja knjige
+                                {{__('Izdavanja knjige')}}
                             </p>
                             <span>
                               - 
@@ -305,13 +305,13 @@
                                    class="text-[#2196f3] hover:text-blue-600">
                                     {{$rent->librarian->name}}
                                 </a>
-                                je {{$rent->librarian->gender->id == 1 ? 'izdao'
-                                : 'izdala'}} knjigu
+                                {{__('je')}} {{$rent->librarian->gender->id == 1 ? __('izdao')
+                                : __('izdala')}} knjigu
                                 <a href="{{route('show-student', $rent->borrow->username)}}"
                                    class="text-[#2196f3] hover:text-blue-600">
                                     {{$rent->borrow->name}}
                                 </a>
-                                dana
+                                {{__('dana ')}}
                                 <span class="font-medium">
                                   @php
                                   echo date("d-m-Y", strtotime($rent->issue_date));
@@ -322,7 +322,7 @@
                         <div>
                             <a href="{{route('rented-info', $rent->id)}}"
                                class="text-[#2196f3] hover:text-blue-600">
-                                pogledaj detaljnije >>
+                                {{__('pogledaj detaljnije')}} >>
                             </a>
                         </div>
                     </div>
@@ -339,8 +339,7 @@
                                       d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
                                 </path>
                             </svg>
-                            <p class="font-medium text-white">Trenutno nema
-                                aktivnosti! </p>
+                            <p class="font-medium text-white">{{__('Trenutno nema aktivnosti!')}}</p>
                         </div>
                     </div>
 
@@ -349,7 +348,7 @@
                     <div class="mt-[40px]">
                         <a href="{{route('dashboard-activity')}}"
                            class="text-[#2196f3] hover:text-blue-600">
-                            <i class="fas fa-history"></i> {{__('Prikaži sve')}}
+                    <i class="fas fa-history"></i> {{__('Prikaži sve')}}
                         </a>
                     </div>
                 </div>

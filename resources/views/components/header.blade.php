@@ -9,11 +9,10 @@
                 <a href="{{route('dashboard')}}"
                    class="text-[20px] font-medium">
                     <div class="flex">
-                        <img src='{{asset(' img/logo.svg')}}' alt="{{__('Online
+                        <img src='{{asset('img/logo.svg')}}' alt="{{__('Online
                         biblioteka')}}" title="{{__('Online biblioteka')}}"
                         width="35px" height="35px">
-                        <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;{{__('Online
-                            biblioteka')}}</p>
+                        <p class="text-[20px] mt-[5px]">&nbsp;&nbsp;{{__('Online biblioteka')}}</p>
                     </div>
                 </a>
             </div>

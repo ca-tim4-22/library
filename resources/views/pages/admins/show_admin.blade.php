@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Profil administratora | Online biblioteka</title>
+<title>{{__('Profil administratora | Online biblioteka')}}</title>
 
 <!-- ijaboCropTool Style -->
 <link rel="stylesheet" href="{{asset('ijaboCropTool/ijaboCropTool.min.css')}}">
@@ -38,7 +38,7 @@
                                 <li>
                                     <a href="{{route('all-admin')}}"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Svi administratori
+                                        {{__('Svi administratori')}}
                                     </a>
                                 </li>
                                 <li>
@@ -57,17 +57,16 @@
                 <div class="pt-[24px] pr-[30px]">
                     <a href="#" class="inline hover:text-blue-600 show-modal">
                         <i class="fas fa-redo-alt mr-[3px]"></i>
-                        Resetuj lozinku
+                        {{__('Resetuj lozinku')}}
                     </a>
                     <a href="{{route('edit-admin', $admin->username)}}"
                        class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
-                        Izmijeni podatke
+                        {{__('Izmijeni podatke')}}
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsStudentProfile hover:text-[#606FC7]"
                        id="dropdownstudent">
-                        <i
-                                class="fas fa-ellipsis-v"></i>
+                        <i class="fas fa-ellipsis-v"></i>
                     </p>
                     <div
                             class="z-10 hidden transition-all duration-300 origin-top-right transform scale-95 -translate-y-2 dropdown-student-profile">
@@ -77,7 +76,7 @@
                             <div class="py-1">
                                 {{-- Delete own account --}}
                                 <button type="submit"
-                                        @if (Auth::id()== $admin->id)
+                                    @if (Auth::id()== $admin->id)
                                     data-id="{{$admin->id}}"
                                     data-action="{{ route('destroy-admin',
                                     $admin->id) }}"
@@ -96,11 +95,11 @@
                                     <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                     <span class="px-4 py-0">
                                 @if (Auth::id() == $admin->id)
-                                Izbriši svoj nalog
+                                {{__('Izbriši svoj nalog')}}
                                 @elseif ($admin->gender->id == 1)
-                                Izbriši administratora
+                                {{__('Izbriši administratora')}}
                                 @else
-                                Izbriši administratorku
+                                {{__('Izbriši administratorku')}}
                                 @endif
                                 </span>
                                 </button>
@@ -109,14 +108,14 @@
                                     function deleteAccountStudent(id) {
                                         var token = $("meta[name='csrf-token']").attr("content");
                                         swal({
-                                            text: "Da li ste sigurni da želite da izbrišete nalog?",
+                                            text: "@lang('Da li ste sigurni da želite da izbrišete nalog?')",
                                             showCancelButton: !0,
                                             timer: '5000',
                                             animation: true,
                                             allowEscapeKey: true,
                                             allowOutsideClick: false,
-                                            confirmButtonText: "Da, siguran sam!",
-                                            cancelButtonText: "Ne, odustani",
+                                            confirmButtonText: "@lang('Da, siguran sam!')",
+                                            cancelButtonText: "@lang('Ne, odustani')",
                                             reverseButtons: !0,
                                             confirmButtonColor: '#14de5e',
                                             cancelButtonColor: '#f73302',
@@ -150,14 +149,14 @@
                                     function deleteYourself(id) {
                                         var token = $("meta[name='csrf-token']").attr("content");
                                         swal({
-                                            text: "Da li ste sigurni da želite da izbrišete nalog?",
+                                            text: "@lang('Da li ste sigurni da želite da izbrišete nalog?')",
                                             showCancelButton: !0,
                                             timer: '5000',
                                             animation: true,
                                             allowEscapeKey: true,
                                             allowOutsideClick: false,
-                                            confirmButtonText: "Da, siguran sam!",
-                                            cancelButtonText: "Ne, odustani",
+                                            confirmButtonText: "@lang('Da, siguran sam!')",
+                                            cancelButtonText: "@lang('Ne, odustani')",
                                             reverseButtons: !0,
                                             confirmButtonColor: '#14de5e',
                                             cancelButtonColor: '#f73302',
@@ -242,45 +241,44 @@
             <div class="flex flex-row">
                 <div class="mr-[30px]">
                     <div class="mt-[20px]">
-                        <span class="text-gray-500">Ime i prezime</span>
+                        <span class="text-gray-500">{{__('Ime i prezime')}}</span>
                         <p class="font-medium">{{$admin->name}}</p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Tip korisnika</span>
+                        <span class="text-gray-500">{{__('Tip korisnika')}}</span>
                         <p class="font-medium">
-                            {{$admin->gender->id == 1 ? 'Administrator' :
-                            'Administratorka'}}
+                            {{$admin->gender->id == 1 ? __('Administrator') :
+                            __('Administratorka') }}
                         </p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">JMBG</span>
+                        <span class="text-gray-500">{{__('JMBG')}}</span>
                         <p class="font-medium">{{$admin->JMBG}}</p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Email</span>
+                        <span class="text-gray-500">{{__('Email')}}</span>
                         <a
                                 href="mailto:{{$admin->email}}"
                                 class="cursor-pointer block font-medium text-[#2196f3] hover:text-blue-600">{{$admin->email}}</a>
 
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Korisničko ime</span>
+                        <span class="text-gray-500">{{__('Korisničko ime')}}</span>
                         <p class="font-medium">{{$admin->username}}</p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Pol</span>
-                        <p class="font-medium">{{$admin->gender->name}}</p>
+                        <span class="text-gray-500">{{__('Pol')}}</span>
+                        <p class="font-medium">{{__($admin->gender->name)}}</p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Broj logovanja</span>
+                        <span class="text-gray-500">{{__('Broj logovanja')}}</span>
                         <p class="font-medium"
                         >
                             @if ($admin->login_count <= 0)
                             @if ($admin->gender->id == 1)
-                            Administrator se nikada nije ulogovao na platformu.
+                            {{__('Administrator se nikada nije ulogovao na platformu.')}}
                             @else
-                            Administratorka se nikada nije ulogovala na
-                            platformu.
+                            {{__('Administratorka se nikada nije ulogovala na platformu.')}}
                             @endif
                             @else
                             {{$admin->login_count}}
@@ -288,14 +286,13 @@
                         </p>
                     </div>
                     <div class="mt-[40px]">
-                        <span class="text-gray-500">Poslednji put {{$admin->gender->id == 1 ? 'ulogovan' : 'ulogovana'}}</span>
+                        <span class="text-gray-500">{{__('Poslednji put')}} {{$admin->gender->id == 1 ? __('ulogovan') : __('ulogovana')}}</span>
                         <p class="font-medium">
                             @if ($admin->login_count <= 0)
                             @if ($admin->gender->id == 1)
-                            Administrator se nikada nije ulogovao na platformu.
+                            {{__('Administrator se nikada nije ulogovao na platformu.')}}
                             @else
-                            Administratorka se nikada nije ulogovala na
-                            platformu.
+                            {{__('Administratorka se nikada nije ulogovala na platformu.')}}
                             @endif
                             @else
                             {{$admin->last_login_at->diffForHumans()}}
@@ -330,7 +327,7 @@
                                     <polyline
                                             points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Izmijeni fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal">{{__('Izmijeni fotografiju')}}</span>
                                 <input type='file' name="photo" for="photo"
                                        id="photo" class="hidden"
                                        :accept="accept"
@@ -360,7 +357,7 @@
     <div class="w-[500px] bg-white rounded shadow-lg md:w-1/3">
         <!-- Modal Header -->
         <div class="flex items-center justify-between px-[30px] py-[20px] border-b">
-            <h3>Resetuj lozinku: {{$admin->name}}</h3>
+            <h3>{{__('Resetuj lozinku')}}: {{$admin->name}}</h3>
 
             <button
                     style="outline: none;border: none;"
@@ -374,7 +371,7 @@
             @csrf @honeypot
             <div class="flex flex-col px-[30px] py-[30px]">
                 <div class="flex flex-col pb-[30px]">
-                    <span>Unesite novu lozinku <span
+                    <span>{{__('Unesite novu lozinku')}} <span
                                 class="text-red-500">*</span></span>
                     <input
                             style="border: 0.4px solid #223394 !important"
@@ -388,7 +385,7 @@
                 </span>
                 </div>
                 <div class="flex flex-col pb-[30px]">
-                    <span>Ponovite lozinku <span
+                    <span>{{__('Ponovite lozinku')}} <span
                                 class="text-red-500">*</span></span>
                     <input
                             id="password"
@@ -401,12 +398,12 @@
             <div class="flex items-center justify-end px-[30px] py-[20px] border-t w-100 text-white">
                 <button type="button" id="remove-values"
                         class="close-modal shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                 </button>
 
                 <button type="submit"
                         class="shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                    {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                 </button>
             </div>
         </form>
@@ -421,7 +418,7 @@
         preview: '.image-previewer',
         setRatio: 1,
         allowedExtensions: ['jpg', 'jpeg', 'png'],
-        buttonsText: ['Sačuvaj', 'Otkaži'],
+        buttonsText: ['{{__('Sačuvaj')}}', 'Otkaži'],
         buttonsColor: ['#4558BE', '#ee5155', -15],
         processUrl: '{{route('admin.crop')}}',
         withCSRF: ['_token', '{{csrf_token()}}'],

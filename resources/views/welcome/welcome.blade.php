@@ -2,7 +2,7 @@
 <html lang="{{str_replace('_', '-', app()->getLocale())}}">
 <meta charset=utf-8>
 <meta content="width=device-width,initial-scale=1" name=viewport>
-<title>Početna - Online biblioteka</title>
+<title>{{__('Početna | Online biblioteka')}}</title>
 <link href="{{asset('library-favicon.ico')}}" rel=icon type=image/x-icon>
 <meta charset=UTF-8>
 <meta content="IE=edge" http-equiv=X-UA-Compatible>

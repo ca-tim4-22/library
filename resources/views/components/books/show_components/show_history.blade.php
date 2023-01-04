@@ -50,9 +50,7 @@
                                     <tbody class="bg-white">
 
                                     @foreach ($rents as $rent)
-                                    @foreach
-                                    ($rent->rent_status->where('book_status_id',
-                                    1) as $book)
+                                    @foreach ($rent->rent_status->where('book_status_id', 1) as $book)
                                     <tr class="hover:bg-gray-200 hover:shadow-md border-b-[1px] border-[#e4dfdf]">
                                         <td class="flex flex-row items-center px-4 py-3">
                                             <img

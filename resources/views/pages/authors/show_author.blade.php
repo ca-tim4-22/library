@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Profil autora | Online biblioteka</title>
+<title>{{__('Profil autora | Online biblioteka')}}</title>
 
 @endsection
 
@@ -92,8 +92,8 @@
                                         animation: true,
                                         allowEscapeKey: true,
                                         allowOutsideClick: false,
-                                        confirmButtonText: "Da, siguran sam!",
-                                        cancelButtonText: "Ne, odustani",
+                                        confirmButtonText: "@lang('Da, siguran sam!')",
+                                        cancelButtonText: "@lang('Ne, odustani')",
                                         reverseButtons: !0,
                                         confirmButtonColor: '#14de5e',
                                         cancelButtonColor: '#f73302',

@@ -97,8 +97,7 @@
                             <option
                                     title="{{$show_all}}"
                                     value="{{$show_all}}" @if($items==
-                                    $show_all) selected @endif>{{__('Prikaži
-                                sve')}}
+                                    $show_all) selected @endif>{{__('Prikaži sve')}}
                             </option>
                         </select>
                     </form>
@@ -303,12 +302,11 @@
                         <a href="mailto:{{$librarian->email}}">{{$librarian->email}}</a>
                     </td>
                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                        {{$librarian->gender->id == 1 ? 'Bibliotekar' :
-                        'Bibliotekarka'}}
+                        {{$librarian->gender->id == 1 ? __('Bibliotekar ') :
+                        __('Bibliotekarka ')}}
                     </td>
                     <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
-                        {{$librarian->login_count == 0 ? __('Korisnik se nikada
-                        nije ulogovao.') :
+                        {{$librarian->login_count == 0 ? __('Korisnik se nikada nije ulogovao.') :
                         $librarian->last_login_at->diffForHumans()}}
                     </td>
                     <td class="px-4 py-4 text-sm leading-5 text-right whitespace-no-wrap">
@@ -390,16 +388,16 @@
 <script type="text/javascript">
     function deleteConfirmation(id) {
         swal({
-            title: "Izbriši?",
-            text: "Da li ste sigurni da želite da izbrišete bibliotekara?",
+            title: "@lang('Izbriši?')",
+            text: "@lang('Da li ste sigurni da želite da izbrišete bibliotekara?')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
             animation: true,
             allowEscapeKey: true,
             allowOutsideClick: false,
-            confirmButtonText: "Da, siguran sam!",
-            cancelButtonText: "Ne, odustani",
+            confirmButtonText: "@lang('Da, siguran sam!')",
+            cancelButtonText: "@lang('Ne, odustani')",
             reverseButtons: !0,
             confirmButtonColor: '#14de5e',
             cancelButtonColor: '#f73302',

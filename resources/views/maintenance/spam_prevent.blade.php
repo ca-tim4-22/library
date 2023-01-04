@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>Prevencija XSS - Online biblioteka</title>
+<title>{{__('Prevencija XSS | Online biblioteka')}}</title>
 <!-- Icon -->
 <link rel="icon" type="image/x-icon" href="{{asset('library-favicon.ico')}}">
 <!-- Meta -->

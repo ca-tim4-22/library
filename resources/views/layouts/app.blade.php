@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Title --}}
-    <title>Online Library</title>
+    <title>{{__('Online biblioteka')}}</title>
 
     {{-- Icon --}}
     <link rel="icon" type="image/x-icon"

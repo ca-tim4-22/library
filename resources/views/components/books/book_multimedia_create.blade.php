@@ -7,8 +7,8 @@
 
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area">
-                        <span class="fake-btn">Naslovna fotografija</span>
-                        <span class="file-msg">ili prevucite Vašu fotografiju ovdje</span>
+                        <span class="fake-btn">{{__('Naslovna fotografija')}}</span>
+                        <span class="file-msg">{{__('ili prevucite Vašu fotografiju ovdje')}}</span>
                         <input
                                 oninvalid="this.setCustomValidity('Naslovna fotografija je obavezna')"
                                 oninput="this.setCustomValidity('')"
@@ -20,8 +20,8 @@
 
                 <div class="pl-[30px] py-[20px] flex border-b-[1px] border-[#e4dfdf]">
                     <div class="file-drop-area">
-                        <span class="fake-btn">PDF</span>
-                        <span class="file-msg">ili prevucite Vaš fajl ovdje</span>
+                        <span class="fake-btn">{{__('PDF')}}</span>
+                        <span class="file-msg">{{__('ili prevucite Vaš fajl ovdje')}}</span>
                         <input title="Izaberite fajl" class="file-input"
                                type="file" name="pdf">
                     </div>
@@ -53,7 +53,7 @@
                                   stroke-width="2"
                                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                         </svg>
-                        <p class="m-0">Prebacite vaše fajlove</p>
+                        <p class="m-0">{{__('Prebacite vaše fajlove')}}</p>
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                                 <div
                                         class="absolute bottom-0 left-0 right-0 flex flex-col p-2 text-xs bg-white bg-opacity-50">
                                 <span class="w-full font-bold text-gray-900 truncate"
-                                      x-text="files[index].name">Učitavanje..</span>
+                                      x-text="files[index].name">{{__('Učitavanje')}}..</span>
                                     <span class="text-xs text-gray-900"
                                           x-text="humanFileSize(files[index].size)">...</span>
                                 </div>
@@ -149,13 +149,13 @@
                 <button type="button"
                         onclick="history.back()"
                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                 </button>
 
                 <button style="margin-right: 30px" id="sacuvajKnjigu"
                         type="submit"
                         class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
-                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                    {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                 </button>
             </div>
         </div>

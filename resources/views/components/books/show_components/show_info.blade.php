@@ -36,15 +36,15 @@
     <div class="flex flex-row justify-between">
         <div id="margin_change1" class="mr-[30px]">
             <div class="mt-[20px]">
-                <span class="text-gray-500 text-[14px]">Naziv knjige</span>
+                <span class="text-gray-500 text-[14px]">{{__('Naziv knjige')}}</span>
                 <p class="font-medium">{{$book->title}}</p>
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500 text-[14px]">
                     @if ($book->categories->count() == 1)
-                    Kategorija
+                    {{__('Kategorija')}}
                     @else
-                    Kategorije
+                    {{__('Kategorije')}}
                     @endif
                 </span>
                 <p class="font-medium">
@@ -54,16 +54,16 @@
                     {{$category->category->name}}
                     @endforeach
                     @else
-                    Nepoznato
+                    {{__('Nepoznato')}}
                     @endif
                 </p>
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500 text-[14px]">
                 @if ($book->genres->count() == 1)
-                Žanr
+                {{__('Žanr')}}
                 @else
-                Žanrovi
+                {{__('Žanrovi')}}
                 @endif
                 </span>
                 <p class="font-medium">
@@ -73,16 +73,16 @@
                     {{$genre->genre->name}}
                     @endforeach
                     @else
-                    Nepoznato
+                    {{__('Nepoznato')}}
                     @endif
                 </p>
             </div>
             <div class="mt-[40px]">
                 <span class="text-gray-500 text-[14px]">
                 @if ($book->authors->count() == 1)
-                Autor
+                {{__('Autor')}}
                 @else
-                Autori
+                {{__('Autori')}}
                 @endif
                 </span>
                 <p class="font-medium">
@@ -92,16 +92,16 @@
                     {{$author->author->NameSurname}}
                     @endforeach
                     @else
-                    Nepoznato
+                    {{__('Nepoznato')}}
                     @endif
                 </p>
             </div>
             <div class="mt-[40px]">
-                <span class="text-gray-500 text-[14px]">Izdavač</span>
+                <span class="text-gray-500 text-[14px]">{{__('Izdavač')}}</span>
                 <p class="font-medium">{{$book->publisher->name}}</p>
             </div>
             <div class="mt-[40px]">
-                <span class="text-gray-500 text-[14px]">Godina izdavanja</span>
+                <span class="text-gray-500 text-[14px]">{{__('Godina izdavanja')}}</span>
                 <p class="font-medium">{{$book->year}}</p>
             </div>
         </div>
@@ -109,7 +109,7 @@
              class="mr-[70px] mt-[20px] flex flex-col max-w-[600px]">
             <div>
                 <h4 class="text-gray-500 ">
-                    Kratki sadržaj
+                    {{__('Kratki sadržaj')}}
                 </h4>
                 <p class="addReadMore showlesscontent my-[10px]">
                     {!! $book->body !!}
@@ -121,7 +121,7 @@
                             class="btn-animation inline-flex items-center text-sm py-2 px-3 transition duration-300 ease-in rounded-[5px] tracking-wider text-white bg-[#3f51b5] hover:bg-[#4558BE]"
                             href="{{'/storage/pdf/' . $book->pdf}}" download>
                         <i class="fas fa-file-pdf mr-[5px]"></i>
-                        Preuzmi PDF
+                        {{__('Preuzmi PDF')}}
                     </a>
                 </div>
                 @endif

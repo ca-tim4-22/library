@@ -1,4 +1,4 @@
-{{-- Title --}}<title>Registruj se - Online biblioteka</title>{{-- Icon --}}
+{{-- Title --}}<title>{{__('Registruj se | Online biblioteka')}}</title>{{-- Icon --}}
 <link rel="icon" type="image/x-icon"
       href="{{ asset('library-favicon.ico') }}">{{-- Style --}}
 <link rel="stylesheet"

@@ -23,8 +23,12 @@ Route::group(['middleware' => 'protect-all'], function () {
         [DashboardController::class, 'index_activity'])
         ->name('dashboard-activity');
 
-    Route::delete('/izbrisi-svoj-nalog/{id}',
-        [UserController::class, 'destroy'])->name('destroy-yourself');
+    Route::delete('/izbrisi-svoj-nalog/{id}', 
+        [UserController::class, 'destroy'])
+        ->name('destroy-yourself');
+
+    Route::post('/resetuj-lozinku/{user}', [UserController::class, 'resetPassword'])
+        ->name('resetPassword');
 
     Route::get('/prijavi-se', [MailChimpController::class, 'index'])
         ->name('subscribe');

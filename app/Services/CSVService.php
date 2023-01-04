@@ -2,12 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\Author;
-use App\Models\Book;
-use App\Models\BookAuthor;
-use App\Models\BookCategory;
-use App\Models\BookGenre;
-use App\Models\Gallery;
+use App\Models\ {
+    Author,
+    Book,
+    BookAuthor,
+    BookCategory,
+    BookGenre,
+    Gallery
+}
 use Illuminate\Http\Request;
 
 class CSVService

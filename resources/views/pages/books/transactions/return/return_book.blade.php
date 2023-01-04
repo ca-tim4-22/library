@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Vrati knjigu | Online biblioteka</title>
+<title>{{__('Vrati knjigu | Online biblioteka')}}</title>
 
 @endsection
 
@@ -262,7 +262,7 @@
 
                 <button type="button" onclick="history.back()"
                         class="btn-animation shadow-lg mr-[15px] w-[150px] focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                 </button>
 
                 <button type="submit"

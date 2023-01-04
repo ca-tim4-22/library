@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Izdate knjige | Online biblioteka</title>
+<title>{{__('Izdate knjige | Online biblioteka<')}}/title>
 
 @endsection
 
@@ -23,7 +23,7 @@
     <div class="heading mt-[7px]" style="margin-top: 11px">
         <h1 style="font-size: 30px"
             class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-            Izdate knjige
+            {{__('Izdate knjige')}}
         </h1>
     </div>
 
@@ -150,12 +150,12 @@
                             <div class="flex pt-[10px] text-white ">
                                 <a href="#"
                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                    Sačuvaj <i
+                                     <i
                                             class="fas fa-check ml-[4px]"></i>
                                 </a>
                                 <a href="{{route('all-books')}}"
                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                    Poništi <i
+                                    {{__('Poništi')}} <i
                                             class="fas fa-times ml-[4px]"></i>
                                 </a>
                             </div>
@@ -186,12 +186,12 @@
                             <div class="flex pt-[10px] text-white ">
                                 <a href="#"
                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                    Sačuvaj <i
+                                     <i
                                             class="fas fa-check ml-[4px]"></i>
                                 </a>
                                 <a href="#"
                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                    Poništi <i
+                                    {{__('Poništi')}} <i
                                             class="fas fa-times ml-[4px]"></i>
                                 </a>
                             </div>
@@ -269,12 +269,12 @@
                                 <div class="flex pt-[10px] text-white ">
                                     <button type="submit" style="outline: none;"
                                             class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                        Sačuvaj <i
+                                         <i
                                                 class="fas fa-check ml-[4px]"></i>
                                     </button>
                                     <a href="#"
                                        class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                        Poništi <i
+                                        {{__('Poništi')}} <i
                                                 class="fas fa-times ml-[4px]"></i>
                                     </a>
                     </form>
@@ -349,11 +349,11 @@
                             type="submit"
                             style="outline: none;"
                             class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                        Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                         <i class="fas fa-check ml-[4px]"></i>
                     </button>
                     <a href="{{route('rented-books')}}"
                        class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                        Poništi <i class="fas fa-times ml-[4px]"></i>
+                        {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                     </a>
     </form>
     </div>

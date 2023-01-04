@@ -3,16 +3,16 @@
 
         <div class="tabs">
             <a class="inline tab">
-                Osnovni detalji
+                {{__('Osnovni detalji')}}
             </a>
             <a class="tab inline ml-[70px]">
-                Specifikacija
+                {{__('Specifikacija')}}
             </a>
             <a class="tab inline ml-[70px]">
-                Multimedija
+                {{__('Multimedija')}}
             </a>
             <a class="tab inline ml-[70px]">
-                Istorija iznajmljivanja
+                {{__('Istorija iznajmljivanja')}}
             </a>
         </div>
 

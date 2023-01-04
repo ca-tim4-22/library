@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Knjige u prekoračenju | Online biblioteka</title>
+<title>{{__('Knjige u prekoračenju | Online biblioteka')}}</title>
 
 @endsection
 
@@ -23,7 +23,7 @@
         <!-- Heading of content -->
         <div class="heading mt-[7px]">
             <h1 class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                Knjige u prekoračenju
+                {{__('Knjige u prekoračenju')}}
             </h1>
         </div>
 
@@ -84,12 +84,12 @@
                                 <div class="flex pt-[10px] text-white ">
                                     <a href="#"
                                        class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                        Sačuvaj <i
+                                         <i
                                                 class="fas fa-check ml-[4px]"></i>
                                     </a>
                                     <a href="#"
                                        class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                        Poništi <i
+                                        {{__('Poništi')}} <i
                                                 class="fas fa-times ml-[4px]"></i>
                                     </a>
                                 </div>
@@ -240,12 +240,12 @@
                                 <div class="flex pt-[10px] text-white ">
                                     <a href="#"
                                        class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                        Sačuvaj <i
+                                         <i
                                                 class="fas fa-check ml-[4px]"></i>
                                     </a>
                                     <a href="#"
                                        class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                        Poništi <i
+                                        {{__('Poništi')}} <i
                                                 class="fas fa-times ml-[4px]"></i>
                                     </a>
                                 </div>
@@ -281,12 +281,12 @@
                                 <div class="flex pt-[10px] text-white ">
                                     <a href="#"
                                        class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                        Sačuvaj <i
+                                         <i
                                                 class="fas fa-check ml-[4px]"></i>
                                     </a>
                                     <a href="#"
                                        class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                        Poništi <i
+                                        {{__('Poništi')}} <i
                                                 class="fas fa-times ml-[4px]"></i>
                                     </a>
                                 </div>

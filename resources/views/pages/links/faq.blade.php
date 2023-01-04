@@ -37,41 +37,36 @@
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Koliko često se dodaju
-                                                nove knjige?')}}
+                                            {{__('Koliko često se dodaju nove knjige?')}}
                                             </summary>
 
                                             <span class="px-4 py-2">
-                                  {{__('Knjige se dodaju u bazu čim stignu u realnoj školskoj biblioteci.')}}
+                                {{__('Knjige se dodaju u bazu čim stignu u realnoj školskoj biblioteci.')}}
                                 </span>
                                         </details>
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Koliko mogu da
-                                                rezervišem/pozajmim knjiga?')}}
+                                {{__('Koliko mogu da rezervišem/pozajmim knjiga?')}}
                                             </summary>
 
                                             <span class="px-4 py-2">
-                                  {{__('U istom vremenu možete rezervisati/pozajmiti samo jedan primjerak knjige.')}}
+            {{__('U istom vremenu možete rezervisati/pozajmiti samo jedan knjige.')}}
                                 </span>
                                         </details>
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Da li mogu odmah preuzeti
-                                                rezervisanu knjigu?')}}
+                                 {{__('Da li mogu odmah preuzeti rezervisanu knjigu?')}}
                                             </summary>
 
-                                            <span class="px-4 py-2">
-                                 {{__('Morate sačekati da bibliotekar/ka potvrdi Vaš zahtjev za rezervaciju. Nakon toga možete preuzeti Vašu knjigu.')}}
+                                            <span class="px-4 py-2">{{__('Morate sačekati da bibliotekar/ka potvrdi Vaš zahtjev za rezervaciju. Nakon toga možete preuzeti Vašu knjigu.')}}
                                 </span>
                                         </details>
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Koliko se vremena čeka za
-                                                prihvatanje rezervacije?')}}
+                                                {{__('Koliko se vremena čeka za prihvatanje rezervacije?')}}
                                             </summary>
 
                                             <span class="px-4 py-2">
@@ -81,8 +76,7 @@
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Koliko ukupno ima knjiga u
-                                                biblioteci?')}}
+                                                {{__('Koliko ukupno ima knjiga u biblioteci?')}}
                                             </summary>
 
                                             <span class="px-4 py-2">
@@ -92,8 +86,7 @@
                                         <details class="mb-4">
                                             <summary
                                                     class="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                                                {{__('Koga mogu kontaktirati za
-                                                više informacija?')}}
+                                                {{__('Koga mogu kontaktirati za više informacija?')}}
                                             </summary>
 
                                             <span>

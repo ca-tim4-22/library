@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title>Dashboard Aktivnost | Online biblioteka</title>
+<title>{{__('Dashboard aktivnost | Online biblioteka')}}</title>
 
 @endsection
 
@@ -110,12 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                                 type="submit"
                                                 style="outline: none;"
                                                 class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                            Sačuvaj <i
+                                             <i
                                                     class="fas fa-check ml-[4px]"></i>
                                         </button>
                                         <a href="{{route('dashboard-activity')}}"
                                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Poništi <i
+                                            {{__('Poništi')}} <i
                                                     class="fas fa-times ml-[4px]"></i>
                                         </a>
                                         </form>
@@ -196,12 +196,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                                 type="submit"
                                                 style="outline: none;"
                                                 class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                            Sačuvaj <i
+                                             <i
                                                     class="fas fa-check ml-[4px]"></i>
                                         </button>
                                         <a href="{{route('dashboard-activity')}}"
                                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Poništi <i
+                                            {{__('Poništi')}} <i
                                                     class="fas fa-times ml-[4px]"></i>
                                         </a>
                                         </form>
@@ -281,12 +281,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                                 type="submit"
                                                 style="outline: none;"
                                                 class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                            Sačuvaj <i
+                                             <i
                                                     class="fas fa-check ml-[4px]"></i>
                                         </button>
                                         <a href="{{route('dashboard-activity')}}"
                                            class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                            Poništi <i
+                                            {{__('Poništi')}} <i
                                                     class="fas fa-times ml-[4px]"></i>
                                         </a>
                                     </div>
@@ -339,12 +339,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                                             <button type="submit"
                                                     style="outline: none"
                                                     class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#009688] bg-[#46A149] rounded-[5px]">
-                                                Sačuvaj <i
+                                                 <i
                                                         class="fas fa-check ml-[4px]"></i>
                                             </button>
                                             <a href="{{route('dashboard-activity')}}"
                                                class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                Poništi <i
+                                                {{__('Poništi')}} <i
                                                         class="fas fa-times ml-[4px]"></i>
                                             </a>
                                         </div>

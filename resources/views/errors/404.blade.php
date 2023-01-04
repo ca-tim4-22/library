@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>Error 404</title>
+<title>{{__('Error 404')}}</title>
 
 <!-- Icon -->
 <link rel="icon"

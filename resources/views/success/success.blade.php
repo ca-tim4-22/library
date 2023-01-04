@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>Operacija uspješna | Online biblioteka</title>
+<title>{{__('Operacija uspješna | Online biblioteka')}}</title>
 <div class="photo">
     <img
             width="500"

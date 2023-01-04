@@ -43,8 +43,6 @@ Route::controller(LibrarianController::class)->group(function () {
             ->name('librarians.destroy');
     });
 
-    Route::post('/resetuj-lozinku/{user}', 'resetPassword')
-        ->name('resetPassword');
     Route::post('/crop/bibliotekar', 'crop')->name('librarian.crop');
 });
 

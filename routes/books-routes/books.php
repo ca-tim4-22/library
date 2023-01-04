@@ -1,22 +1,22 @@
 <?php
 
 use App\Http\Controllers\ {
-    BookController,
+        BookController,
 };
 
 use App\Http\Controllers\Books\ {
-    OverdueBookController,
-    RentBookController,
-    ReturnBookController,
-    ActiveReservationController,
-    ArchivedReservationController,
-    ReserveBookController,
-    WriteOffController,
-    ArchiveBookController,
+        OverdueBookController,
+        RentBookController,
+        ReturnBookController,
+        ActiveReservationController,
+        ArchivedReservationController,
+        ReserveBookController,
+        WriteOffController,
+        ArchiveBookController,
 };
 
 use Illuminate\Support\Facades\ {
-    Route,
+        Route,
 };
 
 Route::controller(BookController::class)->group(function () {
@@ -30,7 +30,7 @@ Route::controller(BookController::class)->group(function () {
     Route::delete('/izbrisi-knjigu/{id}', 'destroy')->name('destroy-book');
 
     Route::delete('izbrisi-fotografiju-knjige/{id}', 'destroyBookPhoto')
-        ->name('delete-book-photo');
+            ->name('delete-book-photo');
 });
 
 Route::controller(RentBookController::class)->group(function () {
@@ -40,7 +40,7 @@ Route::controller(RentBookController::class)->group(function () {
     Route::get('izdaj-knjigu/{book:title}', 'create')->name('rent-book');
     Route::post('izdaj-knjigu/{id}', 'store')->name('store-rent-book');
     Route::delete('izbrisi-izdatu-knjigu/{id}', 'destroy')
-        ->name('destroy-rent-book');
+            ->name('destroy-rent-book');
 });
 
 Route::controller(ReturnBookController::class)->group(function () {
@@ -54,7 +54,7 @@ Route::controller(ReturnBookController::class)->group(function () {
 Route::controller(ReserveBookController::class)->group(function () {
 // Reserve a book
     Route::get('/rezervisi-knjigu/{book:title}', 'create')
-        ->name('reserve-book');
+            ->name('reserve-book');
     Route::post('/rezervisi-knjigu/{id}', 'store')->name('store-reserve-book');
 });
 
@@ -72,22 +72,22 @@ Route::controller(WriteOffController::class)->group(function () {
 Route::controller(ArchivedReservationController::class)->group(function () {
 // Archived books
     Route::get('/arhivirane-rezervacije', 'index')
-        ->name('archived-reservations');
+            ->name('archived-reservations');
 });
 
 Route::controller(ArchiveBookController::class)->group(function () {
 // Archive a book
     Route::get('/arhiviraj-rezervaciju/{id}', 'index')
-        ->name('archive-reservation');
+            ->name('archive-reservation');
     Route::put('/arhiviraj-rezervaciju/{id}', 'update')
-        ->name('update-archive-reservation');
+            ->name('update-archive-reservation');
 });
 
 Route::controller(ActiveReservationController::class)->group(function () {
 // Active reservations
     Route::get('/aktivne-rezervacije', 'index')->name('active-reservations');
     Route::get('/detalji-rezervacije-knjige/{id}', 'show')
-        ->name('reserved-info');
+            ->name('reserved-info');
 // Middleware protection
     Route::middleware('reservation-approval')->group(function () {
         Route::get('/potvrdi-rezervaciju/{id}', function ($id) {
@@ -103,7 +103,7 @@ Route::controller(ActiveReservationController::class)->group(function () {
 
 // For multiple book delete
 Route::delete('izbrisi-sve/knjige', [BookController::class, 'deleteMultiple'])
-    ->name('delete-all-books');
+        ->name('delete-all-books');
 
 // Middleware protection
 Route::middleware('user-delete')->group(function () {
@@ -111,7 +111,7 @@ Route::middleware('user-delete')->group(function () {
     Route::get('/knjige/{id}', function ($id) {
     });
     Route::post('/knjige/{id}', [BookController::class, 'destroy'])
-        ->name('books.destroy');
+            ->name('books.destroy');
 });
 
 ?>

@@ -3,7 +3,7 @@
 @section('title')
 
 <!-- Title -->
-<title> Detalji izdavanja knjige | Online biblioteka</title>
+<title>{{__('Detalji izdavanja knjige | Online biblioteka')}}</title>
 
 @endsection
 
