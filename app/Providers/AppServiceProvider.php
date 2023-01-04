@@ -33,25 +33,30 @@ class AppServiceProvider extends ServiceProvider
         // Localization Carbon
         Carbon::setLocale('sr');
 
-        // Local version
         /*
-        While using the local version of the app, we have turned off the number of notifications due to displaying warnings during installation
+        Disclaimer
+        While using the local version of the app, we have turned off the number of notifications due to displaying warnings during installation of composer install/update
         */
-        // $notifications = 0;
-
-        // Production version
 
         // Notifications
-        $rents_c = Rent::all();
-        $reservations_c = ReservationStatuses::all();
-        if (count($rents_c) > 0 && count($reservations_c) > 0) {
-        $rents = Rent::whereDate('issue_date', today())->get();
-        $reservation = ReservationStatuses::whereDate('created_at', today())->where('status_reservations_id', 1)->get();
-        $notifications =$rents->count() + $reservation->count();
-        } else {
+        if (\Config::get('values.stage') == 'local') {
             $notifications = 0;
+        } else {
+            $rents_c = Rent::all();
+            $reservations_c = ReservationStatuses::all();
+            if (count($rents_c) > 0 && count($reservations_c) > 0) {
+            $rents = Rent::whereDate('issue_date', today())->get();
+            $reservation = ReservationStatuses::whereDate('created_at', today())->where('status_reservations_id', 1)->get();
+            $notifications =$rents->count() + $reservation->count();
+            }  else {
+                $notifications = 0;
+            }
         }
+       
+        // Remove 'data' wrapping -> API
         JsonResource::withoutWrapping();
+
+        // Shareable variable to all  views
         view()->share('notifications', $notifications);
 
           /**

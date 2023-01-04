@@ -120,7 +120,7 @@
                 @endif
 
                             <a href="{{route('show-book', $rent->book->title)}}">
-                                je {{$rent->librarian->gender->id == 1 ? __('izdao') : {{__('izdala')}}}} {{__('knjigu')}} <span class="font-medium">{{$rent->book->title}} </span>
+                                {{__('je')}} {{$rent->librarian->gender->id == 1 ? __('izdao') : __('izdala')}} {{__('knjigu')}} <span class="font-medium">{{$rent->book->title}} </span>
                             </a>
                             <a href="{{route('show-student', $rent->borrow->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                 {{$rent->borrow->name}}
@@ -180,7 +180,7 @@
                 <a>
                 @endif
 
-                              je {{$reservation->reservation->made_by->gender->id == 1 ? __('rezervisao') : {{__('rezervisala')}}}} {{__('knjigu')}} <span class="font-medium">{{$reservation->reservation->book->title}} </span>
+                              {{__('je')}} {{$reservation->reservation->made_by->gender->id == 1 ? __('rezervisao') : __('rezervisala')}} {{__('knjigu')}} <span class="font-medium">{{$reservation->reservation->book->title}} </span>
                               <a href="{{route('show-student', $reservation->reservation->made_for->username)}}" class="text-[#2196f3] hover:text-blue-600">
                                   {{$reservation->reservation->made_for->name}}
                               </a>
