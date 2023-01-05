@@ -22,7 +22,8 @@ Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
 });
 
 // Version 1.0
-Route::group(['prefix' => 'v1'], function () {
+// Added route rate limiting
+Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     Route::controller(UserAPIController::class)->group(function () {
 // Users
         Route::get('/korisnici', 'users');
