@@ -19,7 +19,7 @@
                 <div class="pl-[30px] py-[10px] flex flex-col">
                     <div>
                         <h1>
-                            Nova knjiga
+                            {{__('Nova knjiga')}}
                         </h1>
 
                     </div>
@@ -29,7 +29,7 @@
                                 <li>
                                     <a href="{{route('all-books')}}"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Evidencija knjiga
+                                        {{__('Evidencija knjiga')}}
                                     </a>
                                 </li>
                                 <li>
@@ -38,7 +38,7 @@
                                 <li>
                                     <a href="{{route('new-book')}}"
                                        class="text-[#2196f3] hover:text-blue-600">
-                                        Nova knjiga
+                                        {{__('Nova knjiga')}}
                                     </a>
                                 </li>
                             </ol>

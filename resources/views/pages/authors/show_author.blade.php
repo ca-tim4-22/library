@@ -30,7 +30,7 @@
                             <li>
                                 <a href="{{route('all-author')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Evidencija autora
+                                    {{__('Evidencija autora')}}
                                 </a>
                             </li>
                             <li>
@@ -39,7 +39,7 @@
                             <li>
                                 <a href="{{route('show-author', $author)}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    AUTOR-{{$author->id}}
+                                    {{__('AUTOR')}}-{{$author->id}}
                                 </a>
                             </li>
                         </ol>
@@ -64,7 +64,7 @@
                                class="flex w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 outline-none hover:text-blue-600"
                                role="menuitem">
                                 <i class="fas fa-edit mr-[1px] ml-[5px] py-1"></i>
-                                <span class="px-4 py-0">Izmijeni autora</span>
+                                <span class="px-4 py-0">{{__('Izmijeni autora')}}</span>
                             </a>
 
                             <button style="cursor: pointer;outline: none;"
@@ -77,7 +77,7 @@
                                     role="menuitem">
                                 <i class="fa fa-trash mr-[5px] ml-[5px] py-1"></i>
                                 <span style="cursor: pointer" class="px-4 py-0">
-                            Izbriši autora
+                            {{__('Izbriši autora')}}
                             </span>
                             </button>
 
@@ -86,7 +86,7 @@
                                 function deleteAuthor(id) {
                                     var token = $("meta[name='csrf-token']").attr("content");
                                     swal({
-                                        text: "Da li ste sigurni da želite da izbrišete autora?",
+                                        text: "@lang('Da li ste sigurni da želite da izbrišete autora?')",
                                         showCancelButton: !0,
                                         timer: '5000',
                                         animation: true,
@@ -136,7 +136,7 @@
     <div class="pl-[30px] height-profile pb-[30px] scroll mt-[20px]">
         <div class="mr-[30px]">
             <div class="mt-[20px]">
-                <span class="text-gray-500">Ime i prezime</span>
+                <span class="text-gray-500">{{__('Ime i prezime')}}</span>
                 <p class="font-medium">{{$author->NameSurname}} </p>
 
                 <img
@@ -149,7 +149,7 @@
 
             </div>
             <div class="mt-[40px]" style="width: 520px">
-                <span class="text-gray-500">Biografija</span>
+                <span class="text-gray-500">{{__('Biografija')}}</span>
                 <p class="font-medium max-w-[550px]">
                     {!! $author->biography !!}
                 </p>
@@ -160,16 +160,14 @@
                 <a
                         class="wikipedia-link"
                         href="{{$author->wikipedia}}"
-                        target="_blank">Pročitaj više</a>
+                        target="_blank">{{__('Pročitaj više')}}</a>
             </p>
         </div>
     </div>
     </div>
 </section>
 <style>
-    hr {
-        margin: 20px 0 20px 0;
-    }
+hr { margin: 20px 0 20px 0; }
 </style>
 <!-- End Content -->
 

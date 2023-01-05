@@ -33,7 +33,6 @@ class MaximumPasswordLengthRule implements Rule
      */
     public function message()
     {
-        // return 'The validation error message.';
-        return 'Polje za lozinku ne smije sadržati više od 255 karaktera.';
+        return trans('Polje za lozinku ne smije sadržati više od 255 karaktera.');
     }
 }

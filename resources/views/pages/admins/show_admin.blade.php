@@ -418,17 +418,17 @@
         preview: '.image-previewer',
         setRatio: 1,
         allowedExtensions: ['jpg', 'jpeg', 'png'],
-        buttonsText: ['{{__('Sačuvaj')}}', 'Otkaži'],
+        buttonsText: ['{{__('Sačuvaj')}}', '{{__('Otkaži')}}'],
         buttonsColor: ['#4558BE', '#ee5155', -15],
         processUrl: '{{route('admin.crop')}}',
         withCSRF: ['_token', '{{csrf_token()}}'],
         onSuccess: function (message, element, status) {
             swal({
-                title: "Uspješno!",
+                title: "@lang('Uspješno!')",
                 text: "Uspješno ste izmijenili profilnu fotografiju!",
                 type: "success",
                 timer: 1000,
-                confirmButtonText: 'U redu',
+                confirmButtonText: "@lang('U redu')",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
             }).then(function () {
@@ -437,11 +437,11 @@
         },
         onError: function (message, element, status) {
             swal({
-                title: "Greška!",
+                title: "@lang('Greška!')",
                 text: "Zahtijevana ekstenzija nije podržana!",
                 type: "error",
                 timer: 1500,
-                confirmButtonText: 'U redu',
+                confirmButtonText: "@lang('U redu')",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
             });

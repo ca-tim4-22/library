@@ -32,7 +32,6 @@ class RegexCheckRule implements Rule
      */
     public function message()
     {
-        // return 'The validation error message.';
-        return 'Polje za lozinku mora sadržati veliko, malo slovo kao i broj.';
+        return trans('Polje za lozinku mora sadržati veliko, malo slovo kao i broj.');
     }
 }

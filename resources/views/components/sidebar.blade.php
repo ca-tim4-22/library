@@ -187,7 +187,7 @@
                                         id="btnFullscreen"
                                         type="button"
                                         style="outline: none;border: none;"
-                                        class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">Fullscreen
+                                        class="transition duration-300 ease-in group-hover:text-[#576cdf] inline text-[15px] ml-[20px]">{{__('Fullscreen')}}
                                 </button>
                             {{-- Script for fullscreen - JQuery --}}
                             <script src="{{asset('js/fullscreen-jquery.js')}}"></script>

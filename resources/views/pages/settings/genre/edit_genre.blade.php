@@ -17,7 +17,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        Izmijeni podatke
+                        {{__('Izmijeni podatke')}}
                     </h1>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                             <li>
                                 <a href="{{route('setting-policy')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Podešavanja
+                                    {{__('Podešavanja')}}
                                 </a>
                             </li>
                             <li>
@@ -35,7 +35,7 @@
                             <li>
                                 <a href="{{route('setting-genre')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Žanrovi
+                                    {{__('Žanrovi')}}
                                 </a>
                             </li>
                             <li>
@@ -44,7 +44,7 @@
                             <li>
                                 <a href="{{route('edit-genre', $genre->id)}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    Izmijeni podatke
+                                    {{__('Izmijeni podatke')}}
                                 </a>
                             </li>
                         </ol>
@@ -63,7 +63,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Naziv žanra <span class="text-red-500">*@error('name') {{$message}} @enderror</span>
+                        <p>{{__('Naziv žanra')}} <span class="text-red-500">*@error('name') {{$message}} @enderror</span>
                         </p>
                         <input type="text" name="name" id="name"
                                value="{{$genre->name}}"
@@ -72,12 +72,12 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Uploaduj ikonicu </p>
+                        <p>{{__('Uploaduj ikonicu')}} </p>
                         <div id="empty-cover-art-ikonica"
                              class="flex w-[90%] mt-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]">
                             <div class="bg-gray-300 h-[40px] w-[102px] px-[20px] pt-[10px]">
                                 <label class="cursor-pointer">
-                                    <p class="leading-normal">Priloži...</p>
+                                    <p class="leading-normal">{{__('Priloži')}}...</p>
                                     <input id="icon-upload" name="icon"
                                            id="icon" type='file' class="hidden"
                                            :multiple="multiple"
@@ -89,7 +89,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p class="inline-block">Opis</p>
+                            <p class="inline-block">{{__('Opis')}}</p>
 
                             <textarea name="description" id="description"
                                       rows="10"
@@ -110,6 +110,7 @@
                         </button>
                         <button id="sacuvajZanrEdit" type="submit"
                                 class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
+                            {{__('Sačuvaj')}}
                              <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>

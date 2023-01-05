@@ -16,7 +16,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        Izmijeni podatke
+                        {{__('Izmijeni podatke')}}
                     </h1>
                 </div>
                 <div>
@@ -25,7 +25,7 @@
                             <li>
                                 <a href="{{route('all-student')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Svi učenici
+                                    {{__('Svi učenici')}}
                                 </a>
                             </li>
                             <li>
@@ -34,7 +34,7 @@
                             <li>
                                 <a href="{{route('edit-student', $student->username)}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    Izmijeni podatke
+                                    {{__('Izmijeni podatke')}}
                                 </a>
                             </li>
                         </ol>
@@ -53,7 +53,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
                     <div class="mt-[20px]">
-                        <p>Ime i prezime <span class="text-red-500">*@error('name') {{$message}} @enderror</span>
+                        <p>{{__('Ime i prezime')}} <span class="text-red-500">*@error('name') {{$message}} @enderror</span>
                         </p>
                         <input type="text" name="name" id="name"
                                value="{{$student->name}}"
@@ -62,24 +62,24 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Tip korisnika</span>
+                        <span>{{__('Tip korisnika')}}</span>
                         <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                 name="user_type_id" disabled>
                             <option value="1">
-                                Učenik
+                                {{__('Učenik')}}
                             </option>
                         </select>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>JMBG <span class="text-red-500">*</span></span>
+                        <span>{{__('JMBG')}} <span class="text-red-500">*</span></span>
                         <input disabled type="text" name="JMBG" id="JMBG"
                                value="{{$student->JMBG}}"
                                class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>E-mail <span class="text-red-500">*@error('email') {{$message}} @enderror</span>
+                        <p>{{__('E-mail')}} <span class="text-red-500">*@error('email') {{$message}} @enderror</span>
                         </p>
                         <input type="email" name="email" id="email"
                                value="{{$student->email}}"
@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Korisničko ime <span class="text-red-500">*@error('username') {{$message}} @enderror</span>
+                        <p>{{__('Korisničko ime')}} <span class="text-red-500">*@error('username') {{$message}} @enderror</span>
                         </p>
                         <input type="text" name="username" id="username"
                                value="{{$student->username}}"
@@ -116,7 +116,7 @@
                                     <polyline
                                             points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal">{{__('Dodaj fotografiju')}}</span>
                                 <input type="file" name="photo" for="photo"
                                        id="photo" class="hidden"
                                        :accept="accept"
@@ -147,6 +147,7 @@
                         </button>
                         <button type="submit"
                                 class="mr-[30px] mb-[10px] btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
+                            {{__('Sačuvaj')}}
                              <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>

@@ -62,7 +62,7 @@
                     <a href="{{route('edit-librarian', $librarian->username)}}"
                        class="hover:text-blue-600 inline ml-[20px] pr-[10px]">
                         <i class="fas fa-edit mr-[3px] "></i>
-                        {{__('Izmijeni podatke')}}
+                        {{__('{{__('Izmijeni podatke')}}')}}
                     </a>
                     <p class="inline cursor-pointer text-[25px] py-[10px] pl-[30px] border-l-[1px] border-gray-300 dotsLibrarianProfile hover:text-[#606FC7]"
                        id="dropdownLibrarian">
@@ -419,17 +419,17 @@
         preview: '.image-previewer',
         setRatio: 1,
         allowedExtensions: ['jpg', 'jpeg', 'png'],
-        buttonsText: ['', 'Otkaži'],
+        buttonsText: ['{{__('Sačuvaj')}}', '{{__('Otkaži')}}'],
         buttonsColor: ['#4558BE', '#ee5155', -15],
         processUrl: '{{route('librarian.crop')}}',
         withCSRF: ['_token', '{{csrf_token()}}'],
         onSuccess: function (message, element, status) {
             swal({
-                title: "Uspješno!",
+                title: "@lang('Uspješno!')",
                 text: "Uspješno ste izmijenili profilnu fotografiju!",
                 type: "success",
                 timer: 1000,
-                confirmButtonText: 'U redu',
+                confirmButtonText: "@lang('U redu')",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
             }).then(function () {
@@ -438,11 +438,11 @@
         },
         onError: function (message, element, status) {
             swal({
-                title: "Greška!",
+                title: "@lang('Greška!')",
                 text: "Zahtijevana ekstenzija nije podržana!",
                 type: "error",
                 timer: 1500,
-                confirmButtonText: 'U redu',
+                confirmButtonText: "@lang('U redu')",
                 allowEscapeKey: false,
                 allowOutsideClick: false,
             });

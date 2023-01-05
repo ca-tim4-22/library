@@ -34,7 +34,7 @@
                             <li>
                                 <a href=""
                                    class="text-gray-400 hover:text-blue-600">
-                                    Izmijeni podatke
+                                    {{__('Izmijeni podatke')}}
                                 </a>
                             </li>
                         </ol>

@@ -17,7 +17,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        Novi administrator
+                        {{__('Novi administrator')}}
                     </h1>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                             <li>
                                 <a href="{{route('all-admin')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Svi administratori
+                                    {{__('Svi administratori')}}
                                 </a>
                             </li>
                             <li>
@@ -35,7 +35,7 @@
                             <li>
                                 <a href="{{route('new-admin')}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    Novi administrator
+                                    {{__('Novi administrator')}}
                                 </a>
                             </li>
                         </ol>
@@ -52,7 +52,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[100px]">
                     <div class="mt-[20px]">
-                        <span>Ime i prezime <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
+                        <span>{{__('Ime i prezime')}} <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
                         <input
                                 type="text" name="name" id="name"
                                 class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
@@ -61,18 +61,18 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Tip korisnika</span>
+                        <span>{{__('Tip korisnika')}}</span>
                         <select class="flex w-[90%] mt-2 px-2 py-2 border bg-gray-300 border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                 id="user_type_id" for="user_type_id"
                                 name="user_type_id" disabled>
                             <option value="3">
-                                Administrator
+                                {{__('Administrator')}}
                             </option>
                         </select>
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Pol <span class="text-red-500">*</span></span>
+                        <span>{{__('Pol')}} <span class="text-red-500">*</span></span>
                         <select
                                 required
                                 oninvalid="this.setCustomValidity('Morate odabrati pol')"
@@ -82,20 +82,20 @@
                                 id="user_gender_id" for="user_gender_id"
                                 name="user_gender_id">
                             <option value="">
-                                Odaberite
+                                {{__('Odaberite')}}
                             </option>
                             <option value="1" {{ old(
                             'user_gender_id') == '1' ? 'selected' : '' }}>
-                            Muški
+                            {{__('Muški')}}
                             </option>
                             <option value="2" {{ old(
                             'user_gender_id') == '2' ? 'selected' : '' }}>
-                            Ženski
+                            {{__('Ženski')}}
                         </select>
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>JMBG
+                        <p>{{__('JMBG')}}
                             <span class="text-red-500">* 
                         @error('JMBG')
                         {{$message}} 
@@ -116,7 +116,7 @@
                     <div class="mt-[20px]">
 
                         <span>
-                            E-mail <span style="color: red">*</span>
+                            {{__('E-mail')}} <span style="color: red">*</span>
                             <span
                                     style="cursor: help"
                                     data-tooltip-content="Školski email je email koji u sebi sadrži domen škole. Primjer: @ets-pg.edu.me"
@@ -132,7 +132,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Korisničko ime <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
+                        <span>{{__('Korisničko ime')}} <span class="text-red-500">* @error('username'){{$message}} @enderror</span></span>
                         <input type="text" name="username" id="username"
                                class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                                onkeydown="clearErrorsUsernameBibliotekar()"
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <span>Lozinka <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
+                        <span>{{__('Lozinka')}} <span class="text-red-500">* @error('password'){{$message}} @enderror</span></span>
                         <input type="password" name="password" id="password"
                                class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"/>
                         <span toggle="#password"
@@ -149,7 +149,7 @@
                     </div>
 
                     <div>
-                        <span>Ponovite lozinku <span
+                        <span>{{__('Ponovite lozinku')}} <span
                                     class="text-red-500">*</span></span>
                         <input type="password" name="password_confirmation"
                                id="password"
@@ -178,7 +178,7 @@
                                     <polyline
                                             points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal no-select">Dodaj fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal no-select">{{__('Dodaj fotografiju')}}</span>
                                 <input type='file' name="photo" for="photo"
                                        id="photo" class="hidden"
                                        :accept="accept"

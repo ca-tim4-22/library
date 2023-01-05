@@ -17,7 +17,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        Izmijeni podatke
+                        {{__('Izmijeni podatke')}}
                     </h1>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                             <li>
                                 <a href="{{route('all-author')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Evidencija autora
+                                    {{__('Evidencija autora')}}
                                 </a>
                             </li>
                             <li>
@@ -35,7 +35,7 @@
                             <li>
                                 <a href="{{route('edit-author', $author->NameSurname)}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    Izmijeni podatke
+                                    {{__('Izmijeni podatke')}}
                                 </a>
                             </li>
                         </ol>
@@ -55,7 +55,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <p>Ime i prezime <span class="text-red-500">* @error('NameSurname') {{$message}}
+                        <p>{{__('Ime i prezime')}} <span class="text-red-500">* @error('NameSurname') {{$message}}
                         @enderror</span></p>
                         <input type="text" name="NameSurname" id="NameSurname"
                                value="{{$author->NameSurname}}"
@@ -64,7 +64,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Vikipedija <span class="text-red-500">* @error('wikipedia') {{$message}}
+                        <p>{{__('Vikipedija')}} <span class="text-red-500">* @error('wikipedia') {{$message}}
                         @enderror</span></p>
                         <input type="text" name="wikipedia" id="wikipedia"
                                value="{{$author->wikipedia}}"
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p class="inline-block mb-2">Biografija<span
+                        <p class="inline-block mb-2">{{__('Biografija')}}<span
                                     class="text-red-500"> * @error('biography') {{$message}}
                             @enderror</span></p>
                         <textarea name="biography"
@@ -101,7 +101,7 @@
                                     <polyline
                                             points="21 15 16 10 5 21"></polyline>
                                 </svg>
-                                <span class="px-4 py-2 mt-2 leading-normal">Dodaj fotografiju</span>
+                                <span class="px-4 py-2 mt-2 leading-normal">{{__('Dodaj fotografiju')}}</span>
                                 <input type='file' name="photo" for="photo"
                                        id="photo" class="hidden"
                                        :accept="accept"

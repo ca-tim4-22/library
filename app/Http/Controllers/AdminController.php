@@ -190,7 +190,7 @@ class AdminController extends Controller
 
             return response()->json([
                 'status' => 1,
-                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+                'msg' => 'Uspješno ste izmijenili profilnu sliku!'
             ]);
         }
     }

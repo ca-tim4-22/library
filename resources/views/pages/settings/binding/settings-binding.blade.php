@@ -34,7 +34,7 @@
                 <script>
                     var user = "{{Session::get('success-binding')}}";
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: user,
                         timer: 2500,
                         type: "success",
@@ -46,7 +46,7 @@
                 @if (session()->has('binding-updated'))
                 <script>
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: "Izmijenili ste povez!",
                         timer: 2500,
                         type: "success",
@@ -292,8 +292,7 @@
                   d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z">
             </path>
         </svg>
-        <p class="font-medium text-white">{{__('Trenutno nema poveza u bazi
-            podataka!')}}</p>
+        <p class="font-medium text-white">{{__('Trenutno nema poveza u bazi podataka!')}}</p>
     </div>
 
     @endif
@@ -426,11 +425,11 @@
             if (idsArr.length <= 0) {
 
                 swal({
-                    title: "Greška!",
+                    title: "@lang('Greška!')",
                     text: "Morate selektovati makar jedan povez.",
                     type: "error",
                     timer: 1500,
-                    confirmButtonText: 'U redu',
+                    confirmButtonText: "@lang('U redu')",
                     allowEscapeKey: false,
                     allowOutsideClick: false,
                 });
@@ -451,10 +450,10 @@
                                 alert(data['message']);
                             } else {
                                 swal({
-                                    title: "Uspješno!",
+                                    title: "@lang('Uspješno!')",
                                     type: "success",
                                     timer: 1000,
-                                    confirmButtonText: 'U redu',
+                                    confirmButtonText: "@lang('U redu')",
                                     allowEscapeKey: false,
                                     allowOutsideClick: false,
                                 }).then(function () {

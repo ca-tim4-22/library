@@ -6,7 +6,7 @@
         <div class="flex flex-row ml-[30px]">
             <div class="w-[50%] mb-[150px]">
                 <div class="mt-[20px]">
-                    <p>Broj strana <span class="text-red-500">* @error('page_count') {{$message}} @enderror</span>
+                    <p>{{__('Broj strana')}} <span class="text-red-500">* @error('page_count') {{$message}} @enderror</span>
                     </p>
                     <input type="number" name="page_count" id="brStrana"
                            class="flex w-[45%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="mt-[20px]">
-                    <p>Jezik <span class="text-red-500">* @error('language_id') {{$message}} @enderror</span>
+                    <p>{{__('Jezik')}} <span class="text-red-500">* @error('language_id') {{$message}} @enderror</span>
                     </p>
                     <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                             name="language_id" id="jezik"
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="mt-[20px]">
-                    <p>Pismo <span class="text-red-500">* @error('letter_id') {{$message}} @enderror</span>
+                    <p>{{__('Pismo')}} <span class="text-red-500">* @error('letter_id') {{$message}} @enderror</span>
                     </p>
                     <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                             name="letter_id" id="pismo"
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="mt-[20px]">
-                    <p>Povez <span class="text-red-500">* @error('binding_id') {{$message}} @enderror</span>
+                    <p>{{__('Povez')}} <span class="text-red-500">* @error('binding_id') {{$message}} @enderror</span>
                     </p>
                     <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                             name="binding_id" id="povez"
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="mt-[20px]">
-                    <p>Format <span class="text-red-500">* @error('format_id') {{$message}} @enderror</span>
+                    <p>{{__('Format')}} <span class="text-red-500">* @error('format_id') {{$message}} @enderror</span>
                     </p>
                     <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                             name="format_id" id="format"
@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="mt-[20px]">
-                    <p>Međunarodni standardni broj knjige
+                    <p>{{__('Međunarodni standardni broj knjige')}}
                         <span class="text-red-500">* @error('ISBN') {{$message}} @enderror</span>
                         <span style="margin-left: 10px" class="hide_this color"
                               id="characters-counter">13</span>

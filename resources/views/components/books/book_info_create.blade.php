@@ -16,7 +16,7 @@
                             {{$error}}
                             @endforeach
                             @endif
-                            <p>Naziv knjige <span class="text-red-500">* @error('title') {{$message}} @enderror</span>
+                            <p>{{__('Naziv knjige')}} <span class="text-red-500">* @error('title') {{$message}} @enderror</span>
                             </p>
                             <input type="text" name="title" id="nazivKnjiga"
                                    class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p class="inline-block mb-2">Kratki sadržaj <span
+                            <p class="inline-block mb-2">{{__('Kratki sadržaj')}} <span
                                         class="text-red-500">* @error('body') {{$message}} @enderror</span>
                             </p>
                             <textarea name="body"
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="mt-[20px]">
-                            <p>Izaberite kategorije <span class="text-red-500">* @error('category_id') {{$message}} @enderror</span>
+                            <p>{{__('Izaberite kategorije')}} <span class="text-red-500">* @error('category_id') {{$message}} @enderror</span>
                             </p>
                             <select x-cloak id="kategorija" name="category_id">
 
@@ -156,7 +156,7 @@
                     </div>
 
                     <div class="mt-[20px]">
-                        <p>Izaberite žanrove <span class="text-red-500">* @error('genre_id') {{$message}} @enderror</span>
+                        <p>{{__('Izaberite žanrove')}} <span class="text-red-500">* @error('genre_id') {{$message}} @enderror</span>
                         </p>
                         <select x-cloak id="zanr" name="genre_id">
 
@@ -278,7 +278,7 @@
 
         <div class="w-[50%]">
             <div class="mt-[20px]">
-                <p>Izaberite autore <span class="text-red-500">* @error('author_id') {{$message}} @enderror</span>
+                <p>{{__('Izaberite autore')}} <span class="text-red-500">* @error('author_id') {{$message}} @enderror</span>
                 </p>
                 <select x-cloak id="autori" name="author_id">
 
@@ -393,7 +393,7 @@
         </div>
 
         <div class="mt-[20px]">
-            <p>Izdavač <span class="text-red-500">* @error('publisher_id') {{$message}} @enderror</span>
+            <p>{{__('Izdavač')}} <span class="text-red-500">* @error('publisher_id') {{$message}} @enderror</span>
             </p>
             <select class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
                     name="publisher_id" id="izdavac"
@@ -413,7 +413,7 @@
         </div>
 
         <div class="mt-[20px]">
-            <p>Godina izdavanja <span class="text-red-500">* @error('year') {{$message}} @enderror</span>
+            <p>{{__('Godina izdavanja')}} <span class="text-red-500">* @error('year') {{$message}} @enderror</span>
             </p>
             <select
                     class="flex w-[45%] mt-2 px-2 py-2 border bg-white border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
@@ -435,7 +435,7 @@
         </div>
 
         <div class="mt-[20px]">
-            <p>Količina <span class="text-red-500">* @error('quantity_count') {{$message}} @enderror</span>
+            <p>{{__('Količina')}} <span class="text-red-500">* @error('quantity_count') {{$message}} @enderror</span>
             </p>
 
             <input type="number" name="quantity_count" id="knjigaKolicina"

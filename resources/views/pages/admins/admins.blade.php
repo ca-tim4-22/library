@@ -38,7 +38,7 @@
                 @if (session()->has('success-admin'))
                 <script>
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: "Uspješno ste dodali administratora!",
                         timer: 2500,
                         type: "success",
@@ -50,7 +50,7 @@
                 @if (session()->has('admin-updated'))
                 <script>
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: "Uspješno ste izmijenili profil administratora!",
                         timer: 2500,
                         type: "success",
@@ -401,11 +401,15 @@
         }).then(function (e) {
             if (e.value === true) {
                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                swal(
-                    'Uspješno!',
-                    'Administrator je uspješno izbrisan.',
-                    'success'
-                ).then(function () {
+                swal({
+                    title: "@lang('Uspješno!')",
+                    text: "@lang('Administrator je uspješno izbrisan.')",
+                    type: "success",
+                    timer: 1500,
+                    confirmButtonText: "@lang('U redu')",
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                }).then(function () {
                     window.location.href = "/administratori";
                 });
                 $.ajax({
@@ -504,11 +508,11 @@
             if (idsArr.length <= 0) {
 
                 swal({
-                    title: "Greška!",
-                    text: "Morate selektovati makar jednog administratora.",
+                    title: "@lang('Greška!')",
+                    text: "@lang('Morate selektovati makar jednog administratora.')",
                     type: "error",
                     timer: 1500,
-                    confirmButtonText: 'U redu',
+                    confirmButtonText: "@lang('U redu')",
                     allowEscapeKey: false,
                     allowOutsideClick: false,
                 });
@@ -529,10 +533,10 @@
                                 alert(data['message']);
                             } else {
                                 swal({
-                                    title: "Uspješno!",
+                                    title: "@lang('Uspješno!')",
                                     type: "success",
                                     timer: 1000,
-                                    confirmButtonText: 'U redu',
+                                    confirmButtonText: "@lang('U redu')",
                                     allowEscapeKey: false,
                                     allowOutsideClick: false,
                                 }).then(function () {

@@ -12,7 +12,7 @@
             @error('year')error-border-tab @enderror
             @error('quantity_count')error-border-tab @enderror
             ">
-                Osnovni detalji
+                {{__('Osnovni detalji')}}
             </a>
             <a class="tab inline ml-[70px] 
             @error('page_count')error-border-tab @enderror
@@ -22,13 +22,13 @@
             @error('format_id')error-border-tab @enderror
             @error('ISBN')error-border-tab @enderror
             ">
-                Specifikacija
+                {{__('Specifikacija')}}
 
             </a>
             <a class="tab inline ml-[70px] 
             @error('cover')error-border-tab @enderror
             ">
-                Multimedija
+                {{__('Multimedija')}}
             </a>
         </div>
 

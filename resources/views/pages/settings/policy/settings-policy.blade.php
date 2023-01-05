@@ -32,7 +32,7 @@
                         </svg>
                         <span class="sr-only">Info</span>
                         <div>
-                            <span class="font-medium">Uspješno!</span>
+                            <span class="font-medium">{{__('Uspješno')}}!</span>
                             {{session('policy-updated')}}
                         </div>
                     </div>

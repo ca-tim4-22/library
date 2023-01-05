@@ -17,7 +17,7 @@
             <div class="pl-[30px] py-[10px] flex flex-col">
                 <div>
                     <h1>
-                        Izmijeni podatke
+                        {{__('Izmijeni podatke')}}
                     </h1>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                             <li>
                                 <a href="{{route('setting-policy')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Podešavanja
+                                    {{__('Podešavanja')}}
                                 </a>
                             </li>
                             <li>
@@ -35,7 +35,7 @@
                             <li>
                                 <a href="{{route('setting-letter')}}"
                                    class="text-[#2196f3] hover:text-blue-600">
-                                    Pisma
+                                    {{__('Pisma')}}
                                 </a>
                             </li>
                             <li>
@@ -44,7 +44,7 @@
                             <li>
                                 <a href="{{route('edit-letter', $letter->id)}}"
                                    class="text-gray-400 hover:text-blue-600">
-                                    Izmijeni podatke
+                                    {{__('Izmijeni podatke')}}
                                 </a>
                             </li>
                         </ol>
@@ -63,7 +63,7 @@
             <div class="flex flex-row ml-[30px]">
                 <div class="w-[50%] mb-[150px]">
                     <div class="mt-[20px]">
-                        <span>Naziv pisma <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
+                        <span>{{__('Naziv pisma')}} <span class="text-red-500">* @error('name'){{$message}} @enderror</span></span>
                         <input type="text" name="name" id="name"
                                value="{{$letter->name}}"
                                class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none focus:ring-2 focus:ring-[#576cdf]"
@@ -81,6 +81,7 @@
                         </button>
                         <button id="sacuvajPismoEdit" type="submit"
                                 class="btn-animation shadow-lg w-[150px] disabled:opacity-50 focus:outline-none text-sm py-2.5 px-5 transition duration-300 ease-in rounded-[5px] hover:bg-[#46A149] bg-[#4CAF50]">
+                            {{__('Sačuvaj')}}
                              <i class="fas fa-check ml-[4px]"></i>
                         </button>
                     </div>

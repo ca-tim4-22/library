@@ -1,7 +1,7 @@
 @if (session()->has('update-book'))
 <script>
     swal({
-        title: "Uspješno!",
+        title: "@lang('Uspješno!')",
         text: "Uspješno ste izmijenili knjigu!",
         timer: 2500,
         type: "success",
@@ -23,7 +23,7 @@
 @if (session()->has('book-photo-deleted'))
 <script>
     swal({
-        title: "Uspješno!",
+        title: "@lang('Uspješno!')",
         text: "Uspješno ste izbrisali fotografiju knjige!",
         timer: 1500,
         type: "success",

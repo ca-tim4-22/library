@@ -39,7 +39,7 @@
                 @if (session()->has('success-student'))
                 <script>
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: "Uspješno ste dodali učenika!",
                         timer: 2500,
                         type: "success",
@@ -51,7 +51,7 @@
                 @if (session()->has('student-updated'))
                 <script>
                     swal({
-                        title: "Uspješno!",
+                        title: "@lang('Uspješno!')",
                         text: "Uspješno ste izmijenili profil učenika!",
                         timer: 2500,
                         type: "success",
@@ -504,11 +504,11 @@
             if (idsArr.length <= 0) {
 
                 swal({
-                    title: "Greška!",
-                    text: "Morate selektovati makar jednog učenika.",
+                    title: "@lang('Greška!')",
+                    text: "@lang('Morate selektovati makar jednog učenika.')",
                     type: "error",
                     timer: 1500,
-                    confirmButtonText: 'U redu',
+                    confirmButtonText: "@lang('U redu')",
                     allowEscapeKey: false,
                     allowOutsideClick: false,
                 });
@@ -529,10 +529,10 @@
                                 alert(data['message']);
                             } else {
                                 swal({
-                                    title: "Uspješno!",
+                                    title: "@lang('Uspješno!')",
                                     type: "success",
                                     timer: 1000,
-                                    confirmButtonText: 'U redu',
+                                    confirmButtonText: "@lang('U redu')",
                                     allowEscapeKey: false,
                                     allowOutsideClick: false,
                                 }).then(function () {

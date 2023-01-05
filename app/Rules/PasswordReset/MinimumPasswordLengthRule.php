@@ -33,7 +33,6 @@ class MinimumPasswordLengthRule implements Rule
      */
     public function message()
     {
-        // return 'The validation error message.';
-        return 'Polje za lozinku mora sadržati minimum 8 karaktera.';
+        return trans('Polje za lozinku mora sadržati minimum 8 karaktera.');
     }
 }
