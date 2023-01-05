@@ -34,7 +34,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Dodali ste pismo!",
+                        text: "@lang('Dodali ste pismo!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -46,7 +46,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Izmijenili ste pismo!",
+                        text: "@lang('Izmijenili ste pismo!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -302,7 +302,7 @@
     function deleteConfirmation(id) {
         swal({
             title: "@lang('Izbriši?')",
-            text: "Da li ste sigurni da želite da izbrišete pismo?",
+            text: "@lang('Da li ste sigurni da želite da izbrišete pismo?"')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
@@ -424,7 +424,7 @@
 
                 swal({
                     title: "@lang('Greška!')",
-                    text: "Morate selektovati makar jedno pismo.",
+                    text: "@lang('Morate selektovati makar jedno pismo.')",
                     type: "error",
                     timer: 1500,
                     confirmButtonText: "@lang('U redu')",

@@ -33,7 +33,6 @@ class MinimumLengthRule implements Rule
      */
     public function message()
     {
-        // return 'The validation error message.';
-        return 'Ovo polje mora sadržati minimum 2 karaktera.';
+        return trans('Ovo polje mora sadržati minimum 2 karaktera.');
     }
 }

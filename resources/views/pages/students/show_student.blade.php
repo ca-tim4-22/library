@@ -243,7 +243,7 @@
             <script>
                 swal({
                     title: "@lang('Uspješno!')",
-                    text: "Aktivirali ste nalog!",
+                    text: "@lang('Aktivirali ste nalog!')",
                     timer: 2500,
                     type: "success",
                 });
@@ -437,7 +437,7 @@
         onSuccess: function (message, element, status) {
             swal({
                 title: "@lang('Uspješno!')",
-                text: "Uspješno ste izmijenili profilnu fotografiju!",
+                text: "@lang('Uspješno ste izmijenili profilnu fotografiju!')",
                 type: "success",
                 timer: 1000,
                 confirmButtonText: "@lang('U redu')",
@@ -450,7 +450,7 @@
         onError: function (message, element, status) {
             swal({
                 title: "@lang('Greška!')",
-                text: "Zahtijevana ekstenzija nije podržana!",
+                text: "@lang('Zahtijevana ekstenzija nije podržana!')",
                 type: "error",
                 timer: 1500,
                 confirmButtonText: "@lang('U redu')",

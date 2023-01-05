@@ -34,7 +34,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Dodali ste žanr!",
+                        text: "@lang('Dodali ste žanr!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -46,7 +46,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Izmijenili ste žanr!",
+                        text: "@lang('Izmijenili ste žanr!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -318,7 +318,7 @@
     function deleteConfirmation(id) {
         swal({
             title: "@lang('Izbriši?')",
-            text: "Da li ste sigurni da želite da izbrišete žanr?",
+            text: "@lang('Da li ste sigurni da želite da izbrišete žanr?')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
@@ -440,7 +440,7 @@
 
                 swal({
                     title: "@lang('Greška!')",
-                    text: "Morate selektovati makar jedan žanr.",
+                    text: "@lang('Morate selektovati makar jedan žanr.')",
                     type: "error",
                     timer: 1500,
                     confirmButtonText: "@lang('U redu')",

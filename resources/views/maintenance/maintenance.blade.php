@@ -80,7 +80,7 @@
     function showAlert() {
         let e;
         Swal.fire({
-            title: "Online biblioteka će uskoro biti dostupna! Stay tuned:)",
+            title: "@lang('Online biblioteka će uskoro biti dostupna! Stay tuned:)')",
             timer: 1800,
             timerProgressBar: !0,
             didOpen() {

@@ -22,7 +22,7 @@
             <!-- Heading of content -->
             <div class="heading mt-[7px]" style="margin-top: 11px">
                 <h1 style="font-size: 30px" class="pl-[30px] pb-[21px] border-b-[1px] border-[#e4dfdf] ">
-                    Izdate knjige
+                    {{__('Izdate knjige')}}
                 </h1>
             </div>
 
@@ -55,7 +55,7 @@
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
     <span class="sr-only">Info</span>
     <div>
-      <span class="font-medium">Uspješno!</span> {{session('rent-success')}}
+      <span class="font-medium">{{__('Uspješno!')}}</span> {{session('rent-success')}}
     </div>
   </div>
 @endif
@@ -137,11 +137,11 @@
                                         <div class="flex pt-[10px] text-white ">
                                             <a href="#"
                                                class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                                             </a>
                                             <a href="{{route('all-books')}}"
                                                class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                Poništi <i class="fas fa-times ml-[4px]"></i>
+                                                {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                                             </a>
                                         </div>
                                     </div>
@@ -169,11 +169,11 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <a href="#"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                                                 </a>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                                                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -243,11 +243,11 @@
                                             <div class="flex pt-[10px] text-white ">
                                                 <button type="submit" style="outline: none;"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                                                 </button>
                                                 <a href="#"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                                                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </form>
                                             </div>
@@ -317,11 +317,11 @@
                                                 type="submit"
                                                 style="outline: none;"
                                                    class="btn-animation py-2 px-[20px] transition duration-300 ease-in hover:bg-[#46A149] bg-[#4CAF50] rounded-[5px]">
-                                                    Sačuvaj <i class="fas fa-check ml-[4px]"></i>
+                                                    {{__('Sačuvaj')}} <i class="fas fa-check ml-[4px]"></i>
                                                 </button>
                                                 <a href="{{route('rented-books')}}"
                                                    class="btn-animation ml-[20px] py-2 px-[20px] transition duration-300 ease-in bg-[#F44336] hover:bg-[#F55549] rounded-[5px]">
-                                                    Poništi <i class="fas fa-times ml-[4px]"></i>
+                                                    {{__('Poništi')}} <i class="fas fa-times ml-[4px]"></i>
                                                 </a>
                                             </form>
                                             </div>

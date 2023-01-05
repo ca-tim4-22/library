@@ -27,7 +27,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => [
+            'name' => [
                 'required',
                 new MinimumLengthRule(),
                 'max:50',
@@ -36,11 +36,19 @@ class CategoryRequest extends FormRequest
             ],
             'description' => [
                 'required',
-                new MinimumLengthRule(),
-                'max:255',
+                'min:20',
+                'max:100',
                 new AtSignRule(),
             ],
-            'icon'        => 'required'
+            'icon' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'description.min' => trans('Polje za opis žanra mora sadržati minimum 20 karaktera.'),
+            'description.max' => trans('Polje za opis žanra smije sadržati maksimum 100 karaktera.'),
         ];
     }
 }

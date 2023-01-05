@@ -51,8 +51,8 @@
 @if (session()->has('success-mail'))
 <script>
     swal({
-       title: "Uspješno!", 
-       text: "Uspješno ste se prijavili za newsletter!", 
+       title: "@lang('Uspješno!')", 
+       text: "@lang('Uspješno ste se prijavili za newsletter!')", 
        timer: 2500,
        type: "success",
     });
@@ -62,8 +62,8 @@
 @if (session()->has('failure-mail'))
 <script>
     swal({
-       title: "Bezuspješno!", 
-       text: "Već ste prijavljeni!", 
+       title: "@lang('Bezuspješno!')", 
+       text: "@lang('Već ste prijavljeni!')", 
        timer: 2500,
        type: "error",
     });
@@ -355,7 +355,7 @@ if($(".holder:hidden").length == 0){
                                     icon: 'error',
                                     confirmButtonColor: '#4558BE',
                                     title: 'Oops...',
-                                    text: 'Nemate ovlašćenje za ovu operaciju!',
+                                    text: "@lang('Nemate ovlašćenje za ovu operaciju!')",
                                   })}
                              </script>
 

@@ -30,7 +30,6 @@ class AtSignRule implements Rule
      */
     public function message()
     {
-        // return 'The validation error message.';
-        return 'Ovo polje ne smije da sadrži "@" karakter.';
+        return trans("Ovo polje ne smije da sadrži '@' karakter.");
     }
 }

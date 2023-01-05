@@ -122,11 +122,14 @@
                                         }).then(function (e) {
                                             if (e.value === true) {
                                                 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                                                swal(
-                                                    'Uspješno!',
-                                                    'Uspješno ste izbrisali nalog.',
-                                                    'success'
-                                                ).then(function () {
+
+                                                swal{(
+                                                title: "@lang('Uspješno!')",
+                                                text: "@lang('Uspješno ste izbrisali nalog.')"
+                                                type: "success",
+                                                allowEscapeKey: false,
+                                                allowOutsideClick: false,
+                                                )}.then(function () {
                                                     window.location.href = "/good-bye";
                                                 });
                                                 $.ajax({
@@ -145,7 +148,6 @@
                                             return false;
                                         })
                                     }
-
                                     function deleteYourself(id) {
                                         var token = $("meta[name='csrf-token']").attr("content");
                                         swal({
@@ -425,7 +427,7 @@
         onSuccess: function (message, element, status) {
             swal({
                 title: "@lang('Uspješno!')",
-                text: "Uspješno ste izmijenili profilnu fotografiju!",
+                text: "@lang('Uspješno ste izmijenili profilnu fotografiju!')",
                 type: "success",
                 timer: 1000,
                 confirmButtonText: "@lang('U redu')",
@@ -438,7 +440,7 @@
         onError: function (message, element, status) {
             swal({
                 title: "@lang('Greška!')",
-                text: "Zahtijevana ekstenzija nije podržana!",
+                text: "@lang('Zahtijevana ekstenzija nije podržana!')",
                 type: "error",
                 timer: 1500,
                 confirmButtonText: "@lang('U redu')",

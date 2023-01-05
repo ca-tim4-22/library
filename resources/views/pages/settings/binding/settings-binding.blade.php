@@ -32,10 +32,9 @@
                 {{-- Session message for binding create --}}
                 @if (session()->has('success-binding'))
                 <script>
-                    var user = "{{Session::get('success-binding')}}";
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: user,
+                        text: "@lang('Dodali ste povez!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -47,7 +46,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Izmijenili ste povez!",
+                        text:  "@lang('Izmijenili ste povez!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -304,7 +303,7 @@
     function deleteConfirmation(id) {
         swal({
             title: "@lang('Izbriši?')",
-            text: "Da li ste sigurni da želite da izbrišete povez?",
+            text: "@lang('Da li ste sigurni da želite da izbrišete povez?')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
@@ -426,7 +425,7 @@
 
                 swal({
                     title: "@lang('Greška!')",
-                    text: "Morate selektovati makar jedan povez.",
+                    text: "@lang('Morate selektovati makar jedan povez.')",
                     type: "error",
                     timer: 1500,
                     confirmButtonText: "@lang('U redu')",

@@ -34,7 +34,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Dodali ste izdavača!",
+                        text: "@lang('Dodali ste izdavača!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -46,7 +46,7 @@
                 <script>
                     swal({
                         title: "@lang('Uspješno!')",
-                        text: "Izmijenili ste izdavača!",
+                        text: "@lang('Izmijenili ste izdavača!')",
                         timer: 2500,
                         type: "success",
                     });
@@ -301,7 +301,7 @@
     function deleteConfirmation(id) {
         swal({
             title: "@lang('Izbriši?')",
-            text: "Da li ste sigurni da želite da izbrišete izdavača?",
+            text: "@lang('Da li ste sigurni da želite da izbrišete izdavača?')",
             type: "warning",
             showCancelButton: !0,
             timer: '5000',
@@ -423,7 +423,7 @@
 
                 swal({
                     title: "@lang('Greška!')",
-                    text: "Morate selektovati makar jednog izdavača.",
+                    text: "@lang('Morate selektovati makar jednog izdavača.')",
                     type: "error",
                     timer: 1500,
                     confirmButtonText: "@lang('U redu')",

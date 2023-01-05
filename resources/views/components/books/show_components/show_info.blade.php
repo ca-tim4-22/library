@@ -2,7 +2,7 @@
 <script>
     swal({
         title: "@lang('Uspješno!')",
-        text: "Uspješno ste izmijenili knjigu!",
+        text: "@lang('Uspješno ste izmijenili knjigu!')",
         timer: 2500,
         type: "success",
     });
@@ -12,19 +12,19 @@
 @if (session()->has('tried-cover'))
 <script>
     swal({
-        title: "Bezuspješno!",
-        text: "Ne možete izbrisati naslovnu fotografiju knjige!",
+        title: "@lang('Bezuspješno!')",
+        text: "@lang('Ne možete izbrisati naslovnu fotografiju knjige!')",
         timer: 2500,
         type: "error",
     });
-</script>
+</script>Bezuspješno
 @endif
 
 @if (session()->has('book-photo-deleted'))
 <script>
     swal({
         title: "@lang('Uspješno!')",
-        text: "Uspješno ste izbrisali fotografiju knjige!",
+        text: "@lang('Uspješno ste izbrisali fotografiju knjige!')",
         timer: 1500,
         type: "success",
     });
