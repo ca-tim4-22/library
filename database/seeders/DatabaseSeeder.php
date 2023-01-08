@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // Don't change values!
 
-        \App\Models\User::factory(20)->create();
+        \App\Models\User::factory(220)->create();
 
         \App\Models\Genre::factory(20)->create();
         \App\Models\Category::factory(20)->create();

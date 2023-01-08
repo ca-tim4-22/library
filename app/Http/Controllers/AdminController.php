@@ -185,7 +185,7 @@ class AdminController extends Controller
         if ( ! $move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
-            $user = User::where('id', Auth::id())
+            $user = User::whereId(Auth::id())
                         ->update(['photo' => $new_image_name]);
 
             return response()->json([

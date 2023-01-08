@@ -46,7 +46,7 @@ class AuthorController extends Controller
             $show_criterium = false;
         }
 
-        $show_all = Author::latest('id')->count();
+        $show_all = Author::count();
 
         return view('pages.authors.authors',
             compact('authors', 'items', 'variable', 'show_all', 'searched',

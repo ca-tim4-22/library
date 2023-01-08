@@ -39,12 +39,12 @@ class ReserveBookController extends Controller
     public function create(Book $book)
     {
         $students = User::where('user_type_id', 1)->latest()->get();
-        $variable = GlobalVariable::findOrFail(1);
-        $max_date = Carbon::now()->addDays($variable->value)->format('Y-m-d');
+        $variable = GlobalVariable::whereId(1)->pluck('value')[0];
+        $max_date = Carbon::now()->addDays($variable)->format('Y-m-d');
         $today = Carbon::now()->format('Y-m-d');
 
         return view('pages.books.transactions.reservation.reserve_book',
-            compact('book', 'students', 'variable', 'max_date', 'today'));
+            compact('book', 'students', 'max_date', 'today'));
     }
 
     /**

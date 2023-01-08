@@ -25,14 +25,13 @@ class ActiveReservationController extends Controller
         $is_null = ReservationStatuses::where('status_reservations_id', 1)
                                       ->orWhere('status_reservations_id', 3)
                                       ->count();
-
         $data_true = ReservationStatuses::latest('updated_at')
                                         ->where('status_reservations_id', 1)->get();
         $data_await = ReservationStatuses::latest('updated_at')
                                          ->where('status_reservations_id', 3)->get();
 
         return view('pages.books.transactions.reservation.active_reservations',
-            compact('data_true', 'data_await', 'is_null'));
+            compact('is_null', 'data_true', 'data_await'));
     }
 
     /**
@@ -113,7 +112,7 @@ class ActiveReservationController extends Controller
     {
         $input = $request->all();
 
-        DB::table('reservation_statuses')->where('id', $id)->update([
+        DB::table('reservation_statuses')->whereId($id)->update([
             'status_reservations_id' => 1,
             'updated_at' => now(),
         ]);
@@ -132,7 +131,7 @@ class ActiveReservationController extends Controller
     {
         $input = $request->all();
 
-        DB::table('reservation_statuses')->where('id', $id)->update([
+        DB::table('reservation_statuses')->wwhereId($id)->update([
             'status_reservations_id' => 2,
             'updated_at' => now(),
         ]);

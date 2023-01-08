@@ -22,7 +22,7 @@ class WriteOffController extends Controller
      */
     public function index(Book $book)
     {
-        $variable = GlobalVariable::findOrFail(2);
+        $variable = GlobalVariable::whereId(2)->pluck('value')[0];
         $count = $book->rent->where('return_date', '<', now())->count();
 
         return view('pages.books.write_off.write_off_book',
