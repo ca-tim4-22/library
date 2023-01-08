@@ -25,35 +25,35 @@ Route::middleware('auth:api')->get('/korisnik', function (Request $request) {
 // Added route rate limiting
 Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     Route::controller(UserAPIController::class)->group(function () {
-    // Users
+        // Users
         Route::get('/korisnici', 'users');
 
-    // Students
+        // Students
         Route::get('/ucenici-svi', 'students');
         Route::get('/ucenici', 'studentsMale');
         Route::get('/ucenice', 'studentsFemale');
 
-    // Librarians
+        // Librarians
         Route::get('/bibliotekari-svi', 'librarians');
         Route::get('/bibliotekari', 'librariansMale');
         Route::get('/bibliotekarke', 'librariansFemale');
 
-    // Administrators
+        // Administrators
         Route::get('/administratori-svi', 'administrators');
         Route::get('/administratori/{parameter}', 'sortAdministrators');
 
-    // User types
+        // User types
         Route::get('/tipovi-korisnika', 'userTypes');
         Route::get('/tipovi-korisnika-broj', 'userTypesCount');
 
-    // User sorting
+        // User sorting
         Route::get('/bibliotekari/{parameter}', 'sortLibrarians');
         Route::get('/ucenici/{parameter}', 'sortStudents');
         Route::get('/administratori/{parameter}', 'sortAdministrators');
     });
 
     Route::controller(BookAPIController::class)->group(function () {
-    // Books
+        // Books
         Route::get('/knjige', 'books');
         Route::get('/knjiga/{id}', 'showBook')->name('show-book-api');
         Route::post('/nova-knjiga', 'storeBook');
@@ -63,10 +63,10 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(CategoryAPIController::class)->group(function () {
-    // Categories
+        // Categories
         Route::get('/kategorije', 'categories');
         Route::get('/kategorija/{id}', 'showCategory')
-            ->name('show-category-api');
+             ->name('show-category-api');
         Route::post('/nova-kategorija', 'storeCategory');
         Route::put('/izmijeni-kategoriju/{id}', 'updateCategory');
         Route::delete('/izbrisi-kategoriju/{id}', 'destroyCategory');
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(GenreAPIController::class)->group(function () {
-    // Genres
+        // Genres
         Route::get('/zanrovi', 'genres');
         Route::get('/zanr/{id}', 'showGenre')->name('show-genre-api');
         Route::post('/novi-zanr', 'storeGenre');
@@ -84,10 +84,10 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(PublisherAPIController::class)->group(function () {
-    // Publishers
+        // Publishers
         Route::get('/izdavaci', 'publishers');
         Route::get('/izdavac/{id}', 'showPublisher')
-            ->name('show-publisher-api');
+             ->name('show-publisher-api');
         Route::post('/novi-izdavac', 'storePublisher');
         Route::put('/izmijeni-izdavaca/{id}', 'updatePublisher');
         Route::delete('/izbrisi-izdavaca/{id}', 'destroyPublisher');
@@ -95,7 +95,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(BindingAPIController::class)->group(function () {
-    // Bindings
+        // Bindings
         Route::get('/povezi', 'bindings');
         Route::get('/povez/{id}', 'showBinding')->name('show-binding-api');
         Route::post('/novi-povez', 'storeBinding');
@@ -105,7 +105,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(FormatAPIController::class)->group(function () {
-    // Formats
+        // Formats
         Route::get('/formati', 'formats');
         Route::get('/format/{id}', 'showFormat')->name('show-format-api');
         Route::post('/novi-format', 'storeFormat');
@@ -115,7 +115,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(LetterAPIController::class)->group(function () {
-    // Letters
+        // Letters
         Route::get('/pisma', 'letters');
         Route::get('/pismo/{id}', 'showLetter')->name('show-letter-api');
         Route::post('/novo-pismo', 'storeLetter');
@@ -125,7 +125,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(LanguageAPIController::class)->group(function () {
-    // Languages
+        // Languages
         Route::get('/jezici', 'languages');
         Route::get('/jezik/{id}', 'showLanguage')->name('show-language-api');
         Route::post('/novi-jezik', 'storeLanguage');
@@ -135,7 +135,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(AuthorAPIController::class)->group(function () {
-    // Authors
+        // Authors
         Route::get('/autori', 'authors');
         Route::get('/autor/{id}', 'showAuthor')->name('show-author-api');
         Route::post('/novi-autor', 'storeAuthor');
@@ -146,10 +146,10 @@ Route::group(['prefix' => 'v1', 'middleware' => ['api']], function () {
     });
 
     Route::controller(GlobalVariableAPIController::class)->group(function () {
-    // Global Variables
+        // Global Variables
         Route::get('/globalne-varijable', 'globalVariables');
         Route::get('/globalna-varijabla/{id}', 'showGlobalVariable')
-            ->name('show-global-variable-api');
+             ->name('show-global-variable-api');
         Route::post('/nova-globalna-varijabla', 'storeGlobalVariable');
         Route::put('/izmijeni-globalnu-varijablu/{id}', 'updateGlobalVariable');
         Route::delete('/izbrisi-globalnu-varijablu/{id}',

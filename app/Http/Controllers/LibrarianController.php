@@ -91,15 +91,15 @@ class LibrarianController extends Controller
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move) {
+        if ( ! $move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::where('id', Auth::id())
-                ->update(['photo' => $new_image_name]);
+                        ->update(['photo' => $new_image_name]);
 
             return response()->json([
                 'status' => 1,
-                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+                'msg' => 'Uspješno ste izmijenili profilnu sliku!',
             ]);
         }
     }
