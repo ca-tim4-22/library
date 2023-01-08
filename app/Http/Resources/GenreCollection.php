@@ -17,11 +17,11 @@ class GenreCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'          => $this->id,
-            'name'        => Str::ucfirst($this->name),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
             'description' => $this->description,
-            'show-genre'  => [
-                'link' => route('show-genre-api', $this->id)
+            'show-genre' => [
+                'link' => route('show-genre-api', $this->id),
             ],
         ];
     }

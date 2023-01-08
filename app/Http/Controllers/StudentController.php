@@ -25,7 +25,7 @@ class StudentController extends Controller
     public function approveIndex()
     {
         $user = User::where([
-            'id'     => Auth::id(),
+            'id' => Auth::id(),
             'active' => 0,
         ])->first();
 
@@ -44,9 +44,9 @@ class StudentController extends Controller
 
         if ($request->result == 24) {
             $user->update([
-                'JMBG'           => $request->JMBG,
+                'JMBG' => $request->JMBG,
                 'user_gender_id' => $request->user_gender_id,
-                'active'         => true,
+                'active' => true,
             ]);
 
             return to_route('show-student', $user->username)
@@ -89,7 +89,7 @@ class StudentController extends Controller
             }
         } else {
             $students = User::with('gender')->latest()->where('user_type_id', 1)
-                ->paginate($items);
+                            ->paginate($items);
             $show_criterium = false;
         }
 
@@ -134,15 +134,15 @@ class StudentController extends Controller
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move) {
+        if ( ! $move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::where('id', Auth::user()->id)
-                ->update(['photo' => $new_image_name]);
+                        ->update(['photo' => $new_image_name]);
 
             return response()->json([
                 'status' => 1,
-                'msg'    => 'Uspješno ste izmijenili profilnu sliku!'
+                'msg' => 'Uspješno ste izmijenili profilnu sliku!',
             ]);
         }
     }

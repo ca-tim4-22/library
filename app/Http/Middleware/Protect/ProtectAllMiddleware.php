@@ -18,7 +18,7 @@ class ProtectAllMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
+        if ( ! Auth::check()) {
             return to_route('login');
         } else {
             return $next($request);

@@ -17,10 +17,10 @@ class GlobalVariableCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'                   => $this->id,
-            'name'                 => Str::ucfirst($this->variable),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->variable),
             'show-global-variable' => [
-                'link' => route('show-global-variable-api', $this->id)
+                'link' => route('show-global-variable-api', $this->id),
             ],
         ];
     }

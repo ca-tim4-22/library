@@ -28,8 +28,8 @@ class PolicyPaginationUpdateRequest extends FormRequest
             'value' => [
                 'numeric',
                 'gt:0',
-                new PaginationPolicyRule()
-            ]
+                new PaginationPolicyRule(),
+            ],
         ];
     }
 }

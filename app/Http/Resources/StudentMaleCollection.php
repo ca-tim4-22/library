@@ -17,7 +17,7 @@ class StudentMaleCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'   => $this->id,
+            'ID' => $this->id,
             'name' => Str::ucfirst($this->name),
         ];
     }

@@ -17,11 +17,11 @@ class CategoryCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'            => $this->id,
-            'name'          => Str::ucfirst($this->name),
-            'description'   => $this->description,
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
+            'description' => $this->description,
             'show-category' => [
-                'link' => route('show-category-api', $this->id)
+                'link' => route('show-category-api', $this->id),
             ],
         ];
     }

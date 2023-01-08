@@ -56,7 +56,7 @@ class CategoryController extends Controller
         Category::create([
             ...$request->validated(),
             'default' => $default,
-            'icon'    => $icon,
+            'icon' => $icon,
         ]);
         Session::flash('success-category', trans('Dodali ste kategoriju!'));
 
@@ -131,12 +131,12 @@ class CategoryController extends Controller
             && file_exists('storage/settings/category/'.$category->icon)
         ) {
             unlink('storage/settings/category/'.$category->icon);
-        } elseif (!str_contains($URL, 'tim4')
-            && file_exists(public_path().'\\storage\\settings\\category\\'
-                .$category->icon)
+        } elseif ( ! str_contains($URL, 'tim4')
+                   && file_exists(public_path().'\\storage\\settings\\category\\'
+                                  .$category->icon)
         ) {
             unlink(public_path().'\\storage\\settings\\category\\'
-                .$category->icon);
+                   .$category->icon);
         }
 
         return $category->delete();

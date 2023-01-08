@@ -24,7 +24,7 @@ class ReservationApprovalMiddleware
             return response()->view('success.success')->setStatusCode(200);
         } else {
             return response()->view('maintenance.access_denied')
-                ->setStatusCode(403);
+                             ->setStatusCode(403);
         }
     }
 }

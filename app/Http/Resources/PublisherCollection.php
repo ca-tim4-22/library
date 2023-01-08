@@ -17,10 +17,10 @@ class PublisherCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'             => $this->id,
-            'name'           => Str::ucfirst($this->name),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
             'show-publisher' => [
-                'link' => route('show-publisher-api', $this->id)
+                'link' => route('show-publisher-api', $this->id),
             ],
         ];
     }

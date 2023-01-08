@@ -11,11 +11,11 @@ class UserCheckRoleException extends Exception
     {
         return response(
             [
-                "error"     => "error-0004",
+                "error" => "error-0004",
                 'timestamp' => Carbon::now(),
-                'status'    => 406,
-                "message"   => "Morate biti administrator ili bibliotekar kako biste izvršili ovu radnju",
-                'path'      => url()->current(),
+                'status' => 406,
+                "message" => "Morate biti administrator ili bibliotekar kako biste izvršili ovu radnju",
+                'path' => url()->current(),
             ]
             , 406);
     }

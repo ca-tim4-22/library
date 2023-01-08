@@ -68,14 +68,14 @@ class DashboardController extends Controller
                 $prefix_yellow = $max * $reserved_books;
                 $prefix_green = $max * $rented_books;
             } elseif ($reserved_books > $overdue_books
-                && $reserved_books > $rented_books
+                      && $reserved_books > $rented_books
             ) {
                 $max = 300 / $reserved_books;
                 $prefix_yellow = $max * $overdue_books;
                 $prefix_green = $max * $rented_books;
             } elseif ($rented_books < $reserved_books
-                && $rented_books < $overdue_books
-                && $reserved_books == $overdue_books
+                      && $rented_books < $overdue_books
+                      && $reserved_books == $overdue_books
             ) {
                 $max = 300 / $overdue_books;
                 $prefix_yellow = $max * $reserved_books;
@@ -115,7 +115,7 @@ class DashboardController extends Controller
             foreach ($books as $book) {
                 foreach ($book->rent as $collection) {
                     $data = $collection->whereDate('issue_date', today())
-                        ->orderBy('id', 'desc')->get();
+                                       ->orderBy('id', 'desc')->get();
                 }
             }
         } else {
@@ -124,7 +124,7 @@ class DashboardController extends Controller
 
         if (Reservation::count() > 0) {
             $reservations = Reservation::whereDate('reservation_date', today())
-                ->get();
+                                       ->get();
         } else {
             $reservations = [];
         }
@@ -142,7 +142,7 @@ class DashboardController extends Controller
         }
 
         $data_await = ReservationStatuses::latest('updated_at')
-            ->where('status_reservations_id', 3)->get();
+                                         ->where('status_reservations_id', 3)->get();
 
         return view('pages.dashboard.dashboard_content', compact(
             'books',
@@ -169,7 +169,7 @@ class DashboardController extends Controller
         $rents = Rent::all();
         // $reservations = Reservation::all();
         $reservations = ReservationStatuses::where('status_reservations_id', 1)
-            ->get();
+                                           ->get();
         $error = 'false';
         $selected_s = [];
         $selected_l = [];
@@ -185,10 +185,10 @@ class DashboardController extends Controller
                 foreach ($book->rent as $collection) {
                     if ($request->id_student) {
                         $data = $collection->orderBy('id', 'desc')
-                            ->whereIn('borrow_user_id', $request->id_student)
-                            ->get();
+                                           ->whereIn('borrow_user_id', $request->id_student)
+                                           ->get();
                         $selected_s = User::whereIn('id', $request->id_student)
-                            ->first();
+                                          ->first();
                         $id_s = $selected_s->id;
                         if ($data->count() <= 0) {
                             $error = 'true';
@@ -196,8 +196,8 @@ class DashboardController extends Controller
                         $reservations = null;
                     } elseif ($request->id_librarian) {
                         $data = $collection->orderBy('id', 'desc')
-                            ->whereIn('rent_user_id', $request->id_librarian)
-                            ->get();
+                                           ->whereIn('rent_user_id', $request->id_librarian)
+                                           ->get();
                         $selected_l = User::whereIn('id',
                             $request->id_librarian)->first();
                         $id_l = $selected_l->id;
@@ -207,9 +207,9 @@ class DashboardController extends Controller
                         $reservations = null;
                     } elseif ($request->id_book) {
                         $data = $collection->orderBy('id', 'desc')
-                            ->whereIn('book_id', $request->id_book)->get();
+                                           ->whereIn('book_id', $request->id_book)->get();
                         $selected_b = Book::whereIn('id', $request->id_book)
-                            ->first();
+                                          ->first();
                         $id_b = $selected_b->id;
                         if ($data->count() <= 0) {
                             $error = 'true';
@@ -219,7 +219,7 @@ class DashboardController extends Controller
                         $from = $request->from;
                         $to = $request->to;
                         $data = $collection->orderBy('id', 'desc')
-                            ->whereBetween('issue_date', [$from, $to])->get();
+                                           ->whereBetween('issue_date', [$from, $to])->get();
                         $from = date("d-m-Y", strtotime($from));
                         $to = date("d-m-Y", strtotime($to));
                         if ($data->count() <= 0) {

@@ -17,10 +17,10 @@ class AuthorCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'          => $this->id,
-            'name'        => Str::ucfirst($this->NameSurname),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->NameSurname),
             'show-author' => [
-                'link' => route('show-author-api', $this->id)
+                'link' => route('show-author-api', $this->id),
             ],
         ];
     }

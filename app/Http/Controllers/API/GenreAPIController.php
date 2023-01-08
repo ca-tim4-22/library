@@ -36,14 +36,14 @@ class GenreAPIController extends Controller
     public function storeGenre(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'Naziv'       => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Deskripcija' => 'required|min:2|max:500',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog žanra",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -56,7 +56,7 @@ class GenreAPIController extends Controller
         $genre->save();
 
         return response([
-            'data' => new ShowGenreResource($genre)
+            'data' => new ShowGenreResource($genre),
         ], Response::HTTP_CREATED);
     }
 
@@ -64,14 +64,14 @@ class GenreAPIController extends Controller
     {
         $genre = Genre::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'Naziv'       => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Deskripcija' => 'required|min:2|max:500',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene žanra",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -83,7 +83,7 @@ class GenreAPIController extends Controller
         $genre->update();
 
         return response([
-            'data' => new ShowGenreResource($genre)
+            'data' => new ShowGenreResource($genre),
         ], Response::HTTP_OK);
     }
 
@@ -112,16 +112,16 @@ class GenreAPIController extends Controller
         if ($genre == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji žanr sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji žanr sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowGenreResource($genre)
+                'data' => new ShowGenreResource($genre),
             ], Response::HTTP_OK);
         }
     }

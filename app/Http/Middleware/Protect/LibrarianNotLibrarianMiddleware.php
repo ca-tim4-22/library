@@ -20,7 +20,7 @@ class LibrarianNotLibrarianMiddleware
     {
         if (Auth::check() && Auth::user()->type->id == 2) {
             return response()->view('maintenance.access_denied')
-                ->setStatusCode(403);
+                             ->setStatusCode(403);
         } else {
             return $next($request);
         }

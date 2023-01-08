@@ -23,6 +23,6 @@ class MaintenanceMiddleware
         }
 
         return response()->view('maintenance.access_denied')
-            ->setStatusCode(403);
+                         ->setStatusCode(403);
     }
 }

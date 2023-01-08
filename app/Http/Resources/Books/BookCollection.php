@@ -17,11 +17,11 @@ class BookCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'        => $this->id,
-            'title'     => Str::ucfirst($this->title),
-            'cover'     => $this->cover->photo,
+            'ID' => $this->id,
+            'title' => Str::ucfirst($this->title),
+            'cover' => $this->cover->photo,
             'show-book' => [
-                'link' => route('show-book-api', $this->id)
+                'link' => route('show-book-api', $this->id),
             ],
         ];
     }

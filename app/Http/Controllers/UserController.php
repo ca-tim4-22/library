@@ -103,7 +103,7 @@ class UserController extends Controller
                 'confirmed',
                 new MinimumPasswordLengthRule(),
                 new RegexCheckRule(),
-            ]
+            ],
         ]);
         $user->name = $user->name;
         $user->username = $user->username;
@@ -113,10 +113,10 @@ class UserController extends Controller
         $user->save();
 
         DB::table('oauth_access_tokens')
-            ->where('user_id', Auth::id())
-            ->update([
-                'revoked' => 1
-            ]);
+          ->where('user_id', Auth::id())
+          ->update([
+              'revoked' => 1,
+          ]);
 
         return back()->with('password-updated',
             'Uspješno ste izmijenili lozinku.');

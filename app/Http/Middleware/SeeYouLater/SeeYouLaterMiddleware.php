@@ -18,11 +18,11 @@ class SeeYouLaterMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
+        if ( ! Auth::check()) {
             return $next($request);
         }
 
         return response()->view('maintenance.access_denied')
-            ->setStatusCode(403);
+                         ->setStatusCode(403);
     }
 }

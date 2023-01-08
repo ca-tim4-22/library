@@ -36,7 +36,7 @@ class User extends Authenticatable
     public function toSearchableArray()
     {
         return [
-            'name'  => $this->name,
+            'name' => $this->name,
             'email' => $this->username,
         ];
     }
@@ -88,9 +88,9 @@ class User extends Authenticatable
     public function getCount($id)
     {
         return DB::table('users')
-            ->select(DB::raw('count(*) as count'))
-            ->where('user_type_id', $id)
-            ->first()
+                 ->select(DB::raw('count(*) as count'))
+                 ->where('user_type_id', $id)
+                 ->first()
             ->count;
     }
 }

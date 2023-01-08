@@ -56,7 +56,7 @@ class GenreController extends Controller
         Genre::create([
             ...$request->validated(),
             'default' => $default,
-            'icon'    => $icon,
+            'icon' => $icon,
         ]);
         Session::flash('success-genre', trans('Dodali ste žanr!'));
 
@@ -133,9 +133,9 @@ class GenreController extends Controller
             && file_exists('storage/settings/genre/'.$genre->icon)
         ) {
             unlink('storage/settings/genre/'.$genre->icon);
-        } elseif (!str_contains($URL, 'tim4')
-            && file_exists(public_path().'\\storage\\settings\\genre\\'
-                .$genre->icon)
+        } elseif ( ! str_contains($URL, 'tim4')
+                   && file_exists(public_path().'\\storage\\settings\\genre\\'
+                                  .$genre->icon)
         ) {
             unlink(public_path().'\\storage\\settings\\genre\\'.$genre->icon);
         }

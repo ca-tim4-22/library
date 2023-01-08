@@ -38,7 +38,7 @@ class AdminController extends Controller
         $searched = $request->trazeno;
         if ($searched) {
             $administrators = User::search($request->trazeno)
-                ->where('user_type_id', 3)->paginate($items);
+                                  ->where('user_type_id', 3)->paginate($items);
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
                 $show_criterium = true;
@@ -47,7 +47,7 @@ class AdminController extends Controller
             }
         } else {
             $administrators = User::with('gender')->latest()
-                ->where('user_type_id', 3)->paginate($items);
+                                  ->where('user_type_id', 3)->paginate($items);
             $show_criterium = false;
         }
 
@@ -182,15 +182,15 @@ class AdminController extends Controller
 
         $move = $file->move($dest, $new_image_name);
 
-        if (!$move) {
+        if ( ! $move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::where('id', Auth::id())
-                ->update(['photo' => $new_image_name]);
+                        ->update(['photo' => $new_image_name]);
 
             return response()->json([
                 'status' => 1,
-                'msg' => 'Uspješno ste izmijenili profilnu sliku!'
+                'msg' => 'Uspješno ste izmijenili profilnu sliku!',
             ]);
         }
     }

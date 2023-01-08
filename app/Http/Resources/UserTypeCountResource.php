@@ -19,9 +19,10 @@ class UserTypeCountResource extends JsonResource
         $students = User::where('user_type_id', 1)->count();
         $librarians = User::where('user_type_id', 2)->count();
         $administrators = User::where('user_type_id', 3)->count();
+
         return [
-            'students'       => $students,
-            'librarians'     => $librarians,
+            'students' => $students,
+            'librarians' => $librarians,
             'administrators' => $administrators,
         ];
     }

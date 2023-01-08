@@ -21,16 +21,17 @@ class StudentCollection extends JsonResource
         } else {
             $d = 'Učenica';
         }
+
         return [
-            'ID'            => $this->id,
-            'name'          => Str::ucfirst($this->name),
-            'username'      => $this->username,
-            'gender'        => $this->gender->name,
-            'email'         => $this->email,
-            'JMBG'          => $this->JMBG,
-            'role'          => $d,
-            'photo'         => $this->photo,
-            'login_count'   => $this->login_count,
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
+            'username' => $this->username,
+            'gender' => $this->gender->name,
+            'email' => $this->email,
+            'JMBG' => $this->JMBG,
+            'role' => $d,
+            'photo' => $this->photo,
+            'login_count' => $this->login_count,
             'last_login_at' => $this->last_login_at->diffForHumans(),
         ];
     }

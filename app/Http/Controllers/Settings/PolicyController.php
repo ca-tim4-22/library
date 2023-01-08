@@ -94,7 +94,7 @@ class PolicyController extends Controller
         $policy->update($request->validated());
 
         return back()->with('policy-updated',
-        trans('Izmijenili ste polisu:')."\"$policy->variable\".");
+            trans('Izmijenili ste polisu:')."\"$policy->variable\".");
     }
 
     /**

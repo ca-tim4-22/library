@@ -24,8 +24,8 @@ class BookService
             $cover->move('storage/book-covers', $name);
             DB::table('galleries')->insert([
                 'book_id' => $book->id,
-                'photo'   => $name,
-                'cover'   => 1,
+                'photo' => $name,
+                'cover' => 1,
             ]);
         }
 
@@ -37,8 +37,8 @@ class BookService
                 $file->move('storage/book-covers', $name);
                 DB::table('galleries')->insert([
                     'book_id' => $book->id,
-                    'photo'   => $name,
-                    'cover'   => 0,
+                    'photo' => $name,
+                    'cover' => 0,
                 ]);
             }
         }
@@ -50,7 +50,7 @@ class BookService
             if ($request->hasFile('cover')) {
                 $cover_old = Gallery::where([
                     'book_id' => $book->id,
-                    'cover'   => 1,
+                    'cover' => 1,
                 ])->first();
                 if ($cover_old) {
                     $URL = url()->current();
@@ -58,7 +58,7 @@ class BookService
                         && file_exists('storage/book-covers/'.$cover_old->photo)
                     ) {
                         unlink('storage/book-covers/'.$cover_old->photo);
-                    } elseif (!str_contains($URL, 'tim4')) {
+                    } elseif ( ! str_contains($URL, 'tim4')) {
                         $path = '\\storage\\book-covers\\'.$cover_old->photo;
                         unlink(public_path().$path);
                     }
@@ -70,8 +70,8 @@ class BookService
                 $cover->move('storage/book-covers', $name);
                 DB::table('galleries')->insert([
                     'book_id' => $book->id,
-                    'photo'   => $name,
-                    'cover'   => 1,
+                    'photo' => $name,
+                    'cover' => 1,
                 ]);
             }
 
@@ -83,8 +83,8 @@ class BookService
                     $file->move('storage/book-covers', $name);
                     DB::table('galleries')->insert([
                         'book_id' => $book->id,
-                        'photo'   => $name,
-                        'cover'   => 0,
+                        'photo' => $name,
+                        'cover' => 0,
                     ]);
                 }
             }
@@ -107,19 +107,19 @@ class BookService
 
         foreach ($categoryIds as $id) {
             BookCategory::create([
-                'book_id'     => $book->id,
+                'book_id' => $book->id,
                 'category_id' => $id,
             ]);
         }
         foreach ($genreIds as $id) {
             BookGenre::create([
-                'book_id'  => $book->id,
+                'book_id' => $book->id,
                 'genre_id' => $id,
             ]);
         }
         foreach ($authorIds as $id) {
             BookAuthor::create([
-                'book_id'   => $book->id,
+                'book_id' => $book->id,
                 'author_id' => $id,
             ]);
         }
@@ -133,14 +133,14 @@ class BookService
             $category = str_replace(['[', ']'], [], $category);
             $categoryIds = explode(',', $category);
             $count = BookCategory::where('category_id', $request->category_id)
-                ->count();
+                                 ->count();
             if ($count >= 1) {
                 BookCategory::where('category_id', $request->category_id)
-                    ->delete();
+                            ->delete();
             } else {
                 foreach ($categoryIds as $id) {
                     BookCategory::create([
-                        'book_id'     => $book->id,
+                        'book_id' => $book->id,
                         'category_id' => $id,
                     ]);
                 };
@@ -158,7 +158,7 @@ class BookService
             } else {
                 foreach ($genreIds as $id) {
                     BookGenre::create([
-                        'book_id'  => $book->id,
+                        'book_id' => $book->id,
                         'genre_id' => $id,
                     ]);
                 };
@@ -171,19 +171,19 @@ class BookService
             $category = str_replace(['[', ']'], [], $category);
             $categoryIds = explode(',', $category);
             $count = BookAuthor::where('author_id', $request->author_id)
-                ->count();
+                               ->count();
             if ($count >= 1) {
                 BookAuthor::where('author_id', $request->author_id)->delete();
                 foreach ($categoryIds as $id) {
                     BookAuthor::create([
-                        'book_id'   => $book->id,
+                        'book_id' => $book->id,
                         'author_id' => $id,
                     ]);
                 }
             } else {
                 foreach ($categoryIds as $id) {
                     BookAuthor::create([
-                        'book_id'   => $book->id,
+                        'book_id' => $book->id,
                         'author_id' => $id,
                     ]);
                 };
@@ -198,7 +198,7 @@ class BookService
                 foreach ($book->authors as $collection) {
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')
-                        ->whereIn('author_id', $request->id_author)->get();
+                                        ->whereIn('author_id', $request->id_author)->get();
                     $result = $books->count();
                     $ids = $request->id_author;
                     $array = [];
@@ -221,7 +221,7 @@ class BookService
                 foreach ($book->categories as $collection) {
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')
-                        ->whereIn('category_id', $request->id_category)->get();
+                                        ->whereIn('category_id', $request->id_category)->get();
                     $result = $books->count();
                     $ids = $request->id_category;
                     $array = [];
@@ -254,7 +254,7 @@ class BookService
                         unlink('storage/book-covers/'.$photo->photo);
                         $book->delete();
                     } elseif (file_exists('\\storage\\book-covers\\'
-                        .$photo->photo)
+                                          .$photo->photo)
                     ) {
                         $path = '\\storage\\book-covers\\'.$photo->photo;
                         unlink(public_path().$path);

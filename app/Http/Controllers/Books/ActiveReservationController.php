@@ -23,13 +23,13 @@ class ActiveReservationController extends Controller
     public function index()
     {
         $is_null = ReservationStatuses::where('status_reservations_id', 1)
-            ->orWhere('status_reservations_id', 3)
-            ->count();
+                                      ->orWhere('status_reservations_id', 3)
+                                      ->count();
 
         $data_true = ReservationStatuses::latest('updated_at')
-            ->where('status_reservations_id', 1)->get();
+                                        ->where('status_reservations_id', 1)->get();
         $data_await = ReservationStatuses::latest('updated_at')
-            ->where('status_reservations_id', 3)->get();
+                                         ->where('status_reservations_id', 3)->get();
 
         return view('pages.books.transactions.reservation.active_reservations',
             compact('data_true', 'data_await', 'is_null'));
@@ -115,7 +115,7 @@ class ActiveReservationController extends Controller
 
         DB::table('reservation_statuses')->where('id', $id)->update([
             'status_reservations_id' => 1,
-            'updated_at'             => now(),
+            'updated_at' => now(),
         ]);
 
         // Add reserved count to a reserved book
@@ -134,7 +134,7 @@ class ActiveReservationController extends Controller
 
         DB::table('reservation_statuses')->where('id', $id)->update([
             'status_reservations_id' => 2,
-            'updated_at'             => now(),
+            'updated_at' => now(),
         ]);
 
         return back()->with('deny', 'Rezervacija je odbijena.');

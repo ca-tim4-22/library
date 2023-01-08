@@ -23,8 +23,8 @@ class UserService
                 });
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path().'\storage\librarians')) {
+            if ( ! str_contains($URL, 'tim4')) {
+                if ( ! file_exists(public_path().'\storage\librarians')) {
                     mkdir('storage\librarians', 666, true);
                 }
             }
@@ -34,9 +34,9 @@ class UserService
         $user = User::create([
             ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id'  => 2,
-            'photo'         => isset($filename) ? $filename : 'placeholder',
-            'password'      => Hash::make($request->password)
+            'user_type_id' => 2,
+            'photo' => isset($filename) ? $filename : 'placeholder',
+            'password' => Hash::make($request->password),
         ]);
 
         return $user;
@@ -55,8 +55,8 @@ class UserService
                 });
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path().'\storage\administrators')) {
+            if ( ! str_contains($URL, 'tim4')) {
+                if ( ! file_exists(public_path().'\storage\administrators')) {
                     mkdir('storage\administrators', 666, true);
                 }
             }
@@ -67,9 +67,9 @@ class UserService
         $user = User::create([
             ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id'  => 3,
-            'photo'         => isset($filename) ? $filename : 'placeholder',
-            'password'      => Hash::make($request->password)
+            'user_type_id' => 3,
+            'photo' => isset($filename) ? $filename : 'placeholder',
+            'password' => Hash::make($request->password),
         ]);
 
         return $user;
@@ -88,8 +88,8 @@ class UserService
                 });
             $canvas->insert($image, 'center');
             $URL = url()->current();
-            if (!str_contains($URL, 'tim4')) {
-                if (!file_exists(public_path().'\storage\students')) {
+            if ( ! str_contains($URL, 'tim4')) {
+                if ( ! file_exists(public_path().'\storage\students')) {
                     mkdir('storage\students', 666, true);
                 }
             }
@@ -99,9 +99,9 @@ class UserService
         $user = User::create([
             ...$request->validated(),
             'last_login_at' => Carbon::now(),
-            'user_type_id'  => 1,
-            'photo'         => isset($filename) ? $filename : 'placeholder',
-            'password'      => Hash::make($request->password)
+            'user_type_id' => 1,
+            'photo' => isset($filename) ? $filename : 'placeholder',
+            'password' => Hash::make($request->password),
         ]);
 
         return $user;

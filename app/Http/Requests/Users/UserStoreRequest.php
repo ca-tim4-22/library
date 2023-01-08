@@ -25,9 +25,9 @@ class UserStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'           => 'required|min:2|max:128',
-            'username'       => 'required|min:2|max:64|unique:users',
-            'email'          => [
+            'name' => 'required|min:2|max:128',
+            'username' => 'required|min:2|max:64|unique:users',
+            'email' => [
                 'required',
                 'string',
                 'email',
@@ -36,10 +36,10 @@ class UserStoreRequest extends FormRequest
                 'unique:users',
                 new EmailVerificationRule(),
             ],
-            'password'       => 'required|min:8|confirmed',
-            'JMBG'           => 'required|min:13|max:13|unique:users',
-            'photo'          => 'image',
-            'user_gender_id' => 'required'
+            'password' => 'required|min:8|confirmed',
+            'JMBG' => 'required|min:13|max:13|unique:users',
+            'photo' => 'image',
+            'user_gender_id' => 'required',
         ];
     }
 }

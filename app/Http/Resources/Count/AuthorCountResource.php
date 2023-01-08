@@ -17,6 +17,7 @@ class AuthorCountResource extends JsonResource
     public function toArray($request)
     {
         $authors = Author::count();
+
         return [
             'authors' => $authors,
         ];

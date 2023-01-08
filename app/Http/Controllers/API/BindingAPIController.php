@@ -40,9 +40,9 @@ class BindingAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog poveza",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -51,7 +51,7 @@ class BindingAPIController extends Controller
         $binding->save();
 
         return response([
-            'data' => new ShowBindingResource($binding)
+            'data' => new ShowBindingResource($binding),
         ], Response::HTTP_CREATED);
     }
 
@@ -63,9 +63,9 @@ class BindingAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene poveza",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -73,7 +73,7 @@ class BindingAPIController extends Controller
         $binding->update();
 
         return response([
-            'data' => new ShowBindingResource($binding)
+            'data' => new ShowBindingResource($binding),
         ], Response::HTTP_OK);
     }
 
@@ -102,16 +102,16 @@ class BindingAPIController extends Controller
         if ($binding == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji povez sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji povez sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowBindingResource($binding)
+                'data' => new ShowBindingResource($binding),
             ], Response::HTTP_OK);
         }
     }

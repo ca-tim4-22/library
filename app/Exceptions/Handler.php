@@ -66,24 +66,24 @@ class Handler extends ExceptionHandler
             if ($exception instanceof ModelNotFoundException) {
                 return response(
                     [
-                        "error"     => "error-0001",
+                        "error" => "error-0001",
                         'timestamp' => Carbon::now(),
-                        'status'    => 404,
-                        'message'   => 'Nije pronađeno',
-                        "detail"    => "Uvjerite se da ste dobro ukucali parametar za ID u zahtjevu",
-                        'path'      => url()->current(),
+                        'status' => 404,
+                        'message' => 'Nije pronađeno',
+                        "detail" => "Uvjerite se da ste dobro ukucali parametar za ID u zahtjevu",
+                        'path' => url()->current(),
                     ]
                     , 404);
             }
             if ($exception instanceof NotFoundHttpException) {
                 return response(
                     [
-                        "error"     => "error-0002",
+                        "error" => "error-0002",
                         'timestamp' => Carbon::now(),
-                        'status'    => 400,
-                        'message'   => 'Neispravan zahtjev',
-                        "detail"    => "Uvjerite se da traženi zahtjev postoji",
-                        'path'      => url()->current(),
+                        'status' => 400,
+                        'message' => 'Neispravan zahtjev',
+                        "detail" => "Uvjerite se da traženi zahtjev postoji",
+                        'path' => url()->current(),
                     ], 400);
             }
         }

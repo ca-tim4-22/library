@@ -28,7 +28,7 @@ class RentBookController extends Controller
     public function index(Request $request)
     {
         $rents = RentStatus::with('rent')->where('book_status_id', 1)->latest()
-            ->paginate(5);
+                           ->paginate(5);
         $librarians = User::where('user_type_id', 2)->latest()->get();
         $filter = false;
         $count = true;
@@ -36,10 +36,10 @@ class RentBookController extends Controller
 
         if ($request->id_librarian) {
             $rents = Rent::whereIn('rent_user_id', $request->id_librarian)
-                ->get();
+                         ->get();
             $filter = true;
             $count = Rent::whereIn('rent_user_id', $request->id_librarian)
-                ->count();
+                         ->count();
             if ($count <= 0) {
                 $count = false;
             }
@@ -53,6 +53,7 @@ class RentBookController extends Controller
             $to = $request->keep_to;
             $rents = Rent::whereBetween('issue_date', [$from, $to])->get();
         }
+
         return view('pages.books.transactions.rent.rented_books',
             compact('rents', 'librarians', 'filter', 'count', 'id_l'));
     }
@@ -75,7 +76,7 @@ class RentBookController extends Controller
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
                     $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
-                        ->count();
+                                  ->count();
                 }
             }
         } else {
@@ -87,8 +88,8 @@ class RentBookController extends Controller
             $count = $count;
             $text = 'primjerak';
         } elseif (isset($count) && $count > 0 && $count % 10 == 2
-            || $count % 10 == 3
-            || $count % 10 == 4
+                  || $count % 10 == 3
+                  || $count % 10 == 4
         ) {
             $count = $count;
             $text = 'primjerka';
@@ -125,7 +126,7 @@ class RentBookController extends Controller
         $book_rent->borrow_user_id = $request->input('borrow_user_id');
         $book_rent->issue_date = $request->input('issue_date');
         $book_rent->return_date = Carbon::createFromFormat('m/d/Y', $myDate)
-            ->format('Y/m/d');
+                                        ->format('Y/m/d');
         $book_rent->save();
 
         $book->rented_count = $book->rented_count + 1;

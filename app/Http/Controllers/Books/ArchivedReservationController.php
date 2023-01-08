@@ -22,14 +22,14 @@ class ArchivedReservationController extends Controller
     {
         $archived_reservations
             = ReservationStatuses::where('status_reservations_id', 2)
-            ->orWhere('status_reservations_id', 4)
-            ->orWhere('status_reservations_id', 5)
-            ->get();
+                                 ->orWhere('status_reservations_id', 4)
+                                 ->orWhere('status_reservations_id', 5)
+                                 ->get();
 
         $is_null = ReservationStatuses::where('status_reservations_id', 2)
-            ->orWhere('status_reservations_id', 4)
-            ->orWhere('status_reservations_id', 5)
-            ->count();
+                                      ->orWhere('status_reservations_id', 4)
+                                      ->orWhere('status_reservations_id', 5)
+                                      ->count();
 
         return view('pages.books.transactions.archived_reservations',
             compact('archived_reservations', 'is_null'));

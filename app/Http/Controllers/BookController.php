@@ -26,7 +26,7 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware(['librarian-protect'])
-            ->except('index', 'show');
+             ->except('index', 'show');
         $this->middleware('protect-all');
     }
 
@@ -58,7 +58,7 @@ class BookController extends Controller
             }
         } else {
             $books = Book::with('cover', 'authors', 'categories', 'rent')
-                ->latest('id')->paginate($items);
+                         ->latest('id')->paginate($items);
             $show_criterium = false;
         }
 
@@ -69,7 +69,7 @@ class BookController extends Controller
             foreach ($books as $book) {
                 foreach ($book->rent as $rent) {
                     $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
-                        ->count();
+                                  ->count();
                 }
             }
         } else {
@@ -112,13 +112,13 @@ class BookController extends Controller
     {
         $models = [
             'categories' => DB::table('categories')->get(),
-            'genres'     => DB::table('genres')->get(),
-            'authors'    => DB::table('authors')->latest()->get(),
+            'genres' => DB::table('genres')->get(),
+            'authors' => DB::table('authors')->latest()->get(),
             'publishers' => DB::table('publishers')->get(),
-            'bindings'   => DB::table('bindings')->get(),
-            'formats'    => DB::table('formats')->get(),
-            'languages'  => DB::table('languages')->get(),
-            'letters'    => DB::table('letters')->get()
+            'bindings' => DB::table('bindings')->get(),
+            'formats' => DB::table('formats')->get(),
+            'languages' => DB::table('languages')->get(),
+            'letters' => DB::table('letters')->get(),
         ];
 
         return view('pages.books.new_book', compact('models'));
@@ -147,7 +147,7 @@ class BookController extends Controller
         $book = Book::create(collect($validated)->except([
             'category_id',
             'author_id',
-            'genre_id'
+            'genre_id',
         ])->toArray());
 
         $bookService->foreachStore($request, $book);
@@ -172,7 +172,7 @@ class BookController extends Controller
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
                     $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
-                        ->count();
+                                  ->count();
                 }
             }
         } else {
@@ -187,8 +187,8 @@ class BookController extends Controller
             $count = $count;
             $text = 'primjerak';
         } elseif (isset($count) && $count > 0 && $count % 10 == 2
-            || $count % 10 == 3
-            || $count % 10 == 4
+                  || $count % 10 == 3
+                  || $count % 10 == 4
         ) {
             $count = $count;
             $text = 'primjerka';
@@ -215,13 +215,13 @@ class BookController extends Controller
     {
         $models = [
             'categories' => DB::table('categories')->get(),
-            'genres'     => DB::table('genres')->get(),
-            'authors'    => DB::table('authors')->get(),
+            'genres' => DB::table('genres')->get(),
+            'authors' => DB::table('authors')->get(),
             'publishers' => DB::table('publishers')->get(),
-            'bindings'   => DB::table('bindings')->get(),
-            'formats'    => DB::table('formats')->get(),
-            'languages'  => DB::table('languages')->get(),
-            'letters'    => DB::table('letters')->get()
+            'bindings' => DB::table('bindings')->get(),
+            'formats' => DB::table('formats')->get(),
+            'languages' => DB::table('languages')->get(),
+            'letters' => DB::table('letters')->get(),
         ];
 
         return view('pages.books.edit_book', compact('book', 'models'));
@@ -263,7 +263,7 @@ class BookController extends Controller
         $URL = url()->current();
         $bookService->destroyBook($book);
 
-        if (!str_contains($URL, '/bibliotekari')) {
+        if ( ! str_contains($URL, '/bibliotekari')) {
             return to_route('all-books');
         }
 

@@ -17,10 +17,10 @@ class LanguageCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'            => $this->id,
-            'name'          => Str::ucfirst($this->name),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
             'show-language' => [
-                'link' => route('show-language-api', $this->id)
+                'link' => route('show-language-api', $this->id),
             ],
         ];
     }

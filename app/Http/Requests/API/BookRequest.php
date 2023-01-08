@@ -24,7 +24,7 @@ class BookRequest extends FormRequest
     public function rules()
     {
         return [
-            'ISBN' => 'unique:books'
+            'ISBN' => 'unique:books',
         ];
     }
 }

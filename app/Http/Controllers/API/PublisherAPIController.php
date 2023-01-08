@@ -40,9 +40,9 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog izdavača",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -51,7 +51,7 @@ class PublisherAPIController extends Controller
         $publisher->save();
 
         return response([
-            'data' => new ShowPublisherResource($publisher)
+            'data' => new ShowPublisherResource($publisher),
         ], Response::HTTP_CREATED);
     }
 
@@ -63,9 +63,9 @@ class PublisherAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene izdavača",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -73,7 +73,7 @@ class PublisherAPIController extends Controller
         $publisher->update();
 
         return response([
-            'data' => new ShowPublisherResource($publisher)
+            'data' => new ShowPublisherResource($publisher),
         ], Response::HTTP_OK);
     }
 
@@ -102,16 +102,16 @@ class PublisherAPIController extends Controller
         if ($publisher == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji izdavač sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji izdavač sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowPublisherResource($publisher)
+                'data' => new ShowPublisherResource($publisher),
             ], Response::HTTP_OK);
         }
     }

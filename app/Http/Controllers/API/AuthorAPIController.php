@@ -37,15 +37,15 @@ class AuthorAPIController extends Controller
     public function storeAuthor(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'Naziv'      => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Biografija' => 'required|min:2|max:1000',
             'Vikipedija' => 'required|min:2|max:100',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog autora",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -56,7 +56,7 @@ class AuthorAPIController extends Controller
         $author->save();
 
         return response([
-            'data' => new ShowAuthorResource($author)
+            'data' => new ShowAuthorResource($author),
         ], Response::HTTP_CREATED);
     }
 
@@ -64,15 +64,15 @@ class AuthorAPIController extends Controller
     {
         $author = Author::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'Naziv'      => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Biografija' => 'required|min:2|max:1000',
             'Vikipedija' => 'required|min:2|max:100',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene jezika",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -82,7 +82,7 @@ class AuthorAPIController extends Controller
         $author->update();
 
         return response([
-            'data' => new ShowAuthorResource($author)
+            'data' => new ShowAuthorResource($author),
         ], Response::HTTP_OK);
     }
 
@@ -111,16 +111,16 @@ class AuthorAPIController extends Controller
         if ($author == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji autor sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji autor sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowAuthorResource($author)
+                'data' => new ShowAuthorResource($author),
             ], Response::HTTP_OK);
         }
     }
@@ -128,8 +128,9 @@ class AuthorAPIController extends Controller
     public function authorsCount()
     {
         $null = 'null';
+
         return response([
-            'authors_count' => new AuthorCountResource($null)
+            'authors_count' => new AuthorCountResource($null),
         ], Response::HTTP_OK);
     }
 }

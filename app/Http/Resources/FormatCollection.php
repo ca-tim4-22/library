@@ -17,10 +17,10 @@ class FormatCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'          => $this->id,
-            'name'        => Str::ucfirst($this->name),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
             'show-format' => [
-                'link' => route('show-format-api', $this->id)
+                'link' => route('show-format-api', $this->id),
             ],
         ];
     }

@@ -28,8 +28,8 @@ class PolicyUpdateRequest extends FormRequest
             'value' => [
                 'numeric',
                 'gt:0',
-                new PolicyRule()
-            ]
+                new PolicyRule(),
+            ],
         ];
     }
 }

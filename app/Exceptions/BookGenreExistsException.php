@@ -11,11 +11,11 @@ class BookGenreExistsException extends Exception
     {
         return response(
             [
-                "error"     => "error-0005",
+                "error" => "error-0005",
                 'timestamp' => Carbon::now(),
-                'status'    => 406,
-                "message"   => "Ova knjiga nema žanr",
-                'path'      => url()->current(),
+                'status' => 406,
+                "message" => "Ova knjiga nema žanr",
+                'path' => url()->current(),
             ]
             , 406);
     }

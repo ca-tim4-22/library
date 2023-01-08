@@ -25,9 +25,9 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'     => "required|min:2|max:128",
+            'name' => "required|min:2|max:128",
             'username' => "required|min:2|max:64|unique:users,username,$this->id,id",
-            'email'    => [
+            'email' => [
                 'required',
                 'string',
                 'email',
@@ -43,7 +43,7 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'username.unique' => "Uneseno korisničko ime -> "
-                .$_REQUEST['username']." je zauzeto.",
+                                 .$_REQUEST['username']." je zauzeto.",
         ];
     }
 }

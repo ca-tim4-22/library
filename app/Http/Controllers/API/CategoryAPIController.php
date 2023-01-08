@@ -36,14 +36,14 @@ class CategoryAPIController extends Controller
     public function storeCategory(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'Naziv'       => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Deskripcija' => 'required|min:2|max:500',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja nove kategorije",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -55,7 +55,7 @@ class CategoryAPIController extends Controller
         $category->save();
 
         return response([
-            'data' => new ShowCategoryResource($category)
+            'data' => new ShowCategoryResource($category),
         ], Response::HTTP_CREATED);
     }
 
@@ -63,14 +63,14 @@ class CategoryAPIController extends Controller
     {
         $category = Category::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'Naziv'       => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Deskripcija' => 'required|min:2|max:500',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene kategorije",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -79,7 +79,7 @@ class CategoryAPIController extends Controller
         $category->update();
 
         return response([
-            'data' => new ShowCategoryResource($category)
+            'data' => new ShowCategoryResource($category),
         ], Response::HTTP_OK);
     }
 
@@ -108,16 +108,16 @@ class CategoryAPIController extends Controller
         if ($category == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji kategorija sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji kategorija sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowCategoryResource($category)
+                'data' => new ShowCategoryResource($category),
             ], Response::HTTP_OK);
         }
     }

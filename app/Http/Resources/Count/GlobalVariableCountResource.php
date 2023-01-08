@@ -17,6 +17,7 @@ class GlobalVariableCountResource extends JsonResource
     public function toArray($request)
     {
         $variables = GlobalVariable::count();
+
         return [
             'variables' => $variables,
         ];

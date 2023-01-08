@@ -87,20 +87,20 @@ class ReserveBookController extends Controller
                 = $request->input('reservation_date');
             $reservation->request_date
                 = Carbon::parse($reservation->reservation_date)
-                ->addDays($variable->value);
+                        ->addDays($variable->value);
             $reservation->save();
 
             if ($user->type->id == 2 || $user->type->id == 3) {
                 DB::table('reservation_statuses')->insert([
-                    'reservation_id'         => $reservation->id,
+                    'reservation_id' => $reservation->id,
                     'status_reservations_id' => 1,
-                    'created_at'             => Carbon::now(),
+                    'created_at' => Carbon::now(),
                 ]);
             } else {
                 DB::table('reservation_statuses')->insert([
-                    'reservation_id'         => $reservation->id,
+                    'reservation_id' => $reservation->id,
                     'status_reservations_id' => 3,
-                    'created_at'             => Carbon::now(),
+                    'created_at' => Carbon::now(),
                 ]);
             }
         } else {

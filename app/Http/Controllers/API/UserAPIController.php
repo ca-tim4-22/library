@@ -27,13 +27,13 @@ class UserAPIController extends Controller
     public function students()
     {
         return StudentCollection::collection(User::where('user_type_id', 1)
-            ->paginate(5));
+                                                 ->paginate(5));
     }
 
     public function librarians()
     {
         return LibrarianCollection::collection(User::where('user_type_id', 2)
-            ->paginate(5));
+                                                   ->paginate(5));
     }
 
     public function administrators()
@@ -52,7 +52,7 @@ class UserAPIController extends Controller
         $null = 'null';
 
         return response([
-            'user_types_count' => new UserTypeCountResource($null)
+            'user_types_count' => new UserTypeCountResource($null),
         ], Response::HTTP_OK);
     }
 
@@ -60,7 +60,7 @@ class UserAPIController extends Controller
     {
         return StudentMaleCollection::collection(User::where([
             'user_gender_id' => 1,
-            'user_type_id'   => 1,
+            'user_type_id' => 1,
         ])->paginate(5));
     }
 
@@ -68,7 +68,7 @@ class UserAPIController extends Controller
     {
         return StudentFemaleCollection::collection(User::where([
             'user_gender_id' => 2,
-            'user_type_id'   => 1,
+            'user_type_id' => 1,
         ])->paginate(5));
     }
 
@@ -76,7 +76,7 @@ class UserAPIController extends Controller
     {
         return LibrarianMaleCollection::collection(User::where([
             'user_gender_id' => 1,
-            'user_type_id'   => 2,
+            'user_type_id' => 2,
         ])->paginate(5));
     }
 
@@ -84,7 +84,7 @@ class UserAPIController extends Controller
     {
         return LibrarianFemaleCollection::collection(User::where([
             'user_gender_id' => 2,
-            'user_type_id'   => 2,
+            'user_type_id' => 2,
         ])->paginate(5));
     }
 
@@ -96,6 +96,7 @@ class UserAPIController extends Controller
             $order = 'asc';
         }
         $filter = User::where('user_type_id', 2)->orderBy('id', $order)->get();
+
         return $filter;
     }
 
@@ -107,6 +108,7 @@ class UserAPIController extends Controller
             $order = 'asc';
         }
         $filter = User::where('user_type_id', 1)->orderBy('id', $order)->get();
+
         return $filter;
     }
 
@@ -118,6 +120,7 @@ class UserAPIController extends Controller
             $order = 'asc';
         }
         $filter = User::where('user_type_id', 3)->orderBy('id', $order)->get();
+
         return $filter;
     }
 }

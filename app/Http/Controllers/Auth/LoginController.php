@@ -66,15 +66,15 @@ class LoginController extends Controller
         $user = Socialite::driver('github')->user();
 
         $user2 = User::firstOrCreate([
-            'email' => $user->getNickname()
+            'email' => $user->getNickname(),
         ], [
-            'email'    => $user->getNickname(),
-            'name'     => $user->getName(),
+            'email' => $user->getNickname(),
+            'name' => $user->getName(),
             'username' => $user->getNickname(),
             'password' => bcrypt(Str::random(10)),
-            'photo'    => 'github_avatar'.'-'.uniqid().'.png',
-            'github'   => 1,
-            'active'   => 0
+            'photo' => 'github_avatar'.'-'.uniqid().'.png',
+            'github' => 1,
+            'active' => 0,
         ]);
 
         $URL = url()->current();
@@ -87,7 +87,7 @@ class LoginController extends Controller
         }
 
         $user2->update([
-            'login_count'   => $user2->login_count + 1,
+            'login_count' => $user2->login_count + 1,
             'last_login_at' => now(),
         ]);
         Auth::login($user2, true);

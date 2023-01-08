@@ -88,7 +88,7 @@ class SettingController extends Controller
         $searched = $request->trazeno;
         if ($searched) {
             $publishers = Publisher::search($request->trazeno)
-                ->paginate($items);
+                                   ->paginate($items);
         } else {
             $publishers = Publisher::latest('id')->paginate($items);
         }

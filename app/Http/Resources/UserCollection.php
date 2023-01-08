@@ -17,15 +17,15 @@ class UserCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'            => $this->id,
-            'name'          => Str::ucfirst($this->name),
-            'username'      => $this->username,
-            'gender'        => $this->gender->name,
-            'email'         => $this->email,
-            'JMBG'          => $this->JMBG,
-            'role'          => $this->type->name,
-            'photo'         => $this->photo,
-            'login_count'   => $this->login_count,
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
+            'username' => $this->username,
+            'gender' => $this->gender->name,
+            'email' => $this->email,
+            'JMBG' => $this->JMBG,
+            'role' => $this->type->name,
+            'photo' => $this->photo,
+            'login_count' => $this->login_count,
             'last_login_at' => $this->last_login_at->diffForHumans(),
         ];
     }

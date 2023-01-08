@@ -17,8 +17,8 @@ class ShowGlobalVariableResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'    => $this->id,
-            'name'  => Str::ucfirst($this->variable),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->variable),
             'value' => $this->value,
         ];
     }

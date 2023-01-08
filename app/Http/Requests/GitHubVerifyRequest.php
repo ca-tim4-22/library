@@ -24,17 +24,17 @@ class GitHubVerifyRequest extends FormRequest
     public function rules()
     {
         return [
-            'JMBG'                 => 'required|min:13|max:13',
-            'user_gender_id'       => 'required',
-            'result'               => 'required',
-            'g-recaptcha-response' => 'required|captcha'
+            'JMBG' => 'required|min:13|max:13',
+            'user_gender_id' => 'required',
+            'result' => 'required',
+            'g-recaptcha-response' => 'required|captcha',
         ];
     }
 
     public function messages()
     {
         return [
-            'JMBG.max'                      => 'Polje za JMBG ne može da sadrži više od 13 karaktera.',
+            'JMBG.max' => 'Polje za JMBG ne može da sadrži više od 13 karaktera.',
             'g-recaptcha-response.required' => 'Ovo polje morate označiti.',
         ];
     }

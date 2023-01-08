@@ -38,14 +38,14 @@ class GlobalVariableAPIController extends Controller
     public function storeGlobalVariable(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'Naziv'      => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Vrijednost' => 'required|numeric|min:1|max:90',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja nove globalne varijable",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -55,7 +55,7 @@ class GlobalVariableAPIController extends Controller
         $variable->save();
 
         return response([
-            'data' => new ShowGlobalVariableResource($variable)
+            'data' => new ShowGlobalVariableResource($variable),
         ], Response::HTTP_CREATED);
     }
 
@@ -63,14 +63,14 @@ class GlobalVariableAPIController extends Controller
     {
         $variable = GlobalVariable::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'Naziv'      => 'required|min:2|max:30',
+            'Naziv' => 'required|min:2|max:30',
             'Vrijednost' => 'required|numeric|min:1|max:90',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene globalne varijable",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -79,7 +79,7 @@ class GlobalVariableAPIController extends Controller
         $variable->update();
 
         return response([
-            'data' => new ShowGlobalVariableResource($variable)
+            'data' => new ShowGlobalVariableResource($variable),
         ], Response::HTTP_OK);
     }
 
@@ -104,21 +104,21 @@ class GlobalVariableAPIController extends Controller
     public function searchGlobalVariable($name)
     {
         $variable = GlobalVariable::where('variable', 'like', '%'.$name.'%')
-            ->first();
+                                  ->first();
 
         if ($variable == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji globalna varijabla sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji globalna varijabla sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowGlobalVariableResource($variable)
+                'data' => new ShowGlobalVariableResource($variable),
             ], Response::HTTP_OK);
         }
     }
@@ -126,8 +126,9 @@ class GlobalVariableAPIController extends Controller
     public function globalVariablesCount()
     {
         $null = 'null';
+
         return response([
-            'global_variables_count' => new GlobalVariableCountResource($null)
+            'global_variables_count' => new GlobalVariableCountResource($null),
         ], Response::HTTP_OK);
     }
 }

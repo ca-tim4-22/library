@@ -40,9 +40,9 @@ class FormatAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja novog formata",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -51,7 +51,7 @@ class FormatAPIController extends Controller
         $format->save();
 
         return response([
-            'data' => new ShowFormatResource($format)
+            'data' => new ShowFormatResource($format),
         ], Response::HTTP_CREATED);
     }
 
@@ -63,9 +63,9 @@ class FormatAPIController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene formata",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -73,7 +73,7 @@ class FormatAPIController extends Controller
         $format->update();
 
         return response([
-            'data' => new ShowFormatResource($format)
+            'data' => new ShowFormatResource($format),
         ], Response::HTTP_OK);
     }
 
@@ -102,16 +102,16 @@ class FormatAPIController extends Controller
         if ($format == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji format sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji format sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowFormatResource($format)
+                'data' => new ShowFormatResource($format),
             ], Response::HTTP_OK);
         }
     }

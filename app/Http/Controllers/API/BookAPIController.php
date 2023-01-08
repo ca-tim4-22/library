@@ -67,23 +67,23 @@ class BookAPIController extends Controller
     public function storeBook(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'Titl'             => 'required|min:2|max:30',
-            'Deskripcija'      => 'required|min:2|max:500',
-            'Ukupna količina'  => 'required|numeric|min:0|max:500|not_in:0',
-            'Broj strana'      => 'required|numeric|min:0|max:2000|not_in:0',
-            'Izdavač'          => 'required|numeric|min:0|max:1000|not_in:0|exists:publishers,id',
-            'Povez'            => 'required|numeric|min:0|max:300|not_in:0|exists:bindings,id',
-            'Pismo'            => 'required|numeric|min:0|max:300|not_in:0|exists:letters,id',
-            'Format'           => 'required|numeric|min:0|max:300|not_in:0|exists:formats,id',
-            'Jezik'            => 'required|numeric|min:0|max:300|not_in:0|exists:languages,id',
-            'ISBN'             => 'required|unique:books|min:13|max:13',
+            'Titl' => 'required|min:2|max:30',
+            'Deskripcija' => 'required|min:2|max:500',
+            'Ukupna količina' => 'required|numeric|min:0|max:500|not_in:0',
+            'Broj strana' => 'required|numeric|min:0|max:2000|not_in:0',
+            'Izdavač' => 'required|numeric|min:0|max:1000|not_in:0|exists:publishers,id',
+            'Povez' => 'required|numeric|min:0|max:300|not_in:0|exists:bindings,id',
+            'Pismo' => 'required|numeric|min:0|max:300|not_in:0|exists:letters,id',
+            'Format' => 'required|numeric|min:0|max:300|not_in:0|exists:formats,id',
+            'Jezik' => 'required|numeric|min:0|max:300|not_in:0|exists:languages,id',
+            'ISBN' => 'required|unique:books|min:13|max:13',
             'Godina izdavanja' => 'required|numeric|max:2022|not_in:0',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom dodavanja nove knjige",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -104,8 +104,8 @@ class BookAPIController extends Controller
 
         DB::table('galleries')->insert([
             'book_id' => $book->id,
-            'photo'   => 'https://i.postimg.cc/nLNGJy45/no-image.jpg',
-            'cover'   => 1,
+            'photo' => 'https://i.postimg.cc/nLNGJy45/no-image.jpg',
+            'cover' => 1,
         ]);
 
         return response([
@@ -117,22 +117,22 @@ class BookAPIController extends Controller
     {
         $book = Book::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'Titl'             => 'required|min:2|max:30',
-            'Deskripcija'      => 'required|min:2|max:500',
-            'Ukupna količina'  => 'required|numeric|min:0|max:500|not_in:0',
-            'Broj strana'      => 'required|numeric|min:0|max:2000|not_in:0',
-            'Izdavač'          => 'required|numeric|min:0|max:1000|not_in:0|exists:publishers,id',
-            'Povez'            => 'required|numeric|min:0|max:300|not_in:0|exists:bindings,id',
-            'Pismo'            => 'required|numeric|min:0|max:300|not_in:0|exists:letters,id',
-            'Format'           => 'required|numeric|min:0|max:300|not_in:0|exists:formats,id',
-            'Jezik'            => 'required|numeric|min:0|max:300|not_in:0|exists:languages,id',
+            'Titl' => 'required|min:2|max:30',
+            'Deskripcija' => 'required|min:2|max:500',
+            'Ukupna količina' => 'required|numeric|min:0|max:500|not_in:0',
+            'Broj strana' => 'required|numeric|min:0|max:2000|not_in:0',
+            'Izdavač' => 'required|numeric|min:0|max:1000|not_in:0|exists:publishers,id',
+            'Povez' => 'required|numeric|min:0|max:300|not_in:0|exists:bindings,id',
+            'Pismo' => 'required|numeric|min:0|max:300|not_in:0|exists:letters,id',
+            'Format' => 'required|numeric|min:0|max:300|not_in:0|exists:formats,id',
+            'Jezik' => 'required|numeric|min:0|max:300|not_in:0|exists:languages,id',
             'Godina izdavanja' => 'required|numeric|max:2022|not_in:0',
         ]);
         if ($validator->fails()) {
             return response()->json([
-                'error'   => 'error-0003',
+                'error' => 'error-0003',
                 'message' => "Došlo je do greške prilikom izmjene knjige",
-                'errors'  => $validator->errors()
+                'errors' => $validator->errors(),
             ], 422);
         }
 
@@ -151,7 +151,7 @@ class BookAPIController extends Controller
         $book->update();
 
         return response([
-            'data' => new ShowBookResource($book)
+            'data' => new ShowBookResource($book),
         ], Response::HTTP_OK);
     }
 
@@ -180,16 +180,16 @@ class BookAPIController extends Controller
         if ($book == null) {
             return response(
                 [
-                    "error"     => "not-found-0001",
+                    "error" => "not-found-0001",
                     'timestamp' => Carbon::now(),
-                    'status'    => 404,
-                    'message'   => 'Ne postoji knjiga sa tim nazivom',
-                    'path'      => url()->current(),
+                    'status' => 404,
+                    'message' => 'Ne postoji knjiga sa tim nazivom',
+                    'path' => url()->current(),
                 ]
                 , 404);
         } else {
             return response([
-                'data' => new ShowBookResource($book)
+                'data' => new ShowBookResource($book),
             ], Response::HTTP_OK);
         }
     }

@@ -17,10 +17,10 @@ class BindingCollection extends JsonResource
     public function toArray($request)
     {
         return [
-            'ID'           => $this->id,
-            'name'         => Str::ucfirst($this->name),
+            'ID' => $this->id,
+            'name' => Str::ucfirst($this->name),
             'show-binding' => [
-                'link' => route('show-binding-api', $this->id)
+                'link' => route('show-binding-api', $this->id),
             ],
         ];
     }

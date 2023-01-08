@@ -31,16 +31,16 @@ class ExtraController extends Controller
     public function indexStatistics()
     {
         $data = [
-            'adminCount'     => User::where('user_type_id', 3)->count(),
-            'adminToday'     => User::whereDate('created_at', today())
-                ->where('user_type_id', 3)->count(),
+            'adminCount' => User::where('user_type_id', 3)->count(),
+            'adminToday' => User::whereDate('created_at', today())
+                                ->where('user_type_id', 3)->count(),
             'librarianCount' => User::where('user_type_id', 2)->count(),
             'librarianToday' => User::whereDate('created_at', today())
-                ->where('user_type_id', 2)->count(),
-            'studentCount'   => User::where('user_type_id', 1)->count(),
-            'studentToday'   => User::whereDate('created_at', today())
-                ->where('user_type_id', 2)->count(),
-            'bookCount'      => Book::count(),
+                                    ->where('user_type_id', 2)->count(),
+            'studentCount' => User::where('user_type_id', 1)->count(),
+            'studentToday' => User::whereDate('created_at', today())
+                                  ->where('user_type_id', 2)->count(),
+            'bookCount' => Book::count(),
         ];
 
         return view('pages.settings.extra.statistics', compact('data'));
