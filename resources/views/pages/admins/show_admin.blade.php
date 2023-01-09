@@ -74,6 +74,21 @@
                              aria-labelledby="headlessui-menu-button-1"
                              id="headlessui-menu-items-117" role="menu">
                             <div class="py-1">
+                            
+
+                                <a href="{{route('admin-log', $admin)}}" type="submit"
+                                style="outline: none;border: none;"
+                                class="flex w-full px-4 py-2 text-sm
+                                leading-5 text-left text-gray-700
+                                outline-none hover:text-blue-600"
+                                role="menuitem">
+                                <i class="fa fa-history mr-[5px] ml-[5px] py-1"></i>
+                                <span class="px-4 py-0">
+                            Istorija logovanja
+                            </span>
+                            </a>
+
+
                                 {{-- Delete own account --}}
                                 <button type="submit"
                                     @if (Auth::id()== $admin->id)
@@ -304,6 +319,7 @@
 
                 </div>
                 <div class="ml-[100px]  mt-[20px]">
+
                     <img
                             class="p-2 border-2 border-gray-300"
                             width="300px"

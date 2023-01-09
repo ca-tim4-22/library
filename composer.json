@@ -26,9 +26,11 @@
     "laravel/ui": "^4.0",
     "laravelcollective/html": "^6.3",
     "onecentlin/laravel-adminer": "^6.0",
+    "rappasoft/laravel-authentication-log": "^2.0",
     "spatie/laravel-backup": "^8.1",
     "spatie/laravel-honeypot": "^4.3",
-    "spatie/laravel-newsletter": "^5.0"
+    "spatie/laravel-newsletter": "^5.0",
+    "torann/geoip": "^3.0"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.7",

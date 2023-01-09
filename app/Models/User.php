@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use App\Notifications\CustomVerifyEmail;
-use Auth;
 use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,7 +15,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, Searchable;
+    use HasApiTokens, HasFactory, Notifiable, Searchable, AuthenticationLoggable;
 
     /**
      * The attributes that are mass assignable.

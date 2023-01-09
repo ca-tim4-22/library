@@ -18,6 +18,7 @@ Route::controller(AdminController::class)->group(function () {
         ->name('edit-admin');
     Route::put('/izmijeni-profil-administratora/{id}', 'update')
         ->name('update-admin');
+    Route::get('/istorija-logovanja/{user:username}', 'logHistory')->name('admin-log');
 
 // Delete ownself
     Route::delete('/izbrisi-administratora/{id}', 'destroy')
