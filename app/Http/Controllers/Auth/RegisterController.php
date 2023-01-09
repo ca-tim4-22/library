@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Notifications\WelcomeEmailNotification;
-use App\Rules\EmailVerification\EmailVerificationRule;
+use App\Notifications\CustomVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -57,7 +56,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max: 255', 'unique:users'],
-            'JMBG' => ['required', 'min:13', 'max:13'],
+            'JMBG' => ['required', 'min:13', 'max:13', 'unique:users'],
             'email' => [
                 'required',
                 'string',
@@ -65,7 +64,7 @@ class RegisterController extends Controller
                 'min:2',
                 'max:255',
                 'unique:users',
-                new EmailVerificationRule(),
+                // new EmailVerificationRule(),
             ],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -88,7 +87,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $user->notify(new WelcomeEmailNotification());
+        $user->notify(new CustomVerifyEmail);
 
         return $user;
     }

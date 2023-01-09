@@ -11,7 +11,7 @@ class OverdueBookController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['protect-all', 'librarian-protect']);
+        $this->middleware(['protect-all', 'librarian-protect', 'verified']);
     }
 
     /**

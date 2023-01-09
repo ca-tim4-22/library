@@ -2,19 +2,20 @@
 
 namespace App\Notifications;
 
+use Auth;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class WelcomeEmailNotification extends Notification
+class CustomVerifyEmail extends VerifyEmail implements ShouldQueue
 {
     use Queueable;
-
+  
     /**
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
-     *
      * @return array
      */
     public function via($notifiable)
@@ -26,21 +27,24 @@ class WelcomeEmailNotification extends Notification
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        // return (new MailMessage)
-        //     ->action('Početna stranica', url('/pocetna'))
-        //     ->line('Hvala Vam što koristite našu online biblioteku!');
+        $actionUrl  = $this->verificationUrl($notifiable); 
+        $actionText  = 'Click here to verify your email';
+        return (new MailMessage)->subject('Verify your account | Online library')->view(
+            'vendor.notifications.user-verify',
+            [
+                'actionText' => $actionText,
+                'actionUrl' => $actionUrl,
+            ]);
     }
 
     /**
      * Get the array representation of the notification.
      *
      * @param  mixed  $notifiable
-     *
      * @return array
      */
     public function toArray($notifiable)

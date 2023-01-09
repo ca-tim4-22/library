@@ -41,15 +41,15 @@ class Kernel extends ConsoleKernel
         // Schedule for status 1 
         $schedule->call(function () {
             GlobalVariable::where('value', 0)->update(['value' => 1]);
-        })->dailyAt('07:00');
+        })->weekdays()->at('07:00');
 
         // Schedule for status 0
         $schedule->call(function () {
             GlobalVariable::where('value', 1)->update(['value' => 0]);
-        })->dailyAt('13:00');
+        })->weekdays()->at('13:00');
 
         // Schedule for backup
-        $schedule->command('backup:run')->daily()->at('12:00');
+        $schedule->command('backup:run')->weeklyOn(1, '12:00');
     }
 
     /**

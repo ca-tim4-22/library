@@ -18,11 +18,11 @@ Route::get('/', function () {
 
 // Translate - change locale
 Route::get('lang/change', [LanguageController::class, 'change'])
-    ->name('changeLang');
+     ->name('changeLang');
 
 // Welcome view
 Route::view('/pocetna', 'welcome.welcome')->name('redirect')
-    ->middleware('librarian-not-librarian');
+     ->middleware('librarian-not-librarian');
 
 // Middleware protection
 Route::middleware('see-you-later-protection')->group(function () {
@@ -30,7 +30,7 @@ Route::middleware('see-you-later-protection')->group(function () {
 });
 
 // Laravel Authentication route
-Auth::routes(['register' => false, 'login' => false, 'reset' => false]);
+Auth::routes(['register' => true, 'login' => false, 'reset' => false, 'verify' => true]);
 
 // Login routes
 Route::controller(LoginController::class)->group(function () {
@@ -48,19 +48,20 @@ Route::middleware('maintenance-protection')->group(function () {
 // Server down route
     Route::get('/shutdown', function () {
         Artisan::call('down', ['--render' => "maintenance.maintenance"]);
+
         return back();
     });
 });
 
 Route::controller(ForgotPasswordController::class)->group(function () {
     Route::get('forget-password', 'showForgetPasswordForm')
-        ->name('forget.password.get');
+         ->name('forget.password.get');
     Route::post('forget-password', 'submitForgetPasswordForm')
-        ->name('forget.password.post');
+         ->name('forget.password.post');
     Route::get('reset-password/{token}', 'showResetPasswordForm')
-        ->name('reset.password.get');
+         ->name('reset.password.get');
     Route::post('reset-password', 'submitResetPasswordForm')
-        ->name('reset.password.post');
+         ->name('reset.password.post');
 });
 
 ?>

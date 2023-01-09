@@ -12,7 +12,7 @@
 
     {{-- Icon --}}
     <link rel="icon" type="image/x-icon"
-          href="{{ asset('img/library-favicon.ico') }}">
+          href="{{ asset('library-favicon.ico') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,10 +29,10 @@
 </head>
 <body>
 <div id="app">
-    <nav class="bg-white shadow-sm navbar navbar-expand-md navbar-light">
+    <nav style="background: #F0F0F0" class="shadow-sm navbar navbar-expand-md navbar-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                Online biblioteka
+                {{__('Online biblioteka')}}
             </a>
             <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
@@ -47,7 +47,67 @@
                 <ul class="navbar-nav me-auto">
 
                 </ul>
+                <form class="flex" method="get"
+                action="{{ route('changeLang') }}">
+              <button class="outline-none" name="lang" type="submit"
+                      value="sr" {{ session()->get('locale') == 'sr' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://cdn.countryflags.com/thumbs/serbia/flag-round-250.png"
+                       alt="{{__('Srpski')}}" title="{{__('Srpski')}}">
+              </button>
 
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="en" {{ session()->get('locale') == 'en' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://vectorflags.s3.amazonaws.com/flags/uk-circle-01.png"
+                       alt="{{__('Engleski')}}"
+                       title="{{__('Engleski')}}">
+              </button>
+
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="it" {{ session()->get('locale') == 'it' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://cdn.countryflags.com/thumbs/italy/flag-round-250.png"
+                       alt="{{__('Italijanski')}}"
+                       title="{{__('Italijanski')}}">
+              </button>
+
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="fr" {{ session()->get('locale') == 'fr' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://cdn-icons-png.flaticon.com/512/197/197560.png"
+                       alt="{{__('Francuski')}}"
+                       title="{{__('Francuski')}}">
+              </button>
+
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="zh" {{ session()->get('locale') == 'zh' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Circle_Flag_of_the_People%27s_Republic_of_China.svg/2048px-Circle_Flag_of_the_People%27s_Republic_of_China.svg.png"
+                       alt="{{__('Kineski')}}" title="{{__('Kineski')}}">
+              </button>
+
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="ru" {{ session()->get('locale') == 'ru' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://cdn.countryflags.com/thumbs/russia/flag-round-250.png"
+                       alt="{{__('Ruski')}}" title="{{__('Ruski')}}">
+              </button>
+
+              <button class="ml-3 outline-none" name="lang" type="submit"
+                      value="hi" {{ session()->get('locale') == 'hi' ?
+                  'selected' : '' }}>
+                  <img width="25"
+                       src="https://cdn-icons-png.flaticon.com/512/197/197419.png"
+                       alt="{{__('Hindi')}}" title="{{__('Hindi')}}">
+              </button>
+          </form>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
@@ -79,7 +139,7 @@
                                href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Odjavi se') }}
                             </a>
 
                             <form id="logout-form"
@@ -106,4 +166,11 @@
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
 </body>
+
+<style>
+    button {
+        border: none;
+    }
+</style>
+
 </html>

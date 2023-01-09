@@ -27,7 +27,7 @@ class BookController extends Controller
     {
         $this->middleware(['librarian-protect'])
              ->except('index', 'show');
-        $this->middleware('protect-all');
+            $this->middleware(['protect-all', 'verified']);
     }
 
     /**

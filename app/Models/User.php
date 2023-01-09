@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Notifications\CustomVerifyEmail;
+use Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, Searchable;
 
@@ -39,6 +42,11 @@ class User extends Authenticatable
             'name' => $this->name,
             'email' => $this->username,
         ];
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+    $this->notify(new CustomVerifyEmail);
     }
 
 

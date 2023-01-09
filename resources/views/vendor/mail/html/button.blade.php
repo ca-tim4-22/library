@@ -10,7 +10,7 @@
                                role="presentation">
                             <tr>
                                 <td>
-                                    <a href="tim4.ictcortex.me"
+                                    <a href="{{$url}}"
                                        class="button button-{{ $color ?? 'primary' }}"
                                        target="_blank" rel="noopener">{{ $slot
                                         }}</a>

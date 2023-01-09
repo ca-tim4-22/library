@@ -14,7 +14,7 @@ class DashboardController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('protect-all');
+        $this->middleware(['protect-all', 'verified']);
     }
 
     /**

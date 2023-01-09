@@ -13,7 +13,6 @@
 {{-- Intro Lines --}}
 @foreach ($introLines as $line)
 {{ $line }}
-
 @endforeach
 
 {{-- Action Button --}}
@@ -32,7 +31,6 @@ $color = match ($level) {
 {{-- Outro Lines --}}
 @foreach ($outroLines as $line)
 {{ $line }}
-
 @endforeach
 
 {{-- Salutation --}}
@@ -55,7 +53,7 @@ tim <span style="font-weight: bold;">nullable()</span>
 )
 {{-- <span
         class="break-all">[{{ $displayableActionUrl }}]tim4.ictcortex.me</span> --}}
-<a href="tim4.ictcortex.me">www.tim4.ictcortex.me</a>
+<a href="https://tim4.ictcortex.me/">www.tim4.ictcortex.me</a>
 @endslot
 @endisset
 @endcomponent
