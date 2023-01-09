@@ -30,7 +30,7 @@ Route::middleware('see-you-later-protection')->group(function () {
 });
 
 // Laravel Authentication route
-Auth::routes(['register' => true, 'login' => false, 'reset' => false, 'verify' => true]);
+Auth::routes(['register' => false, 'login' => false, 'reset' => false, 'verify' => true]);
 
 // Login routes
 Route::controller(LoginController::class)->group(function () {
@@ -53,15 +53,15 @@ Route::middleware('maintenance-protection')->group(function () {
     });
 });
 
-Route::controller(ForgotPasswordController::class)->group(function () {
-    Route::get('forget-password', 'showForgetPasswordForm')
-         ->name('forget.password.get');
-    Route::post('forget-password', 'submitForgetPasswordForm')
-         ->name('forget.password.post');
-    Route::get('reset-password/{token}', 'showResetPasswordForm')
-         ->name('reset.password.get');
-    Route::post('reset-password', 'submitResetPasswordForm')
-         ->name('reset.password.post');
-});
+// Route::controller(ForgotPasswordController::class)->group(function () {
+//     Route::get('forget-password', 'showForgetPasswordForm')
+//          ->name('forget.password.get');
+//     Route::post('forget-password', 'submitForgetPasswordForm')
+//          ->name('forget.password.post');
+//     Route::get('reset-password/{token}', 'showResetPasswordForm')
+//          ->name('reset.password.get');
+//     Route::post('reset-password', 'submitResetPasswordForm')
+//          ->name('reset.password.post');
+// });
 
 ?>

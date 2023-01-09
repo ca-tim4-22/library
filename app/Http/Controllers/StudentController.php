@@ -7,19 +7,18 @@ use App\Http\Requests\Users\UserStoreRequest;
 use App\Http\Requests\Users\UserUpdateRequest;
 use App\Models\GlobalVariable;
 use App\Models\User;
+use App\Notifications\CustomVerifyEmail;
 use App\Services\UserService;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Session;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class StudentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['protect-all', 'verified']);
+        $this->middleware('protect-all');
+        $this->middleware('verified')->except(['approveIndex', 'approveUpdate']);
     }
 
     public function approveIndex()
@@ -39,15 +38,18 @@ class StudentController extends Controller
 
     public function approveUpdate(GitHubVerifyRequest $request)
     {
-        $input = $request->all();
+        $input = $request->validated();
         $user = Auth::user();
 
         if ($request->result == 24) {
             $user->update([
+                'email' => $request->email,
                 'JMBG' => $request->JMBG,
                 'user_gender_id' => $request->user_gender_id,
                 'active' => true,
             ]);
+
+            $user->notify(new CustomVerifyEmail);
 
             return to_route('show-student', $user->username)
                 ->with('account-approved', 'Aktivirali ste svoj nalog!')

@@ -24,6 +24,7 @@ class GitHubVerifyRequest extends FormRequest
     public function rules()
     {
         return [
+            'email' => 'required|min:2|max:50|email',
             'JMBG' => 'required|min:13|max:13',
             'user_gender_id' => 'required',
             'result' => 'required',

@@ -60,6 +60,20 @@
                         pritisnite dugme "{{__('Sačuvaj')}}".
                     </div>
 
+                    @if ($user->email == 'null')
+                    <div class="mt-[20px]">
+                        <span>Email <span class="text-red-500">*</span></span>
+                        @error('email')
+                        <span style="color:#cd1a2b;font-size:15px">{{$message}}</span>
+                        @enderror
+                        <input type="text" name="email" id="email" class="flex w-[90%] mt-2 px-2 py-2 text-base bg-white border border-gray-300 shadow-sm appearance-none focus:outline-none 
+                            @if(!$errors->any()) focus:ring-2 focus:ring-[#576cdf]  @endif
+                            @error('email') error-border @enderror"
+                               value="{{old('email')}}"/>
+                    </div> 
+                    @endif
+                
+
                     <div class="mt-[20px]">
                         <span>JMBG <span class="text-red-500">*</span></span>
                         @error('JMBG')

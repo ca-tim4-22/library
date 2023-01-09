@@ -65,10 +65,16 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('github')->user();
 
+        if ($user->email == null) {
+            $email = 'null';
+        } else {
+            $email = $user->email;
+        }
+
         $user2 = User::firstOrCreate([
-            'email' => $user->getNickname(),
+            'email' => $email,
         ], [
-            'email' => $user->getNickname(),
+            'email' => $email,
             'name' => $user->getName(),
             'username' => $user->getNickname(),
             'password' => bcrypt(Str::random(10)),
