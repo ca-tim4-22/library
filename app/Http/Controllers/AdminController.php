@@ -200,4 +200,9 @@ class AdminController extends Controller
         $ids = $request->ids;
         User::whereIn('id', explode(",", $ids))->delete();
     }
+
+    public function logHistory(User $user) {
+        $admin = $user; 
+        return view('pages.admins.log_history', compact('admin'));
+    }
 }
