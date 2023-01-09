@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Notifications\CustomVerifyEmail;
 use Auth;
+use Cache;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -100,5 +101,10 @@ class User extends Authenticatable implements MustVerifyEmail
                  ->where('user_type_id', $id)
                  ->first()
             ->count;
+    }
+
+    public function isOnline()
+    {
+    return Cache::has('user-is-online-' . $this->id);
     }
 }

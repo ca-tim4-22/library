@@ -265,6 +265,11 @@
 
                             <th class="px-4 py-4 leading-4 tracking-wider text-left changeme"
                                 id="arrow">
+                                {{__('Status')}}
+                            </th>
+
+                            <th class="px-4 py-4 leading-4 tracking-wider text-left changeme"
+                                id="arrow">
                                 {{__('Zadnji pristup sistemu')}}
                             </th>
 
@@ -302,6 +307,15 @@
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                                     {{$student->gender->id == 1 ? __('Učenik') : __('Učenica')}}
+                                </td>
+                                <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
+                                    @if ($student->isOnline())
+                                    <img class="inline" width="7" src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Basic_green_dot.png">
+                                    <span>Online</span>
+                                    @else 
+                                    <img class="inline" width="7" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Location_dot_orange.svg/2048px-Location_dot_orange.svg.png">
+                                    <span>Offline</span>
+                                    @endif
                                 </td>
                                 <td class="px-4 py-4 text-sm leading-5 whitespace-no-wrap">
                                     {{$student->login_count == 0 ? __('Korisnik se nikada nije ulogovao.') :

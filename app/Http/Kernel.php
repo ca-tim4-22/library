@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
                 \Illuminate\Routing\Middleware\SubstituteBindings::class,
                 \App\Http\Middleware\InactiveUsers\InactiveUsersMiddleware::class,
                 \App\Http\Middleware\LanguageManager::class,
+                \App\Http\Middleware\LastUserActivity::class,
             ],
 
             'api' => [
