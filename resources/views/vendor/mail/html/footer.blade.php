@@ -6,7 +6,7 @@
                 <td class="content-cell" align="center"
                     style="color: white;font-size: 12px">
                     &copy; <?php
-                    echo date("Y"); ?>. Sva prava zadržana.
+                    echo date("Y"); ?>. All rights reserved.
                 </td>
             </tr>
         </table>
