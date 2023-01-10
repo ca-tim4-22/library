@@ -202,7 +202,9 @@ class AdminController extends Controller
     }
 
     public function logHistory(User $user) {
-        $admin = $user; 
-        return view('pages.admins.log_history', compact('admin'));
+        $admin = $user;
+        $col = $admin->authentications()->simplePaginate(5);
+
+        return view('pages.admins.log_history', compact('admin', 'col'));
     }
 }

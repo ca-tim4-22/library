@@ -29,7 +29,7 @@ return [
         ],
         'failed-login' => [
             // Send the FailedLogin notification
-            'enabled' => env('FAILED_LOGIN_NOTIFICATION', false),
+            'enabled' => env('FAILED_LOGIN_NOTIFICATION', true),
 
             // Use torann/geoip to attempt to get a location
             'location' => true,
