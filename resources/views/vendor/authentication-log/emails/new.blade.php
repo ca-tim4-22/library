@@ -12,7 +12,7 @@
 @endif
 
 @lang('If this was you, you can ignore this alert. If you suspect any suspicious activity on your account, please change your password.')
-
+<br>
 @lang('Regards,')<br/>
-{{ config('app.name') }}
+Online library
 @endcomponent
