@@ -5492,16 +5492,16 @@
         },
         {
             "name": "spatie/laravel-newsletter",
-            "version": "5.0.0",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-newsletter.git",
-                "reference": "d1c3a9239f9ac43fb7b9e548d23b97d41098a31a"
+                "reference": "5538a4f714aa07c7a06813f5ff944cd8a038f250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/d1c3a9239f9ac43fb7b9e548d23b97d41098a31a",
-                "reference": "d1c3a9239f9ac43fb7b9e548d23b97d41098a31a",
+                "url": "https://api.github.com/repos/spatie/laravel-newsletter/zipball/5538a4f714aa07c7a06813f5ff944cd8a038f250",
+                "reference": "5538a4f714aa07c7a06813f5ff944cd8a038f250",
                 "shasum": ""
             },
             "require": {
@@ -5510,9 +5510,9 @@
             },
             "require-dev": {
                 "drewm/mailchimp-api": "^2.5",
-                "guzzlehttp/guzzle": "^7.5",
+                "guzzlehttp/guzzle": "^7.5|^7.2",
                 "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^7.11",
+                "orchestra/testbench": "^7.11|^8.0",
                 "pestphp/pest": "^1.20",
                 "phpstan/phpstan": "^1.9",
                 "phpunit/phpunit": "^9.5",
@@ -5561,7 +5561,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-newsletter/issues",
-                "source": "https://github.com/spatie/laravel-newsletter/tree/5.0.0"
+                "source": "https://github.com/spatie/laravel-newsletter/tree/5.1.0"
             },
             "funding": [
                 {
@@ -5569,7 +5569,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-11-10T17:06:40+00:00"
+            "time": "2023-01-14T21:00:38+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
