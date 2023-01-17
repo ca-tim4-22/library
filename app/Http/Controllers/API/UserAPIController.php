@@ -27,19 +27,21 @@ class UserAPIController extends Controller
     public function students()
     {
         return StudentCollection::collection(User::where('user_type_id', 1)
-                                                 ->paginate(5));
+            ->paginate(5));
     }
 
     public function librarians()
     {
         return LibrarianCollection::collection(User::where('user_type_id', 2)
-                                                   ->paginate(5));
+            ->paginate(5));
     }
 
     public function administrators()
     {
-        return AdministratorCollection::collection(User::where('user_type_id',
-            3)->paginate(5));
+        return AdministratorCollection::collection(User::where(
+            'user_type_id',
+            3
+        )->paginate(5));
     }
 
     public function userTypes()

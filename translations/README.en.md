@@ -271,7 +271,7 @@ Our application work using the web route "/shutdown" which is protected.
 
 ## RESTful API - Passport
 
-[Documentation - Postman](https://tinyurl.com/bdz4jar6)
+[Documentation - Postman](https://tinyurl.com/mu8sszvy)
 
 [Documentation - Swagger](https://tinyurl.com/44yz58v2)
 

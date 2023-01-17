@@ -22,9 +22,9 @@ class Handler extends ExceptionHandler
      * @var array<class-string<\Throwable>, \Psr\Log\LogLevel::*>
      */
     protected $levels
-        = [
-            //
-        ];
+    = [
+        //
+    ];
 
     /**
      * A list of the exception types that are not reported.
@@ -32,9 +32,9 @@ class Handler extends ExceptionHandler
      * @var array<int, class-string<\Throwable>>
      */
     protected $dontReport
-        = [
-            //
-        ];
+    = [
+        //
+    ];
 
     /**
      * A list of the inputs that are never flashed to the session on validation exceptions.
@@ -42,11 +42,11 @@ class Handler extends ExceptionHandler
      * @var array<int, string>
      */
     protected $dontFlash
-        = [
-            'current_password',
-            'password',
-            'password_confirmation',
-        ];
+    = [
+        'current_password',
+        'password',
+        'password_confirmation',
+    ];
 
     /**
      * Register the exception handling callbacks for the application.
@@ -72,8 +72,9 @@ class Handler extends ExceptionHandler
                         'message' => 'Nije pronađeno',
                         "detail" => "Uvjerite se da ste dobro ukucali parametar za ID u zahtjevu",
                         'path' => url()->current(),
-                    ]
-                    , 404);
+                    ],
+                    404
+                );
             }
             if ($exception instanceof NotFoundHttpException) {
                 return response(
@@ -84,11 +85,12 @@ class Handler extends ExceptionHandler
                         'message' => 'Neispravan zahtjev',
                         "detail" => "Uvjerite se da traženi zahtjev postoji",
                         'path' => url()->current(),
-                    ], 400);
+                    ],
+                    400
+                );
             }
         }
 
         return parent::render($request, $exception);
     }
-
 }

@@ -271,9 +271,9 @@ La nostra applicazione funziona utilizzando il percorso web "/shutdown" che è p
 
 ## RESTful API - Passaporto
 
-[Documentazione - Postino](https://tinyurl.com/bdz4jar6)
+[Documentazione - Postman](https://tinyurl.com/mu8sszvy)
 
-[Documentazione - Spavalderia](https://tinyurl.com/44yz58v2)
+[Documentazione - Swagger](https://tinyurl.com/44yz58v2)
 
 Questa API contiene:
 

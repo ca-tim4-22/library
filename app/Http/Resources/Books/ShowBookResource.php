@@ -17,13 +17,13 @@ class ShowBookResource extends JsonResource
     public function toArray($request)
     {
         // Make no undefined variables
-        if ( ! isset($category)) {
+        if (!isset($category)) {
             $category = null;
         }
-        if ( ! isset($genre)) {
+        if (!isset($genre)) {
             $genre = null;
         }
-        if ( ! isset($author)) {
+        if (!isset($author)) {
             $author = null;
         }
         // Foreach relations

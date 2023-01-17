@@ -273,7 +273,7 @@ Na našoj aplikaciji to radimo pomoću web rute "/shutdown" koja je zaštićena.
 
 ## RESTful API - Passport
 
-[Dokumentacija - Postman](https://tinyurl.com/bdz4jar6)
+[Dokumentacija - Postman](https://tinyurl.com/mu8sszvy)
 
 [Dokumentacija - Swagger](https://tinyurl.com/44yz58v2)
 
