@@ -1,24 +1,24 @@
-on:
-  push:
-    paths:
-      - 'public/*'
-name: Automatski deployment🚀
-jobs:
-  web-deploy:
-    name: Hosting deployment 2🎉
-    runs-on: ubuntu-latest
-    steps:
-    - name: Provjera najnovije verzije🚚
-      uses: actions/checkout@v2
+# on:
+#   push:
+#     paths:
+#       - 'public/*'
+# name: Automatski deployment🚀
+# jobs:
+#   web-deploy:
+#     name: Hosting deployment 2🎉
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Provjera najnovije verzije🚚
+#       uses: actions/checkout@v2
     
-    - name: Sinhronizacija fajlova📂 
-      uses: SamKirkland/FTP-Deploy-Action@4.3.2
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: public/
-        server-dir: public_html/
-        exclude: |
-          **/index.php*
-          **/.htaccess*/**
+#     - name: Sinhronizacija fajlova📂 
+#       uses: SamKirkland/FTP-Deploy-Action@4.3.2
+#       with:
+#         server: ${{ secrets.FTP_SERVER }}
+#         username: ${{ secrets.FTP_USERNAME }}
+#         password: ${{ secrets.FTP_PASSWORD }}
+#         local-dir: public/
+#         server-dir: public_html/
+#         exclude: |
+#           **/index.php*
+#           **/.htaccess*/**
