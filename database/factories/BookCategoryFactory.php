@@ -2,9 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Book;
-use App\Models\BookCategory;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +16,8 @@ class BookCategoryFactory extends Factory
      */
     public function definition()
     {
-        static $num1 = 1;
-        static $num2 = 1;
+        $num1 = 1;
+        $num2 = 1;
         return [
             'book_id'     => $num1++,
             'category_id' => $num2++,

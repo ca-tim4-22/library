@@ -87,16 +87,15 @@ class LibrarianController extends Controller
     {
         $dest = 'storage/librarians';
         $file = $request->file('photo');
-        $new_image_name = date('YmdHis').uniqid().'.jpg';
+        $new_image_name = date('YmdHis') . uniqid() . '.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if ( ! $move) {
+        if (!$move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::where('id', Auth::id())
-                        ->update(['photo' => $new_image_name]);
-
+                ->update(['photo' => $new_image_name]);
             return response()->json([
                 'status' => 1,
                 'msg' => 'Uspješno ste izmijenili profilnu sliku!',
@@ -139,7 +138,6 @@ class LibrarianController extends Controller
 
         return view('pages.librarians.edit_librarian', compact('librarian'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -186,10 +184,10 @@ class LibrarianController extends Controller
             if ($URL == 'http://tim4.ictcortex.me/bibliotekari'
                 || $URL == 'https://tim4.ictcortex.me/bibliotekari'
             ) {
-                unlink('storage/librarians/'.$librarian->photo);
+                unlink('storage/librarians/' . $librarian->photo);
             } else {
-                $path = '\\storage\\librarians\\'.$librarian->photo;
-                unlink(public_path().$path);
+                $path = '\\storage\\librarians\\' . $librarian->photo;
+                unlink(public_path() . $path);
             }
         }
 

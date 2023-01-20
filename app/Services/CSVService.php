@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Models\ {
+use App\Models\{
     Author,
     Book,
     BookAuthor,
     BookCategory,
     BookGenre,
     Gallery
-}
+};
 use Illuminate\Http\Request;
 
 class CSVService
@@ -49,9 +49,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
 
         $customerArr = $this->csvToArray($file);
@@ -61,9 +61,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 
@@ -79,9 +79,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
 
         $customerArr = $this->csvToArray($file);
@@ -91,9 +91,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 
@@ -109,9 +109,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
 
         $customerArr = $this->csvToArray($file);
@@ -121,9 +121,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 
@@ -139,9 +139,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
 
         $customerArr = $this->csvToArray($file);
@@ -151,9 +151,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 
@@ -169,9 +169,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
         $customerArr = $this->csvToArray($file);
 
@@ -180,9 +180,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 
@@ -198,9 +198,9 @@ class CSVService
         $URL = url()->current();
 
         if (str_contains($URL, 'tim4')) {
-            $file = 'csv/'.$name;
+            $file = 'csv/' . $name;
         } else {
-            $file = public_path('csv\\'.$name);
+            $file = public_path('csv\\' . $name);
         }
 
         $customerArr = $this->csvToArray($file);
@@ -210,9 +210,9 @@ class CSVService
         }
 
         if (str_contains($URL, 'tim4')) {
-            unlink('csv/'.$name);
+            unlink('csv/' . $name);
         } else {
-            unlink('csv\\'.$name);
+            unlink('csv\\' . $name);
         }
     }
 }

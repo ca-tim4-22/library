@@ -19,8 +19,8 @@ class BookAuthorFactory extends Factory
      */
     public function definition()
     {
-        static $num1 = 1;
-        static $num2 = 1;
+        $num1 = 1;
+        $num2 = 1;
         return [
             'book_id'   => $num1++,
             'author_id' => $num2++,

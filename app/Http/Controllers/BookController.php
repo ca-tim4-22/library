@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Session;
 
-use App\Http\Requests\Books\ {
+use App\Http\Requests\Books\{
     BookStoreRequest,
     BookUpdateRequest,
 };
 
-use App\Models\ {
+use App\Models\{
     Author,
     Book,
     Category,
@@ -26,8 +26,8 @@ class BookController extends Controller
     public function __construct()
     {
         $this->middleware(['librarian-protect'])
-             ->except('index', 'show');
-            $this->middleware(['protect-all', 'verified']);
+            ->except('index', 'show');
+        $this->middleware(['protect-all', 'verified']);
     }
 
     /**
@@ -58,7 +58,7 @@ class BookController extends Controller
             }
         } else {
             $books = Book::with('cover', 'authors', 'categories', 'rent')
-                         ->latest('id')->paginate($items);
+                ->latest('id')->paginate($items);
             $show_criterium = false;
         }
 
@@ -69,7 +69,7 @@ class BookController extends Controller
             foreach ($books as $book) {
                 foreach ($book->rent as $rent) {
                     $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
-                                  ->count();
+                        ->count();
                 }
             }
         } else {
@@ -96,10 +96,24 @@ class BookController extends Controller
 
         $bookService->index($request, $books, $authors, $categories);
 
-        return view('pages.books.books', compact('books',
-            'count', 'authors', 'categories', 'searched', 'error', 'selected_a',
-            'selected_c', 'id_a', 'id_c', 'error', 'show', 'items', 'variable',
-            'show_all', 'searched_book', 'show_criterium',
+        return view('pages.books.books', compact(
+            'books',
+            'count',
+            'authors',
+            'categories',
+            'searched',
+            'error',
+            'selected_a',
+            'selected_c',
+            'id_a',
+            'id_c',
+            'error',
+            'show',
+            'items',
+            'variable',
+            'show_all',
+            'searched_book',
+            'show_criterium',
         ));
     }
 
@@ -172,7 +186,7 @@ class BookController extends Controller
             foreach ($books as $booke) {
                 foreach ($booke->rent as $rent) {
                     $count = $rent->whereDate('return_date', '<', date('Y-m-d'))
-                                  ->count();
+                        ->count();
                 }
             }
         } else {
@@ -181,14 +195,16 @@ class BookController extends Controller
         }
         $count = null;
 
-        if (isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11
+        if (
+            isset($count) && $count > 0 || $count % 10 == 1 && $count % 10 == 11
             || $count == 1
         ) {
             $count = $count;
             $text = 'primjerak';
-        } elseif (isset($count) && $count > 0 && $count % 10 == 2
-                  || $count % 10 == 3
-                  || $count % 10 == 4
+        } elseif (
+            isset($count) && $count > 0 && $count % 10 == 2
+            || $count % 10 == 3
+            || $count % 10 == 4
         ) {
             $count = $count;
             $text = 'primjerka';
@@ -200,8 +216,10 @@ class BookController extends Controller
             $text = 'primjeraka';
         }
 
-        return view('pages.books.show_book',
-            compact('book', 'count', 'text', 'rents'));
+        return view(
+            'pages.books.show_book',
+            compact('book', 'count', 'text', 'rents')
+        );
     }
 
     /**
@@ -263,7 +281,7 @@ class BookController extends Controller
         $URL = url()->current();
         $bookService->destroyBook($book);
 
-        if ( ! str_contains($URL, '/bibliotekari')) {
+        if (!str_contains($URL, '/bibliotekari')) {
             return to_route('all-books');
         }
 

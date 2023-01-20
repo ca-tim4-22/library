@@ -91,7 +91,7 @@ class StudentController extends Controller
             }
         } else {
             $students = User::with('gender')->latest()->where('user_type_id', 1)
-                            ->paginate($items);
+                ->paginate($items);
             $show_criterium = false;
         }
 
@@ -132,15 +132,15 @@ class StudentController extends Controller
     {
         $dest = 'storage/students';
         $file = $request->file('photo');
-        $new_image_name = date('YmdHis').uniqid().'.jpg';
+        $new_image_name = date('YmdHis') . uniqid() . '.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if ( ! $move) {
+        if (!$move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::whereId(Auth::id())
-                        ->update(['photo' => $new_image_name]);
+                ->update(['photo' => $new_image_name]);
 
             return response()->json([
                 'status' => 1,
@@ -202,7 +202,7 @@ class StudentController extends Controller
         $photo_old = $request->photo;
 
         if ($file = $request->file('photo')) {
-            $name = time().$file->getClientOriginalName();
+            $name = time() . $file->getClientOriginalName();
             $file->move('storage/students', $name);
             $validated['photo'] = $name;
         }
@@ -232,10 +232,10 @@ class StudentController extends Controller
 
         if ($student->photo != 'placeholder') {
             if ($URL == 'http://tim4.ictcortex.me/ucenici') {
-                unlink('storage/students/'.$student->photo);
+                unlink('storage/students/' . $student->photo);
             } else {
-                $path = '\\storage\\students\\'.$student->photo;
-                unlink(public_path().$path);
+                $path = '\\storage\\students\\' . $student->photo;
+                unlink(public_path() . $path);
             }
         }
 

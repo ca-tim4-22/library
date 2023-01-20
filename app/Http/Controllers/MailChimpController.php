@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Newsletter\Facades\Newsletter as Newsletter;
 use Session;
+use Spatie\Newsletter\Facades\Newsletter as Newsletter;
 
 class MailChimpController extends Controller
 {
@@ -13,7 +13,7 @@ class MailChimpController extends Controller
     {
         $name = Auth::user()->name;
 
-        if ( ! Newsletter::isSubscribed($request->email)) {
+        if (!Newsletter::isSubscribed($request->email)) {
             Newsletter::subscribe($request->email, ['FNAME' => $name]);
 
             Session::flash('success-mail');

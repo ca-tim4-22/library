@@ -18,7 +18,7 @@ class GalleryFactory extends Factory
      */
     public function definition()
     {
-        static $number = 1;
+        $number = 1;
         return [
             'book_id' => $number++,
             'photo'   => 'https://source.unsplash.com/random',

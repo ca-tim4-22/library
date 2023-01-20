@@ -1225,8 +1225,11 @@ namespace Illuminate\Support\Facades {
             $implementation
         ) {            //Method inherited from \Illuminate\Container\Container
             /** @var \Illuminate\Foundation\Application $instance */
-            $instance->addContextualBinding($concrete, $abstract,
-                $implementation);
+            $instance->addContextualBinding(
+                $concrete,
+                $abstract,
+                $implementation
+            );
         }
 
         /**
@@ -1769,7 +1772,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Foundation\Application::flushMacros();
         }
-
     }
 
     /**
@@ -1963,7 +1965,6 @@ namespace Illuminate\Support\Facades {
             /** @var \App\Console\Kernel $instance */
             $instance->setArtisan($artisan);
         }
-
     }
 
     /**
@@ -2748,7 +2749,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Auth\SessionGuard::flushMacros();
         }
-
     }
 
     /**
@@ -2827,8 +2827,11 @@ namespace Illuminate\Support\Facades {
             $data = [],
             $deleteCachedView = false
         ) {
-            return \Illuminate\View\Compilers\BladeCompiler::render($string,
-                $data, $deleteCachedView);
+            return \Illuminate\View\Compilers\BladeCompiler::render(
+                $string,
+                $data,
+                $deleteCachedView
+            );
         }
 
         /**
@@ -3235,8 +3238,12 @@ namespace Illuminate\Support\Facades {
             $data,
             $hash
         ) {
-            return \Illuminate\View\Compilers\BladeCompiler::compileClassComponentOpening($component,
-                $alias, $data, $hash);
+            return \Illuminate\View\Compilers\BladeCompiler::compileClassComponentOpening(
+                $component,
+                $alias,
+                $data,
+                $hash
+            );
         }
 
         /**
@@ -3318,7 +3325,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
             return $instance->applyEchoHandler($value);
         }
-
     }
 
     /**
@@ -3569,7 +3575,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Broadcasting\BroadcastManager $instance */
             return $instance->forgetDrivers();
         }
-
     }
 
     /**
@@ -4124,7 +4129,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\BusFake $instance */
             return $instance->recordPendingBatch($pendingBatch);
         }
-
     }
 
     /**
@@ -4887,7 +4891,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->restoreLock($name, $owner);
         }
-
     }
 
     /**
@@ -5106,7 +5109,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Config\Repository::flushMacros();
         }
-
     }
 
     /**
@@ -5144,8 +5146,17 @@ namespace Illuminate\Support\Facades {
             $sameSite = null
         ) {
             /** @var \Illuminate\Cookie\CookieJar $instance */
-            return $instance->make($name, $value, $minutes, $path, $domain,
-                $secure, $httpOnly, $raw, $sameSite);
+            return $instance->make(
+                $name,
+                $value,
+                $minutes,
+                $path,
+                $domain,
+                $secure,
+                $httpOnly,
+                $raw,
+                $sameSite
+            );
         }
 
         /**
@@ -5174,8 +5185,16 @@ namespace Illuminate\Support\Facades {
             $sameSite = null
         ) {
             /** @var \Illuminate\Cookie\CookieJar $instance */
-            return $instance->forever($name, $value, $path, $domain, $secure,
-                $httpOnly, $raw, $sameSite);
+            return $instance->forever(
+                $name,
+                $value,
+                $path,
+                $domain,
+                $secure,
+                $httpOnly,
+                $raw,
+                $sameSite
+            );
         }
 
         /**
@@ -5288,8 +5307,12 @@ namespace Illuminate\Support\Facades {
             $sameSite = null
         ) {
             /** @var \Illuminate\Cookie\CookieJar $instance */
-            return $instance->setDefaultPathAndDomain($path, $domain, $secure,
-                $sameSite);
+            return $instance->setDefaultPathAndDomain(
+                $path,
+                $domain,
+                $secure,
+                $sameSite
+            );
         }
 
         /**
@@ -5368,7 +5391,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Cookie\CookieJar::flushMacros();
         }
-
     }
 
     /**
@@ -5478,7 +5500,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Encryption\Encrypter $instance */
             return $instance->getKey();
         }
-
     }
 
     /**
@@ -5624,7 +5645,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Support\DateFactory::useFactory($factory);
         }
-
     }
 
     /**
@@ -6909,8 +6929,10 @@ namespace Illuminate\Support\Facades {
          */
         public static function resolverFor($driver, $callback)
         {            //Method inherited from \Illuminate\Database\Connection
-            \Illuminate\Database\MySqlConnection::resolverFor($driver,
-                $callback);
+            \Illuminate\Database\MySqlConnection::resolverFor(
+                $driver,
+                $callback
+            );
         }
 
         /**
@@ -7009,7 +7031,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Database\MySqlConnection $instance */
             $instance->afterCommit($callback);
         }
-
     }
 
     /**
@@ -7402,7 +7423,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\EventFake $instance */
             return $instance->hasDispatched($event);
         }
-
     }
 
     /**
@@ -8189,7 +8209,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Filesystem\Filesystem::flushMacros();
         }
-
     }
 
     /**
@@ -8575,7 +8594,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Auth\Access\Gate $instance */
             return $instance->denyAsNotFound($message, $code);
         }
-
     }
 
     /**
@@ -8773,7 +8791,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Hashing\HashManager $instance */
             return $instance->forgetDrivers();
         }
-
     }
 
     /**
@@ -8854,8 +8871,11 @@ namespace Illuminate\Support\Facades {
             $status = 200,
             $headers = []
         ) {
-            return \Illuminate\Http\Client\Factory::response($body, $status,
-                $headers);
+            return \Illuminate\Http\Client\Factory::response(
+                $body,
+                $status,
+                $headers
+            );
         }
 
         /**
@@ -9130,7 +9150,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Http\Client\Factory $instance */
             return $instance->macroCall($method, $parameters);
         }
-
     }
 
     /**
@@ -9498,7 +9517,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Translation\Translator::flushMacros();
         }
-
     }
 
     /**
@@ -9823,7 +9841,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Log\LogManager $instance */
             $instance->log($level, $message, $context);
         }
-
     }
 
     /**
@@ -10272,7 +10289,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
             return $instance->failures();
         }
-
     }
 
     /**
@@ -10686,8 +10702,10 @@ namespace Illuminate\Support\Facades {
          */
         public static function macro($name, $macro)
         {
-            \Illuminate\Support\Testing\Fakes\NotificationFake::macro($name,
-                $macro);
+            \Illuminate\Support\Testing\Fakes\NotificationFake::macro(
+                $name,
+                $macro
+            );
         }
 
         /**
@@ -10702,8 +10720,10 @@ namespace Illuminate\Support\Facades {
          */
         public static function mixin($mixin, $replace = true)
         {
-            \Illuminate\Support\Testing\Fakes\NotificationFake::mixin($mixin,
-                $replace);
+            \Illuminate\Support\Testing\Fakes\NotificationFake::mixin(
+                $mixin,
+                $replace
+            );
         }
 
         /**
@@ -10729,7 +10749,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Support\Testing\Fakes\NotificationFake::flushMacros();
         }
-
     }
 
     /**
@@ -10786,7 +10805,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Auth\Passwords\PasswordBrokerManager $instance */
             $instance->setDefaultDriver($name);
         }
-
     }
 
     /**
@@ -11385,7 +11403,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Queue\SyncQueue $instance */
             $instance->setContainer($container);
         }
-
     }
 
     /**
@@ -11442,8 +11459,12 @@ namespace Illuminate\Support\Facades {
             $decaySeconds = 60
         ) {
             /** @var \Illuminate\Cache\RateLimiter $instance */
-            return $instance->attempt($key, $maxAttempts, $callback,
-                $decaySeconds);
+            return $instance->attempt(
+                $key,
+                $maxAttempts,
+                $callback,
+                $decaySeconds
+            );
         }
 
         /**
@@ -11575,7 +11596,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Cache\RateLimiter $instance */
             return $instance->cleanRateLimiterKey($key);
         }
-
     }
 
     /**
@@ -11770,8 +11790,13 @@ namespace Illuminate\Support\Facades {
             $headers = []
         ) {
             /** @var \Illuminate\Routing\Redirector $instance */
-            return $instance->signedRoute($route, $parameters, $expiration,
-                $status, $headers);
+            return $instance->signedRoute(
+                $route,
+                $parameters,
+                $expiration,
+                $status,
+                $headers
+            );
         }
 
         /**
@@ -11794,8 +11819,13 @@ namespace Illuminate\Support\Facades {
             $headers = []
         ) {
             /** @var \Illuminate\Routing\Redirector $instance */
-            return $instance->temporarySignedRoute($route, $expiration,
-                $parameters, $status, $headers);
+            return $instance->temporarySignedRoute(
+                $route,
+                $expiration,
+                $parameters,
+                $status,
+                $headers
+            );
         }
 
         /**
@@ -11923,7 +11953,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Routing\Redirector::flushMacros();
         }
-
     }
 
     /**
@@ -12368,8 +12397,14 @@ namespace Illuminate\Support\Facades {
             $server = null
         ) {
             /** @var \Illuminate\Http\Request $instance */
-            return $instance->duplicate($query, $request, $attributes, $cookies,
-                $files, $server);
+            return $instance->duplicate(
+                $query,
+                $request,
+                $attributes,
+                $cookies,
+                $files,
+                $server
+            );
         }
 
         /**
@@ -12658,8 +12693,15 @@ namespace Illuminate\Support\Facades {
             $content = null
         ) {            //Method inherited from \Symfony\Component\HttpFoundation\Request
             /** @var \Illuminate\Http\Request $instance */
-            return $instance->initialize($query, $request, $attributes,
-                $cookies, $files, $server, $content);
+            return $instance->initialize(
+                $query,
+                $request,
+                $attributes,
+                $cookies,
+                $files,
+                $server,
+                $content
+            );
         }
 
         /**
@@ -12697,8 +12739,15 @@ namespace Illuminate\Support\Facades {
             $server = [],
             $content = null
         ) {            //Method inherited from \Symfony\Component\HttpFoundation\Request
-            return \Illuminate\Http\Request::create($uri, $method, $parameters,
-                $cookies, $files, $server, $content);
+            return \Illuminate\Http\Request::create(
+                $uri,
+                $method,
+                $parameters,
+                $cookies,
+                $files,
+                $server,
+                $content
+            );
         }
 
         /**
@@ -12741,8 +12790,10 @@ namespace Illuminate\Support\Facades {
          */
         public static function setTrustedProxies($proxies, $trustedHeaderSet)
         {            //Method inherited from \Symfony\Component\HttpFoundation\Request
-            return \Illuminate\Http\Request::setTrustedProxies($proxies,
-                $trustedHeaderSet);
+            return \Illuminate\Http\Request::setTrustedProxies(
+                $proxies,
+                $trustedHeaderSet
+            );
         }
 
         /**
@@ -14417,8 +14468,11 @@ namespace Illuminate\Support\Facades {
          */
         public static function validateWithBag($errorBag, $rules, ...$params)
         {
-            return \Illuminate\Http\Request::validateWithBag($errorBag, $rules,
-                ...$params);
+            return \Illuminate\Http\Request::validateWithBag(
+                $errorBag,
+                $rules,
+                ...$params
+            );
         }
 
         /**
@@ -14458,10 +14512,11 @@ namespace Illuminate\Support\Facades {
             $ignoreQuery = [],
             $absolute = true
         ) {
-            return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery,
-                $absolute);
+            return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring(
+                $ignoreQuery,
+                $absolute
+            );
         }
-
     }
 
     /**
@@ -14564,8 +14619,13 @@ namespace Illuminate\Support\Facades {
             $options = 0
         ) {
             /** @var \Illuminate\Routing\ResponseFactory $instance */
-            return $instance->jsonp($callback, $data, $status, $headers,
-                $options);
+            return $instance->jsonp(
+                $callback,
+                $data,
+                $status,
+                $headers,
+                $options
+            );
         }
 
         /**
@@ -14602,8 +14662,12 @@ namespace Illuminate\Support\Facades {
             $disposition = 'attachment'
         ) {
             /** @var \Illuminate\Routing\ResponseFactory $instance */
-            return $instance->streamDownload($callback, $name, $headers,
-                $disposition);
+            return $instance->streamDownload(
+                $callback,
+                $name,
+                $headers,
+                $disposition
+            );
         }
 
         /**
@@ -14681,8 +14745,12 @@ namespace Illuminate\Support\Facades {
             $headers = []
         ) {
             /** @var \Illuminate\Routing\ResponseFactory $instance */
-            return $instance->redirectToRoute($route, $parameters, $status,
-                $headers);
+            return $instance->redirectToRoute(
+                $route,
+                $parameters,
+                $status,
+                $headers
+            );
         }
 
         /**
@@ -14703,8 +14771,12 @@ namespace Illuminate\Support\Facades {
             $headers = []
         ) {
             /** @var \Illuminate\Routing\ResponseFactory $instance */
-            return $instance->redirectToAction($action, $parameters, $status,
-                $headers);
+            return $instance->redirectToAction(
+                $action,
+                $parameters,
+                $status,
+                $headers
+            );
         }
 
         /**
@@ -14746,8 +14818,12 @@ namespace Illuminate\Support\Facades {
             $secure = null
         ) {
             /** @var \Illuminate\Routing\ResponseFactory $instance */
-            return $instance->redirectToIntended($default, $status, $headers,
-                $secure);
+            return $instance->redirectToIntended(
+                $default,
+                $status,
+                $headers,
+                $secure
+            );
         }
 
         /**
@@ -14802,7 +14878,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Routing\ResponseFactory::flushMacros();
         }
-
     }
 
     /**
@@ -15972,7 +16047,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Routing\Router::emailVerification();
         }
-
     }
 
     /**
@@ -16143,7 +16217,8 @@ namespace Illuminate\Support\Facades {
          * @return void
          * @static
          */
-        public static function useNativeSchemaOperationsIfPossible($value = true
+        public static function useNativeSchemaOperationsIfPossible(
+            $value = true
         ) {            //Method inherited from \Illuminate\Database\Schema\Builder
             \Illuminate\Database\Schema\MySqlBuilder::useNativeSchemaOperationsIfPossible($value);
         }
@@ -16392,7 +16467,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Database\Schema\MySqlBuilder $instance */
             $instance->blueprintResolver($resolver);
         }
-
     }
 
     /**
@@ -17204,7 +17278,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Session\Store::flushMacros();
         }
-
     }
 
     /**
@@ -18166,7 +18239,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
             return $instance->macroCall($method, $parameters);
         }
-
     }
 
     /**
@@ -18337,8 +18409,12 @@ namespace Illuminate\Support\Facades {
             $absolute = true
         ) {
             /** @var \Illuminate\Routing\UrlGenerator $instance */
-            return $instance->signedRoute($name, $parameters, $expiration,
-                $absolute);
+            return $instance->signedRoute(
+                $name,
+                $parameters,
+                $expiration,
+                $absolute
+            );
         }
 
         /**
@@ -18359,8 +18435,12 @@ namespace Illuminate\Support\Facades {
             $absolute = true
         ) {
             /** @var \Illuminate\Routing\UrlGenerator $instance */
-            return $instance->temporarySignedRoute($name, $expiration,
-                $parameters, $absolute);
+            return $instance->temporarySignedRoute(
+                $name,
+                $expiration,
+                $parameters,
+                $absolute
+            );
         }
 
         /**
@@ -18379,8 +18459,11 @@ namespace Illuminate\Support\Facades {
             $ignoreQuery = []
         ) {
             /** @var \Illuminate\Routing\UrlGenerator $instance */
-            return $instance->hasValidSignature($request, $absolute,
-                $ignoreQuery);
+            return $instance->hasValidSignature(
+                $request,
+                $absolute,
+                $ignoreQuery
+            );
         }
 
         /**
@@ -18416,8 +18499,11 @@ namespace Illuminate\Support\Facades {
             $ignoreQuery = []
         ) {
             /** @var \Illuminate\Routing\UrlGenerator $instance */
-            return $instance->hasCorrectSignature($request, $absolute,
-                $ignoreQuery);
+            return $instance->hasCorrectSignature(
+                $request,
+                $absolute,
+                $ignoreQuery
+            );
         }
 
         /**
@@ -18801,7 +18887,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Routing\UrlGenerator::flushMacros();
         }
-
     }
 
     /**
@@ -18851,8 +18936,12 @@ namespace Illuminate\Support\Facades {
             $customAttributes = []
         ) {
             /** @var \Illuminate\Validation\Factory $instance */
-            return $instance->validate($data, $rules, $messages,
-                $customAttributes);
+            return $instance->validate(
+                $data,
+                $rules,
+                $messages,
+                $customAttributes
+            );
         }
 
         /**
@@ -19025,7 +19114,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\Validation\Factory $instance */
             return $instance->setContainer($container);
         }
-
     }
 
     /**
@@ -19123,8 +19211,12 @@ namespace Illuminate\Support\Facades {
             $mergeData = []
         ) {
             /** @var \Illuminate\View\Factory $instance */
-            return $instance->renderUnless($condition, $view, $data,
-                $mergeData);
+            return $instance->renderUnless(
+                $condition,
+                $view,
+                $data,
+                $mergeData
+            );
         }
 
         /**
@@ -20110,7 +20202,6 @@ namespace Illuminate\Support\Facades {
             /** @var \Illuminate\View\Factory $instance */
             return $instance->renderTranslation();
         }
-
     }
 
     /**
@@ -20399,7 +20490,6 @@ namespace Illuminate\Support\Facades {
         {
             \Illuminate\Foundation\Vite::flushMacros();
         }
-
     }
 }
 
@@ -20411,7 +20501,6 @@ namespace Illuminate\Support {
      */
     class Arr
     {
-
     }
 
     /**
@@ -20420,7 +20509,6 @@ namespace Illuminate\Support {
      */
     class Js
     {
-
     }
 
     /**
@@ -20429,7 +20517,6 @@ namespace Illuminate\Support {
      */
     class Str
     {
-
     }
 
     /**
@@ -20452,7 +20539,6 @@ namespace Illuminate\Support {
         {
             return \Illuminate\Support\Collection::debug();
         }
-
     }
 }
 
@@ -20542,8 +20628,13 @@ namespace Barryvdh\Debugbar\Facades {
             $context = []
         ) {
             /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->handleError($level, $message, $file, $line,
-                $context);
+            return $instance->handleError(
+                $level,
+                $message,
+                $file,
+                $line,
+                $context
+            );
         }
 
         /**
@@ -20913,8 +21004,11 @@ namespace Barryvdh\Debugbar\Facades {
             $maxTotalHeaderLength = 250000
         ) {            //Method inherited from \DebugBar\DebugBar
             /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->getDataAsHeaders($headerName, $maxHeaderLength,
-                $maxTotalHeaderLength);
+            return $instance->getDataAsHeaders(
+                $headerName,
+                $maxHeaderLength,
+                $maxTotalHeaderLength
+            );
         }
 
         /**
@@ -20933,8 +21027,11 @@ namespace Barryvdh\Debugbar\Facades {
             $maxHeaderLength = 4096
         ) {            //Method inherited from \DebugBar\DebugBar
             /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-            return $instance->sendDataInHeaders($useOpenHandler, $headerName,
-                $maxHeaderLength);
+            return $instance->sendDataInHeaders(
+                $useOpenHandler,
+                $headerName,
+                $maxHeaderLength
+            );
         }
 
         /**
@@ -21071,7 +21168,6 @@ namespace Barryvdh\Debugbar\Facades {
             /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
             return $instance->offsetUnset($key);
         }
-
     }
 }
 
@@ -21146,7 +21242,6 @@ namespace Intervention\Image\Facades {
             /** @var \Intervention\Image\ImageManager $instance */
             return $instance->cache($callback, $lifetime, $returnObj);
         }
-
     }
 }
 
@@ -21200,8 +21295,11 @@ namespace Anhskohbo\NoCaptcha\Facades {
             $attributes = []
         ) {
             /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
-            return $instance->displaySubmit($formIdentifier, $text,
-                $attributes);
+            return $instance->displaySubmit(
+                $formIdentifier,
+                $text,
+                $attributes
+            );
         }
 
         /**
@@ -21270,7 +21368,6 @@ namespace Anhskohbo\NoCaptcha\Facades {
             /** @var \Anhskohbo\NoCaptcha\NoCaptcha $instance */
             return $instance->getJsLink($lang, $callback, $onLoadClass);
         }
-
     }
 }
 
@@ -21418,7 +21515,6 @@ namespace Laravel\Socialite\Facades {
             /** @var \Laravel\Socialite\SocialiteManager $instance */
             return $instance->getContainer();
         }
-
     }
 }
 
@@ -21827,8 +21923,14 @@ namespace Collective\Html {
             $optgroupsAttributes = []
         ) {
             /** @var \Collective\Html\FormBuilder $instance */
-            return $instance->select($name, $list, $selected, $selectAttributes,
-                $optionsAttributes, $optgroupsAttributes);
+            return $instance->select(
+                $name,
+                $list,
+                $selected,
+                $selectAttributes,
+                $optionsAttributes,
+                $optgroupsAttributes
+            );
         }
 
         /**
@@ -21851,8 +21953,13 @@ namespace Collective\Html {
             $options = []
         ) {
             /** @var \Collective\Html\FormBuilder $instance */
-            return $instance->selectRange($name, $begin, $end, $selected,
-                $options);
+            return $instance->selectRange(
+                $name,
+                $begin,
+                $end,
+                $selected,
+                $options
+            );
         }
 
         /**
@@ -21914,8 +22021,13 @@ namespace Collective\Html {
             $optgroupAttributes = []
         ) {
             /** @var \Collective\Html\FormBuilder $instance */
-            return $instance->getSelectOption($display, $value, $selected,
-                $attributes, $optgroupAttributes);
+            return $instance->getSelectOption(
+                $display,
+                $value,
+                $selected,
+                $attributes,
+                $optgroupAttributes
+            );
         }
 
         /**
@@ -22288,7 +22400,6 @@ namespace Collective\Html {
         {
             return \Collective\Html\FormBuilder::captcha($attributes);
         }
-
     }
 
     /**
@@ -22459,8 +22570,13 @@ namespace Collective\Html {
             $escape = true
         ) {
             /** @var \Collective\Html\HtmlBuilder $instance */
-            return $instance->linkAsset($url, $title, $attributes, $secure,
-                $escape);
+            return $instance->linkAsset(
+                $url,
+                $title,
+                $attributes,
+                $secure,
+                $escape
+            );
         }
 
         /**
@@ -22481,8 +22597,12 @@ namespace Collective\Html {
             $escape = true
         ) {
             /** @var \Collective\Html\HtmlBuilder $instance */
-            return $instance->linkSecureAsset($url, $title, $attributes,
-                $escape);
+            return $instance->linkSecureAsset(
+                $url,
+                $title,
+                $attributes,
+                $escape
+            );
         }
 
         /**
@@ -22507,8 +22627,14 @@ namespace Collective\Html {
             $escape = true
         ) {
             /** @var \Collective\Html\HtmlBuilder $instance */
-            return $instance->linkRoute($name, $title, $parameters, $attributes,
-                $secure, $escape);
+            return $instance->linkRoute(
+                $name,
+                $title,
+                $parameters,
+                $attributes,
+                $secure,
+                $escape
+            );
         }
 
         /**
@@ -22533,8 +22659,14 @@ namespace Collective\Html {
             $escape = true
         ) {
             /** @var \Collective\Html\HtmlBuilder $instance */
-            return $instance->linkAction($action, $title, $parameters,
-                $attributes, $secure, $escape);
+            return $instance->linkAction(
+                $action,
+                $title,
+                $parameters,
+                $attributes,
+                $secure,
+                $escape
+            );
         }
 
         /**
@@ -22803,7 +22935,6 @@ namespace Collective\Html {
             /** @var \Collective\Html\HtmlBuilder $instance */
             return $instance->componentCall($method, $parameters);
         }
-
     }
 
     /**
@@ -22824,7 +22955,6 @@ namespace Collective\Html {
         {
             return \Collective\Html\FormBuilder::captcha($attributes);
         }
-
     }
 }
 
@@ -23266,7 +23396,6 @@ namespace Spatie\LaravelIgnition\Facades {
             /** @var \Spatie\FlareClient\Flare $instance */
             return $instance->group($groupName, $properties);
         }
-
     }
 }
 
@@ -23311,7 +23440,6 @@ namespace Spatie\SignalAwareCommand\Facades {
             /** @var \Spatie\SignalAwareCommand\Signal $instance */
             return $instance->clearHandlers($signal);
         }
-
     }
 }
 
@@ -23349,8 +23477,11 @@ namespace Illuminate\Http {
          */
         public static function validateWithBag($errorBag, $rules, ...$params)
         {
-            return \Illuminate\Http\Request::validateWithBag($errorBag, $rules,
-                ...$params);
+            return \Illuminate\Http\Request::validateWithBag(
+                $errorBag,
+                $rules,
+                ...$params
+            );
         }
 
         /**
@@ -23390,10 +23521,11 @@ namespace Illuminate\Http {
             $ignoreQuery = [],
             $absolute = true
         ) {
-            return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery,
-                $absolute);
+            return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring(
+                $ignoreQuery,
+                $absolute
+            );
         }
-
     }
 }
 
@@ -23451,7 +23583,6 @@ namespace Illuminate\Routing {
         {
             return \Illuminate\Routing\Router::emailVerification();
         }
-
     }
 }
 
@@ -24086,8 +24217,12 @@ namespace {
             $page = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->simplePaginate($perPage, $columns, $pageName,
-                $page);
+            return $instance->simplePaginate(
+                $perPage,
+                $columns,
+                $pageName,
+                $page
+            );
         }
 
         /**
@@ -24108,8 +24243,12 @@ namespace {
             $cursor = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->cursorPaginate($perPage, $columns, $cursorName,
-                $cursor);
+            return $instance->cursorPaginate(
+                $perPage,
+                $columns,
+                $cursorName,
+                $cursor
+            );
         }
 
         /**
@@ -24686,8 +24825,13 @@ namespace {
             $callback = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->has($relation, $operator, $count, $boolean,
-                $callback);
+            return $instance->has(
+                $relation,
+                $operator,
+                $count,
+                $boolean,
+                $callback
+            );
         }
 
         /**
@@ -24780,8 +24924,12 @@ namespace {
             $count = 1
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->withWhereHas($relation, $callback, $operator,
-                $count);
+            return $instance->withWhereHas(
+                $relation,
+                $callback,
+                $operator,
+                $count
+            );
         }
 
         /**
@@ -24802,8 +24950,12 @@ namespace {
             $count = 1
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->orWhereHas($relation, $callback, $operator,
-                $count);
+            return $instance->orWhereHas(
+                $relation,
+                $callback,
+                $operator,
+                $count
+            );
         }
 
         /**
@@ -24858,8 +25010,14 @@ namespace {
             $callback = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->hasMorph($relation, $types, $operator, $count,
-                $boolean, $callback);
+            return $instance->hasMorph(
+                $relation,
+                $types,
+                $operator,
+                $count,
+                $boolean,
+                $callback
+            );
         }
 
         /**
@@ -24901,8 +25059,12 @@ namespace {
             $callback = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->doesntHaveMorph($relation, $types, $boolean,
-                $callback);
+            return $instance->doesntHaveMorph(
+                $relation,
+                $types,
+                $boolean,
+                $callback
+            );
         }
 
         /**
@@ -24940,8 +25102,13 @@ namespace {
             $count = 1
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->whereHasMorph($relation, $types, $callback,
-                $operator, $count);
+            return $instance->whereHasMorph(
+                $relation,
+                $types,
+                $callback,
+                $operator,
+                $count
+            );
         }
 
         /**
@@ -24964,8 +25131,13 @@ namespace {
             $count = 1
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->orWhereHasMorph($relation, $types, $callback,
-                $operator, $count);
+            return $instance->orWhereHasMorph(
+                $relation,
+                $types,
+                $callback,
+                $operator,
+                $count
+            );
         }
 
         /**
@@ -24984,8 +25156,11 @@ namespace {
             $callback = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->whereDoesntHaveMorph($relation, $types,
-                $callback);
+            return $instance->whereDoesntHaveMorph(
+                $relation,
+                $types,
+                $callback
+            );
         }
 
         /**
@@ -25004,8 +25179,11 @@ namespace {
             $callback = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->orWhereDoesntHaveMorph($relation, $types,
-                $callback);
+            return $instance->orWhereDoesntHaveMorph(
+                $relation,
+                $types,
+                $callback
+            );
         }
 
         /**
@@ -25026,8 +25204,12 @@ namespace {
             $value = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->whereRelation($relation, $column, $operator,
-                $value);
+            return $instance->whereRelation(
+                $relation,
+                $column,
+                $operator,
+                $value
+            );
         }
 
         /**
@@ -25048,8 +25230,12 @@ namespace {
             $value = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->orWhereRelation($relation, $column, $operator,
-                $value);
+            return $instance->orWhereRelation(
+                $relation,
+                $column,
+                $operator,
+                $value
+            );
         }
 
         /**
@@ -25072,8 +25258,13 @@ namespace {
             $value = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->whereMorphRelation($relation, $types, $column,
-                $operator, $value);
+            return $instance->whereMorphRelation(
+                $relation,
+                $types,
+                $column,
+                $operator,
+                $value
+            );
         }
 
         /**
@@ -25096,8 +25287,13 @@ namespace {
             $value = null
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->orWhereMorphRelation($relation, $types, $column,
-                $operator, $value);
+            return $instance->orWhereMorphRelation(
+                $relation,
+                $types,
+                $column,
+                $operator,
+                $value
+            );
         }
 
         /**
@@ -25183,8 +25379,11 @@ namespace {
             $boolean = 'and'
         ) {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
-            return $instance->whereBelongsTo($related, $relationshipName,
-                $boolean);
+            return $instance->whereBelongsTo(
+                $related,
+                $relationshipName,
+                $boolean
+            );
         }
 
         /**
@@ -25337,8 +25536,10 @@ namespace {
          */
         public static function transform($array, $transformers = null)
         {
-            return \Illuminate\Database\Eloquent\Builder::transform($array,
-                $transformers);
+            return \Illuminate\Database\Eloquent\Builder::transform(
+                $array,
+                $transformers
+            );
         }
 
         /**
@@ -25480,8 +25681,14 @@ namespace {
             $where = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->join($table, $first, $operator, $second, $type,
-                $where);
+            return $instance->join(
+                $table,
+                $first,
+                $operator,
+                $second,
+                $type,
+                $where
+            );
         }
 
         /**
@@ -25504,8 +25711,13 @@ namespace {
             $type = 'inner'
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->joinWhere($table, $first, $operator, $second,
-                $type);
+            return $instance->joinWhere(
+                $table,
+                $first,
+                $operator,
+                $second,
+                $type
+            );
         }
 
         /**
@@ -25533,8 +25745,15 @@ namespace {
             $where = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->joinSub($query, $as, $first, $operator, $second,
-                $type, $where);
+            return $instance->joinSub(
+                $query,
+                $as,
+                $first,
+                $operator,
+                $second,
+                $type,
+                $where
+            );
         }
 
         /**
@@ -25595,8 +25814,13 @@ namespace {
             $second = null
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->leftJoinSub($query, $as, $first, $operator,
-                $second);
+            return $instance->leftJoinSub(
+                $query,
+                $as,
+                $first,
+                $operator,
+                $second
+            );
         }
 
         /**
@@ -25638,8 +25862,12 @@ namespace {
             $second
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->rightJoinWhere($table, $first, $operator,
-                $second);
+            return $instance->rightJoinWhere(
+                $table,
+                $first,
+                $operator,
+                $second
+            );
         }
 
         /**
@@ -25662,8 +25890,13 @@ namespace {
             $second = null
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->rightJoinSub($query, $as, $first, $operator,
-                $second);
+            return $instance->rightJoinSub(
+                $query,
+                $as,
+                $first,
+                $operator,
+                $second
+            );
         }
 
         /**
@@ -25734,8 +25967,11 @@ namespace {
             $useDefault = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->prepareValueAndOperator($value, $operator,
-                $useDefault);
+            return $instance->prepareValueAndOperator(
+                $value,
+                $operator,
+                $useDefault
+            );
         }
 
         /**
@@ -25894,8 +26130,12 @@ namespace {
             $not = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereIntegerInRaw($column, $values, $boolean,
-                $not);
+            return $instance->whereIntegerInRaw(
+                $column,
+                $values,
+                $boolean,
+                $not
+            );
         }
 
         /**
@@ -26034,8 +26274,12 @@ namespace {
             $not = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereBetweenColumns($column, $values, $boolean,
-                $not);
+            return $instance->whereBetweenColumns(
+                $column,
+                $values,
+                $boolean,
+                $not
+            );
         }
 
         /**
@@ -26103,8 +26347,11 @@ namespace {
             $boolean = 'and'
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereNotBetweenColumns($column, $values,
-                $boolean);
+            return $instance->whereNotBetweenColumns(
+                $column,
+                $values,
+                $boolean
+            );
         }
 
         /**
@@ -26479,8 +26726,12 @@ namespace {
             $boolean = 'and'
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereRowValues($columns, $operator, $values,
-                $boolean);
+            return $instance->whereRowValues(
+                $columns,
+                $operator,
+                $values,
+                $boolean
+            );
         }
 
         /**
@@ -26517,8 +26768,12 @@ namespace {
             $not = false
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereJsonContains($column, $value, $boolean,
-                $not);
+            return $instance->whereJsonContains(
+                $column,
+                $value,
+                $boolean,
+                $not
+            );
         }
 
         /**
@@ -26652,8 +26907,12 @@ namespace {
             $boolean = 'and'
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereJsonLength($column, $operator, $value,
-                $boolean);
+            return $instance->whereJsonLength(
+                $column,
+                $operator,
+                $value,
+                $boolean
+            );
         }
 
         /**
@@ -26707,8 +26966,12 @@ namespace {
             $boolean = 'and'
         ) {
             /** @var \Illuminate\Database\Query\Builder $instance */
-            return $instance->whereFullText($columns, $value, $options,
-                $boolean);
+            return $instance->whereFullText(
+                $columns,
+                $value,
+                $options,
+                $boolean
+            );
         }
 
         /**
@@ -27937,7 +28200,3 @@ namespace {
     {
     }
 }
-
-
-
-
