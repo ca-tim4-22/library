@@ -3860,22 +3860,22 @@
         },
         {
             "name": "onecentlin/laravel-adminer",
-            "version": "6.0.0",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/onecentlin/laravel-adminer.git",
-                "reference": "d383fc4a269eba936c71bd366448a14a5718ccdc"
+                "reference": "0c98040eb1ef9521737429e7e3829b1439b613a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/onecentlin/laravel-adminer/zipball/d383fc4a269eba936c71bd366448a14a5718ccdc",
-                "reference": "d383fc4a269eba936c71bd366448a14a5718ccdc",
+                "url": "https://api.github.com/repos/onecentlin/laravel-adminer/zipball/0c98040eb1ef9521737429e7e3829b1439b613a0",
+                "reference": "0c98040eb1ef9521737429e7e3829b1439b613a0",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/routing": "~5.0|~6.0|~7.0|~8.0|~9.0",
-                "illuminate/support": "~5.0|~6.0|~7.0|~8.0|~9.0",
+                "illuminate/contracts": "~5.0|~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/routing": "~5.0|~6.0|~7.0|~8.0|~9.0|~10.0",
+                "illuminate/support": "~5.0|~6.0|~7.0|~8.0|~9.0|~10.0",
                 "php": ">=5.4.0"
             },
             "type": "library",
@@ -3905,6 +3905,7 @@
             "keywords": [
                 "adminer",
                 "database",
+                "laravel10",
                 "laravel5",
                 "laravel6",
                 "laravel7",
@@ -3916,9 +3917,9 @@
             ],
             "support": {
                 "issues": "https://github.com/onecentlin/laravel-adminer/issues",
-                "source": "https://github.com/onecentlin/laravel-adminer/tree/6.0.0"
+                "source": "https://github.com/onecentlin/laravel-adminer/tree/6.1.0"
             },
-            "time": "2022-03-05T12:17:46+00:00"
+            "time": "2023-02-03T02:16:21+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
