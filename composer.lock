@@ -10317,16 +10317,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.0.1",
+            "version": "10.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5"
+                "reference": "6be2d07cce2c7f812db007825a57da3b08972eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5",
-                "reference": "e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6be2d07cce2c7f812db007825a57da3b08972eaf",
+                "reference": "6be2d07cce2c7f812db007825a57da3b08972eaf",
                 "shasum": ""
             },
             "require": {
@@ -10397,7 +10397,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.1"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.4"
             },
             "funding": [
                 {
@@ -10413,7 +10413,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-03T13:36:13+00:00"
+            "time": "2023-02-05T16:23:38+00:00"
         },
         {
             "name": "psr/cache",
