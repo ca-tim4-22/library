@@ -10321,16 +10321,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.0.1",
+            "version": "10.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5"
+                "reference": "a6f61c5629dd95db79af72f1e94d56702187479a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5",
-                "reference": "e2aa0bba46b3d913be20921e88e5a6f9d5cfc9b5",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a6f61c5629dd95db79af72f1e94d56702187479a",
+                "reference": "a6f61c5629dd95db79af72f1e94d56702187479a",
                 "shasum": ""
             },
             "require": {
@@ -10401,7 +10401,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.1"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.0.7"
             },
             "funding": [
                 {
@@ -10417,7 +10417,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-03T13:36:13+00:00"
+            "time": "2023-02-08T15:16:31+00:00"
         },
         {
             "name": "psr/cache",
@@ -11325,16 +11325,16 @@
         },
         {
             "name": "sebastian/version",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "5facf5a20311ac44f79221274cdeb6c569ca11dd"
+                "reference": "c51fa83a5d8f43f1402e3f32a005e6262244ef17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/5facf5a20311ac44f79221274cdeb6c569ca11dd",
-                "reference": "5facf5a20311ac44f79221274cdeb6c569ca11dd",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/c51fa83a5d8f43f1402e3f32a005e6262244ef17",
+                "reference": "c51fa83a5d8f43f1402e3f32a005e6262244ef17",
                 "shasum": ""
             },
             "require": {
@@ -11366,7 +11366,7 @@
             "homepage": "https://github.com/sebastianbergmann/version",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/version/issues",
-                "source": "https://github.com/sebastianbergmann/version/tree/4.0.0"
+                "source": "https://github.com/sebastianbergmann/version/tree/4.0.1"
             },
             "funding": [
                 {
@@ -11374,7 +11374,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-03T07:11:37+00:00"
+            "time": "2023-02-07T11:34:05+00:00"
         },
         {
             "name": "spatie/backtrace",
