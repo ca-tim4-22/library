@@ -57,7 +57,7 @@ SCOUT_DRIVER | SCOUT_QUEUE | ALGOLIA_APP_ID | ALGOLIA_SECRET
 * Inoltre, poiché questa app utilizza Laravel Socialite per la registrazione/l'accesso utilizzando un'app/piattaforma di terze parti come Google, GitHub, ecc., dovrai chiedere all'amministratore le chiavi delle seguenti varianti:
 ```shell
 GITHUB_CLIENT_ID | GITHUB_CLIENT_SECRET | GITHUB_REDIRECT_URL
-
+```
 * Se vuoi integrare la newsletter, puoi definire i tuoi valori per le variabili specificate:
 ```shell
 MAILCHIMP_APIKEY | MAILCHIMP_LIST_ID
