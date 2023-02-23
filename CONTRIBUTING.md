@@ -23,7 +23,7 @@ We'd love to accept your patches and contributions to this project. There are se
 
 When submitting pull requests, make sure to do the following:
 - Follow PHP Standard Recommendations
-- Follow Laravel 9 conventions
+- Follow Laravel 10 conventions
 - Remove trailing whitespace from files
 - Follow project structure
 
