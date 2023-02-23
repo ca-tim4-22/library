@@ -10,7 +10,7 @@
   "require": {
     "php": "^8.0.2",
     "algolia/algoliasearch-client-php": "^3.3",
-    "algolia/scout-extended": "^2.0",
+    "algolia/scout-extended": "^3.0",
     "anhskohbo/no-captcha": "^3.4",
     "drewm/mailchimp-api": "^2.5",
     "enlightn/enlightn": "^2.1",
