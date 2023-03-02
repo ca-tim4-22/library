@@ -3,7 +3,14 @@
 
 ## Online library | Web application & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### What is "Online library"?
->The online library is a project of the ICT Cortex Academy intended for high school students in order to better and more efficiently prepare for all the future challenges that await them. More info is below...
+
+Introducing our advanced multi-lingual school library management system! This cutting-edge platform boasts a wide range of state-of-the-art features, all designed to revolutionize the library management process and take user experience to the next level.
+
+With our system, you'll enjoy the flexibility to assign roles and permissions, ensuring optimal security and access control. Our robust full text search feature allows for quick and easy content discovery, while our API integration streamlines data management.
+
+Plus, our system offers unparalleled image processing capabilities, including cropping and compressing, making image management a breeze. For easy access and user convenience, we offer seamless GitHub login integration, and data importing is a snap thanks to our CSV import feature.
+
+Stay connected and keep your users in the loop with our newsletter feature, and ensure optimal security with our cutting-edge reCAPTCHA integration. With our innovative multi-language school library management system, the possibilities are endless!
 
 ![dahboard-page](https://i.postimg.cc/VLj9MD8R/dashboard.png)
 ![book](https://i.postimg.cc/gJHd8Cgp/knjiga.png)
