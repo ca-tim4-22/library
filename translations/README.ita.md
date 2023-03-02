@@ -3,7 +3,14 @@
 
 ## Libreria in linea | Applicazione Web & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### Cos'è una "Biblioteca online"?
->La biblioteca online è un progetto della ICT Cortex Academy destinato agli studenti delle scuole superiori per prepararsi al meglio e in modo più efficiente a tutte le sfide future che li attendono. Maggiori informazioni sono di seguito...
+
+Ti presentiamo il nostro avanzato sistema di gestione delle biblioteche scolastiche multilingue! Questa piattaforma all'avanguardia vanta un'ampia gamma di funzionalità all'avanguardia, tutte progettate per rivoluzionare il processo di gestione delle biblioteche e portare l'esperienza dell'utente a un livello superiore.
+
+Con il nostro sistema, godrai della flessibilità di assegnare ruoli e autorizzazioni, garantendo sicurezza e controllo degli accessi ottimali. La nostra solida funzione di ricerca full-text consente una scoperta rapida e semplice dei contenuti, mentre la nostra integrazione API semplifica la gestione dei dati.
+
+Inoltre, il nostro sistema offre capacità di elaborazione delle immagini senza precedenti, tra cui il ritaglio e la compressione, rendendo la gestione delle immagini un gioco da ragazzi. Per un facile accesso e comodità per l'utente, offriamo un'integrazione perfetta dell'accesso a GitHub e l'importazione dei dati è un gioco da ragazzi grazie alla nostra funzione di importazione CSV.
+
+Rimani connesso e mantieni i tuoi utenti aggiornati con la nostra funzione di newsletter e garantisci una sicurezza ottimale con la nostra integrazione reCAPTCHA all'avanguardia. Con il nostro innovativo sistema di gestione delle biblioteche scolastiche multilingue, le possibilità sono infinite!
 
 ![dahboard-pagina](https://i.postimg.cc/VLj9MD8R/dashboard.png)
 ![libro](https://i.postimg.cc/gJHd8Cgp/knjiga.png)
