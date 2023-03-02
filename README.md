@@ -5,6 +5,14 @@
 ### Šta je "Online biblioteka"?
 > Online biblioteka predstavlja projekat ICT Cortex akademije namijenjen učenicima srednjih škola kako bi se što bolje i efikasnije spremili za sve buduće izazove koje ih čekaju. Više informacija ispod...
 
+Naša platforma se može pohvaliti širokim spektrom najsavremenijih funkcija, a sve su dizajnirane da revolucionišu proces upravljanja bibliotekom i podignu korisničko iskustvo na sledeći nivo.
+
+Uz naš sistem, uživaćete u fleksibilnosti dodjeljivanja uloga i dozvola, obezbjeđujući optimalnu bezbjednost i kontrolu pristupa. Naša funkcija pretraživanja punog teksta omogućava brzo i lako otkrivanje sadržaja, dok naša API integracija pojednostavljuje upravljanje podacima.
+
+Pored toga, naš sistem nudi neuporedive mogućnosti obrade slika, uključujući isjecanje, kompresovanje i kropovanje, što olakšava upravljanje slikama. Za lak pristup i pogodnost korisnika, nudimo besprekornu integraciju GitHub prijave i registracije, a uvoz podataka je brz zahvaljujući našoj funkciji uvoza CSV-a.
+
+Ostanite povezani i držite svoje korisnike u toku pomoću naše funkcije biltena i osigurajte optimalnu sigurnost uz našu najsavremeniju reCAPTCHA integraciju. Sa našim inovativnim višejezičnim sistemom upravljanja školskim bibliotekama, mogućnosti su beskrajne!
+
 ![dahboard-page](https://i.postimg.cc/VLj9MD8R/dashboard.png)
 ![book](https://i.postimg.cc/gJHd8Cgp/knjiga.png)
 ![crop](https://i.postimg.cc/qv6Tjh1j/image-crop.png)
