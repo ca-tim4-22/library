@@ -1880,16 +1880,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v11.8.3",
+            "version": "v11.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "d60300185cfd066190b7842982cce314f779f9dd"
+                "reference": "b6b68fad1d02e39c6c659705159487f643393cdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/d60300185cfd066190b7842982cce314f779f9dd",
-                "reference": "d60300185cfd066190b7842982cce314f779f9dd",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/b6b68fad1d02e39c6c659705159487f643393cdd",
+                "reference": "b6b68fad1d02e39c6c659705159487f643393cdd",
                 "shasum": ""
             },
             "require": {
@@ -1954,7 +1954,7 @@
                 "issues": "https://github.com/laravel/passport/issues",
                 "source": "https://github.com/laravel/passport"
             },
-            "time": "2023-03-01T15:56:44+00:00"
+            "time": "2023-03-18T18:55:20+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -3032,16 +3032,16 @@
         },
         {
             "name": "league/oauth2-server",
-            "version": "8.4.0",
+            "version": "8.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/oauth2-server.git",
-                "reference": "539f4340c14eca8d44578fd118f6bdc0ad16d1ce"
+                "reference": "eed31d86d8cc8e6e9c9f58fbb2113494f8b41e24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/539f4340c14eca8d44578fd118f6bdc0ad16d1ce",
-                "reference": "539f4340c14eca8d44578fd118f6bdc0ad16d1ce",
+                "url": "https://api.github.com/repos/thephpleague/oauth2-server/zipball/eed31d86d8cc8e6e9c9f58fbb2113494f8b41e24",
+                "reference": "eed31d86d8cc8e6e9c9f58fbb2113494f8b41e24",
                 "shasum": ""
             },
             "require": {
@@ -3108,7 +3108,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/oauth2-server/issues",
-                "source": "https://github.com/thephpleague/oauth2-server/tree/8.4.0"
+                "source": "https://github.com/thephpleague/oauth2-server/tree/8.4.1"
             },
             "funding": [
                 {
@@ -3116,7 +3116,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-02-15T16:08:35+00:00"
+            "time": "2023-03-22T11:47:53+00:00"
         },
         {
             "name": "league/uri",
