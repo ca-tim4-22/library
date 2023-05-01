@@ -41,6 +41,13 @@ It is a wrong generated APP_KEY ie. an application encryption key. Open the ".en
 <br>
 You may not have started your local server. Depending on which software you are using as a server package, start it as well as the Apache server and try again. Known softwares: WAMP, XAMPP, ampss, and so on.
 
+#### Possible error:
+-> "Could not find driver (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE').."
+<br>
+The error message "Could not find driver" usually indicates that the PHP extension for the database driver you are using is not installed or enabled on your system.
+Open the "php.ini" file in a text editor and look for the line that starts with "extension=". Remove the semicolon (;) at the beginning of the line and replace <extension-name> with the name of the PHP extension you installed in step 2.
+-> extension=mysql
+
 ## Installation
 * Clone this repository using this command:
 ```shell

@@ -41,6 +41,13 @@ In questo progetto vengono utilizzati pacchetti per manipolare dinamicamente le 
 <br>
 Potresti non aver avviato il tuo server locale. A seconda del software che stai utilizzando come pacchetto server, avvialo insieme al server Apache e riprova. Software conosciuto: WAMP, XAMPP, ampss e così via.
 
+#### Possibile errore:
+-> "Impossibile trovare il driver (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE').."
+<br>
+Il messaggio di errore "Impossibile trovare il driver" di solito indica che l'estensione PHP per il driver del database che stai utilizzando non è installata o abilitata sul tuo sistema.
+Apri il file "php.ini" in un editor di testo e cerca la riga che inizia con "extension=". Rimuovi il punto e virgola (;) all'inizio della riga e sostituisci <nome-estensione> con il nome dell'estensione PHP che hai installato al passaggio 2.
+-> extension=mysql
+
 ## Installazione
 * Clona questo repository usando questo comando:
 ```shell

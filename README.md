@@ -42,6 +42,13 @@ U pitanju je loše izgenerisani APP_KEY tj. enkripcioni ključ aplikacije. Otvor
 <br>
 Moguće je da niste startovali Vaš lokalni server. U zavisnosti koji softver koristite kao serverski paket pokrenite ga kao i Apache server i pokušajte ponovo. Poznati softveri: WAMP, XAMPP, ampps i tako dalje.
 
+#### Moguća greška: 
+-> "Could not find driver (SQL: SHOW FULL TABLES WHERE table_type = 'BASE TABLE').."
+<br>
+Poruka o grešci "Nije moguće pronaći drajver“ obično ukazuje na to da PHP ekstenzija za drajver baze podataka koju koristite nije instalirana ili omogućena na Vašem sistemu.
+Otvorite datoteku "php.ini" u uređivaču teksta i potražite red koji počinje sa ekstenzijom=. Dekomentarišite red tako što ćete ukloniti tačku i zarez (;) na početku reda i zamijenite <ime-ekstenzije> imenom PHP ekstenzije koju ste instalirali u koraku 2.
+-> extension=mysql
+
 ## Instalacija
 * Klonirajte ovaj repozitorijum sledećom komandom:
 ```shell
