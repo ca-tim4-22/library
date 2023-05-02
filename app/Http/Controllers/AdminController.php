@@ -38,7 +38,7 @@ class AdminController extends Controller
         $searched = $request->trazeno;
         if ($searched) {
             $administrators = User::search($request->trazeno)
-                                  ->where('user_type_id', 3)->paginate($items);
+                ->where('user_type_id', 3)->paginate($items);
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
                 $show_criterium = true;
@@ -47,16 +47,24 @@ class AdminController extends Controller
             }
         } else {
             $administrators = User::with('gender')->latest()
-                                  ->where('user_type_id', 3)->paginate($items);
+                ->where('user_type_id', 3)->paginate($items);
             $show_criterium = false;
         }
 
         $count_model = new User();
         $show_all = $count_model->getCount(3);
 
-        return view('pages.admins.admins',
-            compact('administrators', 'items', 'variable', 'show_all',
-                'searched', 'show_criterium'));
+        return view(
+            'pages.admins.admins',
+            compact(
+                'administrators',
+                'items',
+                'variable',
+                'show_all',
+                'searched',
+                'show_criterium'
+            )
+        );
     }
 
     /**
@@ -163,11 +171,11 @@ class AdminController extends Controller
         $URL = url()->previous();
 
         if ($admin->photo != 'placeholder') {
-            if ($URL == 'http://tim4.ictcortex.me/administratori') {
-                unlink('storage/administrators/'.$admin->photo);
+            if ($URL == 'http://tim7.ictcortex.me/administratori') {
+                unlink('storage/administrators/' . $admin->photo);
             } else {
-                $path = '\\storage\\administrators\\'.$admin->photo;
-                unlink(public_path().$path);
+                $path = '\\storage\\administrators\\' . $admin->photo;
+                unlink(public_path() . $path);
             }
         }
 
@@ -178,15 +186,15 @@ class AdminController extends Controller
     {
         $dest = 'storage/administrators';
         $file = $request->file('photo');
-        $new_image_name = date('YmdHis').uniqid().'.jpg';
+        $new_image_name = date('YmdHis') . uniqid() . '.jpg';
 
         $move = $file->move($dest, $new_image_name);
 
-        if ( ! $move) {
+        if (!$move) {
             return response()->json(['status' => 0, 'msg' => 'Greška!']);
         } else {
             $user = User::whereId(Auth::id())
-                        ->update(['photo' => $new_image_name]);
+                ->update(['photo' => $new_image_name]);
 
             return response()->json([
                 'status' => 1,
@@ -201,7 +209,8 @@ class AdminController extends Controller
         User::whereIn('id', explode(",", $ids))->delete();
     }
 
-    public function logHistory(User $user) {
+    public function logHistory(User $user)
+    {
         $admin = $user;
         $col = $admin->authentications()->simplePaginate(5);
 

@@ -9,10 +9,11 @@ use App\Models\BookCategory;
 use App\Models\BookGenre;
 use App\Models\Category;
 use App\Models\Gallery;
-use App\Models\GlobalVariable;
 use DB;
 use Illuminate\Http\Request;
 use Session;
+
+define("url", "tim7");
 
 class BookService
 {
@@ -54,13 +55,14 @@ class BookService
                 ])->first();
                 if ($cover_old) {
                     $URL = url()->current();
-                    if (str_contains($URL, 'tim4')
-                        && file_exists('storage/book-covers/'.$cover_old->photo)
+                    if (
+                        str_contains($URL, url)
+                        && file_exists('storage/book-covers/' . $cover_old->photo)
                     ) {
-                        unlink('storage/book-covers/'.$cover_old->photo);
-                    } elseif ( ! str_contains($URL, 'tim4')) {
-                        $path = '\\storage\\book-covers\\'.$cover_old->photo;
-                        unlink(public_path().$path);
+                        unlink('storage/book-covers/' . $cover_old->photo);
+                    } elseif (!str_contains($URL, url)) {
+                        $path = '\\storage\\book-covers\\' . $cover_old->photo;
+                        unlink(public_path() . $path);
                     }
                     $cover_old->delete();
                 }
@@ -133,10 +135,10 @@ class BookService
             $category = str_replace(['[', ']'], [], $category);
             $categoryIds = explode(',', $category);
             $count = BookCategory::where('category_id', $request->category_id)
-                                 ->count();
+                ->count();
             if ($count >= 1) {
                 BookCategory::where('category_id', $request->category_id)
-                            ->delete();
+                    ->delete();
             } else {
                 foreach ($categoryIds as $id) {
                     BookCategory::create([
@@ -171,7 +173,7 @@ class BookService
             $category = str_replace(['[', ']'], [], $category);
             $categoryIds = explode(',', $category);
             $count = BookAuthor::where('author_id', $request->author_id)
-                               ->count();
+                ->count();
             if ($count >= 1) {
                 BookAuthor::where('author_id', $request->author_id)->delete();
                 foreach ($categoryIds as $id) {
@@ -198,7 +200,7 @@ class BookService
                 foreach ($book->authors as $collection) {
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')
-                                        ->whereIn('author_id', $request->id_author)->get();
+                        ->whereIn('author_id', $request->id_author)->get();
                     $result = $books->count();
                     $ids = $request->id_author;
                     $array = [];
@@ -221,7 +223,7 @@ class BookService
                 foreach ($book->categories as $collection) {
                     $searched = true;
                     $books = $collection->orderBy('id', 'desc')
-                                        ->whereIn('category_id', $request->id_category)->get();
+                        ->whereIn('category_id', $request->id_category)->get();
                     $result = $books->count();
                     $ids = $request->id_category;
                     $array = [];
@@ -248,16 +250,16 @@ class BookService
                     // Preventing if image does not exist in storage
                     $URL = url()->current();
 
-                    if (str_contains($URL, 'tim4')
-                        && file_exists('storage/book-covers/'.$photo->photo)
+                    if (
+                        str_contains($URL, url)
+                        && file_exists('storage/book-covers/' . $photo->photo)
                     ) {
-                        unlink('storage/book-covers/'.$photo->photo);
+                        unlink('storage/book-covers/' . $photo->photo);
                         $book->delete();
                     } elseif (file_exists('\\storage\\book-covers\\'
-                                          .$photo->photo)
-                    ) {
-                        $path = '\\storage\\book-covers\\'.$photo->photo;
-                        unlink(public_path().$path);
+                        . $photo->photo)) {
+                        $path = '\\storage\\book-covers\\' . $photo->photo;
+                        unlink(public_path() . $path);
                         $book->delete();
                     } else {
                         $book->delete();
@@ -268,13 +270,14 @@ class BookService
 
         if ($book->pdf != 0) {
             // Preventing if pdf does not exist in storage
-            if (str_contains($URL, 'tim4')
-                && file_exists('storage/pdf/'.$book->pdf)
+            if (
+                str_contains($URL, url)
+                && file_exists('storage/pdf/' . $book->pdf)
             ) {
-                unlink('storage/pdf/'.$book->pdf);
-            } elseif (file_exists('\\storage\\pdf\\'.$book->pdf)) {
-                $path_pdf = '\\storage\\pdf\\'.$book->pdf;
-                unlink(public_path().$path_pdf);
+                unlink('storage/pdf/' . $book->pdf);
+            } elseif (file_exists('\\storage\\pdf\\' . $book->pdf)) {
+                $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+                unlink(public_path() . $path_pdf);
             }
         }
     }
@@ -287,13 +290,14 @@ class BookService
         foreach ($books as $book) {
             if ($book->pdf != 0) {
                 // Preventing if pdf does not exist in storage
-                if (str_contains($URL, 'tim4')
-                    && file_exists('storage/pdf/'.$book->pdf)
+                if (
+                    str_contains($URL, url)
+                    && file_exists('storage/pdf/' . $book->pdf)
                 ) {
-                    unlink('storage/pdf/'.$book->pdf);
-                } elseif (file_exists('\\storage\\pdf\\'.$book->pdf)) {
-                    $path_pdf = '\\storage\\pdf\\'.$book->pdf;
-                    unlink(public_path().$path_pdf);
+                    unlink('storage/pdf/' . $book->pdf);
+                } elseif (file_exists('\\storage\\pdf\\' . $book->pdf)) {
+                    $path_pdf = '\\storage\\pdf\\' . $book->pdf;
+                    unlink(public_path() . $path_pdf);
                 }
             }
         }
@@ -305,10 +309,10 @@ class BookService
             Gallery::where('photo', $photo)->delete();
             $URL = url()->current();
             if (str_contains($URL, '127.0.0.1:8000')) {
-                $path = '\\storage\\book-covers\\'.$photo;
-                unlink(public_path().$path);
+                $path = '\\storage\\book-covers\\' . $photo;
+                unlink(public_path() . $path);
             } else {
-                unlink('storage/book-covers/'.$photo);
+                unlink('storage/book-covers/' . $photo);
             }
             Session::flash('book-photo-deleted');
         } else {

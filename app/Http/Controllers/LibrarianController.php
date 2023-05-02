@@ -37,8 +37,10 @@ class LibrarianController extends Controller
 
         $searched = $request->trazeno;
         if ($searched) {
-            $librarians = User::search($request->trazeno)->where('user_type_id',
-                2)->paginate($items);
+            $librarians = User::search($request->trazeno)->where(
+                'user_type_id',
+                2
+            )->paginate($items);
 
             $count = User::search($request->trazeno)->get()->count();
             if ($count == 0) {
@@ -47,15 +49,25 @@ class LibrarianController extends Controller
                 $show_criterium = false;
             }
         } else {
-            $librarians = User::with('gender')->latest()->where('user_type_id',
-                2)->paginate($items);
+            $librarians = User::with('gender')->latest()->where(
+                'user_type_id',
+                2
+            )->paginate($items);
             $show_criterium = false;
         }
         $show_all = $user->getCount(2);
 
-        return view('pages.librarians.librarians',
-            compact('librarians', 'items', 'variable', 'show_all', 'searched',
-                'show_criterium'));
+        return view(
+            'pages.librarians.librarians',
+            compact(
+                'librarians',
+                'items',
+                'variable',
+                'show_all',
+                'searched',
+                'show_criterium'
+            )
+        );
     }
 
     /**
@@ -181,8 +193,9 @@ class LibrarianController extends Controller
         $URL = url()->previous();
 
         if ($librarian->photo != 'placeholder') {
-            if ($URL == 'http://tim4.ictcortex.me/bibliotekari'
-                || $URL == 'https://tim4.ictcortex.me/bibliotekari'
+            if (
+                $URL == 'http://tim7.ictcortex.me/bibliotekari'
+                || $URL == 'https://tim7.ictcortex.me/bibliotekari'
             ) {
                 unlink('storage/librarians/' . $librarian->photo);
             } else {
@@ -199,5 +212,4 @@ class LibrarianController extends Controller
         $ids = $request->ids;
         User::whereIn('id', explode(",", $ids))->delete();
     }
-
 }

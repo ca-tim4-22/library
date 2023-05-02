@@ -25,11 +25,11 @@
     $URL = url()->current();
     @endphp
 
-    @if (!str_contains($URL, 'tim4'))
+    @if (!str_contains($URL, 'tim7'))
     <a href="http://127.0.0.1:8000"> <img src="{{asset('library-favicon.ico')}}"
                                           class="logo no-select"/> </a>
     @else
-    <a href="https://tim4.ictcortex.me/"> <img
+    <a href="https://tim7.ictcortex.me/"> <img
                 src="{{asset('library-favicon.ico')}}" class="logo no-select"/>
     </a>
     @endif

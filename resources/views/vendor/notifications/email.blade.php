@@ -52,8 +52,8 @@ tim <span style="font-weight: bold;">nullable()</span>
 ]
 )
 {{-- <span
-        class="break-all">[{{ $displayableActionUrl }}]tim4.ictcortex.me</span> --}}
-<a href="https://tim4.ictcortex.me/">www.tim4.ictcortex.me</a>
+        class="break-all">[{{ $displayableActionUrl }}]tim7.ictcortex.me</span> --}}
+<a href="https://tim7.ictcortex.me/">www.tim7.ictcortex.me</a>
 @endslot
 @endisset
 @endcomponent

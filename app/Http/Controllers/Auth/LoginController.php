@@ -13,6 +13,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+define("url", "tim7");
+
 class LoginController extends Controller
 {
     /*
@@ -72,18 +74,22 @@ class LoginController extends Controller
             'name' => $user->getName(),
             'username' => $user->getNickname(),
             'password' => bcrypt(Str::random(10)),
-            'photo' => 'github_avatar'.'-'.uniqid().'.png',
+            'photo' => 'github_avatar' . '-' . uniqid() . '.png',
             'github' => 1,
             'active' => 0,
         ]);
 
         $URL = url()->current();
-        if (str_contains($URL, 'tim4')) {
-            Storage::disk('third_party_upload')->put($user2->photo,
-                file_get_contents($user->getAvatar()));
+        if (str_contains($URL, url)) {
+            Storage::disk('third_party_upload')->put(
+                $user2->photo,
+                file_get_contents($user->getAvatar())
+            );
         } else {
-            Storage::disk('local')->put($user2->photo,
-                file_get_contents($user->getAvatar()));
+            Storage::disk('local')->put(
+                $user2->photo,
+                file_get_contents($user->getAvatar())
+            );
         }
 
         $user2->update([

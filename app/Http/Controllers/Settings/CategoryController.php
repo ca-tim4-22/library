@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 
+define("url", "tim7");
+
 class CategoryController extends Controller
 {
     public function __construct()
@@ -45,7 +47,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
             $icon = $name;
             $default = 'false';
@@ -84,8 +86,10 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('pages.settings.category.edit_category',
-            compact('category'));
+        return view(
+            'pages.settings.category.edit_category',
+            compact('category')
+        );
     }
 
     /**
@@ -103,7 +107,7 @@ class CategoryController extends Controller
         $icon_old = $category->icon;
 
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/category', $name);
             $validated['icon'] = $name;
             $validated['default'] = 'false';
@@ -127,16 +131,18 @@ class CategoryController extends Controller
         $URL = url()->current();
 
         // Delete default icon && icon in storage
-        if (str_contains($URL, 'tim4')
-            && file_exists('storage/settings/category/'.$category->icon)
+        if (
+            str_contains($URL, url)
+            && file_exists('storage/settings/category/' . $category->icon)
         ) {
-            unlink('storage/settings/category/'.$category->icon);
-        } elseif ( ! str_contains($URL, 'tim4')
-                   && file_exists(public_path().'\\storage\\settings\\category\\'
-                                  .$category->icon)
+            unlink('storage/settings/category/' . $category->icon);
+        } elseif (
+            !str_contains($URL, url)
+            && file_exists(public_path() . '\\storage\\settings\\category\\'
+                . $category->icon)
         ) {
-            unlink(public_path().'\\storage\\settings\\category\\'
-                   .$category->icon);
+            unlink(public_path() . '\\storage\\settings\\category\\'
+                . $category->icon);
         }
 
         return $category->delete();

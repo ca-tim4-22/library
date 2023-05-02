@@ -12,6 +12,8 @@ use App\Models\{
 };
 use Illuminate\Http\Request;
 
+define("url", "tim7");
+
 class CSVService
 {
 
@@ -48,7 +50,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -60,7 +62,7 @@ class CSVService
             Author::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -78,7 +80,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -90,7 +92,7 @@ class CSVService
             Book::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -108,7 +110,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -120,7 +122,7 @@ class CSVService
             Gallery::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -138,7 +140,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -150,7 +152,7 @@ class CSVService
             BookAuthor::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -168,7 +170,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -179,7 +181,7 @@ class CSVService
             BookCategory::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);
@@ -197,7 +199,7 @@ class CSVService
         $store = $get_file->move('csv', $name);
         $URL = url()->current();
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             $file = 'csv/' . $name;
         } else {
             $file = public_path('csv\\' . $name);
@@ -209,7 +211,7 @@ class CSVService
             BookGenre::firstOrCreate($customerArr[$i]);
         }
 
-        if (str_contains($URL, 'tim4')) {
+        if (str_contains($URL, url)) {
             unlink('csv/' . $name);
         } else {
             unlink('csv\\' . $name);

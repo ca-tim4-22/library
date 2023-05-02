@@ -231,7 +231,7 @@ class StudentController extends Controller
         $URL = url()->previous();
 
         if ($student->photo != 'placeholder') {
-            if ($URL == 'http://tim4.ictcortex.me/ucenici') {
+            if ($URL == 'http://tim7.ictcortex.me/ucenici') {
                 unlink('storage/students/' . $student->photo);
             } else {
                 $path = '\\storage\\students\\' . $student->photo;

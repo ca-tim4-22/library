@@ -46,7 +46,7 @@ You may not have started your local server. Depending on which software you are 
 <br>
 The error message "Could not find driver" usually indicates that the PHP extension for the database driver you are using is not installed or enabled on your system.
 Open the "php.ini" file in a text editor and look for the line that starts with "extension=". Remove the semicolon (;) at the beginning of the line and replace <extension-name> with the name of the PHP extension you installed in step 2.
--> extension=mysql
+> extension=mysql
 
 ## Installation
 * Clone this repository using this command:

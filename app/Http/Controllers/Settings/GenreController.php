@@ -8,6 +8,8 @@ use App\Http\Requests\Settings\GenreRequest;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
+define("url", "tim7");
+
 class GenreController extends Controller
 {
     public function __construct()
@@ -45,7 +47,7 @@ class GenreController extends Controller
     public function store(GenreRequest $request)
     {
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
             $icon = $name;
             $default = 'false';
@@ -103,7 +105,7 @@ class GenreController extends Controller
         $icon_old = $genre->icon;
 
         if ($file = $request->file('icon')) {
-            $name = date('d-M-Y').'-'.$file->getClientOriginalName();
+            $name = date('d-M-Y') . '-' . $file->getClientOriginalName();
             $file->move('storage/settings/genre', $name);
             $input['icon'] = $name;
             $input['default'] = 'false';
@@ -113,8 +115,10 @@ class GenreController extends Controller
 
         $genre->update($input);
 
-        return to_route('setting-genre')->with('genre-updated',
-            'Uspješno ste izmijenili žanr: '."\"$genre->name\".");
+        return to_route('setting-genre')->with(
+            'genre-updated',
+            'Uspješno ste izmijenili žanr: ' . "\"$genre->name\"."
+        );
     }
 
     /**
@@ -129,15 +133,17 @@ class GenreController extends Controller
         $URL = url()->current();
 
         // Delete default icon && icon in storage
-        if (str_contains($URL, 'tim4')
-            && file_exists('storage/settings/genre/'.$genre->icon)
+        if (
+            str_contains($URL, url)
+            && file_exists('storage/settings/genre/' . $genre->icon)
         ) {
-            unlink('storage/settings/genre/'.$genre->icon);
-        } elseif ( ! str_contains($URL, 'tim4')
-                   && file_exists(public_path().'\\storage\\settings\\genre\\'
-                                  .$genre->icon)
+            unlink('storage/settings/genre/' . $genre->icon);
+        } elseif (
+            !str_contains($URL, url)
+            && file_exists(public_path() . '\\storage\\settings\\genre\\'
+                . $genre->icon)
         ) {
-            unlink(public_path().'\\storage\\settings\\genre\\'.$genre->icon);
+            unlink(public_path() . '\\storage\\settings\\genre\\' . $genre->icon);
         }
 
         return $genre->delete();

@@ -7,6 +7,8 @@ if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $link = "http";
 }
 
+define("url", "tim7");
+
 // Here append the common URL characters.
 $link .= "://";
 
@@ -16,31 +18,30 @@ $link .= $_SERVER['HTTP_HOST'];
 // Append the requested resource location to the URL
 $link .= $_SERVER['REQUEST_URI'];
 
-if (str_contains($link, 'tim4')) {
-    unlink("/home/tim4/aplikacija/storage/framework/down");
+if (str_contains($link, url)) {
+    unlink("/home/tim7/aplikacija/storage/framework/down");
 } else {
-    unlink(dirname(__FILE__)."/../storage/framework/down");
+    unlink(dirname(__FILE__) . "/../storage/framework/down");
 }
 ?>
 
 <title>Redirekcija - Online biblioteka</title>
-<meta name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0"/>
-<link rel="icon" type="image/x-icon" href="library-favicon.ico"/>
-<link rel="stylesheet" href="css/custom-style/live_php.style.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0" />
+<link rel="icon" type="image/x-icon" href="library-favicon.ico" />
+<link rel="stylesheet" href="css/custom-style/live_php.style.css" />
 <p>
     Redirekcija za
     <time><strong id="seconds"></strong></time>
     ...
 </p>
-<link rel="stylesheet" href="css/custom-style/style.css"/>
+<link rel="stylesheet" href="css/custom-style/style.css" />
 
 <script type="text/javascript">
     var count = 5;
     let URL = window.location.href;
-    let result = URL.includes("tim4")
+    let result = URL.includes(url)
     if (result == true) {
-        redirect = "https://tim4.ictcortex.me/"
+        redirect = "https://tim7.ictcortex.me/"
     } else {
         redirect = "http://127.0.0.1:8000/"
     }

@@ -47,7 +47,7 @@ Moguće je da niste startovali Vaš lokalni server. U zavisnosti koji softver ko
 <br>
 Poruka o grešci "Nije moguće pronaći drajver“ obično ukazuje na to da PHP ekstenzija za drajver baze podataka koju koristite nije instalirana ili omogućena na Vašem sistemu.
 Otvorite datoteku "php.ini" u uređivaču teksta i potražite red koji počinje sa ekstenzijom=. Dekomentarišite red tako što ćete ukloniti tačku i zarez (;) na početku reda i zamijenite <ime-ekstenzije> imenom PHP ekstenzije koju ste instalirali u koraku 2.
--> extension=mysql
+> extension=mysql
 
 ## Instalacija
 * Klonirajte ovaj repozitorijum sledećom komandom:

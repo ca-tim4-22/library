@@ -46,7 +46,7 @@ Potresti non aver avviato il tuo server locale. A seconda del software che stai 
 <br>
 Il messaggio di errore "Impossibile trovare il driver" di solito indica che l'estensione PHP per il driver del database che stai utilizzando non è installata o abilitata sul tuo sistema.
 Apri il file "php.ini" in un editor di testo e cerca la riga che inizia con "extension=". Rimuovi il punto e virgola (;) all'inizio della riga e sostituisci <nome-estensione> con il nome dell'estensione PHP che hai installato al passaggio 2.
--> extension=mysql
+> extension=mysql
 
 ## Installazione
 * Clona questo repository usando questo comando:

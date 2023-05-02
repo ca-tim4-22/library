@@ -482,8 +482,7 @@
                 <div class="p-6 border-t border-gray-700 md:border-l md:border-t-0">
                     <div class="flex items-center">
                         <div class="ml-4 text-lg font-semibold leading-7"><a
-                                    href=https://laravel.com/ class="text-gray-900
-                                    dark:text-white" target=_blank><img
+                                    href=https://laravel.com/ class="text-gray-900 dark:text-white" target=_blank><img
                                     alt="Laravel Logo" height=25
                                     src="{{asset('img/welcome/laravel_logo.webp')}}"
                                     title="Laravel Logo" width=85></a></div>
@@ -502,8 +501,7 @@
                 <div class="p-6 border-t border-gray-700">
                     <div class="flex items-center">
                         <div class="ml-4 text-lg font-semibold leading-7"><a
-                                    href=https://coinis.com/ class="dark:text-white
-                                    text-white-900" target=_blank><img
+                                    href=https://coinis.com/ class="dark:text-white text-white-900" target=_blank><img
                                     alt="Coinis Logo" height=18
                                     src="{{asset('img/welcome/coinis_logo_2.png')}}"
                                     title="Coinis Logo" width=65></a></div>
