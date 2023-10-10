@@ -768,16 +768,16 @@
         },
         {
             "name": "enlightn/enlightn",
-            "version": "v2.3.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/enlightn/enlightn.git",
-                "reference": "0f2d18da7987367c82a184b7d6cc5037f1b13264"
+                "reference": "1b5aecf2869f54444404eb2df397618e6e2fc425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/enlightn/enlightn/zipball/0f2d18da7987367c82a184b7d6cc5037f1b13264",
-                "reference": "0f2d18da7987367c82a184b7d6cc5037f1b13264",
+                "url": "https://api.github.com/repos/enlightn/enlightn/zipball/1b5aecf2869f54444404eb2df397618e6e2fc425",
+                "reference": "1b5aecf2869f54444404eb2df397618e6e2fc425",
                 "shasum": ""
             },
             "require": {
@@ -788,7 +788,8 @@
                 "nikic/php-parser": "^4.0",
                 "nunomaduro/larastan": "^2.0",
                 "php": "^8.0",
-                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan": ">=1.10.11",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
                 "symfony/finder": "^4.0|^5.0|^6.0"
             },
             "require-dev": {
@@ -848,9 +849,9 @@
             "support": {
                 "docs": "https://www.laravel-enlightn.com/docs/",
                 "issues": "https://github.com/enlightn/enlightn/issues",
-                "source": "https://github.com/enlightn/enlightn/tree/v2.3.0"
+                "source": "https://github.com/enlightn/enlightn/tree/v2.5.0"
             },
-            "time": "2023-03-02T15:00:19+00:00"
+            "time": "2023-07-21T23:02:20+00:00"
         },
         {
             "name": "enlightn/security-checker",
@@ -3760,16 +3761,16 @@
         },
         {
             "name": "nunomaduro/larastan",
-            "version": "v2.6.0",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/larastan.git",
-                "reference": "ccac5b25949576807862cf32ba1fce1769c06c42"
+                "reference": "6c5e8820f3db6397546f3ce48520af9d312aed27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/ccac5b25949576807862cf32ba1fce1769c06c42",
-                "reference": "ccac5b25949576807862cf32ba1fce1769c06c42",
+                "url": "https://api.github.com/repos/nunomaduro/larastan/zipball/6c5e8820f3db6397546f3ce48520af9d312aed27",
+                "reference": "6c5e8820f3db6397546f3ce48520af9d312aed27",
                 "shasum": ""
             },
             "require": {
@@ -3832,7 +3833,7 @@
             ],
             "support": {
                 "issues": "https://github.com/nunomaduro/larastan/issues",
-                "source": "https://github.com/nunomaduro/larastan/tree/v2.6.0"
+                "source": "https://github.com/nunomaduro/larastan/tree/v2.6.4"
             },
             "funding": [
                 {
@@ -3852,7 +3853,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-04-20T12:40:01+00:00"
+            "time": "2023-07-29T12:13:13+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -4200,16 +4201,16 @@
         },
         {
             "name": "phpmyadmin/sql-parser",
-            "version": "5.7.0",
+            "version": "5.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmyadmin/sql-parser.git",
-                "reference": "0f5895aab2b6002d00b6831b60983523dea30bff"
+                "reference": "db1b3069b5dbc220d393d67ff911e0ae76732755"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/0f5895aab2b6002d00b6831b60983523dea30bff",
-                "reference": "0f5895aab2b6002d00b6831b60983523dea30bff",
+                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/db1b3069b5dbc220d393d67ff911e0ae76732755",
+                "reference": "db1b3069b5dbc220d393d67ff911e0ae76732755",
                 "shasum": ""
             },
             "require": {
@@ -4283,7 +4284,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-01-25T10:43:40+00:00"
+            "time": "2023-06-05T18:19:38+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -4472,16 +4473,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.14",
+            "version": "1.10.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d232901b09e67538e5c86a724be841bea5768a7c"
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d232901b09e67538e5c86a724be841bea5768a7c",
-                "reference": "d232901b09e67538e5c86a724be841bea5768a7c",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
+                "reference": "c47e47d3ab03137c0e121e77c4d2cb58672f6d44",
                 "shasum": ""
             },
             "require": {
@@ -4530,7 +4531,55 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-19T13:47:27+00:00"
+            "time": "2023-08-24T21:54:50+00:00"
+        },
+        {
+            "name": "phpstan/phpstan-deprecation-rules",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
+                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
+                "reference": "089d8a8258ed0aeefdc7b68b6c3d25572ebfdbaa",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2 || ^8.0",
+                "phpstan/phpstan": "^1.10.3"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-parallel-lint": "^1.2",
+                "phpstan/phpstan-php-parser": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "rules.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
+            "support": {
+                "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
+                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.1.4"
+            },
+            "time": "2023-08-05T09:02:04+00:00"
         },
         {
             "name": "psr/clock",
@@ -8934,22 +8983,22 @@
         },
         {
             "name": "composer/class-map-generator",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/class-map-generator.git",
-                "reference": "1e1cb2b791facb2dfe32932a7718cf2571187513"
+                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/1e1cb2b791facb2dfe32932a7718cf2571187513",
-                "reference": "1e1cb2b791facb2dfe32932a7718cf2571187513",
+                "url": "https://api.github.com/repos/composer/class-map-generator/zipball/953cc4ea32e0c31f2185549c7d216d7921f03da9",
+                "reference": "953cc4ea32e0c31f2185549c7d216d7921f03da9",
                 "shasum": ""
             },
             "require": {
-                "composer/pcre": "^2 || ^3",
+                "composer/pcre": "^2.1 || ^3.1",
                 "php": "^7.2 || ^8.0",
-                "symfony/finder": "^4.4 || ^5.3 || ^6"
+                "symfony/finder": "^4.4 || ^5.3 || ^6 || ^7"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.6",
@@ -8987,7 +9036,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/class-map-generator/issues",
-                "source": "https://github.com/composer/class-map-generator/tree/1.0.0"
+                "source": "https://github.com/composer/class-map-generator/tree/1.1.0"
             },
             "funding": [
                 {
@@ -9003,7 +9052,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-19T11:31:27+00:00"
+            "time": "2023-06-30T13:58:57+00:00"
         },
         {
             "name": "composer/pcre",
