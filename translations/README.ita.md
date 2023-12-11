@@ -1,5 +1,5 @@
-<kbd>[<img title="Serbo" alt="Serbo" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rs.svg" width="22">](../README.md)</kbd>
-<kbd>[<img title="Inglese" alt="Inglese" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/gb.svg" width="22">](README.en.md)</kbd>
+<kbd>[<img title="Serbo" alt="Serbo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Flag_of_Serbia.svg/800px-Flag_of_Serbia.svg.png?20230930181708" width="22">](../README.md)</kbd>
+<kbd>[<img title="Inglese" alt="Inglese" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/2560px-Flag_of_the_United_Kingdom.svg.png" width="22">](README.en.md)</kbd>
 
 ## Libreria in linea | Applicazione Web & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### Cos'è una "Biblioteca online"?
