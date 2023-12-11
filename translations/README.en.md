@@ -1,5 +1,5 @@
-<kbd>[<img title="Serbian" alt="Serbian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/rs.svg" width="22">](../README.md)</kbd>
-<kbd>[<img title="Italian" alt="Italian" src="https://cdn.staticaly.com/gh/hjnilsson/country-flags/master/svg/it.svg" width="22">](README.ita.md)</kbd>
+<kbd>[<img title="Serbian" alt="Serbian" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Flag_of_Serbia.svg/800px-Flag_of_Serbia.svg.png?20230930181708" width="22">](../README.md)</kbd>
+<kbd>[<img title="Italian" alt="Italian" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/1500px-Flag_of_Italy.svg.png" width="22">](README.ita.md)</kbd>
 
 ## Online library | Web application & API | Laravel 9  <img height="25" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png" />
 ### What is "Online library"?
