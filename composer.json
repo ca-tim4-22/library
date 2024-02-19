@@ -16,7 +16,7 @@
     "enlightn/enlightn": "^2.1",
     "fakerphp/faker": "^1.20",
     "guzzlehttp/guzzle": "^7.2",
-    "intervention/image": "^2.7",
+    "intervention/image": "^3.4",
     "laravel/framework": "^9.19",
     "laravel/passport": "^11.2",
     "laravel/sanctum": "^3.0.1",
