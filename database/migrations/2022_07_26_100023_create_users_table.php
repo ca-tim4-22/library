@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -38,20 +39,20 @@ return new class extends Migration {
         });
 
         DB::table('users')->insert([
-            'user_type_id'      => 3,
-            'user_gender_id'    => 1,
-            'name'              => 'Administrator',
-            'JMBG'              => 9876328574326,
-            'email'             => 'admin@gmail.com',
+            'user_type_id' => 3,
+            'user_gender_id' => 1,
+            'name' => 'Administrator',
+            'JMBG' => 9876328574326,
+            'email' => 'admin@gmail.com',
             'email_verified_at' => Carbon::now(),
-            'username'          => 'admin',
-            'password'          => bcrypt('nekalozinka'),
-            'photo'             => 'placeholder',
-            'remember_token'    => Str::random(10),
-            'created_at'        => Carbon::now(),
-            'updated_at'        => Carbon::now(),
-            'last_login_at'     => Carbon::now(),
-            'login_count'       => 0,
+            'username' => 'admin',
+            'password' => bcrypt('password'),
+            'photo' => 'placeholder',
+            'remember_token' => Str::random(10),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+            'last_login_at' => Carbon::now(),
+            'login_count' => 0,
         ]);
     }
 
