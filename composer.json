@@ -15,7 +15,7 @@
     "fakerphp/faker": "^1.20",
     "guzzlehttp/guzzle": "^7.2",
     "laravel/framework": "^9.19",
-    "laravel/passport": "^11.2",
+    "laravel/passport": "^12.0",
     "laravel/sanctum": "^3.0.1",
     "laravel/scout": "^10.0",
     "laravel/socialite": "^5.5",
